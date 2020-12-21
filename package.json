@@ -1,0 +1,41 @@
+{
+  "name": "ouorz-next",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ./src -c .eslintrc.json --fix --ext ts,tsx",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  },
+  "dependencies": {
+    "next": "10.0.3",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "@bahmutov/add-typescript-to-cypress": "^2.1.2",
+    "@testing-library/cypress": "^7.0.3",
+    "@types/chai": "^4.2.14",
+    "@types/jest": "^26.0.19",
+    "@types/mocha": "^8.2.0",
+    "@types/node": "^14.14.14",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.10.0",
+    "@typescript-eslint/parser": "^4.10.0",
+    "autoprefixer": "^10.1.0",
+    "cypress": "^6.1.0",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-cypress": "^2.11.2",
+    "eslint-plugin-prettier": "^3.3.0",
+    "eslint-plugin-react": "^7.21.5",
+    "postcss": "^8.2.1",
+    "prettier": "^2.2.1",
+    "prettier-eslint": "^12.0.0",
+    "tailwindcss": "^2.0.2",
+    "typescript": "^4.1.3"
+  }
+}
