@@ -26,8 +26,10 @@
   },
   "include": [
     "next-env.d.ts",
+    "twin.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "next.config.js"
   ],
   "exclude": [
     "node_modules",
