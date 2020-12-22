@@ -7,7 +7,7 @@ interface Props {
 
 export default function CardPlainText({ item }: Props) {
   return (
-    <div className="w-full shadow-sm bg-white rounded-md mb-6">
+    <div className="w-full shadow-sm bg-white rounded-md border mb-6">
       <div className="px-10 pt-10 pb-4">
         <h1 className="font-normal text-3xl text-gray-600 tracking-wider leading-10 mb-5">
           {item.post_title}

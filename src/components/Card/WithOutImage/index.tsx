@@ -8,13 +8,7 @@ interface Props {
 
 export default function CardWithOutImage({ item, sticky }: Props) {
   return (
-    <div
-      className={
-        sticky
-          ? 'w-full shadow-sm bg-white rounded-md border mb-6'
-          : 'w-full shadow-sm bg-white rounded-md mb-6'
-      }
-    >
+    <div className="w-full shadow-sm bg-white rounded-md border mb-6">
       <div className="p-10">
         <div className="col-span-2 col-end-4">
           <div className="grid grid-cols-4 items-center">
