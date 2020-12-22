@@ -1,11 +1,10 @@
-import { GlobalStyles } from 'twin.macro'
-import '~/styles/global.css'
+import '~/styles/tailwind.css'
+import '~/styles/globals.css'
 import type { AppProps } from 'next/app'
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <div>
-      <GlobalStyles />
+    <div className="bg-gbg min-h-screen">
       <Component {...pageProps} />
     </div>
   )

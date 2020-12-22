@@ -1,9 +1,9 @@
 /// <reference types="cypress" />
 /// <reference types="@testing-library/cypress" />
 
-describe('A sample test', function () {
-  it('contains the content "Next"', function () {
+describe('Index', function () {
+  it('should have top section', function () {
     cy.visit('/')
-    cy.contains('Next')
+    cy.contains('developer, blogger and undergraduate student')
   })
 })

@@ -1,72 +1,48 @@
 import Head from 'next/head'
 import React from 'react'
-import tw from 'twin.macro'
+import Button from '~/components/Button'
+import Page from '~/components/Page'
+import Content from '~/components/Content'
 
 export default function Home() {
-  const [current, setCurrent] = React.useState<string>('one')
   return (
-    <div className="container">
+    <div>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>TonyHe - Just A Poor Lifesinger</title>
       </Head>
-
-      <main className="main">
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-      </main>
-
-      <footer tw="mb-6 p-6 justify-items-center transition shadow-sm border-gray-200 h-auto rounded-md w-5/12 ml-auto mr-auto border-2 mb-10 cursor-pointer">
-        <div>
-          <a
-            tw="flex justify-center items-center m-auto"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Powered by{' '}
-            <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-          </a>
-        </div>
-        <div>
-          <p css={[tw`text-gray-800`, current === 'one' && tw`font-bold`]}>
-            One
-          </p>
-          <p css={[tw`text-gray-800`, current === 'two' && tw`font-bold`]}>
-            Two
-          </p>
-          <p css={[tw`text-gray-800`, current === 'three' && tw`font-bold`]}>
-            Three
-          </p>
-        </div>
-        <div tw="grid grid-cols-3 gap-3 w-full">
-          <button
-            tw="border border-gray-200 hover:border-gray-300 w-full rounded-md"
-            onClick={() => {
-              setCurrent('one')
-            }}
-          >
-            One
-          </button>
-          <button
-            tw="border border-gray-200 hover:border-gray-300 w-full rounded-md"
-            onClick={() => {
-              setCurrent('two')
-            }}
-          >
-            Two
-          </button>
-          <button
-            tw="border border-gray-200 hover:border-gray-300 w-full rounded-md"
-            onClick={() => {
-              setCurrent('three')
-            }}
-          >
-            Three
-          </button>
-        </div>
-      </footer>
+      <Page>
+        <Content>
+          <div className="mt-20">
+            <div>
+              <h1 className="font-medium text-top text-black tracking-wide mb-3">
+                👋 Hi, I{"'"}m TonyHe
+              </h1>
+              <p className="text-2xl text-gray-500 tracking-wide font-light">
+                I{"'"}m a developer, blogger and undergraduate student at the
+                University of Waterloo, Class of 2025, Honors Mathematics
+              </p>
+            </div>
+            <div className="mt-5 grid grid-cols-5 gap-3">
+              <div className="grid grid-cols-3 gap-3 col-start-1 col-span-3">
+                <Button type="default" icon="github" className="text-gray-700">
+                  <span className="tracking-normal">Github</span>
+                </Button>
+                <Button type="default" icon="twitter" className="text-blue-400">
+                  <span className="tracking-normal">Twitter</span>
+                </Button>
+                <Button type="default" icon="email" className="text-gray-500">
+                  <span className="tracking-normal">Email</span>
+                </Button>
+              </div>
+              <div className="col-start-4 col-end-6">
+                <Button type="primary" icon="right">
+                  <span className="tracking-normal">More about me</span>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Content>
+      </Page>
     </div>
   )
 }
