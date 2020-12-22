@@ -2901,6 +2901,11 @@ depd@~1.1.2:
   resolved "https://registry.npm.taobao.org/depd/download/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
 
+dequal@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.npm.taobao.org/dequal/download/dequal-2.0.2.tgz#85ca22025e3a87e65ef75a7a437b35284a7e319d"
+  integrity sha1-hcoiAl46h+Ze91p6Q3s1KEp+MZ0=
+
 des.js@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/des.js/download/des.js-1.0.1.tgz#5382142e1bdc53f85d86d53e5f4aa7deb91e0843"
@@ -5981,6 +5986,11 @@ react-refresh@0.8.3:
   resolved "https://registry.npm.taobao.org/react-refresh/download/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha1-ch1GV2ctQAxePHXQY8SoX7LV1o8=
 
+react-timeago@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.npm.taobao.org/react-timeago/download/react-timeago-5.2.0.tgz#d655d40aa55e4fe08a92234481a6aea7f656ab5d"
+  integrity sha1-1lXUCqVeT+CKkiNEgaaup/ZWq10=
+
 react@17.0.1:
   version "17.0.1"
   resolved "https://registry.npm.taobao.org/react/download/react-17.0.1.tgz#6e0600416bd57574e3f86d92edba3d9008726127"
@@ -6858,6 +6868,13 @@ supports-color@^7.1.0, supports-color@^7.2.0:
   integrity sha1-G33NyzK4E4gBs+R4umpRyqiWSNo=
   dependencies:
     has-flag "^4.0.0"
+
+swr@^0.3.11:
+  version "0.3.11"
+  resolved "https://registry.npm.taobao.org/swr/download/swr-0.3.11.tgz#f7f50ed26c06afea4249482cec504768a2272664"
+  integrity sha1-9/UO0mwGr+pCSUgs7FBHaKInJmQ=
+  dependencies:
+    dequal "2.0.2"
 
 symbol-observable@^1.1.0:
   version "1.2.0"

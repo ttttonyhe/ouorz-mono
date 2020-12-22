@@ -24,7 +24,7 @@ export default function Header() {
           : 'transition-all duration-300 grid grid-cols-6 fixed top-0 h-auto w-full py-4 px-5'
       }
     >
-      <div className="col-start-1 col-end-2 flex space-x-2">
+      <div className="col-start-1 col-end-2 flex xl:space-x-2">
         <Button type="menu-default" icon="rss" className="hidden xl:flex">
           RSS
         </Button>

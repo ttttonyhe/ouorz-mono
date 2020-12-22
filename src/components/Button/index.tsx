@@ -8,8 +8,7 @@ interface Props {
   children?: React.ReactNode
 }
 
-export default function Button(props: Props) {
-  const { type, icon, className, children } = props
+export default function Button({ type, icon, className, children }: Props) {
   switch (type) {
     case 'default':
       return (

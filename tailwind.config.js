@@ -13,8 +13,16 @@ module.exports = {
       width: {
         content: '640px',
       },
+      height: {
+        img: '240px',
+      },
       fontSize: {
-        top: ['2.5rem', '2.5rem'],
+        top: ['2.55rem', '2.55rem'],
+        listTitle: ['2.1rem', '2.8rem'],
+        label: '1.35rem',
+      },
+      padding: {
+        pre: '0.32rem',
       },
     },
   },
