@@ -19,11 +19,11 @@ export default function CardPlainText({ item }: Props) {
             Posted <TimeAgo date={item.date} />
           </span>
           <span>·</span>
-          <div
+          <span
             dangerouslySetInnerHTML={{
               __html: item.post_metas.status,
             }}
-          ></div>
+          ></span>
         </p>
       </div>
     </div>

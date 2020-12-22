@@ -2,8 +2,8 @@
 /// <reference types="@testing-library/cypress" />
 
 describe('Index', function () {
-  it('should have top section', function () {
+  it('should fetch some posts', function () {
     cy.visit('/')
-    cy.contains('developer, blogger and undergraduate student')
+    cy.get('[data-cy="postList"]').should('be.visible')
   })
 })

@@ -10,7 +10,7 @@ interface Props {
 export default function List({ posts, sticky }: Props) {
   if (posts) {
     return (
-      <div key="Post list">
+      <div key="Post list" data-cy={sticky ? 'stickyPostList' : 'postList'}>
         {posts.map((item) => {
           if (item.post_img.url) {
             return (
