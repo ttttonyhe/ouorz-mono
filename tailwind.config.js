@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable prettier/prettier */
+
+var flattenColorPalette = require('tailwindcss/lib/util/flattenColorPalette').default;
+
 module.exports = {
   purge: ['./src/**/*.tsx'],
   darkMode: 'media',
@@ -12,6 +17,7 @@ module.exports = {
       },
       width: {
         content: '640px',
+        page: '720px',
       },
       height: {
         img: '240px',
@@ -24,10 +30,58 @@ module.exports = {
       padding: {
         pre: '0.32rem',
       },
+      animation: {
+        pointer: 'pointer 1s infinite',
+      },
+      keyframes: {
+        pointer: {
+          '0%,100%': {
+            transform: 'translateX(0)',
+          },
+          '50%': {
+            transform: 'translateX(15%)',
+          },
+        },
+      },
+      transitionProperty: {
+        width: 'width',
+      },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      animation: ['group-hover', 'hover'],
+      display: ['group-hover'],
+      transitionProperty: ['hover', 'focus'],
+      margin: ['hover']
+    },
   },
-  plugins: [],
+  plugins: [
+    ({
+      addUtilities,
+      theme,
+      variants
+    }) => {
+      const colors = flattenColorPalette(theme('borderColor'))
+      delete colors['default']
+
+      const colorMap = Object.keys(colors).map((color) => ({
+        [`.border-t-${color}`]: {
+          borderTopColor: colors[color],
+        },
+        [`.border-r-${color}`]: {
+          borderRightColor: colors[color],
+        },
+        [`.border-b-${color}`]: {
+          borderBottomColor: colors[color],
+        },
+        [`.border-l-${color}`]: {
+          borderLeftColor: colors[color],
+        },
+      }))
+      const utilities = Object.assign({}, ...colorMap)
+
+      addUtilities(utilities, variants('borderColor'))
+    },
+  ],
 }

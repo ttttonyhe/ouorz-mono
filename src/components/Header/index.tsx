@@ -1,5 +1,6 @@
 import Button from '~/components/Button'
 import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 export default function Header() {
   const [scrollPosition, setScrollPosition] = useState(0)
@@ -25,17 +26,17 @@ export default function Header() {
       }
     >
       <div className="col-start-1 col-end-2 flex xl:space-x-2">
-        <Button type="menu-default" icon="rss" className="hidden xl:flex">
+        <Button bType="menu-default" icon="rss" className="hidden xl:flex">
           RSS
         </Button>
-        <Button type="menu-default" icon="search">
+        <Button bType="menu-default" icon="search">
           Search
         </Button>
       </div>
       <div
         className={
           scrollPosition > 0
-            ? 'col-start-3 col-end-5 items-center justify-center pt-2'
+            ? 'col-start-3 col-end-5 items-center justify-center pt-1.5'
             : 'hidden'
         }
       >
@@ -54,18 +55,26 @@ export default function Header() {
       </div>
       <div className="col-start-5 col-end-7 flex space-x-2 justify-end">
         <Button
-          type="menu-primary"
+          bType="menu-primary"
           icon="love"
           className="text-pink-500 hidden xl:flex"
         >
           Donation
         </Button>
-        <Button type="menu-default" icon="chat" className="hidden xl:flex">
-          AMA
-        </Button>
-        <Button type="menu-default" icon="me">
-          About
-        </Button>
+        <Link href="/page/765">
+          <a>
+            <Button bType="menu-default" icon="chat" className="hidden xl:flex">
+              AMA
+            </Button>
+          </a>
+        </Link>
+        <Link href="/post/126">
+          <a>
+            <Button bType="menu-default" icon="me">
+              About
+            </Button>
+          </a>
+        </Link>
       </div>
     </header>
   )

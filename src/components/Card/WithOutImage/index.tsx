@@ -1,5 +1,7 @@
 import Label from '~/components/Label'
-import TimeAgo from 'react-timeago'
+import BottomCard from '~/components/Card/Bottom'
+import { DesSplit } from '~/utilities/String'
+import Link from 'next/link'
 
 interface Props {
   item: any
@@ -14,11 +16,15 @@ export default function CardWithOutImage({ item, sticky }: Props) {
           <div className="grid grid-cols-4 items-center">
             <div className="flex space-x-2 col-start-1 col-end-3">
               {sticky && <Label name="sticky"></Label>}
-              <Label name="primary" icon="cate">
-                {item.post_categories[0].name}
-              </Label>
+              <Link href={`/cate/${item.post_categories[0].term_id}`}>
+                <a>
+                  <Label name="primary" icon="cate">
+                    {item.post_categories[0].name}
+                  </Label>
+                </a>
+              </Link>
             </div>
-            <div className="col-start-4 col-end-5">
+            <div className="col-start-4 col-end-5 justify-end flex">
               <Label name="secondary" icon="preview">
                 Preview
               </Label>
@@ -31,23 +37,13 @@ export default function CardWithOutImage({ item, sticky }: Props) {
             <p
               className="text-gray-500 text-xl tracking-wide leading-8"
               dangerouslySetInnerHTML={{
-                __html: item.post_excerpt.four,
+                __html: DesSplit({ str: item.post_excerpt.four, n: 150 }),
               }}
             ></p>
           </div>
         </div>
       </div>
-      <div className="pt-2 pb-3 px-10 items-center w-full h-auto border-t rounded-br-md rounded-bl-md border-gray-100">
-        <p className="flex space-x-2 text-lg tracking-wide leading-8 text-gray-500">
-          <span>
-            Posted <TimeAgo date={item.date} />
-          </span>
-          <span>·</span>
-          <span>{item.post_metas.views} Views</span>
-          <span>·</span>
-          <span>ERT {item.post_metas.reading.time_required} min</span>
-        </p>
-      </div>
+      <BottomCard item={item}></BottomCard>
     </div>
   )
 }
