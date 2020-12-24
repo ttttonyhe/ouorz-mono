@@ -42,9 +42,13 @@ export default function CardWithImage({ item, sticky }: Props) {
               </div>
             </div>
             <div className="mt-4">
-              <h1 className="font-medium text-listTitle text-gray-700 tracking-wider mb-5">
-                {item.post_title}
-              </h1>
+              <Link href={`/post/${item.id}`}>
+                <a>
+                  <h1 className="font-medium text-listTitle text-gray-700 tracking-wider mb-5">
+                    {item.post_title}
+                  </h1>
+                </a>
+              </Link>
               <p
                 className="text-gray-500 text-xl tracking-wide leading-8"
                 dangerouslySetInnerHTML={{

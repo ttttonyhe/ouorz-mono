@@ -26,6 +26,7 @@ module.exports = {
         top: ['2.55rem', '2.55rem'],
         listTitle: ['2.1rem', '2.8rem'],
         label: '1.35rem',
+        postTitle: '2.4rem',
       },
       padding: {
         pre: '0.32rem',
@@ -46,6 +47,29 @@ module.exports = {
       transitionProperty: {
         width: 'width',
       },
+      typography: {
+        'xl': {
+          css: {
+            fontSize: '1.35rem',
+            color: 'rgba(33,37,41,0.95)',
+            a: {
+              color: '#1e87f0',
+              textDecoration: false,
+              fontWeight: "normal",
+              '&:hover': {
+                textDecoration: "underline",
+              },
+            },
+            blockquote: {
+              fontStyle: "normal",
+              color: "#888888",
+              fontWeight: "400",
+              padding: ".01rem 1.1em",
+              backgroundColor: "#f7f8f9"
+            }
+          },
+        },
+      }
     },
   },
   variants: {
@@ -83,5 +107,6 @@ module.exports = {
 
       addUtilities(utilities, variants('borderColor'))
     },
+    require('@tailwindcss/typography'),
   ],
 }

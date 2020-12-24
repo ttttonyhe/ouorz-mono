@@ -7,28 +7,28 @@ import ReactHtmlParser from 'react-html-parser'
 import TimeAgo from 'react-timeago'
 import CommentBox from '~/components/CommentBox'
 
-export default function BlogPage({ page }: { page: any }) {
+export default function BlogPost({ post }: { post: any }) {
   return (
     <div>
       <Head>
-        <title>{page.title.rendered} - TonyHe</title>
+        <title>{post.title.rendered} - TonyHe</title>
       </Head>
       <Page>
         <article className="shadow-sm border rounded-md bg-white p-10 lg:p-20">
           <div className="mb-20">
             <h1 className="text-postTitle font-medium tracking-wider leading-snug">
-              {page.title.rendered}
+              {post.title.rendered}
             </h1>
             <p className="flex text-xl text-gray-500 space-x-2 mt-2 tracking-wide">
               <span>
-                pageed <TimeAgo date={page.date} />
+                Posted <TimeAgo date={post.date} />
               </span>
               <span>·</span>
-              <span>{page.post_metas.views} Views</span>
+              <span>{post.post_metas.views} Views</span>
             </p>
           </div>
           <div className="prose lg:prose-xl tracking-wide">
-            {ReactHtmlParser(page.content.rendered)}
+            {ReactHtmlParser(post.content.rendered)}
           </div>
         </article>
         <div className="mt-5">
@@ -42,13 +42,13 @@ export default function BlogPage({ page }: { page: any }) {
 
 // Get sticky posts rendered on the server side
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const pgid = context.params.pgid
+  const pid = context.params.pid
 
   // Increase page views
   await fetch(
     getApi({
       // @ts-ignore
-      visit: pgid,
+      visit: pid,
     })
   )
 
@@ -56,14 +56,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const resData = await fetch(
     getApi({
       // @ts-ignore
-      page: pgid,
+      post: pid,
     })
   )
-  const pageData = await resData.json()
+  const postData = await resData.json()
 
   return {
     props: {
-      page: pageData,
+      post: postData,
     },
   }
 }

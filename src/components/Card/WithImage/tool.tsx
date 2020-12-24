@@ -1,6 +1,7 @@
 import Label from '~/components/Label'
 import BottomCard from '~/components/Card/Bottom'
 import { DesSplit } from '~/utilities/String'
+import Link from 'next/link'
 
 interface Props {
   item: any
@@ -55,9 +56,13 @@ export default function CardWithImageTool({ item, sticky }: Props) {
           </div>
         </div>
         <div className="mt-6">
-          <h1 className="font-medium text-listTitle text-gray-700 tracking-wider mb-5">
-            {item.post_title}
-          </h1>
+          <Link href={`/post/${item.id}`}>
+            <a>
+              <h1 className="font-medium text-listTitle text-gray-700 tracking-wider mb-5">
+                {item.post_title}
+              </h1>
+            </a>
+          </Link>
           <p
             className="text-gray-500 text-xl tracking-wide leading-8"
             dangerouslySetInnerHTML={{

@@ -18,13 +18,13 @@ export default function SubscriptionBox({ type }: { type: string }) {
             action={`https://ouorz.us4.list-manage.com/subscribe/post?u=816e53482f0c1677fc41072af&id=3b6a276bad`}
             method="post"
             target="_blank"
-            className="w-8/12 shadow-sm rounded-md border bg-white text-gray-500 tracking-wide"
+            className="w-10/12 shadow-sm rounded-md border bg-white text-gray-500 tracking-wide"
           >
             <input
               type="email"
               value={email}
               name="EMAIL"
-              className="w-full px-3 py-1.5 focus:outline-none transition-shadow hover:shadow-md"
+              className="text-lg w-full px-3 py-1.5 focus:outline-none transition-shadow hover:shadow-md"
               placeholder="Email address"
               onChange={(e) => {
                 setEmail(e.target.value)
@@ -36,12 +36,12 @@ export default function SubscriptionBox({ type }: { type: string }) {
     )
   } else {
     return (
-      <div className="border shadow-sm w-full py-7 px-8 rounded-md bg-white items-center my-2">
+      <div className="border shadow-sm w-full p-10  lg:py-12 lg:px-20 rounded-md bg-white items-center my-2">
         <div>
           <h1 className="flex text-3xl font-medium text-gray-700 tracking-wide items-center">
             <span className="w-9 h-9 mr-2">{Icons.subscribe}</span>Subscribe
           </h1>
-          <p className="text-xl tracking-wide text-gray-500 mt-2 mb-5">
+          <p className="text-xl tracking-wide text-gray-500 mt-2 mb-8">
             Get post updates straight to your inbox
           </p>
         </div>
@@ -56,7 +56,7 @@ export default function SubscriptionBox({ type }: { type: string }) {
               type="email"
               value={email}
               name="EMAIL"
-              className="col-start-1 col-end-3 w-full text-lg rounded-md px-3 py-1.5 focus:outline-none transition-shadow shadow-sm border"
+              className="col-start-1 col-end-3 w-full text-lg rounded-md px-3 py-1.5 focus:outline-none transition-shadow shadow-sm border hover:shadow-md"
               placeholder="Email address"
               onChange={(e) => {
                 setEmail(e.target.value)

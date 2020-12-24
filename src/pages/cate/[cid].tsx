@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import React from 'react'
-import Page from '~/components/Page'
 import Content from '~/components/Content'
 import { GetServerSideProps } from 'next'
 import List from '~/components/List'
@@ -21,46 +20,44 @@ export default function Cate({ stickyNotFound, stickyPosts, info }: Sticky) {
       <Head>
         <title>{info.name} - TonyHe</title>
       </Head>
-      <Page>
-        <Content>
-          <div className="mt-20">
-            <div className="mb-5 flex items-center">
-              <div className="flex-1 items-center">
-                <h1 className="font-medium text-top text-black tracking-wide">
-                  <span className="hover:animate-spin inline-block cursor-pointer mr-3">
-                    🗂️
-                  </span>
-                  {info.name}
-                </h1>
+      <Content>
+        <div className="mt-20">
+          <div className="mb-5 flex items-center">
+            <div className="flex-1 items-center">
+              <h1 className="font-medium text-top text-black tracking-wide">
+                <span className="hover:animate-spin inline-block cursor-pointer mr-3">
+                  🗂️
+                </span>
+                {info.name}
+              </h1>
+            </div>
+            <div className="h-full flex justify-end whitespace-nowrap items-center mt-1">
+              <div className="border-r border-r-gray-200 text-center flex-1 px-5">
+                <p className="text-xl text-gray-500 flex items-center">
+                  <span className="w-6 h-6 mr-2">{Icons.count}</span>
+                  {info.count} posts
+                </p>
               </div>
-              <div className="h-full flex justify-end whitespace-nowrap items-center mt-1">
-                <div className="border-r border-r-gray-200 text-center flex-1 px-5">
-                  <p className="text-xl text-gray-500 flex items-center">
-                    <span className="w-6 h-6 mr-2">{Icons.count}</span>
-                    {info.count} posts
-                  </p>
-                </div>
-                <div className="flex-1 px-5">
-                  <p className="text-xl text-gray-500">
-                    <Link href="/">
-                      <a className="flex items-center">
-                        <span className="w-6 h-6 mr-2">{Icons.left}</span>Home
-                      </a>
-                    </Link>
-                  </p>
-                </div>
+              <div className="flex-1 px-5">
+                <p className="text-xl text-gray-500">
+                  <Link href="/">
+                    <a className="flex items-center">
+                      <span className="w-6 h-6 mr-2">{Icons.left}</span>Home
+                    </a>
+                  </Link>
+                </p>
               </div>
             </div>
-            <SubscriptionBox type="sm"></SubscriptionBox>
           </div>
-          <div className="mt-5">
-            {!stickyNotFound && <List posts={stickyPosts} sticky={true}></List>}
-          </div>
-          <div className="mt-5">
-            <List type="cate" cate={info.id}></List>
-          </div>
-        </Content>
-      </Page>
+          <SubscriptionBox type="sm"></SubscriptionBox>
+        </div>
+        <div className="mt-5">
+          {!stickyNotFound && <List posts={stickyPosts} sticky={true}></List>}
+        </div>
+        <div className="mt-5">
+          <List type="cate" cate={info.id}></List>
+        </div>
+      </Content>
     </div>
   )
 }

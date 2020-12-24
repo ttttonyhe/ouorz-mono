@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic'
+import React from 'react'
 
 import CardWithImage from '~/components/Card/WithImage'
 import CardWithOutImage from '~/components/Card/WithOutImage'
@@ -7,6 +8,7 @@ import CardEmpty from '~/components/Card/Empty'
 const CardSkeleton = dynamic(() => import('~/components/Card/Skeleton'), {
   ssr: false,
 })
+import CardClickable from '~/components/Card/Clickable'
 
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useSWRInfinite } from 'swr'
@@ -67,6 +69,7 @@ export default function List({ posts, sticky, type, cate }: Props) {
 }
 
 const InfiniteList = ({ type, cate }: { type: string; cate?: number }) => {
+  const [stopLoading, setStopLoading] = React.useState<boolean>(false)
   let url
   switch (type) {
     case 'index':
@@ -92,6 +95,7 @@ const InfiniteList = ({ type, cate }: { type: string; cate?: number }) => {
       })
       break
   }
+
   const { data, error, size, setSize } = useSWRInfinite(
     (index) => `${url}&page=${index + 1}`,
     (url) => fetch(url).then((res) => res.json())
@@ -107,9 +111,26 @@ const InfiniteList = ({ type, cate }: { type: string; cate?: number }) => {
       next={() => {
         setSize(size + 1)
       }}
-      hasMore={!isReachingEnd}
-      loader={<CardSkeleton></CardSkeleton>}
-      endMessage={<CardEmpty></CardEmpty>}
+      hasMore={!isReachingEnd && !stopLoading}
+      loader={
+        <div>
+          <CardClickable
+            setStopLoading={setStopLoading}
+            stopLoading={stopLoading}
+          ></CardClickable>
+          <CardSkeleton></CardSkeleton>
+        </div>
+      }
+      endMessage={
+        !isReachingEnd && stopLoading ? (
+          <CardClickable
+            setStopLoading={setStopLoading}
+            stopLoading={stopLoading}
+          ></CardClickable>
+        ) : (
+          <CardEmpty></CardEmpty>
+        )
+      }
       scrollThreshold="50px"
     >
       <List posts={postsData}></List>

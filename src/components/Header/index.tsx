@@ -1,8 +1,12 @@
 import Button from '~/components/Button'
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 export default function Header() {
+  const router = useRouter()
+
   const [scrollPosition, setScrollPosition] = useState(0)
   const handleScroll = () => {
     const position = window.pageYOffset
@@ -21,17 +25,27 @@ export default function Header() {
     <header
       className={
         scrollPosition > 0
-          ? 'transition-all duration-300 grid grid-cols-6 fixed top-0 h-auto w-full py-4 px-5 bg-white shadow-header'
-          : 'transition-all duration-300 grid grid-cols-6 fixed top-0 h-auto w-full py-4 px-5'
+          ? 'transition-all duration-300 grid grid-cols-6 fixed top-0 h-auto w-full py-4 px-5 bg-white shadow-header z-10'
+          : 'transition-all duration-300 grid grid-cols-6 fixed top-0 h-auto w-full py-4 px-5 z-10'
       }
     >
       <div className="col-start-1 col-end-2 flex xl:space-x-2">
         <Button bType="menu-default" icon="rss" className="hidden xl:flex">
           RSS
         </Button>
-        <Button bType="menu-default" icon="search">
-          Search
-        </Button>
+        {router.asPath.split('/').length > 2 ? (
+          <Link href="/">
+            <a>
+              <Button bType="menu-default" icon="home">
+                Home
+              </Button>
+            </a>
+          </Link>
+        ) : (
+          <Button bType="menu-default" icon="search">
+            Search
+          </Button>
+        )}
       </div>
       <div
         className={
@@ -41,11 +55,13 @@ export default function Header() {
         }
       >
         <div className="mx-auto flex space-x-3 items-center justify-center">
-          <div className="flex-shrink-0">
-            <img
-              className="h-7 w-7 border rounded-full border-gray-300"
+          <div className="flex-shrink-0 h-7 w-7 border rounded-full border-gray-300">
+            <Image
+              className="rounded-full"
               src="/tony.jpg"
               alt="Logo"
+              height="100%"
+              width="100%"
             />
           </div>
           <div className="text-2xl font-medium text-black">
@@ -59,12 +75,16 @@ export default function Header() {
           icon="love"
           className="text-pink-500 hidden xl:flex"
         >
-          Donation
+          Sponsor
         </Button>
-        <Link href="/page/765">
+        <Link href="/pages">
           <a>
-            <Button bType="menu-default" icon="chat" className="hidden xl:flex">
-              AMA
+            <Button
+              bType="menu-default"
+              icon="pages"
+              className="hidden xl:flex"
+            >
+              Pages
             </Button>
           </a>
         </Link>
