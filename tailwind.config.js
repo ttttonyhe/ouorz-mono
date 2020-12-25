@@ -26,7 +26,7 @@ module.exports = {
         top: ['2.55rem', '2.55rem'],
         listTitle: ['2.1rem', '2.8rem'],
         label: '1.35rem',
-        postTitle: '2.4rem',
+        postTitle: '2.45rem',
       },
       padding: {
         pre: '0.32rem',
@@ -54,19 +54,19 @@ module.exports = {
             color: 'rgba(33,37,41,0.95)',
             a: {
               color: '#1e87f0',
-              textDecoration: false,
+              textDecoration: "none",
               fontWeight: "normal",
               '&:hover': {
                 textDecoration: "underline",
               },
             },
             blockquote: {
-              fontStyle: "normal",
-              color: "#888888",
               fontWeight: "400",
-              padding: ".01rem 1.1em",
-              backgroundColor: "#f7f8f9"
-            }
+              justifyItems: "center",
+            },
+            h4: {
+              fontSize: "1.3em",
+            },
           },
         },
       }

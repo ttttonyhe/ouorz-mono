@@ -36,7 +36,7 @@ export default function SubscriptionBox({ type }: { type: string }) {
     )
   } else {
     return (
-      <div className="border shadow-sm w-full p-10  lg:py-12 lg:px-20 rounded-md bg-white items-center my-2">
+      <div className="border shadow-sm w-full p-10  lg:py-14 lg:px-20 rounded-xl bg-white items-center my-2">
         <div>
           <h1 className="flex text-3xl font-medium text-gray-700 tracking-wide items-center">
             <span className="w-9 h-9 mr-2">{Icons.subscribe}</span>Subscribe

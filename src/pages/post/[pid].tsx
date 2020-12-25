@@ -3,9 +3,9 @@ import Page from '~/components/Page'
 import { GetServerSideProps } from 'next'
 import { getApi } from '~/utilities/Api'
 import SubscriptionBox from '~/components/SubscriptionBox'
-import ReactHtmlParser from 'react-html-parser'
 import TimeAgo from 'react-timeago'
 import CommentBox from '~/components/CommentBox'
+import PostContent from '~/components/PostContent'
 
 export default function BlogPost({ post }: { post: any }) {
   return (
@@ -14,7 +14,7 @@ export default function BlogPost({ post }: { post: any }) {
         <title>{post.title.rendered} - TonyHe</title>
       </Head>
       <Page>
-        <article className="shadow-sm border rounded-md bg-white p-10 lg:p-20">
+        <article className="shadow-sm border rounded-xl bg-white p-10 lg:p-20">
           <div className="mb-20">
             <h1 className="text-postTitle font-medium tracking-wider leading-snug">
               {post.title.rendered}
@@ -25,11 +25,18 @@ export default function BlogPost({ post }: { post: any }) {
               </span>
               <span>·</span>
               <span>{post.post_metas.views} Views</span>
+              <span>·</span>
+              <span className="group">
+                <span className="group-hover:hidden">
+                  {post.post_metas.reading.word_count} Words
+                </span>
+                <span className="hidden group-hover:block">
+                  ERT {post.post_metas.reading.time_required} min
+                </span>
+              </span>
             </p>
           </div>
-          <div className="prose lg:prose-xl tracking-wide">
-            {ReactHtmlParser(post.content.rendered)}
-          </div>
+          <PostContent content={post.content.rendered}></PostContent>
         </article>
         <div className="mt-5">
           <SubscriptionBox type="lg"></SubscriptionBox>

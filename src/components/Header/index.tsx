@@ -54,7 +54,12 @@ export default function Header() {
             : 'hidden'
         }
       >
-        <div className="mx-auto flex space-x-3 items-center justify-center">
+        <div
+          className="cursor-pointer mx-auto flex space-x-3 items-center justify-center"
+          onClick={() => {
+            router.push('/')
+          }}
+        >
           <div className="flex-shrink-0 h-7 w-7 border rounded-full border-gray-300">
             <Image
               className="rounded-full"
