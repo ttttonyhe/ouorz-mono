@@ -164,3 +164,14 @@ h5 {
   @apply h-3;
   margin-top: -0.125rem;
 }
+
+.nexment-empty div {
+  justify-content: center;
+  display: flex;
+}
+
+.index-div {
+  position: fixed;
+  top: 95px;
+  left: 150px;
+}

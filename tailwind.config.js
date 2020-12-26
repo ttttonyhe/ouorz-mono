@@ -16,7 +16,7 @@ module.exports = {
         header: '0 4px 8px rgba(0,0,0,.04)',
       },
       width: {
-        content: '640px',
+        content: '660px',
         page: '720px',
       },
       height: {
