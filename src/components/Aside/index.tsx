@@ -96,37 +96,44 @@ export default function Aside({ preNext }: { preNext: any }) {
   }
 
   const Tour = () => {
-    return (
-      <div
-        className={`bg-white text-gray-700 shadow-sm border rounded-xl mt-5 text-xl grid ${
-          preNext['prev'][0] &&
-          preNext['prev'][2] !== 58 &&
-          preNext['next'][0] &&
-          preNext['next'][2] !== 58
-            ? 'grid-cols-2'
-            : 'grid-cols-1'
-        } tour`}
-      >
-        {preNext['prev'][0] && preNext['prev'][2] !== 58 && (
-          <Link href={`/post/${preNext.prev[0]}`}>
-            <a>
-              <div className="px-6 py-3 flex items-center justify-center cursor-pointer hover:shadow-inner">
+    const b =
+      preNext['next'][0] && [58, 5, 2, 74].indexOf(preNext['next'][2]) === -1
+    const a =
+      preNext['prev'][0] && [58, 5, 2, 74].indexOf(preNext['prev'][2]) === -1
+    if (a || b) {
+      return (
+        <div
+          className={`bg-white text-gray-700 shadow-sm border rounded-xl mt-5 text-xl grid ${
+            a && b ? 'grid-cols-2' : 'grid-cols-1'
+          } tour`}
+        >
+          {a && (
+            <Link href={`/post/${preNext.prev[0]}`}>
+              <div
+                className={`px-6 py-3 flex items-center justify-center cursor-pointer hover:bg-gray-50 ${
+                  b ? 'rounded-tl-xl rounded-bl-xl' : 'rounded-xl'
+                }`}
+              >
                 <span className="w-6 h-6 mr-2">{Icons.leftPlain}</span>Prev
               </div>
-            </a>
-          </Link>
-        )}
-        {preNext['next'][0] && preNext['next'][2] !== 58 && (
-          <Link href={`/post/${preNext.next[0]}`}>
-            <a>
-              <div className="px-6 py-3 flex items-center justify-center cursor-pointer hover:shadow-inner">
+            </Link>
+          )}
+          {b && (
+            <Link href={`/post/${preNext.next[0]}`}>
+              <div
+                className={`px-6 py-3 flex items-center justify-center cursor-pointer hover:bg-gray-50 ${
+                  a ? 'rounded-tr-xl rounded-br-xl' : 'rounded-xl'
+                }`}
+              >
                 Next<span className="w-6 h-6 ml-2">{Icons.right}</span>
               </div>
-            </a>
-          </Link>
-        )}
-      </div>
-    )
+            </Link>
+          )}
+        </div>
+      )
+    } else {
+      return <div></div>
+    }
   }
 
   useEffect(() => {

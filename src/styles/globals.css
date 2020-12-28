@@ -180,7 +180,7 @@ h5 {
   background-color: #f7f8f9;
 }
 
-.tour a:nth-child(2) {
+.tour div:nth-child(2) {
   @apply border-l;
   @apply border-gray-200;
 }
