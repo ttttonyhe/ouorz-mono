@@ -50,7 +50,7 @@ export default function CardWithImage({ item, sticky }: Props) {
                 </a>
               </Link>
               <p
-                className="text-gray-500 text-xl tracking-wide leading-8"
+                className="text-gray-500 text-3 tracking-wide leading-8"
                 dangerouslySetInnerHTML={{
                   __html: DesSplit({ str: item.post_excerpt.four, n: 150 }),
                 }}

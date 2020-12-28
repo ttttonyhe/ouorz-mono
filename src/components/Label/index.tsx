@@ -4,8 +4,9 @@ interface Props {
   name: string
   icon?: string
   children?: React.ReactNode
+  preview?: boolean
 }
-export default function Label({ name, icon, children }: Props) {
+export default function Label({ name, icon, children, preview }: Props) {
   switch (name) {
     case 'sticky':
       return (
@@ -16,7 +17,7 @@ export default function Label({ name, icon, children }: Props) {
     case 'primary':
       return (
         <label className="cursor-pointer justify-center font-medium items-center flex w-auto px-4 py-1 bg-blue-100 hover:bg-blue-200 text-center rounded-md text-label tracking-wide text-blue-500 align-middle">
-          {icon && <span className="w-8 h-8 mr-2">{Icons[icon]}</span>}
+          {icon && <span className="w-7 h-7 mr-2">{Icons[icon]}</span>}
           {children}
         </label>
       )
@@ -29,10 +30,14 @@ export default function Label({ name, icon, children }: Props) {
       )
     case 'green':
       return (
-        <label className="group cursor-pointer justify-center font-medium items-center h-full flex w-min px-3 py-2 pb-pre bg-green-100 hover:bg-green-200 text-center rounded-md text-xl tracking-wide text-green-500 align-middle">
+        <label
+          className={`group cursor-pointer justify-center font-medium items-center h-full flex w-min ${
+            preview ? 'px-3 py-0.5' : 'px-4 py-1.5'
+          } bg-green-100 hover:bg-green-200 text-center rounded-md text-xl tracking-wide text-green-500 align-middle`}
+        >
           {children}
           {icon && (
-            <span className="w-6 h-6 ml-1 group-hover:animate-pointer">
+            <span className="w-5 h-5 ml-1 group-hover:animate-pointer">
               {Icons[icon]}
             </span>
           )}
@@ -41,7 +46,7 @@ export default function Label({ name, icon, children }: Props) {
     case 'gray':
       return (
         <label className="cursor-pointer justify-center font-medium items-center h-full flex w-min px-2 py-2 bg-gray-100 hover:bg-gray-200 text-center rounded-md text-xl tracking-wide text-gray-500 align-middle">
-          {icon && <span className="w-7 h-6">{Icons[icon]}</span>}
+          {icon && <span className="w-7 h-7">{Icons[icon]}</span>}
         </label>
       )
   }

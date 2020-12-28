@@ -24,7 +24,7 @@ export default function SubscriptionBox({ type }: { type: string }) {
               type="email"
               value={email}
               name="EMAIL"
-              className="text-lg w-full px-3 py-1.5 focus:outline-none transition-shadow hover:shadow-md"
+              className="text-lg w-full px-3 py-1.5 focus:outline-none"
               placeholder="Email address"
               onChange={(e) => {
                 setEmail(e.target.value)
@@ -56,7 +56,7 @@ export default function SubscriptionBox({ type }: { type: string }) {
               type="email"
               value={email}
               name="EMAIL"
-              className="col-start-1 col-end-3 w-full text-lg rounded-md px-3 py-1.5 focus:outline-none transition-shadow shadow-sm border hover:shadow-md"
+              className="col-start-1 col-end-3 w-full text-lg rounded-md px-3 py-1.5 focus:outline-none shadow-sm border"
               placeholder="Email address"
               onChange={(e) => {
                 setEmail(e.target.value)

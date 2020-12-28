@@ -20,13 +20,13 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
       <Content>
         <div className="mt-20">
           <div>
-            <h1 className="font-medium text-top text-black tracking-wide mb-3">
+            <h1 className="font-medium text-1 text-black tracking-wide mb-0.5">
               <span className="hover:animate-spin inline-block cursor-pointer">
                 👋
               </span>{' '}
               Hi, I{"'"}m TonyHe
             </h1>
-            <p className="text-2xl text-gray-500 tracking-wide font-light">
+            <p className="text-2 text-gray-500 tracking-wide font-light">
               I{"'"}m a developer, blogger and undergraduate student at the
               University of Waterloo, Class of 2025, Honors Mathematics
             </p>

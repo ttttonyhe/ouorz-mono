@@ -8,6 +8,17 @@ module.exports = {
   darkMode: 'media',
   theme: {
     extend: {
+      spacing: {
+        '1': '3px',
+        '2': '6px',
+        '3': '9px',
+        '4': '12px',
+        '6': '18px',
+        '7': '21px',
+        '9': '27px',
+        '10': '30px',
+        '20': '60px'
+      },
       colors: {
         gbg: '#f6f7f8',
         menu: '#ebeced',
@@ -16,20 +27,31 @@ module.exports = {
         header: '0 4px 8px rgba(0,0,0,.04)',
       },
       width: {
-        content: '660px',
+        content: '680px',
         page: '720px',
+        toc: '200px',
       },
       height: {
         img: '240px',
       },
       fontSize: {
-        top: ['2.55rem', '2.55rem'],
-        listTitle: ['2.1rem', '2.8rem'],
-        label: '1.35rem',
-        postTitle: '2.45rem',
+        '1': ['32px', '1.4'],
+        '2': ['18px', '1.4'],
+        '3': ['15px', '1.4'],
+        '4': ['14px', '1.4'],
+        '5': ['12px', '1.4'],
+        listTitle: '26px',
+        label: '18px',
+        postTitle: '30px',
+        xl: '15px',
+        '2xl': '18px',
+        '3xl': '22.5px'
       },
       padding: {
         pre: '0.32rem',
+      },
+      margin: {
+        '-82': "-220px"
       },
       animation: {
         pointer: 'pointer 1s infinite',
@@ -50,7 +72,7 @@ module.exports = {
       typography: {
         'xl': {
           css: {
-            fontSize: '1.35rem',
+            fontSize: '16.2px',
             color: 'rgba(33,37,41,0.95)',
             a: {
               color: '#1e87f0',
@@ -77,7 +99,8 @@ module.exports = {
       animation: ['group-hover', 'hover'],
       display: ['group-hover'],
       transitionProperty: ['hover', 'focus'],
-      margin: ['hover']
+      margin: ['hover'],
+      borderWidth: ['first'],
     },
   },
   plugins: [

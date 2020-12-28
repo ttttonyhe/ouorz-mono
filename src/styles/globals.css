@@ -20,7 +20,7 @@
 
 .prose ol li {
   margin-bottom: 10px;
-  padding-left: 0.5rem !important;
+  padding-left: 9px !important;
 }
 
 .prose ol li:before {
@@ -31,12 +31,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 1.7rem;
-  width: 2.5rem;
+  height: 19px;
+  width: 30px;
   background-color: rgba(195, 218, 254, 0.43);
   border-radius: 9999px;
   color: rgba(85, 134, 210, 0.8);
-  font-size: 0.95rem;
+  font-size: 11.4px;
   font-weight: 700;
   content: counter(item);
   counter-increment: item;
@@ -174,4 +174,44 @@ h5 {
   position: fixed;
   top: 95px;
   left: 150px;
+}
+
+.toc-active {
+  background-color: #f7f8f9;
+}
+
+.tour a:nth-child(2) {
+  @apply border-l;
+  @apply border-gray-200;
+}
+
+.prose h5 {
+  color: #111827;
+  font-weight: 600;
+  margin-bottom: 0.6em;
+  line-height: 1.6;
+  font-size: 1.1em;
+}
+
+.prose table {
+  border: 1px solid #e5e7eb;
+}
+
+.prose tbody tr td {
+  border-right: 1px solid #e5e7eb;
+  @apply whitespace-nowrap;
+  @apply overflow-hidden;
+  @apply overflow-ellipsis;
+}
+
+.prose tbody tr td:last-child {
+  border-right: 0px;
+}
+
+.prose tbody tr td:first-child {
+  padding-left: 0.6666667em;
+}
+
+.prose tbody tr td:last-child {
+  padding-right: 0.6666667em;
 }

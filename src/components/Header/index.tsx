@@ -23,6 +23,7 @@ export default function Header() {
 
   return (
     <header
+      id="header"
       className={
         scrollPosition > 0
           ? 'transition-all duration-300 grid grid-cols-6 fixed top-0 h-auto w-full py-4 px-5 bg-white shadow-header z-10'
@@ -30,27 +31,21 @@ export default function Header() {
       }
     >
       <div className="col-start-1 col-end-2 flex xl:space-x-2">
-        <Button bType="menu-default" icon="rss" className="hidden xl:flex">
+        <Button
+          bType="menu-default"
+          icon="rss"
+          className="hidden xl:flex text-3"
+        >
           RSS
         </Button>
-        {router.asPath.split('/').length > 2 ? (
-          <Link href="/">
-            <a>
-              <Button bType="menu-default" icon="home">
-                Home
-              </Button>
-            </a>
-          </Link>
-        ) : (
-          <Button bType="menu-default" icon="search">
-            Search
-          </Button>
-        )}
+        <Button bType="menu-default" icon="search" className="text-3">
+          Search
+        </Button>
       </div>
       <div
         className={
           scrollPosition > 0
-            ? 'col-start-3 col-end-5 items-center justify-center pt-1.5'
+            ? 'col-start-3 col-end-5 items-center justify-center pt-1'
             : 'hidden'
         }
       >
@@ -75,19 +70,29 @@ export default function Header() {
         </div>
       </div>
       <div className="col-start-5 col-end-7 flex space-x-2 justify-end">
-        <Button
-          bType="menu-primary"
-          icon="love"
-          className="text-pink-500 hidden xl:flex"
-        >
-          Sponsor
-        </Button>
+        {router.asPath.split('/').length > 2 ? (
+          <Link href="/">
+            <a>
+              <Button bType="menu-default" icon="home" className="text-3">
+                Home
+              </Button>
+            </a>
+          </Link>
+        ) : (
+          <Button
+            bType="menu-primary"
+            icon="love"
+            className="text-pink-500 hidden xl:flex text-3"
+          >
+            Sponsor
+          </Button>
+        )}
         <Link href="/pages">
           <a>
             <Button
               bType="menu-default"
               icon="pages"
-              className="hidden xl:flex"
+              className="hidden xl:flex text-3"
             >
               Pages
             </Button>
@@ -95,7 +100,7 @@ export default function Header() {
         </Link>
         <Link href="/post/126">
           <a>
-            <Button bType="menu-default" icon="me">
+            <Button bType="menu-default" icon="me" className="text-3">
               About
             </Button>
           </a>

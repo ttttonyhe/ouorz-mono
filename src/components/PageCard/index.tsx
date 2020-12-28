@@ -27,10 +27,10 @@ export default function PageCard({ title, des, icon, className, href }: Props) {
         {Icons[icon]}
       </div>
       <div className="w-full col-start-3 col-end-11">
-        <h1 className="flex items-center text-2xl tracking-wide font-medium">
+        <h1 className="flex items-center text-2xl tracking-wide font-medium -mb-1">
           {title}
         </h1>
-        <p className="text-lg text-gray-600 tracking-wide">{des}</p>
+        <p className="text-4 text-gray-600 tracking-wide">{des}</p>
       </div>
     </div>
   )

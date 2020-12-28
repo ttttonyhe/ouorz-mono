@@ -24,7 +24,7 @@ interface Props {
 export default function List({ posts, sticky, type, cate }: Props) {
   if (posts) {
     return (
-      <div key="Post list" data-cy={sticky ? 'stickyPostList' : 'postList'}>
+      <div key="PostList" data-cy="indexPosts">
         {posts.map((item) => {
           if (typeof item.code === 'undefined') {
             if (item.post_img.url) {

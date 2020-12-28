@@ -6,7 +6,10 @@ import SubscriptionBox from '~/components/SubscriptionBox'
 import TimeAgo from 'react-timeago'
 import CommentBox from '~/components/CommentBox'
 import PostContent from '~/components/PostContent'
-import TableOfContents from '~/components/TableOfContents'
+import Aside from '~/components/Aside'
+import Link from 'next/link'
+import Label from '~/components/Label'
+import { CardTool } from '~/components/Card/WithImage/tool'
 
 export default function BlogPost({ post }: { post: any }) {
   return (
@@ -15,33 +18,45 @@ export default function BlogPost({ post }: { post: any }) {
         <title>{post.title.rendered} - TonyHe</title>
       </Head>
       <Page>
-        <div className="flex">
-          <TableOfContents></TableOfContents>
-          <article className="shadow-sm border rounded-xl bg-white p-10 lg:p-20">
-            <div className="mb-20">
-              <h1 className="text-postTitle font-medium tracking-wider leading-snug">
-                {post.title.rendered}
-              </h1>
-              <p className="flex text-xl text-gray-500 space-x-2 mt-2 tracking-wide">
-                <span>
-                  Posted <TimeAgo date={post.date} />
-                </span>
-                <span>·</span>
-                <span>{post.post_metas.views} Views</span>
-                <span>·</span>
-                <span className="group">
-                  <span className="group-hover:hidden">
-                    {post.post_metas.reading.word_count} Words
-                  </span>
-                  <span className="hidden group-hover:block">
-                    ERT {post.post_metas.reading.time_required} min
-                  </span>
-                </span>
-              </p>
+        <article className="shadow-sm border rounded-xl bg-white p-10 lg:p-20">
+          <div className="mb-20">
+            <div className="flex mb-3">
+              <Link href={`/cate/${post.post_categories[0].term_id}`}>
+                <a>
+                  <Label name="primary" icon="cate">
+                    {post.post_categories[0].name}
+                  </Label>
+                </a>
+              </Link>
             </div>
-            <PostContent content={post.content.rendered}></PostContent>
-          </article>
-        </div>
+            <h1 className="text-postTitle font-medium tracking-wider leading-snug">
+              {post.title.rendered}
+            </h1>
+            <p className="flex text-xl text-gray-500 space-x-2 mt-2 tracking-wide">
+              <span>
+                Posted <TimeAgo date={post.date} />
+              </span>
+              <span>·</span>
+              <span>{post.post_metas.views} Views</span>
+              <span>·</span>
+              <span className="group">
+                <span className="group-hover:hidden">
+                  {post.post_metas.reading.word_count} Words
+                </span>
+                <span className="hidden group-hover:block">
+                  ERT {post.post_metas.reading.time_required} min
+                </span>
+              </span>
+            </p>
+          </div>
+          <PostContent content={post.content.rendered}></PostContent>
+          {post.post_categories[0].term_id === 4 && (
+            <div className="mt-12">
+              <CardTool item={post} preview={false}></CardTool>
+            </div>
+          )}
+        </article>
+        <Aside preNext={post.post_prenext}></Aside>
         <div className="mt-5">
           <SubscriptionBox type="lg"></SubscriptionBox>
         </div>

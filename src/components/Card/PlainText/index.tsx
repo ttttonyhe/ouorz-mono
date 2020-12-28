@@ -22,13 +22,13 @@ export default function CardPlainText({ item }: Props) {
 
   return (
     <div className="w-full shadow-sm bg-white rounded-md border mb-6">
-      <div className="px-10 pt-10 pb-4">
-        <h1 className="font-normal text-3xl text-gray-600 tracking-wider leading-10 mb-5">
+      <div className="px-10 py-9">
+        <h1 className="font-normal text-3xl text-gray-600 tracking-wider leading-10">
           {item.post_title}
         </h1>
       </div>
       <div className="pt-2 pb-3 px-10 items-center w-full h-auto border-t rounded-br-md rounded-bl-md border-gray-100">
-        <p className="flex space-x-2 text-lg tracking-wide leading-8 text-gray-500 items-center">
+        <p className="flex space-x-2 text-4 tracking-wide leading-8 text-gray-500 items-center">
           <span
             className="flex items-center space-x-1 text-red-400 hover:text-red-500 cursor-pointer rounded-md"
             onClick={() => {
