@@ -17,7 +17,8 @@ module.exports = {
         '7': '21px',
         '9': '27px',
         '10': '30px',
-        '20': '60px'
+        '20': '60px',
+        readerOffset: '-47.5px'
       },
       colors: {
         gbg: '#f6f7f8',
@@ -55,6 +56,10 @@ module.exports = {
       },
       animation: {
         pointer: 'pointer 1s infinite',
+        reader: 'moveUp ease-in-out .5s',
+        readerOut: 'moveDown ease-in-out .5s',
+        readerBg: 'opacityProgressIn ease-in-out .5s',
+        readerBgOut: 'opacityProgressOut ease-in-out .5s'
       },
       keyframes: {
         pointer: {
@@ -65,6 +70,41 @@ module.exports = {
             transform: 'translateX(15%)',
           },
         },
+        moveUp: {
+          '0%': {
+            transform: 'translateY(100vh)',
+          },
+          '80%': {
+            transform: 'translateY(-5px)',
+          },
+          '100%': {
+            transform: 'translateY(0vh)',
+          },
+        },
+        moveDown: {
+          '0%': {
+            transform: 'translateY(0vh)',
+          },
+          '100%': {
+            transform: 'translateY(100vh)',
+          },
+        },
+        opacityProgressIn: {
+          '0%': {
+            opacity: '0'
+          },
+          '100%': {
+            opacity: '1',
+          }
+        },
+        opacityProgressOut: {
+          '0%': {
+            opacity: '1'
+          },
+          '100%': {
+            opacity: '0',
+          }
+        }
       },
       transitionProperty: {
         width: 'width',

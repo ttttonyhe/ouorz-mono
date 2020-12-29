@@ -6,9 +6,10 @@ import Link from 'next/link'
 interface Props {
   item: any
   sticky: boolean
+  setReader: any
 }
 
-export default function CardWithOutImage({ item, sticky }: Props) {
+export default function CardWithOutImage({ item, sticky, setReader }: Props) {
   return (
     <div className="w-full shadow-sm bg-white rounded-md border mb-6">
       <div className="p-10">
@@ -24,7 +25,12 @@ export default function CardWithOutImage({ item, sticky }: Props) {
                 </a>
               </Link>
             </div>
-            <div className="col-start-4 col-end-5 justify-end flex">
+            <div
+              className="col-start-4 col-end-5 justify-end flex"
+              onClick={() => {
+                setReader({ status: true, post: item })
+              }}
+            >
               <Label name="secondary" icon="preview">
                 Preview
               </Label>

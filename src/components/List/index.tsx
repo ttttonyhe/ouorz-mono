@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import React from 'react'
+import React, { useState } from 'react'
 
 import CardWithImage from '~/components/Card/WithImage'
 import CardWithOutImage from '~/components/Card/WithOutImage'
@@ -9,6 +9,7 @@ const CardSkeleton = dynamic(() => import('~/components/Card/Skeleton'), {
   ssr: false,
 })
 import CardClickable from '~/components/Card/Clickable'
+import Reader from '~/components/Reader'
 
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useSWRInfinite } from 'swr'
@@ -23,37 +24,47 @@ interface Props {
 
 export default function List({ posts, sticky, type, cate }: Props) {
   if (posts) {
+    // Preview
+    const [reader, setReader] = useState<any>({ status: false, post: [] })
+
     return (
-      <div key="PostList" data-cy="indexPosts">
-        {posts.map((item) => {
-          if (typeof item.code === 'undefined') {
-            if (item.post_img.url) {
-              return (
-                <CardWithImage
-                  item={item}
-                  sticky={sticky}
-                  key={item.id}
-                ></CardWithImage>
-              )
-            } else if (item.post_categories[0].term_id === 58) {
-              return (
-                <CardPlainText
-                  item={item}
-                  sticky={sticky}
-                  key={item.id}
-                ></CardPlainText>
-              )
-            } else {
-              return (
-                <CardWithOutImage
-                  item={item}
-                  sticky={sticky}
-                  key={item.id}
-                ></CardWithOutImage>
-              )
+      <div>
+        <div key="PostList" data-cy="indexPosts">
+          {posts.map((item) => {
+            if (typeof item.code === 'undefined') {
+              if (item.post_img.url) {
+                return (
+                  <CardWithImage
+                    item={item}
+                    sticky={sticky}
+                    key={item.id}
+                    setReader={setReader}
+                  ></CardWithImage>
+                )
+              } else if (item.post_categories[0].term_id === 58) {
+                return (
+                  <CardPlainText
+                    item={item}
+                    sticky={sticky}
+                    key={item.id}
+                  ></CardPlainText>
+                )
+              } else {
+                return (
+                  <CardWithOutImage
+                    item={item}
+                    sticky={sticky}
+                    key={item.id}
+                    setReader={setReader}
+                  ></CardWithOutImage>
+                )
+              }
             }
-          }
-        })}
+          })}
+        </div>
+        <div>
+          <Reader data={reader} setReader={setReader}></Reader>
+        </div>
       </div>
     )
   } else {

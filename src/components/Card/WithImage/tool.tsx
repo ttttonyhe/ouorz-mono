@@ -6,14 +6,17 @@ import Link from 'next/link'
 interface Props {
   item: any
   sticky: boolean
+  setReader?: any
 }
 
 export const CardTool = ({
   item,
   preview,
+  setReader,
 }: {
   item: any
   preview: boolean
+  setReader?: any
 }) => {
   return (
     <div className="w-full whitespace-nowrap grid grid-cols-8 gap-3 rounded-md shadow-sm border border-gray-200 overflow-hidden">
@@ -40,7 +43,15 @@ export const CardTool = ({
           </p>
         </div>
         <div className="flex justify-end space-x-2">
-          {preview && <Label name="gray" icon="preview"></Label>}
+          {preview && (
+            <a
+              onClick={() => {
+                setReader({ status: true, post: item })
+              }}
+            >
+              <Label name="gray" icon="preview"></Label>
+            </a>
+          )}
           <a
             href={item.post_metas.fineTool.itemLink}
             target="_blank"
@@ -56,7 +67,7 @@ export const CardTool = ({
   )
 }
 
-export default function CardWithImageTool({ item, sticky }: Props) {
+export default function CardWithImageTool({ item, sticky, setReader }: Props) {
   return (
     <div
       className={`w-full shadow-sm bg-white rounded-md border ${
@@ -64,7 +75,7 @@ export default function CardWithImageTool({ item, sticky }: Props) {
       }`}
     >
       <div className="p-10">
-        <CardTool item={item} preview={true}></CardTool>
+        <CardTool item={item} preview={true} setReader={setReader}></CardTool>
         <div className="mt-6">
           <Link href={`/post/${item.id}`}>
             <a>

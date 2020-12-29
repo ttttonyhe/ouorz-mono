@@ -215,3 +215,20 @@ h5 {
 .prose tbody tr td:last-child {
   padding-right: 0.6666667em;
 }
+
+.reader-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background: #f7f8f9;
+}
+
+.stop-scrolling {
+  overflow: hidden !important;
+}
+
+.reader {
+  max-height: calc(100% - 7rem);
+}

@@ -7,9 +7,10 @@ import Link from 'next/link'
 interface Props {
   item: any
   sticky: boolean
+  setReader: any
 }
 
-export default function CardWithImage({ item, sticky }: Props) {
+export default function CardWithImage({ item, sticky, setReader }: Props) {
   if (typeof item.post_metas.fineTool === 'undefined') {
     return (
       <div className="w-full shadow-sm bg-white rounded-md border mb-6">
@@ -35,7 +36,12 @@ export default function CardWithImage({ item, sticky }: Props) {
                   </a>
                 </Link>
               </div>
-              <div className="justify-end flex">
+              <div
+                className="justify-end flex"
+                onClick={() => {
+                  setReader({ status: true, post: item })
+                }}
+              >
                 <Label name="secondary" icon="preview">
                   Preview
                 </Label>
@@ -62,6 +68,12 @@ export default function CardWithImage({ item, sticky }: Props) {
       </div>
     )
   } else {
-    return <CardWithImageTool item={item} sticky={sticky}></CardWithImageTool>
+    return (
+      <CardWithImageTool
+        item={item}
+        sticky={sticky}
+        setReader={setReader}
+      ></CardWithImageTool>
+    )
   }
 }
