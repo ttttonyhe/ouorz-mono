@@ -18,7 +18,8 @@ module.exports = {
         '9': '27px',
         '10': '30px',
         '20': '60px',
-        readerOffset: '-47.5px'
+        readerOffset: '-47.5px',
+        searchOffset: 'calc((100% - 680px) / 2)'
       },
       colors: {
         gbg: '#f6f7f8',
@@ -59,7 +60,11 @@ module.exports = {
         reader: 'moveUp ease-in-out .5s',
         readerOut: 'moveDown ease-in-out .5s',
         readerBg: 'opacityProgressIn ease-in-out .5s',
-        readerBgOut: 'opacityProgressOut ease-in-out .5s'
+        readerBgOut: 'opacityProgressOut ease-in-out .5s',
+        searchBg: 'opacityProgressIn ease-in-out .25s',
+        searchBgOut: 'opacityProgressOut ease-in-out .25s',
+        search: 'search ease-in-out .25s',
+        searchOut: 'searchOut ease-in-out .25s'
       },
       keyframes: {
         pointer: {
@@ -103,6 +108,26 @@ module.exports = {
           },
           '100%': {
             opacity: '0',
+          }
+        },
+        search: {
+          '0%': {
+            opacity: 0,
+            transform: 'scale(1.1,1.1)'
+          },
+          '100%': {
+            opacity: 1,
+            transform: 'scale(1.0,1.0)'
+          }
+        },
+        searchOut: {
+          '0%': {
+            opacity: 1,
+            transform: 'scale(1.0,1.0)'
+          },
+          '100%': {
+            opacity: 0,
+            transform: 'scale(1.1,1.1)'
           }
         }
       },

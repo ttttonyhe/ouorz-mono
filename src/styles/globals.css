@@ -232,3 +232,10 @@ h5 {
 .reader {
   max-height: calc(100% - 7rem);
 }
+
+.nexment-comment-area
+  .nexment-comment-area-bottom
+  div:nth-child(1)
+  .nexment-replying {
+  display: flex;
+}

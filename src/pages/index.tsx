@@ -27,8 +27,8 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
               Hi, I{"'"}m TonyHe
             </h1>
             <p className="text-2 text-gray-500 tracking-wide font-light">
-              I{"'"}m a developer, blogger and undergraduate student at the
-              University of Waterloo, Class of 2025, Honors Mathematics
+              I{"'"}m a developer, blogger, podcaster and undergraduate student
+              at the University of Waterloo, Class of 2025, Honors Mathematics
             </p>
           </div>
           <Top></Top>

@@ -3,9 +3,13 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import Search from '~/components/Search'
 
 export default function Header() {
   const router = useRouter()
+
+  const [startSearching, setStartSearching] = useState<boolean>(false)
+  const [endSearching, setEndSearching] = useState<boolean>(false)
 
   const [scrollPosition, setScrollPosition] = useState(0)
   const handleScroll = () => {
@@ -31,14 +35,30 @@ export default function Header() {
       }
     >
       <div className="col-start-1 col-end-2 flex xl:space-x-2">
+        <a
+          href="https://blog.ouorz.com/feed/gn"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Button
+            bType="menu-default"
+            icon="rss"
+            className="hidden xl:flex text-3"
+          >
+            RSS
+          </Button>
+        </a>
         <Button
           bType="menu-default"
-          icon="rss"
-          className="hidden xl:flex text-3"
+          icon="search"
+          className="text-3"
+          onClick={() => {
+            setStartSearching(!startSearching)
+            document
+              .getElementsByTagName('body')[0]
+              .classList.add('stop-scrolling')
+          }}
         >
-          RSS
-        </Button>
-        <Button bType="menu-default" icon="search" className="text-3">
           Search
         </Button>
       </div>
@@ -106,6 +126,12 @@ export default function Header() {
           </a>
         </Link>
       </div>
+      <Search
+        startSearching={startSearching}
+        setStartSearching={setStartSearching}
+        setEndSearching={setEndSearching}
+        endSearching={endSearching}
+      ></Search>
     </header>
   )
 }

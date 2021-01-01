@@ -20,9 +20,10 @@ interface Props {
   sticky?: boolean
   type?: string
   cate?: number
+  target?: string
 }
 
-export default function List({ posts, sticky, type, cate }: Props) {
+export default function List({ posts, sticky, type, cate, target }: Props) {
   if (posts) {
     // Preview
     const [reader, setReader] = useState<any>({ status: false, post: [] })
@@ -73,13 +74,23 @@ export default function List({ posts, sticky, type, cate }: Props) {
         return <InfiniteList type="index"></InfiniteList>
       case 'cate':
         return <InfiniteList type="cate" cate={cate}></InfiniteList>
+      case 'search':
+        return <InfiniteList type="search" target={target}></InfiniteList>
       default:
         return <div key="Empty post list"></div>
     }
   }
 }
 
-const InfiniteList = ({ type, cate }: { type: string; cate?: number }) => {
+const InfiniteList = ({
+  type,
+  cate,
+  target,
+}: {
+  type: string
+  cate?: number
+  target?: string
+}) => {
   const [stopLoading, setStopLoading] = React.useState<boolean>(false)
   let url
   switch (type) {
@@ -96,6 +107,12 @@ const InfiniteList = ({ type, cate }: { type: string; cate?: number }) => {
         perPage: 10,
         cate: `${cate}`,
         cateExclude: '5,2,74',
+      })
+      break
+    case 'search':
+      url = getApi({
+        cateExclude: '5,2,74',
+        search: target,
       })
       break
     default:
@@ -143,6 +160,7 @@ const InfiniteList = ({ type, cate }: { type: string; cate?: number }) => {
         )
       }
       scrollThreshold="50px"
+      scrollableTarget={type === 'search' ? 'searchResultsDiv' : ''}
     >
       <List posts={postsData}></List>
     </InfiniteScroll>

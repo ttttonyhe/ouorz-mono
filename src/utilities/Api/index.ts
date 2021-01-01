@@ -8,6 +8,7 @@ interface Parameters {
   page?: number
   visit?: number
   post?: number
+  search?: string
 }
 
 export const getApi = ({
@@ -20,6 +21,7 @@ export const getApi = ({
   page,
   post,
   visit,
+  search,
 }: Parameters) => {
   if (getCate) {
     return `https://blog.ouorz.com/wp-json/wp/v2/categories/${cate}`
@@ -41,9 +43,11 @@ export const getApi = ({
     return `https://blog.ouorz.com/wp-json/tony/v1/visit/${visit}`
   }
 
-  const s = sticky ? 'sticky=1' : 'sticky=0'
+  const s = sticky ? 'sticky=1' : sticky === undefined ? '' : 'sticky=0'
   const ce = cateExclude ? `&categories_exclude=${cateExclude}` : ''
   const c = cate ? `&categories=${cate}` : ''
-  const p = `&per_page=${perPage}`
-  return `https://blog.ouorz.com/wp-json/wp/v2/posts?${s}${p}${c}${ce}`
+  const p = perPage !== undefined ? `&per_page=${perPage}` : ''
+  const sc = search ? `&search=${search}` : ''
+
+  return `https://blog.ouorz.com/wp-json/wp/v2/posts?${s}${p}${c}${ce}${sc}`
 }

@@ -5,11 +5,11 @@ import Link from 'next/link'
 import Icons from '~/components/Icons'
 import PageCard from '~/components/PageCard'
 
-export default function Pages() {
+export default function Sponsor() {
   return (
     <div>
       <Head>
-        <title>Pages - TonyHe</title>
+        <title>Sponsor - TonyHe</title>
       </Head>
       <Content>
         <div className="mt-20">
@@ -17,9 +17,9 @@ export default function Pages() {
             <div className="flex-1 items-center">
               <h1 className="font-medium text-1 text-black tracking-wide">
                 <span className="hover:animate-spin inline-block cursor-pointer mr-3">
-                  📑
+                  ☕
                 </span>
-                Pages
+                Sponsor
               </h1>
             </div>
             <div className="h-full flex justify-end whitespace-nowrap items-center mt-2">
@@ -35,45 +35,47 @@ export default function Pages() {
             </div>
           </div>
           <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white items-center my-2">
-            <p className="text-xl tracking-wide text-gray-500 whitespace-nowrap items-center">
-              Explore and discover all the special pages and content
+            <p className="text-xl tracking-wide text-gray-500 items-center">
+              I am developing and maintaining various open source projects and
+              hosting a podcast about tech, life and career
             </p>
           </div>
         </div>
+        <div className="mt-5 mb-10 grid grid-cols-2 gap-4">
+          <PageCard
+            title="Github"
+            des="HelipengTony"
+            icon="githubLine"
+            className="text-black"
+            href="/page/765"
+          ></PageCard>
+          <PageCard
+            title="Podcast"
+            des="Known Unknowns"
+            icon="mic"
+            className="text-black"
+            href="/page/249"
+          ></PageCard>
+        </div>
+        <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white items-center my-2">
+          <p className="text-xl tracking-wide text-gray-500 items-center">
+            If you{"'"}ve found my projects or podcast useful or interesting,
+            please consider supporting me through the following ways
+          </p>
+        </div>
         <div className="mt-5 grid grid-cols-2 gap-4">
           <PageCard
-            title="AMA"
-            des="Ask me anything"
-            icon="chat"
-            className="text-blue-600"
+            title="Alipay"
+            des="helipeng_tony"
+            icon="alipay"
+            className="text-blue-500"
             href="/page/765"
           ></PageCard>
           <PageCard
-            title="Comments"
-            des="Leave a comment"
-            icon="chat"
-            className="text-gray-500"
-            href="/page/249"
-          ></PageCard>
-          <PageCard
-            title="Friends"
-            des="Links to my friends' sites"
-            icon="chat"
-            className="text-green-500"
-            href="/page/249"
-          ></PageCard>
-          <PageCard
-            title="Sponsor"
-            des="Buy me a coffee"
-            icon="chat"
-            className="text-pink-500"
-            href="/page/765"
-          ></PageCard>
-          <PageCard
-            title="DevDiary"
-            des="Development Diary"
-            icon="chat"
-            className="text-gray-500"
+            title="Wechat Pay"
+            des="Helipeng_tony"
+            icon="wxpay"
+            className="text-green-600"
             href="/page/249"
           ></PageCard>
         </div>

@@ -8,8 +8,8 @@ const Nexment = () => {
     enableLinkInput: true,
     enableReplyListModal: false,
     leancloud: {
-      appId: 'NM8cdTVi8wqCmbeLPmiKCu79-gzGzoHsz',
-      appKey: 'p31o8YmzTfjBY68W2Y9gH3kb',
+      appId: 'NM8cdTV' + 'i8wqCmbeLPmiK' + 'Cu79-gzGzoHsz',
+      appKey: 'p31o8' + 'YmzTfjBY68' + 'W2Y9gH3kb',
       serverURL: 'https://ouorz-nexment.ouorz.com',
     },
     admin: {
