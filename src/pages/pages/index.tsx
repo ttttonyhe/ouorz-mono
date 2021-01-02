@@ -44,37 +44,37 @@ export default function Pages() {
           <PageCard
             title="AMA"
             des="Ask me anything"
-            icon="chat"
-            className="text-blue-600"
+            icon="question"
+            className="text-purple-600"
             href="/page/765"
           ></PageCard>
           <PageCard
             title="Comments"
             des="Leave a comment"
             icon="chat"
-            className="text-gray-500"
+            className="text-blue-500"
             href="/page/249"
           ></PageCard>
           <PageCard
             title="Friends"
             des="Links to my friends' sites"
-            icon="chat"
-            className="text-green-500"
-            href="/page/249"
+            icon="people"
+            className="text-red-600"
+            href="/friends"
           ></PageCard>
           <PageCard
             title="Sponsor"
             des="Buy me a coffee"
-            icon="chat"
-            className="text-pink-500"
-            href="/page/765"
+            icon="love"
+            className="text-pink-600"
+            href="/sponsor"
           ></PageCard>
           <PageCard
             title="DevDiary"
             des="Development Diary"
-            icon="chat"
-            className="text-gray-500"
-            href="/page/249"
+            icon="growth"
+            className="text-gray-600"
+            href="https://dev.ouorz.com"
           ></PageCard>
         </div>
       </Content>

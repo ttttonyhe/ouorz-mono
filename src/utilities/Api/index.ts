@@ -9,6 +9,8 @@ interface Parameters {
   visit?: number
   post?: number
   search?: string
+  sponsor?: boolean
+  subs?: boolean
 }
 
 export const getApi = ({
@@ -22,6 +24,8 @@ export const getApi = ({
   post,
   visit,
   search,
+  sponsor,
+  subs,
 }: Parameters) => {
   if (getCate) {
     return `https://blog.ouorz.com/wp-json/wp/v2/categories/${cate}`
@@ -41,6 +45,14 @@ export const getApi = ({
 
   if (visit) {
     return `https://blog.ouorz.com/wp-json/tony/v1/visit/${visit}`
+  }
+
+  if (sponsor) {
+    return 'https://blog.ouorz.com/wp-content/themes/peg/com/data/donors.php'
+  }
+
+  if (subs) {
+    return 'https://api.buttondown.email/v1/subscribers'
   }
 
   const s = sticky ? 'sticky=1' : sticky === undefined ? '' : 'sticky=0'

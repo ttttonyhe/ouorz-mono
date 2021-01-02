@@ -15,7 +15,7 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
   return (
     <div>
       <Head>
-        <title>TonyHe - Just A Poor Lifesinger</title>
+        <title>TonyHe</title>
       </Head>
       <Content>
         <div className="mt-20">

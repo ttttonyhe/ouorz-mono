@@ -9,6 +9,7 @@ const CardSkeleton = dynamic(() => import('~/components/Card/Skeleton'), {
   ssr: false,
 })
 import CardClickable from '~/components/Card/Clickable'
+import CardFriend from '~/components/Card/Friend'
 import Reader from '~/components/Reader'
 
 import InfiniteScroll from 'react-infinite-scroll-component'
@@ -34,14 +35,18 @@ export default function List({ posts, sticky, type, cate, target }: Props) {
           {posts.map((item) => {
             if (typeof item.code === 'undefined') {
               if (item.post_img.url) {
-                return (
-                  <CardWithImage
-                    item={item}
-                    sticky={sticky}
-                    key={item.id}
-                    setReader={setReader}
-                  ></CardWithImage>
-                )
+                if (item.post_categories[0].term_id === 2) {
+                  return <CardFriend item={item} key={item.id}></CardFriend>
+                } else {
+                  return (
+                    <CardWithImage
+                      item={item}
+                      sticky={sticky}
+                      key={item.id}
+                      setReader={setReader}
+                    ></CardWithImage>
+                  )
+                }
               } else if (item.post_categories[0].term_id === 58) {
                 return (
                   <CardPlainText
@@ -106,7 +111,7 @@ const InfiniteList = ({
         sticky: false,
         perPage: 10,
         cate: `${cate}`,
-        cateExclude: '5,2,74',
+        cateExclude: '5,74',
       })
       break
     case 'search':

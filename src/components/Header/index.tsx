@@ -99,13 +99,17 @@ export default function Header() {
             </a>
           </Link>
         ) : (
-          <Button
-            bType="menu-primary"
-            icon="love"
-            className="text-pink-500 hidden xl:flex text-3"
-          >
-            Sponsor
-          </Button>
+          <Link href="/sponsor">
+            <a>
+              <Button
+                bType="menu-primary"
+                icon="love"
+                className="text-pink-500 hidden xl:flex text-3"
+              >
+                Sponsor
+              </Button>
+            </a>
+          </Link>
         )}
         <Link href="/pages">
           <a>
