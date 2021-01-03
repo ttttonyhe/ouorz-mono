@@ -2,27 +2,25 @@ import Head from 'next/head'
 import React from 'react'
 import Content from '~/components/Content'
 import { GetServerSideProps } from 'next'
-import List from '~/components/List'
+import { DesSplit } from '~/utilities/String'
 import { getApi } from '~/utilities/Api'
-import SubscriptionBox from '~/components/SubscriptionBox'
 import Icons from '~/components/Icons'
 import Link from 'next/link'
+import Image from 'next/image'
 
-interface Sticky {
-  stickyNotFound: boolean
-  stickyPosts: any
-  info: { name: string; count: number; id: number }
-}
-
-export default function Friends({ stickyNotFound, stickyPosts, info }: Sticky) {
+export default function Friends({ friends }: { friends: any }) {
   return (
     <div>
       <Head>
         <title>Friends - TonyHe</title>
+        <link
+          rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧑‍🤝‍🧑</text></svg>"
+        ></link>
       </Head>
       <Content>
         <div className="mt-20">
-          <div className="mb-5 flex items-center">
+          <div className="mb-4 flex items-center">
             <div className="flex-1 items-center">
               <h1 className="font-medium text-1 text-black tracking-wide">
                 <span className="hover:animate-spin inline-block cursor-pointer mr-3">
@@ -32,12 +30,6 @@ export default function Friends({ stickyNotFound, stickyPosts, info }: Sticky) {
               </h1>
             </div>
             <div className="h-full flex justify-end whitespace-nowrap items-center mt-2">
-              <div className="border-r border-r-gray-200 text-center flex-1 px-5">
-                <p className="text-xl text-gray-500 flex items-center">
-                  <span className="w-6 h-6 mr-2">{Icons.count}</span>
-                  {info.count} sites
-                </p>
-              </div>
               <div className="flex-1 px-5">
                 <p className="text-xl text-gray-500">
                   <Link href="/">
@@ -49,13 +41,48 @@ export default function Friends({ stickyNotFound, stickyPosts, info }: Sticky) {
               </div>
             </div>
           </div>
-          <SubscriptionBox type="sm"></SubscriptionBox>
+          <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white items-center my-2">
+            <p className="text-xl tracking-wide text-gray-500 whitespace-nowrap items-center">
+              Email me at tony.hlp#hotmail.com for link exchange
+            </p>
+          </div>
         </div>
-        <div className="mt-5">
-          {!stickyNotFound && <List posts={stickyPosts} sticky={true}></List>}
-        </div>
-        <div className="mt-5" data-cy="catePosts">
-          <List type="cate" cate={2}></List>
+        <div className="mt-5 grid grid-cols-2 gap-4" data-cy="friendsItems">
+          {friends.map((item, index) => {
+            return (
+              <div
+                className="cursor-pointer hover:shadow-md transition-shadow shadow-sm border bg-white items-center rounded-md px-2 py-4"
+                key={index}
+              >
+                <div className="w-full px-4 items-center flex-1">
+                  <a
+                    href={item.post_metas.link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <h1 className="flex items-center text-2xl tracking-wide font-medium mb-0.5">
+                      <Image
+                        src={item.post_img.url}
+                        width={20}
+                        height={20}
+                        className="rounded-full"
+                      ></Image>
+                      <span className="ml-2">{item.post_title}</span>
+                    </h1>
+                    <p
+                      className="text-4 text-gray-500 tracking-wide whitespace-nowrap overflow-hidden overflow-ellipsis"
+                      dangerouslySetInnerHTML={{
+                        __html: DesSplit({
+                          str: item.post_excerpt.four,
+                          n: 150,
+                        }),
+                      }}
+                    ></p>
+                  </a>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </Content>
     </div>
@@ -63,37 +90,26 @@ export default function Friends({ stickyNotFound, stickyPosts, info }: Sticky) {
 }
 
 // Get sticky posts rendered on the server side
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const resSticky = await fetch(
+export const getServerSideProps: GetServerSideProps = async () => {
+  const resCount = await fetch(
     getApi({
-      sticky: true,
-      perPage: 10,
-      cate: '2',
+      count: true,
     })
   )
-  const dataSticky = await resSticky.json()
-  let stickyNotFound = false
-  if (!dataSticky) {
-    stickyNotFound = true
-  }
+  const dataCount = await resCount.json()
+  const count: number = dataCount.count
 
-  const resInfo = await fetch(
+  const res = await fetch(
     getApi({
       cate: '2',
-      getCate: true,
+      perPage: count,
     })
   )
-  const infoData = await resInfo.json()
+  const data = await res.json()
 
   return {
     props: {
-      stickyNotFound: stickyNotFound,
-      stickyPosts: dataSticky,
-      info: {
-        name: infoData.name,
-        count: infoData.count,
-        id: infoData.id,
-      },
+      friends: data,
     },
   }
 }

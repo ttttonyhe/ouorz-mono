@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { DesSplit } from '~/utilities/String'
+import Image from 'next/image'
 
 interface Props {
   item: any
@@ -8,17 +9,14 @@ interface Props {
 export default function CardFriend({ item }: Props) {
   return (
     <div className="w-full shadow-sm bg-white rounded-md border mb-6">
-      <div className="p-10 grid grid-flow-col grid-cols-3 gap-9">
-        <div
-          className="rounded-md shadow-sm h-full w-auto col-span-1 col-end-2 border border-gray-200"
-          style={{
-            backgroundImage: 'url(' + item.post_img.url + ')',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-          }}
-        ></div>
-        <div className="col-span-2 col-end-4">
+      <div className="flex">
+        <Image
+          src={item.post_img.url}
+          width={50}
+          height={50}
+          className="border shadow-sm"
+        ></Image>
+        <div>
           <Link href={`/post/${item.id}`}>
             <a>
               <h1 className="font-medium text-2 text-gray-700 tracking-wider mb-1">

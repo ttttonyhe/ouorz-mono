@@ -10,6 +10,10 @@ export default function Pages() {
     <div>
       <Head>
         <title>Pages - TonyHe</title>
+        <link
+          rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📑</text></svg>"
+        ></link>
       </Head>
       <Content>
         <div className="mt-20">
@@ -45,36 +49,29 @@ export default function Pages() {
             title="AMA"
             des="Ask me anything"
             icon="question"
-            className="text-purple-600"
+            className="text-yellow-400"
             href="/page/765"
           ></PageCard>
           <PageCard
             title="Comments"
             des="Leave a comment"
             icon="chat"
-            className="text-blue-500"
+            className="text-green-400"
             href="/page/249"
-          ></PageCard>
-          <PageCard
-            title="Friends"
-            des="Links to my friends' sites"
-            icon="people"
-            className="text-red-600"
-            href="/friends"
-          ></PageCard>
-          <PageCard
-            title="Sponsor"
-            des="Buy me a coffee"
-            icon="love"
-            className="text-pink-600"
-            href="/sponsor"
           ></PageCard>
           <PageCard
             title="DevDiary"
             des="Development Diary"
             icon="growth"
-            className="text-gray-600"
+            className="text-blue-400"
             href="https://dev.ouorz.com"
+          ></PageCard>
+          <PageCard
+            title="Friends"
+            des="Links to my friends' sites"
+            icon="people"
+            className="text-pink-400"
+            href="/friends"
           ></PageCard>
         </div>
       </Content>

@@ -16,6 +16,7 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
     <div>
       <Head>
         <title>TonyHe</title>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico"></link>
       </Head>
       <Content>
         <div className="mt-20">

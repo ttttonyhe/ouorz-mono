@@ -12,10 +12,14 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
     <div>
       <Head>
         <title>Sponsor - TonyHe</title>
+        <link
+          rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>"
+        ></link>
       </Head>
       <Content>
         <div className="mt-20">
-          <div className="mb-5 flex items-center">
+          <div className="mb-4 flex items-center">
             <div className="flex-1 items-center">
               <h1 className="font-medium text-1 text-black tracking-wide">
                 <span className="hover:animate-spin inline-block cursor-pointer mr-3">
@@ -59,7 +63,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
             href="https://anchor.fm/the-known-unknowns"
           ></PageCard>
         </div>
-        <div className="border shadow-sm w-full py-6 px-8 rounded-md bg-white items-center my-2 mb-10">
+        <div className="border shadow-sm w-full p-7 rounded-md bg-white items-center my-2 mb-10">
           <p className="text-xl tracking-wide text-gray-500 items-center">
             If you{"'"}ve found my projects or podcast useful or interesting,
             please consider supporting me through the following ways:
@@ -84,7 +88,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
             <PageCard
               title="Bitcoin"
               des="bc1qz2kgqp26wtel6n7rl0cw053pxgtwt5vrr5hyd7pqmmjfhqxex8dq8fknpx"
-              icon="bitcoin"
+              iconSmall="bitcoin"
               className="text-yellow-500"
               href="/page/249"
             ></PageCard>

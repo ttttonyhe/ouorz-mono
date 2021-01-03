@@ -11,6 +11,7 @@ interface Parameters {
   search?: string
   sponsor?: boolean
   subs?: boolean
+  count?: boolean
 }
 
 export const getApi = ({
@@ -26,6 +27,7 @@ export const getApi = ({
   search,
   sponsor,
   subs,
+  count,
 }: Parameters) => {
   if (getCate) {
     return `https://blog.ouorz.com/wp-json/wp/v2/categories/${cate}`
@@ -53,6 +55,10 @@ export const getApi = ({
 
   if (subs) {
     return 'https://api.buttondown.email/v1/subscribers'
+  }
+
+  if (count) {
+    return 'https://blog.ouorz.com/wp-json/tony/v1/count'
   }
 
   const s = sticky ? 'sticky=1' : sticky === undefined ? '' : 'sticky=0'

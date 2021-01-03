@@ -239,3 +239,7 @@ h5 {
   .nexment-replying {
   display: flex;
 }
+
+.podcast-player {
+  box-shadow: none !important;
+}

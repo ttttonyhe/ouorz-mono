@@ -1,7 +1,7 @@
 import TimeAgo from 'react-timeago'
 export default function BottomCard({ item }: { item: any }) {
   return (
-    <div className="py-3 px-10 items-center w-full h-auto border-t rounded-br-md rounded-bl-md border-gray-100">
+    <div className="py-2 px-10 items-center w-full h-auto border-t rounded-br-md rounded-bl-md border-gray-100">
       <p className="flex space-x-2 text-4 tracking-wide leading-8 text-gray-500">
         <span>
           Posted <TimeAgo date={item.date} />

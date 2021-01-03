@@ -21,6 +21,6 @@ export const DesSplit = ({ str, n }: Parameters) => {
         tmpStr += str[i]
       }
     }
-    return tmpStr + ' ...'
+    return tmpStr.replace(' ', '') + ' ...'
   }
 }

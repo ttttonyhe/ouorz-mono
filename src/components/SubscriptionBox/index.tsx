@@ -47,7 +47,7 @@ export default function SubscriptionBox({ type }: { type: string }) {
               value={email}
               className={`${
                 processing ? 'animate-pulse' : ''
-              } text-lg px-3 py-1.5 focus:outline-none w-10/12 shadow-sm rounded-md border bg-white text-gray-500 tracking-wide`}
+              } text-4 px-3 py-1.5 focus:outline-none w-10/12 shadow-sm rounded-md border bg-white text-gray-500 tracking-wide`}
               placeholder="Email address"
               onChange={(e) => {
                 setEmail(e.target.value)
@@ -64,12 +64,12 @@ export default function SubscriptionBox({ type }: { type: string }) {
     )
   } else {
     return (
-      <div className="border shadow-sm w-full p-10  lg:py-14 lg:px-20 rounded-xl bg-white items-center my-2">
+      <div className="border shadow-sm w-full p-10 lg:py-11 lg:px-20 rounded-xl bg-white items-center my-2">
         <div>
           <h1 className="flex text-3xl font-medium text-gray-700 tracking-wide items-center">
             <span className="w-9 h-9 mr-2">{Icons.subscribe}</span>Subscribe
           </h1>
-          <p className="text-xl tracking-wide text-gray-500 mt-2 mb-8">
+          <p className="text-xl tracking-wide text-gray-500 mt-2 mb-5">
             Get post updates straight to your inbox
           </p>
         </div>
@@ -77,7 +77,7 @@ export default function SubscriptionBox({ type }: { type: string }) {
           <input
             type="email"
             value={email}
-            className="col-start-1 col-end-3 w-full text-lg rounded-md px-3 py-1.5 focus:outline-none shadow-sm border"
+            className="col-start-1 col-end-3 w-full text-4 rounded-md px-3 py-1.5 focus:outline-none shadow-sm border"
             placeholder="Email address"
             onChange={(e) => {
               setEmail(e.target.value)
@@ -91,7 +91,7 @@ export default function SubscriptionBox({ type }: { type: string }) {
             <Button
               bType="primary"
               type="submit"
-              className="col-start-3 col-end-4"
+              className="col-start-3 col-end-4 text-4"
               onClick={() => {
                 doSubscribe()
               }}
