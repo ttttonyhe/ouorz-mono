@@ -35,7 +35,7 @@ export default function PageCard({
     >
       {icon && (
         <div
-          className={`w-20 h-auto border-r border-r-gray-200 pr-3 mr-3 ${
+          className={`xl:block hidden w-20 h-auto border-r border-r-gray-200 pr-3 mr-3 ${
             className ? className : ''
           }`}
         >
@@ -43,15 +43,25 @@ export default function PageCard({
         </div>
       )}
       <div className="w-full">
-        <h1 className="flex items-center text-2xl tracking-wide font-medium -mb-1">
+        <h1
+          className={`flex items-center text-2xl tracking-wide font-medium ${
+            iconSmall ? '' : '-mb-1'
+          }`}
+        >
           {iconSmall && (
-            <span className={`w-7 h-7 mr-1 ${className ? className : ''}`}>
+            <span
+              className={`xl:block hidden w-7 h-7 mr-1 ${
+                className ? className : ''
+              }`}
+            >
               {Icons[iconSmall]}
             </span>
           )}
           {title}
         </h1>
-        <p className="text-4 text-gray-600 tracking-wide">{des}</p>
+        <p className="text-4 text-gray-600 tracking-wide whitespace-nowrap overflow-hidden overflow-ellipsis">
+          {des}
+        </p>
       </div>
     </div>
   )

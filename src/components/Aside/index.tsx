@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Icons from '~/components/Icons'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import smoothScroll from 'smoothscroll-polyfill'
 
 export default function Aside({ preNext }: { preNext: any }) {
   const router = useRouter()
@@ -144,13 +145,14 @@ export default function Aside({ preNext }: { preNext: any }) {
     if (result[2].length) {
       window.addEventListener('scroll', handler)
     }
+    smoothScroll.polyfill()
     return () => {
       window.removeEventListener('scroll', handler)
     }
   }, [router.asPath])
 
   return (
-    <div className="w-toc fixed top-32 -ml-82">
+    <div className="w-toc fixed top-32 -ml-82 hidden xl:block">
       {headersEl.length ? (
         <div>
           <div className="shadow-sm border rounded-xl bg-white">
@@ -163,13 +165,12 @@ export default function Aside({ preNext }: { preNext: any }) {
                 headersResult.map((item) => {
                   return (
                     <li
-                      className="py-2 text-gray-800 whitespace-nowrap overflow-ellipsis overflow-hidden cursor-pointer border-gray-100 hover:bg-gray-50"
+                      className={`${
+                        item[1] !== 0 ? 'toc-sub' : ''
+                      } py-2 text-gray-800 whitespace-nowrap overflow-ellipsis overflow-hidden cursor-pointer border-gray-100 hover:bg-gray-50`}
                       id={`header${item[0]}`}
                       style={{
                         paddingLeft: '10px',
-                        borderLeft: `${
-                          item[1] !== 0 ? 1 : 0
-                        }px solid rgba(229, 231, 235, 1)`,
                         marginLeft: item[1] !== 0 ? `${item[1]}px` : '0px',
                       }}
                       key={item[0]}

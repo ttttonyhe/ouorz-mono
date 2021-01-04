@@ -10,21 +10,29 @@ export default function Label({ name, icon, children, preview }: Props) {
   switch (name) {
     case 'sticky':
       return (
-        <label className="justify-center items-center flex w-auto h-auto py-1 px-3 bg-yellow-200 hover:bg-yellow-300 text-center rounded-md text-label tracking-wide text-yellow-500 align-middle">
-          <span className="w-7 h-7">{Icons.sticky}</span>
+        <label className="justify-center items-center flex w-auto h-auto xl:py-1 xl:px-3 py-0 px-2 bg-yellow-200 hover:bg-yellow-300 text-center rounded-md text-4 xl:text-label tracking-wide text-yellow-500 align-middle">
+          <span className="xl:w-7 xl:h-7 h-4 w-4">{Icons.sticky}</span>
         </label>
       )
     case 'primary':
       return (
-        <label className="cursor-pointer justify-center font-medium items-center flex w-auto px-4 py-1 bg-blue-100 hover:bg-blue-200 text-center rounded-md text-label tracking-wide text-blue-500 align-middle">
-          {icon && <span className="w-7 h-7 mr-2">{Icons[icon]}</span>}
+        <label className="cursor-pointer justify-center font-medium items-center flex w-auto xl:px-4 xl:py-1 px-2 py-1 bg-blue-100 hover:bg-blue-200 text-center rounded-md text-4 xl:text-label tracking-wide text-blue-500 align-middle">
+          {icon && (
+            <span className="xl:w-7 xl:h-7 h-4 w-4 xl:mr-2 mr-1">
+              {Icons[icon]}
+            </span>
+          )}
           {children}
         </label>
       )
     case 'secondary':
       return (
-        <label className="cursor-pointer justify-center font-medium items-center flex w-auto px-4 py-1 bg-gray-100 hover:bg-gray-200 text-center rounded-md text-label tracking-wide text-gray-500 align-middle">
-          {icon && <span className="w-7 h-7 mr-2">{Icons[icon]}</span>}
+        <label className="cursor-pointer justify-center font-medium items-center flex w-auto xl:px-4 px-2 py-1 xl:py-1 bg-gray-100 hover:bg-gray-200 text-center rounded-md text-4 xl:text-label tracking-wide text-gray-500 align-middle">
+          {icon && (
+            <span className="xl:w-7 xl:h-7 h-4 w-4 xl:mr-2 mr-1">
+              {Icons[icon]}
+            </span>
+          )}
           {children}
         </label>
       )

@@ -18,12 +18,12 @@ export default function BlogPage({ page }: { page: any }) {
         ></link>
       </Head>
       <Page>
-        <article className="shadow-sm border rounded-xl bg-white p-10 lg:p-20">
+        <article className="xl:shadow-sm xl:border xl:rounded-xl bg-white p-5 xl:p-20 pt-24">
           <div className="mb-20">
-            <h1 className="text-postTitle font-medium tracking-wider leading-snug">
+            <h1 className="text-1.5 xl:text-postTitle font-medium tracking-wider leading-snug">
               {page.title.rendered}
             </h1>
-            <p className="flex text-xl text-gray-500 space-x-2 mt-2 tracking-wide">
+            <p className="flex text-5 xl:text-xl text-gray-500 space-x-2 mt-2 tracking-wide">
               <span>
                 Posted <TimeAgo date={page.date} />
               </span>

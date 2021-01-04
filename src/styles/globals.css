@@ -7,7 +7,7 @@
 }
 
 .prose ol {
-  padding-left: 3rem;
+  padding-left: 35px;
   display: block;
   margin: -0.5rem 0;
   overflow: hidden;
@@ -27,7 +27,7 @@
   box-sizing: border-box;
   border: 0 solid #999;
   margin-top: 4px;
-  margin-left: -3rem !important;
+  margin-left: -35px !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,6 +178,7 @@ h5 {
 
 .toc-active {
   background-color: #f7f8f9;
+  @apply rounded-md;
 }
 
 .tour div:nth-child(2) {
@@ -230,7 +231,7 @@ h5 {
 }
 
 .reader {
-  max-height: calc(100% - 7rem);
+  max-height: calc(100% - 7rem) !important;
 }
 
 .nexment-comment-area
@@ -242,4 +243,30 @@ h5 {
 
 .podcast-player {
   box-shadow: none !important;
+}
+
+.nexment-comment-area .nexment-comment-area-top {
+  @apply text-4;
+}
+
+.nexment-comment-area-middle {
+  @apply text-4;
+}
+
+.nexment-comment-area .nexment-comment-area-bottom div:nth-child(2) button {
+  font-size: 14px !important;
+}
+
+.prose code {
+  padding: 12px 0px !important;
+}
+
+.nexment-comments-div .nexment-comments-title {
+  width: 85% !important;
+}
+
+.toc-sub {
+  border-left: 1px solid rgba(229, 231, 235, 1);
+  @apply rounded-tl-none;
+  @apply rounded-bl-none;
 }

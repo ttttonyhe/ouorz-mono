@@ -18,7 +18,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
         ></link>
       </Head>
       <Content>
-        <div className="mt-20">
+        <div className="xl:mt-20 mt-0 xl:pt-0 pt-24">
           <div className="mb-4 flex items-center">
             <div className="flex-1 items-center">
               <h1 className="font-medium text-1 text-black tracking-wide">
@@ -107,12 +107,14 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
                 key={index}
                 className="cursor-pointer hover:shadow-md transition-shadow shadow-sm border py-4 px-5 bg-white flex items-center rounded-md"
               >
-                <div className="w-full flex items-center">
-                  <h1 className="flex-1 items-center text-xl tracking-wide font-medium -mb-1">
+                <div className="w-full flex items-center whitespace-nowrap overflow-hidden overflow-ellipsis">
+                  <h1 className="flex-1 items-center text-xl tracking-wide font-medium">
                     {item.name}
                   </h1>
-                  <p className="text-4 text-gray-400 tracking-wide justify-end">
-                    {item.date} |{' '}
+                  <p className="text-4 text-gray-400 tracking-wide justify-end items-center flex">
+                    <span className="hidden xl:flex">
+                      {item.date}&nbsp;|&nbsp;
+                    </span>
                     <span className="text-gray-700">
                       {item.unit}
                       {item.amount}

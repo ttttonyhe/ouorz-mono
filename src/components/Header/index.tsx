@@ -1,7 +1,6 @@
 import Button from '~/components/Button'
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Search from '~/components/Search'
 
@@ -28,11 +27,9 @@ export default function Header() {
   return (
     <header
       id="header"
-      className={
-        scrollPosition > 0
-          ? 'transition-all duration-300 grid grid-cols-6 fixed top-0 h-auto w-full py-4 px-5 bg-white shadow-header z-10'
-          : 'transition-all duration-300 grid grid-cols-6 fixed top-0 h-auto w-full py-4 px-5 z-10'
-      }
+      className={`leading-14 xl:border-0 border-b border-gray-200 transition-all xl:bg-transparent bg-white duration-300 grid grid-cols-6 fixed top-0 h-auto w-full xl:py-4 xl:px-5 py-2 px-1 z-10 ${
+        scrollPosition > 0 ? 'xl:bg-white shadow-header' : ''
+      }`}
     >
       <div className="col-start-1 col-end-2 flex xl:space-x-2">
         <a
@@ -70,13 +67,13 @@ export default function Header() {
         }
       >
         <div
-          className="cursor-pointer mx-auto flex space-x-3 items-center justify-center"
+          className="cursor-pointer mx-auto hidden xl:flex space-x-3 items-center justify-center"
           onClick={() => {
             router.push('/')
           }}
         >
           <div className="flex-shrink-0 h-7 w-7 border rounded-full border-gray-300">
-            <Image
+            <img
               className="rounded-full"
               src="/tony.jpg"
               alt="Logo"
@@ -84,7 +81,7 @@ export default function Header() {
               width="100%"
             />
           </div>
-          <div className="text-2xl font-medium text-black">
+          <div className="text-2 font-medium text-black">
             <h3 className="text-gray-700">TonyHe</h3>
           </div>
         </div>
@@ -93,7 +90,11 @@ export default function Header() {
         {router.asPath.split('/').length > 2 ? (
           <Link href="/">
             <a>
-              <Button bType="menu-default" icon="home" className="text-3">
+              <Button
+                bType="menu-default"
+                icon="home"
+                className="text-3 hidden xl:flex"
+              >
                 Home
               </Button>
             </a>

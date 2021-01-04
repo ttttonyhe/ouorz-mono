@@ -6,7 +6,6 @@ import { DesSplit } from '~/utilities/String'
 import { getApi } from '~/utilities/Api'
 import Icons from '~/components/Icons'
 import Link from 'next/link'
-import Image from 'next/image'
 
 export default function Friends({ friends }: { friends: any }) {
   return (
@@ -19,7 +18,7 @@ export default function Friends({ friends }: { friends: any }) {
         ></link>
       </Head>
       <Content>
-        <div className="mt-20">
+        <div className="xl:mt-20 mt-0 xl:pt-0 pt-24">
           <div className="mb-4 flex items-center">
             <div className="flex-1 items-center">
               <h1 className="font-medium text-1 text-black tracking-wide">
@@ -42,7 +41,7 @@ export default function Friends({ friends }: { friends: any }) {
             </div>
           </div>
           <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white items-center my-2">
-            <p className="text-xl tracking-wide text-gray-500 whitespace-nowrap items-center">
+            <p className="text-xl tracking-wide text-gray-500 items-center">
               Email me at tony.hlp#hotmail.com for link exchange
             </p>
           </div>
@@ -61,12 +60,12 @@ export default function Friends({ friends }: { friends: any }) {
                     rel="noreferrer"
                   >
                     <h1 className="flex items-center text-2xl tracking-wide font-medium mb-0.5">
-                      <Image
+                      <img
                         src={item.post_img.url}
                         width={20}
                         height={20}
-                        className="rounded-full"
-                      ></Image>
+                        className="rounded-full border border-gray-200"
+                      ></img>
                       <span className="ml-2">{item.post_title}</span>
                     </h1>
                     <p

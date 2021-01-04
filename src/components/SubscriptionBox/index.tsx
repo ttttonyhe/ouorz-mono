@@ -29,7 +29,7 @@ export default function SubscriptionBox({ type }: { type: string }) {
   }
   if (type === 'sm') {
     return (
-      <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white items-center my-2 space-x-4">
+      <div className="border shadow-sm w-full py-3 px-5 hidden xl:flex rounded-md bg-white items-center my-2 space-x-4">
         <div>
           <p className="text-xl tracking-wide text-gray-500 whitespace-nowrap items-center flex">
             <span className="w-7 h-7 mr-2">{Icons.subscribe}</span>Get post
@@ -64,7 +64,7 @@ export default function SubscriptionBox({ type }: { type: string }) {
     )
   } else {
     return (
-      <div className="border shadow-sm w-full p-10 lg:py-11 lg:px-20 rounded-xl bg-white items-center my-2">
+      <div className="border shadow-sm w-full p-10 lg:py-11 lg:px-20 rounded-xl bg-white items-center my-2 xl:block hidden">
         <div>
           <h1 className="flex text-3xl font-medium text-gray-700 tracking-wide items-center">
             <span className="w-9 h-9 mr-2">{Icons.subscribe}</span>Subscribe

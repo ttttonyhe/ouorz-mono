@@ -25,24 +25,24 @@ export default function Cate({ stickyNotFound, stickyPosts, info }: Sticky) {
         ></link>
       </Head>
       <Content>
-        <div className="mt-20">
-          <div className="mb-4 flex items-center">
+        <div className="xl:mt-20 mt-0 xl:pt-0 pt-24">
+          <div className="mb-4 xl:flex items-center">
             <div className="flex-1 items-center">
-              <h1 className="font-medium text-1 text-black tracking-wide">
+              <h1 className="font-medium text-1 text-black tracking-wide flex justify-center xl:justify-start">
                 <span className="hover:animate-spin inline-block cursor-pointer mr-3">
                   🗂️
                 </span>
                 {info.name}
               </h1>
             </div>
-            <div className="h-full flex justify-end whitespace-nowrap items-center mt-2">
-              <div className="border-r border-r-gray-200 text-center flex-1 px-5">
+            <div className="h-full flex xl:justify-end justify-center whitespace-nowrap items-center mt-2">
+              <div className="border-r border-r-gray-200 xl:text-center xl:flex-1 px-5">
                 <p className="text-xl text-gray-500 flex items-center">
                   <span className="w-6 h-6 mr-2">{Icons.count}</span>
                   {info.count} posts
                 </p>
               </div>
-              <div className="flex-1 px-5">
+              <div className="xl:flex-1 px-5">
                 <p className="text-xl text-gray-500">
                   <Link href="/">
                     <a className="flex items-center">
@@ -55,7 +55,7 @@ export default function Cate({ stickyNotFound, stickyPosts, info }: Sticky) {
           </div>
           <SubscriptionBox type="sm"></SubscriptionBox>
         </div>
-        <div className="mt-5">
+        <div className="xl:mt-5 mt-10">
           {!stickyNotFound && <List posts={stickyPosts} sticky={true}></List>}
         </div>
         <div className="mt-5" data-cy="catePosts">

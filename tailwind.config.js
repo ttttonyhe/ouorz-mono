@@ -37,17 +37,21 @@ module.exports = {
         img: '240px',
       },
       fontSize: {
-        '1': ['32px', '1.4'],
-        '2': ['18px', '1.4'],
-        '3': ['15px', '1.4'],
-        '4': ['14px', '1.4'],
-        '5': ['12px', '1.4'],
+        '1': '32px',
+        '1.5': '23px',
+        '2': '18px',
+        '3': '15px',
+        '4': '14px',
+        '5': '12px',
         listTitle: '26px',
         label: '18px',
         postTitle: '30px',
         xl: '15px',
         '2xl': '18px',
         '3xl': '22.5px'
+      },
+      lineHeight: {
+        14: '1.4',
       },
       padding: {
         pre: '0.32rem',

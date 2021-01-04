@@ -44,7 +44,7 @@ export default function Search({
         ></div>
         <div
           id="searchResultsDiv"
-          className={`fixed overflow-y-auto overflow-hidden rounded-tl-xl reader rounded-tr-xl px-15 py-20 w-content mx-auto left-searchOffset top-0 mt-28 px-10 ${
+          className={`fixed overflow-y-auto overflow-hidden rounded-tl-xl reader rounded-tr-xl py-5 xl:py-20 xl:w-content w-full mx-auto xl:left-searchOffset top-0 mt-28 px-5 xl:px-10 ${
             startSearching
               ? 'animate-search'
               : endSearching
@@ -53,11 +53,11 @@ export default function Search({
           }`}
         >
           <div className="flex mb-10">
-            <span className="h-8 w-7 absolute mt-4 ml-4 text-gray-400">
+            <span className="xl:h-8 xl:w-7 h-6 w-5 absolute xl:mt-4 mt-3 ml-4 text-gray-400">
               {Icons.search}
             </span>
             <input
-              className="shadow-md rounded-lg hover:shadow-lg bg-white text-2 w-full h-auto px-14 py-3 focus:outline-none text-gray-700"
+              className="shadow-md rounded-lg hover:shadow-lg bg-white text-3 xl:text-2 w-full h-auto px-12 xl:px-14 py-3 focus:outline-none text-gray-700"
               placeholder="Blog Post Search"
               value={searchContent}
               onChange={(e) => {

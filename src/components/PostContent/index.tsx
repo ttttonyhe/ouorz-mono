@@ -1,9 +1,10 @@
-import ReactHtmlParser from 'react-html-parser'
+import Highlight from 'react-highlight'
+import 'highlight.js/styles/atom-one-dark.css'
 
 export default function PostContent({ content }: { content: string }) {
   return (
     <div className="prose lg:prose-xl tracking-wide" data-cy="postContent">
-      {ReactHtmlParser(content)}
+      <Highlight innerHTML={true}>{content}</Highlight>
     </div>
   )
 }

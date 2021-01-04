@@ -22,7 +22,7 @@ export default function BlogPost({ post }: { post: any }) {
         ></link>
       </Head>
       <Page>
-        <article className="shadow-sm border rounded-xl bg-white p-10 lg:p-20">
+        <article className="xl:shadow-sm xl:border xl:rounded-xl bg-white p-5 xl:p-20 xl:pt-20 pt-24">
           <div className="mb-20">
             <div className="flex mb-3">
               <Link href={`/cate/${post.post_categories[0].term_id}`}>
@@ -33,10 +33,10 @@ export default function BlogPost({ post }: { post: any }) {
                 </a>
               </Link>
             </div>
-            <h1 className="text-postTitle font-medium tracking-wider leading-snug">
+            <h1 className="text-1.5 xl:text-postTitle font-medium tracking-wider leading-snug">
               {post.title.rendered}
             </h1>
-            <p className="flex text-xl text-gray-500 space-x-2 mt-2 tracking-wide">
+            <p className="flex text-5 xl:text-xl text-gray-500 space-x-2 mt-2 tracking-wide whitespace-nowrap">
               <span>
                 Posted <TimeAgo date={post.date} />
               </span>
@@ -61,7 +61,7 @@ export default function BlogPost({ post }: { post: any }) {
           )}
         </article>
         <Aside preNext={post.post_prenext}></Aside>
-        <div className="mt-5">
+        <div className="xl:mt-5 border-t border-gray-200 xl:border-none">
           <SubscriptionBox type="lg"></SubscriptionBox>
         </div>
         <CommentBox></CommentBox>

@@ -16,7 +16,7 @@ export default function Pages() {
         ></link>
       </Head>
       <Content>
-        <div className="mt-20">
+        <div className="xl:mt-20 mt-0 xl:pt-0 pt-24">
           <div className="mb-5 flex items-center">
             <div className="flex-1 items-center">
               <h1 className="font-medium text-1 text-black tracking-wide">
@@ -39,7 +39,7 @@ export default function Pages() {
             </div>
           </div>
           <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white items-center my-2">
-            <p className="text-xl tracking-wide text-gray-500 whitespace-nowrap items-center">
+            <p className="text-xl tracking-wide text-gray-500 items-center">
               Explore and discover all the special pages and content
             </p>
           </div>

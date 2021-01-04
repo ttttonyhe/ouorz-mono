@@ -22,13 +22,13 @@ export default function CardPlainText({ item }: Props) {
 
   return (
     <div className="w-full shadow-sm bg-white rounded-md border mb-6">
-      <div className="px-10 py-9">
-        <h1 className="font-normal text-3xl text-gray-600 tracking-wider leading-10">
+      <div className="px-5 py-5 xl:px-10 xl:py-9">
+        <h1 className="font-normal text-2 xl:text-3xl text-gray-600 tracking-wider leading-2 xl:leading-10">
           {item.post_title}
         </h1>
       </div>
-      <div className="pt-2 pb-3 px-10 items-center w-full h-auto border-t rounded-br-md rounded-bl-md border-gray-100">
-        <p className="flex space-x-2 text-4 tracking-wide leading-8 text-gray-500 items-center">
+      <div className="pt-3 pb-3 px-5 xl:pt-2 xl:pb-3 xl:px-10 items-center w-full h-auto border-t rounded-br-md rounded-bl-md border-gray-100">
+        <p className="flex space-x-2 text-5 xl:text-4 tracking-wide leading-2 xl:leading-8 text-gray-500 items-center">
           <span
             className="flex items-center space-x-1 text-red-400 hover:text-red-500 cursor-pointer rounded-md"
             onClick={() => {
@@ -37,14 +37,14 @@ export default function CardPlainText({ item }: Props) {
             }}
           >
             {marking ? (
-              <i className="w-6 h-6">{Icons.loveFill}</i>
+              <i className="w-6 h-6 -mt-1">{Icons.loveFill}</i>
             ) : (
-              <i className="w-6 h-6">{Icons.love}</i>
+              <i className="w-6 h-6 -mt-1">{Icons.love}</i>
             )}
             <em className="not-italic">{marks}</em>
           </span>
-          <span>·</span>
-          <span>
+          <span className="xl:block hidden">·</span>
+          <span className="xl:block hidden">
             Posted <TimeAgo date={item.date} />
           </span>
           <span>·</span>
