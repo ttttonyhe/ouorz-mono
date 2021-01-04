@@ -28,7 +28,7 @@ export default function Cate({ stickyNotFound, stickyPosts, info }: Sticky) {
         <div className="xl:mt-20 mt-0 xl:pt-0 pt-24">
           <div className="mb-4 xl:flex items-center">
             <div className="flex-1 items-center">
-              <h1 className="font-medium text-1 text-black tracking-wide flex justify-center xl:justify-start">
+              <h1 className="font-medium text-1 text-black dark:text-white tracking-wide flex justify-center xl:justify-start">
                 <span className="hover:animate-spin inline-block cursor-pointer mr-3">
                   🗂️
                 </span>
@@ -37,13 +37,13 @@ export default function Cate({ stickyNotFound, stickyPosts, info }: Sticky) {
             </div>
             <div className="h-full flex xl:justify-end justify-center whitespace-nowrap items-center mt-2">
               <div className="border-r border-r-gray-200 xl:text-center xl:flex-1 px-5">
-                <p className="text-xl text-gray-500 flex items-center">
+                <p className="text-xl text-gray-500 dark:text-gray-400 flex items-center">
                   <span className="w-6 h-6 mr-2">{Icons.count}</span>
                   {info.count} posts
                 </p>
               </div>
               <div className="xl:flex-1 px-5">
-                <p className="text-xl text-gray-500">
+                <p className="text-xl text-gray-500 dark:text-gray-400">
                   <Link href="/">
                     <a className="flex items-center">
                       <span className="w-6 h-6 mr-2">{Icons.left}</span>Home

@@ -21,14 +21,14 @@ export default function CardPlainText({ item }: Props) {
   }
 
   return (
-    <div className="w-full shadow-sm bg-white rounded-md border mb-6">
+    <div className="w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6">
       <div className="px-5 py-5 xl:px-10 xl:py-9">
-        <h1 className="font-normal text-2 xl:text-3xl text-gray-600 tracking-wider leading-2 xl:leading-10">
+        <h1 className="font-normal text-2 xl:text-3xl text-gray-600 dark:text-white tracking-wider leading-2 xl:leading-10">
           {item.post_title}
         </h1>
       </div>
-      <div className="pt-3 pb-3 px-5 xl:pt-2 xl:pb-3 xl:px-10 items-center w-full h-auto border-t rounded-br-md rounded-bl-md border-gray-100">
-        <p className="flex space-x-2 text-5 xl:text-4 tracking-wide leading-2 xl:leading-8 text-gray-500 items-center">
+      <div className="pt-3 pb-3 px-5 xl:pt-2 xl:pb-2 xl:px-10 items-center w-full h-auto border-t rounded-br-md rounded-bl-md border-gray-100 dark:border-gray-700">
+        <p className="flex space-x-2 text-5 xl:text-4 tracking-wide leading-2 xl:leading-8 text-gray-500 dark:text-gray-400 items-center">
           <span
             className="flex items-center space-x-1 text-red-400 hover:text-red-500 cursor-pointer rounded-md"
             onClick={() => {

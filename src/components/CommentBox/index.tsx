@@ -6,12 +6,12 @@ const NexmentDiv = dynamic(() => import('~/components/Nexment'), {
 
 export default function CommentBox() {
   return (
-    <div className="xl:mt-5 bg-white p-5 xl:py-11 xl:px-20 xl:shadow-sm xl:border xl:rounded-xl">
+    <div className="xl:mt-5 bg-white dark:bg-gray-800 dark:border-gray-800 p-5 xl:py-11 xl:px-20 xl:shadow-sm xl:border xl:rounded-xl">
       <div className="mb-8">
-        <h1 className="flex text-3xl font-medium text-gray-700 tracking-wide items-center">
+        <h1 className="flex text-3xl font-medium text-gray-700 dark:text-white tracking-wide items-center">
           <span className="w-9 h-9 mr-2">{Icons.comments}</span>Comment
         </h1>
-        <p className="text-xl tracking-wide text-gray-500 mt-2 mb-5">
+        <p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 mt-2 mb-5">
           Leave a comment to join the discussion
         </p>
       </div>

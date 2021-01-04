@@ -29,9 +29,9 @@ export default function SubscriptionBox({ type }: { type: string }) {
   }
   if (type === 'sm') {
     return (
-      <div className="border shadow-sm w-full py-3 px-5 hidden xl:flex rounded-md bg-white items-center my-2 space-x-4">
+      <div className="border shadow-sm w-full py-3 px-5 hidden xl:flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2 space-x-4">
         <div>
-          <p className="text-xl tracking-wide text-gray-500 whitespace-nowrap items-center flex">
+          <p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 whitespace-nowrap items-center flex">
             <span className="w-7 h-7 mr-2">{Icons.subscribe}</span>Get post
             updates straight to your inbox
           </p>
@@ -47,7 +47,7 @@ export default function SubscriptionBox({ type }: { type: string }) {
               value={email}
               className={`${
                 processing ? 'animate-pulse' : ''
-              } text-4 px-3 py-1.5 focus:outline-none w-10/12 shadow-sm rounded-md border bg-white text-gray-500 tracking-wide`}
+              } text-4 px-3 py-1.5 focus:outline-none w-10/12 shadow-sm rounded-md border bg-white dark:bg-gray-700 dark:border-gray-700 text-gray-500 dark:text-gray-400 tracking-wide`}
               placeholder="Email address"
               onChange={(e) => {
                 setEmail(e.target.value)
@@ -64,16 +64,16 @@ export default function SubscriptionBox({ type }: { type: string }) {
     )
   } else {
     return (
-      <div className="border shadow-sm w-full p-10 lg:py-11 lg:px-20 rounded-xl bg-white items-center my-2 xl:block hidden">
+      <div className="border shadow-sm w-full p-10 lg:py-11 lg:px-20 rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2 xl:block hidden">
         <div>
-          <h1 className="flex text-3xl font-medium text-gray-700 tracking-wide items-center">
+          <h1 className="flex text-3xl font-medium text-gray-700 dark:text-white tracking-wide items-center">
             <span className="w-9 h-9 mr-2">{Icons.subscribe}</span>Subscribe
           </h1>
-          <p className="text-xl tracking-wide text-gray-500 mt-2 mb-5">
+          <p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 mt-2 mb-5">
             Get post updates straight to your inbox
           </p>
         </div>
-        <div className="w-full grid grid-cols-3 gap-3 rounded-md bg-white text-gray-500 tracking-wide">
+        <div className="w-full grid grid-cols-3 gap-3 rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 text-gray-500 dark:text-gray-400 tracking-wide">
           <input
             type="email"
             value={email}

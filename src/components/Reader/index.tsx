@@ -32,7 +32,7 @@ export default function Reader({
           }}
         ></div>
         <div
-          className={`fixed bg-white shadow-md reader overflow-y-auto overflow-hidden rounded-tl-xl rounded-tr-xl px-20 py-16 w-page mx-auto top-0 mt-28 ml-readerOffset ${
+          className={`fixed bg-white dark:bg-gray-800 dark:border-gray-800 shadow-md reader overflow-y-auto overflow-hidden rounded-tl-xl rounded-tr-xl px-20 py-16 w-page mx-auto top-0 mt-28 ml-readerOffset ${
             data.status ? 'animate-reader' : 'animate-readerOut'
           }`}
         >

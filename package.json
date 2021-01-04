@@ -41,6 +41,7 @@
     "husky": ">=4",
     "lint-staged": ">=10",
     "nexment": "^0.0.656",
+    "next-themes": "^0.0.10",
     "nextjs-progressbar": "^0.0.7",
     "postcss": "^8.2.1",
     "prettier": "^2.2.1",

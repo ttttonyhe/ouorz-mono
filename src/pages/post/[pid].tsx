@@ -22,7 +22,7 @@ export default function BlogPost({ post }: { post: any }) {
         ></link>
       </Head>
       <Page>
-        <article className="xl:shadow-sm xl:border xl:rounded-xl bg-white p-5 xl:p-20 xl:pt-20 pt-24">
+        <article className="xl:shadow-sm xl:border xl:rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 p-5 xl:p-20 xl:pt-20 pt-24">
           <div className="mb-20">
             <div className="flex mb-3">
               <Link href={`/cate/${post.post_categories[0].term_id}`}>

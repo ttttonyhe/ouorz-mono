@@ -2,10 +2,11 @@
 /* eslint-disable prettier/prettier */
 
 var flattenColorPalette = require('tailwindcss/lib/util/flattenColorPalette').default;
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: ['./src/**/*.tsx'],
-  darkMode: 'media',
+  darkMode: 'class',
   theme: {
     extend: {
       spacing: {
@@ -160,6 +161,27 @@ module.exports = {
             },
           },
         },
+        dark: {
+          css: {
+            fontSize: '16.2px',
+            a: {
+              color: colors.blue[500],
+              textDecoration: "none",
+              fontWeight: "normal",
+              '&:hover': {
+                textDecoration: "underline",
+              },
+            },
+            blockquote: {
+              fontWeight: "400",
+              justifyItems: "center",
+            },
+            h4: {
+              fontSize: "1.3em",
+            },
+            color: colors.white,
+          },
+        },
       }
     },
   },
@@ -170,6 +192,9 @@ module.exports = {
       transitionProperty: ['hover', 'focus'],
       margin: ['hover'],
       borderWidth: ['first'],
+      opacity: ['dark'],
+      typography: ['dark'],
+      borderRadius: ['hover']
     },
   },
   plugins: [

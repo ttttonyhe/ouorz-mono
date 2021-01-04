@@ -21,7 +21,7 @@ export default function Friends({ friends }: { friends: any }) {
         <div className="xl:mt-20 mt-0 xl:pt-0 pt-24">
           <div className="mb-4 flex items-center">
             <div className="flex-1 items-center">
-              <h1 className="font-medium text-1 text-black tracking-wide">
+              <h1 className="font-medium text-1 text-black dark:text-white tracking-wide">
                 <span className="hover:animate-spin inline-block cursor-pointer mr-3">
                   🧑‍🤝‍🧑
                 </span>
@@ -30,7 +30,7 @@ export default function Friends({ friends }: { friends: any }) {
             </div>
             <div className="h-full flex justify-end whitespace-nowrap items-center mt-2">
               <div className="flex-1 px-5">
-                <p className="text-xl text-gray-500">
+                <p className="text-xl text-gray-500 dark:text-gray-400">
                   <Link href="/">
                     <a className="flex items-center">
                       <span className="w-6 h-6 mr-2">{Icons.left}</span>Home
@@ -40,8 +40,8 @@ export default function Friends({ friends }: { friends: any }) {
               </div>
             </div>
           </div>
-          <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white items-center my-2">
-            <p className="text-xl tracking-wide text-gray-500 items-center">
+          <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
+            <p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
               Email me at tony.hlp#hotmail.com for link exchange
             </p>
           </div>
@@ -50,7 +50,7 @@ export default function Friends({ friends }: { friends: any }) {
           {friends.map((item, index) => {
             return (
               <div
-                className="cursor-pointer hover:shadow-md transition-shadow shadow-sm border bg-white items-center rounded-md px-2 py-4"
+                className="cursor-pointer hover:shadow-md transition-shadow shadow-sm border bg-white dark:bg-gray-800 dark:border-gray-800 items-center rounded-md px-2 py-4"
                 key={index}
               >
                 <div className="w-full px-4 items-center flex-1">
@@ -64,12 +64,12 @@ export default function Friends({ friends }: { friends: any }) {
                         src={item.post_img.url}
                         width={20}
                         height={20}
-                        className="rounded-full border border-gray-200"
+                        className="rounded-full border border-gray-200 dark:border-gray-500"
                       ></img>
                       <span className="ml-2">{item.post_title}</span>
                     </h1>
                     <p
-                      className="text-4 text-gray-500 tracking-wide whitespace-nowrap overflow-hidden overflow-ellipsis"
+                      className="text-4 text-gray-500 dark:text-gray-400 tracking-wide whitespace-nowrap overflow-hidden overflow-ellipsis"
                       dangerouslySetInnerHTML={{
                         __html: DesSplit({
                           str: item.post_excerpt.four,

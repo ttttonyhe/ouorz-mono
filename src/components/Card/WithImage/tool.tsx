@@ -19,11 +19,11 @@ export const CardTool = ({
   setReader?: any
 }) => {
   return (
-    <div className="w-full whitespace-nowrap xl:grid xl:grid-cols-8 xl:gap-3 rounded-md shadow-sm border border-gray-200 overflow-hidden">
+    <div className="w-full whitespace-nowrap xl:grid xl:grid-cols-8 xl:gap-3 rounded-md shadow-sm border border-gray-200 dark:border-gray-600 dark:bg-gray-600 overflow-hidden">
       <div
         className={`col-start-1 col-end-2 rounded-tl-md rounded-bl-md ${
           item.post_metas.fineTool.itemImgBorder
-            ? 'border-r border-gray-200'
+            ? 'border-r border-gray-200 dark:border-gray-600'
             : ''
         }`}
         style={{
@@ -35,10 +35,10 @@ export const CardTool = ({
       ></div>
       <div className="col-start-2 col-end-9 grid grid-cols-2 items-center pl-3 xl:pl-0 py-2 pr-3">
         <div className="justify-center items-center">
-          <h2 className="text-xl font-medium text-gray-600">
+          <h2 className="text-xl font-medium text-gray-600 dark:text-gray-200">
             {item.post_metas.fineTool.itemName}
           </h2>
-          <p className="text-gray-500 overflow-ellipsis text-5">
+          <p className="text-gray-500 dark:text-gray-400 overflow-ellipsis text-5">
             {item.post_metas.fineTool.itemDes}
           </p>
         </div>
@@ -70,7 +70,7 @@ export const CardTool = ({
 export default function CardWithImageTool({ item, sticky, setReader }: Props) {
   return (
     <div
-      className={`w-full shadow-sm bg-white rounded-md border ${
+      className={`w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border ${
         sticky ? 'border-t-4 border-t-yellow-200 mb-6' : 'mb-6'
       }`}
     >
@@ -79,13 +79,13 @@ export default function CardWithImageTool({ item, sticky, setReader }: Props) {
         <div className="mt-6">
           <Link href={`/post/${item.id}`}>
             <a>
-              <h1 className="font-medium text-2 xl:text-listTitle text-gray-700 tracking-wider mb-5">
+              <h1 className="font-medium text-2 xl:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5">
                 {item.post_title}
               </h1>
             </a>
           </Link>
           <p
-            className="text-gray-500 text-4 xl:text-3 tracking-wide leading-2 xl:leading-8"
+            className="text-gray-500 dark:text-gray-400 text-4 xl:text-3 tracking-wide leading-2 xl:leading-8"
             dangerouslySetInnerHTML={{
               __html: DesSplit({ str: item.post_excerpt.four, n: 150 }),
             }}

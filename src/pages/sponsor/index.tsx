@@ -21,7 +21,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
         <div className="xl:mt-20 mt-0 xl:pt-0 pt-24">
           <div className="mb-4 flex items-center">
             <div className="flex-1 items-center">
-              <h1 className="font-medium text-1 text-black tracking-wide">
+              <h1 className="font-medium text-1 text-black dark:text-white tracking-wide">
                 <span className="hover:animate-spin inline-block cursor-pointer mr-3">
                   ☕
                 </span>
@@ -30,7 +30,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
             </div>
             <div className="h-full flex justify-end whitespace-nowrap items-center mt-2">
               <div className="flex-1 px-5">
-                <p className="text-xl text-gray-500">
+                <p className="text-xl text-gray-500 dark:text-gray-400">
                   <Link href="/">
                     <a className="flex items-center">
                       <span className="w-6 h-6 mr-2">{Icons.left}</span>Home
@@ -40,8 +40,8 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
               </div>
             </div>
           </div>
-          <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white items-center my-2">
-            <p className="text-xl tracking-wide text-gray-500 items-center">
+          <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
+            <p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
               I am developing and maintaining various open source projects and
               hosting a podcast about tech, life and career
             </p>
@@ -52,19 +52,19 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
             title="Github"
             des="HelipengTony"
             icon="githubLine"
-            className="text-black"
+            className="text-black dark:text-white"
             href="https://github.com/HelipengTony"
           ></PageCard>
           <PageCard
             title="Podcast"
             des="Known Unknowns"
             icon="mic"
-            className="text-black"
+            className="text-black dark:text-white"
             href="https://anchor.fm/the-known-unknowns"
           ></PageCard>
         </div>
-        <div className="border shadow-sm w-full p-7 rounded-md bg-white items-center my-2 mb-10">
-          <p className="text-xl tracking-wide text-gray-500 items-center">
+        <div className="border shadow-sm w-full p-7 rounded-md bg-white dark:bg-gray-700 dark:border-gray-700 items-center my-2 mb-10">
+          <p className="text-xl tracking-wide text-gray-500 dark:text-gray-300 items-center">
             If you{"'"}ve found my projects or podcast useful or interesting,
             please consider supporting me through the following ways:
           </p>
@@ -94,18 +94,18 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
             ></PageCard>
           </div>
         </div>
-        <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white items-center my-2">
-          <p className="text-xl tracking-wide text-gray-500 items-center">
+        <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
+          <p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
             Contact me after finishing your payment, and I{"'"}ll put your name
             on the list below
           </p>
         </div>
-        <div className="mt-5 grid grid-cols-2 gap-4">
+        <div className="mt-5 grid grid-cols-2 gap-4" data-cy="sponsorsItems">
           {sponsors.map((item, index) => {
             return (
               <div
                 key={index}
-                className="cursor-pointer hover:shadow-md transition-shadow shadow-sm border py-4 px-5 bg-white flex items-center rounded-md"
+                className="cursor-pointer hover:shadow-md transition-shadow shadow-sm border py-4 px-5 bg-white dark:bg-gray-800 dark:border-gray-800 flex items-center rounded-md"
               >
                 <div className="w-full flex items-center whitespace-nowrap overflow-hidden overflow-ellipsis">
                   <h1 className="flex-1 items-center text-xl tracking-wide font-medium">
@@ -115,7 +115,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
                     <span className="hidden xl:flex">
                       {item.date}&nbsp;|&nbsp;
                     </span>
-                    <span className="text-gray-700">
+                    <span className="text-gray-700 dark:text-white">
                       {item.unit}
                       {item.amount}
                     </span>

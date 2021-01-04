@@ -27,8 +27,8 @@ export default function Header() {
   return (
     <header
       id="header"
-      className={`leading-14 xl:border-0 border-b border-gray-200 transition-all xl:bg-transparent bg-white duration-300 grid grid-cols-6 fixed top-0 h-auto w-full xl:py-4 xl:px-5 py-2 px-1 z-10 ${
-        scrollPosition > 0 ? 'xl:bg-white shadow-header' : ''
+      className={`leading-14 xl:border-0 border-b border-gray-200 dark:border-gray-800 transition-all xl:bg-transparent bg-white duration-300 grid grid-cols-6 fixed top-0 h-auto w-full xl:py-4 xl:px-5 py-2 px-1 z-10 ${
+        scrollPosition > 0 ? 'xl:bg-white dark:bg-gray-800 shadow-header' : ''
       }`}
     >
       <div className="col-start-1 col-end-2 flex xl:space-x-2">
@@ -72,7 +72,7 @@ export default function Header() {
             router.push('/')
           }}
         >
-          <div className="flex-shrink-0 h-7 w-7 border rounded-full border-gray-300">
+          <div className="flex-shrink-0 h-7 w-7 border rounded-full border-gray-300 dark:border-gray-500">
             <img
               className="rounded-full"
               src="/tony.jpg"
@@ -82,7 +82,7 @@ export default function Header() {
             />
           </div>
           <div className="text-2 font-medium text-black">
-            <h3 className="text-gray-700">TonyHe</h3>
+            <h3 className="text-gray-700 dark:text-gray-300">TonyHe</h3>
           </div>
         </div>
       </div>

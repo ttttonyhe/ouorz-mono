@@ -19,7 +19,7 @@ export default function Pages() {
         <div className="xl:mt-20 mt-0 xl:pt-0 pt-24">
           <div className="mb-5 flex items-center">
             <div className="flex-1 items-center">
-              <h1 className="font-medium text-1 text-black tracking-wide">
+              <h1 className="font-medium text-1 text-black dark:text-white tracking-wide">
                 <span className="hover:animate-spin inline-block cursor-pointer mr-3">
                   📑
                 </span>
@@ -28,7 +28,7 @@ export default function Pages() {
             </div>
             <div className="h-full flex justify-end whitespace-nowrap items-center mt-2">
               <div className="flex-1 px-5">
-                <p className="text-xl text-gray-500">
+                <p className="text-xl text-gray-500 dark:text-gray-400">
                   <Link href="/">
                     <a className="flex items-center">
                       <span className="w-6 h-6 mr-2">{Icons.left}</span>Home
@@ -38,8 +38,8 @@ export default function Pages() {
               </div>
             </div>
           </div>
-          <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white items-center my-2">
-            <p className="text-xl tracking-wide text-gray-500 items-center">
+          <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
+            <p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
               Explore and discover all the special pages and content
             </p>
           </div>

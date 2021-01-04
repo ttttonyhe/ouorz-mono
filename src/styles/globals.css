@@ -14,6 +14,7 @@
   overflow-x: auto;
   line-height: 1.6;
   color: #212529;
+  @apply dark:text-white;
   list-style-type: none;
   counter-reset: item;
 }
@@ -36,6 +37,8 @@
   background-color: rgba(195, 218, 254, 0.43);
   border-radius: 9999px;
   color: rgba(85, 134, 210, 0.8);
+  @apply dark:text-blue-400;
+  @apply dark:bg-blue-900;
   font-size: 11.4px;
   font-weight: 700;
   content: counter(item);
@@ -62,12 +65,18 @@
   padding: 20px 25px 16px 75px;
   @apply rounded-md;
   border: 2px solid #e9e9e9;
+  @apply dark:border-gray-500;
   color: #777;
 }
 
 .prose blockquote p {
   margin: 0px;
   color: #777 !important;
+}
+
+.dark .prose blockquote p {
+  margin: 0px;
+  color: #ffffff !important;
 }
 
 .prose img {
@@ -81,6 +90,7 @@ h3,
 h4,
 h5 {
   @apply tracking-wide;
+  @apply dark:text-white;
 }
 .prose .warp-post-embed {
   position: relative;
@@ -117,6 +127,7 @@ h5 {
   font-size: 13px;
   font-style: normal;
   color: #888;
+  @apply dark:text-gray-400;
   line-height: 1.5;
   margin-bottom: 10px;
   margin-top: 0px;
@@ -125,6 +136,8 @@ h5 {
 .prose .warp-post-embed .embed-content b {
   background: #eee;
   color: #999;
+  @apply dark:text-gray-200;
+  @apply dark:bg-gray-600;
   font-weight: 500 !important;
   padding: 1px 8px 3px 9px;
   border-radius: 50px;
@@ -132,6 +145,7 @@ h5 {
 
 .prose .warp-post-embed .embed-content h2 {
   color: rgba(0, 0, 0, 0.8);
+  @apply dark:text-gray-100;
   display: block;
   margin-bottom: 8px;
   margin-top: 4%;
@@ -160,6 +174,7 @@ h5 {
 
 .prose ul li::before {
   @apply bg-gray-800;
+  @apply dark:bg-white;
   @apply w-3;
   @apply h-3;
   margin-top: -0.125rem;
@@ -179,6 +194,7 @@ h5 {
 .toc-active {
   background-color: #f7f8f9;
   @apply rounded-md;
+  @apply dark:bg-gray-700;
 }
 
 .tour div:nth-child(2) {
@@ -188,14 +204,25 @@ h5 {
 
 .prose h5 {
   color: #111827;
+  @apply dark:text-white;
   font-weight: 600;
   margin-bottom: 0.6em;
   line-height: 1.6;
   font-size: 1.1em;
 }
 
+.prose strong {
+  @apply dark:text-white;
+}
+
 .prose table {
   border: 1px solid #e5e7eb;
+  @apply dark:text-white;
+  @apply dark:border-gray-500;
+}
+
+.prose tbody tr {
+  @apply dark:border-b-gray-500;
 }
 
 .prose tbody tr td {
@@ -203,6 +230,7 @@ h5 {
   @apply whitespace-nowrap;
   @apply overflow-hidden;
   @apply overflow-ellipsis;
+  @apply dark:border-r-gray-500;
 }
 
 .prose tbody tr td:last-child {
@@ -224,6 +252,7 @@ h5 {
   top: 0px;
   left: 0px;
   background: #f7f8f9;
+  @apply dark:bg-gray-900;
 }
 
 .stop-scrolling {
@@ -257,10 +286,6 @@ h5 {
   font-size: 14px !important;
 }
 
-.prose code {
-  padding: 12px 0px !important;
-}
-
 .nexment-comments-div .nexment-comments-title {
   width: 85% !important;
 }
@@ -269,4 +294,169 @@ h5 {
   border-left: 1px solid rgba(229, 231, 235, 1);
   @apply rounded-tl-none;
   @apply rounded-bl-none;
+}
+
+.rhap_container {
+  @apply dark:bg-gray-800;
+}
+
+.rhap_time {
+  @apply dark:text-gray-400;
+}
+
+.rhap_progress-bar-show-download {
+  @apply dark:bg-gray-700;
+}
+
+.rhap_progress-filled {
+  @apply dark:bg-gray-500;
+}
+
+.rhap_download-progress {
+  @apply dark:bg-gray-400;
+}
+
+.rhap_progress-indicator {
+  @apply dark:bg-gray-600;
+}
+
+.rhap_main-controls-button {
+  @apply dark:text-gray-500;
+}
+
+.rhap_volume-bar {
+  @apply dark:bg-gray-700;
+}
+
+.rhap_volume-button {
+  @apply dark:text-gray-500;
+}
+
+.rhap_volume-indicator {
+  @apply dark:bg-gray-600;
+}
+
+.rhap_repeat-button {
+  @apply dark:text-gray-500;
+}
+
+.reader::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.prose pre {
+  @apply dark:bg-gray-700;
+}
+
+.prose pre code::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.nexment-comment-area .nexment-comment-area-top input {
+  @apply dark:bg-gray-700;
+  @apply dark:border-gray-500;
+}
+
+.nexment-comment-area .nexment-comment-area-middle textarea {
+  @apply dark:bg-gray-700;
+  @apply dark:border-gray-500;
+}
+
+.nexment-comment-area .nexment-comment-area-bottom div:nth-child(2) button {
+  @apply dark:bg-blue-800;
+}
+
+.nexment-comment-area
+  .nexment-comment-area-bottom
+  div:nth-child(2)
+  button:hover {
+  @apply dark:bg-blue-700;
+}
+
+.nexment-comment-area {
+  @apply dark:bg-gray-600;
+  @apply dark:border-gray-600;
+}
+
+.nexment-header h1 {
+  @apply dark:text-white;
+}
+
+.nexment-header {
+  @apply items-center;
+  @apply dark:border-gray-700;
+}
+
+.nexment-comments-div .nexment-comments-title h5 {
+  @apply dark:text-white;
+}
+
+.nexment-comments-div .nexment-comments-title .nexment-comments-content p {
+  @apply dark:text-gray-100;
+}
+
+.nexment-comments-list-item {
+  @apply dark:border-gray-700;
+}
+
+.nexment-comments-reply-list {
+  @apply dark:border-gray-700;
+}
+
+.dark .nexment-inner-reply-list {
+  border-color: rgba(55, 65, 81, 1) !important;
+}
+
+.nexment-comments-reply-list .nexment-comments-div:hover {
+  @apply dark:bg-gray-700;
+}
+
+.react-tiny-popover-container {
+  @apply dark:bg-gray-700;
+  @apply dark:text-white;
+  @apply dark:border-gray-500;
+}
+
+.nexment-comment-area
+  .nexment-comment-area-bottom
+  div:nth-child(1)
+  .nexment-replying {
+  @apply dark:bg-gray-500;
+}
+
+.nexment-comment-area
+  .nexment-comment-area-bottom
+  div:nth-child(1)
+  .nexment-replying
+  em {
+  @apply dark:text-gray-400;
+}
+
+.nexment-popover-text b {
+  @apply dark:text-white;
+}
+
+.nexment-comment-area .nexment-comment-area-middle .nexment-md-preview {
+  @apply dark:text-white;
+  @apply dark:border-gray-500;
+}
+
+.nexment-popover p {
+  @apply dark:text-white;
+  @apply mt-4;
+}
+
+.nexment-emoji-container .nexment-emoji-section .nexment-emoji-section-header {
+  @apply dark:border-gray-500;
+}
+
+.nexment-emoji-container .nexment-emoji-section:nth-child(1) {
+  @apply dark:border-gray-500;
+}
+
+.nexment-emoji-container
+  .nexment-emoji-section
+  .nexment-emoji-section-header
+  b {
+  @apply dark:text-white;
 }

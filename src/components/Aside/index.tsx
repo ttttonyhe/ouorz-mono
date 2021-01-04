@@ -104,14 +104,14 @@ export default function Aside({ preNext }: { preNext: any }) {
     if (a || b) {
       return (
         <div
-          className={`bg-white text-gray-700 shadow-sm border rounded-xl mt-5 text-xl grid ${
+          className={`bg-white text-gray-700 dark:bg-gray-800 dark:border-gray-800 dark:text-gray-400 shadow-sm border rounded-xl mt-5 text-xl grid ${
             a && b ? 'grid-cols-2' : 'grid-cols-1'
           } tour`}
         >
           {a && (
             <Link href={`/post/${preNext.prev[0]}`}>
               <div
-                className={`px-6 py-3 flex items-center justify-center cursor-pointer hover:bg-gray-50 ${
+                className={`px-6 py-3 flex items-center justify-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 ${
                   b ? 'rounded-tl-xl rounded-bl-xl' : 'rounded-xl'
                 }`}
               >
@@ -122,7 +122,7 @@ export default function Aside({ preNext }: { preNext: any }) {
           {b && (
             <Link href={`/post/${preNext.next[0]}`}>
               <div
-                className={`px-6 py-3 flex items-center justify-center cursor-pointer hover:bg-gray-50 ${
+                className={`px-6 py-3 flex items-center justify-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 ${
                   a ? 'rounded-tr-xl rounded-br-xl' : 'rounded-xl'
                 }`}
               >
@@ -155,8 +155,8 @@ export default function Aside({ preNext }: { preNext: any }) {
     <div className="w-toc fixed top-32 -ml-82 hidden xl:block">
       {headersEl.length ? (
         <div>
-          <div className="shadow-sm border rounded-xl bg-white">
-            <h1 className="flex text-2xl font-medium text-gray-700 tracking-wide items-center px-6 py-3 border-b border-gray-200">
+          <div className="shadow-sm border rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800">
+            <h1 className="flex text-2xl font-medium text-gray-700 dark:text-white tracking-wide items-center px-6 py-3 border-b border-gray-200 dark:border-gray-700">
               <span className="w-6 h-6 mr-2">{Icons.toc}</span>
               TOC
             </h1>
@@ -166,8 +166,10 @@ export default function Aside({ preNext }: { preNext: any }) {
                   return (
                     <li
                       className={`${
-                        item[1] !== 0 ? 'toc-sub' : ''
-                      } py-2 text-gray-800 whitespace-nowrap overflow-ellipsis overflow-hidden cursor-pointer border-gray-100 hover:bg-gray-50`}
+                        item[1] !== 0
+                          ? 'toc-sub hover:rounded-tl-none hover:rounded-bl-none'
+                          : ''
+                      } py-2 text-gray-800 dark:text-gray-400 whitespace-nowrap overflow-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 hover:rounded-md dark:hover:bg-gray-700`}
                       id={`header${item[0]}`}
                       style={{
                         paddingLeft: '10px',

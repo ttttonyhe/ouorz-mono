@@ -15,12 +15,9 @@ export default function Button(props: Props) {
     case 'default':
       return (
         <button
-          className={
-            className
-              ? 'w-full py-2 px-7 shadow-sm border border-gray-300 hover:shadow-inner rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white flex ' +
-                className
-              : 'w-full py-2 px-7 shadow-sm border border-gray-300 hover:shadow-inner rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white flex'
-          }
+          className={`w-full py-2 px-7 shadow-sm border border-gray-300 dark:border-gray-800 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:border-gray-700 hover:shadow-inner rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white flex ${
+            className ? className : ''
+          }`}
           {...rest}
         >
           {icon && (
@@ -34,12 +31,9 @@ export default function Button(props: Props) {
     case 'menu-default':
       return (
         <button
-          className={
-            className
-              ? 'w-max py-2 px-5 hover:bg-menu rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex text-gray-500 ' +
-                className
-              : 'w-max py-2 px-5 hover:bg-menu rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex text-gray-500'
-          }
+          className={`w-max py-2 px-5 hover:bg-menu dark:hover:bg-gray-800 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex text-gray-500 dark:text-gray-400 ${
+            className ? className : ''
+          }`}
           {...rest}
         >
           {icon && (
@@ -53,12 +47,9 @@ export default function Button(props: Props) {
     case 'primary':
       return (
         <button
-          className={
-            className
-              ? 'w-full py-2 px-7 shadow-sm border border-blue-500 bg-blue-500 hover:bg-blue-600 hover:border-blue-600 hover:shadow-inner text-white rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex ' +
-                className
-              : 'w-full py-2 px-7 shadow-sm border border-blue-500 bg-blue-500 hover:bg-blue-600 hover:border-blue-600 hover:shadow-inner text-white rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex'
-          }
+          className={`w-full py-2 px-7 shadow-sm border border-blue-500 dark:border-blue-900 dark:bg-blue-900 dark:text-gray-300  bg-blue-500 hover:bg-blue-600 hover:border-blue-600 dark:hover:bg-blue-800 dark:hover:border-blue-800 hover:shadow-inner text-white rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex ${
+            className ? className : ''
+          }`}
           {...rest}
         >
           {icon && (
@@ -72,12 +63,9 @@ export default function Button(props: Props) {
     case 'menu-primary':
       return (
         <button
-          className={
-            className
-              ? 'w-max py-2 px-5 hover:bg-pink-100 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex text-pink-500 ' +
-                className
-              : 'w-max py-2 px-5 hover:bg-pink-100 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex text-pink-500'
-          }
+          className={`w-max py-2 px-5 hover:bg-pink-100 dark:hover:bg-pink-900 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex text-pink-500 dark:text-pink-400 ${
+            className ? className : ''
+          }`}
           {...rest}
         >
           {icon && (

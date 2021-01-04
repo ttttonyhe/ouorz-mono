@@ -57,7 +57,7 @@ export default function Search({
               {Icons.search}
             </span>
             <input
-              className="shadow-md rounded-lg hover:shadow-lg bg-white text-3 xl:text-2 w-full h-auto px-12 xl:px-14 py-3 focus:outline-none text-gray-700"
+              className="shadow-md rounded-lg hover:shadow-lg bg-white dark:bg-gray-800 dark:border-gray-800 text-3 xl:text-2 w-full h-auto px-12 xl:px-14 py-3 focus:outline-none text-gray-800 dark:text-gray-400"
               placeholder="Blog Post Search"
               value={searchContent}
               onChange={(e) => {

@@ -30,12 +30,12 @@ export default function PageCard({
   }
   return (
     <div
-      className="cursor-pointer hover:shadow-md transition-shadow shadow-sm border py-3 px-4 bg-white flex items-center rounded-md"
+      className="cursor-pointer hover:shadow-md transition-shadow shadow-sm border py-3 px-4 bg-white dark:bg-gray-800 dark:border-gray-800 flex items-center rounded-md"
       onClick={handleClick}
     >
       {icon && (
         <div
-          className={`xl:block hidden w-20 h-auto border-r border-r-gray-200 pr-3 mr-3 ${
+          className={`xl:block hidden w-20 h-auto border-r border-r-gray-200 dark:border-r-gray-600 pr-3 mr-3 ${
             className ? className : ''
           }`}
         >
@@ -59,7 +59,7 @@ export default function PageCard({
           )}
           {title}
         </h1>
-        <p className="text-4 text-gray-600 tracking-wide whitespace-nowrap overflow-hidden overflow-ellipsis">
+        <p className="text-4 text-gray-600 dark:text-gray-400 tracking-wide whitespace-nowrap overflow-hidden overflow-ellipsis">
           {des}
         </p>
       </div>

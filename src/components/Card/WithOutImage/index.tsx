@@ -11,7 +11,7 @@ interface Props {
 
 export default function CardWithOutImage({ item, sticky, setReader }: Props) {
   return (
-    <div className="w-full shadow-sm bg-white rounded-md border mb-6">
+    <div className="w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6">
       <div className="p-5 xl:p-10">
         <div className="col-span-2 col-end-4">
           <div className="grid grid-cols-4 items-center">
@@ -39,13 +39,13 @@ export default function CardWithOutImage({ item, sticky, setReader }: Props) {
           <div className="mt-6">
             <Link href={`/post/${item.id}`}>
               <a>
-                <h1 className="font-medium text-2 xl:text-listTitle text-gray-700 tracking-wider mb-5">
+                <h1 className="font-medium text-2 xl:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5">
                   {item.post_title}
                 </h1>
               </a>
             </Link>
             <p
-              className="text-gray-500 text-4 xl:text-3 tracking-wide leading-2 xl:leading-8"
+              className="text-gray-500 dark:text-gray-400 text-4 xl:text-3 tracking-wide leading-2 xl:leading-8"
               dangerouslySetInnerHTML={{
                 __html: DesSplit({ str: item.post_excerpt.four, n: 150 }),
               }}
