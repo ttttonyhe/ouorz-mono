@@ -44,7 +44,7 @@ yarn run dev
 
 <br/>
 
-### eployment 部署
+### Deployment 部署
 Server-side rendering
 ```bash
 yarn run build
