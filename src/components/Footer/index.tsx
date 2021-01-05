@@ -16,14 +16,14 @@ export default function Footer() {
           onClick={() => {
             setTheme(theme === 'light' ? 'dark' : 'light')
           }}
-          className="w-full p-3 shadow-sm border border-gray-300 dark:border-gray-800 hover:shadow-inner rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
+          className="w-full p-3 shadow-sm border border-gray-300 dark:border-gray-800 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
         >
           <span className="w-7 h-7">
             {theme === 'light' ? Icons.moon : Icons.sun}
           </span>
         </button>
       </div>
-      <p className="text-gray-500 text-4 tracking-wide">
+      <p className="text-gray-500 text-4 tracking-wide dark:text-gray-400">
         <a
           href="https://twitter.com/ttttonyhe"
           target="_blank"
@@ -31,7 +31,10 @@ export default function Footer() {
         >
           @ttttonyhe
         </a>{' '}
-        <span>·</span> 蜀ICP备16017417号-9
+        <span>·</span>{' '}
+        <a href="http://beian.miit.gov.cn" target="_blank" rel="noreferrer">
+          蜀ICP备16017417号-9
+        </a>
       </p>
     </footer>
   )
