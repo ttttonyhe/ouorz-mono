@@ -1,30 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+  <h1>OUORZ-NEXT</h1>
+  <p>The code that powers <a href="https://www.ouorz.com" target="_blank">www.ouorz.com</a></p>
+  <a href="https://github.com/HelipengTony/ouorz-next">
+    <img src="https://img.shields.io/github/forks/HelipengTony/ouorz-next.svg" alt="forks">
+  </a>
 
-## Getting Started
+  <a href="https://github.com/HelipengTony/ouorz-next">
+    <img src="https://img.shields.io/github/stars/HelipengTony/ouorz-next.svg" alt="stars">
+  </a>
 
-First, run the development server:
+  <a href="https://github.com/HelipengTony/ouorz-next">
+    <img src="https://img.shields.io/github/license/HelipengTony/ouorz-next.svg" alt="license">
+  </a>
 
+  <a href="https://travis-ci.com/HelipengTony/ouorz-next">
+    <img src="https://travis-ci.com/HelipengTony/ouorz-next.svg?branch=main" alt="license">
+  </a>
+</div>
+
+<br/>
+
+### ScreenShot 首页截图
+<br/>
+
+![Thumbnail_index](https://static.ouorz.com/screen-shot-ouorz-next.png)
+
+<br/>
+
+### See Also 关联项目
+- Antony-Nuxt [https://github.com/HelipengTony/antony-nuxt](https://github.com/HelipengTony/antony-nuxt)
+- Antony [https://github.com/HelipengTony/antony](https://github.com/HelipengTony/antony)
+- Tony [https://github.com/HelipengTony/tony](https://github.com/HelipengTony/tony)
+
+<br/>
+
+### Development 开发
 ```bash
-npm run dev
-# or
-yarn dev
+git clone git@github.com:HelipengTony/ouorz-next.git
+cd ouorz-next
+yarn install
+yarn run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Deployment 部署
+Server-side rendering
+```bash
+yarn run build
+yarn run start
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<br/>
