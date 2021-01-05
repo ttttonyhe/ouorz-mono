@@ -21,8 +21,6 @@
 <br/>
 
 ### ScreenShot 首页截图
-<br/>
-
 ![Thumbnail_index](https://static.ouorz.com/screen-shot-ouorz-next.png)
 
 <br/>
