@@ -13,8 +13,8 @@
     <img src="https://img.shields.io/github/license/HelipengTony/ouorz-next.svg" alt="license">
   </a>
 
-  <a href="https://travis-ci.com/HelipengTony/ouorz-next">
-    <img src="https://travis-ci.com/HelipengTony/ouorz-next.svg?branch=main" alt="license">
+  <a href="https://github.com/HelipengTony/ouorz-next">
+    <img src="https://github.com/HelipengTony/ouorz-next/workflows/Tests/badge.svg?branch=main" alt="build status">
   </a>
 </div>
 
