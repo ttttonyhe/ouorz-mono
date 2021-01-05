@@ -82,6 +82,11 @@ export default function SubscriptionBox({ type }: { type: string }) {
             onChange={(e) => {
               setEmail(e.target.value)
             }}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                doSubscribe()
+              }
+            }}
           ></input>
           {subscribed ? (
             <div className="bg-green-500 col-start-3 col-end-4 text-4 py-3 rounded-md text-center text-white">

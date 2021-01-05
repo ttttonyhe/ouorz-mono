@@ -74,14 +74,14 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
               des="helipeng_tony"
               icon="alipay"
               className="text-blue-500"
-              href="/page/765"
+              href="https://static.ouorz.com/alipay.png"
             ></PageCard>
             <PageCard
               title="Wechat Pay"
               des="Helipeng_tony"
               icon="wxpay"
               className="text-green-600"
-              href="/page/249"
+              href="https://static.ouorz.com/wechatpay.png"
             ></PageCard>
           </div>
           <div className="mt-4">
@@ -90,7 +90,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
               des="bc1qz2kgqp26wtel6n7rl0cw053pxgtwt5vrr5hyd7pqmmjfhqxex8dq8fknpx"
               iconSmall="bitcoin"
               className="text-yellow-500"
-              href="/page/249"
+              href="https://static.ouorz.com/bitcoin.jpg"
             ></PageCard>
           </div>
         </div>
