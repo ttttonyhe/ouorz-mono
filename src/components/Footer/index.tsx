@@ -4,7 +4,7 @@ import Icons from '~/components/Icons'
 
 export default function Footer() {
   const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const { setTheme, resolvedTheme } = useTheme()
 
   useEffect(() => setMounted(true), [])
 
@@ -14,12 +14,12 @@ export default function Footer() {
       <div className="fixed bottom-8 right-8 text-gray-500 dark:text-gray-300">
         <button
           onClick={() => {
-            setTheme(theme === 'light' ? 'dark' : 'light')
+            setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
           }}
           className="w-full p-3 shadow-sm border border-gray-300 dark:border-gray-800 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
         >
           <span className="w-7 h-7">
-            {theme === 'light' ? Icons.moon : Icons.sun}
+            {resolvedTheme === 'light' ? Icons.moon : Icons.sun}
           </span>
         </button>
       </div>

@@ -13,7 +13,11 @@ function App({ Component, pageProps }: AppProps) {
         options={{ showSpinner: false }}
       />
       <div className="bg-gbg dark:bg-black dark:text-white min-h-screen">
-        <ThemeProvider attribute="class">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem={true}
+        >
           <Component {...pageProps} />
         </ThemeProvider>
       </div>
