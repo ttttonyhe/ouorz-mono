@@ -260,7 +260,7 @@ h5 {
 }
 
 .reader {
-  max-height: calc(100% - 7rem) !important;
+  max-height: calc(100% - 3.8rem) !important;
 }
 
 .nexment-comment-area
@@ -474,4 +474,8 @@ h5 {
     width: 99% !important;
     height: 99% !important;
   }
+}
+
+.aside::-webkit-scrollbar {
+  width: 0 !important;
 }

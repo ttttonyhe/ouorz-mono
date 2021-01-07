@@ -44,7 +44,7 @@ export default function Search({
         ></div>
         <div
           id="searchResultsDiv"
-          className={`fixed overflow-y-auto overflow-hidden rounded-tl-xl reader rounded-tr-xl py-5 xl:py-20 xl:w-content w-full mx-auto xl:left-searchOffset top-0 mt-28 px-5 xl:px-10 ${
+          className={`fixed overflow-y-auto overflow-hidden rounded-tl-xl reader rounded-tr-xl py-5 xl:py-20 xl:w-content w-full mx-auto xl:left-searchOffset top-0 mt-20 px-5 xl:px-10 ${
             startSearching
               ? 'animate-search'
               : endSearching

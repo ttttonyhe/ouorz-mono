@@ -20,7 +20,8 @@ module.exports = {
         '10': '30px',
         '20': '60px',
         readerOffset: '-47.5px',
-        searchOffset: 'calc((100% - 680px) / 2)'
+        searchOffset: 'calc((100% - 680px) / 2)',
+        aside: 'calc(100% - 6rem)'
       },
       colors: {
         gbg: '#f6f7f8',

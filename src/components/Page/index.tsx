@@ -10,7 +10,7 @@ export default function Page(props: Props) {
   return (
     <div>
       <Header></Header>
-      <main className="w-full min-h-screen xl:w-page h-auto mx-auto pt-0 xl:pt-32">
+      <main className="w-full min-h-screen xl:w-page h-auto mx-auto pt-0 xl:pt-24">
         {children}
       </main>
       <Footer></Footer>

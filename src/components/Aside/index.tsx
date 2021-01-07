@@ -137,6 +137,69 @@ export default function Aside({ preNext }: { preNext: any }) {
     }
   }
 
+  const SubItem = ({
+    item,
+    inner,
+    recursionTimes,
+  }: {
+    item: any
+    inner: boolean
+    recursionTimes: number
+  }) => {
+    if (inner) {
+      return (
+        <div
+          className="toc-sub py-2 -my-2 text-gray-800 dark:text-gray-400 whitespace-nowrap overflow-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 hover:rounded-md dark:hover:bg-gray-700"
+          style={{
+            paddingLeft: '10px',
+            marginLeft: '10px',
+          }}
+        >
+          {recursionTimes > 0 ? (
+            <SubItem
+              item={item}
+              inner={true}
+              recursionTimes={recursionTimes - 1}
+            ></SubItem>
+          ) : (
+            item[2]
+          )}
+        </div>
+      )
+    } else {
+      return (
+        <li
+          className={`${
+            item[1] !== 0
+              ? 'toc-sub hover:rounded-tl-none hover:rounded-bl-none'
+              : ''
+          } py-2 text-gray-800 dark:text-gray-400 whitespace-nowrap overflow-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 hover:rounded-md dark:hover:bg-gray-700`}
+          id={`header${item[0]}`}
+          style={{
+            paddingLeft: '10px',
+            marginLeft: item[1] !== 0 ? `10px` : '0px',
+          }}
+          key={item[0]}
+          onClick={() => {
+            headersEl[item[0]].scrollIntoView({
+              behavior: 'smooth',
+            })
+          }}
+        >
+          {recursionTimes > 0 ? (
+            <SubItem
+              item={item}
+              inner={true}
+              recursionTimes={recursionTimes - 1}
+            ></SubItem>
+          ) : (
+            item[2]
+          )}
+        </li>
+      )
+    }
+  }
+
   useEffect(() => {
     const result = getAllHeaders()
     const handler = result[1]
@@ -152,7 +215,7 @@ export default function Aside({ preNext }: { preNext: any }) {
   }, [router.asPath])
 
   return (
-    <div className="w-toc fixed top-32 -ml-82 hidden xl:block">
+    <div className="w-toc fixed top-24 -ml-82 hidden xl:block overflow-hidden overflow-y-auto max-h-aside aside overscroll-contain">
       {headersEl.length ? (
         <div>
           <div className="shadow-sm border rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800">
@@ -162,28 +225,14 @@ export default function Aside({ preNext }: { preNext: any }) {
             </h1>
             <ul className="text-xl px-3 py-3" id="toc">
               {headersResult &&
-                headersResult.map((item) => {
+                headersResult.map((item, index) => {
                   return (
-                    <li
-                      className={`${
-                        item[1] !== 0
-                          ? 'toc-sub hover:rounded-tl-none hover:rounded-bl-none'
-                          : ''
-                      } py-2 text-gray-800 dark:text-gray-400 whitespace-nowrap overflow-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 hover:rounded-md dark:hover:bg-gray-700`}
-                      id={`header${item[0]}`}
-                      style={{
-                        paddingLeft: '10px',
-                        marginLeft: item[1] !== 0 ? `${item[1]}px` : '0px',
-                      }}
-                      key={item[0]}
-                      onClick={() => {
-                        headersEl[item[0]].scrollIntoView({
-                          behavior: 'smooth',
-                        })
-                      }}
-                    >
-                      {item[2]}
-                    </li>
+                    <SubItem
+                      key={index}
+                      item={item}
+                      inner={false}
+                      recursionTimes={item[1] / 10}
+                    ></SubItem>
                   )
                 })}
             </ul>
