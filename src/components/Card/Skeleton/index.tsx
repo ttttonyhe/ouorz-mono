@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 export default function CardSkeleton() {
   const [mounted, setMounted] = useState(false)
-  const { theme } = useTheme()
+  const { resolvedTheme } = useTheme()
 
   useEffect(() => setMounted(true), [])
 
@@ -17,8 +17,8 @@ export default function CardSkeleton() {
         width={100}
         style={{ width: '100%' }}
         height={100}
-        backgroundColor={theme === 'light' ? '#f3f3f3' : '#374151'}
-        foregroundColor={theme === 'light' ? '#ecebeb' : '#4B5563'}
+        backgroundColor={resolvedTheme === 'light' ? '#f3f3f3' : '#374151'}
+        foregroundColor={resolvedTheme === 'light' ? '#ecebeb' : '#4B5563'}
       >
         <rect x="0" y="0" rx="5" ry="5" width="31%" height="100" />
         <rect x="34%" y="0" rx="5" ry="5" width="95%" height="30" />

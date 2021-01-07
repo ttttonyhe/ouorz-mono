@@ -12,15 +12,15 @@ function App({ Component, pageProps }: AppProps) {
         height={2}
         options={{ showSpinner: false }}
       />
-      <div className="bg-gbg dark:bg-black dark:text-white min-h-screen">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem={true}
-        >
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem={true}
+      >
+        <div className="bg-gbg dark:bg-black dark:text-white min-h-screen">
           <Component {...pageProps} />
-        </ThemeProvider>
-      </div>
+        </div>
+      </ThemeProvider>
     </div>
   )
 }
