@@ -149,10 +149,12 @@ export default function Aside({ preNext }: { preNext: any }) {
     if (inner) {
       return (
         <div
-          className="toc-sub py-2 -my-2 text-gray-800 dark:text-gray-400 whitespace-nowrap overflow-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 hover:rounded-md dark:hover:bg-gray-700"
+          className={`${
+            recursionTimes == 0 ? 'border-l-0' : ''
+          }toc-sub py-2 -my-2 text-gray-800 dark:text-gray-400 whitespace-nowrap overflow-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 hover:rounded-md dark:hover:bg-gray-700`}
           style={{
-            paddingLeft: '10px',
-            marginLeft: '10px',
+            paddingLeft: recursionTimes == 0 ? '0px' : '10px',
+            marginLeft: recursionTimes == 0 ? '0px' : '10px',
           }}
         >
           {recursionTimes > 0 ? (
