@@ -460,3 +460,18 @@ h5 {
   b {
   @apply dark:text-white;
 }
+
+@media screen and (min-width: 1280px) {
+  .nexment-comments-list-item-div .rodal .rodal-dialog {
+    @apply rounded-xl;
+    width: 720px !important;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .nexment-comments-list-item-div .rodal .rodal-dialog {
+    max-height: 100vh !important;
+    width: 99% !important;
+    height: 99% !important;
+  }
+}
