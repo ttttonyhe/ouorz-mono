@@ -29,7 +29,8 @@
     "twin.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next.config.js", "src/components/Highlight/index.js"
+    "next.config.js",
+    "src/components/Highlight/index.js"
   ],
   "exclude": [
     "node_modules",
