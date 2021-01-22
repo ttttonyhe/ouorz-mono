@@ -10,6 +10,7 @@ import Aside from '~/components/Aside'
 import Link from 'next/link'
 import Label from '~/components/Label'
 import { CardTool } from '~/components/Card/WithImage/tool'
+import { DesSplit } from '~/utilities/String'
 
 export default function BlogPost({ post }: { post: any }) {
   return (
@@ -20,6 +21,10 @@ export default function BlogPost({ post }: { post: any }) {
           rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📃</text></svg>"
         ></link>
+        <meta
+          name="description"
+          content={DesSplit({ str: post.post_excerpt.four, n: 150 })}
+        ></meta>
       </Head>
       <Page>
         <article className="xl:shadow-sm xl:border xl:rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 p-5 xl:p-20 xl:pt-20 pt-24">

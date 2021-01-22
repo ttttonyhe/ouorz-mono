@@ -9,7 +9,6 @@ import Document, {
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx)
-
     return initialProps
   }
   render() {
@@ -29,6 +28,8 @@ class MyDocument extends Document {
             gtag('config', 'UA-163998158-1');`,
             }}
           ></script>
+          <meta name="robots" content="index,follow"></meta>
+          <meta name="googlebot" content="index,follow"></meta>
           <meta name="twitter:card" content="summary_large_image"></meta>
           <meta name="twitter:site" content="@ttttonyhe"></meta>
           <meta name="twitter:creator" content="@ttttonyhe"></meta>
@@ -56,7 +57,6 @@ class MyDocument extends Document {
             href="https://static.ouorz.com/ouorz-mask.ico"
           ></link>
         </Head>
-
         <body>
           <Main />
           <NextScript />

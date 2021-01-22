@@ -17,6 +17,14 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
       <Head>
         <title>TonyHe</title>
         <link rel="icon" type="image/x-icon" href="/favicon.ico"></link>
+        <meta
+          name="description"
+          content="A developer, blogger, podcaster"
+        ></meta>
+        <meta
+          name="keywords"
+          content="TonyHe, Lipeng He, Tony, Developer, Blogger, Podcaster"
+        ></meta>
       </Head>
       <Content>
         <div className="xl:mt-20 mt-0 xl:pt-0 pt-24">
