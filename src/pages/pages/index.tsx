@@ -79,7 +79,7 @@ export default function Pages() {
             des="Random but memorable"
             icon="lightBulb"
             className="text-red-400"
-            href="/friends"
+            href="https://notion.ouorz.com"
           ></PageCard>
         </div>
       </Content>
