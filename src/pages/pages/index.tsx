@@ -54,8 +54,8 @@ export default function Pages() {
             href="/page/765"
           ></PageCard>
           <PageCard
-            title="Comments"
-            des="Leave a comment"
+            title="Guestbook"
+            des="Leave your comments"
             icon="chat"
             className="text-green-400"
             href="/page/249"
@@ -69,9 +69,16 @@ export default function Pages() {
           ></PageCard>
           <PageCard
             title="Friends"
-            des="Links to my friends' sites"
+            des="Links exchanged"
             icon="people"
             className="text-pink-400"
+            href="/friends"
+          ></PageCard>
+          <PageCard
+            title="Thoughts"
+            des="Random but memorable"
+            icon="lightBulb"
+            className="text-red-400"
             href="/friends"
           ></PageCard>
         </div>

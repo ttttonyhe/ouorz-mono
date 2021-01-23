@@ -66,12 +66,7 @@ export default function Header() {
             : 'hidden'
         }
       >
-        <div
-          className="cursor-pointer mx-auto hidden xl:flex space-x-3 items-center justify-center"
-          onClick={() => {
-            router.push('/')
-          }}
-        >
+        <div className="cursor-pointer mx-auto hidden xl:flex space-x-3 items-center justify-center">
           <div className="flex-shrink-0 h-7 w-7 border rounded-full border-gray-300 dark:border-gray-500">
             <img
               className="rounded-full"
@@ -82,7 +77,9 @@ export default function Header() {
             />
           </div>
           <div className="text-2 font-medium text-black">
-            <h3 className="text-gray-700 dark:text-gray-300">TonyHe</h3>
+            <Link href="/">
+              <h3 className="text-gray-700 dark:text-gray-300">TonyHe</h3>
+            </Link>
           </div>
         </div>
       </div>

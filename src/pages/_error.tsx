@@ -20,8 +20,8 @@ function Error({ statusCode }) {
             </h1>
             <p className="text-3 xl:text-2 text-gray-500 leading-14 tracking-wide font-light">
               {statusCode
-                ? `An error ${statusCode} occurred on server`
-                : 'An error occurred on client'}
+                ? `An error with code ${statusCode} has occurred on the server`
+                : 'An error has occurred on the client'}
             </p>
             <div className="inline-block justify-center mt-4">
               <Button
