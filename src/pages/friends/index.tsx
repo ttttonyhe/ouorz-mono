@@ -89,7 +89,6 @@ export default function Friends({ friends }: { friends: any }) {
   )
 }
 
-// Get sticky posts rendered on the server side
 export const getServerSideProps: GetServerSideProps = async () => {
   const resCount = await fetch(
     getApi({

@@ -8,13 +8,11 @@ import SubscriptionBox from '~/components/SubscriptionBox'
 import Icons from '~/components/Icons'
 import Link from 'next/link'
 
-interface Sticky {
-  stickyNotFound: boolean
-  stickyPosts: any
+interface Info {
   info: { name: string; count: number; id: number }
 }
 
-export default function Cate({ stickyNotFound, stickyPosts, info }: Sticky) {
+export default function Cate({ info }: Info) {
   return (
     <div>
       <Head>
@@ -59,10 +57,7 @@ export default function Cate({ stickyNotFound, stickyPosts, info }: Sticky) {
           </div>
           <SubscriptionBox type="sm"></SubscriptionBox>
         </div>
-        <div className="xl:mt-5 mt-10">
-          {!stickyNotFound && <List posts={stickyPosts} sticky={true}></List>}
-        </div>
-        <div className="mt-5" data-cy="catePosts">
+        <div className="xl:mt-5 mt-10" data-cy="catePosts">
           <List type="cate" cate={info.id}></List>
         </div>
       </Content>
@@ -70,21 +65,8 @@ export default function Cate({ stickyNotFound, stickyPosts, info }: Sticky) {
   )
 }
 
-// Get sticky posts rendered on the server side
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const cid = context.params.cid
-  const resSticky = await fetch(
-    getApi({
-      sticky: true,
-      perPage: 10,
-      cate: `${cid}`,
-    })
-  )
-  const dataSticky = await resSticky.json()
-  let stickyNotFound = false
-  if (!dataSticky) {
-    stickyNotFound = true
-  }
 
   const resInfo = await fetch(
     getApi({
@@ -96,8 +78,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      stickyNotFound: stickyNotFound,
-      stickyPosts: dataSticky,
       info: {
         name: infoData.name,
         count: infoData.count,

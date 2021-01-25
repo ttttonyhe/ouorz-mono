@@ -78,7 +78,6 @@ export default function BlogPost({ post }: { post: any }) {
   )
 }
 
-// Get sticky posts rendered on the server side
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const pid = context.params.pid
 

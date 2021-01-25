@@ -32,11 +32,7 @@ export default function Header() {
       }`}
     >
       <div className="col-start-1 col-end-2 flex xl:space-x-2">
-        <a
-          href="https://blog.ouorz.com/feed/gn"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href="https://blog.ouorz.com/feed" target="_blank" rel="noreferrer">
           <Button
             bType="menu-default"
             icon="rss"
