@@ -25,6 +25,9 @@ export default function BlogPost({ post }: { post: any }) {
           name="description"
           content={DesSplit({ str: post.post_excerpt.four, n: 150 })}
         ></meta>
+        {post.post_img.url && (
+          <meta property="og:image" content={post.post_img.url}></meta>
+        )}
       </Head>
       <Page>
         <article className="xl:shadow-sm xl:border xl:rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 p-5 xl:p-20 xl:pt-20 pt-24">
