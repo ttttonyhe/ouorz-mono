@@ -34,7 +34,7 @@ export default function Cate({ info }: Info) {
                 <span className="hover:animate-spin inline-block cursor-pointer mr-3">
                   🗂️
                 </span>
-                {info.name}
+                <span data-cy="cateName">{info.name}</span>
               </h1>
             </div>
             <div className="h-full flex xl:justify-end justify-center whitespace-nowrap items-center mt-2">
@@ -57,7 +57,7 @@ export default function Cate({ info }: Info) {
           </div>
           <SubscriptionBox type="sm"></SubscriptionBox>
         </div>
-        <div className="xl:mt-5 mt-10" data-cy="catePosts">
+        <div className="xl:mt-5 mt-10">
           <List type="cate" cate={info.id}></List>
         </div>
       </Content>
