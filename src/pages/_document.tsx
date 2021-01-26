@@ -16,17 +16,9 @@ class MyDocument extends Document {
       <Html lang="zh-cn">
         <Head>
           <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=UA-163998158-1"
-          ></script>
-          <script
-            async
-            dangerouslySetInnerHTML={{
-              __html: `window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'UA-163998158-1');`,
-            }}
+            defer
+            src="/beacon.min.js"
+            data-cf-beacon='{"token": "53f3652793b44758819338f853f944e4"}'
           ></script>
           <meta name="robots" content="index,follow"></meta>
           <meta name="googlebot" content="index,follow"></meta>
