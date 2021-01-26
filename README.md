@@ -1,6 +1,6 @@
 <div align="center">
   <h1>OUORZ-NEXT</h1>
-  <p>The code that powers <a href="https://www.ouorz.com" target="_blank">www.ouorz.com</a></p>
+  <p>code that powers <a href="https://www.ouorz.com" target="_blank">www.ouorz.com</a></p>
   <a href="https://github.com/HelipengTony/ouorz-next">
     <img src="https://img.shields.io/github/forks/HelipengTony/ouorz-next.svg" alt="forks">
   </a>
@@ -43,10 +43,19 @@ yarn run dev
 <br/>
 
 ### Deployment 部署
-Server-side rendering
+**Next.js Server-side rendering**
+
+Modify API URLs in `src/utilities/Api/index.ts` accordingly, then run:
+
 ```bash
 yarn run build
 yarn run start
 ```
+
+<br/>
+
+**WordPress REST API configurations**
+
+Copy all the codes in `wordpress/functions.php` and add to your theme's `functions.php`
 
 <br/>
