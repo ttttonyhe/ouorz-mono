@@ -1,10 +1,17 @@
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
 import Content from '~/components/Content'
 import List from '~/components/List'
 import Top from '~/components/Top'
+import { getApi } from '~/utilities/Api'
 
-export default function Home() {
+interface Sticky {
+  stickyNotFound: boolean
+  stickyPosts: any
+}
+
+export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
   return (
     <div>
       <Head>
@@ -36,9 +43,37 @@ export default function Home() {
           <Top></Top>
         </div>
         <div className="mt-10">
+          {!stickyNotFound && <List posts={stickyPosts} sticky={true}></List>}
+        </div>
+        <div className="mt-5">
           <List type="index"></List>
         </div>
       </Content>
     </div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const resSticky = await fetch(
+    getApi({
+      sticky: true,
+      perPage: 10,
+      cateExclude: '5,2,74',
+    })
+  )
+  const dataSticky = await resSticky.json()
+
+  let stickyNotFound = false
+
+  if (!dataSticky) {
+    stickyNotFound = true
+  }
+
+  return {
+    revalidate: 12 * 60 * 60,
+    props: {
+      stickyNotFound: stickyNotFound,
+      stickyPosts: dataSticky,
+    },
+  }
 }

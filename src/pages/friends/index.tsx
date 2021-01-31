@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import Content from '~/components/Content'
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import { DesSplit } from '~/utilities/String'
 import { getApi } from '~/utilities/Api'
 import Icons from '~/components/Icons'
@@ -89,7 +89,7 @@ export default function Friends({ friends }: { friends: any }) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const resCount = await fetch(
     getApi({
       count: true,
@@ -107,6 +107,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const data = await res.json()
 
   return {
+    revalidate: 24 * 60 * 60,
     props: {
       friends: data,
     },
