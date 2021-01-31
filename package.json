@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@bahmutov/add-typescript-to-cypress": "^2.1.2",
-    "@tailwindcss/typography": "^0.3.1",
+    "@tailwindcss/typography": "^0.4.0",
     "@testing-library/cypress": "^7.0.3",
     "@types/chai": "^4.2.14",
     "@types/jest": "^26.0.19",
