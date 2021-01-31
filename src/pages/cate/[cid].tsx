@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import Content from '~/components/Content'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import List from '~/components/List'
 import { getApi } from '~/utilities/Api'
 import SubscriptionBox from '~/components/SubscriptionBox'
@@ -65,7 +65,7 @@ export default function Cate({ info }: Info) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const cid = context.params.cid
 
   const resInfo = await fetch(
@@ -77,7 +77,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const infoData = await resInfo.json()
 
   return {
-    revalidate: 12 * 60 * 60,
     props: {
       info: {
         name: infoData.name,
@@ -85,12 +84,5 @@ export const getStaticProps: GetStaticProps = async (context) => {
         id: infoData.id,
       },
     },
-  }
-}
-
-export async function getStaticPaths() {
-  return {
-    paths: ['/cate/7', '/cate/74', '/cate/120', '/cate/6', '/cate/4'],
-    fallback: true,
   }
 }
