@@ -12,13 +12,13 @@
     "cypress:run": "cypress run"
   },
   "dependencies": {
-    "next": "10.0.3",
-    "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "next": "^10.0.6",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@bahmutov/add-typescript-to-cypress": "^2.1.2",
-    "@tailwindcss/typography": "^0.3.1",
+    "@tailwindcss/typography": "^0.4.0",
     "@testing-library/cypress": "^7.0.3",
     "@types/chai": "^4.2.14",
     "@types/jest": "^26.0.19",
@@ -29,7 +29,7 @@
     "@types/react-timeago": "^4.1.1",
     "@types/smoothscroll-polyfill": "^0.3.1",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
-    "@typescript-eslint/parser": "^4.10.0",
+    "@typescript-eslint/parser": "^4.14.1",
     "autoprefixer": "^10.2.4",
     "cypress": "^6.1.0",
     "eslint": "^7.19.0",
