@@ -146,6 +146,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   return {
+    revalidate: 5 * 24 * 60 * 60,
     props: {
       sponsors: data.donors,
     },
