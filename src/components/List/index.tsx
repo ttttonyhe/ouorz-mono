@@ -1,13 +1,10 @@
-import dynamic from 'next/dynamic'
 import React, { useState } from 'react'
 
 import CardWithImage from '~/components/Card/WithImage'
 import CardWithOutImage from '~/components/Card/WithOutImage'
 import CardPlainText from '~/components/Card/PlainText'
 import CardEmpty from '~/components/Card/Empty'
-const CardSkeleton = dynamic(() => import('~/components/Card/Skeleton'), {
-  ssr: false,
-})
+import CardSkeleton from '~/components/Card/Skeleton'
 import CardClickable from '~/components/Card/Clickable'
 import Reader from '~/components/Reader'
 

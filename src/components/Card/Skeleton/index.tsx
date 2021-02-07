@@ -1,14 +1,8 @@
 import ContentLoader from 'react-content-loader'
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
 
 export default function CardSkeleton() {
-  const [mounted, setMounted] = useState(false)
   const { resolvedTheme } = useTheme()
-
-  useEffect(() => setMounted(true), [])
-
-  if (!mounted) return null
   return (
     <div className="w-full p-10 shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6 text-center">
       {/* @ts-ignore */}
@@ -17,8 +11,8 @@ export default function CardSkeleton() {
         width={100}
         style={{ width: '100%' }}
         height={100}
-        backgroundColor={resolvedTheme === 'light' ? '#f3f3f3' : '#374151'}
-        foregroundColor={resolvedTheme === 'light' ? '#ecebeb' : '#4B5563'}
+        backgroundColor={resolvedTheme === 'dark' ? '#374151' : '#f3f3f3'}
+        foregroundColor={resolvedTheme === 'dark' ? '#4B5563' : '#ecebeb'}
       >
         <rect x="0" y="0" rx="5" ry="5" width="31%" height="100" />
         <rect x="34%" y="0" rx="5" ry="5" width="95%" height="30" />

@@ -5334,6 +5334,11 @@ nextjs-progressbar@^0.0.7:
   dependencies:
     nprogress "^0.2.0"
 
+nextjs-redirect@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npm.taobao.org/nextjs-redirect/download/nextjs-redirect-5.0.0.tgz#30a05fb189a5d1fcd5d15e46fbeee7e611579fc6"
+  integrity sha1-MKBfsYml0fzV0V5G++7n5hFXn8Y=
+
 node-abi@^2.7.0:
   version "2.19.3"
   resolved "https://registry.npm.taobao.org/node-abi/download/node-abi-2.19.3.tgz?cache=0&sync_timestamp=1605684136880&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnode-abi%2Fdownload%2Fnode-abi-2.19.3.tgz#252f5dcab12dad1b5503b2d27eddd4733930282d"
