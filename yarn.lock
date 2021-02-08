@@ -6180,7 +6180,7 @@ react-floater@^0.7.2:
     react-proptype-conditional-require "^1.0.4"
     tree-changes "^0.5.1"
 
-react-h5-audio-player@^3.5.0:
+react-h5-audio-player@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/react-h5-audio-player/-/react-h5-audio-player-3.6.0.tgz#e2dc0f910d7a305e33091c76a5436d72a9561d85"
   integrity sha512-Ymf4t2nYP3fud4upPMv1biv2YhVvdlz0Y9HgtKCuxl8jx/vZSIOWuEx7dsKL2dF+JPk4I2rNadlXYtZ0GJalGw==
