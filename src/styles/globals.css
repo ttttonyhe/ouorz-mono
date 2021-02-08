@@ -1,3 +1,7 @@
+body {
+  overflow-y: overlay;
+}
+
 .nexment-admin-badge {
   display: none !important;
 }
