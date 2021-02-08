@@ -25,7 +25,7 @@
     "@types/jest": "^26.0.19",
     "@types/mocha": "^8.2.0",
     "@types/node": "^14.14.14",
-    "@types/react": "^17.0.0",
+    "@types/react": "^17.0.1",
     "@types/react-highlight": "^0.12.2",
     "@types/react-timeago": "^4.1.1",
     "@types/smoothscroll-polyfill": "^0.3.1",
