@@ -58,7 +58,7 @@
     "tailwindcss": "^2.0.2",
     "ts-loader": "^8.0.15",
     "typescript": "^4.1.3",
-    "webpack": "^5.19.0"
+    "webpack": "^5.21.2"
   },
   "husky": {
     "hooks": {
