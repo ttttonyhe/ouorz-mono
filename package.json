@@ -30,7 +30,7 @@
     "@types/react-timeago": "^4.1.1",
     "@types/smoothscroll-polyfill": "^0.3.1",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
-    "@typescript-eslint/parser": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.2",
     "autoprefixer": "^10.2.4",
     "cypress": "^6.4.0",
     "eslint": "^7.19.0",
