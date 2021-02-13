@@ -1,6 +1,7 @@
 import Button from '~/components/Button'
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Search from '~/components/Search'
 
@@ -64,12 +65,13 @@ export default function Header() {
       >
         <div className="cursor-pointer mx-auto hidden xl:flex space-x-3 items-center justify-center">
           <div className="flex-shrink-0 h-7 w-7 border rounded-full border-gray-300 dark:border-gray-500">
-            <img
+            <Image
               className="rounded-full"
               src="/tony.jpg"
-              alt="Logo"
-              height="100%"
-              width="100%"
+              alt="Site Logo"
+              height={18.77}
+              width={18.77}
+              layout="fixed"
             />
           </div>
           <div className="text-2 font-medium text-black">

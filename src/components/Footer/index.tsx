@@ -13,6 +13,7 @@ export default function Footer() {
     <footer className="border-gray-200 dark:border-gray-700 dark:bg-gray-800 border-t border-b text-center py-4 mt-20 bg-white">
       <div className="fixed bottom-8 right-8 text-gray-500 dark:text-gray-300">
         <button
+          aria-label="change theme"
           onClick={() => {
             setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
           }}

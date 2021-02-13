@@ -6,6 +6,7 @@ import { DesSplit } from '~/utilities/String'
 import { getApi } from '~/utilities/Api'
 import Icons from '~/components/Icons'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Friends({ friends }: { friends: any }) {
   return (
@@ -61,12 +62,12 @@ export default function Friends({ friends }: { friends: any }) {
                     rel="noreferrer"
                   >
                     <h1 className="flex items-center text-2xl tracking-wide font-medium mb-0.5">
-                      <img
+                      <Image
                         src={item.post_img.url}
                         width={20}
                         height={20}
                         className="rounded-full border border-gray-200 dark:border-gray-500"
-                      ></img>
+                      ></Image>
                       <span className="ml-2">{item.post_title}</span>
                     </h1>
                     <p
