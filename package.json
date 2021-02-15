@@ -39,7 +39,7 @@
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
     "highlight.js": "^10.5.0",
-    "husky": ">=4",
+    "husky": ">=5",
     "lint-staged": ">=10",
     "nexment": "^0.0.656",
     "next-themes": "^0.0.10",
