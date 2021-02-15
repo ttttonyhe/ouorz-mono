@@ -29,8 +29,8 @@
     "@types/react-highlight": "^0.12.2",
     "@types/react-timeago": "^4.1.1",
     "@types/smoothscroll-polyfill": "^0.3.1",
+    "@typescript-eslint/parser": "^4.15.0",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
-    "@typescript-eslint/parser": "^4.14.2",
     "autoprefixer": "^10.2.4",
     "cypress": "^6.4.0",
     "eslint": "^7.20.0",
@@ -49,7 +49,7 @@
     "prettier": "^2.2.1",
     "prettier-eslint": "^12.0.0",
     "react-content-loader": "^6.0.1",
-    "react-h5-audio-player": "^3.6.0",
+    "react-h5-audio-player": "^3.6.1",
     "react-highlight": "^0.13.0",
     "react-infinite-scroll-component": "^6.0.0",
     "react-timeago": "^5.2.0",
@@ -58,7 +58,7 @@
     "tailwindcss": "^2.0.3",
     "typescript": "^4.1.5",
     "ts-loader": "^8.0.17",
-    "webpack": "^5.21.2"
+    "webpack": "^5.22.0"
   },
   "husky": {
     "hooks": {
