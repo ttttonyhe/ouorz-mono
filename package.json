@@ -49,7 +49,7 @@
     "prettier": "^2.2.1",
     "prettier-eslint": "^12.0.0",
     "react-content-loader": "^6.0.1",
-    "react-h5-audio-player": "^3.6.0",
+    "react-h5-audio-player": "^3.6.1",
     "react-highlight": "^0.13.0",
     "react-infinite-scroll-component": "^6.0.0",
     "react-timeago": "^5.2.0",
