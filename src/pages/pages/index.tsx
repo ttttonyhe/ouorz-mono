@@ -81,6 +81,13 @@ export default function Pages() {
             className="text-red-400"
             href="https://notion.ouorz.com"
           ></PageCard>
+          <PageCard
+            title="Podcast"
+            des="Known Unknowns"
+            icon="mic"
+            className="text-indigo-400"
+            href="https://kukfm.com"
+          ></PageCard>
         </div>
       </Content>
     </div>
