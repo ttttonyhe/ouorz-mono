@@ -18,6 +18,17 @@ export default function Search({
     false
   )
 
+  const terminateSearch = () => {
+    setEndSearching(true)
+    setStartSearching(false)
+    setTimeout(() => {
+      setEndSearching(false)
+      setSearchContent('')
+      setSearchResultsDisplay(false)
+    }, 250)
+    document.getElementsByTagName('body')[0].classList.remove('stop-scrolling')
+  }
+
   return (
     (startSearching || endSearching) && (
       <div>
@@ -29,18 +40,7 @@ export default function Search({
               ? 'animate-searchBgOut'
               : ''
           }`}
-          onClick={() => {
-            setEndSearching(true)
-            setStartSearching(false)
-            setTimeout(() => {
-              setEndSearching(false)
-              setSearchContent('')
-              setSearchResultsDisplay(false)
-            }, 250)
-            document
-              .getElementsByTagName('body')[0]
-              .classList.remove('stop-scrolling')
-          }}
+          onClick={terminateSearch}
         ></div>
         <div
           id="searchResultsDiv"
@@ -71,7 +71,7 @@ export default function Search({
               }}
             ></input>
           </div>
-          <div>
+          <div onClick={terminateSearch}>
             {searchResultsDisplay && (
               <List type="search" target={searchContent}></List>
             )}
