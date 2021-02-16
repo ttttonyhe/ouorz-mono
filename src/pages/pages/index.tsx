@@ -41,7 +41,7 @@ export default function Pages() {
           </div>
           <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
             <p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
-              Explore and discover all the special pages and content
+              Explore and discover special pages and content
             </p>
           </div>
         </div>
