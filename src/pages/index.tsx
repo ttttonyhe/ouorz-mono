@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
 import Content from '~/components/Content'
@@ -53,7 +53,7 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const resSticky = await fetch(
     getApi({
       sticky: true,
@@ -70,7 +70,6 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   return {
-    revalidate: 12 * 60 * 60,
     props: {
       stickyNotFound: stickyNotFound,
       stickyPosts: dataSticky,
