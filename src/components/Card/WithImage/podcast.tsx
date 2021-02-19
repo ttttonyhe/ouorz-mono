@@ -1,6 +1,7 @@
 import Label from '~/components/Label'
 import { DesSplit } from '~/utilities/String'
 import Link from 'next/link'
+import Image from 'next/image'
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
 
@@ -14,12 +15,12 @@ export default function CardWithImagePodcast({ item, sticky }: Props) {
     <div className="w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6">
       <div className="xl:pt-10 pt-5 pl-5 pr-5 xl:pl-10 xl:pr-10 xl:grid xl:grid-flow-col xl:grid-cols-3 xl:gap-9">
         <div className="xl:block hidden">
-          <img
+          <Image
             src={item.post_img.url}
             width={160}
             height={160}
             className="rounded-md shadow-sm border border-gray-200 dark:opacity-90"
-          ></img>
+          ></Image>
         </div>
         <div className="col-span-2 col-end-4">
           <div className="flex space-x-3 items-center mb-4">
