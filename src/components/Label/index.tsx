@@ -27,7 +27,7 @@ export default function Label({ name, icon, children, preview }: Props) {
       )
     case 'secondary':
       return (
-        <label className="cursor-pointer justify-center font-medium items-center flex w-auto xl:px-4 px-2 py-1 xl:py-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-center rounded-md text-4 xl:text-label tracking-wide text-gray-500 dark:text-gray-300 align-middle">
+        <label className="cursor-pointer focus:animate-pulse justify-center font-medium items-center flex w-auto xl:px-4 px-2 py-1 xl:py-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-center rounded-md text-4 xl:text-label tracking-wide text-gray-500 dark:text-gray-300 align-middle">
           {icon && (
             <span className="xl:w-7 xl:h-7 h-4 w-4 xl:mr-2 mr-1">
               {Icons[icon]}
