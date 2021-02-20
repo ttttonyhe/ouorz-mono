@@ -9,7 +9,11 @@ export default function BottomCard({ item }: { item: any }) {
         <span>·</span>
         <span>{item.post_metas.views} Views</span>
         <span>·</span>
-        <span>ERT {item.post_metas.reading.time_required} min</span>
+        <span>
+          <abbr title="Estimated reading time">
+            ERT {item.post_metas.reading.time_required} min
+          </abbr>
+        </span>
       </p>
     </div>
   )

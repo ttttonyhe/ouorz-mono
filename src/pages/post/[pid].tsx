@@ -66,7 +66,9 @@ export default function BlogPost({
                     {post.post_metas.reading.word_count} Words
                   </span>
                   <span className="hidden group-hover:block">
-                    ERT {post.post_metas.reading.time_required} min
+                    <abbr title="Estimated reading time">
+                      ERT {post.post_metas.reading.time_required} min
+                    </abbr>
                   </span>
                 </span>
               </p>

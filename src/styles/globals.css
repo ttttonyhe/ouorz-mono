@@ -492,3 +492,7 @@ h5 {
 video {
   @apply rounded-md;
 }
+
+abbr[title] {
+  text-decoration: none;
+}

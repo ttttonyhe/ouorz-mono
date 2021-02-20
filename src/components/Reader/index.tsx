@@ -51,7 +51,9 @@ export default function Reader({
                 {data.post.post_metas.reading.word_count} Words
               </span>
               <span className="hidden group-hover:block">
-                ERT {data.post.post_metas.reading.time_required} min
+                <abbr title="Estimated reading time">
+                  ERT {data.post.post_metas.reading.time_required} min
+                </abbr>
               </span>
             </span>
           </p>
