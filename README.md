@@ -59,3 +59,10 @@ yarn run start
 Copy all the codes in `wordpress/functions.php` and add to your theme's `functions.php`
 
 <br/>
+
+### Sponsor me 赞助
+Your name will be on the [Sponsors](https://www.ouorz.com/sponsor) list
+<br/>
+
+![Sponsor](https://i.loli.net/2019/02/18/5c6a80afd1e26.png)
+
