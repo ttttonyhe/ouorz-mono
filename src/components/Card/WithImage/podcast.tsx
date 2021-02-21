@@ -14,12 +14,12 @@ export default function CardWithImagePodcast({ item, sticky }: Props) {
   return (
     <div className="w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6">
       <div className="xl:pt-10 pt-5 pl-5 pr-5 xl:pl-10 xl:pr-10 xl:grid xl:grid-flow-col xl:grid-cols-3 xl:gap-9">
-        <div className="xl:block hidden">
+        <div className="xl:block hidden bg-gray-50 podcast-image-placeholder rounded-md shadow-sm border border-gray-200 dark:opacity-90">
           <Image
             src={item.post_img.url}
             width={160}
             height={160}
-            className="rounded-md shadow-sm border border-gray-200 dark:opacity-90"
+            className="rounded-md"
           ></Image>
         </div>
         <div className="col-span-2 col-end-4">

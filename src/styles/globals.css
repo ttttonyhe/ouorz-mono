@@ -496,3 +496,8 @@ video {
 abbr[title] {
   text-decoration: none;
 }
+
+.podcast-image-placeholder {
+  width: 160px !important;
+  height: 160px !important;
+}
