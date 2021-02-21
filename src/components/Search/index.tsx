@@ -53,13 +53,14 @@ export default function Search({
           }`}
         >
           <div className="flex mb-10">
-            <span className="xl:h-8 xl:w-7 h-6 w-5 absolute xl:mt-4 mt-3 ml-4 text-gray-400">
+            <span className="xl:h-8 xl:w-7 h-6 w-5 absolute xl:mt-3 xl:pt-0.5 mt-3 ml-4 text-gray-400">
               {Icons.search}
             </span>
             <input
               className="shadow-md rounded-lg hover:shadow-lg bg-white dark:bg-gray-800 dark:border-gray-800 text-3 xl:text-2 w-full h-auto px-12 xl:px-14 py-3 focus:outline-none text-gray-800 dark:text-gray-400"
-              placeholder="Blog Post Search"
+              placeholder="Search articles..."
               value={searchContent}
+              autoFocus
               onChange={(e) => {
                 setSearchResultsDisplay(false)
                 setSearchContent(e.target.value)
