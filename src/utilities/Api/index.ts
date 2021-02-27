@@ -58,7 +58,7 @@ export const getApi = ({
   }
 
   if (count) {
-    return 'https://blog.ouorz.com/wp-json/tony/v1/count'
+    return 'https://blog.ouorz.com/wp-json/tony/v1/poststats'
   }
 
   const s = sticky ? 'sticky=1' : sticky === undefined ? '' : 'sticky=0'
