@@ -51,7 +51,7 @@ module.exports = {
         xl: '15px',
         '2xl': '18px',
         '3xl': '22.5px',
-        '3.5xl': '27px',
+        'stats': '28px',
       },
       lineHeight: {
         14: '1.4',

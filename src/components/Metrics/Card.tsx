@@ -24,15 +24,17 @@ export default function MetricCard({
       style={{ borderBottom: `5px solid ${colorHex}` }}
     >
       <h1
-        className={`font-bold text-3.5xl tracking-wide flex items-center -mb-1 ${
+        className={`font-bold text-stats tracking-wide flex items-center -mb-0.5 ${
           !value && 'animate-pulse'
         }`}
       >
         <span>
-          {value || '- - -'}
-          {subValue && '/' + subValue}
+          {value && value !== 'NaN' ? value : '- - -'}
+          {subValue && subValue !== 'NaN' && '/' + subValue}
         </span>
-        {value && <span className="w-7 h-7 ml-1 mt-1">{Icons[icon]}</span>}
+        {value && (!subValue || subValue !== 'NaN') && (
+          <span className="w-7 h-7 ml-1 mt-1">{Icons[icon]}</span>
+        )}
       </h1>
       <p className="text-gray-500 tracking-wide overflow-hidden overflow-ellipsis whitespace-nowrap">
         {footer} →
