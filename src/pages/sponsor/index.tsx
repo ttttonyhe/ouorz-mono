@@ -72,7 +72,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
           <div className="mt-5 grid grid-cols-2 gap-4">
             <PageCard
               title="Alipay"
-              des="helipeng_tony"
+              des="tony.hlp@hotmail.com"
               icon="alipay"
               className="text-blue-500"
               href="https://static.ouorz.com/alipay.png"
