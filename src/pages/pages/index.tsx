@@ -47,25 +47,25 @@ export default function Pages() {
         </div>
         <div className="mt-5 grid grid-cols-2 gap-4">
           <PageCard
-            title="AMA"
-            des="Ask me anything"
-            icon="question"
-            className="text-yellow-400"
-            href="/page/765"
+            title="Dashboard"
+            des="Metrics tracking"
+            icon="ppt"
+            className="text-blue-500"
+            href="/dashboard"
           ></PageCard>
           <PageCard
             title="Guestbook"
-            des="Leave your comments"
+            des="Guest comments"
             icon="chat"
             className="text-green-400"
             href="/page/249"
           ></PageCard>
           <PageCard
-            title="DevDiary"
-            des="Development Diary"
-            icon="growth"
-            className="text-blue-400"
-            href="https://dev.ouorz.com"
+            title="AMA"
+            des="Ask me anything"
+            icon="question"
+            className="text-yellow-400"
+            href="/page/765"
           ></PageCard>
           <PageCard
             title="Friends"
@@ -82,10 +82,17 @@ export default function Pages() {
             href="https://notion.ouorz.com"
           ></PageCard>
           <PageCard
+            title="DevDiary"
+            des="Development Diary"
+            icon="growth"
+            className="text-blue-400"
+            href="https://dev.ouorz.com"
+          ></PageCard>
+          <PageCard
             title="Podcast"
             des="Known Unknowns"
             icon="mic"
-            className="text-indigo-400"
+            className="text-gray-600"
             href="https://kukfm.com"
           ></PageCard>
         </div>
