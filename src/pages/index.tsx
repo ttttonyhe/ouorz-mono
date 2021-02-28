@@ -23,7 +23,7 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
         ></meta>
         <meta
           name="keywords"
-          content="TonyHe, Lipeng He, Tony, Developer, Blogger, Podcaster"
+          content="TonyHe, Lipeng He, Tony, Developer, Blogger, Podcaster, Blog, Personal Site, WordPress, Next.js, React.js, TypeScript, JavaScript"
         ></meta>
       </Head>
       <Content>
@@ -37,7 +37,7 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
             </h1>
             <p className="text-3 xl:text-2 text-gray-500 dark:text-gray-200 leading-14 tracking-wide font-light">
               I{"'"}m a developer, blogger, podcaster and undergraduate student
-              at the University of Waterloo, Class of 2025, Honors Mathematics
+              at the University of Waterloo, Class of 2025, Mathematics
             </p>
           </div>
           <Top></Top>
