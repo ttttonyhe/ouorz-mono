@@ -2544,11 +2544,6 @@ component-emitter@^1.2.1, component-emitter@^1.3.0:
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
   integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
 
-components@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.npmjs.org/components/-/components-0.1.0.tgz#2057c08e9c7bf2662feec95c49e5ff2a9ab85ed5"
-  integrity sha1-IFfAjpx78mYv7slcSeX/Kpq4XtU=
-
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
@@ -3048,6 +3043,11 @@ elliptic@^6.5.3:
     inherits "^2.0.4"
     minimalistic-assert "^1.0.1"
     minimalistic-crypto-utils "^1.0.1"
+
+email-validator@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.npmjs.org/email-validator/-/email-validator-2.0.4.tgz#b8dfaa5d0dae28f1b03c95881d904d4e40bfe7ed"
+  integrity sha512-gYCwo7kh5S3IDyZPLZf6hSS0MnZT8QmJFqYvbqlDZSbwdZlY6QZWxJ4i/6UhITOJ4XzyI647Bm2MXKCLqnJ4nQ==
 
 emoji-regex@^7.0.1:
   version "7.0.3"
@@ -5108,12 +5108,12 @@ nested-property@1.0.1:
   resolved "https://registry.npmjs.org/nested-property/-/nested-property-1.0.1.tgz#2001105b5c69413411b876bba9b86f4316af613f"
   integrity sha512-BnBBoo/8bBNRdAnJc7+m79oWk7dXwW1+vCesaEQhfDGVwXGLMvmI4NwYgLTW94R/x+R2s/yr2g/hB/4w/YSAvA==
 
-nexment@^0.0.662:
-  version "0.0.662"
-  resolved "https://registry.npmjs.org/nexment/-/nexment-0.0.662.tgz#4f9e9bd47b6f955806aab7848ca310105d49d30b"
-  integrity sha512-unV6QenaV0gkQlYNNyLc/c5Tp5M4Kp+wihW2dUg30xP3iG5iuhFcgtVCHikVYFjpw9bdbEkIePSSP2PB6t7ixw==
+nexment@^0.0.663:
+  version "0.0.663"
+  resolved "https://registry.npmjs.org/nexment/-/nexment-0.0.663.tgz#6469fd915e872dc2124a59565c68f15c386f5dc8"
+  integrity sha512-5M0RafI8EVhHVcwR4LwCQUW3pF05lGmN+tGbQFl8Y340HJ1T5EDdCL+/4PClWlS1JvsER9LvKRhapt1pz2JgmA==
   dependencies:
-    components "^0.1.0"
+    email-validator "^2.0.4"
     github-markdown-css "^4.0.0"
     insert-text-at-cursor "^0.3.0"
     js-md5 "^0.7.3"
