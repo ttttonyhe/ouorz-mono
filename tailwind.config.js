@@ -38,6 +38,9 @@ module.exports = {
       height: {
         img: '240px',
       },
+      minHeight: {
+        main: 'calc(100vh - 6.65rem)',
+      },
       fontSize: {
         '1': '32px',
         '1.5': '23px',

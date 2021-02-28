@@ -20,7 +20,7 @@ export default function MetricCard({
   return (
     <div
       onClick={() => navigateTo(link)}
-      className="rounded-md border shadow-sm hover:shadow-md py-4 px-5 bg-white cursor-pointer"
+      className="dark:bg-gray-800 dark:border-gray-800 rounded-md border shadow-sm hover:shadow-md py-4 px-5 bg-white cursor-pointer"
       style={{ borderBottom: `5px solid ${colorHex}` }}
     >
       <h1
@@ -36,7 +36,7 @@ export default function MetricCard({
           <span className="w-7 h-7 ml-1 mt-1">{Icons[icon]}</span>
         )}
       </h1>
-      <p className="text-gray-500 tracking-wide overflow-hidden overflow-ellipsis whitespace-nowrap">
+      <p className="text-gray-500 dark:text-gray-400 tracking-wide overflow-hidden overflow-ellipsis whitespace-nowrap">
         {footer} →
       </p>
     </div>
