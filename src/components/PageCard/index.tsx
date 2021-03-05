@@ -35,7 +35,7 @@ export default function PageCard({
     >
       {icon && (
         <div
-          className={`xl:block hidden w-20 h-auto border-r border-r-gray-200 dark:border-r-gray-600 pr-3 mr-3 ${
+          className={`lg:block hidden w-20 h-auto border-r border-r-gray-200 dark:border-r-gray-600 pr-3 mr-3 ${
             className ? className : ''
           }`}
         >
@@ -50,7 +50,7 @@ export default function PageCard({
         >
           {iconSmall && (
             <span
-              className={`xl:block hidden w-7 h-7 mr-1 ${
+              className={`lg:block hidden w-7 h-7 mr-1 ${
                 className ? className : ''
               }`}
             >

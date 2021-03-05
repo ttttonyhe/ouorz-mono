@@ -28,16 +28,16 @@ export default function Header() {
   return (
     <header
       id="header"
-      className={`leading-14 xl:border-0 border-b border-gray-200 dark:border-gray-800 transition-all xl:bg-transparent bg-white duration-300 grid grid-cols-6 fixed top-0 h-auto w-full xl:py-4 xl:px-5 py-2 px-1 z-10 ${
-        scrollPosition > 0 ? 'xl:bg-white dark:bg-gray-800 shadow-header' : ''
+      className={`leading-14 lg:border-0 border-b border-gray-200 dark:border-gray-800 transition-all lg:bg-transparent bg-white duration-300 grid grid-cols-6 fixed top-0 h-auto w-full lg:py-4 lg:px-5 py-2 px-1 z-10 ${
+        scrollPosition > 0 ? 'lg:bg-white dark:bg-gray-800 shadow-header' : ''
       }`}
     >
-      <div className="col-start-1 col-end-2 flex xl:space-x-2">
+      <div className="col-start-1 col-end-2 flex lg:space-x-2">
         <a href="https://blog.ouorz.com/feed" target="_blank" rel="noreferrer">
           <Button
             bType="menu-default"
             icon="rss"
-            className="hidden xl:flex text-3"
+            className="hidden lg:flex text-3"
           >
             RSS
           </Button>
@@ -63,7 +63,7 @@ export default function Header() {
             : 'hidden'
         }
       >
-        <div className="cursor-pointer mx-auto hidden xl:flex space-x-3 items-center justify-center">
+        <div className="cursor-pointer mx-auto hidden lg:flex space-x-3 items-center justify-center">
           <div className="flex-shrink-0 h-7 w-7 border rounded-full border-gray-300 dark:border-gray-500">
             <Image
               className="rounded-full"
@@ -88,7 +88,7 @@ export default function Header() {
               <Button
                 bType="menu-default"
                 icon="home"
-                className="text-3 hidden xl:flex"
+                className="text-3 hidden lg:flex"
               >
                 Home
               </Button>
@@ -100,7 +100,7 @@ export default function Header() {
               <Button
                 bType="menu-primary"
                 icon="love"
-                className="text-pink-500 hidden xl:flex text-3"
+                className="text-pink-500 hidden lg:flex text-3"
               >
                 Sponsor
               </Button>
@@ -112,7 +112,7 @@ export default function Header() {
             <Button
               bType="menu-default"
               icon="pages"
-              className="hidden xl:flex text-3"
+              className="hidden lg:flex text-3"
             >
               Pages
             </Button>

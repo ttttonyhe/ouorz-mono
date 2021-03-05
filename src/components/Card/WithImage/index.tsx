@@ -23,9 +23,9 @@ export default function CardWithImage({ item, sticky, setReader }: Props) {
     } else {
       return (
         <div className="w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6">
-          <div className="p-5 xl:p-10 xl:grid xl:grid-flow-col xl:grid-cols-3 xl:gap-9">
+          <div className="p-5 lg:p-10 lg:grid lg:grid-flow-col lg:grid-cols-3 lg:gap-9">
             <div
-              className="dark:opacity-90 xl:block hidden rounded-md shadow-sm h-img min-h-full w-full col-span-1 col-end-2 border border-gray-200"
+              className="dark:opacity-90 lg:block hidden rounded-md shadow-sm h-img min-h-full w-full col-span-1 col-end-2 border border-gray-200"
               style={{
                 backgroundImage: 'url(' + item.post_img.url + ')',
                 backgroundSize: 'cover',
@@ -46,7 +46,7 @@ export default function CardWithImage({ item, sticky, setReader }: Props) {
                   </Link>
                 </div>
                 <div
-                  className="justify-end hidden xl:flex xl:w-auto w-full"
+                  className="justify-end hidden lg:flex lg:w-auto w-full"
                   onClick={() => {
                     setReader({ status: true, post: item })
                   }}
@@ -56,16 +56,16 @@ export default function CardWithImage({ item, sticky, setReader }: Props) {
                   </Label>
                 </div>
               </div>
-              <div className="xl:mt-4 mt-6">
+              <div className="lg:mt-4 mt-6">
                 <Link href={`/post/${item.id}`}>
                   <a>
-                    <h1 className="font-medium text-2 xl:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5">
+                    <h1 className="font-medium text-2 lg:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5">
                       {item.post_title}
                     </h1>
                   </a>
                 </Link>
                 <p
-                  className="text-gray-500 dark:text-gray-400 text-4 xl:text-3 tracking-wide leading-2 xl:leading-8 overflow-hidden overflow-ellipsis"
+                  className="text-gray-500 dark:text-gray-400 text-4 lg:text-3 tracking-wide leading-2 lg:leading-8 overflow-hidden overflow-ellipsis"
                   dangerouslySetInnerHTML={{
                     __html: DesSplit({ str: item.post_excerpt.four, n: 150 }),
                   }}

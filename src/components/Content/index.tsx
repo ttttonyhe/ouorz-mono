@@ -10,7 +10,7 @@ export default function Content(props: Props) {
   return (
     <div>
       <Header></Header>
-      <main className="w-full min-h-main xl:w-content h-auto mx-auto pt-0 xl:pt-20 px-5 xl:px-10">
+      <main className="w-full min-h-main lg:w-content h-auto mx-auto pt-0 lg:pt-20 px-5 lg:px-10">
         {children}
       </main>
       <Footer></Footer>

@@ -44,7 +44,7 @@ export default function Search({
         ></div>
         <div
           id="searchResultsDiv"
-          className={`fixed overflow-y-auto overflow-hidden rounded-tl-xl reader rounded-tr-xl py-5 xl:py-20 xl:w-content w-full mx-auto xl:left-searchOffset top-0 mt-20 px-5 xl:px-10 ${
+          className={`fixed overflow-y-auto overflow-hidden rounded-tl-xl reader rounded-tr-xl py-5 lg:py-20 lg:w-content w-full mx-auto lg:left-searchOffset top-0 mt-20 px-5 lg:px-10 ${
             startSearching
               ? 'animate-search'
               : endSearching
@@ -53,11 +53,11 @@ export default function Search({
           }`}
         >
           <div className="flex mb-10">
-            <span className="xl:h-8 xl:w-7 h-6 w-5 absolute xl:mt-3 xl:pt-0.5 mt-3 ml-4 text-gray-400">
+            <span className="lg:h-8 lg:w-7 h-6 w-5 absolute lg:mt-3 lg:pt-0.5 mt-3 ml-4 text-gray-400">
               {Icons.search}
             </span>
             <input
-              className="shadow-md rounded-lg hover:shadow-lg bg-white dark:bg-gray-800 dark:border-gray-800 text-3 xl:text-2 w-full h-auto px-12 xl:px-14 py-3 focus:outline-none text-gray-800 dark:text-gray-400"
+              className="shadow-md rounded-lg hover:shadow-lg bg-white dark:bg-gray-800 dark:border-gray-800 text-3 lg:text-2 w-full h-auto px-12 lg:px-14 py-3 focus:outline-none text-gray-800 dark:text-gray-400"
               placeholder="Search articles..."
               value={searchContent}
               autoFocus

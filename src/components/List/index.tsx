@@ -109,7 +109,6 @@ const InfiniteList = ({
       break
     case 'cate':
       url = getApi({
-        sticky: false,
         perPage: 10,
         cate: `${cate}`,
         cateExclude: '5,2,74',

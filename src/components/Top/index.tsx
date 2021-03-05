@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Top() {
   return (
-    <div className="mt-4 grid xl:grid-cols-5 lg:gap-3">
+    <div className="mt-4 grid lg:grid-cols-5 lg:gap-3">
       <div className="grid-cols-3 gap-3 col-start-1 col-span-3 hidden lg:grid">
         <a
           target="_blank"
@@ -45,7 +45,7 @@ export default function Top() {
         <Link href="/post/126">
           <a>
             <Button bType="primary" icon="right">
-              <span className="tracking-normal text-4 leading-14 xl:text-3">
+              <span className="tracking-normal text-4 leading-14 lg:text-3">
                 More about me
               </span>
             </Button>

@@ -31,24 +31,24 @@ export default function Cate({ info }: Info) {
           ></meta>
         </Head>
         <Content>
-          <div className="xl:mt-20 mt-0 xl:pt-0 pt-24">
-            <div className="mb-4 xl:flex items-center">
+          <div className="lg:mt-20 mt-0 lg:pt-0 pt-24">
+            <div className="mb-4 lg:flex items-center">
               <div className="flex-1 items-center">
-                <h1 className="font-medium text-1 text-black dark:text-white tracking-wide flex justify-center xl:justify-start">
+                <h1 className="font-medium text-1 text-black dark:text-white tracking-wide flex justify-center lg:justify-start">
                   <span className="hover:animate-spin inline-block cursor-pointer mr-3">
                     🗂️
                   </span>
                   <span data-cy="cateName">{info.name}</span>
                 </h1>
               </div>
-              <div className="h-full flex xl:justify-end justify-center whitespace-nowrap items-center mt-2">
-                <div className="border-r border-r-gray-200 xl:text-center xl:flex-1 px-5">
+              <div className="h-full flex lg:justify-end justify-center whitespace-nowrap items-center mt-2">
+                <div className="border-r border-r-gray-200 lg:text-center lg:flex-1 px-5">
                   <p className="text-xl text-gray-500 dark:text-gray-400 flex items-center">
                     <span className="w-6 h-6 mr-2">{Icons.count}</span>
                     {info.count} posts
                   </p>
                 </div>
-                <div className="xl:flex-1 px-5">
+                <div className="lg:flex-1 px-5">
                   <p className="text-xl text-gray-500 dark:text-gray-400">
                     <Link href="/">
                       <a className="flex items-center">
@@ -61,7 +61,7 @@ export default function Cate({ info }: Info) {
             </div>
             <SubscriptionBox type="sm"></SubscriptionBox>
           </div>
-          <div className="xl:mt-5 mt-10">
+          <div className="lg:mt-5 mt-10">
             <List type="cate" cate={info.id}></List>
           </div>
         </Content>

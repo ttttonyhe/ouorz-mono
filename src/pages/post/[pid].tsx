@@ -40,7 +40,7 @@ export default function BlogPost({
           )}
         </Head>
         <Page>
-          <article className="xl:shadow-sm xl:border xl:rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 p-5 xl:p-20 xl:pt-20 pt-24">
+          <article className="lg:shadow-sm lg:border lg:rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 p-5 lg:p-20 lg:pt-20 pt-24">
             <div className="mb-20">
               <div className="flex mb-3">
                 <Link href={`/cate/${post.post_categories[0].term_id}`}>
@@ -51,10 +51,10 @@ export default function BlogPost({
                   </a>
                 </Link>
               </div>
-              <h1 className="text-1.5 xl:text-postTitle font-medium tracking-wider leading-snug">
+              <h1 className="text-1.5 lg:text-postTitle font-medium tracking-wider leading-snug">
                 {post.title.rendered}
               </h1>
-              <p className="flex text-5 xl:text-xl text-gray-500 space-x-2 mt-2 tracking-wide whitespace-nowrap">
+              <p className="flex text-5 lg:text-xl text-gray-500 space-x-2 mt-2 tracking-wide whitespace-nowrap">
                 <span>
                   Posted <TimeAgo date={post.date} />
                 </span>
@@ -81,7 +81,7 @@ export default function BlogPost({
             )}
           </article>
           <Aside preNext={post.post_prenext}></Aside>
-          <div className="xl:mt-5 border-t border-gray-200 xl:border-none">
+          <div className="lg:mt-5 border-t border-gray-200 lg:border-none">
             <SubscriptionBox type="lg"></SubscriptionBox>
           </div>
           <CommentBox></CommentBox>

@@ -29,12 +29,12 @@ export default function BlogPage({
           <meta name="description" content={page.title.rendered}></meta>
         </Head>
         <Page>
-          <article className="xl:shadow-sm xl:border xl:rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 p-5 xl:p-20 pt-24">
+          <article className="lg:shadow-sm lg:border lg:rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 p-5 lg:p-20 pt-24">
             <div className="mb-20">
-              <h1 className="text-1.5 xl:text-postTitle font-medium tracking-wider leading-snug">
+              <h1 className="text-1.5 lg:text-postTitle font-medium tracking-wider leading-snug">
                 {page.title.rendered}
               </h1>
-              <p className="flex text-5 xl:text-xl text-gray-500 dark:text-gray-400 space-x-2 mt-2 tracking-wide">
+              <p className="flex text-5 lg:text-xl text-gray-500 dark:text-gray-400 space-x-2 mt-2 tracking-wide">
                 <span>
                   Posted <TimeAgo date={page.date} />
                 </span>

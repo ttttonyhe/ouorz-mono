@@ -25,7 +25,7 @@ export default function Dashboard() {
         <meta name="robots" content="noindex" />
       </Head>
       <Content>
-        <div className="xl:mt-20 mt-0 xl:pt-0 pt-24">
+        <div className="lg:mt-20 mt-0 lg:pt-0 pt-24">
           <div className="mb-4 flex items-center">
             <div className="flex-1 items-center">
               <h1 className="font-medium text-1 text-black dark:text-white tracking-wide">

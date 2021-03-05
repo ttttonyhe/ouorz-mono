@@ -19,7 +19,7 @@ export const CardTool = ({
   setReader?: any
 }) => {
   return (
-    <div className="w-full whitespace-nowrap xl:grid xl:grid-cols-8 xl:gap-3 rounded-md shadow-sm border border-gray-200 dark:border-gray-600 dark:bg-gray-600 overflow-hidden">
+    <div className="w-full whitespace-nowrap lg:grid lg:grid-cols-8 lg:gap-3 rounded-md shadow-sm border border-gray-200 dark:border-gray-600 dark:bg-gray-600 overflow-hidden">
       <div
         className={`col-start-1 col-end-2 rounded-tl-md rounded-bl-md ${
           item.post_metas.fineTool.itemImgBorder
@@ -33,7 +33,7 @@ export const CardTool = ({
           backgroundPosition: 'center',
         }}
       ></div>
-      <div className="col-start-2 col-end-9 grid grid-cols-2 items-center pl-3 xl:pl-0 py-2 pr-3">
+      <div className="col-start-2 col-end-9 grid grid-cols-2 items-center pl-3 lg:pl-0 py-2 pr-3">
         <div className="justify-center items-center">
           <h2 className="text-xl font-medium text-gray-600 dark:text-gray-200">
             {item.post_metas.fineTool.itemName}
@@ -42,7 +42,7 @@ export const CardTool = ({
             {item.post_metas.fineTool.itemDes}
           </p>
         </div>
-        <div className="hidden xl:flex justify-end space-x-2">
+        <div className="hidden lg:flex justify-end space-x-2">
           {preview && (
             <a
               onClick={() => {
@@ -74,18 +74,18 @@ export default function CardWithImageTool({ item, sticky, setReader }: Props) {
         sticky ? 'border-t-4 border-t-yellow-200 mb-6' : 'mb-6'
       }`}
     >
-      <div className="p-5 xl:p-10">
+      <div className="p-5 lg:p-10">
         <CardTool item={item} preview={true} setReader={setReader}></CardTool>
         <div className="mt-6">
           <Link href={`/post/${item.id}`}>
             <a>
-              <h1 className="font-medium text-2 xl:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5">
+              <h1 className="font-medium text-2 lg:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5">
                 {item.post_title}
               </h1>
             </a>
           </Link>
           <p
-            className="text-gray-500 dark:text-gray-400 text-4 xl:text-3 tracking-wide leading-2 xl:leading-8 overflow-hidden overflow-ellipsis"
+            className="text-gray-500 dark:text-gray-400 text-4 lg:text-3 tracking-wide leading-2 lg:leading-8 overflow-hidden overflow-ellipsis"
             dangerouslySetInnerHTML={{
               __html: DesSplit({ str: item.post_excerpt.four, n: 150 }),
             }}

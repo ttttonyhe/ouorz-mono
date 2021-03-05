@@ -13,12 +13,12 @@ function Error({ statusCode }) {
         <link rel="icon" type="image/x-icon" href="/favicon.ico"></link>
       </Head>
       <Content>
-        <div className="xl:mt-20 mt-0 xl:pt-0 pt-24 justify-center">
+        <div className="lg:mt-20 mt-0 lg:pt-0 pt-24 justify-center">
           <div className="text-center">
-            <h1 className="font-medium text-3xl leading-14 xl:text-1 text-black tracking-wide mb-0.5">
+            <h1 className="font-medium text-3xl leading-14 lg:text-1 text-black tracking-wide mb-0.5">
               Oops
             </h1>
-            <p className="text-3 xl:text-2 text-gray-500 leading-14 tracking-wide font-light">
+            <p className="text-3 lg:text-2 text-gray-500 leading-14 tracking-wide font-light">
               {statusCode
                 ? `An error with code ${statusCode} has occurred on the server`
                 : 'An error has occurred on the client'}
