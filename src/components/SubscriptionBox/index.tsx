@@ -1,6 +1,5 @@
 import React from 'react'
 import Icons from '~/components/Icons'
-import Button from '~/components/Button'
 import { getApi } from '~/utilities/Api'
 
 export default function SubscriptionBox({ type }: { type: string }) {
@@ -47,7 +46,7 @@ export default function SubscriptionBox({ type }: { type: string }) {
               value={email}
               className={`${
                 processing ? 'animate-pulse' : ''
-              } text-4 px-3 py-1.5 focus:outline-none w-10/12 shadow-sm rounded-md border bg-white dark:bg-gray-700 dark:border-gray-700 text-gray-500 dark:text-gray-400 tracking-wide`}
+              } text-4 px-4 h-8 focus:outline-none w-10/12 shadow-sm rounded-md border bg-white dark:bg-gray-700 dark:border-gray-700 text-gray-500 dark:text-gray-400 tracking-wide flex justify-items-center`}
               placeholder="Email address"
               onChange={(e) => {
                 setEmail(e.target.value)
@@ -73,37 +72,47 @@ export default function SubscriptionBox({ type }: { type: string }) {
             Get post updates straight to your inbox
           </p>
         </div>
-        <div className="w-full grid grid-cols-3 gap-3 rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 text-gray-500 dark:text-gray-400 tracking-wide">
-          <input
-            type="email"
-            value={email}
-            className="col-start-1 col-end-3 w-full text-4 rounded-md px-3 py-1.5 focus:outline-none shadow-sm border"
-            placeholder="Email address"
-            onChange={(e) => {
-              setEmail(e.target.value)
-            }}
-            onKeyPress={(e) => {
-              if (e.key === 'Enter') {
-                doSubscribe()
-              }
-            }}
-          ></input>
-          {subscribed ? (
-            <div className="bg-green-500 col-start-3 col-end-4 text-4 py-3 rounded-md text-center text-white">
-              Succeed
-            </div>
-          ) : (
-            <Button
-              bType="primary"
-              type="submit"
-              className="col-start-3 col-end-4 text-4"
-              onClick={() => {
-                doSubscribe()
+        <div className="w-full grid grid-cols-3 gap-5">
+          <div className="col-start-1 col-end-3 w-full grid grid-cols-3 rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 text-gray-600 dark:text-gray-400 tracking-wide">
+            <input
+              type="email"
+              value={email}
+              className="col-start-1 col-end-3 w-full font-light border-r-0 rounded-tl-md rounded-bl-md px-4 py-2 focus:outline-none shadow-sm border border-gray-200 dark:border-gray-500 focus:border-gray-300 dark:bg-gray-600"
+              placeholder="Email address"
+              onChange={(e) => {
+                setEmail(e.target.value)
               }}
-            >
-              {processing ? 'Processing...' : 'Subscribe'}
-            </Button>
-          )}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  doSubscribe()
+                }
+              }}
+            ></input>
+            {subscribed ? (
+              <div className="bg-green-500 border border-green-600 cursor-pointer shadow-sm col-start-3 col-end-4 rounded-tr-md rounded-br-md text-center text-green-50 flex items-center">
+                <span className="mx-auto">Succeed</span>
+              </div>
+            ) : (
+              <div
+                className="bg-blue-50 border border-blue-200 dark:border-blue-400 dark:bg-blue-500 hover:bg-blue-100 hover:border-blue-300 cursor-pointer shadow-sm col-start-3 col-end-4 rounded-tr-md rounded-br-md text-center text-blue-500 dark:text-white flex items-center"
+                onClick={() => {
+                  doSubscribe()
+                }}
+              >
+                <span className="mx-auto">
+                  {processing ? 'Processing...' : 'Subscribe'}
+                </span>
+              </div>
+            )}
+          </div>
+          <a
+            href="https://discord.gg/TTwGnMgcxr"
+            target="_blank"
+            rel="noreferrer"
+            className="flex text-indigo-700 dark:text-indigo-50 col-start-3 col-end-4 border-indigo-200 dark:border-indigo-400 dark:bg-indigo-500 hover:border-indigo-300 hover:bg-indigo-100 border text-center bg-indigo-50 rounded-md shadow-sm items-center justify-center"
+          >
+            <i className="w-5 h-5 mr-1.5">{Icons.chatRounded}</i> Discord Server
+          </a>
         </div>
       </div>
     )
