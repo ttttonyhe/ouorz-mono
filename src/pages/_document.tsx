@@ -18,7 +18,7 @@ class MyDocument extends Document {
           <script
             defer
             src="/beacon.min.js"
-            data-cf-beacon='{"token": "53f3652793b44758819338f853f944e4"}'
+            data-cf-beacon='{"token": "53f3652793b44758819338f853f944e4", "spa": true}'
           ></script>
           <meta name="robots" content="index,follow"></meta>
           <meta name="googlebot" content="index,follow"></meta>
