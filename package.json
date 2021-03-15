@@ -58,7 +58,7 @@
     "smoothscroll-polyfill": "^0.4.4",
     "swr": "^0.4.2",
     "tailwindcss": "^2.0.3",
-    "ts-loader": "^8.0.17",
+    "ts-loader": "^8.0.18",
     "typescript": "^4.2.3",
     "webpack": "^5.24.4"
   },
