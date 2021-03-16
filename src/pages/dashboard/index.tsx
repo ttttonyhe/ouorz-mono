@@ -54,7 +54,10 @@ export default function Dashboard() {
             </p>
           </div>
         </div>
-        <div className="mt-5 mb-10 grid grid-cols-2 gap-4" data-cy="metricCards">
+        <div
+          className="mt-5 mb-10 grid grid-cols-2 gap-4"
+          data-cy="metricCards"
+        >
           <PostsMetric />
           <NexmentMetric />
           <GithubStarMetric />

@@ -1,4 +1,5 @@
 import Icons from '~/components/Icons'
+import React from 'react'
 
 interface Props {
   name: string
