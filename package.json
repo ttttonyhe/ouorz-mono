@@ -43,7 +43,7 @@
     "highlight.js": "^10.6.0",
     "husky": ">=5",
     "lint-staged": ">=10",
-    "nexment": "^0.0.663",
+    "nexment": "^0.0.667",
     "next-themes": "^0.0.12",
     "nextjs-progressbar": "^0.0.8",
     "nextjs-redirect": "^5.0.2",
@@ -60,7 +60,7 @@
     "tailwindcss": "^2.0.3",
     "ts-loader": "^8.0.18",
     "typescript": "^4.2.3",
-    "webpack": "^5.26.1"
+    "webpack": "^5.26.2"
   },
   "husky": {
     "hooks": {
