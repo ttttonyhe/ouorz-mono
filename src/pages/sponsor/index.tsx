@@ -44,7 +44,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
           <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
             <p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
               I am developing and maintaining various open source projects and
-              hosting a podcast about tech, life and career
+              hosting a podcast about tech, life and career 🤓
             </p>
           </div>
         </div>
@@ -66,8 +66,8 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
         </div>
         <div className="border shadow-sm w-full p-7 rounded-md bg-white dark:bg-gray-700 dark:border-gray-700 items-center my-2 mb-10">
           <p className="text-xl tracking-wide text-gray-500 dark:text-gray-300 items-center">
-            If you{"'"}ve found my projects or podcast useful or interesting,
-            please consider supporting me through the following ways:
+            If you found my projects or podcast useful or interesting, please
+            consider supporting me through the following ways:
           </p>
           <div className="mt-5 grid grid-cols-2 gap-4">
             <PageCard

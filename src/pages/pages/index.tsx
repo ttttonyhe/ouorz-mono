@@ -48,14 +48,14 @@ export default function Pages() {
         <div className="mt-5 grid grid-cols-2 gap-4">
           <PageCard
             title="Dashboard"
-            des="Metrics tracking"
+            des="Tracking metrics"
             icon="ppt"
             className="text-blue-500"
             href="/dashboard"
           ></PageCard>
           <PageCard
             title="Guestbook"
-            des="Guest comments"
+            des="Leave your comments"
             icon="chat"
             className="text-green-400"
             href="/page/249"
