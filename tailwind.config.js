@@ -5,7 +5,10 @@ var flattenColorPalette = require('tailwindcss/lib/util/flattenColorPalette').de
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  purge: ['./src/**/*.tsx'],
+  purge: {
+    enabled: process.env.NODE_ENV === 'production',
+    content: ['./src/**/*.tsx']
+  },
   darkMode: 'class',
   theme: {
     extend: {
@@ -74,7 +77,9 @@ module.exports = {
         searchBg: 'opacityProgressIn ease-in-out .25s',
         searchBgOut: 'opacityProgressOut ease-in-out .25s',
         search: 'search ease-in-out .25s',
-        searchOut: 'searchOut ease-in-out .25s'
+        searchOut: 'searchOut ease-in-out .25s',
+        waveHand: 'wavingHand ease-in-out 1.5s 3',
+        waveHandAgain: 'wavingHand ease-in-out 1.5s infinite'
       },
       keyframes: {
         pointer: {
@@ -138,6 +143,28 @@ module.exports = {
           '100%': {
             opacity: 0,
             transform: 'scale(1.1,1.1)'
+          }
+        },
+        wavingHand: {
+          '0%': {
+            transform: 'none',
+            transformOrigin: '70% 70%'
+          },
+          '25%': {
+            transform: 'rotate3d(1, 1, 1, -15deg)',
+            transformOrigin: '70% 70%'
+          },
+          '50%':{
+            transform: 'rotate3d(1, 1, 1, 15deg)',
+            transformOrigin: '70% 70%'
+          },
+          '75%':{
+            transform: 'rotate3d(1, 1, 1, -15deg)',
+            transformOrigin: '70% 70%'
+          },
+          '100%': {
+            transform: 'none',
+            transformOrigin: '70% 70%'
           }
         }
       },
