@@ -10,7 +10,7 @@ import Reader from '~/components/Reader'
 
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useSWRInfinite } from 'swr'
-import { getApi } from '~/utilities/Api'
+import { getApi } from '~/assets/utilities/Api'
 
 interface Props {
   posts?: any

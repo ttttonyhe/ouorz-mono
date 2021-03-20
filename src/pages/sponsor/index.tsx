@@ -4,7 +4,7 @@ import Content from '~/components/Content'
 import Link from 'next/link'
 import Icons from '~/components/Icons'
 import PageCard from '~/components/PageCard'
-import { getApi } from '~/utilities/Api'
+import { getApi } from '~/assets/utilities/Api'
 import { GetStaticProps } from 'next'
 
 export default function Sponsor({ sponsors }: { sponsors: any }) {

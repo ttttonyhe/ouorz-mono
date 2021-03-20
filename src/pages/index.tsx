@@ -4,7 +4,7 @@ import React from 'react'
 import Content from '~/components/Content'
 import List from '~/components/List'
 import Top from '~/components/Top'
-import { getApi } from '~/utilities/Api'
+import { getApi } from '~/assets/utilities/Api'
 
 interface Sticky {
   stickyNotFound: boolean

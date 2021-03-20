@@ -1,5 +1,5 @@
-import '~/styles/tailwind.css'
-import '~/styles/globals.css'
+import '~/assets/styles/vendors/tailwind.css'
+import '~/global.css'
 import type { AppProps } from 'next/app'
 import NextNprogress from 'nextjs-progressbar'
 import { ThemeProvider } from 'next-themes'

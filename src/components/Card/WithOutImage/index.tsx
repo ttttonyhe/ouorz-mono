@@ -1,6 +1,6 @@
 import Label from '~/components/Label'
 import BottomCard from '~/components/Card/Bottom'
-import { DesSplit } from '~/utilities/String'
+import { DesSplit } from '~/assets/utilities/String'
 import Link from 'next/link'
 
 interface Props {

@@ -1,7 +1,7 @@
 import Label from '~/components/Label'
 import BottomCard from '~/components/Card/Bottom'
 import CardWithImageTool from '~/components/Card/WithImage/tool'
-import { DesSplit } from '~/utilities/String'
+import { DesSplit } from '~/assets/utilities/String'
 import Link from 'next/link'
 import CardWithImagePodcast from '~/components/Card/WithImage/podcast'
 

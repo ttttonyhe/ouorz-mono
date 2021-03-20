@@ -1,5 +1,5 @@
 import Label from '~/components/Label'
-import { DesSplit } from '~/utilities/String'
+import { DesSplit } from '~/assets/utilities/String'
 import Link from 'next/link'
 import Image from 'next/image'
 import AudioPlayer from 'react-h5-audio-player'

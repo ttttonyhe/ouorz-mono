@@ -1,6 +1,6 @@
 import TimeAgo from 'react-timeago'
 import Icons from '~/components/Icons'
-import { getApi } from '~/utilities/Api'
+import { getApi } from '~/assets/utilities/Api'
 import React from 'react'
 
 interface Props {

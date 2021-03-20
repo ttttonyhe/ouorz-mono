@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { DesSplit } from '~/utilities/String'
+import { DesSplit } from '~/assets/utilities/String'
 import Image from 'next/image'
 
 interface Props {
