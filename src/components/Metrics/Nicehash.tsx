@@ -29,7 +29,7 @@ export default function NiceHashMetric() {
               <>
                 {profitability}
                 <span className="ml-1 mt-1 text-base font-normal">
-                  x10<sup>6</sup>
+                  x10<sup>-5</sup>
                 </span>
               </>
             ) : (
@@ -45,7 +45,7 @@ export default function NiceHashMetric() {
               )}{' '}
               {unpaidAmount ? unpaidAmount : 0}
               <span className="ml-2 text-xs font-normal">
-                x10<sup>6</sup>
+                x10<sup>-5</sup>
               </span>
             </em>
           )}
