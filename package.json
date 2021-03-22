@@ -17,8 +17,7 @@
     "dotenv": "^8.2.0",
     "next": "^10.0.9",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "request-promise-native": "^1.0.9"
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@bahmutov/add-typescript-to-cypress": "^2.1.2",
@@ -26,6 +25,7 @@
     "@tailwindcss/typography": "^0.4.0",
     "@testing-library/cypress": "^7.0.4",
     "@types/chai": "^4.2.15",
+    "@types/crypto-js": "^4.0.1",
     "@types/jest": "^26.0.20",
     "@types/mocha": "^8.2.1",
     "@types/node": "^14.14.35",
