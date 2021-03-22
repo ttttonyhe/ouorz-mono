@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { v4 as uuidv4 } from 'uuid'
-const CryptoJS = require('crypto-js')
+import CryptoJS from 'crypto-js'
 
 type ResDataType = {
   profitability: number
@@ -11,12 +11,15 @@ type ResDataType = {
 }
 
 const getAuthHeader = (
-  apiKey,
-  apiSecret,
-  time,
-  nonce,
-  organizationId = '',
-  request = {} as any
+  apiKey: string,
+  apiSecret: string,
+  time: string,
+  nonce: string,
+  organizationId: string = '',
+  request: {
+    method: string
+    path: string
+  }
 ) => {
   const hmac = CryptoJS.algo.HMAC.create(CryptoJS.algo.SHA256, apiSecret)
   hmac.update(apiKey)
@@ -42,7 +45,6 @@ export default async (
   res: NextApiResponse<ResDataType>
 ) => {
   const nonce = uuidv4().toString()
-
   const timeRes = await fetch('https://api2.nicehash.com/api/v2/time')
   const timeData = await timeRes.json()
   const localTimeDiff = timeData.serverTime - +new Date()
