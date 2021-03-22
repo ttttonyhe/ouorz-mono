@@ -16,7 +16,7 @@ export default function JMSMetric() {
       subValue={total}
       footer="Just My Socks"
       link={link}
-      colorHex="#EC4899"
+      colorHex="#9CA3AF"
     />
   )
 }

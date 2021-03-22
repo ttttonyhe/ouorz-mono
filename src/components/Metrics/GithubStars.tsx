@@ -15,7 +15,7 @@ export default function GithubStarMetric() {
       value={stars}
       footer="Github Stars"
       link={link}
-      colorHex="#333333"
+      colorHex="#9CA3AF"
     />
   )
 }

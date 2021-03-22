@@ -17,6 +17,7 @@ module.exports = {
         '2': '6px',
         '3': '9px',
         '4': '12px',
+        '4.5': '1rem',
         '6': '18px',
         '7': '21px',
         '9': '27px',
@@ -154,11 +155,11 @@ module.exports = {
             transform: 'rotate3d(1, 1, 1, -15deg)',
             transformOrigin: '70% 70%'
           },
-          '50%':{
+          '50%': {
             transform: 'rotate3d(1, 1, 1, 15deg)',
             transformOrigin: '70% 70%'
           },
-          '75%':{
+          '75%': {
             transform: 'rotate3d(1, 1, 1, -15deg)',
             transformOrigin: '70% 70%'
           },

@@ -13,8 +13,7 @@ export default async (
     'https://api.github.com/users/HelipengTony',
     {
       headers: {
-        Authorization:
-          'token ' + 'ab543ae954598c0c4a30' + 'aff1381d562faaa9c739',
+        Authorization: process.env.GITHUB_TOKEN,
       },
     }
   )
@@ -22,8 +21,7 @@ export default async (
     'https://api.github.com/users/HelipengTony/repos?per_page=100',
     {
       headers: {
-        Authorization:
-          'token ' + 'ab543ae954598c0c4a30' + 'aff1381d562faaa9c739',
+        Authorization: process.env.GITHUB_TOKEN,
       },
     }
   )

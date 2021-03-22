@@ -15,7 +15,7 @@ export default function PostsMetric() {
       value={views}
       footer="Blog Post Views"
       link={link}
-      colorHex="#F59E0B"
+      colorHex="#9CA3AF"
     />
   )
 }

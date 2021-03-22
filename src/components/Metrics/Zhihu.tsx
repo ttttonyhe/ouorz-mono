@@ -15,7 +15,7 @@ export default function ZhihuMetric() {
       value={followers}
       footer="Zhihu Followers"
       link={link}
-      colorHex="#2d66ff"
+      colorHex="#9CA3AF"
     />
   )
 }

@@ -15,7 +15,7 @@ export default function GithubFollowerMetric() {
       value={followers}
       footer="Github Followers"
       link={link}
-      colorHex="#666666"
+      colorHex="#9CA3AF"
     />
   )
 }
