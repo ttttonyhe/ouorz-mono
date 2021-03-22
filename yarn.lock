@@ -5904,10 +5904,10 @@ react-floater@^0.7.2:
     react-proptype-conditional-require "^1.0.4"
     tree-changes "^0.5.1"
 
-react-h5-audio-player@^3.6.1:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/react-h5-audio-player/-/react-h5-audio-player-3.6.1.tgz#6cacf52570bb282b62a785e372b4b972db9fdbeb"
-  integrity sha512-/ottyYG3VdYSFYkHuxsmBRnKRZriNKpDbhd3hHMnaWDTaJEWAhdEQNcEX7eeYtqhSgaz5MRqnNBGpU3xkw/V1g==
+react-h5-audio-player@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/react-h5-audio-player/-/react-h5-audio-player-3.6.2.tgz#5a0b1b19aba9dee58b487b256e0ec344a85425a7"
+  integrity sha512-D6wmndRFRJkBfNxByF+dbqO8jajL8hUtDI3JLwsvkU4vh23CYY2VBEJ08E3dqkfDUJmA83T95qzBE/Yxnx+wdA==
   dependencies:
     "@babel/runtime" "^7.10.2"
     "@iconify/icons-mdi" "^1.0.46"
