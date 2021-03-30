@@ -9,7 +9,11 @@ module.exports = {
   },
   poweredByHeader: false,
   productionBrowserSourceMaps: true,
+  compress: true,
   images: {
     domains: ['static.ouorz.com'],
+  },
+  future: {
+    webpack5: true,
   },
 }
