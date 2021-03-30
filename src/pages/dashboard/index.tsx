@@ -56,7 +56,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div
-          className="mt-5 mb-10 grid grid-cols-2 gap-4"
+          className="mt-5 mb-10 grid lg:grid-cols-2 gap-4"
           data-cy="metricCards"
         >
           <NiceHashMetric />
