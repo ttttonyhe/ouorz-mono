@@ -12,8 +12,5 @@ module.exports = {
   compress: true,
   images: {
     domains: ['static.ouorz.com'],
-  },
-  future: {
-    webpack5: true,
-  },
+  }
 }
