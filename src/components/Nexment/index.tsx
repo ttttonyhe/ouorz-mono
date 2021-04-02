@@ -20,10 +20,10 @@ const Nexment = () => {
     blackList: [
       {
         name: '快递',
-        content: '代发',
+        keyword: '代发',
       },
       {
-        name: '单号',
+        keyword: '单号',
       },
     ],
   }
