@@ -15,7 +15,7 @@
   "dependencies": {
     "crypto-js": "^4.0.0",
     "dotenv": "^8.2.0",
-    "next": "^10.1.1",
+    "next": "^10.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -38,11 +38,11 @@
     "highlight.js": "^10.7.1",
     "husky": ">=6",
     "lint-staged": ">=10",
-    "nexment": "^0.0.667",
+    "nexment": "^0.0.668",
     "next-themes": "^0.0.14",
     "nextjs-progressbar": "^0.0.8",
     "nextjs-redirect": "^5.0.2",
-    "postcss": "^8.2.8",
+    "postcss": "^8.2.9",
     "prettier": "^2.2.1",
     "prettier-eslint": "^12.0.0",
     "react-content-loader": "^6.0.2",
@@ -51,16 +51,16 @@
     "react-infinite-scroll-component": "^6.0.0",
     "react-timeago": "^5.2.0",
     "smoothscroll-polyfill": "^0.4.4",
-    "swr": "^0.5.4",
+    "swr": "^0.5.5",
     "tailwindcss": "^2.0.4",
     "ts-loader": "^8.1.0",
     "typescript": "^4.2.3",
-    "webpack": "^5.28.0"
+    "webpack": "^5.30.0"
   },
   "optionalDependencies": {
     "@bahmutov/add-typescript-to-cypress": "^2.1.2",
     "@cypress/webpack-preprocessor": "^5.6.0",
-    "@testing-library/cypress": "^7.0.4",
+    "@testing-library/cypress": "^7.0.5",
     "@types/chai": "^4.2.15",
     "@types/jest": "^26.0.22",
     "@types/mocha": "^8.2.2",
