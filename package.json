@@ -38,7 +38,7 @@
     "highlight.js": "^10.7.1",
     "husky": ">=6",
     "lint-staged": ">=10",
-    "nexment": "^0.0.668",
+    "nexment": "^0.0.669",
     "next-themes": "^0.0.14",
     "nextjs-progressbar": "^0.0.8",
     "nextjs-redirect": "^5.0.2",

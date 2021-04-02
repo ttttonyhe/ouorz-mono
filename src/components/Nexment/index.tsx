@@ -9,14 +9,23 @@ const Nexment = () => {
     enableReplyListModal: true,
     descriptionTag: false,
     leancloud: {
-      appId: 'NM8cdTV' + 'i8wqCmbeLPmiK' + 'Cu79-gzGzoHsz',
-      appKey: 'p31o8' + 'YmzTfjBY68' + 'W2Y9gH3kb',
+      appId: process.env.LC_ID,
+      appKey: process.env.LC_KEY,
       serverURL: 'https://ouorz-nexment.ouorz.com',
     },
     admin: {
       name: 'TonyHe',
-      email: 'he@holptech.com',
+      email: 'tony.hlp@hotmail.com',
     },
+    blackList: [
+      {
+        name: '快递',
+        content: '代发',
+      },
+      {
+        name: '单号',
+      },
+    ],
   }
   return <NexmentContainer config={config} />
 }
