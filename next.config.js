@@ -1,13 +1,11 @@
-const webpack = require('webpack')
-
-const { parsed: env } = require('dotenv').config()
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   future: {
     webpack5: true,
   },
   webpack(config) {
-    config.plugins.push(new webpack.EnvironmentPlugin(env))
+    config.plugins.push(new Dotenv())
     return config
   },
   poweredByHeader: false,

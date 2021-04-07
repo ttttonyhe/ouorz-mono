@@ -4048,6 +4048,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv-defaults@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "dotenv-defaults@npm:2.0.1"
+  dependencies:
+    dotenv: ^8.2.0
+  checksum: 53ac7d987bb9de5d9be0f76040460f398cd56708833143f95ed48732c8d73cf55868d4b368c4eb6dbeba704263da7262623c33557c897f5c06262973477abf0d
+  languageName: node
+  linkType: hard
+
+"dotenv-webpack@npm:^7.0.2":
+  version: 7.0.2
+  resolution: "dotenv-webpack@npm:7.0.2"
+  dependencies:
+    dotenv-defaults: ^2.0.1
+  peerDependencies:
+    webpack: ^4 || ^5
+  checksum: 63cb71dd1b1d0f77087c32341f2a2dea56facf13919a346890545a7b1b407a9bd323248e6a8bedd46cf17cb9a8f13ae37a85887cf5d97e1edf53ca87daa8758e
+  languageName: node
+  linkType: hard
+
 "dotenv@npm:^8.2.0":
   version: 8.2.0
   resolution: "dotenv@npm:8.2.0"
@@ -7527,7 +7547,7 @@ fsevents@~2.3.1:
     comma-number: ^2.0.1
     crypto-js: ^4.0.0
     cypress: ^7.0.0
-    dotenv: ^8.2.0
+    dotenv-webpack: ^7.0.2
     eslint: ^7.23.0
     eslint-config-prettier: ^8.1.0
     eslint-plugin-cypress: ^2.11.2
