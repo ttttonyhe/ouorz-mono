@@ -38,6 +38,15 @@ const Nexment = () => {
       {
         keyword: '快递',
       },
+      {
+        keyword: '快发',
+      },
+      {
+        keyword: '快单',
+      },
+      {
+        keyword: '一毛钱',
+      },
     ],
   }
   return <NexmentContainer config={config} />
