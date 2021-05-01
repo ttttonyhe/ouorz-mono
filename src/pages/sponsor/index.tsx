@@ -61,7 +61,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
             des="Known Unknowns"
             icon="mic"
             className="text-black dark:text-white"
-            href="https://anchor.fm/the-known-unknowns"
+            href="https://kukfm.com"
           ></PageCard>
         </div>
         <div className="border shadow-sm w-full p-7 rounded-md bg-white dark:bg-gray-700 dark:border-gray-700 items-center my-2 mb-10">
