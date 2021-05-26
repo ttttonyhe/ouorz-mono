@@ -15,7 +15,7 @@ export default function SubscriptionBox({ type }: { type: string }) {
         'Content-Type': 'application/json',
         Authorization: 'Token 110279' + '82-828a-4e06' + '-bd0f-c2566a65a5e7',
       },
-      body: JSON.stringify({ email: email }),
+      body: JSON.stringify({ email: email, tags: ['Blog Newsletter'] }),
     })
     const data = await res.json()
 

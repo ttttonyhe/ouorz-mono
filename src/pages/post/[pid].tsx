@@ -40,7 +40,10 @@ export default function BlogPost({
           )}
         </Head>
         <Page>
-          <article className="lg:shadow-sm lg:border lg:rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 p-5 lg:p-20 lg:pt-20 pt-24">
+          <article
+            data-cy="postContent"
+            className="lg:shadow-sm lg:border lg:rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 p-5 lg:p-20 lg:pt-20 pt-24"
+          >
             <div className="mb-20">
               <div className="flex mb-3">
                 <Link href={`/cate/${post.post_categories[0].term_id}`}>

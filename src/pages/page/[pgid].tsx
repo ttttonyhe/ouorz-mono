@@ -29,7 +29,10 @@ export default function BlogPage({
           <meta name="description" content={page.title.rendered}></meta>
         </Head>
         <Page>
-          <article className="lg:shadow-sm lg:border lg:rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 p-5 lg:p-20 pt-24">
+          <article
+            data-cy="pageContent"
+            className="lg:shadow-sm lg:border lg:rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 p-5 lg:p-20 pt-24"
+          >
             <div className="mb-20">
               <h1 className="text-1.5 lg:text-postTitle font-medium tracking-wider leading-snug">
                 {page.title.rendered}
