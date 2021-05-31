@@ -41,7 +41,7 @@
     "lint-staged": ">=11",
     "nexment": "^0.0.669",
     "next-themes": "^0.0.14",
-    "nextjs-progressbar": "^0.0.9",
+    "nextjs-progressbar": "^0.0.10",
     "nextjs-redirect": "^5.0.2",
     "postcss": "^8.3.0",
     "prettier": "^2.3.0",
