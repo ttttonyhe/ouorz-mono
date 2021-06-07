@@ -36,7 +36,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
-    "highlight.js": "^10.7.2",
+    "highlight.js": "^11.0.1",
     "husky": ">=6",
     "lint-staged": ">=11",
     "nexment": "^0.0.669",
