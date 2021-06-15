@@ -14,9 +14,8 @@ export default function Search({
   setEndSearching: any
 }) {
   const [searchContent, setSearchContent] = useState<string>('')
-  const [searchResultsDisplay, setSearchResultsDisplay] = useState<boolean>(
-    false
-  )
+  const [searchResultsDisplay, setSearchResultsDisplay] =
+    useState<boolean>(false)
 
   const terminateSearch = () => {
     setEndSearching(true)
