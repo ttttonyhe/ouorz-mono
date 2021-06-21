@@ -1194,10 +1194,10 @@
   resolved "https://registry.nlark.com/@types/aria-query/download/@types/aria-query-4.2.1.tgz?cache=0&sync_timestamp=1621240507754&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Faria-query%2Fdownload%2F%40types%2Faria-query-4.2.1.tgz#78b5433344e2f92e8b306c06a5622c50c245bf6b"
   integrity sha1-eLVDM0Ti+S6LMGwGpWIsUMJFv2s=
 
-"@types/chai@^4.2.18":
-  version "4.2.18"
-  resolved "https://registry.nlark.com/@types/chai/download/@types/chai-4.2.18.tgz#0c8e298dbff8205e2266606c1ea5fbdba29b46e4"
-  integrity sha1-DI4pjb/4IF4iZmBsHqX726KbRuQ=
+"@types/chai@^4.2.19":
+  version "4.2.19"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.2.19.tgz#80f286b515897413c7a35bdda069cc80f2344233"
+  integrity sha512-jRJgpRBuY+7izT7/WNXP/LsMO9YonsstuL+xuvycDyESpoDoIAsMd7suwpB4h9oEWB+ZlPTqJJ8EHomzNhwTPQ==
 
 "@types/cookiejar@*":
   version "2.1.2"
