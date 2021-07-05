@@ -32,7 +32,7 @@
     "@typescript-eslint/parser": "^4.27.0",
     "autoprefixer": "^10.2.6",
     "comma-number": "^2.1.0",
-    "eslint": "^7.28.0",
+    "eslint": "^7.30.0",
     "eslint-config-next": "^11.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
