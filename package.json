@@ -57,7 +57,7 @@
     "tailwindcss": "^2.1.4",
     "ts-loader": "^9.2.3",
     "typescript": "^4.3.2",
-    "webpack": "^5.39.0"
+    "webpack": "^5.42.0"
   },
   "optionalDependencies": {
     "@bahmutov/add-typescript-to-cypress": "^2.1.2",
