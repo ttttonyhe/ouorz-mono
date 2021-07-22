@@ -11,7 +11,6 @@ import SspaiMetric from '~/components/Metrics/Sspai'
 import TwitterMetric from '~/components/Metrics/Twitter'
 import ZhihuMetric from '~/components/Metrics/Zhihu'
 import JMSMetric from '~/components/Metrics/JMS'
-import NiceHashMetric from '~/components/Metrics/Nicehash'
 
 export default function Dashboard() {
   return (
@@ -59,7 +58,6 @@ export default function Dashboard() {
           className="mt-5 mb-10 grid lg:grid-cols-2 gap-4"
           data-cy="metricCards"
         >
-          <NiceHashMetric />
           <NexmentMetric />
           <TwitterMetric />
           <SspaiMetric />
