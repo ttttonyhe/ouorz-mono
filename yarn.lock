@@ -7659,7 +7659,7 @@ webidl-conversions@^4.0.2:
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
   integrity sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==
 
-webpack-sources@^2.3.0:
+webpack-sources@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-2.3.1.tgz#570de0af163949fe272233c2cefe1b56f74511fd"
   integrity sha512-y9EI9AO42JjEcrTJFOYmVywVZdKVUfOvDUPsJea5GIr1JOEGFVqwlY2K098fFoIjOkDzHn2AjRvM8dsBZu+gCA==
@@ -7667,10 +7667,10 @@ webpack-sources@^2.3.0:
     source-list-map "^2.0.1"
     source-map "^0.6.1"
 
-webpack@^5.45.1:
-  version "5.45.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.45.1.tgz#d78dcbeda18a872dc62b0455d3ed3dcfd1c886bb"
-  integrity sha512-68VT2ZgG9EHs6h6UxfV2SEYewA9BA3SOLSnC2NEbJJiEwbAiueDL033R1xX0jzjmXvMh0oSeKnKgbO2bDXIEyQ==
+webpack@^5.46.0:
+  version "5.46.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.46.0.tgz#105d20d96f79db59b316b0ae54316f0f630314b5"
+  integrity sha512-qxD0t/KTedJbpcXUmvMxY5PUvXDbF8LsThCzqomeGaDlCA6k998D8yYVwZMvO8sSM3BTEOaD4uzFniwpHaTIJw==
   dependencies:
     "@types/eslint-scope" "^3.7.0"
     "@types/estree" "^0.0.50"
@@ -7694,7 +7694,7 @@ webpack@^5.45.1:
     tapable "^2.1.1"
     terser-webpack-plugin "^5.1.3"
     watchpack "^2.2.0"
-    webpack-sources "^2.3.0"
+    webpack-sources "^2.3.1"
 
 whatwg-url@^7.0.0:
   version "7.1.0"
