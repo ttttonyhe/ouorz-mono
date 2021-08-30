@@ -15,7 +15,7 @@ export default function CommentBox() {
           Leave a comment to join the discussion
         </p>
       </div>
-      <NexmentDiv></NexmentDiv>
+      <NexmentDiv id={process.env.LC_ID} key={process.env.LC_KEY} />
     </div>
   )
 }
