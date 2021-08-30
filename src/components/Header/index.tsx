@@ -33,13 +33,17 @@ export default function Header() {
       }`}
     >
       <div className="col-start-1 col-end-2 flex lg:space-x-2">
-        <a href="https://blog.ouorz.com/feed" target="_blank" rel="noreferrer">
+        <a
+          href="https://buttondown.email/helipeng"
+          target="_blank"
+          rel="noreferrer"
+        >
           <Button
             bType="menu-default"
-            icon="rss"
+            icon="subscribe"
             className="hidden lg:flex text-3"
           >
-            RSS
+            Newsletter
           </Button>
         </a>
         <Button

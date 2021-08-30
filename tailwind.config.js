@@ -5,10 +5,8 @@ var flattenColorPalette = require('tailwindcss/lib/util/flattenColorPalette').de
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  purge: {
-    enabled: process.env.NODE_ENV === 'production',
-    content: ['./src/**/*.tsx']
-  },
+  mode: "jit",
+  purge: ['./src/**/*.tsx'],
   darkMode: 'class',
   theme: {
     extend: {

@@ -2,17 +2,19 @@ import { useState } from 'react'
 import Icons from '~/components/Icons'
 import List from '~/components/List'
 
+interface SearchProps {
+  startSearching: boolean
+  endSearching: boolean
+  setStartSearching: any
+  setEndSearching: any
+}
+
 export default function Search({
   startSearching,
   setStartSearching,
   endSearching,
   setEndSearching,
-}: {
-  startSearching: boolean
-  endSearching: boolean
-  setStartSearching: any
-  setEndSearching: any
-}) {
+}: SearchProps) {
   const [searchContent, setSearchContent] = useState<string>('')
   const [searchResultsDisplay, setSearchResultsDisplay] =
     useState<boolean>(false)
@@ -52,11 +54,11 @@ export default function Search({
           }`}
         >
           <div className="flex mb-10">
-            <span className="lg:h-8 lg:w-7 h-6 w-5 absolute lg:mt-3 lg:pt-0.5 mt-3 ml-4 text-gray-400">
+            <span className="lg:h-7 lg:w-7 h-7 w-5 absolute lg:mt-3 lg:pt-0.5 mt-3 left-[45px] text-gray-400">
               {Icons.search}
             </span>
             <input
-              className="shadow-md rounded-lg hover:shadow-lg bg-white dark:bg-gray-800 dark:border-gray-800 text-3 lg:text-2 w-full h-auto px-12 lg:px-14 py-3 focus:outline-none text-gray-800 dark:text-gray-400"
+              className="shadow-md rounded-lg hover:shadow-lg bg-white dark:bg-gray-800 dark:border-gray-800 text-3 lg:text-2 w-full h-auto px-12 lg:px-14 lg:pl-12 py-3 focus:outline-none text-gray-600 dark:text-gray-400"
               placeholder="Search articles..."
               value={searchContent}
               autoFocus
@@ -69,7 +71,18 @@ export default function Search({
                   setSearchResultsDisplay(true)
                 }
               }}
-            ></input>
+            />
+
+            {!searchContent.length || (
+              <span
+                className="lg:h-7 lg:w-7 h-7 w-5 absolute right-[45px] lg:mt-[11px] mt-3 text-gray-300"
+                style={{
+                  transform: 'rotate(180deg) scaleX(-1)',
+                }}
+              >
+                {Icons.reply}
+              </span>
+            )}
           </div>
           <div onClick={terminateSearch}>
             {searchResultsDisplay && (

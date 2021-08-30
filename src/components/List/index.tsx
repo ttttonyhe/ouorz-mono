@@ -9,7 +9,7 @@ import CardClickable from '~/components/Card/Clickable'
 import Reader from '~/components/Reader'
 
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { useSWRInfinite } from 'swr'
+import useSWRInfinite from 'swr/infinite'
 import { getApi } from '~/assets/utilities/Api'
 
 interface Props {

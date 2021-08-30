@@ -49,8 +49,7 @@ export default function Dashboard() {
           </div>
           <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
             <p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
-              My personal dashboard to keep track of metrics from various
-              platforms
+              Personal dashboard to track metrics across various platforms
             </p>
           </div>
         </div>

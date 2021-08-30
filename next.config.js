@@ -9,6 +9,6 @@ module.exports = {
   productionBrowserSourceMaps: true,
   compress: true,
   images: {
-    domains: ['static.ouorz.com'],
+    domains: ['static.ouorz.com', 'storage.snapaper.com'],
   },
 }

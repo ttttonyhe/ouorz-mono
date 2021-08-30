@@ -41,14 +41,14 @@ export default function Pages() {
           </div>
           <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
             <p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
-              Explore and discover special pages and content
+              Discover special pages and content
             </p>
           </div>
         </div>
         <div className="mt-5 grid grid-cols-2 gap-4">
           <PageCard
             title="Dashboard"
-            des="Tracking metrics"
+            des="Track my metrics"
             icon="ppt"
             className="text-blue-500"
             href="/dashboard"
@@ -68,8 +68,8 @@ export default function Pages() {
             href="/page/765"
           ></PageCard>
           <PageCard
-            title="Friends"
-            des="Links exchanged"
+            title="Links"
+            des="Links of my friends"
             icon="people"
             className="text-pink-400"
             href="/friends"

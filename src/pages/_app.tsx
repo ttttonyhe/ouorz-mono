@@ -3,10 +3,16 @@ import '~/global.css'
 import type { AppProps } from 'next/app'
 import NextNprogress from 'nextjs-progressbar'
 import { ThemeProvider } from 'next-themes'
+import Script from 'next/script'
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <div>
+      <Script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "53f3652793b44758819338f853f944e4", "spa": true}'
+      ></Script>
       <NextNprogress
         color="#D1D5DB"
         height={2}
