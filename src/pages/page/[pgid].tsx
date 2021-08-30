@@ -50,7 +50,7 @@ export default function BlogPage({
           <div className="mt-5">
             <SubscriptionBox type="lg"></SubscriptionBox>
           </div>
-          <CommentBox></CommentBox>
+          <CommentBox />
         </Page>
       </div>
     )
