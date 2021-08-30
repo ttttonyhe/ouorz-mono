@@ -23,7 +23,7 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.4.1",
     "@types/crypto-js": "^4.0.2",
-    "@types/node": "^16.4.0",
+    "@types/node": "^16.7.6",
     "@types/react": "^17.0.14",
     "@types/react-highlight": "^0.12.3",
     "@types/react-timeago": "^4.1.3",
