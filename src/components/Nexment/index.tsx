@@ -3,6 +3,7 @@ import { NexmentContainer } from 'nexment'
 
 const Nexment = () => {
   const router = useRouter()
+  console.log(process.env.NEXT_PUBLIC_LC_ID)
   const config = {
     pageKey: router.asPath.split('/')[2].toString(),
     enableLinkInput: true,
