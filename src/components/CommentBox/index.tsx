@@ -1,10 +1,11 @@
 import dynamic from 'next/dynamic'
 import Icons from '~/components/Icons'
+import { GetServerSideProps } from 'next'
 const NexmentDiv = dynamic(() => import('~/components/Nexment'), {
   ssr: false,
 })
 
-export default function CommentBox() {
+export default function CommentBox({ id, key }: { id: string; key: string }) {
   return (
     <div className="lg:mt-5 bg-white dark:bg-gray-800 dark:border-gray-800 p-5 lg:py-11 lg:px-20 lg:shadow-sm lg:border lg:rounded-xl">
       <div className="mb-8">
@@ -15,7 +16,16 @@ export default function CommentBox() {
           Leave a comment to join the discussion
         </p>
       </div>
-      <NexmentDiv id={process.env.LC_ID} key={process.env.LC_KEY} />
+      <NexmentDiv id={id} key={key} />
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  return {
+    props: {
+      id: process.env.LC_ID,
+      key: process.env.LC_KEY,
+    },
+  }
 }
