@@ -2,8 +2,6 @@ import { useRouter } from 'next/router'
 import { NexmentContainer } from 'nexment'
 
 const Nexment = () => {
-  console.log(process.env.LC_ID)
-  console.log(process.env.LC_KEY)
   const router = useRouter()
   const config = {
     pageKey: router.asPath.split('/')[2].toString(),
@@ -11,8 +9,8 @@ const Nexment = () => {
     enableReplyListModal: true,
     descriptionTag: false,
     leancloud: {
-      appId: process.env.LC_ID,
-      appKey: process.env.LC_KEY,
+      appId: process.env.NEXT_PUBLIC_LC_ID,
+      appKey: process.env.NEXT_PUBLIC_LC_KEY,
       serverURL: 'https://ouorz-nexment.ouorz.com',
     },
     admin: {
