@@ -12,8 +12,8 @@ export default async (
     'https://ouorz-nexment.ouorz.com/1.1/classes/nexment_comments?count=1&limit=0',
     {
       headers: {
-        'X-LC-Id': process.env.LC_ID,
-        'X-LC-Key': process.env.LC_KEY,
+        'X-LC-Id': process.env.NEXT_PUBLIC_LC_ID,
+        'X-LC-Key': process.env.NEXT_PUBLIC_LC_KEY,
       },
     }
   )

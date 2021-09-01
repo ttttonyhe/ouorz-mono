@@ -3,15 +3,14 @@ import { NexmentContainer } from 'nexment'
 
 const Nexment = () => {
   const router = useRouter()
-  console.log(process.env.NEXT_PUBLIC_LC_ID)
   const config = {
     pageKey: router.asPath.split('/')[2].toString(),
     enableLinkInput: true,
     enableReplyListModal: true,
     descriptionTag: false,
     leancloud: {
-      appId: process.env.NEXT_PUBLIC_LC_ID,
-      appKey: process.env.NEXT_PUBLIC_LC_KEY,
+      appId: process.env.NEXT_PUBLIC_LC_ID || '',
+      appKey: process.env.NEXT_PUBLIC_LC_KEY || '',
       serverURL: 'https://ouorz-nexment.ouorz.com',
     },
     admin: {

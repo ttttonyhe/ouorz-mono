@@ -6,7 +6,7 @@ module.exports = {
     return config
   },
   poweredByHeader: false,
-  productionBrowserSourceMaps: true,
+  productionBrowserSourceMaps: false,
   compress: true,
   images: {
     domains: ['static.ouorz.com', 'storage.snapaper.com'],
