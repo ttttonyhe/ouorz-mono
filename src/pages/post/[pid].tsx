@@ -64,7 +64,7 @@ export default function BlogPost({
                 <span>·</span>
                 <span>{post.post_metas.views} Views</span>
                 <span>·</span>
-                <span className="group">
+                <span className="group cursor-pointer">
                   <span className="group-hover:hidden">
                     {post.post_metas.reading.word_count} Words
                   </span>
@@ -76,18 +76,18 @@ export default function BlogPost({
                 </span>
               </p>
             </div>
-            <PostContent content={post.content.rendered}></PostContent>
+            <PostContent content={post.content.rendered} />
             {post.post_categories[0].term_id === 4 && (
               <div className="mt-12">
                 <CardTool item={post} preview={false}></CardTool>
               </div>
             )}
           </article>
-          <Aside preNext={post.post_prenext}></Aside>
+          <Aside preNext={post.post_prenext} />
           <div className="lg:mt-5 border-t border-gray-200 lg:border-none">
-            <SubscriptionBox type="lg"></SubscriptionBox>
+            <SubscriptionBox type="lg" />
           </div>
-          <CommentBox></CommentBox>
+          <CommentBox />
         </Page>
       </div>
     )
