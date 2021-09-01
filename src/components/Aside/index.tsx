@@ -109,7 +109,7 @@ export default function Aside({ preNext }: { preNext: any }) {
           } tour`}
         >
           {a && (
-            <Link href={`/post/${preNext.prev[0]}`}>
+            <Link href={`/post/${preNext.prev[0]}`} passHref>
               <div
                 className={`px-6 py-3 flex items-center justify-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 ${
                   b ? 'rounded-tl-xl rounded-bl-xl' : 'rounded-xl'
@@ -120,7 +120,7 @@ export default function Aside({ preNext }: { preNext: any }) {
             </Link>
           )}
           {b && (
-            <Link href={`/post/${preNext.next[0]}`}>
+            <Link href={`/post/${preNext.next[0]}`} passHref>
               <div
                 className={`px-6 py-3 flex items-center justify-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 ${
                   a ? 'rounded-tr-xl rounded-br-xl' : 'rounded-xl'

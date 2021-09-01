@@ -3,7 +3,8 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "plugin:cypress/recommended"
+    "plugin:cypress/recommended",
+    "plugin:@next/next/recommended"
   ],
   "plugins": [
     "react",

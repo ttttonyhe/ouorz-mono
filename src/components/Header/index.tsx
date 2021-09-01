@@ -79,7 +79,7 @@ export default function Header() {
             />
           </div>
           <div className="text-2 font-medium text-black">
-            <Link href="/">
+            <Link href="/" passHref>
               <h3 className="text-gray-700 dark:text-gray-300">TonyHe</h3>
             </Link>
           </div>
