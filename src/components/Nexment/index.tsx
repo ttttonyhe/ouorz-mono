@@ -9,8 +9,8 @@ const Nexment = () => {
     enableReplyListModal: true,
     descriptionTag: false,
     leancloud: {
-      appId: process.env.NEXT_PUBLIC_LC_ID || '',
-      appKey: process.env.NEXT_PUBLIC_LC_KEY || '',
+      appId: process.env.NEXT_PUBLIC_LC_ID,
+      appKey: process.env.NEXT_PUBLIC_LC_KEY,
       serverURL: 'https://ouorz-nexment.ouorz.com',
     },
     admin: {
@@ -49,7 +49,7 @@ const Nexment = () => {
       },
     ],
   }
-  if (!process.env.CI) {
+  if (process.env.NEXT_PUBLIC_LC_ID && process.env.NEXT_PUBLIC_LC_KEY) {
     return <NexmentContainer config={config} />
   } else {
     return <></>
