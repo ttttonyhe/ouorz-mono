@@ -49,7 +49,7 @@ const Nexment = () => {
       },
     ],
   }
-  if (process.env.CI) {
+  if (!process.env.CI) {
     return <NexmentContainer config={config} />
   } else {
     return <></>
