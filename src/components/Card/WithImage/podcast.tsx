@@ -10,7 +10,7 @@ interface Props {
   sticky: boolean
 }
 
-export default function CardWithImagePodcast({ item, sticky }: Props) {
+const CardWithImagePodcast = ({ item, sticky }: Props) => {
   return (
     <div className="w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6">
       <div className="lg:pt-10 pt-5 pl-5 pr-5 lg:pl-10 lg:pr-10 lg:grid lg:grid-flow-col lg:grid-cols-3 lg:gap-9">
@@ -19,6 +19,8 @@ export default function CardWithImagePodcast({ item, sticky }: Props) {
             src={item.post_img.url}
             width={160}
             height={160}
+            placeholder="blur"
+            blurDataURL={`${item.post_img.url}?imageMogr2/thumbnail/!50p/format/webp/blur/1x0/quality/1|imageslim`}
             className="rounded-md"
           ></Image>
         </div>
@@ -58,3 +60,5 @@ export default function CardWithImagePodcast({ item, sticky }: Props) {
     </div>
   )
 }
+
+export default CardWithImagePodcast

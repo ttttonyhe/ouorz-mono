@@ -3,6 +3,7 @@ import BottomCard from '~/components/Card/Bottom'
 import CardWithImageTool from '~/components/Card/WithImage/tool'
 import { DesSplit } from '~/assets/utilities/String'
 import Link from 'next/link'
+import Image from 'next/image'
 import CardWithImagePodcast from '~/components/Card/WithImage/podcast'
 
 interface Props {
@@ -24,15 +25,16 @@ export default function CardWithImage({ item, sticky, setReader }: Props) {
       return (
         <div className="w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6">
           <div className="p-5 lg:p-10 lg:grid lg:grid-flow-col lg:grid-cols-3 lg:gap-9">
-            <div
-              className="dark:opacity-90 lg:block hidden rounded-md shadow-sm h-img min-h-full w-full col-span-1 col-end-2 border border-gray-200"
-              style={{
-                backgroundImage: 'url(' + item.post_img.url + ')',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-              }}
-            ></div>
+            <div className="dark:opacity-90 lg:block relative hidden rounded-md shadow-sm h-img min-h-full w-full col-span-1 col-end-2 border border-gray-200">
+              <Image
+                src={item.post_img.url}
+                layout="fill"
+                objectFit="cover"
+                placeholder="blur"
+                blurDataURL={`${item.post_img.url}?imageMogr2/thumbnail/!50p/format/webp/blur/1x0/quality/1|imageslim`}
+                className="rounded-md"
+              />
+            </div>
             <div className="col-span-2 col-end-4">
               <div className="flex space-x-3 items-center">
                 <div className="flex space-x-2 col-start-1 col-end-3">
