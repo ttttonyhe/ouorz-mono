@@ -34,22 +34,24 @@ export default function Search({
     (startSearching || endSearching) && (
       <div>
         <div
-          className={`reader-bg ${startSearching
+          className={`reader-bg ${
+            startSearching
               ? 'animate-searchBg'
               : endSearching
-                ? 'animate-searchBgOut'
-                : ''
-            }`}
+              ? 'animate-searchBgOut'
+              : ''
+          }`}
           onClick={terminateSearch}
         ></div>
         <div
           id="searchResultsDiv"
-          className={`fixed transition-all ease-linear overflow-y-auto overflow-hidden rounded-tl-xl reader rounded-tr-xl py-5 lg:py-20 lg:w-content w-full mx-auto lg:left-searchOffset top-0 mt-20 px-5 lg:px-10 ${startSearching
+          className={`fixed transition-all ease-linear overflow-y-auto overflow-hidden rounded-tl-xl reader rounded-tr-xl py-5 lg:py-20 lg:w-content w-full mx-auto lg:left-searchOffset top-0 mt-20 px-5 lg:px-10 ${
+            startSearching
               ? 'animate-search'
               : endSearching
-                ? 'animate-searchOut'
-                : ''
-            }`}
+              ? 'animate-searchOut'
+              : ''
+          }`}
         >
           <div className="flex mb-10">
             <span className="lg:h-7 lg:w-7 h-7 w-5 absolute lg:mt-3 lg:pt-0.5 mt-3 left-[45px] text-gray-400">
