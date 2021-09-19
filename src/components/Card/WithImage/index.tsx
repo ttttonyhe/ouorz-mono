@@ -31,7 +31,7 @@ export default function CardWithImage({ item, sticky, setReader }: Props) {
                 layout="fill"
                 objectFit="cover"
                 placeholder="blur"
-                blurDataURL={`${item.post_img.url}?imageMogr2/thumbnail/!50p/format/webp/blur/1x0/quality/1|imageslim`}
+                blurDataURL={`${item.post_img.url}?imageMogr2/thumbnail/168x/format/webp/blur/1x0/quality/1|imageslim`}
                 className="rounded-md"
               />
             </div>
