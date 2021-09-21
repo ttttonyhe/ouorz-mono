@@ -175,7 +175,7 @@ export default function Aside({ preNext }: { preNext: any }) {
             item[1] !== 0
               ? 'toc-sub hover:rounded-tl-none hover:rounded-bl-none'
               : ''
-          } py-2 text-gray-800 dark:text-gray-400 whitespace-nowrap overflow-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 hover:rounded-md dark:hover:bg-gray-700`}
+          } py-2 pr-[10px] text-gray-800 dark:text-gray-400 whitespace-nowrap overflow-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 hover:rounded-md dark:hover:bg-gray-700`}
           id={`header${item[0]}`}
           style={{
             paddingLeft: '10px',

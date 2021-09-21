@@ -1,7 +1,3 @@
-body {
-  overflow-y: overlay;
-}
-
 .nexment-admin-badge {
   display: none !important;
 }
@@ -255,7 +251,7 @@ h5 {
   position: fixed;
   top: 0px;
   left: 0px;
-  background: #f7f8f9;
+  backdrop-filter: saturate(180%) blur(20px);
   @apply dark:bg-gray-900;
 }
 

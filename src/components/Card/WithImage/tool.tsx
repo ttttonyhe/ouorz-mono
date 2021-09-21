@@ -32,7 +32,7 @@ export const CardTool = ({
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
         }}
-      ></div>
+      />
       <div className="col-start-2 col-end-9 grid grid-cols-2 items-center pl-3 lg:pl-0 py-2 pr-3">
         <div className="justify-center items-center">
           <h2 className="text-xl font-medium text-gray-600 dark:text-gray-200">
@@ -79,9 +79,10 @@ export default function CardWithImageTool({ item, sticky, setReader }: Props) {
         <div className="mt-6">
           <Link href={`/post/${item.id}`}>
             <a>
-              <h1 className="font-medium text-2 lg:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5">
-                {item.post_title}
-              </h1>
+              <h1
+                className="font-medium text-2 lg:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5"
+                dangerouslySetInnerHTML={{ __html: item.post_title }}
+              />
             </a>
           </Link>
           <p
