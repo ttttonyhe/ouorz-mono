@@ -72,7 +72,7 @@ export default function Header() {
             <Image
               className="rounded-full"
               src="/tony.jpg"
-              alt="Site Logo"
+              alt="tony's logo"
               height={18.77}
               width={18.77}
               layout="fixed"

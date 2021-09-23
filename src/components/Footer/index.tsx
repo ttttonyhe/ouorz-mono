@@ -33,8 +33,12 @@ export default function Footer() {
           @ttttonyhe
         </a>{' '}
         <span>·</span>{' '}
-        <a href="http://beian.miit.gov.cn" target="_blank" rel="noreferrer">
-          蜀ICP备16017417号-9
+        <a
+          href="https://github.com/HelipengTony/ouorz-next"
+          target="_blank"
+          rel="noreferrer"
+        >
+          open source
         </a>
       </p>
     </footer>
