@@ -34,11 +34,19 @@ export default function Footer() {
         </a>{' '}
         <span>·</span>{' '}
         <a
+          href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          CC BY-NC-SA 4.0
+        </a>{' '}
+        <span>·</span>{' '}
+        <a
           href="https://github.com/HelipengTony/ouorz-next"
           target="_blank"
           rel="noreferrer"
         >
-          open source
+          OSS
         </a>
       </p>
     </footer>
