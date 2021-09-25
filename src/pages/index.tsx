@@ -33,7 +33,7 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
               <span className="animate-waveHand hover:animate-waveHandAgain inline-block cursor-pointer mr-2.5">
                 👋
               </span>{' '}
-              Hi, I{"'"}m TonyHe
+              Hey, I{"'"}m TonyHe
               <a
                 href="https://www.linkedin.com/in/lipenghe"
                 className="ml-2 mt-0.5"
