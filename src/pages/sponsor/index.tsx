@@ -55,14 +55,14 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
             icon="githubLine"
             className="text-black dark:text-white"
             href="https://github.com/HelipengTony"
-          ></PageCard>
+          />
           <PageCard
             title="Podcast"
             des="Known Unknowns"
             icon="mic"
             className="text-black dark:text-white"
             href="https://kukfm.com"
-          ></PageCard>
+          />
         </div>
         <div className="border shadow-sm w-full p-7 rounded-md bg-white dark:bg-gray-700 dark:border-gray-700 items-center my-2 mb-10">
           <p className="text-xl tracking-wide text-gray-500 dark:text-gray-300 items-center">
@@ -76,23 +76,30 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
               icon="alipay"
               className="text-blue-500"
               href="https://static.ouorz.com/alipay.png"
-            ></PageCard>
+            />
             <PageCard
               title="Wechat Pay"
               des="Helipeng_tony"
               icon="wxpay"
               className="text-green-600"
               href="https://static.ouorz.com/wechatpay.png"
-            ></PageCard>
+            />
           </div>
-          <div className="mt-4">
+          <div className="mt-4 grid grid-cols-2 gap-4">
+            <PageCard
+              title="Github Sponsors"
+              des="HelipengTony"
+              icon="love"
+              className="text-pink-600"
+              href="https://github.com/sponsors/HelipengTony"
+            />
             <PageCard
               title="Bitcoin"
               des="bc1qz2kgqp26wtel6n7rl0cw053pxgtwt5vrr5hyd7pqmmjfhqxex8dq8fknpx"
               iconSmall="bitcoin"
               className="text-yellow-500"
               href="https://static.ouorz.com/bitcoin.jpg"
-            ></PageCard>
+            />
           </div>
         </div>
         <div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
