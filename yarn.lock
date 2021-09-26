@@ -1334,10 +1334,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.17.5.tgz#b59daf6a7ffa461b5648456ca59050ba8e40ed54"
   integrity sha512-bjqH2cX/O33jXT/UmReo2pM7DIJREPMnarixbQ57DOOzzFaI6D2+IcwaJQaJpv0M1E9TIhPCYVxrkcityLjlqA==
 
-"@types/node@^16.9.6":
-  version "16.9.6"
-  resolved "https://registry.npmjs.org/@types/node/-/node-16.9.6.tgz#040a64d7faf9e5d9e940357125f0963012e66f04"
-  integrity sha512-YHUZhBOMTM3mjFkXVcK+WwAcYmyhe1wL4lfqNtzI0b3qAy7yuSetnM7QJazgE5PFmgVTNGiLOgRFfJMqW7XpSQ==
+"@types/node@^16.10.1":
+  version "16.10.1"
+  resolved "https://registry.npmjs.org/@types/node/-/node-16.10.1.tgz#f3647623199ca920960006b3dccf633ea905f243"
+  integrity sha512-4/Z9DMPKFexZj/Gn3LylFgamNKHm4K3QDi0gz9B26Uk0c8izYf97B5fxfpspMNkWlFupblKM/nV8+NA9Ffvr+w==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -2059,15 +2059,15 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-autoprefixer@^10.3.5:
-  version "10.3.5"
-  resolved "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.3.5.tgz#762e6c13e30c5a0e650bf81d9ffd5713f1c8f344"
-  integrity sha512-2H5kQSsyoOMdIehTzIt/sC9ZDIgWqlkG/dbevm9B9xQZ1TDPBHpNUDW5ENqqQQzuaBWEo75JkV0LJe+o5Lnr5g==
+autoprefixer@^10.3.6:
+  version "10.3.6"
+  resolved "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.3.6.tgz#537c8a046e32ec46bfe528bcc9e2a5f2d87cd4c4"
+  integrity sha512-3bDjTfF0MfZntwVCSd18XAT2Zndufh3Mep+mafbzdIQEeWbncVRUVDjH8/EPANV9Hq40seJ24QcYAyhUsFz7gQ==
   dependencies:
     browserslist "^4.17.1"
-    caniuse-lite "^1.0.30001259"
+    caniuse-lite "^1.0.30001260"
     fraction.js "^4.1.1"
-    nanocolors "^0.1.5"
+    nanocolors "^0.2.8"
     normalize-range "^0.1.2"
     postcss-value-parser "^4.1.0"
 
@@ -2457,6 +2457,13 @@ caniuse-lite@^1.0.30001259:
   version "1.0.30001259"
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001259.tgz#ae21691d3da9c4be6144403ac40f71d9f6efd790"
   integrity sha512-V7mQTFhjITxuk9zBpI6nYsiTXhcPe05l+364nZjK7MFK/E7ibvYBSAXr4YcA6oPR8j3ZLM/LN+lUqUVAQEUZFg==
+
+caniuse-lite@^1.0.30001260:
+  version "1.0.30001260"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001260.tgz#e3be3f34ddad735ca4a2736fa9e768ef34316270"
+  integrity sha512-Fhjc/k8725ItmrvW5QomzxLeojewxvqiYCKeFcfFEhut28IVLdpHU19dneOmltZQIE5HNbawj1HYD+1f2bM1Dg==
+  dependencies:
+    nanocolors "^0.1.0"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -3333,10 +3340,18 @@ enhanced-resolve@^4.0.0:
     memory-fs "^0.5.0"
     tapable "^1.0.0"
 
-enhanced-resolve@^5.0.0, enhanced-resolve@^5.8.0:
+enhanced-resolve@^5.0.0:
   version "5.8.2"
   resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.8.2.tgz#15ddc779345cbb73e97c611cd00c01c1e7bf4d8b"
   integrity sha512-F27oB3WuHDzvR2DOGNTaYy0D5o0cnrv8TeI482VM4kYgQd/FT9lUQwuNsJ0oOHtBUq7eiW5ytqzp7nBFknL+GA==
+  dependencies:
+    graceful-fs "^4.2.4"
+    tapable "^2.2.0"
+
+enhanced-resolve@^5.8.3:
+  version "5.8.3"
+  resolved "https://registry.npmjs.org/enhanced-resolve/-/enhanced-resolve-5.8.3.tgz#6d552d465cce0423f5b3d718511ea53826a7b2f0"
+  integrity sha512-EGAbGvH7j7Xt2nc0E7D99La1OiEs8LnyimkRgwExpUMScN6O+3x9tIWs7PLQZVNx4YD+00skHXPXi1yQHpAmZA==
   dependencies:
     graceful-fs "^4.2.4"
     tapable "^2.2.0"
@@ -3413,10 +3428,10 @@ es-abstract@^1.18.1:
     string.prototype.trimstart "^1.0.4"
     unbox-primitive "^1.0.1"
 
-es-module-lexer@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/es-module-lexer/-/es-module-lexer-0.7.1.tgz#c2c8e0f46f2df06274cdaf0dd3f3b33e0a0b267d"
-  integrity sha512-MgtWFl5No+4S3TmhDmCz2ObFGm6lEpTnzbQi+Dd+pw4mlTIZTmM2iAs5gRlmx5zS9luzobCSBSI90JM/1/JgOw==
+es-module-lexer@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.npmjs.org/es-module-lexer/-/es-module-lexer-0.9.0.tgz#fe4c4621977bc668e285c5f1f70ca3b451095fda"
+  integrity sha512-qU2eN/XHsrl3E4y7mK1wdWnyy5c8gXtCbfP6Xcsemm7fPUR1PIV1JhZfP7ojcN0Fzp69CfrS3u76h2tusvfKiQ==
 
 es-to-primitive@^1.2.1:
   version "1.2.1"
@@ -5622,10 +5637,20 @@ ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.3.tgz#574c8138ce1d2b5861f0b44579dbadd60c6615b2"
   integrity sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==
 
+nanocolors@^0.1.0:
+  version "0.1.12"
+  resolved "https://registry.npmjs.org/nanocolors/-/nanocolors-0.1.12.tgz#8577482c58cbd7b5bb1681db4cf48f11a87fd5f6"
+  integrity sha512-2nMHqg1x5PU+unxX7PGY7AuYxl2qDx7PSrTRjizr8sxdd3l/3hBuWWaki62qmtYm2U5i4Z5E7GbjlyDFhs9/EQ==
+
 nanocolors@^0.1.5:
   version "0.1.6"
   resolved "https://registry.npmjs.org/nanocolors/-/nanocolors-0.1.6.tgz#bc2350d3edfdbfadd7ac018c855ae7c13905a6ad"
   integrity sha512-2pvTw6vYRaBLGir2xR7MxaJtyWkrn+C53EpW8yPotG+pdAwBvt0Xwk4VJ6VHLY0aLthVZPvDfm9TdZvrvAm5UQ==
+
+nanocolors@^0.2.2, nanocolors@^0.2.8:
+  version "0.2.9"
+  resolved "https://registry.npmjs.org/nanocolors/-/nanocolors-0.2.9.tgz#319c5e7a73571abd60e4d273150c2cb95017ac5b"
+  integrity sha512-aymgS4Xe0LMqHOHl7jSUEkFh/6O/pcF0j61dBtreQZ1nmbyYdYjSYSJzz0iPLbKPkMtSmdRgyBGywNZGjKOEfw==
 
 nanoid@^3.1.23:
   version "3.1.23"
@@ -6346,12 +6371,12 @@ postcss@^8.1.6, postcss@^8.2.1:
     nanoid "^3.1.23"
     source-map-js "^0.6.2"
 
-postcss@^8.3.7:
-  version "8.3.7"
-  resolved "https://registry.npmjs.org/postcss/-/postcss-8.3.7.tgz#ec88563588c8da8e58e7226f7633b51ae221eeda"
-  integrity sha512-9SaY7nnyQ63/WittqZYAvkkYPyKxchMKH71UDzeTmWuLSvxTRpeEeABZAzlCi55cuGcoFyoV/amX2BdsafQidQ==
+postcss@^8.3.8:
+  version "8.3.8"
+  resolved "https://registry.npmjs.org/postcss/-/postcss-8.3.8.tgz#9ebe2a127396b4b4570ae9f7770e7fb83db2bac1"
+  integrity sha512-GT5bTjjZnwDifajzczOC+r3FI3Cu+PgPvrsjhQdRqa2kTJ4968/X9CUce9xttIB0xOs5c6xf0TCWZo/y9lF6bA==
   dependencies:
-    nanocolors "^0.1.5"
+    nanocolors "^0.2.2"
     nanoid "^3.1.25"
     source-map-js "^0.6.2"
 
@@ -7677,10 +7702,10 @@ table@^6.0.9:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
 
-tailwindcss@^2.2.15:
-  version "2.2.15"
-  resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-2.2.15.tgz#8bee3ebe68b988c050508ce20633f35b040dd9fe"
-  integrity sha512-WgV41xTMbnSoTNMNnJvShQZ+8GmY86DmXTrCgnsveNZJdlybfwCItV8kAqjYmU49YiFr+ofzmT1JlAKajBZboQ==
+tailwindcss@^2.2.16:
+  version "2.2.16"
+  resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-2.2.16.tgz#32f81bdf1758b639cb83b9d30bf7cbecdda49e5e"
+  integrity sha512-EireCtpQyyJ4Xz8NYzHafBoy4baCOO96flM0+HgtsFcIQ9KFy/YBK3GEtlnD+rXen0e4xm8t3WiUcKBJmN6yjg==
   dependencies:
     arg "^5.0.1"
     bytes "^3.0.0"
@@ -8230,10 +8255,10 @@ webpack-sources@^3.2.0:
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.2.0.tgz#b16973bcf844ebcdb3afde32eda1c04d0b90f89d"
   integrity sha512-fahN08Et7P9trej8xz/Z7eRu8ltyiygEo/hnRi9KqBUs80KeDcnf96ZJo++ewWd84fEf3xSX9bp4ZS9hbw0OBw==
 
-webpack@^5.53.0:
-  version "5.53.0"
-  resolved "https://registry.npmjs.org/webpack/-/webpack-5.53.0.tgz#f463cd9c6fc1356ae4b9b7ac911fd1f5b2df86af"
-  integrity sha512-RZ1Z3z3ni44snoWjfWeHFyzvd9HMVYDYC5VXmlYUT6NWgEOWdCNpad5Fve2CzzHoRED7WtsKe+FCyP5Vk4pWiQ==
+webpack@^5.54.0:
+  version "5.54.0"
+  resolved "https://registry.npmjs.org/webpack/-/webpack-5.54.0.tgz#629f0cd14c7a4340af758a3c7cef25c50670ae4d"
+  integrity sha512-MAVKJMsIUotOQKzFOmN8ZkmMlj7BOyjDU6t1lomW9dWOme5WTStzGa3HMLdV1KYD1AiFETGsznL4LMSvj4tukw==
   dependencies:
     "@types/eslint-scope" "^3.7.0"
     "@types/estree" "^0.0.50"
@@ -8244,8 +8269,8 @@ webpack@^5.53.0:
     acorn-import-assertions "^1.7.6"
     browserslist "^4.14.5"
     chrome-trace-event "^1.0.2"
-    enhanced-resolve "^5.8.0"
-    es-module-lexer "^0.7.1"
+    enhanced-resolve "^5.8.3"
+    es-module-lexer "^0.9.0"
     eslint-scope "5.1.1"
     events "^3.2.0"
     glob-to-regexp "^0.4.1"
