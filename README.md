@@ -20,7 +20,6 @@
 
 <br/>
 
-### ScreenShot 首页截图
 ![Thumbnail_index](https://static.ouorz.com/screen-shot-ouorz-next.png)
 
 <br/>
@@ -45,7 +44,7 @@ yarn run dev
 ### Deployment 部署
 **Next.js Server-side rendering**
 
-Modify API URLs in `src/utilities/Api/index.ts` accordingly, then run:
+Create a `.env` file with your configurations, then run:
 
 ```bash
 yarn run build
@@ -56,13 +55,4 @@ yarn run start
 
 **WordPress REST API configurations**
 
-Copy all the codes in `wordpress/functions.php` and add to your theme's `functions.php`
-
-<br/>
-
-### Sponsor me 赞助
-Your name will be on the [Sponsors](https://www.ouorz.com/sponsor) list
-<br/>
-
-![Sponsor](https://i.loli.net/2019/02/18/5c6a80afd1e26.png)
-
+Copy the codes in `wordpress/functions.php` and add them to your theme's `functions.php`
