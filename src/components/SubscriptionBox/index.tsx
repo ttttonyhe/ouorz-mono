@@ -6,26 +6,28 @@ export default function SubscriptionBox({ type }: { type: string }) {
   const [email, setEmail] = React.useState<string>('')
   const [subscribed, setSubscribed] = React.useState<boolean>(false)
   const [processing, setProcessing] = React.useState<boolean>(false)
+
   const doSubscribe = async () => {
     setProcessing(true)
 
-    const res = await fetch(getApi({ subs: true }), {
+    const data = await fetch(getApi({ subs: true }), {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Token 110279' + '82-828a-4e06' + '-bd0f-c2566a65a5e7',
+        Authorization: process.env.BUTTONDOWN_TOKEN,
       },
       body: JSON.stringify({ email: email, tags: ['Blog Newsletter'] }),
     })
-    const data = await res.json()
+      .then((res) => res.json())
+      .finally(() => setProcessing(false))
 
-    setProcessing(false)
     if (data.creation_date) {
       setSubscribed(true)
     } else {
-      alert('An error has occurred')
+      alert('An error has occurred, please try again')
     }
   }
+
   if (type === 'sm') {
     return (
       <div className="border shadow-sm w-full py-3 px-5 hidden lg:flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2 space-x-4">
