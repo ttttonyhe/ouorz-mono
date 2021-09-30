@@ -2,7 +2,7 @@ import React from 'react'
 import Icons from '~/components/Icons'
 import { getApi } from '~/assets/utilities/Api'
 
-export default function SubscriptionBox({ type }: { type: string }) {
+const SubscriptionBox = ({ type }: { type: string }) => {
   const [email, setEmail] = React.useState<string>('')
   const [subscribed, setSubscribed] = React.useState<boolean>(false)
   const [processing, setProcessing] = React.useState<boolean>(false)
@@ -120,3 +120,5 @@ export default function SubscriptionBox({ type }: { type: string }) {
     )
   }
 }
+
+export default SubscriptionBox
