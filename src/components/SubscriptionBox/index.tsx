@@ -14,7 +14,7 @@ export default function SubscriptionBox({ type }: { type: string }) {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: process.env.BUTTONDOWN_TOKEN,
+        Authorization: process.env.NEXT_BUTTONDOWN_TOKEN,
       },
       body: JSON.stringify({ email: email, tags: ['Blog Newsletter'] }),
     })
