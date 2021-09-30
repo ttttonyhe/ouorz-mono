@@ -68,7 +68,7 @@
     "@types/chai": "^4.2.22",
     "@types/jest": "^27.0.2",
     "@types/mocha": "^9.0.0",
-    "cypress": "^8.4.1",
+    "cypress": "^8.5.0",
     "eslint-plugin-cypress": "^2.12.1"
   },
   "husky": {
