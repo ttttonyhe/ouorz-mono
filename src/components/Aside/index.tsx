@@ -217,7 +217,7 @@ export default function Aside({ preNext }: { preNext: any }) {
   }, [router.asPath])
 
   return (
-    <aside className="w-toc fixed top-24 -ml-82 hidden lg:block overflow-hidden overflow-y-auto max-h-aside aside overscroll-contain">
+    <aside className="w-toc fixed top-24 -ml-82 hidden xl:block overflow-hidden overflow-y-auto max-h-aside aside overscroll-contain">
       {headersEl.length ? (
         <div>
           <div className="shadow-sm border rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800">
