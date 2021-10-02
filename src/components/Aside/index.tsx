@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import Icons from '~/components/Icons'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -59,6 +59,7 @@ export default function Aside({ preNext }: { preNext: any }) {
     let lastHeaderOffset = result[1][0]
 
     const handleScroll = () => {
+      console.log('fuck')
       const scrollPosition = window.pageYOffset + 70
 
       if (scrollPosition >= currentHeaderOffset) {
@@ -202,7 +203,7 @@ export default function Aside({ preNext }: { preNext: any }) {
     }
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const result = getAllHeaders()
     const handler = result[1]
     setHeadersResult(result[0][0])

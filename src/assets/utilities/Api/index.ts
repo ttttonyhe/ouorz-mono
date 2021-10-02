@@ -12,6 +12,7 @@ interface Parameters {
   sponsor?: boolean
   subs?: boolean
   count?: boolean
+  postIDs?: boolean
 }
 
 export const getApi = ({
@@ -28,6 +29,7 @@ export const getApi = ({
   sponsor,
   subs,
   count,
+  postIDs
 }: Parameters) => {
   if (getCate) {
     return `https://blog.ouorz.com/wp-json/wp/v2/categories/${cate}`
@@ -35,6 +37,10 @@ export const getApi = ({
 
   if (mark) {
     return `https://blog.ouorz.com/wp-json/tony/v1/mark/${mark}`
+  }
+
+  if (postIDs) {
+    return 'https://blog.ouorz.com/wp-json/tony/v1/posts_ids'
   }
 
   if (page) {
