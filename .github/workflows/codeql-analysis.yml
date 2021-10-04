@@ -2,10 +2,11 @@ name: CodeQL Code Scanning
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+    branches-ignore: [dependabot/**]
   pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ main ]
+    branches: [main]
+    branches-ignore: [dependabot/**]
   schedule:
     - cron: '43 17 * * 3'
 
@@ -21,21 +22,21 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript' ]
+        language: ['javascript']
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    # Initializes the CodeQL tools for scanning.
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v1
-      with:
-        languages: ${{ matrix.language }}
+      # Initializes the CodeQL tools for scanning.
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+        with:
+          languages: ${{ matrix.language }}
 
-    # Autobuild attempts to build any compiled languages
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v1
+      # Autobuild attempts to build any compiled languages
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v1
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v1
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1
