@@ -1,10 +1,7 @@
 name: CodeQL Code Scanning
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    # The branches below must be a subset of the branches above
     branches: [ main ]
   schedule:
     - cron: '43 17 * * 3'
