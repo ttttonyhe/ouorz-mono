@@ -31,40 +31,42 @@ export const getApi = ({
   count,
   postIDs
 }: Parameters) => {
+  let apiPath = '';
+
   if (getCate) {
-    return `https://blog.ouorz.com/wp-json/wp/v2/categories/${cate}`
+    apiPath = `https://blog.ouorz.com/wp-json/wp/v2/categories/${cate}`
   }
 
   if (mark) {
-    return `https://blog.ouorz.com/wp-json/tony/v1/mark/${mark}`
+    apiPath = `https://blog.ouorz.com/wp-json/tony/v1/mark/${mark}`
   }
 
   if (postIDs) {
-    return 'https://blog.ouorz.com/wp-json/tony/v1/posts_ids'
+    apiPath = 'https://blog.ouorz.com/wp-json/tony/v1/posts_ids'
   }
 
   if (page) {
-    return `https://blog.ouorz.com/wp-json/wp/v2/pages/${page}`
+    apiPath = `https://blog.ouorz.com/wp-json/wp/v2/pages/${page}`
   }
 
   if (post) {
-    return `https://blog.ouorz.com/wp-json/wp/v2/posts/${post}`
+    apiPath = `https://blog.ouorz.com/wp-json/wp/v2/posts/${post}`
   }
 
   if (visit) {
-    return `https://blog.ouorz.com/wp-json/tony/v1/visit/${visit}`
+    apiPath = `https://blog.ouorz.com/wp-json/tony/v1/visit/${visit}`
   }
 
   if (sponsor) {
-    return 'https://blog.ouorz.com/wp-content/themes/peg/com/data/donors.php'
+    apiPath = 'https://blog.ouorz.com/wp-content/themes/peg/com/data/donors.php'
   }
 
   if (subs) {
-    return 'https://api.buttondown.email/v1/subscribers'
+    apiPath = 'https://api.buttondown.email/v1/subscribers'
   }
 
   if (count) {
-    return 'https://blog.ouorz.com/wp-json/tony/v1/poststats'
+    apiPath = 'https://blog.ouorz.com/wp-json/tony/v1/poststats'
   }
 
   const s = sticky ? 'sticky=1' : sticky === undefined ? '' : 'sticky=0'
@@ -73,5 +75,9 @@ export const getApi = ({
   const p = perPage !== undefined ? `&per_page=${perPage}` : ''
   const sc = search ? `&search=${search}` : ''
 
-  return `https://blog.ouorz.com/wp-json/wp/v2/posts?${s}${p}${c}${ce}${sc}`
+  if (!apiPath) {
+    apiPath = `https://blog.ouorz.com/wp-json/wp/v2/posts?${s}${p}${c}${ce}${sc}`
+  }
+
+  return apiPath;
 }
