@@ -1,12 +1,8 @@
 name: CodeQL Code Scanning
 
 on:
-  push:
-    branches: [main]
-    branches-ignore: [dependabot/**]
   pull_request:
-    branches: [main]
-    branches-ignore: [dependabot/**]
+    branches: [ main ]
   schedule:
     - cron: '43 17 * * 3'
 

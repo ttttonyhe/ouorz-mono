@@ -21,14 +21,20 @@
 
 <br/>
 
-### See Also
+## See Also
 - Antony-Nuxt [https://github.com/HelipengTony/antony-nuxt](https://github.com/HelipengTony/antony-nuxt)
 - Antony [https://github.com/HelipengTony/antony](https://github.com/HelipengTony/antony)
 - Tony [https://github.com/HelipengTony/tony](https://github.com/HelipengTony/tony)
 
 <br/>
 
-### Development
+## Development
+### Gitflow
+![git_branching_workflow](https://user-images.githubusercontent.com/21199796/135544887-50b1e78b-aa72-4e98-8f08-baac092cf393.jpg)
+
+<br/>
+
+### Project Setup
 ```bash
 git clone git@github.com:HelipengTony/ouorz-next.git
 cd ouorz-next
@@ -38,8 +44,8 @@ yarn run dev
 
 <br/>
 
-### Deployment
-**Next.js Server-side rendering**
+## Deployment
+### Next.js Server-side rendering
 
 Create a `.env` file with your configurations, then run:
 
@@ -50,6 +56,14 @@ yarn run start
 
 <br/>
 
-**WordPress REST API configurations**
+### Deploy with Vercel / Netlify
 
-Copy the codes in `wordpress/functions.php` and add them to your theme's `functions.php`
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/HelipengTony/ouorz-next)
+
+[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/HelipengTony/ouorz-next)
+
+<br/>
+
+### WordPress REST API configurations
+
+Copy the codes in `wordpress/functions.php` and add to your WordPress theme's `functions.php`
