@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import withSentry from '~/lib/withSentry';
 
 type ResDataType = {
   twitterFollowers: number
@@ -6,9 +7,9 @@ type ResDataType = {
   zhihuFollowers: number
 }
 
-export default async (
-  req: NextApiRequest,
-  res: NextApiResponse<ResDataType>
+const handler = async (
+	req: NextApiRequest,
+	res: NextApiResponse<ResDataType>
 ) => {
   const response = await fetch(
     'https://api.spencerwoo.com/substats/?source=sspai&queryKey=tonyhe&source=twitter&queryKey=ttttonyhe&source=zhihu&queryKey=helipengtony'
@@ -27,3 +28,5 @@ export default async (
     zhihuFollowers: data.data.subsInEachSource.zhihu,
   })
 }
+
+export default withSentry(handler)

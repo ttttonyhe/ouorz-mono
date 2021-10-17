@@ -1,12 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import withSentry from '~/lib/withSentry';
 
 type ResDataType = {
   count: number
 }
 
-export default async (
-  req: NextApiRequest,
-  res: NextApiResponse<ResDataType>
+const handler = async (
+	req: NextApiRequest,
+	res: NextApiResponse<ResDataType>
 ) => {
   const response = await fetch(
     'https://ouorz-nexment.ouorz.com/1.1/classes/nexment_comments?count=1&limit=0',
@@ -29,3 +30,5 @@ export default async (
     count: data.count,
   })
 }
+
+export default withSentry(handler)

@@ -14,6 +14,7 @@
     "upgrade:prod": "ncu --upgrade && yarn install --ignore-optional"
   },
   "dependencies": {
+    "@sentry/nextjs": "^6.13.3",
     "crypto-js": "^4.1.1",
     "dotenv-webpack": "^7.0.3",
     "next": "^11.1.2",
