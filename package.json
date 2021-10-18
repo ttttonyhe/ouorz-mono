@@ -56,7 +56,7 @@
     "react-timeago": "^6.2.1",
     "smoothscroll-polyfill": "^0.4.4",
     "swr": "^1.0.1",
-    "tailwindcss": "^2.2.16",
+    "tailwindcss": "^2.2.17",
     "ts-loader": "^9.2.6",
     "typescript": "^4.4.3",
     "webpack": "^5.58.1"
