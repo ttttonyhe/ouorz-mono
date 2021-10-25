@@ -1,0 +1,79 @@
+# This is a configuration file to customize code analysis by Sider.
+#
+# For more information, see the documentation:
+# https://help.sider.review/getting-started/custom-configuration
+
+# Customize each tool. If analyses fail, try adjusting each option referencing the following example.
+linter:
+
+#   # ESLint example. See https://help.sider.review/tools/javascript/eslint
+#   eslint:
+#     root_dir: project/
+#     dependencies:
+#       - my-eslint-plugin@2
+#     npm_install: false
+#     target:
+#       - src/
+#       - lib/
+#     ext: [.js, .jsx]
+#     config: config/.eslintrc.js
+#     ignore-path: config/.eslintignore
+#     ignore-pattern: "vendor/**"
+#     no-ignore: true
+#     global: ["require", "exports:true"]
+#     quiet: true
+
+#   # JSHint example. See https://help.sider.review/tools/javascript/jshint
+#   jshint:
+#     root_dir: project/
+#     target: src/
+#     config: config/.jshintrc.json
+
+#   # Misspell example. See https://help.sider.review/tools/others/misspell
+#   misspell:
+#     root_dir: project/
+#     target: [src/, test/]
+#     exclude: ["**/*.min.*"]
+#     locale: UK
+#     ignore: [center, behavior]
+
+#   # ShellCheck example. See https://help.sider.review/tools/shellscript/shellcheck
+#   shellcheck:
+#     root_dir: project/
+#     target:
+#       - "**/*.{sh,bash}"
+#       - shebang: true
+#     include: [SC2104, SC2105]
+#     exclude: [SC1000, SC1118]
+#     enable: all
+#     shell: bash
+#     severity: error
+#     norc: true
+
+#   # stylelint example. See https://help.sider.review/tools/css/stylelint
+#   stylelint:
+#     root_dir: project/
+#     dependencies:
+#       - my-stylelint-plugin@2
+#     npm_install: false
+#     config: config/.stylelintrc.yml
+#     syntax: scss
+#     ignore-path: config/.stylelintignore
+#     ignore-disables: true
+#     report-needless-disables: true
+#     quiet: true
+#     target: ["app/**/*.scss"]
+
+# Ignore specific files. Example:
+# ignore:
+#   - "*.pdf"
+#   - "*.mp4"
+#   - "*.min.*"
+#   - "images/**"
+
+# Exclude specific branches. Example:
+# branches:
+#   exclude:
+#     - master
+#     - development
+#     - /^release-.*$/
