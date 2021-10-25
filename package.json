@@ -46,7 +46,7 @@
     "next-themes": "^0.0.15",
     "nextjs-progressbar": "^0.0.11",
     "nextjs-redirect": "^5.0.2",
-    "postcss": "^8.3.9",
+    "postcss": "^8.3.11",
     "prettier": "^2.4.1",
     "prettier-eslint": "^13.0.0",
     "react-content-loader": "^6.0.3",
