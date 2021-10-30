@@ -1,11 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import withSentry from '~/lib/withSentry'
 
 type ResDataType = {
   views: number
   count: number
 }
 
-export default async (
+const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<ResDataType>
 ) => {
@@ -25,3 +26,5 @@ export default async (
     count: data.count,
   })
 }
+
+export default withSentry(handler)

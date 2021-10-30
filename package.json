@@ -14,7 +14,7 @@
     "upgrade:prod": "ncu --upgrade && yarn install --ignore-optional"
   },
   "dependencies": {
-    "crypto-js": "^4.1.1",
+    "@sentry/nextjs": "^6.13.3",
     "dotenv-webpack": "^7.0.3",
     "next": "^11.1.2",
     "react": "^17.0.2",
@@ -24,7 +24,6 @@
   "devDependencies": {
     "@next/eslint-plugin-next": "^11.1.2",
     "@tailwindcss/typography": "^0.4.1",
-    "@types/crypto-js": "^4.0.2",
     "@types/node": "^16.10.3",
     "@types/react": "^17.0.27",
     "@types/react-highlight": "^0.12.5",
@@ -34,7 +33,7 @@
     "@typescript-eslint/parser": "^5.0.0",
     "autoprefixer": "^10.3.7",
     "comma-number": "^2.1.0",
-    "eslint": "^8.0.0",
+    "eslint": "<8.0.0\n",
     "eslint-config-next": "^11.1.2",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",

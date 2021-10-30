@@ -1,11 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import withSentry from '~/lib/withSentry'
 
 type ResDataType = {
   total: number
   used: number
 }
 
-export default async (
+const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<ResDataType>
 ) => {
@@ -23,3 +24,5 @@ export default async (
     used: data.bw_counter_b / Math.pow(10, 9),
   })
 }
+
+export default withSentry(handler)
