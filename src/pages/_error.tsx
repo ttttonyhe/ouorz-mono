@@ -3,13 +3,14 @@ import React from 'react'
 import Content from '~/components/Content'
 import Button from '~/components/Button'
 import { useRouter } from 'next/router'
+import { captureException, flush } from '@sentry/nextjs'
 
-function Error({ statusCode }) {
+const ErrorPage = ({ statusCode }) => {
   const router = useRouter()
   return (
     <div>
       <Head>
-        <title>500 - TonyHe</title>
+        <title>Error - TonyHe</title>
         <link rel="icon" type="image/x-icon" href="/favicon.ico"></link>
       </Head>
       <Content>
@@ -41,9 +42,14 @@ function Error({ statusCode }) {
   )
 }
 
-Error.getInitialProps = ({ res, err }) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode : 404
-  return { statusCode }
+ErrorPage.getInitialProps = async ({ res, err }) => {
+  if (err) {
+    captureException(err)
+    await flush(2000)
+    return { statusCode: err.statusCode }
+  }
+
+  return { statusCode: res.statusCode }
 }
 
 export default Error
