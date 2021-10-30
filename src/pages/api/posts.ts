@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import withSentry from '~/lib/withSentry';
+import withSentry from '~/lib/withSentry'
 
 type ResDataType = {
   views: number
@@ -7,8 +7,8 @@ type ResDataType = {
 }
 
 const handler = async (
-	req: NextApiRequest,
-	res: NextApiResponse<ResDataType>
+  req: NextApiRequest,
+  res: NextApiResponse<ResDataType>
 ) => {
   const response = await fetch(
     'https://blog.ouorz.com/wp-json/tony/v1/poststats'
@@ -26,6 +26,5 @@ const handler = async (
     count: data.count,
   })
 }
-
 
 export default withSentry(handler)

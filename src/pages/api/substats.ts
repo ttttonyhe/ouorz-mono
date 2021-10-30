@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import withSentry from '~/lib/withSentry';
+import withSentry from '~/lib/withSentry'
 
 type ResDataType = {
   twitterFollowers: number
@@ -8,8 +8,8 @@ type ResDataType = {
 }
 
 const handler = async (
-	req: NextApiRequest,
-	res: NextApiResponse<ResDataType>
+  req: NextApiRequest,
+  res: NextApiResponse<ResDataType>
 ) => {
   const response = await fetch(
     'https://api.spencerwoo.com/substats/?source=sspai&queryKey=tonyhe&source=twitter&queryKey=ttttonyhe&source=zhihu&queryKey=helipengtony'

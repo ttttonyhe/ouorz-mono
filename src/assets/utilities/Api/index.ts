@@ -29,7 +29,7 @@ export const getApi = ({
   sponsor,
   subs,
   count,
-  postIDs
+  postIDs,
 }: Parameters) => {
   if (getCate) {
     return `https://blog.ouorz.com/wp-json/wp/v2/categories/${cate}`

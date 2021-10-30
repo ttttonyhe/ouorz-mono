@@ -43,13 +43,14 @@ const ErrorPage = ({ statusCode }) => {
 }
 
 ErrorPage.getInitialProps = async ({ res, err }) => {
+  const statusCode = res ? res.statusCode : err ? err.statusCode : 404
+
   if (err) {
     captureException(err)
     await flush(2000)
-    return { statusCode: err.statusCode }
   }
 
-  return { statusCode: res.statusCode }
+  return { statusCode }
 }
 
-export default Error
+export default ErrorPage
