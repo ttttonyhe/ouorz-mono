@@ -11,10 +11,10 @@ interface Props {
 export default function CardPlainText({ item }: Props) {
   const [marking, setMarking] = React.useState<boolean>(false)
   const [marks, setMarks] = React.useState<number>(item.post_metas.markCount)
+
   const markPost = async (id: number) => {
     await fetch(getApi({ mark: id })).then(async (res: any) => {
       const data = await res.json()
-      console.log(data)
       setMarks(data.markCountNow)
       setMarking(false)
     })
@@ -30,12 +30,13 @@ export default function CardPlainText({ item }: Props) {
       </div>
       <div className="pt-3 pb-3 px-5 lg:pt-2 lg:pb-2 lg:px-10 items-center w-full h-auto border-t rounded-br-md rounded-bl-md border-gray-100 dark:border-gray-700">
         <p className="flex space-x-2 text-5 lg:text-4 tracking-wide leading-2 lg:leading-8 text-gray-500 dark:text-gray-400 items-center">
-          <span
+          <button
             className="flex items-center space-x-1 text-red-400 hover:text-red-500 cursor-pointer rounded-md"
             onClick={() => {
               setMarking(true)
               markPost(item.id)
             }}
+            disabled={marking}
           >
             {marking ? (
               <i className="w-6 h-6 -mt-1">{Icons.loveFill}</i>
@@ -43,7 +44,7 @@ export default function CardPlainText({ item }: Props) {
               <i className="w-6 h-6 -mt-1">{Icons.love}</i>
             )}
             <em className="not-italic">{marks}</em>
-          </span>
+          </button>
           <span className="lg:block hidden">·</span>
           <span className="lg:block hidden">
             Posted <TimeAgo date={item.date} />
