@@ -95,7 +95,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
             />
             <PageCard
               title="Bitcoin"
-              des="bc1qz2kgqp26wtel6n7rl0cw053pxgtwt5vrr5hyd7pqmmjfhqxex8dq8fknpx"
+              des="32jm8Pzsy1xeBizSfZmmW7pTboVLNwkPbU"
               iconSmall="bitcoin"
               className="text-yellow-500"
               href="https://static.ouorz.com/bitcoin.jpg"
