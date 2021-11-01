@@ -44,7 +44,7 @@
     "lint-staged": ">=11",
     "nexment": "^0.0.669",
     "next-themes": "^0.0.15",
-    "nextjs-progressbar": "^0.0.11",
+    "nextjs-progressbar": "^0.0.13",
     "nextjs-redirect": "^5.0.2",
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
@@ -59,7 +59,7 @@
     "tailwindcss": "^2.2.19",
     "ts-loader": "^9.2.6",
     "typescript": "^4.4.4",
-    "webpack": "^5.58.2"
+    "webpack": "^5.61.0"
   },
   "optionalDependencies": {
     "@bahmutov/add-typescript-to-cypress": "^2.1.2",
