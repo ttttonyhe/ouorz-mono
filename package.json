@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ./src -c .eslintrc.json --fix --ext ts,tsx",
+    "lint": "eslint ./src -c .eslintrc.json --fix --ext js,ts,tsx,json",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "upgrade:dev": "ncu --upgrade && yarn install",
