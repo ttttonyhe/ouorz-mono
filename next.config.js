@@ -1,6 +1,7 @@
 const Dotenv = require('dotenv-webpack')
+const { withSentryConfig } = require('@sentry/nextjs')
 
-module.exports = {
+const NextConfigs = {
   webpack(config) {
     config.plugins.push(new Dotenv())
     return config
@@ -8,7 +9,14 @@ module.exports = {
   poweredByHeader: false,
   productionBrowserSourceMaps: false,
   compress: true,
+  swcMinify: true,
   images: {
     domains: ['static.ouorz.com', 'storage.snapaper.com'],
   },
 }
+
+const SentryWebpackPluginOptions = {
+  silent: true,
+}
+
+module.exports = withSentryConfig(NextConfigs, SentryWebpackPluginOptions)

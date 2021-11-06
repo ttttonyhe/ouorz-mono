@@ -1,12 +1,12 @@
 {
-  "name": "sync-cf-web-analytics",
-  "version": "1.0.0",
-  "description": "Donwload CloudFlare Web Analytics JS file to local machine once everyday",
-  "main": "index.js",
-  "author": "HelipengTony",
-  "license": "MIT",
-  "dependencies": {
-    "node-schedule": "^1.3.2",
-    "request": "^2.88.2"
-  }
+	"name": "sync-cf-web-analytics",
+	"version": "1.0.0",
+	"description": "Donwload CloudFlare Web Analytics JS file to local machine once everyday",
+	"main": "index.js",
+	"author": "HelipengTony",
+	"license": "MIT",
+	"dependencies": {
+		"node-schedule": "^1.3.2",
+		"request": "^2.88.2"
+	}
 }
