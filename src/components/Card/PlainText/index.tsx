@@ -26,9 +26,7 @@ export default function CardPlainText({ item }: Props) {
 				<h1
 					className="font-normal text-2 lg:text-3xl text-gray-600 dark:text-white tracking-wider leading-2 lg:leading-10"
 					dangerouslySetInnerHTML={{ __html: item.post_title }}
-				>
-					{item.post_title}
-				</h1>
+				/>
 			</div>
 			<div className="pt-3 pb-3 px-5 lg:pt-2 lg:pb-2 lg:px-10 items-center w-full h-auto border-t rounded-br-md rounded-bl-md border-gray-100 dark:border-gray-700">
 				<p className="flex space-x-2 text-5 lg:text-4 tracking-wide leading-2 lg:leading-8 text-gray-500 dark:text-gray-400 items-center">

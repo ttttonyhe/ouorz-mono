@@ -82,9 +82,7 @@ export default function CardWithImageTool({ item, sticky, setReader }: Props) {
 							<h1
 								className="font-medium text-2 lg:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5"
 								dangerouslySetInnerHTML={{ __html: item.post_title }}
-							>
-								{item.post_title}
-							</h1>
+							/>
 						</a>
 					</Link>
 					<p
