@@ -38,6 +38,22 @@
 ```bash
 git clone git@github.com:HelipengTony/ouorz-next.git
 cd ouorz-next
+```
+
+Create a `.env` file with your configuration, see below for a list of environmental variables used in this project:
+
++ LeanCloud:
+  - NEXT_PUBLIC_LC_KEY
+  - NEXT_PUBLIC_LC_ID
++ Buttondown:
+  - NEXT_PUBLIC_BUTTONDOWN_TOKEN
++ Sentry:
+  - NEXT_PUBLIC_SENTRY_DSN 
+  - SENTRY_AUTH_TOKEN
+  - SENTRY_PROJECT
+  - SENTRY_ORG
+
+```
 yarn install
 yarn run dev
 ```
@@ -45,9 +61,8 @@ yarn run dev
 <br/>
 
 ## Deployment
-### Next.js Server-side rendering
-
-Create a `.env` file with your configurations, then run:
+### Next.js
+This project utilizes a combination of both Server-side Rendering (SSR) and Static Generation:
 
 ```bash
 yarn run build
