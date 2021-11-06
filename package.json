@@ -3,6 +3,9 @@
   "version": "0.0.2",
   "private": true,
   "license": "SEE LICENSE IN LICENSE",
+  "engines": {
+    "node": ">=14.0.0 <17.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -26,6 +29,7 @@
     "@commitlint/config-conventional": "^14.1.0",
     "@next/eslint-plugin-next": "^12.0.3",
     "@tailwindcss/typography": "^0.4.1",
+    "@types/lodash": "^4.14.176",
     "@types/node": "^16.11.6",
     "@types/react": "^17.0.34",
     "@types/react-highlight": "^0.12.5",
