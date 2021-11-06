@@ -13,6 +13,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Setup Environmental Variables
+        run: |
+          touch .env
+          echo NEXT_PUBLIC_SENTRY_DSN=${{ secrets.SENTRY_DSN }} >> .env
+          echo SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} >> .env
+          echo SENTRY_PROJECT=${{ secrets.SENTRY_PROJECT }} >> .env
+          echo SENTRY_ORG=${{ secrets.SENTRY_ORG }} >> .env
+          echo NEXT_PUBLIC_BUTTONDOWN_TOKEN=${{ secrets.BUTTONDOWN_TOKEN }} >> .env
+          echo NEXT_PUBLIC_LC_KEY=${{ secrets.LC_KEY }} >> .env
+          echo NEXT_PUBLIC_LC_ID=${{ secrets.LC_ID }} >> .env
       - name: Run Cypress
         uses: cypress-io/github-action@v2
         with:
@@ -20,7 +30,7 @@ jobs:
           build: yarn run build
           start: yarn run start
           browser: chrome
-      - name: Next.js Cache
+      - name: Cache Next.js Build
         uses: actions/cache@v2
         with:
           path: ${{ github.workspace }}/.next/cache

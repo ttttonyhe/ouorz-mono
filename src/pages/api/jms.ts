@@ -1,25 +1,28 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import withSentry from '~/lib/withSentry'
 
 type ResDataType = {
-  total: number
-  used: number
+	total: number
+	used: number
 }
 
-export default async (
-  req: NextApiRequest,
-  res: NextApiResponse<ResDataType>
+const handler = async (
+	req: NextApiRequest,
+	res: NextApiResponse<ResDataType>
 ) => {
-  const response = await fetch(process.env.JMS_API_PATH)
+	const response = await fetch(process.env.JMS_API_PATH)
 
-  const data = await response.json()
+	const data = await response.json()
 
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=1200, stale-while-revalidate=600'
-  )
+	res.setHeader(
+		'Cache-Control',
+		'public, s-maxage=1200, stale-while-revalidate=600'
+	)
 
-  return res.status(200).json({
-    total: data.monthly_bw_limit_b / Math.pow(10, 9),
-    used: data.bw_counter_b / Math.pow(10, 9),
-  })
+	return res.status(200).json({
+		total: data.monthly_bw_limit_b / Math.pow(10, 9),
+		used: data.bw_counter_b / Math.pow(10, 9),
+	})
 }
+
+export default withSentry(handler)
