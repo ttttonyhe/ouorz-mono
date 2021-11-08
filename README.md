@@ -32,6 +32,8 @@
 ### Gitflow
 ![git_branching_workflow](https://user-images.githubusercontent.com/21199796/135544887-50b1e78b-aa72-4e98-8f08-baac092cf393.jpg)
 
+\* Only applies to non-major changes (vX.X.X to vX.X.Y)
+
 <br/>
 
 ### Project Setup
