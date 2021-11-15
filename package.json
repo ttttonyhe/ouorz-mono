@@ -60,7 +60,7 @@
     "tailwindcss": "^2.2.19",
     "ts-loader": "^9.2.6",
     "typescript": "^4.4.4",
-    "webpack": "^5.62.1"
+    "webpack": "^5.64.0"
   },
   "optionalDependencies": {
     "@bahmutov/add-typescript-to-cypress": "^2.1.2",
