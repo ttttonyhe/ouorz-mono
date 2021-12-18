@@ -39,11 +39,6 @@ export default function Pages() {
 							</div>
 						</div>
 					</div>
-					<div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
-						<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
-							Discover special pages and content
-						</p>
-					</div>
 				</div>
 				<div className="mt-5 grid grid-cols-2 gap-4">
 					<PageCard
@@ -69,7 +64,7 @@ export default function Pages() {
 					/>
 					<PageCard
 						title="Links"
-						des="Links of my friends"
+						des="Some of my friends"
 						icon="people"
 						className="text-pink-400"
 						href="/friends"

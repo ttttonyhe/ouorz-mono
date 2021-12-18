@@ -26,11 +26,11 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
 			<Content>
 				<div className="lg:mt-20 mt-0 lg:pt-0 pt-24">
 					<div>
-						<h1 className="flex items-center font-medium text-3xl leading-14 lg:text-1 text-black dark:text-white tracking-wide mb-0.5">
+						<h1 className="flex items-center font-medium text-3xl leading-14 lg:text-1 text-black dark:text-white tracking-wide mb-0.5 whitespace-nowrap">
 							<span className="animate-waveHand hover:animate-waveHandAgain inline-block cursor-pointer mr-2.5">
 								👋
 							</span>{' '}
-							Hey, I{"'"}m TonyHe
+							Hey, I{"'"}m Tony
 							<a
 								href="https://www.linkedin.com/in/lipenghe"
 								className="ml-2 mt-0.5"
@@ -43,8 +43,8 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
 							</a>
 						</h1>
 						<p className="text-3 lg:text-2 text-gray-500 dark:text-gray-200 leading-14 tracking-wide font-light">
-							I{"'"}m a developer, blogger, podcaster and undergraduate student
-							studying Mathematics at the University of Waterloo, Class of 2025
+							I{"'"}m a developer, blogger and podcaster; currently studying
+							Mathematics at the University of Waterloo (Undergraduate).
 						</p>
 					</div>
 					<Top />

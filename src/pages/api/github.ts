@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import withSentry from '~/lib/withSentry'
+import { withSentry } from '@sentry/nextjs'
 
 type ResDataType = {
 	followers: number

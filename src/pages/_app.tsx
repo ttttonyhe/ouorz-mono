@@ -14,7 +14,7 @@ function App({ Component, pageProps }: AppProps) {
 				data-cf-beacon='{"token": "53f3652793b44758819338f853f944e4", "spa": true}'
 			/>
 			<NextNprogress
-				color="#D1D5DB"
+				color="#d4d4d8"
 				height={2}
 				options={{ showSpinner: false }}
 			/>
@@ -23,7 +23,7 @@ function App({ Component, pageProps }: AppProps) {
 				defaultTheme="system"
 				enableSystem={true}
 			>
-				<div className="bg-gbg dark:bg-black dark:text-white min-h-screen">
+				<div className="bg-gbg dark:bg-neutral-900 dark:text-white min-h-screen">
 					<Component {...pageProps} />
 				</div>
 			</ThemeProvider>

@@ -71,7 +71,7 @@ export default function Friends({ friends }: { friends: any }) {
 											<span className="ml-2">{item.post_title}</span>
 										</h1>
 										<p
-											className="text-4 text-gray-500 dark:text-gray-400 tracking-wide whitespace-nowrap overflow-hidden overflow-ellipsis"
+											className="text-4 text-gray-500 dark:text-gray-400 tracking-wide whitespace-nowrap overflow-hidden text-ellipsis"
 											dangerouslySetInnerHTML={{
 												__html: DesSplit({
 													str: item.post_excerpt.four,

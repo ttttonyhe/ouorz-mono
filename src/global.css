@@ -28,8 +28,10 @@
 	box-sizing: border-box;
 	border: 0 solid #999;
 	margin-top: 4px;
-	margin-left: -35px !important;
-	display: flex;
+	transform: translateY(-1px);
+	margin-left: -44px !important;
+	margin-right: 14px;
+	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	height: 19px;
@@ -230,7 +232,7 @@ h5 {
 	border-right: 1px solid #e5e7eb;
 	@apply whitespace-nowrap;
 	@apply overflow-hidden;
-	@apply overflow-ellipsis;
+	@apply text-ellipsis;
 	@apply dark:border-r-gray-500;
 }
 
@@ -252,12 +254,14 @@ h5 {
 	position: fixed;
 	top: 0px;
 	left: 0px;
-	backdrop-filter: saturate(180%) blur(20px);
-	@apply dark:bg-gray-900;
+	/* backdrop-filter: saturate(180%) blur(20px); */
+	@apply dark:bg-gray-900 bg-gray-100;
 }
 
 .stop-scrolling {
-	overflow: hidden !important;
+	width: 100%;
+	position: fixed;
+	overflow-y: scroll;
 }
 
 .reader {

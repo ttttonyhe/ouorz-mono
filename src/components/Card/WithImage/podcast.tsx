@@ -39,12 +39,12 @@ const CardWithImagePodcast = ({ item, sticky }: Props) => {
 						</div>
 					</div>
 					<a href={item.post_metas.podcast.episodeUrl}>
-						<h1 className="font-medium lg:text-listTitle text-2 text-gray-700 dark:text-white tracking-wider mb-4 overflow-hidden overflow-ellipsis whitespace-nowrap">
+						<h1 className="font-medium lg:text-listTitle text-2 text-gray-700 dark:text-white tracking-wider mb-4 overflow-hidden text-ellipsis whitespace-nowrap">
 							{item.post_title}
 						</h1>
 					</a>
 					<p
-						className="text-gray-500 dark:text-gray-400 text-4 lg:text-3 tracking-wide leading-2 lg:leading-8 overflow-hidden overflow-ellipsis"
+						className="text-gray-500 dark:text-gray-400 text-4 lg:text-3 tracking-wide leading-2 lg:leading-8 overflow-hidden text-ellipsis"
 						dangerouslySetInnerHTML={{
 							__html: DesSplit({ str: item.post_excerpt.four, n: 80 }),
 						}}
