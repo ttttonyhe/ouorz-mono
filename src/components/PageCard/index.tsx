@@ -59,7 +59,7 @@ export default function PageCard({
 					)}
 					{title}
 				</h1>
-				<p className="text-4 text-gray-600 dark:text-gray-400 tracking-wide whitespace-nowrap overflow-hidden overflow-ellipsis">
+				<p className="text-4 text-gray-600 dark:text-gray-400 tracking-wide whitespace-nowrap overflow-hidden text-ellipsis">
 					{des}
 				</p>
 			</div>

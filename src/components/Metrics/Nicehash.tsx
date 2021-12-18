@@ -69,7 +69,7 @@ export default function NiceHashMetric() {
 					<span className="mr-3">{load ? load : 0} %</span>
 				</p>
 			)}
-			<p className="flex items-center text-gray-500 dark:text-gray-400 tracking-wide overflow-hidden overflow-ellipsis whitespace-nowrap">
+			<p className="flex items-center text-gray-500 dark:text-gray-400 tracking-wide overflow-hidden text-ellipsis whitespace-nowrap">
 				Bitcoin Mining →
 			</p>
 		</div>

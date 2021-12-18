@@ -52,9 +52,6 @@ export default function Header() {
 					className="text-3"
 					onClick={() => {
 						setStartSearching(!startSearching)
-						document
-							.getElementsByTagName('body')[0]
-							.classList.add('stop-scrolling')
 					}}
 				>
 					Search

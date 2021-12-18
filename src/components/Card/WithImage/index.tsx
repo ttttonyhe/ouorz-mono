@@ -1,5 +1,5 @@
 import Label from '~/components/Label'
-import BottomCard from '~/components/Card/Bottom'
+import CardFooter from '~/components/Card/Footer'
 import CardWithImageTool from '~/components/Card/WithImage/tool'
 import { DesSplit } from '~/assets/utilities/String'
 import Link from 'next/link'
@@ -26,7 +26,7 @@ export default function CardWithImage({ item, sticky, setReader }: Props) {
 								layout="fill"
 								objectFit="cover"
 								placeholder="blur"
-								blurDataURL={`${item.post_img.url}?imageMogr2/thumbnail/168x/format/webp/blur/1x0/quality/1|imageslim`}
+								blurDataURL={`${item.post_img.url}?imageMogr2/format/webp/blur/1x0/quality/1|imageslim`}
 								className="rounded-md"
 								alt={`featured-image-${item.post_title}`}
 							/>
@@ -64,7 +64,7 @@ export default function CardWithImage({ item, sticky, setReader }: Props) {
 									</a>
 								</Link>
 								<p
-									className="text-gray-500 dark:text-gray-400 text-4 lg:text-3 tracking-wide leading-2 lg:leading-8 overflow-hidden overflow-ellipsis"
+									className="text-gray-500 dark:text-gray-400 text-4 lg:text-3 tracking-wide leading-2 lg:leading-8 overflow-hidden text-ellipsis"
 									dangerouslySetInnerHTML={{
 										__html: DesSplit({ str: item.post_excerpt.four, n: 150 }),
 									}}
@@ -72,7 +72,7 @@ export default function CardWithImage({ item, sticky, setReader }: Props) {
 							</div>
 						</div>
 					</div>
-					<BottomCard item={item} />
+					<CardFooter item={item} />
 				</div>
 			)
 		}

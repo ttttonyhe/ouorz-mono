@@ -9,6 +9,9 @@ export default function Aside({ preNext }: { preNext: any }) {
 	const [headersResult, setHeadersResult] = useState<any>([])
 	const [headersEl, setHeadersEl] = useState<any>([])
 
+	/**
+	 * Get all headers
+	 */
 	const getAllHeaders = () => {
 		const result: any = [[], []]
 		const headerElements: any = []
@@ -58,9 +61,11 @@ export default function Aside({ preNext }: { preNext: any }) {
 		let currentHeaderOffset = result[1][1]
 		let lastHeaderOffset = result[1][0]
 
+		/**
+		 * Scroll event handler
+		 */
 		const handleScroll = () => {
-			console.log('fuck')
-			const scrollPosition = window.pageYOffset + 70
+			const scrollPosition = window.pageYOffset + 80
 
 			if (scrollPosition >= currentHeaderOffset) {
 				document
@@ -96,6 +101,90 @@ export default function Aside({ preNext }: { preNext: any }) {
 
 		return [result, handleScroll, headerElements]
 	}
+
+	/**
+	 * Scroll heading into view
+	 * @param el heading DOM Elment
+	 */
+	const scrollToHeading = (el: Element) => {
+		const elY = el.getBoundingClientRect().top + window.pageYOffset - 75
+		window.scrollTo({ top: elY, behavior: 'smooth' })
+	}
+
+	const SubItem = ({
+		item,
+		inner,
+		recursionTimes,
+	}: {
+		item: any
+		inner: boolean
+		recursionTimes: number
+	}) => {
+		if (inner) {
+			return (
+				<div
+					className={`${
+						recursionTimes == 0 ? 'border-l-0' : ''
+					}toc-sub py-2 -my-2 whitespace-nowrap text-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700`}
+					style={{
+						paddingLeft: recursionTimes == 0 ? '0px' : '10px',
+						marginLeft: recursionTimes == 0 ? '0px' : '10px',
+					}}
+				>
+					{recursionTimes > 0 ? (
+						<SubItem
+							item={item}
+							inner={true}
+							recursionTimes={recursionTimes - 1}
+						/>
+					) : (
+						item[2]
+					)}
+				</div>
+			)
+		} else {
+			return (
+				<li
+					className={`${
+						item[1] !== 0
+							? 'toc-sub hover:rounded-tl-none hover:rounded-bl-none'
+							: ''
+					} py-2 pr-[10px] whitespace-nowrap text-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 hover:rounded-md dark:hover:bg-gray-700`}
+					id={`header${item[0]}`}
+					style={{
+						paddingLeft: '10px',
+						marginLeft: item[1] !== 0 ? `10px` : '0px',
+					}}
+					key={item[0]}
+					onClick={() => scrollToHeading(headersEl[item[0]])}
+				>
+					{recursionTimes > 0 ? (
+						<SubItem
+							item={item}
+							inner={true}
+							recursionTimes={recursionTimes - 1}
+						/>
+					) : (
+						item[2]
+					)}
+				</li>
+			)
+		}
+	}
+
+	useLayoutEffect(() => {
+		const result = getAllHeaders()
+		const handler = result[1]
+		setHeadersResult(result[0][0])
+		setHeadersEl(result[2])
+		if (result[2].length) {
+			window.addEventListener('scroll', handler)
+		}
+		smoothScroll.polyfill()
+		return () => {
+			window.removeEventListener('scroll', handler)
+		}
+	}, [router.asPath])
 
 	const Tour = () => {
 		const b =
@@ -138,87 +227,8 @@ export default function Aside({ preNext }: { preNext: any }) {
 		}
 	}
 
-	const SubItem = ({
-		item,
-		inner,
-		recursionTimes,
-	}: {
-		item: any
-		inner: boolean
-		recursionTimes: number
-	}) => {
-		if (inner) {
-			return (
-				<div
-					className={`${
-						recursionTimes == 0 ? 'border-l-0' : ''
-					}toc-sub py-2 -my-2 text-gray-800 dark:text-gray-400 whitespace-nowrap overflow-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700`}
-					style={{
-						paddingLeft: recursionTimes == 0 ? '0px' : '10px',
-						marginLeft: recursionTimes == 0 ? '0px' : '10px',
-					}}
-				>
-					{recursionTimes > 0 ? (
-						<SubItem
-							item={item}
-							inner={true}
-							recursionTimes={recursionTimes - 1}
-						/>
-					) : (
-						item[2]
-					)}
-				</div>
-			)
-		} else {
-			return (
-				<li
-					className={`${
-						item[1] !== 0
-							? 'toc-sub hover:rounded-tl-none hover:rounded-bl-none'
-							: ''
-					} py-2 pr-[10px] text-gray-800 dark:text-gray-400 whitespace-nowrap overflow-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 hover:rounded-md dark:hover:bg-gray-700`}
-					id={`header${item[0]}`}
-					style={{
-						paddingLeft: '10px',
-						marginLeft: item[1] !== 0 ? `10px` : '0px',
-					}}
-					key={item[0]}
-					onClick={() => {
-						headersEl[item[0]].scrollIntoView({
-							behavior: 'smooth',
-						})
-					}}
-				>
-					{recursionTimes > 0 ? (
-						<SubItem
-							item={item}
-							inner={true}
-							recursionTimes={recursionTimes - 1}
-						/>
-					) : (
-						item[2]
-					)}
-				</li>
-			)
-		}
-	}
-
-	useLayoutEffect(() => {
-		const result = getAllHeaders()
-		const handler = result[1]
-		setHeadersResult(result[0][0])
-		setHeadersEl(result[2])
-		if (result[2].length) {
-			window.addEventListener('scroll', handler)
-		}
-		smoothScroll.polyfill()
-		return () => {
-			window.removeEventListener('scroll', handler)
-		}
-	}, [router.asPath])
-
 	return (
-		<aside className="w-toc fixed top-24 -ml-82 hidden xl:block overflow-hidden overflow-y-auto max-h-aside aside overscroll-contain">
+		<aside className="group w-toc fixed top-24 -ml-82 hidden xl:block overflow-hidden overflow-y-auto max-h-aside aside overscroll-contain">
 			{headersEl.length ? (
 				<div>
 					<div className="shadow-sm border rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800">
@@ -226,7 +236,10 @@ export default function Aside({ preNext }: { preNext: any }) {
 							<span className="w-6 h-6 mr-2">{Icons.toc}</span>
 							TOC
 						</h1>
-						<ul className="text-xl px-3 py-3" id="toc">
+						<ul
+							className="text-xl px-3 py-3 transition-colors duration-300 text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300"
+							id="toc"
+						>
 							{headersResult &&
 								headersResult.map((item, index) => {
 									return (

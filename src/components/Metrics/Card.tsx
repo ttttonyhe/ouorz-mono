@@ -37,7 +37,7 @@ export default function MetricCard({
 						<span className="w-7 h-7 ml-1 mt-1">{Icons[icon]}</span>
 					)}
 				</h1>
-				<p className="text-gray-500 dark:text-gray-400 tracking-wide overflow-hidden overflow-ellipsis whitespace-nowrap">
+				<p className="text-gray-500 dark:text-gray-400 tracking-wide overflow-hidden text-ellipsis whitespace-nowrap">
 					{footer} →
 				</p>
 			</div>

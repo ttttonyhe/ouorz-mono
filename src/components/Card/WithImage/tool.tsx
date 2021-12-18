@@ -1,5 +1,5 @@
 import Label from '~/components/Label'
-import BottomCard from '~/components/Card/Bottom'
+import CardFooter from '~/components/Card/Footer'
 import { DesSplit } from '~/assets/utilities/String'
 import Link from 'next/link'
 
@@ -38,7 +38,7 @@ export const CardTool = ({
 					<h2 className="text-xl font-medium text-gray-600 dark:text-gray-200">
 						{item.post_metas.fineTool.itemName}
 					</h2>
-					<p className="text-gray-500 dark:text-gray-400 overflow-ellipsis text-5">
+					<p className="text-gray-500 dark:text-gray-400 text-ellipsis text-5">
 						{item.post_metas.fineTool.itemDes}
 					</p>
 				</div>
@@ -86,14 +86,14 @@ export default function CardWithImageTool({ item, sticky, setReader }: Props) {
 						</a>
 					</Link>
 					<p
-						className="text-gray-500 dark:text-gray-400 text-4 lg:text-3 tracking-wide leading-2 lg:leading-8 overflow-hidden overflow-ellipsis"
+						className="text-gray-500 dark:text-gray-400 text-4 lg:text-3 tracking-wide leading-2 lg:leading-8 overflow-hidden text-ellipsis"
 						dangerouslySetInnerHTML={{
 							__html: DesSplit({ str: item.post_excerpt.four, n: 150 }),
 						}}
 					/>
 				</div>
 			</div>
-			<BottomCard item={item} />
+			<CardFooter item={item} />
 		</div>
 	)
 }

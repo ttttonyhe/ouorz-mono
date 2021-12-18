@@ -115,7 +115,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
 								key={index}
 								className="cursor-pointer hover:shadow-md transition-shadow shadow-sm border py-4 px-5 bg-white dark:bg-gray-800 dark:border-gray-800 flex items-center rounded-md"
 							>
-								<div className="w-full flex items-center whitespace-nowrap overflow-hidden overflow-ellipsis">
+								<div className="w-full flex items-center whitespace-nowrap overflow-hidden text-ellipsis">
 									<h1 className="flex-1 items-center text-xl tracking-wide font-medium">
 										{item.name}
 									</h1>

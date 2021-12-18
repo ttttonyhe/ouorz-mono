@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Icons from '~/components/Icons'
 import List from '~/components/List'
 
@@ -30,17 +30,21 @@ export default function Search({
 		document.getElementsByTagName('body')[0].classList.remove('stop-scrolling')
 	}
 
-	return (
-		(startSearching || endSearching) && (
+	useEffect(() => {
+		if (startSearching) {
+			document.getElementsByTagName('body')[0].classList.add('stop-scrolling')
+		} else {
+			document
+				.getElementsByTagName('body')[0]
+				.classList.remove('stop-scrolling')
+		}
+	}, [startSearching])
+
+	if (startSearching || endSearching) {
+		return (
 			<div>
 				<div
-					className={`reader-bg ${
-						startSearching
-							? 'animate-searchBg'
-							: endSearching
-							? 'animate-searchBgOut'
-							: ''
-					}`}
+					className={`reader-bg ${endSearching ? 'animate-searchBgOut' : ''}`}
 					onClick={terminateSearch}
 				/>
 				<div
@@ -92,5 +96,7 @@ export default function Search({
 				</div>
 			</div>
 		)
-	)
+	}
+
+	return null
 }
