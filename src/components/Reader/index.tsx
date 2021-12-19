@@ -9,11 +9,11 @@ export default function Reader({
 	data: { status: boolean; post: any }
 	setReader: any
 }) {
-	if (data.status) {
-		useEffect(() => {
-			document.getElementsByTagName('body')[0].classList.add('stop-scrolling')
-		}, [])
-	}
+	useEffect(() => {
+		data.status &&
+			document.getElementsByTagName('body')[0].classList.add('no-scrolling')
+	}, [data.status])
+
 	return (
 		data.post.length !== 0 && (
 			<div>
@@ -28,7 +28,7 @@ export default function Reader({
 						}, 500)
 						document
 							.getElementsByTagName('body')[0]
-							.classList.remove('stop-scrolling')
+							.classList.remove('no-scrolling')
 					}}
 				/>
 				<div

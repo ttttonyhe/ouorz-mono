@@ -258,6 +258,10 @@ h5 {
 	@apply dark:bg-gray-900 bg-gray-100;
 }
 
+.no-scrolling {
+	overflow: hidden;
+}
+
 .stop-scrolling {
 	width: 100%;
 	position: fixed;
