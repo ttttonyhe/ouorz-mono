@@ -7520,6 +7520,11 @@ react-dom@^17.0.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
+react-fast-compare@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
+  integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
+
 react-floater@^0.7.2:
   version "0.7.3"
   resolved "https://registry.yarnpkg.com/react-floater/-/react-floater-0.7.3.tgz#f57947960682586866ec21540e73c9049ca9f787"
@@ -7579,6 +7584,13 @@ react-ridge-translations@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/react-ridge-translations/-/react-ridge-translations-1.0.4.tgz#08bedcafef715ebac2170659a2e55afa6d619d80"
   integrity sha512-gRxLHQbG0TUgTrnj1blAH63bzus5Pyf51cSF+YWTpk6CLgfCsr7nZ/FEIx3WK3mip7hFBlsdk3IUN8ipZ1LRVg==
+
+react-snowfall@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-snowfall/-/react-snowfall-1.1.1.tgz#bdd5e43ed622606fb6fdb9f1c82ca367608e65db"
+  integrity sha512-SREER5iikqVY8Fu0BpaYllzGHB1iKZacXY76E/rW1n1zKUH5ClqVWG1UZS+3fR6OTg9GkeGG459juSnARVoNGQ==
+  dependencies:
+    react-fast-compare "^3.2.0"
 
 react-textarea-autosize@^8.3.2:
   version "8.3.3"

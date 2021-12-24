@@ -4,6 +4,7 @@ import React from 'react'
 import Content from '~/components/Content'
 import List from '~/components/List'
 import Top from '~/components/Top'
+import ChirstmasBanner from '~/components/Banners/Christmas'
 import { getApi } from '~/assets/utilities/Api'
 
 interface Sticky {
@@ -51,6 +52,9 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
 				</div>
 				<div className="mt-10">
 					{!stickyNotFound && <List posts={stickyPosts} sticky={true} />}
+				</div>
+				<div className="mt-2.5">
+					<ChirstmasBanner />
 				</div>
 				<div className="mt-5">
 					<List type="index" />
