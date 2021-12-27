@@ -62,7 +62,7 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-timeago": "^6.2.1",
     "smoothscroll-polyfill": "^0.4.4",
-    "swr": "^1.1.1",
+    "swr": "^1.1.2",
     "tailwindcss": "^3.0.7",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.4",
