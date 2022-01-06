@@ -53,9 +53,9 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
 				<div className="mt-10">
 					{!stickyNotFound && <List posts={stickyPosts} sticky={true} />}
 				</div>
-				<div className="mt-2.5">
+				{/* <div className="mt-2.5">
 					<ChirstmasBanner />
-				</div>
+				</div> */}
 				<div className="mt-5">
 					<List type="index" />
 				</div>
