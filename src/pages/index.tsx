@@ -4,7 +4,7 @@ import React from 'react'
 import Content from '~/components/Content'
 import List from '~/components/List'
 import Top from '~/components/Top'
-import ChirstmasBanner from '~/components/Banners/Christmas'
+// import ChirstmasBanner from '~/components/Banners/Christmas'
 import { getApi } from '~/assets/utilities/Api'
 
 interface Sticky {
