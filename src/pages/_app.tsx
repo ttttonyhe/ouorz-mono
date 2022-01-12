@@ -8,11 +8,12 @@ import Script from 'next/script'
 function App({ Component, pageProps }: AppProps) {
 	return (
 		<div>
-			<Script
+			{/* <Script
 				defer
 				src="https://static.cloudflareinsights.com/beacon.min.js"
 				data-cf-beacon='{"token": "53f3652793b44758819338f853f944e4", "spa": true}'
-			/>
+			/> */}
+			<Script async src="https://cdn.splitbee.io/sb.js" />
 			<NextNprogress
 				color="#d4d4d8"
 				height={2}
