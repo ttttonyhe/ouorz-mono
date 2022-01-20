@@ -100,19 +100,19 @@ const InfiniteList = ({
 			url = getApi({
 				sticky: false,
 				perPage: 10,
-				cateExclude: '5,2,74',
+				cateExclude: '5,2,74,334',
 			})
 			break
 		case 'cate':
 			url = getApi({
 				perPage: 10,
 				cate: `${cate}`,
-				cateExclude: '5,2,74',
+				cateExclude: '5,2,74,334',
 			})
 			break
 		case 'search':
 			url = getApi({
-				cateExclude: '5,2,74',
+				cateExclude: '5,2,74,334',
 				search: target,
 			})
 			break
@@ -120,7 +120,7 @@ const InfiniteList = ({
 			url = getApi({
 				sticky: true,
 				perPage: 10,
-				cateExclude: '5,2,74',
+				cateExclude: '5,2,74,334',
 			})
 			break
 	}
