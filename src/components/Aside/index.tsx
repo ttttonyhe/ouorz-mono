@@ -233,7 +233,9 @@ export default function Aside({ preNext }: { preNext: any }) {
 				<div>
 					<div className="shadow-sm border rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800">
 						<h1 className="flex text-2xl font-medium text-gray-700 dark:text-white tracking-wide items-center px-6 py-3 border-b border-gray-200 dark:border-gray-700">
-							<span className="w-[19px] h-[19px] mr-2 -mt-[1.5px]">{Icons.toc}</span>
+							<span className="w-[19px] h-[19px] mr-2 -mt-[1.5px]">
+								{Icons.toc}
+							</span>
 							Contents
 						</h1>
 						<ul
