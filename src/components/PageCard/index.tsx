@@ -1,5 +1,6 @@
 import Icons from '~/components/Icons'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 interface Props {
 	title: string
@@ -35,11 +36,15 @@ export default function PageCard({
 		>
 			{icon && (
 				<div
-					className={`lg:block hidden w-20 h-auto border-r border-r-gray-200 dark:border-r-gray-600 pr-3 mr-3 ${
+					className={`lg:flex justify-center items-center hidden w-20 h-auto border-r border-r-gray-200 dark:border-r-gray-600 pr-3 mr-3 ${
 						className ? className : ''
 					}`}
 				>
-					{Icons[icon]}
+					{icon.indexOf('://') > -1 ? (
+						<Image src={icon} width={35} height={35} />
+					) : (
+						Icons[icon]
+					)}
 				</div>
 			)}
 			<div className="w-full">

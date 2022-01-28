@@ -233,8 +233,8 @@ export default function Aside({ preNext }: { preNext: any }) {
 				<div>
 					<div className="shadow-sm border rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800">
 						<h1 className="flex text-2xl font-medium text-gray-700 dark:text-white tracking-wide items-center px-6 py-3 border-b border-gray-200 dark:border-gray-700">
-							<span className="w-6 h-6 mr-2">{Icons.toc}</span>
-							TOC
+							<span className="w-[19px] h-[19px] mr-2 -mt-[1.5px]">{Icons.toc}</span>
+							Contents
 						</h1>
 						<ul
 							className="text-xl px-3 py-3 transition-colors duration-300 text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300"

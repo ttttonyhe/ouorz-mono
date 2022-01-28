@@ -95,10 +95,22 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
 						/>
 						<PageCard
 							title="Bitcoin"
-							des="bc1qz2kgqp26wtel6n7rl0cw053pxgtwt5vrr5hyd7pqmmjfhqxex8dq8fknpx"
-							iconSmall="bitcoin"
-							className="text-yellow-500"
+							des="BTC Network"
+							icon="https://static.ouorz.com/bitcoin.png"
 							href="https://static.ouorz.com/bitcoin.jpg"
+						/>
+					</div>
+					<div className="mt-4 grid grid-cols-2 gap-4">
+						<PageCard
+							title="Solana"
+							des="tonyhe.sol"
+							icon="https://static.ouorz.com/sol.png"
+						/>
+						<PageCard
+							title="Ethereum"
+							des="Ethereum Network"
+							icon="https://static.ouorz.com/eth.png"
+							href="https://static.ouorz.com/metamask.png"
 						/>
 					</div>
 				</div>
