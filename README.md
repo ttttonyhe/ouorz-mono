@@ -59,6 +59,8 @@ Create a `.env` file with your configuration, see below for a list of environmen
   - SENTRY_AUTH_TOKEN
   - SENTRY_PROJECT
   - SENTRY_ORG
++ On-demand ISR:
+  - REVALIDATION_REQUEST_TOKEN
 
 ```
 yarn install
@@ -69,7 +71,7 @@ yarn run dev
 
 ## Deployment
 ### Next.js
-This project utilizes a combination of both Server-side Rendering (SSR) and Static Generation:
+This project utilizes a combination of Server-side Rendering (SSR) and Incremental Static Generation (ISG):
 
 ```bash
 yarn run build
