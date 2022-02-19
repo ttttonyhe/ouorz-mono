@@ -1,5 +1,5 @@
 import Label from '~/components/Label'
-import { DesSplit } from '~/assets/utilities/String'
+import { trimStr } from '~/utilities/String'
 import Link from 'next/link'
 import Image from 'next/image'
 import AudioPlayer from 'react-h5-audio-player'
@@ -46,7 +46,7 @@ const CardWithImagePodcast = ({ item, sticky }: Props) => {
 					<p
 						className="text-gray-500 dark:text-gray-400 text-4 lg:text-3 tracking-wide leading-2 lg:leading-8 overflow-hidden text-ellipsis"
 						dangerouslySetInnerHTML={{
-							__html: DesSplit({ str: item.post_excerpt.four, n: 80 }),
+							__html: trimStr(item.post_excerpt.four, 80),
 						}}
 					/>
 				</div>

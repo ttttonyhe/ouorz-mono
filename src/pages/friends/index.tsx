@@ -2,8 +2,8 @@ import Head from 'next/head'
 import React from 'react'
 import Content from '~/components/Content'
 import { GetStaticProps } from 'next'
-import { DesSplit } from '~/assets/utilities/String'
-import { getApi } from '~/assets/utilities/Api'
+import { trimStr } from '~/utilities/String'
+import { getApi } from '~/utilities/Api'
 import Icons from '~/components/Icons'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -73,10 +73,7 @@ export default function Friends({ friends }: { friends: any }) {
 										<p
 											className="text-4 text-gray-500 dark:text-gray-400 tracking-wide whitespace-nowrap overflow-hidden text-ellipsis"
 											dangerouslySetInnerHTML={{
-												__html: DesSplit({
-													str: item.post_excerpt.four,
-													n: 150,
-												}),
+												__html: trimStr(item.post_excerpt.four, 150),
 											}}
 										/>
 									</a>

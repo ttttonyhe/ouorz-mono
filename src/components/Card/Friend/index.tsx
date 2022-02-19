@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { DesSplit } from '~/assets/utilities/String'
+import { trimStr } from '~/utilities/String'
 import Image from 'next/image'
 
 interface Props {
@@ -28,7 +28,7 @@ export default function CardFriend({ item }: Props) {
 					<p
 						className="text-gray-500 text-3 tracking-wide leading-8"
 						dangerouslySetInnerHTML={{
-							__html: DesSplit({ str: item.post_excerpt.four, n: 150 }),
+							__html: trimStr(item.post_excerpt.four, 150),
 						}}
 					/>
 				</div>

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Page from '~/components/Page'
 import { GetServerSideProps } from 'next'
-import { getApi } from '~/assets/utilities/Api'
+import { getApi } from '~/utilities/Api'
 import SubscriptionBox from '~/components/SubscriptionBox'
 import TimeAgo from 'react-timeago'
 import CommentBox from '~/components/CommentBox'
@@ -86,6 +86,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 			page: pgid,
 		})
 	)
+
 	if (!resData.ok) {
 		return {
 			props: {

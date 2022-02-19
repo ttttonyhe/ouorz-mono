@@ -1,9 +1,4 @@
-interface Parameters {
-	str: string
-	n: number
-}
-
-export const DesSplit = ({ str, n }: Parameters) => {
+const trimStr = (str: string, n: number) => {
 	if (str.replace(/[\u4e00-\u9fa5]/g, '**').length <= n) {
 		return str
 	} else {
@@ -24,3 +19,5 @@ export const DesSplit = ({ str, n }: Parameters) => {
 		return tmpStr.replace(' ', '') + ' ...'
 	}
 }
+
+export { trimStr }

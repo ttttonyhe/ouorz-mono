@@ -1,6 +1,6 @@
 import React from 'react'
 import Icons from '~/components/Icons'
-import { getApi } from '~/assets/utilities/Api'
+import { getApi } from '~/utilities/Api'
 
 const SubscriptionBox = ({ type }: { type: string }) => {
 	const [email, setEmail] = React.useState<string>('')

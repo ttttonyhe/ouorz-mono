@@ -1,6 +1,6 @@
 import TimeAgo from 'react-timeago'
 import Icons from '~/components/Icons'
-import { getApi } from '~/assets/utilities/Api'
+import { getApi } from '~/utilities/Api'
 import React from 'react'
 
 interface Props {
@@ -9,15 +9,27 @@ interface Props {
 }
 
 export default function CardPlainText({ item }: Props) {
-	const [marking, setMarking] = React.useState<boolean>(false)
-	const [marks, setMarks] = React.useState<number>(item.post_metas.markCount)
-	const markPost = async (id: number) => {
-		await fetch(getApi({ mark: id })).then(async (res: any) => {
-			const data = await res.json()
-			console.log(data)
-			setMarks(data.markCountNow)
-			setMarking(false)
-		})
+	const [lastUpvoteTime, setLastUpvoteTime] = React.useState(0)
+	const [upvoting, setUpvoting] = React.useState<boolean>(false)
+	const [upvotes, setUpvotes] = React.useState<number>(
+		item.post_metas.markCount
+	)
+
+	/**
+	 * Upvote the post
+	 *
+	 * @param {number} id postid
+	 */
+	const doUpvote = async (id: number) => {
+		if (lastUpvoteTime <= Date.now() - 2000) {
+			setUpvoting(true)
+			await fetch(getApi({ mark: id })).then(async (res: any) => {
+				const data = await res.json()
+				setUpvotes(data.markCountNow)
+				setUpvoting(false)
+				setLastUpvoteTime(Date.now())
+			})
+		}
 	}
 
 	return (
@@ -33,16 +45,17 @@ export default function CardPlainText({ item }: Props) {
 					<span
 						className="flex items-center space-x-1 text-red-400 hover:text-red-500 cursor-pointer rounded-md"
 						onClick={() => {
-							setMarking(true)
-							markPost(item.id)
+							if (!upvoting) {
+								doUpvote(item.id)
+							}
 						}}
 					>
-						{marking ? (
-							<i className="w-6 h-6 -mt-1">{Icons.loveFill}</i>
+						{upvoting ? (
+							<i className="w-6 h-6 mt-1 animate-bounce">{Icons.loveFill}</i>
 						) : (
 							<i className="w-6 h-6 -mt-1">{Icons.love}</i>
 						)}
-						<em className="not-italic">{marks}</em>
+						<em className="not-italic">{upvotes}</em>
 					</span>
 					<span className="lg:block hidden">·</span>
 					<span className="lg:block hidden">

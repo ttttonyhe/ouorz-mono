@@ -1,6 +1,6 @@
 import Label from '~/components/Label'
 import CardFooter from '~/components/Card/Footer'
-import { DesSplit } from '~/assets/utilities/String'
+import { trimStr } from '~/utilities/String'
 import Link from 'next/link'
 
 interface Props {
@@ -88,7 +88,7 @@ export default function CardWithImageTool({ item, sticky, setReader }: Props) {
 					<p
 						className="text-gray-500 dark:text-gray-400 text-4 lg:text-3 tracking-wide leading-2 lg:leading-8 overflow-hidden text-ellipsis"
 						dangerouslySetInnerHTML={{
-							__html: DesSplit({ str: item.post_excerpt.four, n: 150 }),
+							__html: trimStr(item.post_excerpt.four, 150),
 						}}
 					/>
 				</div>

@@ -4,7 +4,7 @@ import Content from '~/components/Content'
 import Link from 'next/link'
 import Icons from '~/components/Icons'
 import PageCard from '~/components/PageCard'
-import { getApi } from '~/assets/utilities/Api'
+import { getApi } from '~/utilities/Api'
 import { GetStaticProps } from 'next'
 
 export default function Sponsor({ sponsors }: { sponsors: any }) {
@@ -16,7 +16,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
 					rel="icon"
 					href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>"
 				/>
-				<meta name="description" content="TonyHe's Supporters" />
+				<meta name="description" content="Sponsor Tony's work" />
 			</Head>
 			<Content>
 				<div className="lg:mt-20 mt-0 lg:pt-0 pt-24">

@@ -14,8 +14,8 @@ import Label from '~/components/Label'
 import { CardTool } from '~/components/Card/WithImage/tool'
 
 // Utilities
-import { DesSplit } from '~/assets/utilities/String'
-import { getApi } from '~/assets/utilities/Api'
+import { trimStr } from '~/utilities/String'
+import { getApi } from '~/utilities/Api'
 import redirect from 'nextjs-redirect'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -65,7 +65,7 @@ export default function BlogPost({
 				/>
 				<meta
 					name="description"
-					content={DesSplit({ str: post.post_excerpt.four, n: 150 })}
+					content={trimStr(post.post_excerpt.four, 150)}
 				/>
 				{post.post_img.url && (
 					<meta property="og:image" content={post.post_img.url} />
