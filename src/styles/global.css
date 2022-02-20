@@ -254,16 +254,7 @@ h5 {
 	position: fixed;
 	top: 0px;
 	left: 0px;
-	@apply dark:bg-gray-900/75 bg-gray-100/75;
-}
-
-.reader-bg-deep {
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	@apply dark:bg-gray-900/90 bg-gray-100/90;
+	@apply dark:bg-gray-900 bg-gray-100;
 }
 
 .no-scrolling {
@@ -530,4 +521,9 @@ abbr[title] {
 		#000 95%,
 		transparent 100%
 	);
+}
+
+.filter-blur {
+	-webkit-backdrop-filter: saturate(180%) blur(20px);
+	backdrop-filter: saturate(180%) blur(20px);
 }

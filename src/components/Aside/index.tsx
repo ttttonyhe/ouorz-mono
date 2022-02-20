@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect, ReactDOM, ReactElement } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import Icons from '~/components/Icons'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
