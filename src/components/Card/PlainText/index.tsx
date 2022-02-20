@@ -1,7 +1,8 @@
+import React from 'react'
 import TimeAgo from 'react-timeago'
 import Icons from '~/components/Icons'
 import { getApi } from '~/utilities/Api'
-import React from 'react'
+import { useDebounce } from '~/hooks'
 
 interface Props {
 	item: any
@@ -9,7 +10,6 @@ interface Props {
 }
 
 export default function CardPlainText({ item }: Props) {
-	const [lastUpvoteTime, setLastUpvoteTime] = React.useState(0)
 	const [upvoting, setUpvoting] = React.useState<boolean>(false)
 	const [upvotes, setUpvotes] = React.useState<number>(
 		item.post_metas.markCount
@@ -20,17 +20,16 @@ export default function CardPlainText({ item }: Props) {
 	 *
 	 * @param {number} id postid
 	 */
-	const doUpvote = async (id: number) => {
-		if (lastUpvoteTime <= Date.now() - 2000) {
-			setUpvoting(true)
-			await fetch(getApi({ mark: id })).then(async (res: any) => {
-				const data = await res.json()
-				setUpvotes(data.markCountNow)
-				setUpvoting(false)
-				setLastUpvoteTime(Date.now())
-			})
-		}
+	const upvote = async (id: number) => {
+		setUpvoting(true)
+		await fetch(getApi({ mark: id })).then(async (res: any) => {
+			const data = await res.json()
+			setUpvotes(data.markCountNow)
+			setUpvoting(false)
+		})
 	}
+
+	const doUpvote = useDebounce(upvote, 2000)
 
 	return (
 		<div className="w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6">
