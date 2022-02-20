@@ -36,7 +36,8 @@
 		"cypress/no-unnecessary-waiting": "error",
 		"cypress/assertion-before-screenshot": "warn",
 		"cypress/no-force": "warn",
-		"cypress/no-async-tests": "error"
+		"cypress/no-async-tests": "error",
+		"no-unused-vars": "off"
 	},
 	"parser": "@typescript-eslint/parser",
 	"settings": {
