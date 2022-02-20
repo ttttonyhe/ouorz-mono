@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import ScrollWrapper from './scroll'
 
 interface Props {
 	componentRef: React.MutableRefObject<HTMLDivElement>
@@ -8,27 +9,18 @@ interface Props {
 const OffsetTransition = (props: Props) => {
 	const { componentRef: ref, children } = props
 
-	const handleScroll = () => {
+	const handler = (position: number) => {
 		if (!ref?.current) return
-
-		let position = window.pageYOffset
-		if (!(position >= 0 && position <= 50)) {
-			position = 50
-		}
 
 		ref.current.style.transform = `translateY(${(50 - position) * 0.5}%)`
 		ref.current.style.opacity = `${position * 0.02}`
 	}
 
-	useEffect(() => {
-		window.addEventListener('scroll', handleScroll, { passive: true })
-
-		return () => {
-			window.removeEventListener('scroll', handleScroll)
-		}
-	}, [])
-
-	return <>{children}</>
+	return (
+		<ScrollWrapper handler={handler} endPosition={50}>
+			{children}
+		</ScrollWrapper>
+	)
 }
 
 export default OffsetTransition

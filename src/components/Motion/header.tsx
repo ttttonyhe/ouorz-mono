@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useTheme } from 'next-themes'
+import ScrollWrapper from './scroll'
 
 interface Props {
 	componentRef: React.MutableRefObject<HTMLDivElement>
@@ -10,13 +11,8 @@ const BoxShadowTransition = (props: Props) => {
 	const { componentRef: ref, children } = props
 	const { resolvedTheme } = useTheme()
 
-	const handleScroll = () => {
+	const handler = (position: number) => {
 		if (!ref?.current) return
-
-		let position = window.pageYOffset
-		if (!(position >= 0 && position <= 50)) {
-			position = 50
-		}
 
 		ref.current.style.background = `rgba(${
 			resolvedTheme === 'light' ? '255, 255, 255' : '38, 38, 38'
@@ -26,19 +22,11 @@ const BoxShadowTransition = (props: Props) => {
 		})`
 	}
 
-	useEffect(() => {
-		// invoke scroll handler once to set initial background color
-		// after changing theme
-		handleScroll()
-
-		window.addEventListener('scroll', handleScroll, { passive: true })
-
-		return () => {
-			window.removeEventListener('scroll', handleScroll)
-		}
-	}, [resolvedTheme])
-
-	return <>{children}</>
+	return (
+		<ScrollWrapper handler={handler} endPosition={50}>
+			{children}
+		</ScrollWrapper>
+	)
 }
 
 export default BoxShadowTransition
