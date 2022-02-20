@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Search from '~/components/Search'
-import { BoxShadowTransition, OffsetTransition } from '../Motion'
+import { HeaderTransition, OffsetTransition } from '../Motion'
 
 const Header = () => {
 	const router = useRouter()
@@ -128,9 +128,9 @@ const Header = () => {
 	)
 
 	return (
-		<BoxShadowTransition componentRef={headerRef}>
+		<HeaderTransition componentRef={headerRef}>
 			<HeaderComponent />
-		</BoxShadowTransition>
+		</HeaderTransition>
 	)
 }
 

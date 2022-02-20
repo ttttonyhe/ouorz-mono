@@ -1,4 +1,4 @@
-import BoxShadowTransition from './boxShadow'
+import HeaderTransition from './header'
 import OffsetTransition from './offset'
 
-export { BoxShadowTransition, OffsetTransition }
+export { HeaderTransition, OffsetTransition }
