@@ -44,7 +44,7 @@ export default function Search({
 		return (
 			<div>
 				<div
-					className={`reader-bg ${endSearching ? 'animate-searchBgOut' : ''}`}
+					className={`${searchResultsDisplay ? 'reader-bg-deep' : 'reader-bg'} ${endSearching ? 'animate-searchBgOut' : ''}`}
 					onClick={terminateSearch}
 				/>
 				<div
@@ -62,7 +62,7 @@ export default function Search({
 							{Icons.search}
 						</span>
 						<input
-							className="shadow-md rounded-lg hover:shadow-lg bg-white dark:bg-gray-800 dark:border-gray-800 text-3 lg:text-2 w-full h-auto px-12 lg:px-14 lg:pl-12 py-3 focus:outline-none text-gray-600 dark:text-gray-400"
+							className="shadow-lg rounded-lg hover:shadow-xl bg-white dark:bg-gray-800 dark:border-gray-800 text-3 lg:text-2 w-full h-auto px-12 lg:px-14 lg:pl-12 py-3 focus:outline-none text-gray-600 dark:text-gray-400"
 							placeholder="Search articles..."
 							value={searchContent}
 							autoFocus

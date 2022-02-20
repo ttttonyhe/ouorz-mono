@@ -254,8 +254,16 @@ h5 {
 	position: fixed;
 	top: 0px;
 	left: 0px;
-	/* backdrop-filter: saturate(180%) blur(20px); */
-	@apply dark:bg-gray-900 bg-gray-100;
+	@apply dark:bg-gray-900/75 bg-gray-100/75;
+}
+
+.reader-bg-deep {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	@apply dark:bg-gray-900/90 bg-gray-100/90;
 }
 
 .no-scrolling {
@@ -505,4 +513,21 @@ abbr[title] {
 .podcast-image-placeholder {
 	width: 160px !important;
 	height: 160px !important;
+}
+
+.aside-mask {
+	-webkit-mask-image: linear-gradient(
+		to bottom,
+		transparent 0,
+		#000 24px,
+		#000 95%,
+		transparent 100%
+	);
+	mask-image: linear-gradient(
+		to bottom,
+		transparent 0,
+		#000 24px,
+		#000 95%,
+		transparent 100%
+	);
 }

@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from 'react'
+import { useState, useLayoutEffect, ReactDOM, ReactElement } from 'react'
 import Icons from '~/components/Icons'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -74,6 +74,9 @@ export default function Aside({ preNext }: { preNext: any }) {
 				document
 					.getElementById(`header${currentHeaderId}`)
 					.classList.add('toc-active')
+				scrollToHeadingListItem(
+					document.getElementById(`header${currentHeaderId}`)
+				)
 				lastHeaderOffset = currentHeaderOffset
 				currentHeaderId += 1
 				currentHeaderOffset = result[1][currentHeaderId]
@@ -85,6 +88,9 @@ export default function Aside({ preNext }: { preNext: any }) {
 					document
 						.getElementById(`header${currentHeaderId - 2}`)
 						.classList.add('toc-active')
+					scrollToHeadingListItem(
+						document.getElementById(`header${currentHeaderId - 2}`)
+					)
 					currentHeaderId -= 1
 					lastHeaderOffset = result[1][currentHeaderId - 1]
 					currentHeaderOffset = result[1][currentHeaderId]
@@ -96,6 +102,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 				}
 			} else if (scrollPosition > lastHeaderOffset && currentHeaderId === 1) {
 				document.getElementById(`header0`).classList.add('toc-active')
+				scrollToHeadingListItem(document.getElementById(`header0`))
 			}
 		}
 
@@ -110,6 +117,58 @@ export default function Aside({ preNext }: { preNext: any }) {
 		const elY = el.getBoundingClientRect().top + window.pageYOffset - 75
 		window.scrollTo({ top: elY, behavior: 'smooth' })
 	}
+
+	const scrollToHeadingListItem = (heading: HTMLElement) => {
+		const listDiv = document.getElementById('toc')
+		// Where is the parent on page
+		const parentRect = listDiv.getBoundingClientRect()
+		// What can you see?
+		const parentViewableArea = {
+			height: listDiv.clientHeight,
+			width: listDiv.clientWidth,
+		}
+
+		// Where is the child
+		const childRect = heading.getBoundingClientRect()
+		// Is the child viewable?
+		const isViewable =
+			childRect.top >= parentRect.top &&
+			childRect.bottom <= parentRect.top + parentViewableArea.height
+
+		// if you can't see the child try to scroll parent
+		if (!isViewable) {
+			// Should we scroll using top or bottom? Find the smaller ABS adjustment
+			const scrollTop = childRect.top - parentRect.top
+			const scrollBot = childRect.bottom - parentRect.bottom
+			if (Math.abs(scrollTop) < Math.abs(scrollBot)) {
+				// we're near the top of the list
+				listDiv.scrollTo({
+					top: listDiv.scrollTop + scrollTop - 100,
+					behavior: 'smooth',
+				})
+			} else {
+				// we're near the bottom of the list
+				listDiv.scrollTo({
+					top: listDiv.scrollTop + scrollBot + 100,
+					behavior: 'smooth',
+				})
+			}
+		}
+	}
+
+	useLayoutEffect(() => {
+		const result = getAllHeaders()
+		const handler = result[1]
+		setHeadersResult(result[0][0])
+		setHeadersEl(result[2])
+		if (result[2].length) {
+			window.addEventListener('scroll', handler)
+		}
+		smoothScroll.polyfill()
+		return () => {
+			window.removeEventListener('scroll', handler)
+		}
+	}, [router.asPath])
 
 	const SubItem = ({
 		item,
@@ -172,20 +231,6 @@ export default function Aside({ preNext }: { preNext: any }) {
 		}
 	}
 
-	useLayoutEffect(() => {
-		const result = getAllHeaders()
-		const handler = result[1]
-		setHeadersResult(result[0][0])
-		setHeadersEl(result[2])
-		if (result[2].length) {
-			window.addEventListener('scroll', handler)
-		}
-		smoothScroll.polyfill()
-		return () => {
-			window.removeEventListener('scroll', handler)
-		}
-	}, [router.asPath])
-
 	const Tour = () => {
 		const b =
 			preNext['next'][0] && [58, 5, 2, 74].indexOf(preNext['next'][2]) === -1
@@ -228,7 +273,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 	}
 
 	return (
-		<aside className="group w-toc fixed top-24 -ml-82 hidden xl:block overflow-hidden overflow-y-auto max-h-aside aside overscroll-contain">
+		<aside className="group w-toc fixed top-24 -ml-82 hidden xl:block aside">
 			{headersEl.length ? (
 				<div>
 					<div className="shadow-sm border rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800">
@@ -239,7 +284,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 							Contents
 						</h1>
 						<ul
-							className="text-xl px-3 py-3 transition-colors duration-300 text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300"
+							className="max-h-[70vh] aside-mask overflow-hidden overflow-y-auto overscroll-contain text-xl px-3 py-3 transition-colors duration-300 text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300"
 							id="toc"
 						>
 							{headersResult &&
