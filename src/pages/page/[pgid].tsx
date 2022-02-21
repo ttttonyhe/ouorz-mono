@@ -71,35 +71,39 @@ export default function BlogPage({
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const pgid = context.params.pgid
 
-	// Increase page views
-	await fetch(
-		getApi({
-			// @ts-ignore
-			visit: pgid,
-		})
-	)
+	try {
+		// Increase page views
+		await fetch(
+			getApi({
+				// @ts-ignore
+				visit: pgid,
+			})
+		)
 
-	// Fetch page data
-	const resData = await fetch(
-		getApi({
-			// @ts-ignore
-			page: pgid,
-		})
-	)
+		// Fetch page data
+		const resData = await fetch(
+			getApi({
+				// @ts-ignore
+				page: pgid,
+			})
+		)
 
-	if (!resData.ok) {
-		return {
-			props: {
-				status: false,
-			},
+		if (!resData.ok) {
+			return {
+				props: {
+					status: false,
+				},
+			}
+		} else {
+			const pageData = await resData.json()
+			return {
+				props: {
+					status: true,
+					page: pageData,
+				},
+			}
 		}
-	} else {
-		const pageData = await resData.json()
-		return {
-			props: {
-				status: true,
-				page: pageData,
-			},
-		}
+	} catch (e) {
+		console.error(e)
 	}
 }

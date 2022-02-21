@@ -128,41 +128,45 @@ export default function BlogPost({
 export const getStaticProps: GetStaticProps = async (context) => {
 	const pid = context.params.pid
 
-	// Fetch page data
-	const resData = await fetch(
-		getApi({
-			// @ts-ignore
-			post: pid,
-		})
-	)
+	try {
+		// Fetch page data
+		const resData = await fetch(
+			getApi({
+				// @ts-ignore
+				post: pid,
+			})
+		)
 
-	if (!resData.ok) {
-		return {
-			props: {
-				status: false,
-			},
-			revalidate: 10,
+		if (!resData.ok) {
+			return {
+				props: {
+					status: false,
+				},
+				revalidate: 10,
+			}
+		} else {
+			const postData = await resData.json()
+			return {
+				props: {
+					status: true,
+					post: postData,
+				},
+				revalidate: 3600 * 24,
+			}
 		}
-	} else {
-		const postData = await resData.json()
-		return {
-			props: {
-				status: true,
-				post: postData,
-			},
-			revalidate: 3600 * 24,
-		}
+	} catch (e) {
+		console.error(e)
 	}
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+	// get all post ids for SSG
 	const res = await fetch(
 		getApi({
 			postIDs: true,
 		})
 	)
 	const postIDs: number[] = await res.json()
-
 	const paths = postIDs.map((id) => ({
 		params: { pid: id.toString() },
 	}))
