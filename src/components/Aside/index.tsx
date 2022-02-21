@@ -2,7 +2,6 @@ import { useState, useLayoutEffect } from 'react'
 import Icons from '~/components/Icons'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import smoothScroll from 'smoothscroll-polyfill'
 
 export default function Aside({ preNext }: { preNext: any }) {
 	const router = useRouter()
@@ -164,7 +163,6 @@ export default function Aside({ preNext }: { preNext: any }) {
 		if (result[2].length) {
 			window.addEventListener('scroll', handler)
 		}
-		smoothScroll.polyfill()
 		return () => {
 			window.removeEventListener('scroll', handler)
 		}
