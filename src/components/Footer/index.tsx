@@ -3,9 +3,14 @@ import { useEffect, useState } from 'react'
 import Icons from '~/components/Icons'
 import smoothScroll from 'smoothscroll-polyfill'
 
+const themes = ['system', 'dark', 'light']
+const icons = [Icons.gear, Icons.moon, Icons.sun]
+const targetThemes = ['dark', 'light', 'system']
+
 export default function Footer() {
-	const [mounted, setMounted] = useState(false)
 	const { setTheme, resolvedTheme } = useTheme()
+	const [mounted, setMounted] = useState(false)
+	const [themeIdx, setThemeIdx] = useState(themes.indexOf(resolvedTheme))
 
 	useEffect(() => {
 		smoothScroll.polyfill()
@@ -19,13 +24,12 @@ export default function Footer() {
 				<button
 					aria-label="change theme"
 					onClick={() => {
-						setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
+						setThemeIdx((themeIdx + 1) % themes.length)
+						setTheme(targetThemes[themeIdx])
 					}}
 					className="w-full p-3 shadow-sm border border-gray-300 dark:border-gray-800 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
 				>
-					<span className="w-7 h-7">
-						{resolvedTheme === 'light' ? Icons.moon : Icons.sun}
-					</span>
+					<span className="w-7 h-7">{icons[themeIdx]}</span>
 				</button>
 			</div>
 			<div className="fixed bottom-8 right-8 text-gray-500 dark:text-gray-300">
