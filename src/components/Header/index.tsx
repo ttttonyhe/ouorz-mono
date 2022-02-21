@@ -52,6 +52,7 @@ const Header = () => {
 			{
 				label: 'Search',
 				icon: 'search',
+				className: 'hidden lg:block',
 				onClick: () => setStartSearching(true),
 			},
 		]
@@ -60,6 +61,7 @@ const Header = () => {
 			router.asPath.split('/').length > 2
 				? {
 						label: 'Home',
+						className: 'hidden lg:block',
 						icon: 'home',
 						link: {
 							internal: '/',
@@ -67,6 +69,7 @@ const Header = () => {
 				  }
 				: {
 						label: 'Sponsor',
+						className: 'hidden lg:block',
 						color: 'text-pink-500',
 						bgColor: 'bg-pink-100',
 						bgDark: 'dark:bg-pink-900',
@@ -77,6 +80,7 @@ const Header = () => {
 				  },
 			{
 				label: 'Pages',
+				className: 'hidden lg:block',
 				icon: 'pages',
 				link: {
 					internal: '/pages',

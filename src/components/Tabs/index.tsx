@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react'
 import Icons from '~/components/Icons'
 
 interface TabItemProps {
+	className?: string
 	label: string
 	color?: string
 	bgColor?: string
@@ -30,13 +31,24 @@ interface TabItemComponentProps extends TabItemProps {
 }
 
 const TabItemComponent = (props: TabItemComponentProps) => {
-	const { label, icon, color, bgColor, bgDark, link, onClick, highlight } =
-		props
+	const {
+		className,
+		label,
+		icon,
+		color,
+		bgColor,
+		bgDark,
+		link,
+		onClick,
+		highlight,
+	} = props
 
 	const TabButton = () => (
 		<button
 			aria-label="tab"
-			className={`w-max py-2 px-5 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex text-gray-500 dark:text-gray-400 lg:flex z-10 ${
+			className={`${
+				className || ''
+			} w-max py-2 px-5 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex text-gray-500 dark:text-gray-400 lg:flex z-10 ${
 				color || ''
 			}`}
 			onClick={onClick}
