@@ -527,3 +527,13 @@ abbr[title] {
 	-webkit-backdrop-filter: saturate(180%) blur(20px);
 	backdrop-filter: saturate(180%) blur(20px);
 }
+
+.tabs-highlighter {
+	@apply rounded-md;
+	min-height: 32px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: 0.15s ease;
+	transition-property: width, transform, opacity;
+}

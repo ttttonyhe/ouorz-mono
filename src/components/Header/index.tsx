@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Search from '~/components/Search'
 import { HeaderTransition, OffsetTransition } from '../Motion'
+import Tabs from '../Tabs'
 
 const Header = () => {
 	const router = useRouter()
@@ -39,93 +40,81 @@ const Header = () => {
 		</div>
 	)
 
-	const HeaderComponent = () => (
-		<header
-			ref={headerRef}
-			id="header"
-			className="leading-14 lg:border-0 border-b border-gray-200 dark:border-gray-800 transition-all lg:bg-transparent bg-white duration-300 grid grid-cols-6 fixed top-0 h-auto w-full lg:py-4 lg:px-5 py-2 px-1 z-10"
-		>
-			<div className="col-start-1 col-end-2 flex lg:space-x-2">
-				<a
-					href="https://buttondown.email/helipeng"
-					target="_blank"
-					rel="noreferrer"
-				>
-					<Button
-						bType="menu-default"
-						icon="subscribe"
-						className="hidden lg:flex text-3"
-					>
-						Newsletter
-					</Button>
-				</a>
-				<Button
-					bType="menu-default"
-					icon="search"
-					className="text-3"
-					onClick={() => {
-						setStartSearching(!startSearching)
-					}}
-				>
-					Search
-				</Button>
-			</div>
-			<OffsetTransition componentRef={titleRef}>
-				<TitleComponent />
-			</OffsetTransition>
-			<div className="col-start-5 col-end-7 flex space-x-2 justify-end">
-				{router.asPath.split('/').length > 2 ? (
-					<Link href="/">
-						<a>
-							<Button
-								bType="menu-default"
-								icon="home"
-								className="text-3 hidden lg:flex"
-							>
-								Home
-							</Button>
-						</a>
-					</Link>
-				) : (
-					<Link href="/sponsor">
-						<a>
-							<Button
-								bType="menu-primary"
-								icon="love"
-								className="text-pink-500 hidden lg:flex text-3"
-							>
-								Sponsor
-							</Button>
-						</a>
-					</Link>
-				)}
-				<Link href="/pages">
-					<a>
-						<Button
-							bType="menu-default"
-							icon="pages"
-							className="hidden lg:flex text-3"
-						>
-							Pages
-						</Button>
-					</a>
-				</Link>
-				<Link href="/post/126">
-					<a>
-						<Button bType="menu-default" icon="me" className="text-3">
-							About
-						</Button>
-					</a>
-				</Link>
-			</div>
-			<Search
-				startSearching={startSearching}
-				setStartSearching={setStartSearching}
-				setEndSearching={setEndSearching}
-				endSearching={endSearching}
-			/>
-		</header>
-	)
+	const HeaderComponent = () => {
+		const leftTabItems = [
+			{
+				label: 'Newsletter',
+				icon: 'subscribe',
+				link: {
+					external: 'https://buttondown.email/helipeng',
+				},
+			},
+			{
+				label: 'Search',
+				icon: 'search',
+				onClick: () => setStartSearching(true),
+			},
+		]
+
+		const rightTabItems = [
+			router.asPath.split('/').length > 2
+				? {
+						label: 'Home',
+						icon: 'home',
+						link: {
+							internal: '/',
+						},
+				  }
+				: {
+						label: 'Sponsor',
+						color: 'text-pink-500',
+						bgColor: 'bg-pink-100',
+						bgDark: 'dark:bg-pink-900',
+						icon: 'love',
+						link: {
+							internal: '/sponsor',
+						},
+				  },
+			{
+				label: 'Pages',
+				icon: 'pages',
+				link: {
+					internal: '/pages',
+				},
+			},
+			{
+				label: 'About',
+				icon: 'me',
+				link: {
+					internal: '/post/126',
+				},
+			},
+		]
+
+		return (
+			<header
+				ref={headerRef}
+				id="header"
+				className="leading-14 lg:border-0 border-b border-gray-200 dark:border-gray-800 lg:bg-transparent bg-white duration-300 grid grid-cols-6 fixed top-0 h-auto w-full lg:py-4 lg:px-5 py-2 px-1 z-10"
+			>
+				<div className="col-start-1 col-end-2 flex lg:space-x-2">
+					<Tabs items={leftTabItems} />
+				</div>
+				<OffsetTransition componentRef={titleRef}>
+					<TitleComponent />
+				</OffsetTransition>
+				<div className="col-start-5 col-end-7 flex space-x-2 justify-end">
+					<Tabs items={rightTabItems} />
+				</div>
+				<Search
+					startSearching={startSearching}
+					setStartSearching={setStartSearching}
+					setEndSearching={setEndSearching}
+					endSearching={endSearching}
+				/>
+			</header>
+		)
+	}
 
 	return (
 		<HeaderTransition componentRef={headerRef}>
