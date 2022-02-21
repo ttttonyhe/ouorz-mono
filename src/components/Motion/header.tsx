@@ -18,7 +18,7 @@ const BoxShadowTransition = (props: Props) => {
 			resolvedTheme === 'light' ? '255, 255, 255' : '38, 38, 38'
 		}, ${position * 0.02})`
 		ref.current.style.boxShadow = `0px 1px 3px rgba(0,0,0,${
-			position * (20 / 10000)
+			position * (2 / 1000)
 		})`
 	}
 

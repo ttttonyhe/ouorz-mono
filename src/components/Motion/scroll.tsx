@@ -14,7 +14,12 @@ const ScrollWrapper = (props: Props) => {
 
 	const handler = () => {
 		let position = window.pageYOffset
-		if (!(position >= (startPosition || 0) && position <= endPosition)) {
+
+		if (position < startPosition) {
+			position = 0
+		}
+
+		if (position >= endPosition) {
 			position = endPosition
 		}
 

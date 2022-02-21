@@ -12,12 +12,12 @@ const OffsetTransition = (props: Props) => {
 	const handler = (position: number) => {
 		if (!ref?.current) return
 
-		ref.current.style.transform = `translateY(${(50 - position) * 0.5}%)`
-		ref.current.style.opacity = `${position * 0.02}`
+		ref.current.style.transform = `translateY(${(125 - position) * 0.5}%)`
+		ref.current.style.opacity = `${(position - 25) * 0.01}`
 	}
 
 	return (
-		<ScrollWrapper handler={handler} endPosition={50}>
+		<ScrollWrapper handler={handler} startPosition={50} endPosition={125}>
 			{children}
 		</ScrollWrapper>
 	)
