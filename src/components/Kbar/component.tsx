@@ -11,7 +11,7 @@ import Icons from '../Icons'
 const ContentLoader = dynamic(() => import('react-content-loader'))
 
 const KbarComponent = ({ beforeHide }: { beforeHide: boolean }) => {
-	const { theme } = useTheme()
+	const { resolvedTheme } = useTheme()
 	const { list, loading, inputValue, placeholder, setInputValue } =
 		useContext(kbarContext)
 	const router = useRouter()
@@ -120,8 +120,8 @@ const KbarComponent = ({ beforeHide }: { beforeHide: boolean }) => {
 					width={100}
 					style={{ width: '100%' }}
 					height={100}
-					backgroundColor={theme === 'dark' ? '#52525b' : '#f3f3f3'}
-					foregroundColor={theme === 'dark' ? '#71717a' : '#ecebeb'}
+					backgroundColor={resolvedTheme === 'dark' ? '#52525b' : '#f3f3f3'}
+					foregroundColor={resolvedTheme === 'dark' ? '#71717a' : '#ecebeb'}
 				>
 					<rect x="0" y="0" rx="5" ry="5" width="100%" height="50" />
 				</ContentLoader>
