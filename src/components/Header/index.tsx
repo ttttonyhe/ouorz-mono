@@ -53,9 +53,14 @@ const Header = () => {
 			},
 			{
 				label: 'Command+K',
+				className: 'hidden lg:block',
+				hoverable: false,
 				component: (
 					<div className="py-1 px-5 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex lg:flex">
-						<div className="bg-gray-100 dark:bg-transparent dark:border-gray-600 px-1.5 pt-0.5 pb-0 text-xs border rounded-md">
+						<div
+							aria-label="Command + K to Open Command Palette"
+							className="bg-gray-100 dark:bg-transparent dark:border-gray-600 px-1.5 pt-0.5 pb-0 text-xs border rounded-md"
+						>
 							⌘+K
 						</div>
 					</div>
@@ -103,12 +108,32 @@ const Header = () => {
 
 		const kbarItems = [
 			{
+				label: 'Navigation',
+				id: 'navigation-divider',
+				hoverable: false,
+			},
+			{
 				label: 'Go Back',
 				id: 'back',
 				icon: 'left',
 				shortcut: ['b'],
 				action: () => router.back(),
 				description: 'Command',
+			},
+			{
+				label: 'Home',
+				id: 'home',
+				icon: 'home',
+				shortcut: ['h'],
+				description: 'Command',
+				link: {
+					internal: '/',
+				},
+			},
+			{
+				label: 'Appearance',
+				id: 'appearance-divider',
+				hoverable: false,
 			},
 			resolvedTheme === 'light'
 				? {
@@ -136,12 +161,22 @@ const Header = () => {
 				action: () => setTheme('system'),
 			},
 			{
+				label: 'Search',
+				id: 'search-divider',
+				hoverable: false,
+			},
+			{
 				label: 'Search Blog Posts',
 				id: 'search',
 				icon: 'search',
 				shortcut: ['s'],
 				action: () => setStartSearching(true),
 				description: 'Command',
+			},
+			{
+				label: 'Actions',
+				id: 'actions-divider',
+				hoverable: false,
 			},
 			{
 				label: 'Subscribe to Newsletter',
@@ -195,6 +230,70 @@ const Header = () => {
 				icon: 'question',
 				link: {
 					internal: '/page/765',
+				},
+			},
+			{
+				label: 'Pages',
+				id: 'pages-divider',
+				hoverable: false,
+			},
+			{
+				label: 'About',
+				id: 'about',
+				description: 'Page',
+				icon: 'me',
+				link: {
+					internal: '/post/126',
+				},
+			},
+			{
+				label: 'Dashboard',
+				id: 'dashboard',
+				description: 'Page',
+				icon: 'ppt',
+				link: {
+					internal: '/dashboard',
+				},
+			},
+			{
+				label: 'Friends',
+				id: 'links',
+				description: 'Page',
+				icon: 'people',
+				link: {
+					internal: '/friends',
+				},
+			},
+			{
+				label: 'Thoughts',
+				id: 'thoughts',
+				description: 'Link',
+				icon: 'lightBulb',
+				link: {
+					external: 'https://notion.ouorz.com',
+				},
+			},
+			{
+				label: 'Links',
+				id: 'links-divider',
+				hoverable: false,
+			},
+			{
+				label: 'Podcast',
+				id: 'podcast',
+				description: 'Link',
+				icon: 'mic',
+				link: {
+					external: 'https://kukfm.com',
+				},
+			},
+			{
+				label: 'Snapod',
+				id: 'snapod',
+				description: 'Link',
+				icon: 'microphone',
+				link: {
+					external: 'https://www.snapodcast.com',
 				},
 			},
 		]

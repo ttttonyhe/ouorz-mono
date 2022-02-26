@@ -58,37 +58,41 @@ const KbarComponent = ({ beforeHide }: { beforeHide: boolean }) => {
 			bgDark: item.bgDark,
 			link: item.link,
 			onClick: item.action,
+			hoverable: item.hoverable,
 			className: 'w-full !justify-start !p-4',
-			component: (
-				<div className="flex justify-between w-full items-center">
-					<div className={`flex gap-x-3 items-center ${item.color || ''}`}>
-						{item.icon && (
-							<span className="h-5 w-5 -mt-[1px]">{Icons[item.icon]}</span>
-						)}
-						<span>{item.label}</span>
-					</div>
-					<div className="flex gap-x-2.5 items-center">
-						{item.description && (
-							<div className="text-sm text-gray-400">{item.description}</div>
-						)}
-						{item.shortcut?.length && (
-							<ul className="flex list-none gap-x-2 text-gray-500">
-								<li className="capitalize bg-gray-100 dark:bg-transparent dark:border-gray-600 rounded-md border py-0.5 text-xs px-2">
-									Shift
-								</li>
-								{item.shortcut.map((shortcut) => (
-									<li
-										key={shortcut}
-										className="capitalize bg-gray-100 dark:bg-transparent dark:border-gray-600 rounded-md border py-0.5 text-xs px-2"
-									>
-										{shortcut}
+			component:
+				item.hoverable === false ? (
+					<p className="text-sm text-gray-400 -my-2">{item.label}</p>
+				) : (
+					<div className="flex justify-between w-full items-center">
+						<div className={`flex gap-x-3 items-center ${item.color || ''}`}>
+							{item.icon && (
+								<span className="h-5 w-5 -mt-[1px]">{Icons[item.icon]}</span>
+							)}
+							<span>{item.label}</span>
+						</div>
+						<div className="flex gap-x-2.5 items-center">
+							{item.description && (
+								<div className="text-sm text-gray-400">{item.description}</div>
+							)}
+							{item.shortcut?.length && (
+								<ul className="flex list-none gap-x-2 text-gray-500">
+									<li className="capitalize bg-gray-100 dark:bg-transparent dark:border-gray-600 rounded-md border py-0.5 text-xs px-2">
+										Shift
 									</li>
-								))}
-							</ul>
-						)}
+									{item.shortcut.map((shortcut) => (
+										<li
+											key={shortcut}
+											className="capitalize bg-gray-100 dark:bg-transparent dark:border-gray-600 rounded-md border py-0.5 text-xs px-2"
+										>
+											{shortcut}
+										</li>
+									))}
+								</ul>
+							)}
+						</div>
 					</div>
-				</div>
-			),
+				),
 		}
 	})
 
@@ -98,7 +102,12 @@ const KbarComponent = ({ beforeHide }: { beforeHide: boolean }) => {
 	// search items in list
 	useEffect(() => {
 		const resultList = initialTabsListItems.filter((item) => {
-			return item.label.toLowerCase().includes((inputValue || '').toLowerCase())
+			// filter out unhoverable items when input value is not empty
+			return (
+				!inputValue ||
+				(item.hoverable !== false &&
+					item.label.toLowerCase().includes(inputValue.toLowerCase()))
+			)
 		})
 		setTabsListItems(resultList)
 	}, [inputValue])

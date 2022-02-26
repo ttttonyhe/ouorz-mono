@@ -14,6 +14,7 @@ export interface KbarListItem {
 	shortcut?: string[]
 	action?: () => void
 	description?: string
+	hoverable?: boolean
 }
 
 export interface KbarProps {

@@ -8,6 +8,7 @@ export interface TabItemProps {
 	className?: string
 	label: string
 	component?: React.ReactNode
+	hoverable?: boolean
 	color?: string
 	bgColor?: string
 	bgDark?: string
@@ -34,12 +35,11 @@ type HighlightFunc = (
 ) => void
 
 interface TabItemComponentProps extends TabItemProps {
-	highlight: HighlightFunc
 	index: number
 }
 
 const TabItemComponent = (props: TabItemComponentProps) => {
-	const { label, icon, link, onClick } = props
+	const { label, icon, link } = props
 
 	const TabButton = () => (
 		<button className="py-2 px-5 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex lg:flex">
@@ -148,14 +148,38 @@ const Tabs = (props: Props) => {
 	 * @param {React.MouseEvent<HTMLElement>} e
 	 * @param {string} [bgColor]
 	 * @param {string} [bgDark]
-	 * @param {number} [index]
+	 * @param {number} [index] - index of the tab to highlight
+	 * @param {string} [from] - highlighter initial direction
 	 */
 	const highlight = (
 		e: React.MouseEvent<HTMLElement> | Element,
 		bgColor?: string,
 		bgDark?: string,
-		index?: number
+		index?: number,
+		from?: 'above' | 'below'
 	) => {
+		// skip unhoverable tabs
+		if (items[index]?.hoverable === false && e instanceof Element) {
+			const targetIndex =
+				from === 'below'
+					? index - 1 >= 0
+						? index - 1
+						: items.length - 1
+					: index + 1 < items.length
+					? index + 1
+					: 0
+			if (targetIndex >= 0 && targetIndex < items.length) {
+				highlight(
+					listRef.current.children[targetIndex],
+					bgColor,
+					bgDark,
+					targetIndex,
+					from
+				)
+			}
+			return
+		}
+
 		// vertical tabs have a different scroll behavior
 		verticalListWrapper &&
 			scrollToItemWithinDiv(
@@ -201,7 +225,8 @@ const Tabs = (props: Props) => {
 					listRef.current.children[targetIndex],
 					items[targetIndex].bgColor,
 					items[targetIndex].bgDark,
-					targetIndex
+					targetIndex,
+					'above'
 				)
 			},
 			{
@@ -219,7 +244,8 @@ const Tabs = (props: Props) => {
 					listRef.current.children[targetIndex],
 					items[targetIndex].bgColor,
 					items[targetIndex].bgDark,
-					targetIndex
+					targetIndex,
+					'below'
 				)
 			},
 			{
@@ -251,7 +277,8 @@ const Tabs = (props: Props) => {
 				listRef.current.children[0],
 				items[0].bgColor,
 				items[0].bgDark,
-				0
+				0,
+				'above'
 			)
 		} else {
 			reset()
@@ -276,7 +303,7 @@ const Tabs = (props: Props) => {
 				ref={listRef}
 			>
 				{items.map((item, index) => {
-					const { className, bgColor, bgDark, color, onClick } = item
+					const { className, bgColor, bgDark, color, hoverable, onClick } = item
 					return (
 						<li
 							key={item.label}
@@ -284,16 +311,13 @@ const Tabs = (props: Props) => {
 							className={`z-10 ${color || ''} ${
 								className || ''
 							} text-gray-500 dark:text-gray-400 cursor-pointer rounded-md`}
-							onMouseEnter={(e) => highlight(e, bgColor, bgDark, index)}
+							onMouseEnter={(e) => {
+								item.hoverable !== false && highlight(e, bgColor, bgDark, index)
+							}}
 							onClick={onClick}
 						>
 							{item.component || (
-								<TabItemComponent
-									{...item}
-									key={item.label}
-									highlight={highlight}
-									index={index}
-								/>
+								<TabItemComponent {...item} key={item.label} index={index} />
 							)}
 						</li>
 					)
