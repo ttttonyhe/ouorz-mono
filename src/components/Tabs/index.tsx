@@ -171,8 +171,8 @@ const Tabs = (props: Props) => {
 			if (targetIndex >= 0 && targetIndex < items.length) {
 				highlight(
 					listRef.current.children[targetIndex],
-					bgColor,
-					bgDark,
+					items[targetIndex].bgColor,
+					items[targetIndex].bgDark,
 					targetIndex,
 					from
 				)

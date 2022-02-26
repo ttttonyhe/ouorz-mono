@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 const ContentLoader = dynamic(() => import('react-content-loader'))
 
 export default function CardSkeleton() {
-	const { resolvedTheme } = useTheme()
+	const { theme } = useTheme()
 	return (
 		<div className="w-full p-10 shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6 text-center">
 			{/* @ts-ignore */}
@@ -13,8 +13,8 @@ export default function CardSkeleton() {
 				width={100}
 				style={{ width: '100%' }}
 				height={100}
-				backgroundColor={resolvedTheme === 'dark' ? '#52525b' : '#f3f3f3'}
-				foregroundColor={resolvedTheme === 'dark' ? '#71717a' : '#ecebeb'}
+				backgroundColor={theme === 'dark' ? '#52525b' : '#f3f3f3'}
+				foregroundColor={theme === 'dark' ? '#71717a' : '#ecebeb'}
 			>
 				<rect x="0" y="0" rx="5" ry="5" width="31%" height="100" />
 				<rect x="34%" y="0" rx="5" ry="5" width="95%" height="30" />

@@ -8,9 +8,8 @@ const icons = [Icons.gear, Icons.moon, Icons.sun]
 const targetThemes = ['dark', 'light', 'system']
 
 export default function Footer() {
-	const { setTheme, resolvedTheme } = useTheme()
+	const { setTheme, theme } = useTheme()
 	const [mounted, setMounted] = useState(false)
-	const [themeIdx, setThemeIdx] = useState(themes.indexOf(resolvedTheme))
 
 	useEffect(() => {
 		smoothScroll.polyfill()
@@ -25,12 +24,11 @@ export default function Footer() {
 				<button
 					aria-label="change theme"
 					onClick={() => {
-						setThemeIdx((themeIdx + 1) % themes.length)
-						setTheme(targetThemes[themeIdx])
+						setTheme(targetThemes[themes.indexOf(theme)])
 					}}
 					className="w-full p-3 shadow-sm border border-gray-300 dark:border-gray-800 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
 				>
-					<span className="w-7 h-7">{icons[themeIdx >= 0 ? themeIdx : 0]}</span>
+					<span className="w-7 h-7">{icons[themes.indexOf(theme)]}</span>
 				</button>
 			</div>
 			<div className="fixed bottom-8 right-8 text-gray-500 dark:text-gray-300">

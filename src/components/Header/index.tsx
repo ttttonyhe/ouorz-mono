@@ -215,6 +215,15 @@ const Header = () => {
 				},
 			},
 			{
+				label: 'Email Me',
+				id: 'email',
+				description: 'Link',
+				icon: 'email',
+				link: {
+					external: 'mailto:tony.hlp@hotmail.com',
+				},
+			},
+			{
 				label: 'Leave a Comment',
 				id: 'comment',
 				description: 'Page',
@@ -294,6 +303,38 @@ const Header = () => {
 				icon: 'microphone',
 				link: {
 					external: 'https://www.snapodcast.com',
+				},
+			},
+			{
+				label: 'Social',
+				id: 'social-divider',
+				hoverable: false,
+			},
+			{
+				label: 'Twitter',
+				id: 'twitter',
+				description: 'Link',
+				icon: 'twitter',
+				link: {
+					external: 'https://twitter.com/ttttonyhe',
+				},
+			},
+			{
+				label: 'GitHub',
+				id: 'github',
+				description: 'Link',
+				icon: 'github',
+				link: {
+					external: 'https://github.com/HelipengTony',
+				},
+			},
+			{
+				label: 'LinkedIn',
+				id: 'linkedin',
+				description: 'Link',
+				icon: 'briefCase',
+				link: {
+					external: 'https://www.linkedin.com/in/lipenghe',
 				},
 			},
 		]

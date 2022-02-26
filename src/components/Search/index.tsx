@@ -21,7 +21,7 @@ export default function Search({
 	endSearching,
 	setEndSearching,
 }: SearchProps) {
-	const { resolvedTheme } = useTheme()
+	const { theme } = useTheme()
 	const router = useRouter()
 	const [searchContent, setSearchContent] = useState<string>()
 	const [loading, setLoading] = useState(true)
@@ -121,8 +121,8 @@ export default function Search({
 					width={100}
 					style={{ width: '100%' }}
 					height={45}
-					backgroundColor={resolvedTheme === 'dark' ? '#52525b' : '#f3f3f3'}
-					foregroundColor={resolvedTheme === 'dark' ? '#71717a' : '#ecebeb'}
+					backgroundColor={theme === 'dark' ? '#52525b' : '#f3f3f3'}
+					foregroundColor={theme === 'dark' ? '#71717a' : '#ecebeb'}
 				>
 					<rect x="0" y="0" rx="5" ry="5" width="100%" height="45" />
 				</ContentLoader>

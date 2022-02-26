@@ -10,7 +10,7 @@ interface Props {
 
 const ScrollWrapper = (props: Props) => {
 	const { handler: applyEffect, startPosition, endPosition, children } = props
-	const { resolvedTheme } = useTheme()
+	const { theme } = useTheme()
 
 	const handler = () => {
 		let position = window.pageYOffset
@@ -35,7 +35,7 @@ const ScrollWrapper = (props: Props) => {
 		return () => {
 			window.removeEventListener('scroll', handler)
 		}
-	}, [resolvedTheme])
+	}, [theme])
 
 	return <>{children}</>
 }
