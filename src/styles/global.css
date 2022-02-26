@@ -537,3 +537,20 @@ abbr[title] {
 	transition: 0.15s ease;
 	transition-property: width, transform, opacity;
 }
+
+.kbar-mask {
+	-webkit-mask-image: linear-gradient(
+		to bottom,
+		transparent 0,
+		#000 10px,
+		#000 95%,
+		transparent 100%
+	);
+	mask-image: linear-gradient(
+		to bottom,
+		transparent 0,
+		#000 10px,
+		#000 95%,
+		transparent 100%
+	);
+}

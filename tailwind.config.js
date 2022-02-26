@@ -31,7 +31,7 @@ module.exports = {
 				green: colors.emerald,
 				yellow: colors.amber,
 				purple: colors.violet,
-        gray: colors.neutral,
+				gray: colors.neutral,
 			},
 			boxShadow: {
 				header: '0 4px 8px rgba(0,0,0,.04)',
@@ -80,6 +80,10 @@ module.exports = {
 				searchBgOut: 'opacityProgressOut ease-in-out .15s forwards',
 				search: '200ms ease 0s 1 normal none running search',
 				searchOut: '150ms ease 0s 1 normal forwards running searchOut',
+				kbar: '200ms ease 0s 1 normal none running kbar',
+				kbarOut: '200ms ease 0s 1 normal forwards running kbarOut',
+				kbarBg: '200ms ease 0s 1 normal none running opacityProgressIn',
+				kbarBgOut: '200ms ease 0s 1 normal forwards running opacityProgressOut',
 				waveHand: 'wavingHand ease-in-out 1.5s 3',
 				waveHandAgain: 'wavingHand ease-in-out 1.5s infinite',
 			},
@@ -145,6 +149,26 @@ module.exports = {
 					'100%': {
 						opacity: 0,
 						transform: 'scale(0.9, 0.9)',
+					},
+				},
+				kbar: {
+					'0%': {
+						opacity: 0,
+						transform: 'scale(0.95, 0.95)',
+					},
+					'100%': {
+						opacity: 1,
+						transform: 'scale(1.0, 1.0)',
+					},
+				},
+				kbarOut: {
+					'0%': {
+						opacity: 1,
+						transform: 'scale(1.0, 1.0)',
+					},
+					'100%': {
+						opacity: 0,
+						transform: 'scale(0.95, 0.95)',
 					},
 				},
 				wavingHand: {

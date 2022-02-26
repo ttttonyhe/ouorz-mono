@@ -1,13 +1,15 @@
-import Button from '~/components/Button'
 import React, { useState, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { useTheme } from 'next-themes'
 import Search from '~/components/Search'
 import { HeaderTransition, OffsetTransition } from '../Motion'
 import Tabs from '../Tabs'
+import Kbar from '../Kbar'
 
 const Header = () => {
+	const { setTheme, resolvedTheme } = useTheme()
 	const router = useRouter()
 
 	const [startSearching, setStartSearching] = useState<boolean>(false)
@@ -50,10 +52,14 @@ const Header = () => {
 				},
 			},
 			{
-				label: 'Search',
-				icon: 'search',
-				className: 'hidden lg:block',
-				onClick: () => setStartSearching(true),
+				label: 'Command+K',
+				component: (
+					<div className="py-1 px-5 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex lg:flex">
+						<div className="bg-gray-100 px-1.5 pt-0.5 pb-0 text-xs border rounded-md">
+							⌘+K
+						</div>
+					</div>
+				),
 			},
 		]
 
@@ -95,6 +101,104 @@ const Header = () => {
 			},
 		]
 
+		const kbarItems = [
+			{
+				label: 'Go Back',
+				id: 'back',
+				icon: 'left',
+				shortcut: ['b'],
+				action: () => router.back(),
+				description: 'Command',
+			},
+			resolvedTheme === 'light'
+				? {
+						label: 'Set Theme to Dark',
+						id: 'darktheme',
+						shortcut: ['d'],
+						description: 'Command',
+						icon: 'moon',
+						action: () => setTheme('dark'),
+				  }
+				: {
+						label: 'Set Theme to Light',
+						id: 'lighttheme',
+						shortcut: ['l'],
+						description: 'Command',
+						icon: 'sun',
+						action: () => setTheme('light'),
+				  },
+			{
+				label: 'Set Theme to System',
+				id: 'systemtheme',
+				shortcut: ['y'],
+				description: 'Command',
+				icon: 'monitor',
+				action: () => setTheme('system'),
+			},
+			{
+				label: 'Search Blog Posts',
+				id: 'search',
+				icon: 'search',
+				shortcut: ['s'],
+				action: () => setStartSearching(true),
+				description: 'Command',
+			},
+			{
+				label: 'Subscribe to Newsletter',
+				id: 'newletter',
+				description: 'Link',
+				icon: 'subscribe',
+				color: 'text-blue-500',
+				bgColor: 'bg-blue-100',
+				bgDark: 'dark:bg-blue-900',
+				link: {
+					external: 'https://buttondown.email/helipeng',
+				},
+			},
+			{
+				label: 'Join Discord Server',
+				id: 'discord',
+				description: 'Link',
+				icon: 'chatRounded',
+				color: 'text-purple-400',
+				bgColor: 'bg-purple-100',
+				bgDark: 'dark:bg-purple-900',
+				link: {
+					external: 'https://discord.gg/TTwGnMgcxr',
+				},
+			},
+			{
+				label: 'Sponsor Me',
+				id: 'sponsor',
+				description: 'Page',
+				icon: 'love',
+				color: 'text-pink-500',
+				bgColor: 'bg-pink-100',
+				bgDark: 'dark:bg-pink-900',
+				link: {
+					internal: '/sponsor',
+				},
+			},
+			{
+				label: 'Leave a Comment',
+				id: 'comment',
+				description: 'Page',
+				icon: 'comments',
+				link: {
+					internal: '/page/249',
+				},
+			},
+			{
+				label: 'Ask me Anything',
+				id: 'ama',
+				description: 'Page',
+				icon: 'question',
+				link: {
+					internal: '/page/765',
+				},
+			},
+		]
+
 		return (
 			<header
 				ref={headerRef}
@@ -116,6 +220,9 @@ const Header = () => {
 					setEndSearching={setEndSearching}
 					endSearching={endSearching}
 				/>
+				{!startSearching && (
+					<Kbar list={kbarItems} placeholder="Type your command or search..." />
+				)}
 			</header>
 		)
 	}

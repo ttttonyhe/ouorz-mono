@@ -2,6 +2,7 @@ import { useState, useLayoutEffect } from 'react'
 import Icons from '~/components/Icons'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import scrollToItemWithinDiv from '~/utilities/Scroll'
 
 export default function Aside({ preNext }: { preNext: any }) {
 	const router = useRouter()
@@ -65,6 +66,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 		 */
 		const handleScroll = () => {
 			const scrollPosition = window.pageYOffset + 80
+			const listDiv = document.getElementById('toc')
 
 			if (scrollPosition >= currentHeaderOffset) {
 				document
@@ -73,7 +75,8 @@ export default function Aside({ preNext }: { preNext: any }) {
 				document
 					.getElementById(`header${currentHeaderId}`)
 					.classList.add('toc-active')
-				scrollToHeadingListItem(
+				scrollToItemWithinDiv(
+					listDiv,
 					document.getElementById(`header${currentHeaderId}`)
 				)
 				lastHeaderOffset = currentHeaderOffset
@@ -87,7 +90,8 @@ export default function Aside({ preNext }: { preNext: any }) {
 					document
 						.getElementById(`header${currentHeaderId - 2}`)
 						.classList.add('toc-active')
-					scrollToHeadingListItem(
+					scrollToItemWithinDiv(
+						listDiv,
 						document.getElementById(`header${currentHeaderId - 2}`)
 					)
 					currentHeaderId -= 1
@@ -101,7 +105,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 				}
 			} else if (scrollPosition > lastHeaderOffset && currentHeaderId === 1) {
 				document.getElementById(`header0`).classList.add('toc-active')
-				scrollToHeadingListItem(document.getElementById(`header0`))
+				scrollToItemWithinDiv(listDiv, document.getElementById(`header0`))
 			}
 		}
 
@@ -115,44 +119,6 @@ export default function Aside({ preNext }: { preNext: any }) {
 	const scrollToHeading = (el: Element) => {
 		const elY = el.getBoundingClientRect().top + window.pageYOffset - 75
 		window.scrollTo({ top: elY, behavior: 'smooth' })
-	}
-
-	const scrollToHeadingListItem = (heading: HTMLElement) => {
-		const listDiv = document.getElementById('toc')
-		// Where is the parent on page
-		const parentRect = listDiv.getBoundingClientRect()
-		// What can you see?
-		const parentViewableArea = {
-			height: listDiv.clientHeight,
-			width: listDiv.clientWidth,
-		}
-
-		// Where is the child
-		const childRect = heading.getBoundingClientRect()
-		// Is the child viewable?
-		const isViewable =
-			childRect.top >= parentRect.top &&
-			childRect.bottom <= parentRect.top + parentViewableArea.height
-
-		// if you can't see the child try to scroll parent
-		if (!isViewable) {
-			// Should we scroll using top or bottom? Find the smaller ABS adjustment
-			const scrollTop = childRect.top - parentRect.top
-			const scrollBot = childRect.bottom - parentRect.bottom
-			if (Math.abs(scrollTop) < Math.abs(scrollBot)) {
-				// we're near the top of the list
-				listDiv.scrollTo({
-					top: listDiv.scrollTop + scrollTop - 100,
-					behavior: 'smooth',
-				})
-			} else {
-				// we're near the bottom of the list
-				listDiv.scrollTo({
-					top: listDiv.scrollTop + scrollBot + 100,
-					behavior: 'smooth',
-				})
-			}
-		}
 	}
 
 	useLayoutEffect(() => {

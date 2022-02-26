@@ -1,10 +1,13 @@
 import Link from 'next/link'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { useHotkeys } from 'react-hotkeys-hook'
 import Icons from '~/components/Icons'
+import scrollToItemWithinDiv from '~/utilities/Scroll'
 
-interface TabItemProps {
+export interface TabItemProps {
 	className?: string
 	label: string
+	component?: React.ReactNode
 	color?: string
 	bgColor?: string
 	bgDark?: string
@@ -18,43 +21,29 @@ interface TabItemProps {
 
 interface Props {
 	items: TabItemProps[]
+	direction?: 'vertical'
+	defaultHighlighted?: boolean
+	verticalListWrapper?: React.MutableRefObject<HTMLElement>
 }
 
 type HighlightFunc = (
-	e: React.MouseEvent<HTMLElement>,
+	e: React.MouseEvent<HTMLElement> | Element,
 	bgColor?: string,
-	bgDark?: string
+	bgDark?: string,
+	index?: number
 ) => void
 
 interface TabItemComponentProps extends TabItemProps {
 	highlight: HighlightFunc
+	index: number
 }
 
 const TabItemComponent = (props: TabItemComponentProps) => {
-	const {
-		className,
-		label,
-		icon,
-		color,
-		bgColor,
-		bgDark,
-		link,
-		onClick,
-		highlight,
-	} = props
+	const { label, icon, link, onClick } = props
 
 	const TabButton = () => (
-		<button
-			aria-label="tab"
-			className={`${
-				className || ''
-			} w-max py-2 px-5 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex text-gray-500 dark:text-gray-400 lg:flex z-10 ${
-				color || ''
-			}`}
-			onClick={onClick}
-			onMouseEnter={(e) => highlight(e, bgColor, bgDark)}
-		>
-			{icon && <span className="w-6 h-6 mr-1">{Icons[icon]}</span>}
+		<button className="py-2 px-5 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex lg:flex">
+			{icon && <span className="w-6 h-6 mr-1 -mt-[1px]">{Icons[icon]}</span>}
 			{label}
 		</button>
 	)
@@ -62,7 +51,7 @@ const TabItemComponent = (props: TabItemComponentProps) => {
 	if (link?.internal) {
 		return (
 			<Link href={link.internal}>
-				<a className="z-10">
+				<a className="flex items-center w-full h-full">
 					<TabButton />
 				</a>
 			</Link>
@@ -72,10 +61,10 @@ const TabItemComponent = (props: TabItemComponentProps) => {
 	if (link?.external) {
 		return (
 			<a
-				className="z-10"
 				href={link.external}
 				rel="noopener noreferrer"
 				target="_blank"
+				className="flex items-center"
 			>
 				<TabButton />
 			</a>
@@ -86,10 +75,12 @@ const TabItemComponent = (props: TabItemComponentProps) => {
 }
 
 const Tabs = (props: Props) => {
-	const { items } = props
+	const { items, direction, defaultHighlighted, verticalListWrapper } = props
 	const wrapperRef = useRef<HTMLDivElement>(null)
 	const highlighterRef = useRef<HTMLDivElement>(null)
+	const listRef = useRef<HTMLUListElement>(null)
 	const [withinWrapper, setWithinWrapper] = useState(false)
+	const [highlightedIndex, setHighlightedIndex] = useState<number>(-1)
 
 	/**
 	 * Change the styling of the highlighter
@@ -111,23 +102,35 @@ const Tabs = (props: Props) => {
 
 		// animation duration
 		highlighterRef.current.style.transitionDuration =
-			visible && withinWrapper ? '150ms' : '0ms'
+			visible && (withinWrapper || highlightedIndex > 0) ? '150ms' : '0ms'
 
 		// visibility
 		highlighterRef.current.style.opacity = visible ? '1' : '0'
 
 		// height and width
-		highlighterRef.current.style.width = visible
-			? `${tabBoundingBox.width}px`
-			: '0'
+		if (visible) {
+			highlighterRef.current.style.width =
+				highlightedIndex === -1 &&
+				defaultHighlighted &&
+				direction === 'vertical'
+					? '100%'
+					: `${tabBoundingBox.width}px`
+		} else {
+			highlighterRef.current.style.width = '0'
+		}
 		highlighterRef.current.style.height = visible
 			? `${tabBoundingBox.height}px`
 			: '0'
 
 		// position
-		highlighterRef.current.style.transform = visible
-			? `translate(${tabBoundingBox.left - wrapperBoundingBox.left}px)`
-			: 'none'
+		if (visible) {
+			highlighterRef.current.style.transform =
+				direction === 'vertical'
+					? `translateY(${tabBoundingBox.top - wrapperBoundingBox.top}px)`
+					: `translateX(${tabBoundingBox.left - wrapperBoundingBox.left}px)`
+		} else {
+			highlighterRef.current.style.transform = 'none'
+		}
 
 		// background color
 		if (visible) {
@@ -145,13 +148,25 @@ const Tabs = (props: Props) => {
 	 * @param {React.MouseEvent<HTMLElement>} e
 	 * @param {string} [bgColor]
 	 * @param {string} [bgDark]
+	 * @param {number} [index]
 	 */
 	const highlight = (
-		e: React.MouseEvent<HTMLElement>,
+		e: React.MouseEvent<HTMLElement> | Element,
 		bgColor?: string,
-		bgDark?: string
+		bgDark?: string,
+		index?: number
 	) => {
-		const targetTabBoundingBox = e.currentTarget.getBoundingClientRect()
+		// vertical tabs have a different scroll behavior
+		verticalListWrapper &&
+			scrollToItemWithinDiv(
+				verticalListWrapper.current,
+				listRef.current.children[index]
+			)
+
+		const targetTabBoundingBox =
+			e instanceof Element
+				? e.getBoundingClientRect()
+				: e.currentTarget.getBoundingClientRect()
 		const wrapperBoundingBox = wrapperRef.current?.getBoundingClientRect()
 		styleHighlighter(
 			true,
@@ -161,6 +176,7 @@ const Tabs = (props: Props) => {
 			bgDark
 		)
 		setWithinWrapper(true)
+		index >= 0 && setHighlightedIndex(index)
 	}
 
 	/**
@@ -169,22 +185,120 @@ const Tabs = (props: Props) => {
 	const reset = () => {
 		setWithinWrapper(false)
 		styleHighlighter(false)
+		setHighlightedIndex(-1)
 	}
 
+	// vertical tabs, register keyboard shortcuts
+	if (direction === 'vertical') {
+		// navigation
+		useHotkeys(
+			'down',
+			(e) => {
+				e.preventDefault()
+				const targetIndex =
+					highlightedIndex + 1 < items.length ? highlightedIndex + 1 : 0
+				highlight(
+					listRef.current.children[targetIndex],
+					items[targetIndex].bgColor,
+					items[targetIndex].bgDark,
+					targetIndex
+				)
+			},
+			{
+				enableOnTags: ['INPUT'],
+			},
+			[highlightedIndex]
+		)
+		useHotkeys(
+			'up',
+			(e) => {
+				e.preventDefault()
+				const targetIndex =
+					highlightedIndex - 1 >= 0 ? highlightedIndex - 1 : items.length - 1
+				highlight(
+					listRef.current.children[targetIndex],
+					items[targetIndex].bgColor,
+					items[targetIndex].bgDark,
+					targetIndex
+				)
+			},
+			{
+				enableOnTags: ['INPUT'],
+			},
+			[highlightedIndex]
+		)
+		// action triggerer
+		useHotkeys(
+			'enter',
+			(e) => {
+				e.preventDefault()
+				items[highlightedIndex].onClick !== null &&
+					items[highlightedIndex].onClick()
+			},
+			{
+				enableOnTags: ['INPUT'],
+			},
+			[highlightedIndex]
+		)
+	}
+
+	// highlight the first tab by default if direction is vertical and
+	// defaultHighlighted is true
+	useEffect(() => {
+		if (!listRef.current) return
+		if (items[0] && direction === 'vertical' && defaultHighlighted) {
+			highlight(
+				listRef.current.children[0],
+				items[0].bgColor,
+				items[0].bgDark,
+				0
+			)
+		} else {
+			reset()
+		}
+	}, [items, direction, defaultHighlighted, listRef])
+
 	return (
-		<div ref={wrapperRef} className="relative" onMouseLeave={reset}>
+		<div
+			ref={wrapperRef}
+			className="relative"
+			onMouseLeave={() => {
+				direction !== 'vertical' && reset()
+			}}
+		>
 			<div ref={highlighterRef} className="tabs-highlighter z-0" />
-			<div className="flex items-center gap-x-2">
-				{items.map((item) => {
+			<ul
+				className={`items-center list-none ${
+					direction === 'vertical'
+						? 'grid grid-flow-row'
+						: 'flex flex-row gap-x-2'
+				}`}
+				ref={listRef}
+			>
+				{items.map((item, index) => {
+					const { className, bgColor, bgDark, color, onClick } = item
 					return (
-						<TabItemComponent
-							{...item}
+						<li
 							key={item.label}
-							highlight={highlight}
-						/>
+							aria-label="tab"
+							className={`z-10 ${color || ''} ${
+								className || ''
+							} text-gray-500 dark:text-gray-400 cursor-pointer rounded-md`}
+							onMouseEnter={(e) => highlight(e, bgColor, bgDark, index)}
+							onClick={onClick}
+						>
+							{item.component || (
+								<TabItemComponent
+									{...item}
+									key={item.label}
+									highlight={highlight}
+									index={index}
+								/>
+							)}
+						</li>
 					)
 				})}
-			</div>
+			</ul>
 		</div>
 	)
 }

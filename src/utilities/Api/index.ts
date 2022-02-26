@@ -13,24 +13,28 @@ interface Parameters {
 	subs?: boolean
 	count?: boolean
 	postIDs?: boolean
+	searchIndexes?: boolean
 }
 
-export const getApi = ({
-	sticky,
-	cate,
-	cateExclude,
-	perPage,
-	getCate,
-	mark,
-	page,
-	post,
-	visit,
-	search,
-	sponsor,
-	subs,
-	count,
-	postIDs,
-}: Parameters) => {
+export const getApi = (props: Parameters) => {
+	const {
+		sticky,
+		cate,
+		cateExclude,
+		perPage,
+		getCate,
+		mark,
+		page,
+		post,
+		visit,
+		search,
+		sponsor,
+		subs,
+		count,
+		postIDs,
+		searchIndexes,
+	} = props
+
 	if (getCate) {
 		return `https://blog.ouorz.com/wp-json/wp/v2/categories/${cate}`
 	}
@@ -41,6 +45,10 @@ export const getApi = ({
 
 	if (postIDs) {
 		return 'https://blog.ouorz.com/wp-json/tony/v1/posts_ids'
+	}
+
+	if (searchIndexes) {
+		return 'https://blog.ouorz.com/wp-json/tony/v1/searchIndexes'
 	}
 
 	if (page) {
