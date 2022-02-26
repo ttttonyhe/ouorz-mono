@@ -160,7 +160,7 @@ export default function Search({
 			/>
 			<div className="w-screen -ml-10 h-screen flex justify-center pointer-events-auto">
 				<div
-					className={`z-50 w-[620px] border dark:border-gray-700 rounded-xl shadow-2xl overflow-hidden backdrop-blur-md bg-white/50 dark:bg-black/50 mt-[8%] h-fit max-h-[420px] ${
+					className={`z-50 w-[620px] border dark:border-gray-700 rounded-xl shadow-2xl overflow-hidden backdrop-blur-lg bg-white/70 dark:bg-black/70 mt-[8%] h-fit max-h-[420px] ${
 						endSearching ? 'animate-kbarOut' : 'animate-kbar'
 					}`}
 				>

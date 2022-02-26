@@ -30,9 +30,7 @@ export default function Footer() {
 					}}
 					className="w-full p-3 shadow-sm border border-gray-300 dark:border-gray-800 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
 				>
-					<span className="w-7 h-7">
-						{icons[themeIdx == null ? 0 : themeIdx]}
-					</span>
+					<span className="w-7 h-7">{icons[themeIdx >= 0 ? themeIdx : 0]}</span>
 				</button>
 			</div>
 			<div className="fixed bottom-8 right-8 text-gray-500 dark:text-gray-300">
