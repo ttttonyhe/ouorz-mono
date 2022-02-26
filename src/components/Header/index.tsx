@@ -55,7 +55,7 @@ const Header = () => {
 				label: 'Command+K',
 				component: (
 					<div className="py-1 px-5 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex lg:flex">
-						<div className="bg-gray-100 px-1.5 pt-0.5 pb-0 text-xs border rounded-md">
+						<div className="bg-gray-100 dark:bg-transparent dark:border-gray-600 px-1.5 pt-0.5 pb-0 text-xs border rounded-md">
 							⌘+K
 						</div>
 					</div>
