@@ -59,7 +59,7 @@ const Header = () => {
 					<div className="py-1 px-5 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex lg:flex">
 						<div
 							aria-label="Command + K to Open Command Palette"
-							className="bg-gray-100 dark:bg-transparent dark:border-gray-600 px-1.5 pt-0.5 pb-0 text-xs border rounded-md"
+							className="bg-gray-100 dark:bg-transparent dark:border-gray-600 px-1.5 py-0.5 text-xs border rounded-md"
 						>
 							⌘+K
 						</div>
