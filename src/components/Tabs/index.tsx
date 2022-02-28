@@ -27,13 +27,6 @@ interface Props {
 	verticalListWrapper?: React.MutableRefObject<HTMLElement>
 }
 
-type HighlightFunc = (
-	e: React.MouseEvent<HTMLElement> | Element,
-	bgColor?: string,
-	bgDark?: string,
-	index?: number
-) => void
-
 interface TabItemComponentProps extends TabItemProps {
 	index: number
 }
@@ -107,7 +100,7 @@ const Tabs = (props: Props) => {
 		// visibility
 		highlighterRef.current.style.opacity = visible ? '1' : '0'
 
-		// height and width
+		// width
 		if (visible) {
 			highlighterRef.current.style.width =
 				highlightedIndex === -1 &&
@@ -118,9 +111,18 @@ const Tabs = (props: Props) => {
 		} else {
 			highlighterRef.current.style.width = '0'
 		}
-		highlighterRef.current.style.height = visible
-			? `${tabBoundingBox.height}px`
-			: '0'
+
+		// height
+		if (visible) {
+			highlighterRef.current.style.height =
+				highlightedIndex === -1 &&
+				defaultHighlighted &&
+				direction === 'vertical'
+					? '46.3889px'
+					: `${tabBoundingBox.height}px`
+		} else {
+			highlighterRef.current.style.height = '0'
+		}
 
 		// position
 		if (visible) {
@@ -303,14 +305,14 @@ const Tabs = (props: Props) => {
 				ref={listRef}
 			>
 				{items.map((item, index) => {
-					const { className, bgColor, bgDark, color, hoverable, onClick } = item
+					const { className, bgColor, bgDark, color, onClick } = item
 					return (
 						<li
 							key={item.label}
 							aria-label="tab"
-							className={`z-10 ${color || ''} ${
+							className={`z-10 ${color || 'text-gray-500 dark:text-gray-400'} ${
 								className || ''
-							} text-gray-500 dark:text-gray-400 cursor-pointer rounded-md`}
+							} cursor-pointer rounded-md`}
 							onMouseEnter={(e) => {
 								item.hoverable !== false && highlight(e, bgColor, bgDark, index)
 							}}
