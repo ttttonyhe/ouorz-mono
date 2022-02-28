@@ -52,7 +52,9 @@ export default function BlogPost({
 				// @ts-ignore
 				visit: pid,
 			})
-		)
+		).catch((err) => {
+			console.error(err)
+		})
 	}, [])
 
 	return (

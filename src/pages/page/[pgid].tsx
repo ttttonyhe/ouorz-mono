@@ -73,7 +73,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 	try {
 		// Increase page views
-		await fetch(
+		fetch(
 			getApi({
 				// @ts-ignore
 				visit: pgid,
