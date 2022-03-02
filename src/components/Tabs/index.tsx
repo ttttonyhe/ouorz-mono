@@ -315,6 +315,8 @@ const Tabs = (props: Props) => {
 							} cursor-pointer rounded-md`}
 							onMouseEnter={(e) => {
 								item.hoverable !== false && highlight(e, bgColor, bgDark, index)
+								// horizontal tabs, terminate highlighting on unhoverable items
+								item.hoverable === false && direction !== 'vertical' && reset()
 							}}
 							onClick={onClick}
 						>
