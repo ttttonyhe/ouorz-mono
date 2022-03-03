@@ -28,7 +28,6 @@ jobs:
       - name: Run Cypress
         uses: cypress-io/github-action@v2
         with:
-          install-command: yarn --immutable
           build: yarn run build
           start: yarn run start
           browser: chrome
