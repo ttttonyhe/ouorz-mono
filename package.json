@@ -52,7 +52,7 @@
     "husky": ">=7",
     "lint-staged": ">=12",
     "nexment": "^0.0.669",
-    "next-themes": "^0.0.15",
+    "next-themes": "^0.1.1",
     "nextjs-progressbar": "^0.0.13",
     "nextjs-redirect": "^5.2.1",
     "postcss": "^8.4.6",
