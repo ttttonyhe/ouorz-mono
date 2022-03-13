@@ -138,7 +138,7 @@ const Tabs = (props: Props) => {
 		if (visible) {
 			highlighterRef.current.className = `tabs-highlighter z-0 ${
 				bgColor || 'bg-menu'
-			} ${bgDark || 'dark:bg-gray-700'}`
+			} ${bgDark || 'dark:bg-gray-700/40 backdrop-blur-sm'}`
 		} else {
 			highlighterRef.current.className = ''
 		}
