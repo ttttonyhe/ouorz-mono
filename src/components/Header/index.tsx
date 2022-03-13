@@ -343,7 +343,7 @@ const Header = () => {
 			<header
 				ref={headerRef}
 				id="header"
-				className="leading-14 lg:border-0 border-b border-gray-200 dark:border-gray-800 lg:bg-transparent bg-white dark:bg-gray-800 duration-300 grid grid-cols-6 fixed top-0 h-auto w-full lg:py-4 lg:px-5 py-2 px-1 z-10"
+				className="leading-14 lg:border-0 border-b border-gray-200 lg:bg-transparent bg-white dark:bg-gray-800 duration-300 grid grid-cols-6 fixed top-0 h-auto w-full lg:py-4 lg:px-5 py-2 px-1 z-10"
 			>
 				<div className="col-start-1 col-end-2 flex lg:space-x-2">
 					<Tabs items={leftTabItems} />
