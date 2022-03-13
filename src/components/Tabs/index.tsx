@@ -138,7 +138,7 @@ const Tabs = (props: Props) => {
 		if (visible) {
 			highlighterRef.current.className = `tabs-highlighter z-0 ${
 				bgColor || 'bg-menu'
-			} ${bgDark || 'dark:bg-gray-800'}`
+			} ${bgDark || 'dark:bg-gray-700'}`
 		} else {
 			highlighterRef.current.className = ''
 		}
@@ -310,9 +310,10 @@ const Tabs = (props: Props) => {
 						<li
 							key={item.label}
 							aria-label="tab"
-							className={`z-10 ${color || 'text-gray-500 dark:text-gray-400'} ${
-								className || ''
-							} cursor-pointer rounded-md`}
+							className={`z-10 ${
+								color ||
+								'text-gray-500 dark:text-gray-400 dark:hover:text-gray-300'
+							} ${className || ''} cursor-pointer rounded-md`}
 							onMouseEnter={(e) => {
 								item.hoverable !== false && highlight(e, bgColor, bgDark, index)
 								// horizontal tabs, terminate highlighting on unhoverable items
