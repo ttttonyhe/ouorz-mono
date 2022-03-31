@@ -39,7 +39,8 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
 								rel="noreferrer"
 							>
 								<span className="text-sm flex items-center ml-2 py-1 px-2.5 border border-gray-400 hover:shadow-sm hover:border-gray-500 hover:text-gray-600 text-gray-500 dark:text-white dark:border-white dark:hover:opacity-80 rounded-md tracking-normal">
-									Open to work <span className="text-xs mx-1">/ or party invitations</span> →
+									Open to work{' '}
+									<span className="text-xs mx-1">/ or party invitations</span> →
 								</span>
 							</a>
 						</h1>
