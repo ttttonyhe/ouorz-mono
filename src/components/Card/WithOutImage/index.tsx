@@ -1,6 +1,6 @@
 import Label from '~/components/Label'
 import CardFooter from '~/components/Card/Footer'
-import { trimStr } from '~/utilities/String'
+import trimStr from '~/utilities/trimString'
 import Link from 'next/link'
 
 interface Props {

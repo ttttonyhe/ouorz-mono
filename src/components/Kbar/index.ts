@@ -1,6 +1,6 @@
 import Kbar from './component'
 
-export interface KbarListItem {
+export type KbarListItem = {
 	id: string
 	label: string
 	color?: string

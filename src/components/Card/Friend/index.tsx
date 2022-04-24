@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { trimStr } from '~/utilities/String'
+import trimStr from '~/utilities/trimString'
 import Image from 'next/image'
 
 interface Props {

@@ -1,7 +1,7 @@
 import Label from '~/components/Label'
 import CardFooter from '~/components/Card/Footer'
 import CardWithImageTool from '~/components/Card/WithImage/tool'
-import { trimStr } from '~/utilities/String'
+import trimStr from '~/utilities/trimString'
 import Link from 'next/link'
 import Image from 'next/image'
 import CardWithImagePodcast from '~/components/Card/WithImage/podcast'

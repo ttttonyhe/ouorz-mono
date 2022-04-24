@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
 import Icons from '~/components/Icons'
-import scrollToItemWithinDiv from '~/utilities/Scroll'
+import scrollToItemWithinDiv from '~/utilities/scrollTo'
 
 export interface TabItemProps {
 	className?: string

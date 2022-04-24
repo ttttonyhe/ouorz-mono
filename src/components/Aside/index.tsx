@@ -2,7 +2,7 @@ import { useState, useLayoutEffect } from 'react'
 import Icons from '~/components/Icons'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import scrollToItemWithinDiv from '~/utilities/Scroll'
+import scrollToItemWithinDiv from '~/utilities/scrollTo'
 
 export default function Aside({ preNext }: { preNext: any }) {
 	const router = useRouter()

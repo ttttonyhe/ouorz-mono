@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 import { KbarListItem } from '.'
 
-export interface KbarContext {
+export type KbarContext = {
 	list: KbarListItem[]
 	keyBinding: string[]
 	loading: boolean

@@ -3,7 +3,7 @@ import Icons from '~/components/Icons'
 import dynamic from 'next/dynamic'
 import Tabs, { TabItemProps } from '../Tabs'
 import { useTheme } from 'next-themes'
-import { getApi } from '~/utilities/Api'
+import getApi from '~/utilities/api'
 import { useRouter } from 'next/router'
 
 const ContentLoader = dynamic(() => import('react-content-loader'))

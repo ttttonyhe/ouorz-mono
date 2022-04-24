@@ -1,5 +1,5 @@
 import Label from '~/components/Label'
-import { trimStr } from '~/utilities/String'
+import trimStr from '~/utilities/trimString'
 import Link from 'next/link'
 import Image from 'next/image'
 import AudioPlayer from 'react-h5-audio-player'

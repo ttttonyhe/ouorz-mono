@@ -20,4 +20,4 @@ const trimStr = (str: string, n: number) => {
 	}
 }
 
-export { trimStr }
+export default trimStr

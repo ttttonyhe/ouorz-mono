@@ -1,7 +1,10 @@
 import { useTheme } from 'next-themes'
 import dynamic from 'next/dynamic'
 
-const ContentLoader = dynamic(() => import('react-content-loader'))
+const ContentLoader = dynamic(
+	() => import('react-content-loader').then((mod) => mod.default),
+	{ ssr: false }
+)
 
 export default function CardSkeleton() {
 	const { resolvedTheme } = useTheme()

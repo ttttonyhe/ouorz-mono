@@ -36,7 +36,7 @@ export default function PageCard({
 		>
 			{icon && (
 				<div
-					className={`lg:flex justify-center items-center hidden w-20 h-auto border-r border-r-gray-200 dark:border-r-gray-600 pr-3 mr-3 ${
+					className={`lg:flex justify-center items-center hidden w-20 h-auto border-r border-r-gray-200 dark:border-r-gray-600 pr-3 mr-4 ${
 						className ? className : ''
 					}`}
 				>

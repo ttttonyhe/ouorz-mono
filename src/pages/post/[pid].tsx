@@ -14,8 +14,8 @@ import Label from '~/components/Label'
 import { CardTool } from '~/components/Card/WithImage/tool'
 
 // Utilities
-import { trimStr } from '~/utilities/String'
-import { getApi } from '~/utilities/Api'
+import trimStr from '~/utilities/trimString'
+import getApi from '~/utilities/api'
 import redirect from 'nextjs-redirect'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
