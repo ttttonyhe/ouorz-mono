@@ -5,17 +5,17 @@ import { GetServerSideProps } from 'next'
 import List from '~/components/List'
 import getApi from '~/utilities/api'
 import SubscriptionBox from '~/components/SubscriptionBox'
-import Icons from '~/components/Icons'
+import Icon from '~/components/Icon'
 import Link from 'next/link'
 import redirect from 'nextjs-redirect'
 
-interface Info {
+interface CateProps {
 	info: { status: boolean; name: string; count: number; id: number }
 }
 
 const Redirect = redirect('/404')
 
-export default function Cate({ info }: Info) {
+export default function Cate({ info }: CateProps) {
 	if (info.status) {
 		return (
 			<div>
@@ -44,7 +44,9 @@ export default function Cate({ info }: Info) {
 							<div className="h-full flex lg:justify-end justify-center whitespace-nowrap items-center mt-2">
 								<div className="border-r border-r-gray-200 lg:text-center lg:flex-1 px-5">
 									<p className="text-xl text-gray-500 dark:text-gray-400 flex items-center">
-										<span className="w-6 h-6 mr-2">{Icons.count}</span>
+										<span className="w-6 h-6 mr-2">
+											<Icon name="count" />
+										</span>
 										{info.count} posts
 									</p>
 								</div>
@@ -52,7 +54,10 @@ export default function Cate({ info }: Info) {
 									<p className="text-xl text-gray-500 dark:text-gray-400">
 										<Link href="/">
 											<a className="flex items-center">
-												<span className="w-6 h-6 mr-2">{Icons.left}</span>Home
+												<span className="w-6 h-6 mr-2">
+													<Icon name="left" />
+												</span>
+												Home
 											</a>
 										</Link>
 									</p>
@@ -62,7 +67,7 @@ export default function Cate({ info }: Info) {
 						<SubscriptionBox type="sm" />
 					</div>
 					<div className="lg:mt-5 mt-10">
-						<List type="cate" cate={info.id} />
+						<List.Infinite type="cate" cate={info.id} />
 					</div>
 				</Content>
 			</div>

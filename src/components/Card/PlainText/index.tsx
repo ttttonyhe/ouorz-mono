@@ -1,6 +1,6 @@
 import React from 'react'
 import TimeAgo from 'react-timeago'
-import Icons from '~/components/Icons'
+import Icon from '~/components/Icon'
 import getApi from '~/utilities/api'
 import { useDebounce } from '~/hooks'
 
@@ -50,9 +50,13 @@ export default function CardPlainText({ item }: Props) {
 						}}
 					>
 						{upvoting ? (
-							<i className="w-6 h-6 mt-1 animate-bounce">{Icons.loveFill}</i>
+							<i className="w-6 h-6 mt-1 animate-bounce">
+								<Icon name="loveFill" />
+							</i>
 						) : (
-							<i className="w-6 h-6 -mt-1">{Icons.love}</i>
+							<i className="w-6 h-6 -mt-1">
+								<Icon name="love" />
+							</i>
 						)}
 						<em className="not-italic">{upvotes}</em>
 					</span>

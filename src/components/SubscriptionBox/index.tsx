@@ -1,5 +1,5 @@
 import React from 'react'
-import Icons from '~/components/Icons'
+import Icon from '~/components/Icon'
 import getApi from '~/utilities/api'
 
 const SubscriptionBox = ({ type }: { type: string }) => {
@@ -33,8 +33,10 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 			<div className="border shadow-sm w-full py-3 px-5 hidden lg:flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2 space-x-4">
 				<div>
 					<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 whitespace-nowrap items-center flex">
-						<span className="w-7 h-7 mr-2">{Icons.subscribe}</span>Get post
-						updates straight to your inbox
+						<span className="w-7 h-7 mr-2">
+							<Icon name="subscribe" />
+						</span>
+						Get post updates straight to your inbox
 					</p>
 				</div>
 				<div className="flex justify-end w-full">
@@ -68,7 +70,10 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 			<div className="border shadow-sm w-full p-10 lg:py-11 lg:px-20 rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2 lg:block hidden">
 				<div>
 					<h1 className="flex text-3xl font-medium text-gray-700 dark:text-white tracking-wide items-center">
-						<span className="w-9 h-9 mr-2">{Icons.subscribe}</span>Subscribe
+						<span className="w-9 h-9 mr-2">
+							<Icon name="subscribe" />
+						</span>
+						Subscribe
 					</h1>
 					<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 mt-2 mb-5">
 						Get post updates straight to your inbox
@@ -113,7 +118,10 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 						rel="noreferrer"
 						className="flex text-indigo-700 dark:text-indigo-50 col-start-3 col-end-4 border-indigo-200 dark:border-indigo-400 dark:bg-indigo-500 hover:border-indigo-300 hover:bg-indigo-100 border text-center bg-indigo-50 rounded-md shadow-sm items-center justify-center"
 					>
-						<i className="w-5 h-5 mr-1.5">{Icons.chatRounded}</i> Discord Server
+						<i className="w-5 h-5 mr-1.5">
+							<Icon name="chatRounded" />
+						</i>{' '}
+						Discord Server
 					</a>
 				</div>
 			</div>

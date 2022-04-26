@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 import Content from '~/components/Content'
 import Link from 'next/link'
-import Icons from '~/components/Icons'
+import Icon from '~/components/Icon'
 import PageCard from '~/components/PageCard'
 
 export default function Pages() {
@@ -32,7 +32,10 @@ export default function Pages() {
 								<p className="text-xl text-gray-500 dark:text-gray-400">
 									<Link href="/">
 										<a className="flex items-center">
-											<span className="w-6 h-6 mr-2">{Icons.left}</span>Home
+											<span className="w-6 h-6 mr-2">
+												<Icon name="left" />
+											</span>
+											Home
 										</a>
 									</Link>
 								</p>

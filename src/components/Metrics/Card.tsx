@@ -1,4 +1,4 @@
-import Icons from '~/components/Icons'
+import Icon from '~/components/Icon'
 
 interface PropsType {
 	footer: string
@@ -34,7 +34,9 @@ export default function MetricCard({
 						{subValue && subValue !== 'NaN' && '/' + subValue}
 					</span>
 					{value && (!subValue || subValue !== 'NaN') && (
-						<span className="w-7 h-7 ml-1 mt-1">{Icons[icon]}</span>
+						<span className="w-7 h-7 ml-1 mt-1">
+							<Icon name={icon} />
+						</span>
 					)}
 				</h1>
 				<p className="text-gray-500 dark:text-gray-400 tracking-wide overflow-hidden text-ellipsis whitespace-nowrap">

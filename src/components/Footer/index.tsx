@@ -1,10 +1,14 @@
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
-import Icons from '~/components/Icons'
+import Icon from '~/components/Icon'
 import smoothScroll from 'smoothscroll-polyfill'
 
 const themes = ['system', 'dark', 'light']
-const icons = [Icons.gear, Icons.moon, Icons.sun]
+const icons = [
+	<Icon key="system" name="gear" />,
+	<Icon key="dark" name="moon" />,
+	<Icon key="light" name="sun" />,
+]
 const targetThemes = ['dark', 'light', 'system']
 
 export default function Footer() {
@@ -39,7 +43,9 @@ export default function Footer() {
 					}}
 					className="w-full p-3 shadow-sm border border-gray-300 dark:border-gray-800 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
 				>
-					<span className="w-7 h-7">{Icons.arrowUp}</span>
+					<span className="w-7 h-7">
+						<Icon name="arrowUp" />
+					</span>
 				</button>
 			</div>
 			<p className="text-gray-500 text-4 tracking-wide dark:text-gray-400">

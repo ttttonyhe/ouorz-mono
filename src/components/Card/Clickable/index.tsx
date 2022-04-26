@@ -1,4 +1,4 @@
-import Icons from '~/components/Icons'
+import Icon from '~/components/Icon'
 
 interface Props {
 	stopLoading: boolean
@@ -15,12 +15,17 @@ export default function CardClickable({ stopLoading, setStopLoading }: Props) {
 		>
 			{stopLoading ? (
 				<p className="text-xl tracking-wide text-gray-600 dark:text-gray-400 font-light p-3.5 flex justify-center">
-					<span className="w-6 h-6 mr-3 mt-0.5">{Icons.play}</span>Resume
-					Loading
+					<span className="w-6 h-6 mr-3 mt-0.5">
+						<Icon name="play" />
+					</span>
+					Resume Loading
 				</p>
 			) : (
 				<p className="text-xl tracking-wide text-gray-600 dark:text-gray-400 font-light p-3.5 flex justify-center">
-					<span className="w-6 h-6 mr-3 mt-0.5">{Icons.pause}</span>Stop Loading
+					<span className="w-6 h-6 mr-3 mt-0.5">
+						<Icon name="pause" />
+					</span>
+					Stop Loading
 				</p>
 			)}
 		</div>

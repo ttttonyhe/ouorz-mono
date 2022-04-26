@@ -4,7 +4,7 @@ import Content from '~/components/Content'
 import { GetStaticProps } from 'next'
 import trimStr from '~/utilities/trimString'
 import getApi from '~/utilities/api'
-import Icons from '~/components/Icons'
+import Icon from '~/components/Icon'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -35,7 +35,10 @@ export default function Friends({ friends }: { friends: any }) {
 								<p className="text-xl text-gray-500 dark:text-gray-400">
 									<Link href="/">
 										<a className="flex items-center">
-											<span className="w-6 h-6 mr-2">{Icons.left}</span>Home
+											<span className="w-6 h-6 mr-2">
+												<Icon name="left" />
+											</span>
+											Home
 										</a>
 									</Link>
 								</p>

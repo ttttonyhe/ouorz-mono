@@ -1,4 +1,4 @@
-import Icons from '~/components/Icons'
+import Icon from '~/components/Icon'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 
@@ -43,7 +43,7 @@ export default function PageCard({
 					{icon.indexOf('://') > -1 ? (
 						<Image src={icon} width={35} height={35} />
 					) : (
-						Icons[icon]
+						<Icon name={icon} />
 					)}
 				</div>
 			)}
@@ -59,7 +59,7 @@ export default function PageCard({
 								className ? className : ''
 							}`}
 						>
-							{Icons[iconSmall]}
+							<Icon name={iconSmall} />
 						</span>
 					)}
 					{title}

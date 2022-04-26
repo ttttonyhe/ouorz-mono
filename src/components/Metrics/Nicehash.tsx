@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 import fetcher from '~/lib/fetcher'
-import Icons from '~/components/Icons'
+import Icon from '~/components/Icon'
 
 export default function NiceHashMetric() {
 	const { data } = useSWR('api/nicehash', fetcher)
@@ -41,7 +41,9 @@ export default function NiceHashMetric() {
 					{data && (
 						<em className="flex items-center text-sm font-medium not-italic text-gray-500 rounded-md px-2 mt-0.5 py-0.5 ml-2 bg-gray-100 border">
 							{data && (
-								<span className="w-4.5 h-4.5 mr-1">{Icons['money']}</span>
+								<span className="w-4.5 h-4.5 mr-1">
+									<Icon name="money" />
+								</span>
 							)}{' '}
 							{unpaidAmount ? unpaidAmount : 0}
 							<span className="ml-2 text-xs font-normal">
@@ -59,7 +61,7 @@ export default function NiceHashMetric() {
 						} `}
 					>
 						<span className="w-4.5 h-4.5 mr-1 animate-pulse">
-							{Icons[status ? 'checkCircle' : 'warningCircle']}
+							<Icon name={status ? 'checkCircle' : 'warningCircle'} />
 						</span>
 						{status ? 'Online' : 'Offline'}
 					</span>

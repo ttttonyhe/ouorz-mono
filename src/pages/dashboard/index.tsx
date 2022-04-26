@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 import Content from '~/components/Content'
 import Link from 'next/link'
-import Icons from '~/components/Icons'
+import Icon from '~/components/Icon'
 import GithubStarMetric from '~/components/Metrics/GithubStars'
 import GithubFollowerMetric from '~/components/Metrics/GithubFollowers'
 import PostsMetric from '~/components/Metrics/Posts'
@@ -40,7 +40,10 @@ export default function Dashboard() {
 								<p className="text-xl text-gray-500 dark:text-gray-400">
 									<Link href="/">
 										<a className="flex items-center">
-											<span className="w-6 h-6 mr-2">{Icons.left}</span>Home
+											<span className="w-6 h-6 mr-2">
+												<Icon name="left" />
+											</span>
+											Home
 										</a>
 									</Link>
 								</p>

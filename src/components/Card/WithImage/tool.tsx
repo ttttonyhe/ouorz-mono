@@ -49,7 +49,7 @@ export const CardTool = ({
 								setReader({ status: true, post: item })
 							}}
 						>
-							<Label name="gray" icon="preview" />
+							<Label type="gray" icon="preview" />
 						</a>
 					)}
 					<a
@@ -57,7 +57,7 @@ export const CardTool = ({
 						target="_blank"
 						rel="noreferrer"
 					>
-						<Label name="green" icon="right" preview={preview}>
+						<Label type="green" icon="right" preview={preview}>
 							{item.post_metas.fineTool.itemLinkName}
 						</Label>
 					</a>

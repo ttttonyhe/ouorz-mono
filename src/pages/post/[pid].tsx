@@ -82,7 +82,7 @@ export default function BlogPost({
 						<div className="flex mb-3">
 							<Link href={`/cate/${post.post_categories[0].term_id}`}>
 								<a>
-									<Label name="primary" icon="cate">
+									<Label type="primary" icon="cate">
 										{post.post_categories[0].name}
 									</Label>
 								</a>

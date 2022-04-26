@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import Icons from '~/components/Icons'
+import Icon from '~/components/Icon'
 import dynamic from 'next/dynamic'
 import Tabs, { TabItemProps } from '../Tabs'
 import { useTheme } from 'next-themes'
@@ -132,7 +132,9 @@ export default function Search({
 		if (tabsListItems.length === 0) {
 			return (
 				<div className="flex gap-x-3 text-gray-500 dark:text-gray-400 p-4">
-					<span className="w-5 h-5">{Icons['empty']}</span>
+					<span className="w-5 h-5">
+						<Icon name="empty" />
+					</span>
 					<span>No results found</span>
 				</div>
 			)

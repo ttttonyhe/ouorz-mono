@@ -1,5 +1,5 @@
 import { useState, useLayoutEffect } from 'react'
-import Icons from '~/components/Icons'
+import Icon from '~/components/Icon'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import scrollToItemWithinDiv from '~/utilities/scrollTo'
@@ -214,7 +214,10 @@ export default function Aside({ preNext }: { preNext: any }) {
 									b ? 'rounded-tl-xl rounded-bl-xl' : 'rounded-xl'
 								}`}
 							>
-								<span className="w-6 h-6 mr-2">{Icons.leftPlain}</span>Prev
+								<span className="w-6 h-6 mr-2">
+									<Icon name="leftPlain" />
+								</span>
+								Prev
 							</div>
 						</Link>
 					)}
@@ -225,7 +228,10 @@ export default function Aside({ preNext }: { preNext: any }) {
 									a ? 'rounded-tr-xl rounded-br-xl' : 'rounded-xl'
 								}`}
 							>
-								Next<span className="w-6 h-6 ml-2">{Icons.right}</span>
+								Next
+								<span className="w-6 h-6 ml-2">
+									<Icon name="right" />
+								</span>
 							</div>
 						</Link>
 					)}
@@ -243,7 +249,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 					<div className="shadow-sm border rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800">
 						<h1 className="flex text-2xl font-medium text-gray-700 dark:text-white tracking-wide items-center px-6 py-3 border-b border-gray-200 dark:border-gray-700">
 							<span className="w-[19px] h-[19px] mr-2 -mt-[1.5px]">
-								{Icons.toc}
+								<Icon name="toc" />
 							</span>
 							Contents
 						</h1>

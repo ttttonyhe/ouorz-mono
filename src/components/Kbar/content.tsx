@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { kbarContext } from './context'
 import Tabs, { TabItemProps } from '../Tabs'
-import Icons from '../Icons'
+import Icon from '~/components/Icon'
 const ContentLoader = dynamic(
 	() => import('react-content-loader').then((mod) => mod.default),
 	{ ssr: false }
@@ -68,7 +68,9 @@ const KbarContent = ({ beforeHide }: { beforeHide: boolean }) => {
 					<div className="flex justify-between w-full items-center">
 						<div className={`flex gap-x-3 items-center ${item.color || ''}`}>
 							{item.icon && (
-								<span className="h-5 w-5 -mt-[1px]">{Icons[item.icon]}</span>
+								<span className="h-5 w-5 -mt-[1px]">
+									<Icon name={item.icon} />
+								</span>
 							)}
 							<span>{item.label}</span>
 						</div>
@@ -132,7 +134,9 @@ const KbarContent = ({ beforeHide }: { beforeHide: boolean }) => {
 		if (tabsListItems.length === 0) {
 			return (
 				<div className="flex gap-x-3 text-gray-500 dark:text-gray-400 p-4">
-					<span className="w-5 h-5">{Icons['empty']}</span>
+					<span className="w-5 h-5">
+						<Icon name="empty" />
+					</span>
 					<span>No results found</span>
 				</div>
 			)

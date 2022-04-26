@@ -1,8 +1,9 @@
 import React from 'react'
-import Icons from '~/components/Icons'
+import Icon from '~/components/Icon'
+import { ButtonTypes } from '~/constants/propTypes'
 
 interface Props {
-	bType: string
+	bType: ButtonTypes
 	icon?: string
 	className?: string
 	children?: React.ReactNode
@@ -23,7 +24,7 @@ export default function Button(props: Props) {
 				>
 					{icon && (
 						<span className={children ? 'w-6 h-6 mr-1' : 'w-6 h-6'}>
-							{Icons[icon]}
+							<Icon name={icon} />
 						</span>
 					)}
 					{children}
@@ -40,7 +41,7 @@ export default function Button(props: Props) {
 				>
 					{icon && (
 						<span className={children ? 'w-6 h-6 mr-1' : 'w-6 h-6'}>
-							{Icons[icon]}
+							<Icon name={icon} />
 						</span>
 					)}
 					{children}
@@ -57,7 +58,7 @@ export default function Button(props: Props) {
 				>
 					{icon && (
 						<span className={children ? 'w-6 h-6 mr-1' : 'w-6 h-6'}>
-							{Icons[icon]}
+							<Icon name={icon} />
 						</span>
 					)}
 					{children}
@@ -74,7 +75,7 @@ export default function Button(props: Props) {
 				>
 					{icon && (
 						<span className={children ? 'w-6 h-6 mr-1' : 'w-6 h-6'}>
-							{Icons[icon]}
+							<Icon name={icon} />
 						</span>
 					)}
 					{children}

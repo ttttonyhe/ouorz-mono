@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
-import Icons from '~/components/Icons'
+import Icon from '~/components/Icon'
 import scrollToItemWithinDiv from '~/utilities/scrollTo'
 
 export interface TabItemProps {
@@ -36,7 +36,11 @@ const TabItemComponent = (props: TabItemComponentProps) => {
 
 	const TabButton = () => (
 		<button className="py-2 px-5 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex lg:flex">
-			{icon && <span className="w-6 h-6 mr-1 -mt-[1px]">{Icons[icon]}</span>}
+			{icon && (
+				<span className="w-6 h-6 mr-1 -mt-[1px]">
+					<Icon name={icon} />
+				</span>
+			)}
 			{label}
 		</button>
 	)
