@@ -3,12 +3,12 @@ import { useEffect } from 'react'
 import TimeAgo from 'react-timeago'
 import { useBodyScroll } from '~/hooks'
 import { useSelector, useDispatch } from '~/hooks'
-import { readerSelection } from '~/store/selections/reader'
+import { selectReader } from '~/store/selectors/reader'
 import { readerActions } from '~/store/actions'
 
 export default function Reader() {
 	const [_, setBodyScrollable] = useBodyScroll()
-	const { idle, visible, postData } = useSelector(readerSelection)
+	const { idle, visible, postData } = useSelector(selectReader)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
