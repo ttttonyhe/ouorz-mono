@@ -14,6 +14,7 @@ type Parameters = {
 	count?: boolean
 	postIDs?: boolean
 	searchIndexes?: boolean
+	rssData?: boolean
 }
 
 const getApi = (props: Parameters) => {
@@ -31,6 +32,10 @@ const getApi = (props: Parameters) => {
 
 	if (props.searchIndexes) {
 		return 'https://blog.ouorz.com/wp-json/tony/v1/searchIndexes'
+	}
+
+	if (props.rssData) {
+		return 'https://blog.ouorz.com/wp-json/tony/v1/rssData'
 	}
 
 	if (props.page) {

@@ -21,11 +21,13 @@
     "@sentry/nextjs": "^6.19.7",
     "cors": "^2.8.5",
     "dotenv-webpack": "^7.1.0",
+    "html-to-text": "^8.2.0",
     "next": "^12.1.5",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-hotkeys-hook": "^3.4.4",
     "react-snowfall": "^1.1.2",
+    "rss": "^1.2.2",
     "sharp": "^0.30.4"
   },
   "devDependencies": {
@@ -37,6 +39,7 @@
     "@types/node": "^17.0.29",
     "@types/react": "^18.0.8",
     "@types/react-highlight": "^0.12.5",
+    "@types/rss": "^0.0.29",
     "@types/smoothscroll-polyfill": "^0.3.1",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
