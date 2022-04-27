@@ -3,12 +3,14 @@ import { useHotkeys } from 'react-hotkeys-hook'
 import { KbarContextProvider } from './context'
 import { KbarProps } from '.'
 import KbarContent from './content'
+import { useBodyPointerEvents } from '~/hooks'
 
 const Kbar = (props: KbarProps) => {
 	const [display, setDisplay] = useState(false)
 	const [beforeHide, setBeforeHide] = useState(false)
 	const [kbarLoading, setLoading] = useState(false)
 	const [kbarInputValue, setInputValue] = useState(props.inputValue)
+	const [_, setBodyPointerEvents] = useBodyPointerEvents()
 
 	/**
 	 * Handle the kbar display state
@@ -38,11 +40,10 @@ const Kbar = (props: KbarProps) => {
 
 	// disbale body pointer events when kbar is open
 	useEffect(() => {
-		const bodyDOM = document.querySelector('body')
-		bodyDOM.style.pointerEvents = display ? 'none' : 'auto'
+		setBodyPointerEvents(!display)
 
 		return () => {
-			bodyDOM.style.pointerEvents = 'auto'
+			setBodyPointerEvents(true)
 		}
 	}, [display])
 

@@ -3,9 +3,10 @@ import TimeAgo from 'react-timeago'
 import Icon from '~/components/Icon'
 import getApi from '~/utilities/api'
 import { useDebounce } from '~/hooks'
+import { WPPost } from '~/constants/propTypes'
 
 interface Props {
-	item: any
+	item: WPPost
 	sticky: boolean
 }
 

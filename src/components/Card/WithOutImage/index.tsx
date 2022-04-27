@@ -2,14 +2,17 @@ import Label from '~/components/Label'
 import CardFooter from '~/components/Card/Footer'
 import trimStr from '~/utilities/trimString'
 import Link from 'next/link'
+import { useDispatch } from '~/hooks'
+import { readerActions } from '~/store/actions'
+import { WPPost } from '~/constants/propTypes'
 
 interface Props {
-	item: any
+	item: WPPost
 	sticky: boolean
-	setReader: any
 }
 
-export default function CardWithOutImage({ item, sticky, setReader }: Props) {
+export default function CardWithOutImage({ item, sticky }: Props) {
+	const dispatch = useDispatch()
 	return (
 		<div className="w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6">
 			<div className="p-5 lg:p-10">
@@ -28,7 +31,7 @@ export default function CardWithOutImage({ item, sticky, setReader }: Props) {
 						<div
 							className="col-start-4 col-end-5 justify-end hidden lg:flex"
 							onClick={() => {
-								setReader({ status: true, post: item })
+								dispatch(readerActions.updatePost(item))
 							}}
 						>
 							<Label type="secondary" icon="preview">

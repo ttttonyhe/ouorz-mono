@@ -5,14 +5,18 @@ import trimStr from '~/utilities/trimString'
 import Link from 'next/link'
 import Image from 'next/image'
 import CardWithImagePodcast from '~/components/Card/WithImage/podcast'
+import { useDispatch } from '~/hooks'
+import { readerActions } from '~/store/actions'
+import { WPPost } from '~/constants/propTypes'
 
 interface Props {
-	item: any
+	item: WPPost
 	sticky: boolean
-	setReader: any
 }
 
-export default function CardWithImage({ item, sticky, setReader }: Props) {
+export default function CardWithImage({ item, sticky }: Props) {
+	const dispatch = useDispatch()
+
 	if (typeof item.post_metas.fineTool === 'undefined') {
 		if (item.post_categories[0].term_id === 120) {
 			return <CardWithImagePodcast item={item} sticky={sticky} />
@@ -46,7 +50,7 @@ export default function CardWithImage({ item, sticky, setReader }: Props) {
 								<div
 									className="justify-end hidden lg:flex lg:w-auto w-full"
 									onClick={() => {
-										setReader({ status: true, post: item })
+										dispatch(readerActions.updatePost(item))
 									}}
 								>
 									<Label type="secondary" icon="preview">
@@ -77,8 +81,6 @@ export default function CardWithImage({ item, sticky, setReader }: Props) {
 			)
 		}
 	} else {
-		return (
-			<CardWithImageTool item={item} sticky={sticky} setReader={setReader} />
-		)
+		return <CardWithImageTool item={item} sticky={sticky} />
 	}
 }

@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import trimStr from '~/utilities/trimString'
 import Image from 'next/image'
+import { WPPost } from '~/constants/propTypes'
 
 interface Props {
-	item: any
+	item: WPPost
 }
 
 export default function CardFriend({ item }: Props) {

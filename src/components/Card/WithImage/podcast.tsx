@@ -4,9 +4,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
+import { WPPost } from '~/constants/propTypes'
 
 interface Props {
-	item: any
+	item: WPPost
 	sticky: boolean
 }
 

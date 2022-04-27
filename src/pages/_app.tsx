@@ -2,8 +2,10 @@ import '~/assets/styles/vendors/tailwind.css'
 import '~/styles/global.css'
 import type { AppProps } from 'next/app'
 import NextNprogress from 'nextjs-progressbar'
-import { ThemeProvider } from 'next-themes'
 import Script from 'next/script'
+import { ThemeProvider } from 'next-themes'
+import { Provider as ReduxProvider } from 'react-redux'
+import store from '~/store'
 
 function App({ Component, pageProps }: AppProps) {
 	return (
@@ -22,9 +24,11 @@ function App({ Component, pageProps }: AppProps) {
 				defaultTheme="system"
 				enableSystem={true}
 			>
-				<div className="bg-gbg dark:bg-neutral-900 dark:text-white min-h-screen">
-					<Component {...pageProps} />
-				</div>
+				<ReduxProvider store={store}>
+					<div className="bg-gbg dark:bg-neutral-900 dark:text-white min-h-screen">
+						<Component {...pageProps} />
+					</div>
+				</ReduxProvider>
 			</ThemeProvider>
 		</div>
 	)

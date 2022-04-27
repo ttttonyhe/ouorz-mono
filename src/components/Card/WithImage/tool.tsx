@@ -2,22 +2,23 @@ import Label from '~/components/Label'
 import CardFooter from '~/components/Card/Footer'
 import trimStr from '~/utilities/trimString'
 import Link from 'next/link'
+import { useDispatch } from '~/hooks'
+import { readerActions } from '~/store/actions'
+import { WPPost } from '~/constants/propTypes'
 
 interface Props {
-	item: any
+	item: WPPost
 	sticky: boolean
-	setReader?: any
 }
 
 export const CardTool = ({
 	item,
 	preview,
-	setReader,
 }: {
-	item: any
+	item: WPPost
 	preview: boolean
-	setReader?: any
 }) => {
+	const dispatch = useDispatch()
 	return (
 		<div className="w-full whitespace-nowrap lg:grid lg:grid-cols-8 lg:gap-3 rounded-md shadow-sm border border-gray-200 dark:border-gray-600 dark:bg-gray-600 overflow-hidden">
 			<div
@@ -46,7 +47,7 @@ export const CardTool = ({
 					{preview && (
 						<a
 							onClick={() => {
-								setReader({ status: true, post: item })
+								dispatch(readerActions.updatePost(item))
 							}}
 						>
 							<Label type="gray" icon="preview" />
@@ -67,7 +68,7 @@ export const CardTool = ({
 	)
 }
 
-export default function CardWithImageTool({ item, sticky, setReader }: Props) {
+export default function CardWithImageTool({ item, sticky }: Props) {
 	return (
 		<div
 			className={`w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border ${
@@ -75,7 +76,7 @@ export default function CardWithImageTool({ item, sticky, setReader }: Props) {
 			}`}
 		>
 			<div className="p-5 lg:p-10">
-				<CardTool item={item} preview={true} setReader={setReader} />
+				<CardTool item={item} preview={true} />
 				<div className="mt-6">
 					<Link href={`/post/${item.id}`}>
 						<a>

@@ -25,7 +25,7 @@ export default function CardClickable({ stopLoading, setStopLoading }: Props) {
 					<span className="w-6 h-6 mr-3 mt-0.5">
 						<Icon name="pause" />
 					</span>
-					Stop Loading
+					Terminate Loading
 				</p>
 			)}
 		</div>
