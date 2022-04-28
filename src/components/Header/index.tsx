@@ -20,7 +20,7 @@ const Header = () => {
 	const TitleComponent = () => (
 		<div
 			ref={titleRef}
-			className="col-start-3 col-end-5 items-center justify-center pt-1 opacity-0"
+			className="col-start-3 col-end-5 justify-center opacity-0 flex items-center"
 		>
 			<div className="cursor-pointer mx-auto hidden lg:flex space-x-3 items-center justify-center">
 				<div className="flex-shrink-0 h-7 w-7 border rounded-full border-gray-300 dark:border-gray-500">
@@ -343,7 +343,7 @@ const Header = () => {
 			<header
 				ref={headerRef}
 				id="header"
-				className="leading-14 lg:border-0 border-b border-gray-200 lg:bg-transparent duration-300 grid grid-cols-6 fixed top-0 h-auto w-full lg:py-4 lg:px-5 py-2 px-1 z-10"
+				className="leading-14 lg:border-0 border-b dark:border-b-transparent border-gray-200 lg:bg-transparent dark:backdrop-blur-lg duration-300 grid grid-cols-6 fixed top-0 h-auto w-full lg:py-4 lg:px-5 py-2 px-1 z-10"
 			>
 				<div className="col-start-1 col-end-2 flex lg:space-x-2">
 					<Tabs items={leftTabItems} />

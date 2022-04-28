@@ -1,5 +1,6 @@
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import Icon from '~/components/Icon'
 import smoothScroll from 'smoothscroll-polyfill'
 
@@ -13,12 +14,33 @@ const targetThemes = ['dark', 'light', 'system']
 
 export default function Footer() {
 	const { setTheme, theme } = useTheme()
+	const { pathname } = useRouter()
 	const [mounted, setMounted] = useState(false)
 
 	useEffect(() => {
 		smoothScroll.polyfill()
 		setMounted(true)
 	}, [])
+
+	useEffect(() => {
+		const featuresEl = document.querySelector('.glowing-area')
+		const featureEls = document.querySelectorAll('.glowing-div')
+
+		if (featuresEl) {
+			const handler = (ev: any) => {
+				featureEls.forEach((featureEl: any) => {
+					const rect = featureEl.getBoundingClientRect()
+					featureEl.style.setProperty('--x', ev.clientX - rect.left)
+					featureEl.style.setProperty('--y', ev.clientY - rect.top)
+				})
+			}
+			featuresEl.addEventListener('pointermove', handler)
+
+			return () => {
+				featuresEl.removeEventListener('pointermove', handler)
+			}
+		}
+	}, [pathname])
 
 	if (!mounted) return null
 

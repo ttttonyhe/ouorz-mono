@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import CardWithImage from '~/components/Card/WithImage'
 import CardWithOutImage from '~/components/Card/WithOutImage'
 import CardPlainText from '~/components/Card/PlainText'

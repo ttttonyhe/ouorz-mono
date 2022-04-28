@@ -57,7 +57,7 @@ export default function Dashboard() {
 					</div>
 				</div>
 				<div
-					className="mt-5 mb-10 grid lg:grid-cols-2 gap-4"
+					className="glowing-area mt-5 mb-10 grid lg:grid-cols-2 gap-4"
 					data-cy="metricCards"
 				>
 					<NexmentMetric />

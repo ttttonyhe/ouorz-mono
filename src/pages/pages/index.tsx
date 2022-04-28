@@ -43,7 +43,7 @@ export default function Pages() {
 						</div>
 					</div>
 				</div>
-				<div className="mt-5 grid grid-cols-2 gap-4">
+				<div className="glowing-area mt-5 grid grid-cols-2 gap-4">
 					<PageCard
 						title="Dashboard"
 						des="Track my metrics"

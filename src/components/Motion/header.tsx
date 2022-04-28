@@ -13,17 +13,25 @@ const BoxShadowTransition = (props: Props) => {
 
 	const handler = (position: number) => {
 		if (!ref?.current) return
-
-		ref.current.style.background = `rgba(${
-			resolvedTheme === 'dark' ? '38, 38, 38' : '255, 255, 255'
-		}, ${position * 0.02})`
-		ref.current.style.boxShadow = `0px 1px 3px rgba(0,0,0,${
-			position * (2 / 1000)
-		})`
+		if (resolvedTheme === 'dark') {
+			ref.current.style.background = `rgba(38, 38, 38, ${
+				position * (0.8 / 40) || 0
+			})`
+			ref.current.style.borderBottom = `1px solid rgba(255, 255, 255, ${
+				position * (0.1 / 40) || 0
+			})`
+		} else {
+			ref.current.style.background = `rgba(255, 255, 255, ${
+				position * (1 / 40) || 0
+			})`
+			ref.current.style.boxShadow = `0px 1px 3px rgba(0,0,0,${
+				position * (0.08 / 40) || 0
+			})`
+		}
 	}
 
 	return (
-		<ScrollWrapper handler={handler} endPosition={50}>
+		<ScrollWrapper handler={handler} endPosition={40}>
 			{children}
 		</ScrollWrapper>
 	)

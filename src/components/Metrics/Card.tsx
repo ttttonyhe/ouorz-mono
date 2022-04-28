@@ -20,10 +20,11 @@ export default function MetricCard({
 	return (
 		<div
 			onClick={() => navigateTo(link)}
-			className="flex items-center dark:bg-gray-800 dark:border-gray-800 rounded-md border shadow-sm hover:shadow-md py-4 px-5 bg-white cursor-pointer"
+			className="glowing-div flex items-center dark:bg-gray-800 dark:border-gray-800 rounded-md border shadow-sm hover:shadow-md py-4 px-5 bg-white cursor-pointer"
 			style={{ borderBottom: `5px solid ${colorHex}` }}
 		>
-			<div>
+			<div className="glowing-div-background" />
+			<div className="glowing-div-content">
 				<h1
 					className={`font-bold text-stats tracking-wide flex items-center -mb-0.5 ${
 						!value && 'animate-pulse'

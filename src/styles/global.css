@@ -1,3 +1,10 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+	position: relative;
+}
+
 .nexment-admin-badge {
 	display: none !important;
 }
@@ -553,4 +560,62 @@ abbr[title] {
 		#000 95%,
 		transparent 100%
 	);
+}
+
+@media (prefers-color-scheme: dark) {
+	.glowing-area {
+		padding: 1px;
+	}
+
+	.glowing-div {
+		--x-px: calc(var(--x) * 1px);
+		--y-px: calc(var(--y) * 1px);
+	}
+
+	.glowing-div:before {
+		content: '';
+		pointer-events: none;
+		user-select: none;
+		position: absolute;
+		inset: 0px;
+		border-radius: inherit;
+		opacity: 1;
+		transition: opacity 400ms ease 0s;
+		background: radial-gradient(
+			800px circle at var(--x-px) var(--y-px),
+			rgba(255, 255, 255, 0.3),
+			transparent 40%
+		);
+	}
+
+	.glowing-div-content {
+		inset: 1px;
+		border-radius: 0.375rem;
+		z-index: 2;
+		top: 1px;
+		bottom: 1px;
+		left: 1px;
+		right: 1px;
+	}
+
+	.glowing-div-background {
+		@apply dark:bg-gray-800;
+		border-radius: 0.375rem;
+		pointer-events: none;
+		user-select: none;
+		position: absolute;
+		z-index: 1;
+		opacity: 1;
+		top: 1px;
+		bottom: 1px;
+		left: 1px;
+		right: 1px;
+		background: radial-gradient(
+			200px circle at var(--x-px) var(--y-px),
+			rgba(255, 255, 255, 0.1),
+			transparent
+		);
+		contain: strict;
+		transition: opacity 400ms ease 0s;
+	}
 }

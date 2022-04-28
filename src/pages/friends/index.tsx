@@ -51,14 +51,18 @@ export default function Friends({ friends }: { friends: any }) {
 						</p>
 					</div>
 				</div>
-				<div className="mt-5 grid grid-cols-2 gap-4" data-cy="friendsItems">
+				<div
+					className="mt-5 grid grid-cols-2 gap-4 glowing-area"
+					data-cy="friendsItems"
+				>
 					{friends.map((item, index) => {
 						return (
 							<div
-								className="cursor-pointer hover:shadow-md transition-shadow shadow-sm border bg-white dark:bg-gray-800 dark:border-gray-800 items-center rounded-md px-2 py-4"
+								className="glowing-div cursor-pointer hover:shadow-md transition-shadow shadow-sm border bg-white dark:bg-gray-800 dark:border-gray-800 items-center rounded-md"
 								key={index}
 							>
-								<div className="w-full px-4 items-center flex-1">
+								<div className="glowing-div-background" />
+								<div className="glowing-div-content px-6 py-4 w-fullitems-center flex-1">
 									<a
 										href={item.post_metas.link}
 										target="_blank"
