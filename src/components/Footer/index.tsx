@@ -42,7 +42,7 @@ export default function Footer() {
 				}
 			}
 		}
-	}, [pathname])
+	}, [pathname, resolvedTheme])
 
 	if (!mounted) return null
 
