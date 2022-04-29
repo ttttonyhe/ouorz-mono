@@ -13,7 +13,7 @@ const icons = [
 const targetThemes = ['dark', 'light', 'system']
 
 export default function Footer() {
-	const { setTheme, theme } = useTheme()
+	const { setTheme, theme, resolvedTheme } = useTheme()
 	const { pathname } = useRouter()
 	const [mounted, setMounted] = useState(false)
 
@@ -23,21 +23,23 @@ export default function Footer() {
 	}, [])
 
 	useEffect(() => {
-		const featuresEl = document.querySelector('.glowing-area')
-		const featureEls = document.querySelectorAll('.glowing-div')
+		if (resolvedTheme === 'dark') {
+			const glowingArea = document.querySelector('.glowing-area')
+			const glowingDivs = document.querySelectorAll('.glowing-div')
 
-		if (featuresEl) {
-			const handler = (ev: any) => {
-				featureEls.forEach((featureEl: any) => {
-					const rect = featureEl.getBoundingClientRect()
-					featureEl.style.setProperty('--x', ev.clientX - rect.left)
-					featureEl.style.setProperty('--y', ev.clientY - rect.top)
-				})
-			}
-			featuresEl.addEventListener('pointermove', handler)
+			if (glowingArea) {
+				const handler = (ev: any) => {
+					glowingDivs.forEach((featureEl: any) => {
+						const rect = featureEl.getBoundingClientRect()
+						featureEl.style.setProperty('--x', ev.clientX - rect.left)
+						featureEl.style.setProperty('--y', ev.clientY - rect.top)
+					})
+				}
+				glowingArea.addEventListener('pointermove', handler)
 
-			return () => {
-				featuresEl.removeEventListener('pointermove', handler)
+				return () => {
+					glowingArea.removeEventListener('pointermove', handler)
+				}
 			}
 		}
 	}, [pathname])
