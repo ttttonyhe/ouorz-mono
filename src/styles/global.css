@@ -572,20 +572,31 @@ abbr[title] {
 		--y-px: calc(var(--y) * 1px);
 	}
 
-	.glowing-div:before {
+	.glowing-div:before,
+	.glowing-div::after {
 		content: '';
 		pointer-events: none;
 		user-select: none;
 		position: absolute;
 		inset: 0px;
+		z-index: 1;
 		border-radius: inherit;
 		opacity: 1;
 		transition: opacity 400ms ease 0s;
 		background: radial-gradient(
-			800px circle at var(--x-px) var(--y-px),
+			400px circle at var(--x-px) var(--y-px),
 			rgba(255, 255, 255, 0.3),
 			transparent 40%
 		);
+	}
+
+	.glowing-div:after {
+		opacity: 0;
+		z-index: 2;
+	}
+
+	.glowing-div:hover:after {
+		opacity: 1;
 	}
 
 	.glowing-div-content {
