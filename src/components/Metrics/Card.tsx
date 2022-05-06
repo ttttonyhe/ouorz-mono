@@ -1,4 +1,5 @@
 import Icon from '~/components/Icon'
+import GlowingBackground from '~/components/GlowingBackground'
 
 interface PropsType {
 	footer: string
@@ -23,7 +24,7 @@ export default function MetricCard({
 			className="glowing-div flex items-center dark:bg-gray-800 dark:border-gray-800 rounded-md border shadow-sm hover:shadow-md py-4 px-5 bg-white cursor-pointer"
 			style={{ borderBottom: `5px solid ${colorHex}` }}
 		>
-			<div className="glowing-div-background" />
+			<GlowingBackground />
 			<div className="glowing-div-content">
 				<h1
 					className={`font-bold text-stats tracking-wide flex items-center -mb-0.5 ${

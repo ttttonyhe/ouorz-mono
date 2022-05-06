@@ -1,6 +1,7 @@
-import Icon from '~/components/Icon'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import GlowingBackground from '~/components/GlowingBackground'
+import Icon from '~/components/Icon'
 
 interface Props {
 	title: string
@@ -34,7 +35,7 @@ export default function PageCard({
 			className="glowing-div cursor-pointer hover:shadow-md transition-shadow shadow-sm border dark:border-0 py-3 px-4 bg-white dark:bg-gray-700 dark:border-gray-700 flex items-center rounded-md"
 			onClick={handleClick}
 		>
-			<div className="glowing-div-background" />
+			<GlowingBackground />
 			<div className="glowing-div-content flex items-center">
 				{icon && (
 					<div

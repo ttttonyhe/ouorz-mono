@@ -1,12 +1,13 @@
 import Head from 'next/head'
 import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 import Content from '~/components/Content'
 import { GetStaticProps } from 'next'
 import trimStr from '~/utilities/trimString'
 import getApi from '~/utilities/api'
 import Icon from '~/components/Icon'
-import Link from 'next/link'
-import Image from 'next/image'
+import GlowingBackground from '~/components/GlowingBackground'
 
 export default function Friends({ friends }: { friends: any }) {
 	return (
@@ -61,7 +62,7 @@ export default function Friends({ friends }: { friends: any }) {
 								className="glowing-div cursor-pointer hover:shadow-md transition-shadow shadow-sm border bg-white dark:bg-gray-800 dark:border-gray-800 items-center rounded-md"
 								key={index}
 							>
-								<div className="glowing-div-background" />
+								<GlowingBackground />
 								<div className="glowing-div-content px-6 py-4 w-fullitems-center flex-1">
 									<a
 										href={item.post_metas.link}

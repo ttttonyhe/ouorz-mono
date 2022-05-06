@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import React from 'react'
-import Content from '~/components/Content'
 import Link from 'next/link'
+import { GetStaticProps } from 'next'
+import Content from '~/components/Content'
 import Icon from '~/components/Icon'
 import PageCard from '~/components/PageCard'
 import getApi from '~/utilities/api'
-import { GetStaticProps } from 'next'
+import GlowingBackground from '~/components/GlowingBackground'
 
 export default function Sponsor({ sponsors }: { sponsors: any }) {
 	return (
@@ -131,7 +132,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
 									key={index}
 									className="glowing-div cursor-pointer hover:shadow-md transition-shadow shadow-sm border py-4 px-5 bg-white dark:bg-gray-800 dark:border-gray-800 flex items-center rounded-md"
 								>
-									<div className="glowing-div-background" />
+									<GlowingBackground />
 									<div className="glowing-div-content w-full flex items-center whitespace-nowrap overflow-hidden text-ellipsis">
 										<h1 className="flex-1 items-center text-xl tracking-wide font-medium">
 											{item.name}

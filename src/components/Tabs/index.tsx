@@ -316,7 +316,7 @@ const Tabs = (props: Props) => {
 							aria-label="tab"
 							className={`z-10 ${
 								color ||
-								'text-gray-500 dark:text-gray-400 dark:hover:text-gray-300'
+								'text-gray-500 dark:text-gray-400 dark:hover:text-gray-300 dark:transition-colors'
 							} ${className || ''} cursor-pointer rounded-md`}
 							onMouseEnter={(e) => {
 								item.hoverable !== false && highlight(e, bgColor, bgDark, index)
