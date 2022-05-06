@@ -5,7 +5,7 @@
   <a href="https://github.com/HelipengTony/ouorz-next">
     <img src="https://github.com/HelipengTony/ouorz-next/workflows/Tests/badge.svg?branch=main" alt="build status">
   </a>
-  
+
   <a href="https://codeclimate.com/github/HelipengTony/ouorz-next/maintainability">
     <img src="https://api.codeclimate.com/v1/badges/241ce6373b176b12f511/maintainability" alt="maintainability" />
   </a>
@@ -63,7 +63,7 @@ Super opinionated, completely overkill.
 + Error Logging
   - Sentry
 + Testing
-  - Cypress
+  - Cypress (currently just some smoke tests)
 + Linting
   - CommitLint
   - ESLint
@@ -93,7 +93,7 @@ Create a `.env` file with your configuration, see below for a list of environmen
 + Buttondown:
   - NEXT_PUBLIC_BUTTONDOWN_TOKEN
 + Sentry:
-  - NEXT_PUBLIC_SENTRY_DSN 
+  - NEXT_PUBLIC_SENTRY_DSN
   - SENTRY_AUTH_TOKEN
   - SENTRY_PROJECT
   - SENTRY_ORG
