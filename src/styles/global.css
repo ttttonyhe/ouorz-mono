@@ -630,3 +630,8 @@ abbr[title] {
 		transition: opacity 400ms ease 0s;
 	}
 }
+
+/* FIXME: a possible nexment dependency - react-floater issue */
+.__floater {
+	display: none !important;
+}
