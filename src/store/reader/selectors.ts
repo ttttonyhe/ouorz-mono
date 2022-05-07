@@ -1,4 +1,4 @@
-import { RootState } from '..'
+import type { RootState } from '..'
 
 const selectReader = (state: RootState) => state.reader
 

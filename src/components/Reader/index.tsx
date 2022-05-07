@@ -3,35 +3,32 @@ import { useEffect } from 'react'
 import TimeAgo from 'react-timeago'
 import { useBodyScroll } from '~/hooks'
 import { useSelector, useDispatch } from '~/hooks'
-import { selectReader } from '~/store/selectors/reader'
-import { readerActions } from '~/store/actions'
+import { selectReader } from '~/store/reader/selectors'
+import { hideReaderRequest } from '~/store/reader/actions'
 
 export default function Reader() {
 	const [_, setBodyScrollable] = useBodyScroll()
-	const { idle, visible, postData } = useSelector(selectReader)
+	const { animation, visible, postData } = useSelector(selectReader)
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		setBodyScrollable(!visible && idle)
-	}, [visible, idle, setBodyScrollable])
+		setBodyScrollable(!visible)
+	}, [visible, setBodyScrollable])
 
 	return (
-		!idle && (
+		visible && (
 			<div>
 				<div
 					className={`z-10 reader-bg ${
-						visible ? 'animate-readerBg' : 'animate-readerBgOut'
+						animation === 'in' ? 'animate-readerBg' : 'animate-readerBgOut'
 					}`}
 					onClick={() => {
-						dispatch(readerActions.toggle())
-						setTimeout(() => {
-							dispatch(readerActions.idle())
-						}, 500)
+						dispatch(hideReaderRequest())
 					}}
 				/>
 				<div
 					className={`z-20 fixed bg-white dark:bg-gray-800 dark:border-gray-800 shadow-md reader overflow-y-auto overflow-hidden rounded-tl-xl rounded-tr-xl px-20 py-16 w-page mx-auto top-0 mt-20 ml-readerOffset ${
-						visible ? 'animate-reader' : 'animate-readerOut'
+						animation === 'in' ? 'animate-reader' : 'animate-readerOut'
 					}`}
 				>
 					<h1 className="text-postTitle font-medium tracking-wider leading-snug">

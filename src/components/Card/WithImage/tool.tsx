@@ -3,7 +3,7 @@ import CardFooter from '~/components/Card/Footer'
 import trimStr from '~/utilities/trimString'
 import Link from 'next/link'
 import { useDispatch } from '~/hooks'
-import { readerActions } from '~/store/actions'
+import { setReaderRequest } from '~/store/reader/actions'
 import { WPPost } from '~/constants/propTypes'
 
 interface Props {
@@ -47,7 +47,7 @@ export const CardTool = ({
 					{preview && (
 						<a
 							onClick={() => {
-								dispatch(readerActions.updatePost(item))
+								dispatch(setReaderRequest(item))
 							}}
 						>
 							<Label type="gray" icon="preview" />

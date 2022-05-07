@@ -37,7 +37,7 @@ New site is in planning, stay tuned :)
 
 + SSR/SSG/On-demand ISR
 + Command palette
-+ Redux state management
++ Redux + Redux Saga state management
 + Nexment comment system
 + Dynamic table of contents sidebar
 + Personal dashboard
@@ -46,7 +46,7 @@ New site is in planning, stay tuned :)
 <br/>
 
 ## Summary of Tech Stacks
-Super opinionated, completely overkill.
+Super opinionated, a complete overkill.
 
 + TypeScript
 + React.js / Next.js
@@ -57,6 +57,7 @@ Super opinionated, completely overkill.
   - Revalidation
 + Redux
   - Redux Toolkit
+  - Redux Saga
 + Tailwind CSS
 + WordPress
   - WordPress REST API

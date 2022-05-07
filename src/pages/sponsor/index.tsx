@@ -6,7 +6,7 @@ import Content from '~/components/Content'
 import Icon from '~/components/Icon'
 import PageCard from '~/components/PageCard'
 import getApi from '~/utilities/api'
-import GlowingBackground from '~/components/GlowingBackground'
+import { GlowingBackground } from '~/components/Visual'
 
 export default function Sponsor({ sponsors }: { sponsors: any }) {
 	return (

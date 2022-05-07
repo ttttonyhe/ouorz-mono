@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import GlowingBackground from '~/components/GlowingBackground'
+import { GlowingBackground } from '~/components/Visual'
 import Icon from '~/components/Icon'
 
 interface Props {

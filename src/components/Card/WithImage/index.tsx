@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import CardWithImagePodcast from '~/components/Card/WithImage/podcast'
 import { useDispatch } from '~/hooks'
-import { readerActions } from '~/store/actions'
+import { setReaderRequest } from '~/store/reader/actions'
 import { WPPost } from '~/constants/propTypes'
 
 interface Props {
@@ -50,7 +50,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 								<div
 									className="justify-end hidden lg:flex lg:w-auto w-full"
 									onClick={() => {
-										dispatch(readerActions.updatePost(item))
+										dispatch(setReaderRequest(item))
 									}}
 								>
 									<Label type="secondary" icon="preview">

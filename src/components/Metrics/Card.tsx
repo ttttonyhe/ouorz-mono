@@ -1,5 +1,5 @@
+import { GlowingBackground } from '~/components/Visual'
 import Icon from '~/components/Icon'
-import GlowingBackground from '~/components/GlowingBackground'
 
 interface PropsType {
 	footer: string
@@ -8,6 +8,10 @@ interface PropsType {
 	icon: string
 	colorHex: string
 	subValue?: string
+}
+
+const navigateTo = (link: string) => {
+	window.open(link)
 }
 
 export default function MetricCard({
@@ -47,8 +51,4 @@ export default function MetricCard({
 			</div>
 		</div>
 	)
-}
-
-const navigateTo = (link) => {
-	window.open(link)
 }

@@ -7,7 +7,7 @@ import { GetStaticProps } from 'next'
 import trimStr from '~/utilities/trimString'
 import getApi from '~/utilities/api'
 import Icon from '~/components/Icon'
-import GlowingBackground from '~/components/GlowingBackground'
+import { GlowingBackground } from '~/components/Visual'
 
 export default function Friends({ friends }: { friends: any }) {
 	return (
