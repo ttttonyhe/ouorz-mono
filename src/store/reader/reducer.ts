@@ -1,14 +1,14 @@
+import { AnyAction } from '@reduxjs/toolkit'
 import { SET_READER, SET_ANIMATION, SHOW_READER, HIDE_READER } from './actions'
-import type { ReaderAction } from './actions'
 import { WPPost } from '~/constants/propTypes'
 
-type InitialState = {
-	animation: string
+type ReaderState = {
+	animation: 'in' | 'out' | ''
 	visible: boolean
 	postData?: WPPost
 }
 
-const ReaderInitialState: InitialState = {
+const ReaderInitialState: ReaderState = {
 	animation: '',
 	visible: false,
 	postData: null,
@@ -16,9 +16,8 @@ const ReaderInitialState: InitialState = {
 
 const readerReducer = (
 	state = ReaderInitialState,
-	action: ReaderAction
+	action: AnyAction
 ): typeof ReaderInitialState => {
-	console.error(action)
 	switch (action.type) {
 		case SET_READER:
 			return {
@@ -38,7 +37,7 @@ const readerReducer = (
 		case SET_ANIMATION:
 			return {
 				...state,
-				animation: action.payload.className,
+				animation: action.payload.state,
 			}
 		default:
 			return state

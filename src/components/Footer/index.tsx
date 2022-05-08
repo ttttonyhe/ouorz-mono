@@ -24,7 +24,6 @@ export default function Footer() {
 
 	useEffect(() => {
 		if (resolvedTheme === 'dark') {
-			console.log('fuck')
 			const glowingArea = document.querySelector('.glowing-area')
 			const glowingDivs = document.querySelectorAll('.glowing-div')
 

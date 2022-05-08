@@ -1,9 +1,4 @@
 import { WPPost } from '~/constants/propTypes'
-import {
-	StringLiteral,
-	ReduxActionWithPayload,
-	ReduxActionWithoutPayload,
-} from '~/utilities/dataTypes'
 
 // Actions watched by sagas
 export const SET_READER_REQUEST = 'SET_READER_REQUEST'
@@ -16,13 +11,7 @@ export const HIDE_READER = 'HIDE_READER'
 export const SET_ANIMATION = 'SET_ANIMATION'
 
 // Action creators
-export interface SetReaderRequestAction
-	extends ReduxActionWithPayload<StringLiteral<typeof SET_READER_REQUEST>> {
-	payload: {
-		postData: WPPost
-	}
-}
-export const setReaderRequest = (postData: WPPost): SetReaderRequestAction => {
+export const setReaderRequest = (postData: WPPost) => {
 	return {
 		type: SET_READER_REQUEST,
 		payload: {
@@ -31,13 +20,7 @@ export const setReaderRequest = (postData: WPPost): SetReaderRequestAction => {
 	}
 }
 
-export interface SetReaderAction
-	extends ReduxActionWithPayload<StringLiteral<typeof SET_READER>> {
-	payload: {
-		postData: WPPost
-	}
-}
-export const setReader = (postData: WPPost): SetReaderAction => {
+export const setReader = (postData: WPPost) => {
 	return {
 		type: SET_READER,
 		payload: {
@@ -46,53 +29,32 @@ export const setReader = (postData: WPPost): SetReaderAction => {
 	}
 }
 
-export interface SetReaderAnimation
-	extends ReduxActionWithPayload<StringLiteral<typeof SET_ANIMATION>> {
-	payload: {
-		className: string
-	}
-}
-export const setReaderAnimation = (className: string): SetReaderAnimation => {
+export const setReaderAnimation = (state: 'in' | 'out' | '') => {
 	return {
 		type: SET_ANIMATION,
 		payload: {
-			className,
+			state,
 		},
 	}
 }
 
-export const showReader = (): ReduxActionWithoutPayload<
-	StringLiteral<typeof SHOW_READER>
-> => {
+export const showReader = () => {
 	return {
 		type: SHOW_READER,
 		payload: null,
 	}
 }
 
-export const hideReaderRequest = (): ReduxActionWithoutPayload<
-	StringLiteral<typeof HIDE_READER_REQUEST>
-> => {
+export const hideReaderRequest = () => {
 	return {
 		type: HIDE_READER_REQUEST,
 		payload: null,
 	}
 }
 
-export const hideReader = (): ReduxActionWithoutPayload<
-	StringLiteral<typeof HIDE_READER>
-> => {
+export const hideReader = () => {
 	return {
 		type: HIDE_READER,
 		payload: null,
 	}
 }
-
-// Action types
-export type ReaderAction =
-	| SetReaderAction
-	| SetReaderRequestAction
-	| SetReaderAnimation
-	| ReturnType<typeof showReader>
-	| ReturnType<typeof hideReaderRequest>
-	| ReturnType<typeof hideReader>

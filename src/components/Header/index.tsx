@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
-import Search from '~/components/Search'
+import { useDispatch } from '~/hooks'
+import { setKbarToSearch, activateKbar } from '~/store/kbar/actions'
 import { HeaderTransition, OffsetTransition } from '../Motion'
 import Tabs from '../Tabs'
 import Kbar from '../Kbar'
@@ -11,9 +12,7 @@ import Kbar from '../Kbar'
 const Header = () => {
 	const { setTheme, resolvedTheme } = useTheme()
 	const router = useRouter()
-
-	const [startSearching, setStartSearching] = useState<boolean>(false)
-	const [endSearching, setEndSearching] = useState<boolean>(false)
+	const dispatch = useDispatch()
 	const headerRef = useRef<HTMLDivElement>(null)
 	const titleRef = useRef<HTMLDivElement>(null)
 
@@ -56,7 +55,10 @@ const Header = () => {
 				className: 'hidden lg:block',
 				hoverable: false,
 				component: (
-					<div className="py-1 px-5 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex lg:flex">
+					<div
+						className="py-1 px-5 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex lg:flex"
+						onClick={() => dispatch(activateKbar(kbarItems))}
+					>
 						<div
 							aria-label="Command + K to Open Command Palette"
 							className="bg-gray-100 dark:bg-transparent dark:border-gray-600 px-1.5 py-0.5 text-xs border rounded-md"
@@ -170,8 +172,11 @@ const Header = () => {
 				id: 'search',
 				icon: 'search',
 				shortcut: ['s'],
-				action: () => setStartSearching(true),
+				action: () => {
+					dispatch(setKbarToSearch())
+				},
 				description: 'Command',
+				singleton: false,
 			},
 			{
 				label: 'Actions',
@@ -354,15 +359,7 @@ const Header = () => {
 				<div className="col-start-5 col-end-7 flex space-x-2 justify-end">
 					<Tabs items={rightTabItems} />
 				</div>
-				<Search
-					startSearching={startSearching}
-					setStartSearching={setStartSearching}
-					setEndSearching={setEndSearching}
-					endSearching={endSearching}
-				/>
-				{!startSearching && (
-					<Kbar list={kbarItems} placeholder="Type your command or search..." />
-				)}
+				<Kbar list={kbarItems} />
 			</header>
 		)
 	}

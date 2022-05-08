@@ -2,76 +2,69 @@ import React, { useEffect, useState } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { KbarContextProvider } from './context'
 import { KbarProps } from '.'
-import KbarContent from './content'
-import { useBodyPointerEvents } from '~/hooks'
+import KbarPanel from './panel'
+import { useSelector, useDispatch, useBodyPointerEvents } from '~/hooks'
+import { selectKbar } from '~/store/kbar/selectors'
+import {
+	activateKbar,
+	deactivateKbar,
+	goToKbarLocation,
+} from '~/store/kbar/actions'
 
 const Kbar = (props: KbarProps) => {
-	const [display, setDisplay] = useState(false)
-	const [beforeHide, setBeforeHide] = useState(false)
-	const [kbarLoading, setLoading] = useState(false)
-	const [kbarInputValue, setInputValue] = useState(props.inputValue)
+	const dispatch = useDispatch()
+	const { visible, animation, location } = useSelector(selectKbar)
+	const [kbarInputValue, setInputValue] = useState('')
 	const [_, setBodyPointerEvents] = useBodyPointerEvents()
-
-	/**
-	 * Handle the kbar display state
-	 *
-	 * @param {boolean} display
-	 */
-	const setDisplayFunc = (display: boolean) => {
-		if (display) {
-			setDisplay(true)
-		} else {
-			setBeforeHide(true)
-			setTimeout(() => {
-				setDisplay(false)
-				setBeforeHide(false)
-			}, 200)
-		}
-	}
 
 	// register keybinding that triggers/hides the kbar
 	useHotkeys('ctrl+k, command+k', (e) => {
 		e.preventDefault()
-		setDisplayFunc(true)
+		dispatch(activateKbar(props.list))
 	})
-	useHotkeys('esc', () => setDisplayFunc(false), {
-		enableOnTags: ['INPUT'],
-	})
+	useHotkeys(
+		'esc',
+		() => {
+			// non-home location, esc to go back to last location
+			if (location.length >= 2) {
+				dispatch(goToKbarLocation(location[location.length - 2]))
+			} else {
+				// home location, esc to hide kbar
+				dispatch(deactivateKbar())
+			}
+		},
+		{
+			enableOnTags: ['INPUT'],
+		}
+	)
 
 	// disbale body pointer events when kbar is open
 	useEffect(() => {
-		setBodyPointerEvents(!display)
+		setBodyPointerEvents(!visible)
 
 		return () => {
 			setBodyPointerEvents(true)
 		}
-	}, [display])
+	}, [visible])
 
 	return (
-		<KbarContextProvider
-			value={{
-				list: props.list,
-				keyBinding: props.keyBinding,
-				loading: kbarLoading,
-				placeholder: props.placeholder || 'What are you looking for?',
-				inputValue: kbarInputValue,
-				setLoading,
-				setInputValue,
-				setDisplay: setDisplayFunc,
-			}}
-		>
-			{display && (
-				<>
-					<div
-						className={`absolute bg-gray-50/90 dark:bg-black/70 h-screen w-full z-40 pointer-events-auto ${
-							beforeHide ? 'animate-kbarBgOut' : 'animate-kbarBg'
-						}`}
-						onClick={() => setDisplayFunc(false)}
-					/>
-					<KbarContent beforeHide={beforeHide} />
-				</>
-			)}
-		</KbarContextProvider>
+		visible && (
+			<KbarContextProvider
+				value={{
+					keyBinding: props.keyBinding,
+					inputValue: kbarInputValue,
+					setInputValue,
+				}}
+			>
+				<div
+					className={`absolute bg-gray-50/90 dark:bg-black/70 h-screen w-full z-40 pointer-events-auto ${
+						animation === 'out' ? 'animate-kbarBgOut' : 'animate-kbarBg'
+					}`}
+					onClick={() => dispatch(deactivateKbar())}
+				/>
+				<KbarPanel />
+			</KbarContextProvider>
+		)
 	)
 }
 

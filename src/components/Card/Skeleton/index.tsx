@@ -1,10 +1,10 @@
 import { useTheme } from 'next-themes'
-import dynamic from 'next/dynamic'
-
-const ContentLoader = dynamic(
-	() => import('react-content-loader').then((mod) => mod.default),
-	{ ssr: false }
-)
+import ContentLoader from 'react-content-loader'
+// import dynamic from 'next/dynamic'
+// const ContentLoader = dynamic(
+// 	() => import('react-content-loader').then((mod) => mod.default),
+// 	{ ssr: false }
+// )
 
 export default function CardSkeleton() {
 	const { resolvedTheme } = useTheme()
@@ -16,8 +16,8 @@ export default function CardSkeleton() {
 				width={100}
 				style={{ width: '100%' }}
 				height={100}
-				backgroundColor={resolvedTheme === 'dark' ? '#52525b' : '#f3f3f3'}
-				foregroundColor={resolvedTheme === 'dark' ? '#71717a' : '#ecebeb'}
+				backgroundColor={resolvedTheme === 'dark' ? '#525252' : '#f3f3f3'}
+				foregroundColor={resolvedTheme === 'dark' ? '#737373' : '#ecebeb'}
 			>
 				<rect x="0" y="0" rx="5" ry="5" width="31%" height="100" />
 				<rect x="34%" y="0" rx="5" ry="5" width="95%" height="30" />

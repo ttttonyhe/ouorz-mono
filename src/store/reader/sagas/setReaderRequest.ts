@@ -1,12 +1,10 @@
 import { put } from 'redux-saga/effects'
-import {
-	setReaderAnimation,
-	SetReaderRequestAction,
-	showReader,
-} from '../actions'
+import { setReaderAnimation, showReader } from '../actions'
 import { setReader } from '../actions'
 
-export default function* setReaderRequstSaga(action: SetReaderRequestAction) {
+export default function* setReaderRequstSaga(
+	action: ReturnType<typeof setReader>
+) {
 	try {
 		if (action.payload.postData) {
 			// update post data in the store
@@ -19,6 +17,6 @@ export default function* setReaderRequstSaga(action: SetReaderRequestAction) {
 			throw new Error('No post data provided')
 		}
 	} catch (error) {
-		console.log(error)
+		console.error(error)
 	}
 }

@@ -15,13 +15,12 @@ export type KbarListItem = {
 	action?: () => void
 	description?: string
 	hoverable?: boolean
+	singleton?: boolean
 }
 
 export interface KbarProps {
 	list: KbarListItem[]
 	keyBinding?: string[]
-	placeholder?: string
-	inputValue?: string
 }
 
 export default Kbar

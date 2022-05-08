@@ -10,6 +10,6 @@ export default function* hideReaderRequstSaga() {
 		// hide the reader
 		yield put(hideReader())
 	} catch (error) {
-		console.log(error)
+		console.error(error)
 	}
 }

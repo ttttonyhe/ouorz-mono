@@ -84,6 +84,7 @@ module.exports = {
 				kbarOut: '200ms ease 0s 1 normal forwards running kbarOut',
 				kbarBg: '200ms ease 0s 1 normal none running opacityProgressIn',
 				kbarBgOut: '200ms ease 0s 1 normal forwards running opacityProgressOut',
+				kbarTransition: '200ms ease 0s 1 normal none running kbarTransition',
 				waveHand: 'wavingHand ease-in-out 1.5s 3',
 				waveHandAgain: 'wavingHand ease-in-out 1.5s infinite',
 			},
@@ -169,6 +170,17 @@ module.exports = {
 					'100%': {
 						opacity: 0,
 						transform: 'scale(0.95, 0.95)',
+					},
+				},
+				kbarTransition: {
+					'0%': {
+						transform: 'scale(1)',
+					},
+					'50%': {
+						transform: 'scale(0.98)',
+					},
+					'100%': {
+						transform: 'scale(1)',
 					},
 				},
 				wavingHand: {
