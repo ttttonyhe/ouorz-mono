@@ -2,33 +2,17 @@ import React, { useContext, useEffect, useState, useRef } from 'react'
 import dynamic from 'next/dynamic'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
-import { useHotkeys } from 'react-hotkeys-hook'
 import { useDispatch, useSelector } from '~/hooks'
 import { selectKbar } from '~/store/kbar/selectors'
 import { kbarContext } from './context'
 import Tabs, { TabItemProps } from '../Tabs'
+import HotkeyHelper from '../Helpers/hotkey'
 import Icon from '~/components/Icon'
-import { KbarListItem } from '.'
 import { deactivateKbar, goToKbarLocation } from '~/store/kbar/actions'
 const ContentLoader = dynamic(
 	() => import('react-content-loader').then((mod) => mod.default),
 	{ ssr: false }
 )
-
-// Hotkey helper component
-const HotkeyHelper = ({ item }: { item: KbarListItem }) => {
-	useHotkeys(
-		`shift+${item.shortcut.join('+')}`,
-		(e) => {
-			e.preventDefault()
-			item.action()
-		},
-		{
-			enableOnTags: ['INPUT'],
-		}
-	)
-	return <input hidden data-shortcut={`shift+${item.shortcut.join('+')}`} />
-}
 
 // Kbar list helper component
 const ListComponent = ({
@@ -87,7 +71,7 @@ const KbarPanel = () => {
 	const [tabsListItems, setTabsListItems] = useState<TabItemProps[]>([])
 
 	useEffect(() => {
-		// Preprocess items list
+		// Decorate list item actions
 		currentList.map((item) => {
 			// create action functions for link items
 			let actionFunc = item.action
@@ -110,7 +94,7 @@ const KbarPanel = () => {
 			}
 		})
 
-		// Construct items data for Tabs component
+		// Construct data for vertical Tabs component
 		const initialTabsListItems = currentList.map((item) => {
 			return {
 				label: item.label,
@@ -165,7 +149,7 @@ const KbarPanel = () => {
 		setTabsListItems(initialTabsListItems)
 	}, [currentList])
 
-	/* Searching Feature */
+	// Search list items
 	useEffect(() => {
 		const resultList = initalListItems.filter((item) => {
 			// filter out unhoverable items when input value is not empty

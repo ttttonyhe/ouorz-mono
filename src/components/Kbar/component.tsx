@@ -51,7 +51,6 @@ const Kbar = (props: KbarProps) => {
 		visible && (
 			<KbarContextProvider
 				value={{
-					keyBinding: props.keyBinding,
 					inputValue: kbarInputValue,
 					setInputValue,
 				}}

@@ -1,7 +1,6 @@
 import { createContext } from 'react'
 
 export type KbarContext = {
-	keyBinding: string[]
 	inputValue: string
 	setInputValue: (value: string) => void
 }
