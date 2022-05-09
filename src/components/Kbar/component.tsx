@@ -56,6 +56,7 @@ const Kbar = (props: KbarProps) => {
 				}}
 			>
 				<div
+					data-cy="kbar-bg"
 					className={`absolute bg-gray-50/90 dark:bg-black/70 h-screen w-full z-40 pointer-events-auto ${
 						animation === 'out' ? 'animate-kbarBgOut' : 'animate-kbarBg'
 					}`}

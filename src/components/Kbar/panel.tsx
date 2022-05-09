@@ -163,7 +163,10 @@ const KbarPanel = () => {
 	}, [inputValue, initalListItems])
 
 	return (
-		<div className="w-screen -ml-10 h-screen flex justify-center pointer-events-auto">
+		<div
+			data-cy="kbar-panel"
+			className="w-screen -ml-10 h-screen flex justify-center pointer-events-auto"
+		>
 			{
 				// register shortcuts of list items
 				currentList.map((item, index) => {
@@ -185,6 +188,7 @@ const KbarPanel = () => {
 			>
 				<div className="h-[60px] border-b dark:border-gray-700 flex">
 					<input
+						data-cy="kbar-input"
 						placeholder={placeholder}
 						onChange={(e) => setInputValue(e.target.value)}
 						autoFocus
@@ -207,6 +211,7 @@ const KbarPanel = () => {
 					</div>
 				</div>
 				<div
+					data-cy="kbar-list"
 					ref={verticalListWrapper}
 					className={`px-2.5 py-2.5 overflow-hidden ${
 						!loading && 'overflow-y-auto'

@@ -234,6 +234,7 @@ const Tabs = (props: TabsProps) => {
 		>
 			<div ref={highlighterRef} className="tabs-highlighter z-0" />
 			<ul
+				data-cy="tabs-list"
 				className={`items-center list-none ${
 					direction === 'vertical'
 						? 'grid grid-flow-row'

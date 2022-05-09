@@ -46,7 +46,7 @@ New site is in planning, stay tuned :)
 <br/>
 
 ## Summary of Tech Stacks
-Super opinionated, a complete overkill.
+Super opinionated, completely overkill.
 
 + TypeScript
 + React.js / Next.js
@@ -63,8 +63,8 @@ Super opinionated, a complete overkill.
   - WordPress REST API
 + Error Logging
   - Sentry
-+ Testing
-  - Cypress (currently just some smoke tests)
++ E2E Testing
+  - Cypress
 + Linting
   - CommitLint
   - ESLint
