@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Icon from '~/components/Icon'
 import { useDispatch, useSelector } from '~/hooks'
-import { hideKbar } from '~/store/kbar/actions'
+import { deactivateKbar } from '~/store/kbar/actions'
 import { selectKbar } from '~/store/kbar/selectors'
 import smoothScroll from 'smoothscroll-polyfill'
 
@@ -49,7 +49,7 @@ export default function Footer() {
 			}
 		}
 		// Hide kbar on route change
-		visible && dispatch(hideKbar())
+		visible && dispatch(deactivateKbar())
 	}, [pathname, resolvedTheme])
 
 	if (!mounted) return null

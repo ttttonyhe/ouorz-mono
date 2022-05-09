@@ -11,7 +11,6 @@ export const UPDATE_KBAR_LOCATION = 'UPDATE_KBAR_LOCATION'
 // Actions not watched by sagas
 export const SHOW_KBAR = 'SHOW_KBAR'
 export const HIDE_KBAR = 'HIDE_KBAR'
-export const SET_KBAR_CURRENT_LIST_BY_KEY = 'SET_KBAR_CURRENT_LIST_BY_KEY'
 export const ADD_TO_KBAR_LISTS = 'ADD_TO_KBAR_LISTS'
 export const SET_KBAR_ANIMATION = 'SET_KBAR_ANIMATION'
 export const SET_KBAR_LOCATION = 'SET_KBAR_LOCATION'
@@ -79,15 +78,6 @@ export const goToKbarLocation = (location: string) => {
 		type: GO_TO_KBAR_LOCATION,
 		payload: {
 			location,
-		},
-	}
-}
-
-export const setKbarCurrentListByKey = (key: string) => {
-	return {
-		type: SET_KBAR_CURRENT_LIST_BY_KEY,
-		payload: {
-			key,
 		},
 	}
 }

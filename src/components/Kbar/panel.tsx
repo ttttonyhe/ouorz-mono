@@ -8,11 +8,26 @@ import { kbarContext } from './context'
 import Tabs, { TabItemProps } from '../Tabs'
 import HotkeyHelper from '../Helpers/hotkey'
 import Icon from '~/components/Icon'
-import { deactivateKbar, goToKbarLocation } from '~/store/kbar/actions'
+import {
+	deactivateKbar,
+	goToKbarLocation,
+	KbarLists,
+} from '~/store/kbar/actions'
 const ContentLoader = dynamic(
 	() => import('react-content-loader').then((mod) => mod.default),
 	{ ssr: false }
 )
+
+// Kbar list data helper
+const currentList = (
+	lists: KbarLists,
+	location: string[]
+): KbarLists[string] => {
+	if (location.length - 1 >= 0 && lists[location[location.length - 1]]) {
+		return lists[location[location.length - 1]]
+	}
+	return []
+}
 
 // Kbar list helper component
 const ListComponent = ({
@@ -64,15 +79,17 @@ const KbarPanel = () => {
 	const router = useRouter()
 	const dispatch = useDispatch()
 	const { inputValue, setInputValue } = useContext(kbarContext)
-	const { currentList, placeholder, animation, location, loading } =
+	const { lists, placeholder, animation, location, loading } =
 		useSelector(selectKbar)
 	const verticalListWrapper = useRef<HTMLDivElement>(null)
 	const [initalListItems, setInitalListItems] = useState<TabItemProps[]>([])
 	const [tabsListItems, setTabsListItems] = useState<TabItemProps[]>([])
+	console.error('lists: \n')
+	console.error(lists)
 
 	useEffect(() => {
 		// Decorate list item actions
-		currentList.map((item) => {
+		currentList(lists, location).map((item) => {
 			// create action functions for link items
 			let actionFunc = item.action
 
@@ -95,7 +112,7 @@ const KbarPanel = () => {
 		})
 
 		// Construct data for vertical Tabs component
-		const initialTabsListItems = currentList.map((item) => {
+		const initialTabsListItems = currentList(lists, location).map((item) => {
 			return {
 				label: item.label,
 				icon: item.icon,
@@ -147,7 +164,7 @@ const KbarPanel = () => {
 		})
 		setInitalListItems(initialTabsListItems)
 		setTabsListItems(initialTabsListItems)
-	}, [currentList])
+	}, [lists, location])
 
 	// Search list items
 	useEffect(() => {
@@ -169,7 +186,7 @@ const KbarPanel = () => {
 		>
 			{
 				// register shortcuts of list items
-				currentList.map((item, index) => {
+				currentList(lists, location).map((item, index) => {
 					if (item.shortcut?.length) {
 						return <HotkeyHelper key={index} item={item} />
 					}

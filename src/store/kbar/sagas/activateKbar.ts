@@ -3,8 +3,8 @@ import {
 	activateKbar,
 	addToKbarLists,
 	setKbarAnimation,
+	setKbarLocation,
 	showKbar,
-	setKbarCurrentListByKey,
 } from '../actions'
 
 export default function* activateKbarSaga(
@@ -14,8 +14,9 @@ export default function* activateKbarSaga(
 		if (action.payload.homeList) {
 			// set kbar list data in the store
 			yield put(addToKbarLists('home', action.payload.homeList))
-			// set the current list to the home list
-			yield put(setKbarCurrentListByKey('home'))
+			console.error(action.payload.homeList)
+			// set kbar location in the store
+			yield put(setKbarLocation(['home']))
 			// set animation
 			yield put(setKbarAnimation('in'))
 			// show the reader

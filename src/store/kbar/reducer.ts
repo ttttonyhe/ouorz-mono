@@ -1,8 +1,6 @@
 import { AnyAction } from '@reduxjs/toolkit'
-import type { KbarListItem } from '~/components/Kbar'
 import { KbarLists, SET_KBAR_PLACEHOLDER } from './actions'
 import {
-	SET_KBAR_CURRENT_LIST_BY_KEY,
 	ADD_TO_KBAR_LISTS,
 	SET_KBAR_ANIMATION,
 	SET_KBAR_LOCATION,
@@ -15,7 +13,6 @@ type KbarState = {
 	animation: 'in' | 'out' | 'transition' | ''
 	visible: boolean
 	lists: KbarLists
-	currentList: KbarListItem[]
 	location: string[]
 	loading: boolean
 	placeholder: string
@@ -27,7 +24,6 @@ const KbarInitialState: KbarState = {
 	lists: {
 		home: [],
 	},
-	currentList: [],
 	location: ['home'],
 	loading: false,
 	placeholder: 'Type your command or search...',
@@ -45,11 +41,6 @@ const kbarReducer = (
 					...state.lists,
 					[action.payload.key]: action.payload.list,
 				},
-			}
-		case SET_KBAR_CURRENT_LIST_BY_KEY:
-			return {
-				...state,
-				currentList: state.lists[action.payload.key],
 			}
 		case SHOW_KBAR:
 			return {

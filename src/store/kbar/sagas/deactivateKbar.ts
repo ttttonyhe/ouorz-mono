@@ -9,6 +9,7 @@ export default function* deactivateKbarSaga() {
 		yield delay(200)
 		// hide the reader
 		yield put(hideKbar())
+		//
 	} catch (error) {
 		console.error(error)
 	}
