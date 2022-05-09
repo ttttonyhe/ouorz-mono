@@ -2,6 +2,9 @@ import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Icon from '~/components/Icon'
+import { useDispatch, useSelector } from '~/hooks'
+import { hideKbar } from '~/store/kbar/actions'
+import { selectKbar } from '~/store/kbar/selectors'
 import smoothScroll from 'smoothscroll-polyfill'
 
 const themes = ['system', 'dark', 'light']
@@ -13,6 +16,8 @@ const icons = [
 const targetThemes = ['dark', 'light', 'system']
 
 export default function Footer() {
+	const dispatch = useDispatch()
+	const { visible } = useSelector(selectKbar)
 	const { setTheme, theme, resolvedTheme } = useTheme()
 	const { pathname } = useRouter()
 	const [mounted, setMounted] = useState(false)
@@ -23,6 +28,7 @@ export default function Footer() {
 	}, [])
 
 	useEffect(() => {
+		// Cursor glowing effect
 		if (resolvedTheme === 'dark') {
 			const glowingArea = document.querySelector('.glowing-area')
 			const glowingDivs = document.querySelectorAll('.glowing-div')
@@ -42,6 +48,8 @@ export default function Footer() {
 				}
 			}
 		}
+		// Hide kbar on route change
+		visible && dispatch(hideKbar())
 	}, [pathname, resolvedTheme])
 
 	if (!mounted) return null

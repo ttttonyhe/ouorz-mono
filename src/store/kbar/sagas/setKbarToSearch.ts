@@ -33,7 +33,6 @@ export default function* setKbarToSearchSaga() {
 					internal: `/post/${id}`,
 				},
 				onClick: () => {
-					// terminateSearch()
 					window.location.href = `https://www.ouorz.com/post/${id}`
 				},
 				className: 'w-full !justify-start !p-4',
