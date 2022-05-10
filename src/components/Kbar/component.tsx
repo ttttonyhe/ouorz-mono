@@ -38,8 +38,11 @@ const Kbar = (props: KbarProps) => {
 		}
 	)
 
-	// disbale body pointer events when kbar is open
+	// effects on kbar visibility change
 	useEffect(() => {
+		// clear input value when kbar is closed
+		!visible && setInputValue('')
+		// disbale body pointer events when kbar is open
 		setBodyPointerEvents(!visible)
 
 		return () => {

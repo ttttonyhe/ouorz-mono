@@ -14,7 +14,6 @@ export default function* activateKbarSaga(
 		if (action.payload.homeList) {
 			// set kbar list data in the store
 			yield put(addToKbarLists('home', action.payload.homeList))
-			console.error(action.payload.homeList)
 			// set kbar location in the store
 			yield put(setKbarLocation(['home']))
 			// set animation
