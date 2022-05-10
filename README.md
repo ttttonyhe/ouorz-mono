@@ -21,11 +21,6 @@
 
 <br/>
 
-## Foreword
-New site is in planning, stay tuned :)
-
-<br/>
-
 ## Past Iterations
 - Antony-Nuxt (Nuxt.js / Vue.js v2) [https://github.com/HelipengTony/antony-nuxt](https://github.com/HelipengTony/antony-nuxt)
 - Antony (Vue.js v2) [https://github.com/HelipengTony/antony](https://github.com/HelipengTony/antony)
@@ -110,11 +105,18 @@ yarn run dev
 
 ## Deployment
 ### Next.js
-This project utilizes a combination of Server-side Rendering (SSR) and Incremental Static Generation (ISG):
+This project utilizes a combination of Server-side Rendering (SSR) and (On-demand) Incremental Static Generation (ISG):
 
 ```bash
 yarn run build
 yarn run start
+```
+
+Full static HTML export is work in progress (no due date), branch name: `static`:
+
+```bash
+yarn run build
+yarn run export
 ```
 
 <br/>
@@ -128,5 +130,6 @@ yarn run start
 <br/>
 
 ### WordPress REST API configurations
+> ⚠️ May not be up-to-date all the time
 
 Copy the codes in `src/assets/scripts/vendors/wordpress/functions.php` and add to your WordPress theme's `functions.php`
