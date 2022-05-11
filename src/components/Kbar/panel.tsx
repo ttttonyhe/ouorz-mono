@@ -84,8 +84,6 @@ const KbarPanel = () => {
 	const verticalListWrapper = useRef<HTMLDivElement>(null)
 	const [initalListItems, setInitalListItems] = useState<TabItemProps[]>([])
 	const [tabsListItems, setTabsListItems] = useState<TabItemProps[]>([])
-	console.error('lists: \n')
-	console.error(lists)
 
 	useEffect(() => {
 		// Decorate list item actions
