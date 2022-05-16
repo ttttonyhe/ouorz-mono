@@ -43,9 +43,9 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
 								</span>
 							</a>
 						</h1>
-						<p className="text-3 lg:text-2 text-gray-500 dark:text-gray-200 leading-14 tracking-wide font-light whitespace-normal lg:whitespace-nowrap">
-							Living an absolutely not meaningless life with totally not
-							unachievable goals.
+						<p className="text-3 lg:text-2 text-gray-500 dark:text-gray-200 leading-14 tracking-wider font-light pl-1.5 pb-1.5 pt-1">
+							I'm currently living an absolutely not meaningless life with
+							totally not unachievable goals.
 						</p>
 					</div>
 					<Top />
