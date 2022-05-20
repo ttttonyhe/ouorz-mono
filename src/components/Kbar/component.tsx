@@ -21,6 +21,7 @@ const Kbar = (props: KbarProps) => {
 	useHotkeys('ctrl+k, command+k', (e) => {
 		e.preventDefault()
 		dispatch(activateKbar(props.list))
+		window.ouorzAnalytics.trackEvent('activateKbar', 'hotkey')
 	})
 	useHotkeys(
 		'esc',

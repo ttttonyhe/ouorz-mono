@@ -29,6 +29,7 @@ export default function CardWithOutImage({ item, sticky }: Props) {
 							</Link>
 						</div>
 						<div
+							data-oa="click-postPreview"
 							className="col-start-4 col-end-5 justify-end hidden lg:flex"
 							onClick={() => {
 								dispatch(setReaderRequest(item))

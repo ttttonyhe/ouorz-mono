@@ -10,8 +10,12 @@ import store from '~/store'
 function App({ Component, pageProps }: AppProps) {
 	return (
 		<div>
-			{/* Splitbee Analytics Script */}
-			<Script async src="https://cdn.splitbee.io/sb.js" />
+			{/* Analytics Script */}
+			<Script
+				async defer
+				data-website-id="e3d939fa-1fa0-4c06-adb1-1081d6b6686e"
+				src="https://analytics.ouorz.com/analytics.js"
+			/>
 			{/* NProgress Loading Progress Bar */}
 			<NextNprogress
 				color="#d4d4d8"

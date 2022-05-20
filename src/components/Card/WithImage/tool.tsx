@@ -22,11 +22,10 @@ export const CardTool = ({
 	return (
 		<div className="w-full whitespace-nowrap lg:grid lg:grid-cols-8 lg:gap-3 rounded-md shadow-sm border border-gray-200 dark:border-gray-600 dark:bg-gray-600 overflow-hidden">
 			<div
-				className={`col-start-1 col-end-2 rounded-tl-md rounded-bl-md ${
-					item.post_metas.fineTool.itemImgBorder
-						? 'border-r border-gray-200 dark:border-gray-600'
-						: ''
-				}`}
+				className={`col-start-1 col-end-2 rounded-tl-md rounded-bl-md ${item.post_metas.fineTool.itemImgBorder
+					? 'border-r border-gray-200 dark:border-gray-600'
+					: ''
+					}`}
 				style={{
 					backgroundImage: 'url(' + item.post_img.url + ')',
 					backgroundSize: 'cover',
@@ -46,6 +45,7 @@ export const CardTool = ({
 				<div className="hidden lg:flex justify-end space-x-2">
 					{preview && (
 						<a
+							data-oa="click-postPreview"
 							onClick={() => {
 								dispatch(setReaderRequest(item))
 							}}
@@ -71,9 +71,8 @@ export const CardTool = ({
 export default function CardWithImageTool({ item, sticky }: Props) {
 	return (
 		<div
-			className={`w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border ${
-				sticky ? 'border-t-4 border-t-yellow-200 mb-6' : 'mb-6'
-			}`}
+			className={`w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border ${sticky ? 'border-t-4 border-t-yellow-200 mb-6' : 'mb-6'
+				}`}
 		>
 			<div className="p-5 lg:p-10">
 				<CardTool item={item} preview={true} />

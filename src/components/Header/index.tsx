@@ -56,6 +56,7 @@ const Header = () => {
 				hoverable: false,
 				component: (
 					<div
+						data-oa="click-activateKbar"
 						data-cy="cmdkbutton"
 						className="py-1 px-5 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex lg:flex"
 						onClick={() => dispatch(activateKbar(kbarItems))}
@@ -175,6 +176,7 @@ const Header = () => {
 				shortcut: ['s'],
 				action: () => {
 					dispatch(setKbarToSearch())
+					window.ouorzAnalytics.trackEvent('searchBlogPosts', 'kbar')
 				},
 				description: 'Command',
 				singleton: false,
