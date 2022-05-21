@@ -15,7 +15,7 @@ function App({ Component, pageProps }: AppProps) {
 				async
 				defer
 				data-do-not-track="true"
-				data-domains="ouorz.com"
+				data-domains="www.ouorz.com"
 				data-website-id="e3d939fa-1fa0-4c06-adb1-1081d6b6686e"
 				src="https://analytics.ouorz.com/analytics.js"
 			/>
