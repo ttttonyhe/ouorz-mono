@@ -12,10 +12,6 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     container: cypress/browsers:node16.14.0-chrome99-ff97
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3, 4, 5]
     steps:
       - name: Checkout & Setup Yarn & Install Dependencies
         uses: DerYeger/yarn-setup-action@master
@@ -39,7 +35,6 @@ jobs:
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           record: true
-          parallel: true
           browser: chrome
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
