@@ -64,6 +64,8 @@ Super opinionated, completely overkill.
   - CommitLint
   - ESLint
   - Prettier
++ Analytics
+  - [ouorz-analytics →](https://github.com/HelipengTony/ouorz-analytics)
 
 <br/>
 
