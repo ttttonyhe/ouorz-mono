@@ -12,7 +12,8 @@ function App({ Component, pageProps }: AppProps) {
 		<div>
 			{/* Analytics Script */}
 			<Script
-				async defer
+				async
+				defer
 				data-website-id="e3d939fa-1fa0-4c06-adb1-1081d6b6686e"
 				src="https://analytics.ouorz.com/analytics.js"
 			/>
