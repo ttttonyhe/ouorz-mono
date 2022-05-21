@@ -80,11 +80,11 @@ export default function Pages() {
 						href="https://notion.ouorz.com"
 					/>
 					<PageCard
-						title="DevDiary"
-						des="Development Diary"
+						title="Analytics"
+						des="Visitor statistics"
 						icon="growth"
 						className="text-blue-400"
-						href="https://dev.ouorz.com"
+						href="https://analytics.ouorz.com/share/E4O9QpCn/ouorz-next"
 					/>
 					<PageCard
 						title="Podcast"
