@@ -10,6 +10,7 @@ import {
 	deactivateKbar,
 	goToKbarLocation,
 } from '~/store/kbar/actions'
+import analytics from '~/lib/analytics'
 
 const Kbar = (props: KbarProps) => {
 	const dispatch = useDispatch()
@@ -21,7 +22,7 @@ const Kbar = (props: KbarProps) => {
 	useHotkeys('ctrl+k, command+k', (e) => {
 		e.preventDefault()
 		dispatch(activateKbar(props.list))
-		window.ouorzAnalytics.trackEvent('activateKbar', 'hotkey')
+		analytics.trackEvent('activateKbar', 'hotkey')
 	})
 	useHotkeys(
 		'esc',

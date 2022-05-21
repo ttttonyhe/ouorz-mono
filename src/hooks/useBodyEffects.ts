@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef, Dispatch, SetStateAction } from 'react'
 
-export const useBodyScroll = (): [
-	boolean,
-	Dispatch<SetStateAction<boolean>>
-] => {
+/**
+ * Hook to turn on/off body scrolling
+ */
+const useBodyScroll = (): [boolean, Dispatch<SetStateAction<boolean>>] => {
 	if (typeof document === 'undefined') return [false, (t: boolean) => t]
 
 	const bodyRef = useRef<HTMLElement>(document.body)
@@ -21,7 +21,10 @@ export const useBodyScroll = (): [
 	return [scrollable, setScrollable]
 }
 
-export const useBodyPointerEvents = (): [
+/**
+ * Hook to set body pointerEvents to auto/none
+ */
+const useBodyPointerEvents = (): [
 	boolean,
 	Dispatch<SetStateAction<boolean>>
 ] => {
@@ -40,3 +43,5 @@ export const useBodyPointerEvents = (): [
 
 	return [pointerEvents, setPointerEvents]
 }
+
+export { useBodyScroll, useBodyPointerEvents }

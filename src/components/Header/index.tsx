@@ -8,6 +8,7 @@ import { setKbarToSearch, activateKbar } from '~/store/kbar/actions'
 import { HeaderTransition, OffsetTransition } from '../Motion'
 import Tabs from '../Tabs'
 import Kbar from '../Kbar'
+import analytics from '~/lib/analytics'
 
 const Header = () => {
 	const { setTheme, resolvedTheme } = useTheme()
@@ -176,7 +177,7 @@ const Header = () => {
 				shortcut: ['s'],
 				action: () => {
 					dispatch(setKbarToSearch())
-					window.ouorzAnalytics.trackEvent('searchBlogPosts', 'kbar')
+					analytics.trackEvent('searchBlogPosts', 'kbar')
 				},
 				description: 'Command',
 				singleton: false,
