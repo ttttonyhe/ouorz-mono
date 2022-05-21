@@ -8,10 +8,8 @@ on:
       - main
 jobs:
   cypress:
-    name: Testing
-    timeout-minutes: 15
     runs-on: ubuntu-latest
-    container: cypress/browsers:node16.14.0-chrome99-ff97
+    name: Testing
     steps:
       - name: Checkout & Setup Yarn & Install Dependencies
         uses: DerYeger/yarn-setup-action@master
