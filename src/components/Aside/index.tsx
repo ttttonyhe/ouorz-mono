@@ -65,7 +65,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 		 * Scroll event handler
 		 */
 		const handleScroll = () => {
-			const scrollPosition = window.pageYOffset + 80
+			const scrollPosition = window.pageYOffset - 250
 			const listDiv = document.getElementById('toc')
 
 			if (scrollPosition >= currentHeaderOffset) {
