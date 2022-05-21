@@ -1,5 +1,6 @@
 {
   "baseUrl": "http://localhost:3000",
   "video": false,
-  "screenshotOnRunFailure": true
+  "screenshotOnRunFailure": true,
+  "projectId": "etr8wp"
 }

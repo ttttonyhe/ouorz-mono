@@ -8,8 +8,15 @@ on:
       - main
 jobs:
   cypress:
-    runs-on: ubuntu-latest
     name: Testing
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node16.14.0-chrome99-ff97
+    needs: install
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3, 4, 5]
     steps:
       - name: Checkout & Setup Yarn & Install Dependencies
         uses: DerYeger/yarn-setup-action@master
@@ -30,7 +37,15 @@ jobs:
         with:
           build: yarn run build
           start: yarn run start
+          wait-on: "http://localhost:3000"
+          wait-on-timeout: 120
+          record: true
+          parallel: true
           browser: chrome
+        env:
+          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Cache Next.js Build
         uses: actions/cache@v2
         with:
