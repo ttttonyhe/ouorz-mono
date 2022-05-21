@@ -8,7 +8,7 @@ import { setKbarToSearch, activateKbar } from '~/store/kbar/actions'
 import { HeaderTransition, OffsetTransition } from '../Motion'
 import Tabs from '../Tabs'
 import Kbar from '../Kbar'
-import analytics from '~/lib/analytics'
+import useAnalytics from '~/hooks/analytics'
 
 const Header = () => {
 	const { setTheme, resolvedTheme } = useTheme()
@@ -16,6 +16,7 @@ const Header = () => {
 	const dispatch = useDispatch()
 	const headerRef = useRef<HTMLDivElement>(null)
 	const titleRef = useRef<HTMLDivElement>(null)
+	const analytics = useAnalytics()
 
 	const TitleComponent = () => (
 		<div

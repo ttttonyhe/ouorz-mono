@@ -16,7 +16,7 @@ const dummyReturn = {
 /**
  * Tracking methods provided by ouorz-analytics
  */
-const analytics = () => {
+const useAnalytics = () => {
 	// return dummy functions when in development or window is not available
 	if (process.env.NODE_ENV === 'development' || typeof window === 'undefined') {
 		return dummyReturn
@@ -30,4 +30,4 @@ const analytics = () => {
 	return ouorzAnalytics
 }
 
-export default analytics()
+export default useAnalytics

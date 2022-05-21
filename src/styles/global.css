@@ -72,10 +72,8 @@
 	font-size: 16px;
 	font-style: normal;
 	padding: 20px 25px 16px 75px;
-	@apply rounded-md;
-	border: 2px solid #e9e9e9;
-	@apply dark:border-gray-500;
 	color: #777;
+	@apply rounded-md dark:bg-gray-700 dark:border-gray-500;
 }
 
 .prose blockquote p {
@@ -85,12 +83,11 @@
 
 .dark .prose blockquote p {
 	margin: 0px;
-	color: #ffffff !important;
+	color: #f1f2f3 !important;
 }
 
 .prose img {
-	@apply rounded-md;
-	@apply m-0;
+	@apply m-0 rounded-md dark:bg-slate-50;
 }
 
 .prose h1,
@@ -112,9 +109,7 @@ h5 {
 	box-sizing: border-box;
 	color: rgba(0, 0, 0, 0.6);
 	margin: 15px 0;
-	@apply shadow-sm;
-	@apply border;
-	@apply rounded-md;
+	@apply shadow-sm border rounded-md dark:bg-gray-700 dark:border-gray-500 dark:bg-none;
 }
 
 .prose .warp-post-embed:hover {
@@ -361,6 +356,10 @@ h5 {
 
 .prose pre {
 	@apply dark:bg-gray-700;
+}
+
+.prose code {
+	@apply dark:text-gray-400;
 }
 
 .prose pre code::-webkit-scrollbar {

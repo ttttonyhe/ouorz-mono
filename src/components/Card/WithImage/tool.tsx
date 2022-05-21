@@ -46,7 +46,7 @@ export const CardTool = ({
 				<div className="hidden lg:flex justify-end space-x-2">
 					{preview && (
 						<a
-							data-oa="click-postPreview"
+							data-oa="click-previewPost"
 							onClick={() => {
 								dispatch(setReaderRequest(item))
 							}}

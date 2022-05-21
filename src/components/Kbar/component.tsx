@@ -10,13 +10,14 @@ import {
 	deactivateKbar,
 	goToKbarLocation,
 } from '~/store/kbar/actions'
-import analytics from '~/lib/analytics'
+import useAnalytics from '~/hooks/analytics'
 
 const Kbar = (props: KbarProps) => {
 	const dispatch = useDispatch()
 	const { visible, animation, location } = useSelector(selectKbar)
 	const [kbarInputValue, setInputValue] = useState('')
 	const [_, setBodyPointerEvents] = useBodyPointerEvents()
+	const analytics = useAnalytics()
 
 	// register keybinding that triggers/hides the kbar
 	useHotkeys('ctrl+k, command+k', (e) => {
