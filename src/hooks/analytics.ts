@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-import { useEffect, useState } from 'react'
 
 // Dummy functions for development environment
 const dummyTrackView = (_url?: string, _referrer?: string, _uuid?: string) => {}
@@ -15,27 +14,28 @@ const dummyReturn = {
 }
 
 /**
- * Tracking methods provided by ouorz-analytics
+ *	Get the analytics object
  */
-const useAnalytics = () => {
-	const [ouorzAnalytics, setOuorzAnalytics] = useState(dummyReturn)
+const getAnalytics = () => {
+	if (process.env.NODE_ENV === 'development' || typeof window === 'undefined') {
+		return dummyReturn
+	}
 
-	useEffect(() => {
-		const windowOuorzAnalytics = window.ouorzAnalytics
+	const ouorzAnalytics = window.ouorzAnalytics
 
-		if (
-			process.env.NODE_ENV === 'development' ||
-			typeof window === 'undefined' ||
-			!windowOuorzAnalytics
-		) {
-			console.error('Analytics is not available')
-			return
-		}
-
-		setOuorzAnalytics(windowOuorzAnalytics)
-	}, [])
+	if (!ouorzAnalytics) return dummyReturn
 
 	return ouorzAnalytics
+}
+
+/**
+ * Hook that retrieve tracking methods provided by ouorz-analytics
+ */
+const useAnalytics = () => {
+	return {
+		trackView: getAnalytics().trackView,
+		trackEvent: getAnalytics().trackEvent,
+	}
 }
 
 export default useAnalytics

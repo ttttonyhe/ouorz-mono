@@ -16,7 +16,7 @@ const Header = () => {
 	const dispatch = useDispatch()
 	const headerRef = useRef<HTMLDivElement>(null)
 	const titleRef = useRef<HTMLDivElement>(null)
-	const analytics = useAnalytics()
+	const { trackEvent } = useAnalytics()
 
 	const TitleComponent = () => (
 		<div
@@ -178,7 +178,7 @@ const Header = () => {
 				shortcut: ['s'],
 				action: () => {
 					dispatch(setKbarToSearch())
-					analytics.trackEvent('searchBlogPosts', 'kbar')
+					trackEvent('searchBlogPosts', 'kbar')
 				},
 				description: 'Command',
 				singleton: false,

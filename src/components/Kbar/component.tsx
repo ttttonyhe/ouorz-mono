@@ -17,13 +17,13 @@ const Kbar = (props: KbarProps) => {
 	const { visible, animation, location } = useSelector(selectKbar)
 	const [kbarInputValue, setInputValue] = useState('')
 	const [_, setBodyPointerEvents] = useBodyPointerEvents()
-	const analytics = useAnalytics()
+	const { trackEvent } = useAnalytics()
 
 	// register keybinding that triggers/hides the kbar
 	useHotkeys('ctrl+k, command+k', (e) => {
 		e.preventDefault()
 		dispatch(activateKbar(props.list))
-		analytics.trackEvent('activateKbar', 'hotkey')
+		trackEvent('activateKbar', 'hotkey')
 	})
 	useHotkeys(
 		'esc',
