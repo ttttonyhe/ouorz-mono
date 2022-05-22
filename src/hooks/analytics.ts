@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+import { useEffect, useState } from 'react'
 
 // Dummy functions for development environment
 const dummyTrackView = (_url?: string, _referrer?: string, _uuid?: string) => {}
@@ -17,16 +18,23 @@ const dummyReturn = {
  * Tracking methods provided by ouorz-analytics
  */
 const useAnalytics = () => {
-	// return dummy functions when in development or window is not available
-	if (process.env.NODE_ENV === 'development' || typeof window === 'undefined') {
-		return dummyReturn
-	}
+	const [ouorzAnalytics, setOuorzAnalytics] = useState(dummyReturn)
 
-	const ouorzAnalytics = window.ouorzAnalytics
+	useEffect(() => {
+		const windowOuorzAnalytics = window.ouorzAnalytics
 
-	if (!ouorzAnalytics) return dummyReturn
+		if (
+			process.env.NODE_ENV === 'development' ||
+			typeof window === 'undefined' ||
+			!windowOuorzAnalytics
+		) {
+			console.error('Analytics is not available')
+			return
+		}
 
-	// return a function that takes a config object
+		setOuorzAnalytics(windowOuorzAnalytics)
+	}, [])
+
 	return ouorzAnalytics
 }
 
