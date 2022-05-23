@@ -21,7 +21,7 @@
 
 <br/>
 
-## `apps/main`
+## apps/main
 ### Past Iterations
 - Antony-Nuxt (Nuxt.js / Vue.js v2) [https://github.com/HelipengTony/antony-nuxt](https://github.com/HelipengTony/antony-nuxt)
 - Antony (Vue.js v2) [https://github.com/HelipengTony/antony](https://github.com/HelipengTony/antony)
@@ -71,10 +71,11 @@ Super opinionated, completely overkill.
 ### Project Setup
 ```bash
 git clone git@github.com:HelipengTony/ouorz-mono.git
+yarn install
 cd apps/main
 ```
 
-Create a `.env` file with your configuration, see below for a list of environmental variables used in this project:
+Create a `.env` file with your configuration, see below for a list of environment variables used in this project:
 
 + LeanCloud:
   - NEXT_PUBLIC_LC_KEY
@@ -90,7 +91,6 @@ Create a `.env` file with your configuration, see below for a list of environmen
   - REVALIDATION_REQUEST_TOKEN
 
 ```
-yarn install
 yarn run dev
 ```
 
@@ -103,8 +103,25 @@ Copy the codes in `apps/main/src/assets/scripts/vendors/wordpress/functions.php`
 
 <br/>
 
-## `apps/analytics`
+## apps/analytics
 See [apps/analytics/README.md](https://github.com/HelipengTony/ouorz-mono/tree/main/apps/analytics#readme) for more details
+
+### Project Setup
+```bash
+git clone git@github.com:HelipengTony/ouorz-mono.git
+yarn install
+cd apps/analytics
+```
+
+Create a `.env` file with your configuration, see below for a list of environment variables used in this project:
+
++ DATABASE_URL
++ HASH_SALT
+
+```
+yarn run build-postgresql-client
+yarn run dev
+```
 
 <br/>
 
@@ -117,7 +134,7 @@ Not really following this though...
 <br/>
 
 ## Deployment
-### `apps/main`
+### apps/main
 This project utilizes a combination of Server-side Rendering (SSR) and (On-demand) Incremental Static Generation (ISG):
 
 ```bash
@@ -127,7 +144,7 @@ yarn run start:main
 
 <br/>
 
-### `apps/analytics`
+### apps/analytics
 See [apps/analytics/README.md](https://github.com/HelipengTony/ouorz-mono/tree/main/apps/analytics#readme) for more details
 
 <br/>
