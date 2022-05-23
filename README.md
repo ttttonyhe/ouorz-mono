@@ -97,7 +97,8 @@ yarn run dev
 <br/>
 
 ### WordPress REST API configurations
-> ⚠️ May not be up-to-date all the time
+> **Warning**:
+> May not be up-to-date all the time
 
 Copy the codes in `apps/main/src/assets/scripts/vendors/wordpress/functions.php` and add them to your WordPress theme's `functions.php`
 
@@ -105,6 +106,8 @@ Copy the codes in `apps/main/src/assets/scripts/vendors/wordpress/functions.php`
 
 ## apps/analytics
 See [apps/analytics/README.md](https://github.com/HelipengTony/ouorz-mono/tree/main/apps/analytics#readme) for more details
+
+<br/>
 
 ### Project Setup
 ```bash
