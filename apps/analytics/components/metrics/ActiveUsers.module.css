@@ -1,0 +1,14 @@
+.container {
+	display: flex;
+	align-items: center;
+}
+
+.text {
+	display: flex;
+	font-size: var(--font-size-normal);
+}
+
+.value {
+	font-weight: 600;
+	margin-right: 4px;
+}

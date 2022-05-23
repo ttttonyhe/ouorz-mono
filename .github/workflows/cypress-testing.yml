@@ -3,20 +3,34 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'apps/main/**'
+      - '.github/workflows/**'
   pull_request:
     branches:
       - main
+    paths:
+      - 'apps/main/**'
+      - '.github/workflows/**'
 jobs:
   cypress:
-    runs-on: ubuntu-latest
     name: Testing
+    timeout-minutes: 15
+    runs-on: ${{ matrix.os }}
+    env:
+       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+    strategy:
+        matrix:
+          os: [ubuntu-latest, macos-latest]
     steps:
       - name: Checkout & Setup Yarn & Install Dependencies
         uses: DerYeger/yarn-setup-action@master
         with:
           node-version: 16
-      - name: Setup Environmental Variables
+      - name: Setup Environmental Variables for the Main App
         run: |
+          cd apps/main
           touch .env
           echo NEXT_PUBLIC_SENTRY_DSN=${{ secrets.SENTRY_DSN }} >> .env
           echo SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} >> .env
@@ -25,11 +39,12 @@ jobs:
           echo NEXT_PUBLIC_BUTTONDOWN_TOKEN=${{ secrets.BUTTONDOWN_TOKEN }} >> .env
           echo NEXT_PUBLIC_LC_KEY=${{ secrets.LC_KEY }} >> .env
           echo NEXT_PUBLIC_LC_ID=${{ secrets.LC_ID }} >> .env
-      - name: Run Cypress
+      - name: Run Cypress for the Main App
         uses: cypress-io/github-action@v2
         with:
-          build: yarn run build
-          start: yarn run start
+          project: apps/main
+          build: yarn run build:main
+          start: yarn run start:main
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           record: true
@@ -38,12 +53,5 @@ jobs:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Cache Next.js Build
-        uses: actions/cache@v2
-        with:
-          path: ${{ github.workspace }}/.next/cache
-          # Generate a new cache whenever packages or source files change.
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]sx?') }}
-          # If source files changed but packages didn't, rebuild from a prior cache.
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+      - name: 'Build Analytics App'
+        run: yarn run build:analytics

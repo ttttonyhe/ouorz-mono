@@ -1,0 +1,15 @@
+{
+  "name": "@ouorz/tsconfig",
+  "version": "0.0.1",
+  "main": "index.js",
+  "description": "TypeScript config for ouorz projects",
+  "license": "GPL-3.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "base.json",
+    "next.json",
+    "react.json"
+  ]
+}

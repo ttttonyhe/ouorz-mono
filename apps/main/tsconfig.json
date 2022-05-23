@@ -1,0 +1,9 @@
+{
+	"extends": "@ouorz/tsconfig/next.json",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["src/*"]
+		}
+	}
+}

@@ -1,0 +1,18 @@
+{
+  "name": "@ouorz/eslint-config-react",
+  "version": "0.0.1",
+  "main": "index.js",
+  "description": "ESLint config for ouorz projects using React.js",
+  "license": "GPL-3.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "eslint": "^8.16.0",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.0"
+  }
+}

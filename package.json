@@ -1,91 +1,51 @@
 {
-  "name": "ouorz-next",
-  "version": "0.0.2",
+  "name": "ouorz-mono",
+  "version": "0.0.1",
   "private": true,
-  "license": "SEE LICENSE IN LICENSE",
   "engines": {
+    "npm": ">=7.0.0",
     "node": ">=14.0.0 <17.0.0"
   },
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint ./src -c .eslintrc.json --fix --ext js,ts,tsx,json",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "upgrade:dev": "ncu --upgrade && yarn install",
-    "upgrade:prod": "ncu --upgrade && yarn install --ignore-optional"
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ],
+    "nohoist": [
+      "**"
+    ]
   },
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.8.1",
-    "@sentry/nextjs": "^6.19.7",
-    "cors": "^2.8.5",
-    "dotenv-webpack": "^7.1.0",
-    "html-to-text": "^8.2.0",
-    "next": "^12.1.6",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-hotkeys-hook": "^3.4.6",
-    "react-redux": "^8.0.1",
-    "react-snowfall": "^1.1.2",
-    "redux-saga": "^1.1.3",
-    "rss": "^1.2.2",
-    "sharp": "^0.30.4",
-    "styled-components": "^5.3.5"
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "dev:main": "turbo run dev --filter=@ouorz/main",
+    "dev:analytics": "turbo run dev --filter=@ouorz/analytics",
+    "lint": "turbo run lint --parallel",
+    "lint:main": "turbo run lint --filter=@ouorz/main",
+    "lint:analytics": "turbo run lint --filter=@ouorz/analytics",
+    "test": "turbo run test --parallel",
+    "test:main": "turbo run test --filter=@ouorz/main",
+    "build": "turbo run build --parallel",
+    "build:main": "turbo run @ouorz/main#build --filter=@ouorz/main",
+    "build:analytics": "turbo run @ouorz/analytics#build --filter=@ouorz/analytics",
+    "start": "turbo run start --parallel",
+    "start:main": "turbo run start --filter=@ouorz/main",
+    "start:analytics": "turbo run start --filter=@ouorz/analytics",
+    "upgrade:dev": "turbo run upgrade:dev --parallel --filter=./apps/* && yarn install",
+    "upgrade:dev:main": "turbo run upgrade:dev --filter=@ouorz/main && yarn install",
+    "upgrade:prod:main": "turbo run upgrade:prod --filter=@ouorz/main && yarn install",
+    "clean": "turbo run clean && rm -rf node_modules"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.0",
-    "@commitlint/config-conventional": "^17.0.0",
-    "@next/eslint-plugin-next": "^12.1.6",
-    "@tailwindcss/typography": "^0.5.2",
-    "@types/lodash": "^4.14.182",
-    "@types/node": "^17.0.35",
-    "@types/react": "^18.0.9",
-    "@types/react-highlight": "^0.12.5",
-    "@types/rss": "^0.0.29",
-    "@types/smoothscroll-polyfill": "^0.3.1",
-    "@types/styled-components": "^5.1.25",
-    "@typescript-eslint/eslint-plugin": "^5.25.0",
-    "@typescript-eslint/parser": "^5.25.0",
-    "autoprefixer": "^10.4.7",
-    "comma-number": "^2.1.0",
-    "cssnano": "^5.1.9",
-    "eslint": "^8.16.0",
-    "eslint-config-next": "^12.1.6",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.30.0",
-    "highlight.js": "^11.5.1",
-    "husky": ">=8",
-    "lint-staged": ">=12",
-    "nexment": "^0.0.669",
-    "next-themes": "^0.2.0",
-    "nextjs-progressbar": "^0.0.14",
-    "nextjs-redirect": "^6.0.0",
-    "postcss": "^8.4.14",
-    "prettier": "^2.6.2",
-    "prettier-eslint": "^15.0.0",
-    "react-content-loader": "^6.2.0",
-    "react-h5-audio-player": "^3.8.4",
-    "react-highlight": "^0.14.0",
-    "react-infinite-scroll-component": "^6.1.0",
-    "react-timeago": "^6.2.1",
-    "smoothscroll-polyfill": "^0.4.4",
-    "swr": "^1.3.0",
-    "tailwindcss": "^3.0.24",
-    "ts-loader": "^9.3.0",
-    "typescript": "^4.6.4",
-    "webpack": "^5.72.1"
-  },
-  "optionalDependencies": {
-    "@bahmutov/add-typescript-to-cypress": "^2.1.2",
-    "@cypress/webpack-preprocessor": "^5.11.1",
-    "@testing-library/cypress": "^8.0.2",
-    "@types/chai": "^4.3.1",
-    "@types/jest": "^27.5.1",
-    "@types/mocha": "^9.1.1",
-    "cypress": "^9.6.1",
-    "eslint-plugin-cypress": "^2.12.1"
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "stylelint": "latest",
+    "stylelint-config-css-modules": "latest",
+    "stylelint-config-prettier": "latest",
+    "stylelint-config-recommended": "latest",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "prettier": "latest",
+    "turbo": "latest"
   },
   "husky": {
     "hooks": {
@@ -93,9 +53,9 @@
     }
   },
   "lint-staged": {
-    "*.+(ts|tsx)": [
-      "eslint ./src -c .eslintrc.json --fix --ext js,ts,tsx,json",
-      "prettier --write"
+    "apps/next/**/*.+(ts|tsx)": [
+      "yarn run lint:main",
+      "prettier --write apps/next/**/*.+(ts|tsx)"
     ]
   }
 }

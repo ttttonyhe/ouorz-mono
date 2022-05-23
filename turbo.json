@@ -1,0 +1,78 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "baseBranch": "origin/main",
+  "pipeline": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "@ouorz/main#build": {
+      "dependsOn": [
+        "^build",
+        "$GITHUB_TOKEN",
+        "$NEXT_PUBLIC_LC_KEY",
+        "$NEXT_PUBLIC_LC_ID",
+        "$NEXT_PUBLIC_BUTTONDOWN_TOKEN",
+        "$NEXT_PUBLIC_SENTRY_DSN",
+        "$SENTRY_IGNORE_API_RESOLUTION_ERROR",
+        "$SENTRY_AUTH_TOKEN",
+        "$SENTRY_PROJECT",
+        "$SENTRY_ORG",
+        "$REVALIDATION_REQUEST_TOKEN"
+      ],
+      "outputs": [
+        ".next/**"
+      ]
+    },
+    "@ouorz/analytics#build": {
+      "dependsOn": [
+        "^build",
+        "$DATABASE_URL",
+        "$HASH_SALT"
+      ],
+      "outputs": [
+        ".next/**"
+      ]
+    },
+    "test": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": []
+    },
+    "start": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": []
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    },
+    "clean": {
+      "outputs": [],
+      "cache": false
+    },
+    "upgrade:dev": {
+      "outputs": [
+        "package.json"
+      ]
+    },
+    "upgrade:prod": {
+      "outputs": [
+        "package.json"
+      ]
+    }
+  },
+  "globalDependencies": [
+    "tsconfig.json",
+    ".env.*"
+  ],
+  "remoteCache": {
+    "signature": true
+  }
+}

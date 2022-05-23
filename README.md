@@ -1,17 +1,17 @@
 <div align="center">
-  <h1>OUORZ-NEXT</h1>
-  <p>Front-end code that powers <a href="https://www.ouorz.com" target="_blank">www.ouorz.com</a></p>
+  <h1>OUORZ-MONO</h1>
+  <p>Front-end codes that power <a href="https://www.ouorz.com" target="_blank">www.ouorz.com</a> and its related projects</p>
 
-  <a href="https://github.com/HelipengTony/ouorz-next">
-    <img src="https://github.com/HelipengTony/ouorz-next/workflows/Tests/badge.svg?branch=main" alt="build status">
+  <a href="https://github.com/HelipengTony/ouorz-mono">
+    <img src="https://github.com/HelipengTony/ouorz-mono/workflows/Tests/badge.svg?branch=main" alt="build status">
   </a>
 
-  <a href="https://codeclimate.com/github/HelipengTony/ouorz-next/maintainability">
+  <a href="https://codeclimate.com/github/HelipengTony/ouorz-mono/maintainability">
     <img src="https://api.codeclimate.com/v1/badges/241ce6373b176b12f511/maintainability" alt="maintainability" />
   </a>
 
-  <a href="https://github.com/HelipengTony/ouorz-next">
-    <img src="https://img.shields.io/github/license/HelipengTony/ouorz-next.svg" alt="license">
+  <a href="https://github.com/HelipengTony/ouorz-mono">
+    <img src="https://img.shields.io/github/license/HelipengTony/ouorz-mono.svg" alt="license">
   </a>
 </div>
 
