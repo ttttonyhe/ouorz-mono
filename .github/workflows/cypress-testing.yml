@@ -34,18 +34,17 @@ jobs:
         uses: DerYeger/yarn-setup-action@master
         with:
           node-version: 16
-      - name: Setup Environmental Variables for the Main App
+      - name: Setup Environment Variables for Main App
         run: |
-          cd apps/main
-          touch .env
-          echo NEXT_PUBLIC_SENTRY_DSN=${{ secrets.SENTRY_DSN }} >> .env
-          echo SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} >> .env
-          echo SENTRY_PROJECT=${{ secrets.SENTRY_PROJECT }} >> .env
-          echo SENTRY_ORG=${{ secrets.SENTRY_ORG }} >> .env
-          echo NEXT_PUBLIC_BUTTONDOWN_TOKEN=${{ secrets.BUTTONDOWN_TOKEN }} >> .env
-          echo NEXT_PUBLIC_LC_KEY=${{ secrets.LC_KEY }} >> .env
-          echo NEXT_PUBLIC_LC_ID=${{ secrets.LC_ID }} >> .env
-      - name: Run Cypress for the Main App
+          touch apps/main/.env
+          echo NEXT_PUBLIC_SENTRY_DSN=${{ secrets.SENTRY_DSN }} >> apps/main/.env
+          echo SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} >> apps/main/.env
+          echo SENTRY_PROJECT=${{ secrets.SENTRY_PROJECT }} >> apps/main/.env
+          echo SENTRY_ORG=${{ secrets.SENTRY_ORG }} >> apps/main/.env
+          echo NEXT_PUBLIC_BUTTONDOWN_TOKEN=${{ secrets.BUTTONDOWN_TOKEN }} >> apps/main/.env
+          echo NEXT_PUBLIC_LC_KEY=${{ secrets.LC_KEY }} >> apps/main/.env
+          echo NEXT_PUBLIC_LC_ID=${{ secrets.LC_ID }} >> apps/main/.env
+      - name: Run Cypress for Main App
         uses: cypress-io/github-action@v2
         with:
           working-directory: apps/main
@@ -59,5 +58,12 @@ jobs:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Build Analytics App'
+      - name: Setup Environment Variables for Analytics App
+        run: |
+          touch apps/analytics/.env
+          echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> apps/analytics/.env
+          echo HASH_SALT=${{ secrets.HASH_SALT }} >> apps/analytics/.env
+      - name: Build Prisma Client
+        run: yarn run build-postgresql-client
+      - name: Build Analytics App
         run: yarn run build:analytics
