@@ -5,6 +5,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "dev": "next dev -p 3333",
+    "dev:test": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ./src -c .eslintrc.js --fix --ext js,ts,tsx,json",

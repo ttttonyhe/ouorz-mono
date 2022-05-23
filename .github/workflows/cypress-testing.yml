@@ -22,10 +22,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup Yarn & Node.js
-        uses: actions/setup-node@v3
         with:
-          node-version: '16'
+            fetch-depth: 2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
           cache: 'yarn'
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
@@ -43,8 +45,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           working-directory: apps/main
-          build: yarn run build
-          start: yarn run start
+          start: yarn run dev:test
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           record: true
