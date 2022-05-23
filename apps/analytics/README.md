@@ -6,6 +6,11 @@ Personal Analytics Service Powered by [Umami](https://umami.is)
 
 <br/>
 
+## Website
+[https://analytics.ouorz.com →](https://analytics.ouorz.com)
+
+<br/>
+
 ## Database
 + [Supabase](https://supabase.com)
 + Type: PostgreSQL
