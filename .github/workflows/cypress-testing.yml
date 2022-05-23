@@ -15,15 +15,21 @@ on:
 jobs:
   cypress:
     name: Testing
-    timeout-minutes: 15
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     env:
        TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
        TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-    strategy:
-        matrix:
-          os: [ubuntu-latest, macos-latest]
     steps:
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
       - name: Checkout & Setup Yarn & Install Dependencies
         uses: DerYeger/yarn-setup-action@master
         with:

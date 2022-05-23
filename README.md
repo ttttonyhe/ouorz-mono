@@ -1,6 +1,6 @@
 <div align="center">
   <h1>OUORZ-MONO</h1>
-  <p>Front-end codes that power <a href="https://www.ouorz.com" target="_blank">www.ouorz.com</a> and its related projects</p>
+  <p>Front-end codes that power <a href="https://www.ouorz.com" target="_blank">www.ouorz.com</a> and other related projects</p>
 
   <a href="https://github.com/HelipengTony/ouorz-mono">
     <img src="https://github.com/HelipengTony/ouorz-mono/workflows/Tests/badge.svg?branch=main" alt="build status">
