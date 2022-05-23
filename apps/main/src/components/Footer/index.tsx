@@ -98,7 +98,7 @@ export default function Footer() {
 				</a>{' '}
 				<span>·</span>{' '}
 				<a
-					href="https://github.com/HelipengTony/ouorz-next"
+					href="https://github.com/HelipengTony/ouorz-mono"
 					target="_blank"
 					rel="noreferrer"
 				>
