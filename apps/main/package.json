@@ -35,7 +35,6 @@
   "devDependencies": {
     "@ouorz/eslint-config-next": "*",
     "@ouorz/prettier-config": "*",
-    "@ouorz/tsconfig": "*",
     "@tailwindcss/typography": "^0.5.2",
     "@types/lodash": "^4.14.182",
     "@types/node": "^17.0.35",
