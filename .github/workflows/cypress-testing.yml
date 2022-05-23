@@ -4,13 +4,13 @@ on:
     branches:
       - main
     paths:
-      - 'apps/main/**'
+      - 'apps/**'
       - '.github/workflows/**'
   pull_request:
     branches:
       - main
     paths:
-      - 'apps/main/**'
+      - 'apps/**'
       - '.github/workflows/**'
 jobs:
   cypress:
@@ -42,9 +42,9 @@ jobs:
       - name: Run Cypress for the Main App
         uses: cypress-io/github-action@v2
         with:
-          project: apps/main
-          build: yarn run build:main
-          start: yarn run start:main
+          working-directory: apps/main
+          build: yarn run build
+          start: yarn run start
           wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           record: true
