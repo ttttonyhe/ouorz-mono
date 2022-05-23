@@ -1,5 +1,6 @@
 {
   "name": "ouorz-mono",
+  "description": "Monorepo for Tony's Personal Site and Other Related Projects",
   "version": "0.0.1",
   "private": true,
   "engines": {
@@ -38,10 +39,8 @@
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
-    "stylelint": "latest",
-    "stylelint-config-css-modules": "latest",
-    "stylelint-config-prettier": "latest",
-    "stylelint-config-recommended": "latest",
+    "@ouorz/eslint-config-next": "*",
+    "@ouorz/prettier-config": "*",
     "husky": "latest",
     "lint-staged": "latest",
     "prettier": "latest",
