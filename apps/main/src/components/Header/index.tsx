@@ -275,21 +275,21 @@ const Header = () => {
 				},
 			},
 			{
-				label: 'Analytics',
-				id: 'analytics',
-				description: 'Link',
-				icon: 'growth',
-				link: {
-					external: 'https://analytics.ouorz.com/share/E4O9QpCn/ouorz-next',
-				},
-			},
-			{
 				label: 'Friends',
 				id: 'links',
 				description: 'Page',
 				icon: 'people',
 				link: {
 					internal: '/friends',
+				},
+			},
+			{
+				label: 'Analytics',
+				id: 'analytics',
+				description: 'Link',
+				icon: 'growth',
+				link: {
+					external: 'https://analytics.ouorz.com/share/E4O9QpCn/ouorz-next',
 				},
 			},
 			{
