@@ -59,12 +59,6 @@ Super opinionated, completely overkill.
   - WordPress REST API
 + Error Logging
   - Sentry
-+ E2E Testing
-  - Cypress
-+ Linting
-  - CommitLint
-  - ESLint
-  - Prettier
 
 <br/>
 
@@ -120,6 +114,7 @@ Create a `.env` file with your configuration, see below for a list of environmen
 
 + DATABASE_URL
 + HASH_SALT
++ MAXMIND_LICENSE_KEY
 
 ```
 yarn run build-postgresql-client
@@ -128,11 +123,36 @@ yarn run dev
 
 <br/>
 
+### Monorepo
+Monorepo build system: Turborepo
+
+<br/>
+
 ## Development
 ### Gitflow
 Not really following this though...
 
 ![git_branching_workflow](https://user-images.githubusercontent.com/21199796/135544887-50b1e78b-aa72-4e98-8f08-baac092cf393.jpg)
+
+<br/>
+
+### E2E Testing
+Start server:
+```bash
+yarn run build:main
+yarn run start:main
+
+# or
+cd apps/main
+yarn run dev:test
+```
+
+Run tests:
+```bash
+yarn run test:main
+```
+
+`apps/main` uses Cypress Dashboard, disable it by changing the configuration file accordingly.
 
 <br/>
 
@@ -148,12 +168,17 @@ yarn run start:main
 <br/>
 
 ### apps/analytics
-See [apps/analytics/README.md](https://github.com/HelipengTony/ouorz-mono/tree/main/apps/analytics#readme) for more details
+See [apps/analytics/README.md](https://github.com/HelipengTony/ouorz-mono/tree/main/apps/analytics#readme) for more details.
+
+```bash
+yarn run build:analytics
+yarn run start:analytics
+```
 
 <br/>
 
 ### Deploy with Vercel / Netlify
-Make sure to configure root directory path to `apps/<project-name>`
+Make sure to set root directory path to `apps/<project-name>`
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/HelipengTony/ouorz-mono)
 
