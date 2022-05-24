@@ -32,20 +32,19 @@
     "start:main": "turbo run start --filter=@ouorz/main",
     "start:analytics": "turbo run start --filter=@ouorz/analytics",
     "upgrade:dev": "turbo run upgrade:dev --parallel --filter=./apps/* && yarn install",
-    "upgrade:dev:analytics": "turbo run upgrade:dev --parallel --filter=@ouorz/analytics && yarn install",
     "upgrade:dev:main": "turbo run upgrade:dev --filter=@ouorz/main && yarn install",
     "upgrade:prod:main": "turbo run upgrade:prod --filter=@ouorz/main && yarn install",
     "clean": "turbo run clean && rm -rf node_modules"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.0",
-    "@commitlint/config-conventional": "^17.0.0",
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
     "@ouorz/eslint-config-next": "*",
     "@ouorz/prettier-config": "*",
-    "husky": "^8.0.1",
-    "lint-staged": "^12.4.1",
-    "prettier": "^2.6.2",
-    "turbo": "^1.2.11"
+    "husky": "latest",
+    "lint-staged": "latest",
+    "prettier": "latest",
+    "turbo": "latest"
   },
   "husky": {
     "hooks": {
