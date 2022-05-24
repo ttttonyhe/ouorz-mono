@@ -29,7 +29,8 @@
       "dependsOn": [
         "^build",
         "$DATABASE_URL",
-        "$HASH_SALT"
+        "$HASH_SALT",
+        "$MAXMIND_LICENSE_KEY"
       ],
       "outputs": [
         ".next/**"
@@ -57,12 +58,7 @@
       "outputs": [],
       "cache": false
     },
-    "upgrade:dev": {
-      "outputs": [
-        "package.json"
-      ]
-    },
-    "upgrade:prod": {
+    "upgrade": {
       "outputs": [
         "package.json"
       ]

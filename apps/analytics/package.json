@@ -32,7 +32,7 @@
     "change-password": "node scripts/change-password.js",
     "lint": "next lint --quiet --fix",
     "clean": "rm -rf node_modules",
-    "upgrade:dev": "ncu --upgrade && yarn install"
+    "upgrade": "ncu --upgrade"
   },
   "dependencies": {
     "@fontsource/inter": "4.5.10",

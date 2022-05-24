@@ -11,8 +11,7 @@
     "lint": "eslint ./src -c .eslintrc.js --fix --ext js,ts,tsx,json",
     "test:open": "cypress open",
     "test": "cypress run",
-    "upgrade:dev": "ncu --upgrade && yarn install",
-    "upgrade:prod": "ncu --upgrade && yarn install --ignore-optional",
+    "upgrade": "ncu --upgrade",
     "clean": "rm -rf node_modules"
   },
   "dependencies": {
@@ -72,6 +71,6 @@
     "@types/chai": "^4.3.1",
     "@types/jest": "^27.5.1",
     "@types/mocha": "^9.1.1",
-    "cypress": "^9.6.1"
+    "cypress": "^9.7.0"
   }
 }

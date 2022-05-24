@@ -31,10 +31,10 @@
     "start": "turbo run start --parallel",
     "start:main": "turbo run start --filter=@ouorz/main",
     "start:analytics": "turbo run start --filter=@ouorz/analytics",
-    "upgrade:dev": "turbo run upgrade:dev --parallel --filter=./apps/* && yarn install",
-    "upgrade:dev:analytics": "turbo run upgrade:dev --parallel --filter=@ouorz/analytics && yarn install",
-    "upgrade:dev:main": "turbo run upgrade:dev --filter=@ouorz/main && yarn install",
-    "upgrade:prod:main": "turbo run upgrade:prod --filter=@ouorz/main && yarn install",
+    "upgrade:dev": "turbo run upgrade --parallel --filter=./apps/* && yarn install",
+    "upgrade:dev:analytics": "turbo run upgrade --parallel --filter=@ouorz/analytics && yarn install",
+    "upgrade:dev:main": "turbo run upgrade --filter=@ouorz/main && yarn install",
+    "upgrade:prod:main": "yarn run upgrade:dev:main && yarn install --ignore-optional",
     "clean": "turbo run clean && rm -rf node_modules"
   },
   "devDependencies": {
