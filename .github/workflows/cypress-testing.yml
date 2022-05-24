@@ -59,6 +59,7 @@ jobs:
           touch apps/analytics/.env
           echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> apps/analytics/.env
           echo HASH_SALT=${{ secrets.HASH_SALT }} >> apps/analytics/.env
+          echo MAXMIND_LICENSE_KEY=${{ secrets.MAXMIND_LICENSE_KEY }} >> apps/analytics/.env
       - name: Build Prisma Client
         run: cd apps/analytics && yarn run build-postgresql-client
       - name: Build Analytics App
