@@ -284,6 +284,11 @@ const Header = () => {
 				},
 			},
 			{
+				label: 'Links',
+				id: 'links-divider',
+				hoverable: false,
+			},
+			{
 				label: 'Analytics',
 				id: 'analytics',
 				description: 'Link',
@@ -300,11 +305,6 @@ const Header = () => {
 				link: {
 					external: 'https://notion.ouorz.com',
 				},
-			},
-			{
-				label: 'Links',
-				id: 'links-divider',
-				hoverable: false,
 			},
 			{
 				label: 'Podcast',

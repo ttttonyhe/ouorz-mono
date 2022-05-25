@@ -180,7 +180,7 @@ const KbarPanel = () => {
 	return (
 		<div
 			data-cy="kbar-panel"
-			className="w-screen -ml-10 h-screen flex justify-center pointer-events-auto"
+			className="w-screen -ml-10 h-screen flex justify-center pointer-events-auto absolute"
 		>
 			{
 				// register shortcuts of list items

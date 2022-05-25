@@ -3,7 +3,12 @@ import { useHotkeys } from 'react-hotkeys-hook'
 import { KbarContextProvider } from './context'
 import { KbarProps } from '.'
 import KbarPanel from './panel'
-import { useSelector, useDispatch, useBodyPointerEvents } from '~/hooks'
+import {
+	useSelector,
+	useDispatch,
+	useBodyPointerEvents,
+	useBodyScroll,
+} from '~/hooks'
 import { selectKbar } from '~/store/kbar/selectors'
 import {
 	activateKbar,
@@ -16,7 +21,8 @@ const Kbar = (props: KbarProps) => {
 	const dispatch = useDispatch()
 	const { visible, animation, location } = useSelector(selectKbar)
 	const [kbarInputValue, setInputValue] = useState('')
-	const [_, setBodyPointerEvents] = useBodyPointerEvents()
+	const [, setBodyPointerEvents] = useBodyPointerEvents()
+	const [, setBodyScroll] = useBodyScroll()
 	const { trackEvent } = useAnalytics()
 
 	// register keybinding that triggers/hides the kbar
@@ -47,9 +53,12 @@ const Kbar = (props: KbarProps) => {
 		!visible && setInputValue('')
 		// disbale body pointer events when kbar is open
 		setBodyPointerEvents(!visible)
+		// disbale body scroll when kbar is open
+		setBodyScroll(!visible)
 
 		return () => {
 			setBodyPointerEvents(true)
+			setBodyScroll(true)
 		}
 	}, [visible])
 

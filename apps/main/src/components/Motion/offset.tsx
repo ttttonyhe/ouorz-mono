@@ -13,7 +13,7 @@ const OffsetTransition = (props: Props) => {
 		if (!ref?.current) return
 
 		ref.current.style.transform = `translateY(${(125 - position) * 0.5 || 0}%)`
-		ref.current.style.opacity = `${(position - 50) * 0.01}`
+		ref.current.style.opacity = `${(position - 50) * (1 / 75)}`
 	}
 
 	return (
