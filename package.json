@@ -53,9 +53,9 @@
     }
   },
   "lint-staged": {
-    "apps/next/**/*.+(ts|tsx)": [
+    "apps/main/**/*.+(ts|tsx)": [
       "yarn run lint:main",
-      "prettier --write apps/next/**/*.+(ts|tsx)"
+      "prettier --write apps/main/**/*.+(ts|tsx)"
     ]
   }
 }
