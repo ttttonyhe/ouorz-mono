@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
-    "@sentry/nextjs": "^6.19.7",
+    "@sentry/nextjs": "^7.0.0",
     "cors": "^2.8.5",
     "dotenv-webpack": "^7.1.0",
     "html-to-text": "^8.2.0",
