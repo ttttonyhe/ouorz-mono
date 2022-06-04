@@ -1,6 +1,6 @@
 import React from 'react'
 import TimeAgo from 'react-timeago'
-import Icon from '~/components/Icon'
+import { Icon } from '@twilight-toolkit/ui'
 import getApi from '~/utilities/api'
 import { useDebounce } from '~/hooks'
 import { WPPost } from '~/constants/propTypes'

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "index.js",
   "description": "Prettier config for ouorz projects",
-  "license": "GPL-3.0",
+  "private": true,
   "publishConfig": {
     "access": "public"
   }

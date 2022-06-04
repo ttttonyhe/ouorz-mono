@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import Content from '~/components/Content'
-import Button from '~/components/Button'
+import { Button } from '@twilight-toolkit/ui'
 import { useRouter } from 'next/router'
 import { captureException, flush } from '@sentry/nextjs'
 

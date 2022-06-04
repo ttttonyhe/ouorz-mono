@@ -6,7 +6,7 @@ import Content from '~/components/Content'
 import { GetStaticProps } from 'next'
 import trimStr from '~/utilities/trimString'
 import getApi from '~/utilities/api'
-import Icon from '~/components/Icon'
+import { Icon } from '@twilight-toolkit/ui'
 import { GlowingBackground } from '~/components/Visual'
 
 export default function Friends({ friends }: { friends: any }) {

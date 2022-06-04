@@ -1,5 +1,5 @@
 import { useState, useLayoutEffect } from 'react'
-import Icon from '~/components/Icon'
+import { Icon } from '@twilight-toolkit/ui'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import scrollToItemWithinDiv from '~/utilities/scrollTo'

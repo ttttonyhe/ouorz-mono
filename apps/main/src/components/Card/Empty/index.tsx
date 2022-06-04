@@ -1,4 +1,4 @@
-import Icon from '~/components/Icon'
+import { Icon } from '@twilight-toolkit/ui'
 export default function CardEmpty() {
 	return (
 		<div className="w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6 text-center">

@@ -2,7 +2,6 @@
   "name": "@ouorz/main",
   "version": "0.0.2",
   "private": true,
-  "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "dev": "next dev -p 3333",
     "dev:test": "next dev",
@@ -12,15 +11,18 @@
     "test:open": "cypress open",
     "test": "cypress run",
     "upgrade": "ncu --upgrade",
-    "clean": "rm -rf node_modules"
+    "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo && rm -rf .next"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "@sentry/nextjs": "^6.19.7",
+    "@twilight-toolkit/ui": "*",
+    "@twilight-toolkit/utils": "*",
     "cors": "^2.8.5",
     "dotenv-webpack": "^7.1.0",
     "html-to-text": "^8.2.0",
     "next": "^12.1.6",
+    "next-transpile-modules": "^9.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-hotkeys-hook": "^3.4.6",

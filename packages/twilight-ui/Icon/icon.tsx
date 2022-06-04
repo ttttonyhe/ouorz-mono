@@ -1,6 +1,9 @@
 import React from 'react'
-import { IconNames } from '~/constants/propTypes'
+import { propTypes } from '@twilight-toolkit/utils'
 import icons from './icons'
+
+const IconsNames = propTypes.tuple(...Object.keys(icons))
+export type IconNames = typeof IconsNames[number]
 
 export interface IconProps {
 	name: IconNames

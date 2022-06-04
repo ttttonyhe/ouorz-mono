@@ -15,7 +15,9 @@
 		"jsx": "preserve",
 		"baseUrl": ".",
 		"paths": {
-			"~/*": ["src/*"]
+			"~/*": ["src/*"],
+			"@twilight-toolkit/ui": ["../../packages/twilight-ui/index"],
+			"@twilight-toolkit/utils": ["../../packages/twilight-utils/index"]
 		},
 		"typeRoots": ["node_modules/@types", "./typings"],
 		"incremental": true

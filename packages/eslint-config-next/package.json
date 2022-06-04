@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "main": "index.js",
   "description": "ESLint config for ouorz projects using Next.js",
-  "license": "GPL-3.0",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo"
+  },
   "publishConfig": {
     "access": "public"
   },

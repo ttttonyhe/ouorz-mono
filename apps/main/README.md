@@ -7,9 +7,11 @@ Front-end code that powers [www.ouorz.com](https://www.ouorz.com)
 <br/>
 
 ## Website
+
 [www.ouorz.com →](https://www.ouorz.com)
 
 <br/>
 
 ## Hosting
+
 Powered by [Vercel](https://vercel.com)

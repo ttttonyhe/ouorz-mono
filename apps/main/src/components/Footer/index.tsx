@@ -1,7 +1,7 @@
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import Icon from '~/components/Icon'
+import { Icon } from '@twilight-toolkit/ui'
 import { useDispatch, useSelector } from '~/hooks'
 import { deactivateKbar } from '~/store/kbar/actions'
 import { selectKbar } from '~/store/kbar/selectors'

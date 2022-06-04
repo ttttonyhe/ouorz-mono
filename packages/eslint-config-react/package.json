@@ -2,8 +2,11 @@
   "name": "@ouorz/eslint-config-react",
   "version": "0.0.1",
   "main": "index.js",
+  "private": true,
   "description": "ESLint config for ouorz projects using React.js",
-  "license": "GPL-3.0",
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo"
+  },
   "publishConfig": {
     "access": "public"
   },

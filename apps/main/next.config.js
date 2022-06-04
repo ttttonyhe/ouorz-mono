@@ -1,5 +1,9 @@
 const Dotenv = require('dotenv-webpack')
 const { withSentryConfig } = require('@sentry/nextjs')
+const withTM = require('next-transpile-modules')([
+	'@twilight-toolkit/ui',
+	'@twilight-toolkit/utils',
+])
 
 const NextConfigs = {
 	webpack(config) {
@@ -26,4 +30,7 @@ const SentryWebpackPluginOptions = {
 	silent: true,
 }
 
-module.exports = withSentryConfig(NextConfigs, SentryWebpackPluginOptions)
+module.exports = withSentryConfig(
+	withTM(NextConfigs),
+	SentryWebpackPluginOptions
+)

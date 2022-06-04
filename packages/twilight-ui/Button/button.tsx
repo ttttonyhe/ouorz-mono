@@ -1,8 +1,16 @@
 import React from 'react'
-import Icon from '~/components/Icon'
-import { ButtonTypes } from '~/constants/propTypes'
+import { propTypes } from '@twilight-toolkit/utils'
+import Icon from '../Icon'
 
-interface Props {
+const buttonTypes = propTypes.tuple(
+	'default',
+	'menu-default',
+	'primary',
+	'menu-primary'
+)
+export type ButtonTypes = typeof buttonTypes[number]
+
+export interface ButtonProps {
 	bType: ButtonTypes
 	icon?: string
 	className?: string
@@ -10,7 +18,7 @@ interface Props {
 	[prop: string]: any
 }
 
-export default function Button(props: Props) {
+export default function Button(props: ButtonProps) {
 	const { bType, icon, className, children, ...rest } = props
 	switch (bType) {
 		case 'default':
@@ -51,7 +59,7 @@ export default function Button(props: Props) {
 			return (
 				<button
 					aria-label="primary"
-					className={`w-full py-2 px-7 shadow-sm border border-blue-500 dark:border-blue-900 dark:bg-blue-900 dark:text-gray-300  bg-blue-500 hover:bg-blue-600 hover:border-blue-600 dark:hover:bg-blue-800 dark:hover:border-blue-800 hover:shadow-inner text-white rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex ${
+					className={`w-full py-2 px-7 shadow-sm border border-blue-500 dark:border-blue-900 dark:bg-blue-900 dark:text-gray-300 bg-blue-500 hover:bg-blue-600 hover:border-blue-600 dark:hover:bg-blue-800 dark:hover:border-blue-800 hover:shadow-inner text-white rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex ${
 						className ? className : ''
 					}`}
 					{...rest}

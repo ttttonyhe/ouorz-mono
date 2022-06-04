@@ -3,8 +3,22 @@
   "baseBranch": "origin/main",
   "pipeline": {
     "build": {
+      "outputs": [
+        "dist/**",
+        ".next/**"
+      ],
       "dependsOn": [
         "^build"
+      ]
+    },
+    "@twilight-toolkit/ui#build": {
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "@twilight-toolkit/utils#build": {
+      "outputs": [
+        "dist/**"
       ]
     },
     "@ouorz/main#build": {
@@ -55,7 +69,6 @@
       "cache": false
     },
     "clean": {
-      "outputs": [],
       "cache": false
     },
     "upgrade": {

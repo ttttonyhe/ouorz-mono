@@ -31,7 +31,7 @@
     "download-language-names": "node scripts/download-language-names.js",
     "change-password": "node scripts/change-password.js",
     "lint": "next lint --quiet --fix",
-    "clean": "rm -rf node_modules",
+    "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo && rm -rf .next",
     "upgrade": "ncu --upgrade"
   },
   "dependencies": {

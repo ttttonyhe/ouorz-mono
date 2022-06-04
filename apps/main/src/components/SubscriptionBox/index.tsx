@@ -1,5 +1,5 @@
 import React from 'react'
-import Icon from '~/components/Icon'
+import { Icon } from '@twilight-toolkit/ui'
 import getApi from '~/utilities/api'
 
 const SubscriptionBox = ({ type }: { type: string }) => {

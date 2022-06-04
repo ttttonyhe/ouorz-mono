@@ -5,7 +5,7 @@ import { GetServerSideProps } from 'next'
 import List from '~/components/List'
 import getApi from '~/utilities/api'
 import SubscriptionBox from '~/components/SubscriptionBox'
-import Icon from '~/components/Icon'
+import { Icon } from '@twilight-toolkit/ui'
 import Link from 'next/link'
 import redirect from 'nextjs-redirect'
 

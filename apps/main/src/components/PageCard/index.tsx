@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { GlowingBackground } from '~/components/Visual'
-import Icon from '~/components/Icon'
+import { Icon } from '@twilight-toolkit/ui'
 
 interface Props {
 	title: string

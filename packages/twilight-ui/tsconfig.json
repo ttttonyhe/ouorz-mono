@@ -1,0 +1,31 @@
+{
+	"compilerOptions": {
+		"target": "es2015",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noImplicitAny": false,
+		"jsx": "react",
+		"baseUrl": "./",
+		"paths": {
+			"@twilight-toolkit/utils": ["../twilight-utils/index"]
+		},
+		"suppressImplicitAnyIndexErrors": true,
+		"allowSyntheticDefaultImports": true,
+		"experimentalDecorators": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": false,
+		"declaration": true,
+		"strictNullChecks": false,
+		"strict": true
+	},
+	"include": ["**/*.tsx", "**/*.ts"],
+	"exclude": ["node_modules", "cypress"]
+}

@@ -7,7 +7,7 @@ import { selectKbar } from '~/store/kbar/selectors'
 import { kbarContext } from './context'
 import Tabs, { TabItemProps } from '../Tabs'
 import HotkeyHelper from '../Helpers/hotkey'
-import Icon from '~/components/Icon'
+import { Icon } from '@twilight-toolkit/ui'
 import {
 	deactivateKbar,
 	goToKbarLocation,

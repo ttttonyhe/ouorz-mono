@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Icon from '~/components/Icon'
+import { Icon } from '@twilight-toolkit/ui'
 import { TabItemComponentProps } from '.'
 
 const TabItemComponent = (props: TabItemComponentProps) => {

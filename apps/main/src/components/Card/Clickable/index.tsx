@@ -1,4 +1,4 @@
-import Icon from '~/components/Icon'
+import { Icon } from '@twilight-toolkit/ui'
 
 interface Props {
 	stopLoading: boolean

@@ -1,0 +1,29 @@
+{
+  "name": "@twilight-toolkit/utils",
+  "version": "0.0.1",
+  "description": "Twilight Toolkit Utilities",
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "./dist/index.js",
+  "private": false,
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "dev": "yarn run build --watch",
+    "build": "tsup index.ts --format cjs,esm --dts --clean --silent",
+    "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo",
+    "prepublishOnly": "yarn run build"
+  },
+  "devDependencies": {
+    "tsup": "^6.0.1"
+  },
+  "dependencies": {
+    "react": "^18.1.0"
+  }
+}

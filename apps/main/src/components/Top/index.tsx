@@ -1,4 +1,4 @@
-import Button from '~/components/Button'
+import { Button } from '@twilight-toolkit/ui'
 import Link from 'next/link'
 
 export default function Top() {

@@ -2,24 +2,29 @@
   "name": "ouorz-mono",
   "description": "Monorepo for Tony's Personal Site and Other Related Projects",
   "version": "0.0.1",
+  "packageManager": "yarn@1.22.18",
+  "license": "SEE LICENSE IN LICENSE",
   "private": true,
   "engines": {
     "npm": ">=7.0.0",
     "node": ">=14.0.0 <17.0.0"
   },
   "workspaces": {
+    "nohoist": [
+      "**"
+    ],
     "packages": [
       "apps/*",
       "packages/*"
-    ],
-    "nohoist": [
-      "**"
     ]
   },
   "scripts": {
     "dev": "turbo run dev --parallel",
     "dev:main": "turbo run dev --filter=@ouorz/main",
     "dev:analytics": "turbo run dev --filter=@ouorz/analytics",
+    "dev:twilight": "turbo run dev --parallel --filter=./packages/twilight-*",
+    "dev:twilight:ui": "turbo run dev --filter=@twilight-toolkit/ui",
+    "dev:twilight:utils": "turbo run dev --filter=@twilight-toolkit/utils",
     "lint": "turbo run lint --parallel",
     "lint:main": "turbo run lint --filter=@ouorz/main",
     "lint:analytics": "turbo run lint --filter=@ouorz/analytics",
@@ -28,6 +33,9 @@
     "build": "turbo run build --parallel",
     "build:main": "turbo run @ouorz/main#build",
     "build:analytics": "turbo run @ouorz/analytics#build",
+    "build:twilight": "turbo run build --filter=./packages/twilight-*",
+    "build:twilight:ui": "turbo run build --filter=@twilight-toolkit/ui",
+    "build:twilight:utils": "turbo run build --filter=@twilight-toolkit/utils",
     "start": "turbo run start --parallel",
     "start:main": "turbo run start --filter=@ouorz/main",
     "start:analytics": "turbo run start --filter=@ouorz/analytics",
@@ -35,7 +43,7 @@
     "upgrade:dev:analytics": "turbo run upgrade --parallel --filter=@ouorz/analytics && yarn install",
     "upgrade:dev:main": "turbo run upgrade --filter=@ouorz/main && yarn install",
     "upgrade:prod:main": "yarn run upgrade:dev:main && yarn install --ignore-optional",
-    "clean": "turbo run clean && rm -rf node_modules"
+    "clean": "turbo run clean --parallel && rm -rf node_modules"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",

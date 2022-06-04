@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import Icon from '~/components/Icon'
+import { Icon } from '@twilight-toolkit/ui'
 const NexmentDiv = dynamic(() => import('~/components/Nexment'), {
 	ssr: false,
 })

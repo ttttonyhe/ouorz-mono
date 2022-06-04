@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 import fetcher from '~/lib/fetcher'
-import Icon from '~/components/Icon'
+import { Icon } from '@twilight-toolkit/ui'
 
 export default function NiceHashMetric() {
 	const { data } = useSWR('api/nicehash', fetcher)

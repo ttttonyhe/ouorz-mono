@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 import Content from '~/components/Content'
 import Link from 'next/link'
-import Icon from '~/components/Icon'
+import { Icon } from '@twilight-toolkit/ui'
 import PageCard from '~/components/PageCard'
 
 export default function Pages() {
