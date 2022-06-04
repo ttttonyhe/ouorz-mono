@@ -21,7 +21,6 @@
 
 <br/>
 <hr/>
-<br/>
 
 ## Main App
 ### Past Iterations
@@ -100,7 +99,6 @@ Copy the codes in `apps/main/src/assets/scripts/vendors/wordpress/functions.php`
 
 <br/>
 <hr/>
-<br/>
 
 ## Analytics App
 See [apps/analytics/README.md](https://github.com/HelipengTony/ouorz-mono/tree/main/apps/analytics#readme) for more details
@@ -127,7 +125,6 @@ yarn run dev
 
 <br/>
 <hr/>
-<br/>
 
 ## Twilight Toolkit
 A super opinionated front-end toolkit library
@@ -137,7 +134,6 @@ A super opinionated front-end toolkit library
 
 <br/>
 <hr/>
-<br/>
 
 ## Monorepo
 Monorepo build system: Turborepo
