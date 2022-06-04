@@ -6,4 +6,4 @@ A super opinionated UI library for React (for now)
 
 ## Roadmap
 
-[ ] Implement Foundation/Adaptor Pattern
+- Implement Foundation/Adaptor Pattern
