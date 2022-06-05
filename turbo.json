@@ -68,6 +68,9 @@
     "dev": {
       "cache": false
     },
+    "storybook": {
+      "outputs": []
+    },
     "clean": {
       "cache": false
     },

@@ -11,9 +11,9 @@ export default function Top() {
 					rel="noreferrer"
 				>
 					<Button
-						bType="default"
+						type="default"
 						icon="github"
-						className="text-gray-700 text-3 leading-14"
+						className="w-full text-gray-700 text-3 leading-14"
 					>
 						<span className="tracking-normal">Github</span>
 					</Button>
@@ -24,18 +24,18 @@ export default function Top() {
 					rel="noreferrer"
 				>
 					<Button
-						bType="default"
+						type="default"
 						icon="twitter"
-						className="text-blue-400 text-3 leading-14"
+						className="w-full text-blue-400 text-3 leading-14"
 					>
 						<span className="tracking-normal">Twitter</span>
 					</Button>
 				</a>
 				<a target="_blank" href="mailto:tony.hlp@hotmail.com" rel="noreferrer">
 					<Button
-						bType="default"
+						type="default"
 						icon="email"
-						className="text-gray-500 text-3 leading-14"
+						className="w-full text-gray-500 text-3 leading-14"
 					>
 						<span className="tracking-normal">Email</span>
 					</Button>
@@ -44,7 +44,7 @@ export default function Top() {
 			<div className="lg:col-start-4 lg:col-end-6">
 				<Link href="/post/126">
 					<a>
-						<Button bType="primary" icon="right">
+						<Button type="primary" icon="right" className="w-full">
 							<span className="tracking-normal text-4 leading-14 lg:text-3">
 								More about me
 							</span>

@@ -23,7 +23,7 @@ export default function PageNotFound() {
 						</p>
 						<div className="inline-block justify-center mt-4">
 							<Button
-								bType="primary"
+								type="primary"
 								onClick={() => {
 									router.push('/')
 								}}

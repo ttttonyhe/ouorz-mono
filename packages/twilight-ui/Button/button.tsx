@@ -1,50 +1,32 @@
 import React from 'react'
-import { propTypes } from '@twilight-toolkit/utils'
 import Icon from '../Icon'
+import type { ButtonTypes, IconNames } from '../utils/propTypes'
 
-const buttonTypes = propTypes.tuple(
-	'default',
-	'menu-default',
-	'primary',
-	'menu-primary'
-)
-export type ButtonTypes = typeof buttonTypes[number]
-
-export interface ButtonProps {
-	bType: ButtonTypes
-	icon?: string
+interface Props {
+	type: ButtonTypes
+	icon?: IconNames
 	className?: string
 	children?: React.ReactNode
 	[prop: string]: any
 }
+type NativeAttrs = Omit<React.ButtonHTMLAttributes<any>, keyof Props>
+export type ButtonProps = Props & NativeAttrs
 
-export default function Button(props: ButtonProps) {
-	const { bType, icon, className, children, ...rest } = props
-	switch (bType) {
-		case 'default':
-			return (
-				<button
-					aria-label="default"
-					className={`w-full py-2 px-7 shadow-sm border border-gray-300 dark:border-gray-800 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:border-gray-700 hover:shadow-inner rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white flex ${
-						className ? className : ''
-					}`}
-					{...rest}
-				>
-					{icon && (
-						<span className={children ? 'w-6 h-6 mr-1' : 'w-6 h-6'}>
-							<Icon name={icon} />
-						</span>
-					)}
-					{children}
-				</button>
-			)
+const Button = ({
+	type = 'default',
+	icon,
+	className,
+	children = 'Button',
+	...rest
+}: ButtonProps) => {
+	switch (type) {
 		case 'menu-default':
 			return (
 				<button
 					aria-label="menu-default"
-					className={`w-max py-2 px-5 hover:bg-menu dark:hover:bg-gray-800 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex text-gray-500 dark:text-gray-400 ${
-						className ? className : ''
-					}`}
+					className={`${
+						className || ''
+					} w-max py-2 px-5 hover:bg-menu dark:hover:bg-gray-800 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex text-gray-500 dark:text-gray-400`}
 					{...rest}
 				>
 					{icon && (
@@ -59,9 +41,9 @@ export default function Button(props: ButtonProps) {
 			return (
 				<button
 					aria-label="primary"
-					className={`w-full py-2 px-7 shadow-sm border border-blue-500 dark:border-blue-900 dark:bg-blue-900 dark:text-gray-300 bg-blue-500 hover:bg-blue-600 hover:border-blue-600 dark:hover:bg-blue-800 dark:hover:border-blue-800 hover:shadow-inner text-white rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex ${
-						className ? className : ''
-					}`}
+					className={`${
+						className || ''
+					} w-max py-2 px-7 shadow-sm border border-blue-500 dark:border-blue-900 dark:bg-blue-900 dark:text-gray-300 bg-blue-500 hover:bg-blue-600 hover:border-blue-600 dark:hover:bg-blue-800 dark:hover:border-blue-800 hover:shadow-inner text-white rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex`}
 					{...rest}
 				>
 					{icon && (
@@ -76,9 +58,26 @@ export default function Button(props: ButtonProps) {
 			return (
 				<button
 					aria-label="menu-primary"
-					className={`w-max py-2 px-5 hover:bg-pink-100 dark:hover:bg-pink-900 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex text-pink-500 dark:text-pink-400 ${
-						className ? className : ''
-					}`}
+					className={`${
+						className || ''
+					} w-max py-2 px-5 hover:bg-pink-100 dark:hover:bg-pink-900 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex text-pink-500 dark:text-pink-400`}
+					{...rest}
+				>
+					{icon && (
+						<span className={children ? 'w-6 h-6 mr-1' : 'w-6 h-6'}>
+							<Icon name={icon} />
+						</span>
+					)}
+					{children}
+				</button>
+			)
+		default:
+			return (
+				<button
+					aria-label="default"
+					className={`${
+						className || ''
+					} w-max py-2 px-7 shadow-sm border border-gray-300 dark:border-gray-800 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:border-gray-700 hover:shadow-inner rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white flex`}
 					{...rest}
 				>
 					{icon && (
@@ -91,3 +90,5 @@ export default function Button(props: ButtonProps) {
 			)
 	}
 }
+
+export default Button

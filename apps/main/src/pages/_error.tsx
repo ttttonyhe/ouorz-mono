@@ -26,7 +26,7 @@ const ErrorPage = ({ statusCode }) => {
 						</p>
 						<div className="inline-block justify-center mt-4">
 							<Button
-								bType="primary"
+								type="primary"
 								onClick={() => {
 									router.push('/')
 								}}

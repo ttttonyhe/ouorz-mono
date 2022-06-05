@@ -36,6 +36,7 @@
     "build:twilight": "turbo run build --filter=./packages/twilight-*",
     "build:twilight:ui": "turbo run build --filter=@twilight-toolkit/ui",
     "build:twilight:utils": "turbo run build --filter=@twilight-toolkit/utils",
+    "storybook:twilight:ui": "turbo run storybook --filter=@twilight-toolkit/ui",
     "start": "turbo run start --parallel",
     "start:main": "turbo run start --filter=@ouorz/main",
     "start:analytics": "turbo run start --filter=@ouorz/analytics",
