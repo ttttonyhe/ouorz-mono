@@ -116,3 +116,6 @@ apps/analytics/public/geo
 *.iml
 *.log
 .vscode
+
+# Storybook
+storybook-static

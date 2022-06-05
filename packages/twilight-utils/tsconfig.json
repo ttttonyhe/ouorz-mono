@@ -22,6 +22,6 @@
 		"strictNullChecks": false,
 		"strict": true
 	},
-	"include": ["**/*.tsx", "**/*.ts"],
+	"include": ["**/*.tsx", "**/*.ts", "node_modules/index.ts"],
 	"exclude": ["node_modules", "cypress"]
 }

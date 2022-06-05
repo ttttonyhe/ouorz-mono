@@ -1,5 +1,5 @@
-import './styles/vendor.css'
-import './styles/base.css'
+import '../styles/vendor.css'
+import '../styles/base.css'
 
 // Button
 export { default as Button } from './Button'

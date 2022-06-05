@@ -21,6 +21,11 @@
         "dist/**"
       ]
     },
+    "@twilight-toolkit/ui#build:storybook": {
+      "outputs": [
+        "storybook-static/**"
+      ]
+    },
     "@ouorz/main#build": {
       "dependsOn": [
         "^build",

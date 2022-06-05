@@ -16,8 +16,8 @@
 		"baseUrl": ".",
 		"paths": {
 			"~/*": ["src/*"],
-			"@twilight-toolkit/ui": ["../../packages/twilight-ui/index"],
-			"@twilight-toolkit/utils": ["../../packages/twilight-utils/index"]
+			"@twilight-toolkit/ui": ["../../packages/twilight-ui/src/index"],
+			"@twilight-toolkit/utils": ["../../packages/twilight-utils/src/index"]
 		},
 		"typeRoots": ["node_modules/@types", "./typings"],
 		"incremental": true

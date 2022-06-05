@@ -15,7 +15,7 @@
 		"jsx": "react",
 		"baseUrl": "./",
 		"paths": {
-			"@twilight-toolkit/utils": ["../twilight-utils/index"]
+			"@twilight-toolkit/utils": ["../twilight-utils/src/index"]
 		},
 		"suppressImplicitAnyIndexErrors": true,
 		"allowSyntheticDefaultImports": true,
