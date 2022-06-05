@@ -23,47 +23,51 @@
 <hr/>
 
 ## Main App
+
 ### Past Iterations
-- Antony-Nuxt (Nuxt.js / Vue.js v2) [https://github.com/HelipengTony/antony-nuxt](https://github.com/HelipengTony/antony-nuxt)
-- Antony (Vue.js v2) [https://github.com/HelipengTony/antony](https://github.com/HelipengTony/antony)
-- Tony (Vue.js v2 / PHP) [https://github.com/HelipengTony/tony](https://github.com/HelipengTony/tony)
+
+- Antony-Nuxt (Nuxt.js / Vue.js v2) [https://github.com/HelipengTony/antony-nuxt →](https://github.com/HelipengTony/antony-nuxt)
+- Antony (Vue.js v2) [https://github.com/HelipengTony/antony →](https://github.com/HelipengTony/antony)
+- Tony (Vue.js v2 / PHP) [https://github.com/HelipengTony/tony →](https://github.com/HelipengTony/tony)
 
 <br/>
 
 ### Feature Highlights
 
-+ SSR/SSG/On-demand ISR
-+ Command palette
-+ Redux + Redux Saga state management
-+ Nexment comment system
-+ Dynamic table of contents sidebar
-+ Personal dashboard
-+ Dark mode
+- SSR/SSG/On-demand ISR
+- Command palette
+- Redux + Redux Saga state management
+- Nexment comment system
+- Dynamic table of contents sidebar
+- Personal dashboard
+- Dark mode
 
 <br/>
 
 ### Summary of Tech Stacks
+
 Super opinionated, completely overkill.
 
-+ TypeScript
-+ React.js / Next.js
+- TypeScript
+- React.js / Next.js
   - `next/image`
   - `next-themes`
-+ SWR
+- SWR
   - Infinite Loading
   - Revalidation
-+ Redux
+- Redux
   - Redux Toolkit
   - Redux Saga
-+ Tailwind CSS
-+ WordPress
+- Tailwind CSS
+- WordPress
   - WordPress REST API
-+ Error Logging
+- Error Logging
   - Sentry
 
 <br/>
 
 ### Project Setup
+
 ```bash
 git clone git@github.com:HelipengTony/ouorz-mono.git
 yarn install
@@ -72,17 +76,17 @@ cd apps/main
 
 Create a `.env` file with your configuration, see below for a list of environment variables used in this project:
 
-+ LeanCloud:
+- LeanCloud:
   - NEXT_PUBLIC_LC_KEY
   - NEXT_PUBLIC_LC_ID
-+ Buttondown:
+- Buttondown:
   - NEXT_PUBLIC_BUTTONDOWN_TOKEN
-+ Sentry:
+- Sentry:
   - NEXT_PUBLIC_SENTRY_DSN
   - SENTRY_AUTH_TOKEN
   - SENTRY_PROJECT
   - SENTRY_ORG
-+ On-demand ISR:
+- On-demand ISR:
   - REVALIDATION_REQUEST_TOKEN
 
 ```
@@ -92,6 +96,7 @@ yarn run dev
 <br/>
 
 ### WordPress REST API configurations
+
 > **Warning**:
 > May not be up-to-date all the time
 
@@ -101,11 +106,9 @@ Copy the codes in `apps/main/src/assets/scripts/vendors/wordpress/functions.php`
 <hr/>
 
 ## Analytics App
-See [apps/analytics/README.md](https://github.com/HelipengTony/ouorz-mono/tree/main/apps/analytics#readme) for more details
-
-<br/>
 
 ### Project Setup
+
 ```bash
 git clone git@github.com:HelipengTony/ouorz-mono.git
 yarn install
@@ -114,9 +117,9 @@ cd apps/analytics
 
 Create a `.env` file with your configuration, see below for a list of environment variables used in this project:
 
-+ DATABASE_URL
-+ HASH_SALT
-+ MAXMIND_LICENSE_KEY
+- DATABASE_URL
+- HASH_SALT
+- MAXMIND_LICENSE_KEY
 
 ```
 yarn run build-postgresql-client
@@ -127,29 +130,35 @@ yarn run dev
 <hr/>
 
 ## Twilight Toolkit
+
 A super opinionated front-end toolkit library
 
 ### UI
-Currently only available in React, Foundation/Adaptor implementation is coming soon.
 
-Storybook: [https://ui.twilight-toolkit.ouorz.com][https://ui.twilight-toolkit.ouorz.com]
+Storybook: [https://ui.twilight-toolkit.ouorz.com →](https://ui.twilight-toolkit.ouorz.com)
+
+Currently only available in React, Foundation/Adaptor implementation is coming soon.
 
 <br/>
 
 ### Utilities
+
 Work in progress
 
 <br/>
 <hr/>
 
 ## Monorepo
+
 Build system: [Turborepo](https://turborepo.org)
 
 <br/>
 <hr/>
 
 ## Development
+
 ### Gitflow
+
 Not really following this though...
 
 ![git_branching_workflow](https://user-images.githubusercontent.com/21199796/135544887-50b1e78b-aa72-4e98-8f08-baac092cf393.jpg)
@@ -157,9 +166,11 @@ Not really following this though...
 <br/>
 
 ### E2E Testing
+
 Test runner: [Cypress](https://www.cypress.io)
 
 Start server:
+
 ```bash
 yarn run build:main
 yarn run start:main
@@ -170,6 +181,7 @@ yarn run dev:test
 ```
 
 Run tests:
+
 ```bash
 yarn run test:main
 ```
@@ -180,7 +192,9 @@ yarn run test:main
 <hr/>
 
 ## Deployment
+
 ### apps/main
+
 This project utilizes a combination of Server-side Rendering (SSR) and (On-demand) Incremental Static Generation (ISG):
 
 ```bash
@@ -191,7 +205,6 @@ yarn run start:main
 <br/>
 
 ### apps/analytics
-See [apps/analytics/README.md](https://github.com/HelipengTony/ouorz-mono/tree/main/apps/analytics#readme) for more details.
 
 ```bash
 yarn run build:analytics
@@ -201,6 +214,7 @@ yarn run start:analytics
 <br/>
 
 ### packages/twilight-ui
+
 To deploy the storybook, export it as a static web app:
 
 ```bash
@@ -210,8 +224,21 @@ yarn run build:twilight:ui:storybook
 <br/>
 
 ### Deploy with Vercel / Netlify
-Make sure to set root directory path to `apps/<project-name>`
+
+Make sure to set root directory path to `apps/<project-name>`, then update build command to the following:
+
+```bash
+cd ../.. && yarn run build:<project-name>
+```
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/HelipengTony/ouorz-mono)
 
 [![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/HelipengTony/ouorz-mono)
+
+<br/>
+
+Enabling diff-based deployment is highly recommended:
+
+```bash
+git diff --quiet HEAD^ HEAD ./
+```

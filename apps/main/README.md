@@ -8,7 +8,7 @@ Front-end code that powers [www.ouorz.com](https://www.ouorz.com)
 
 ## Website
 
-[www.ouorz.com →](https://www.ouorz.com)
+[https://www.ouorz.com →](https://www.ouorz.com)
 
 <br/>
 
