@@ -129,16 +129,24 @@ yarn run dev
 ## Twilight Toolkit
 A super opinionated front-end toolkit library
 
-- @twilight-toolkit/ui
-- @twilight-toolkit/utils
+### UI
+Currently only available in React, Foundation/Adaptor implementation is coming soon.
+
+Storybook: [https://ui.twilight-toolkit.ouorz.com][https://ui.twilight-toolkit.ouorz.com]
+
+<br/>
+
+### Utilities
+Work in progress
 
 <br/>
 <hr/>
 
 ## Monorepo
-Monorepo build system: Turborepo
+Build system: [Turborepo](https://turborepo.org)
 
 <br/>
+<hr/>
 
 ## Development
 ### Gitflow
@@ -149,6 +157,8 @@ Not really following this though...
 <br/>
 
 ### E2E Testing
+Test runner: [Cypress](https://www.cypress.io)
+
 Start server:
 ```bash
 yarn run build:main
@@ -167,6 +177,7 @@ yarn run test:main
 `apps/main` uses Cypress Dashboard, disable it by changing the configuration file accordingly.
 
 <br/>
+<hr/>
 
 ## Deployment
 ### apps/main
@@ -185,6 +196,15 @@ See [apps/analytics/README.md](https://github.com/HelipengTony/ouorz-mono/tree/m
 ```bash
 yarn run build:analytics
 yarn run start:analytics
+```
+
+<br/>
+
+### packages/twilight-ui
+To deploy the storybook, export it as a static web app:
+
+```bash
+yarn run build:twilight:ui:storybook
 ```
 
 <br/>
