@@ -1,14 +1,15 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import Button from '.'
+import { Button } from './button'
+import { iconsNames } from '../utils/propTypes'
 
 export default {
 	title: 'Components/ Button',
 	component: Button,
 	argTypes: {
-		type: {
-			options: ['default', 'menu-default', 'primary', 'menu-primary'],
+		icon: {
+			options: iconsNames,
 			control: { type: 'select' },
 		},
 	},

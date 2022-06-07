@@ -1,12 +1,12 @@
 module.exports = {
-	stories: [
-		'../stories/**/*.stories.ts',
-		'../**/*.stories.tsx',
-	],
+	stories: ['../stories/**/*.stories.ts', '../src/**/*.stories.@(mdx|tsx)'],
 	addons: [
+		'@storybook/addon-docs',
 		'@storybook/addon-links',
 		'@storybook/addon-essentials',
-		'@storybook/addon-interactions',
+		'@storybook/addon-a11y',
+		'storybook-dark-mode',
+		// Support Tailwind CSS
 		{
 			name: '@storybook/addon-postcss',
 			options: {
@@ -16,8 +16,30 @@ module.exports = {
 			},
 		},
 	],
+	// Automatically generate docs for controls
+	typescript: {
+		check: false,
+		checkOptions: {},
+		reactDocgen: 'react-docgen-typescript',
+		reactDocgenTypescriptOptions: {
+			shouldExtractLiteralValuesFromEnum: true,
+			propFilter: (prop) =>
+				prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+		},
+	},
+	features: {
+		// Enable code splitting
+		storyStoreV7: true,
+	},
 	framework: '@storybook/react',
 	core: {
-		builder: '@storybook/builder-webpack5',
+		builder: {
+			name: '@storybook/builder-webpack5',
+			options: {
+				// Webpack features
+				lazyCompilation: true,
+				fsCache: true,
+			},
+		},
 	},
 }

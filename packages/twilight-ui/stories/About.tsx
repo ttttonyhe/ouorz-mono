@@ -8,7 +8,9 @@ const About = () => {
 					Twilight Toolkit <span className="text-gray-400 font-normal">/</span>{' '}
 					<span className="text-gray-500 text-base font-normal">UI</span>
 				</h1>
-				<p>A super opinionated UI library for React (for now)</p>
+				<p>
+					A super opinionated UI library for React <i>(for now)</i>
+				</p>
 			</div>
 		</div>
 	)

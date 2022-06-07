@@ -3,9 +3,21 @@ import Icon from '../Icon'
 import type { ButtonTypes, IconNames } from '../utils/propTypes'
 
 interface Props {
+	/**
+	 * Specify the type of the button
+	 */
 	type: ButtonTypes
+	/**
+	 * Specify the name of the icon to be used
+	 */
 	icon?: IconNames
+	/**
+	 * Custom classname
+	 */
 	className?: string
+	/**
+	 * The content inside the button
+	 */
 	children?: React.ReactNode
 	[prop: string]: any
 }
@@ -41,13 +53,13 @@ const Template = ({
 	)
 }
 
-const Button = ({
+export const Button: React.FC<ButtonProps> = ({
 	type = 'default',
 	icon,
 	className,
 	children = 'Button',
 	...rest
-}: ButtonProps) => {
+}) => {
 	switch (type) {
 		case 'menu-default':
 			return (
