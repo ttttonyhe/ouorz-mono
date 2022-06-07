@@ -3,11 +3,19 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 module.exports = {
 	stories: ['../stories/**/*.stories.ts', '../src/**/*.stories.@(mdx|tsx)'],
 	addons: [
-		'@storybook/addon-docs',
-		'@storybook/addon-links',
-		'@storybook/addon-essentials',
-		'@storybook/addon-a11y',
-		'storybook-dark-mode',
+		{
+			name: '@storybook/addon-essentials',
+			options: {
+				actions: true,
+				backgrounds: false,
+				controls: true,
+				docs: true,
+				toolbars: true,
+				viewport: true,
+				outline: false,
+				measure: false,
+			},
+		},
 		// Support Tailwind CSS
 		{
 			name: '@storybook/addon-postcss',
@@ -17,6 +25,10 @@ module.exports = {
 				},
 			},
 		},
+		'@storybook/addon-links',
+		'@storybook/addon-a11y',
+		'@storybook/addon-storysource',
+		'storybook-dark-mode',
 	],
 	// Automatically generate docs for controls
 	typescript: {

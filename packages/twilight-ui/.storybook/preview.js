@@ -2,6 +2,13 @@
 import '../styles/vendor.css'
 import '../styles/base.css'
 
+import { themes } from '@storybook/theming'
+
+const theme = {
+	brandTitle: '@twilight-toolkit/ui',
+	brandUrl: 'https://ui.twilight-toolkit.ouorz.com',
+}
+
 export const parameters = {
 	actions: { argTypesRegex: '^on[A-Z].*' },
 	controls: {
@@ -18,5 +25,13 @@ export const parameters = {
 		stylePreview: true,
 		darkClass: 'dark',
 		lightClass: 'light',
+		dark: {
+			...themes.dark,
+			...theme,
+		},
+		light: {
+			...themes.light,
+			...theme,
+		},
 	},
 }
