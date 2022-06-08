@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Twilight Toolkit</title>
+    <defs>
+        <radialGradient cx="82.9249778%" cy="-86.0214699%" fx="82.9249778%" fy="-86.0214699%" r="136.373039%" id="radialGradient-1">
+            <stop stop-color="#471F3F" offset="0%"></stop>
+            <stop stop-color="#1580D0" offset="67.6803909%"></stop>
+            <stop stop-color="#F9F9F9" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+        <path d="M256,6 C394.071187,6 506,117.928813 506,256 C506,394.071187 394.071187,506 256,506 C117.928813,506 6,394.071187 6,256 C6,117.928813 117.928813,6 256,6 Z" id="path-2"></path>
+        <filter x="-0.5%" y="-0.5%" width="101.0%" height="101.0%" filterUnits="objectBoundingBox" id="filter-3">
+            <feGaussianBlur stdDeviation="2.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="0" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.170183088 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <radialGradient cx="82.9249778%" cy="-86.0214699%" fx="82.9249778%" fy="-86.0214699%" r="136.373039%" id="radialGradient-4">
+            <stop stop-color="#0A263B" offset="0%"></stop>
+            <stop stop-color="#B32496" offset="67.3397891%"></stop>
+            <stop stop-color="#F9F9F9" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+        <path d="M256,6 C394.071187,6 506,117.928813 506,256 C506,394.071187 394.071187,506 256,506 C117.928813,506 6,394.071187 6,256 C6,117.928813 117.928813,6 256,6 Z" id="path-5"></path>
+        <filter x="-0.5%" y="-0.5%" width="101.0%" height="101.0%" filterUnits="objectBoundingBox" id="filter-6">
+            <feGaussianBlur stdDeviation="2.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="0" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.170183088 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="114.027965%" id="radialGradient-7">
+            <stop stop-color="#A85F9C" offset="0%"></stop>
+            <stop stop-color="#23445C" offset="100%"></stop>
+        </radialGradient>
+        <path d="M163.960634,133.884714 C182.009795,127.445938 202.153482,131.981551 215.700955,145.534719 C229.248428,159.087886 233.775156,179.233058 227.328137,197.278853 L381,350.946587 L350.93161,381 L197.259747,227.346436 C179.210586,233.785212 159.066899,229.249599 145.519425,215.696431 C131.971952,202.143263 127.445225,181.998091 133.892244,163.952296 L165.575995,195.649366 C170.912521,201.174531 178.815111,203.390407 186.246398,201.445321 C193.677685,199.500235 199.481188,193.696888 201.426326,186.265801 C203.371464,178.834713 201.155529,170.932336 195.630216,165.595953 L163.946464,133.870545 L163.960634,133.884714 Z M311.002121,162.003536 L356.002828,137 L376,156.997172 L350.996464,201.997879 L325.992929,207.004243 L296.011314,237 L276,217.002828 L305.995757,187.007071 L311.002121,162.003536 Z M210.763315,272 L241,302.248188 L170.43348,372.808286 C162.352614,380.812799 149.419058,381.090851 141.001586,373.441026 C132.584115,365.791201 131.629056,352.891133 138.828233,344.085337 L140.211051,342.560098 L210.777571,272 L210.763315,272 Z" id="path-8"></path>
+        <filter x="-12.2%" y="-11.8%" width="124.4%" height="124.4%" filterUnits="objectBoundingBox" id="filter-9">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.319659467 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Twilight-Toolkit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M256,6 C394.071187,6 506,117.928813 506,256 C506,394.071187 394.071187,506 256,506 C117.928813,506 6,394.071187 6,256 C6,117.928813 117.928813,6 256,6 Z" id="White-Background" fill="#FFFFFF"></path>
+        <g id="Background-Color-2">
+            <use fill="url(#radialGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+            <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+        </g>
+        <g id="Background-Color-1" transform="translate(256.000000, 256.000000) scale(-1, -1) translate(-256.000000, -256.000000) ">
+            <use fill="url(#radialGradient-4)" fill-rule="evenodd" xlink:href="#path-5"></use>
+            <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+        </g>
+        <g id="Toolkit-Icon" fill-rule="nonzero">
+            <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-8"></use>
+            <use fill="url(#radialGradient-7)" xlink:href="#path-8"></use>
+        </g>
+    </g>
+</svg>
