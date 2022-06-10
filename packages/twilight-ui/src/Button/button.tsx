@@ -6,7 +6,7 @@ interface Props {
 	/**
 	 * Specify the type of the button
 	 */
-	type: ButtonTypes
+	type?: ButtonTypes
 	/**
 	 * Specify the name of the icon to be used
 	 */
@@ -21,14 +21,16 @@ interface Props {
 	children?: React.ReactNode
 	[prop: string]: any
 }
+
+type NativeAttrs = Omit<React.ButtonHTMLAttributes<any>, keyof Props>
+export type ButtonProps = Props & NativeAttrs
+
 interface TemplateProps {
 	defaultClassName?: string
 	icon?: IconNames
 	className?: string
 	children?: React.ReactNode
 }
-type NativeAttrs = Omit<React.ButtonHTMLAttributes<any>, keyof Props>
-export type ButtonProps = Props & NativeAttrs
 
 const Template = ({
 	children,
@@ -40,7 +42,7 @@ const Template = ({
 	return (
 		<button
 			type="button"
-			className={`${className || ''} ${defaultClassName}`}
+			className={`${className ? `${className} ` : ''}${defaultClassName}`}
 			{...args}
 		>
 			{icon && (
@@ -112,4 +114,11 @@ export const Button: React.FC<ButtonProps> = ({
 	}
 }
 
+Button.defaultProps = {
+	type: 'default',
+	icon: '',
+	className: '',
+	children: 'Button',
+}
+Button.displayName = 'Button'
 export default Button

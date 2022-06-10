@@ -30,6 +30,7 @@ module.exports = {
 		'@storybook/addon-a11y',
 		'@storybook/addon-storysource',
 		'storybook-dark-mode',
+		'storybook-addon-turbo-build',
 	],
 	// Automatically generate docs for controls
 	typescript: {
