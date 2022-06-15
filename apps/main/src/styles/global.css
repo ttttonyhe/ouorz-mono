@@ -5,6 +5,10 @@
 	position: relative;
 }
 
+body {
+	@apply w-full
+}
+
 .nexment-admin-badge {
 	display: none !important;
 }

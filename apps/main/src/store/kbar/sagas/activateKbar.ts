@@ -5,6 +5,7 @@ import {
 	setKbarAnimation,
 	setKbarLocation,
 	showKbar,
+	setKbarLoading
 } from '../actions'
 
 export default function* activateKbarSaga(
@@ -12,6 +13,8 @@ export default function* activateKbarSaga(
 ) {
 	try {
 		if (action.payload.homeList) {
+			// put kbar in loading state before showing it
+			yield put(setKbarLoading(true))
 			// set kbar list data in the store
 			yield put(addToKbarLists('home', action.payload.homeList))
 			// set kbar location in the store
@@ -20,6 +23,8 @@ export default function* activateKbarSaga(
 			yield put(setKbarAnimation('in'))
 			// show the reader
 			yield put(showKbar())
+			// stop loading
+			yield put(setKbarLoading(false))
 		} else {
 			throw new Error('No list data provided')
 		}
