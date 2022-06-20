@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
-    "@sentry/nextjs": "^6.19.7",
+    "@sentry/nextjs": "^7.2.0",
     "@twilight-toolkit/ui": "*",
     "@twilight-toolkit/utils": "*",
     "cors": "^2.8.5",
