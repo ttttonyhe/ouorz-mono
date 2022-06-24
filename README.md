@@ -9,6 +9,7 @@
   <a href="https://codeclimate.com/github/HelipengTony/ouorz-mono/maintainability">
     <img src="https://api.codeclimate.com/v1/badges/241ce6373b176b12f511/maintainability" alt="maintainability" />
   </a>
+<a href="https://app.fossa.com/projects/git%2Bgithub.com%2FHelipengTony%2Fouorz-mono?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FHelipengTony%2Fouorz-mono.svg?type=shield"/></a>
 
   <a href="https://github.com/HelipengTony/ouorz-mono">
     <img src="https://img.shields.io/github/license/HelipengTony/ouorz-mono.svg" alt="license">
@@ -21,6 +22,9 @@
 
 <br/>
 <hr/>
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHelipengTony%2Fouorz-mono.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHelipengTony%2Fouorz-mono?ref=badge_large)
 
 ## Main App
 
