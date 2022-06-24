@@ -13,6 +13,10 @@
   <a href="https://github.com/HelipengTony/ouorz-mono">
     <img src="https://img.shields.io/github/license/HelipengTony/ouorz-mono.svg" alt="license">
   </a>
+  
+  <a href="https://github.com/HelipengTony/ouorz-mono/blob/main/LICENSE">
+    <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FHelipengTony%2Fouorz-mono.svg?type=shield" alt="license">
+  </a>
 </div>
 
 <br/>
@@ -242,3 +246,10 @@ Enabling diff-based deployment is highly recommended:
 ```bash
 git diff --quiet HEAD^ HEAD ./
 ```
+
+<br/>
+
+## License
+[GPL-3.0](https://github.com/HelipengTony/ouorz-mono/blob/main/LICENSE)
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHelipengTony%2Fouorz-mono.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHelipengTony%2Fouorz-mono?ref=badge_large)
