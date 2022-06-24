@@ -163,6 +163,8 @@ Work in progress
 
 Build system: [Turborepo](https://turborepo.org)
 
+![Repobeats analytics image](https://repobeats.axiom.co/api/embed/f2cb67ca660ac944b8df17763a07e74eddbd187d.svg)
+
 <br/>
 <hr/>
 
