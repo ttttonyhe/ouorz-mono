@@ -111,6 +111,13 @@ Copy the codes in `apps/main/src/assets/scripts/vendors/wordpress/functions.php`
 
 ## Analytics App
 
+This project is based on [Umami](https://umami.is)
+
+### Geolocation Data Access
+Follow the instructions [here →](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data) to sign up for Maxmind GeoLite2, and retrieve a license key
+
+<br/>
+
 ### Project Setup
 
 ```bash
