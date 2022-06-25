@@ -21,6 +21,7 @@
     "prepublishOnly": "yarn run build"
   },
   "devDependencies": {
+    "@types/node": "^18.0.0",
     "tsup": "^6.0.1"
   },
   "dependencies": {

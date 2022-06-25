@@ -13,6 +13,17 @@ const Tabs = (props: TabsProps) => {
 	const [highlightedIndex, setHighlightedIndex] = useState<number>(-1)
 
 	/**
+	 * Remove the highlighter
+	 */
+	const reset = () => {
+		setWithinWrapper(false)
+		styleHighlighter(false)
+		setHighlightedIndex(-1)
+	}
+
+	/* Begin Highlighting Methods */
+
+	/**
 	 * Change the styling of the highlighter
 	 *
 	 * @param {boolean} visible
@@ -20,13 +31,15 @@ const Tabs = (props: TabsProps) => {
 	 * @param {(DOMRect | null)} [tabBoundingBox]
 	 * @param {string} [bgColor]
 	 * @param {string} [bgDark]
+	 * @param {string} [className]
 	 */
 	const styleHighlighter = (
 		visible: boolean,
 		wrapperBoundingBox?: DOMRect | null,
 		tabBoundingBox?: DOMRect | null,
 		bgColor?: string,
-		bgDark?: string
+		bgDark?: string,
+		className?: string
 	) => {
 		if (!highlighterRef.current) return
 
@@ -71,11 +84,14 @@ const Tabs = (props: TabsProps) => {
 			highlighterRef.current.style.transform = 'none'
 		}
 
-		// background color
+		// background color and class name
 		if (visible) {
-			highlighterRef.current.className = `tabs-highlighter z-0 ${
-				bgColor || 'bg-menu'
-			} ${bgDark || 'dark:bg-gray-700/40 backdrop-blur-sm'}`
+			highlighterRef.current.className = [
+				'tabs-highlighter z-0',
+				className || '',
+				bgColor || 'bg-menu',
+				bgDark || 'dark:bg-gray-700/40 backdrop-blur-sm',
+			].join(' ')
 		} else {
 			highlighterRef.current.className = ''
 		}
@@ -87,6 +103,7 @@ const Tabs = (props: TabsProps) => {
 	 * @param {React.MouseEvent<HTMLElement>} e
 	 * @param {string} [bgColor]
 	 * @param {string} [bgDark]
+	 * @param {string} [className] - class name to add to the highlighter
 	 * @param {number} [index] - index of the tab to highlight
 	 * @param {string} [from] - highlighter initial direction
 	 */
@@ -94,6 +111,7 @@ const Tabs = (props: TabsProps) => {
 		e: React.MouseEvent<HTMLElement> | Element,
 		bgColor?: string,
 		bgDark?: string,
+		className?: string,
 		index?: number,
 		from?: 'above' | 'below'
 	) => {
@@ -112,6 +130,7 @@ const Tabs = (props: TabsProps) => {
 					listRef.current.children[targetIndex],
 					items[targetIndex].bgColor,
 					items[targetIndex].bgDark,
+					className,
 					targetIndex,
 					from
 				)
@@ -120,11 +139,12 @@ const Tabs = (props: TabsProps) => {
 		}
 
 		// vertical tabs have a different scroll behavior
-		verticalListWrapper &&
+		if (verticalListWrapper) {
 			scrollToItemWithinDiv(
 				verticalListWrapper.current,
 				listRef.current.children[index]
 			)
+		}
 
 		const targetTabBoundingBox =
 			e instanceof Element
@@ -136,22 +156,40 @@ const Tabs = (props: TabsProps) => {
 			wrapperBoundingBox,
 			targetTabBoundingBox,
 			bgColor,
-			bgDark
+			bgDark,
+			className
 		)
 		setWithinWrapper(true)
 		index >= 0 && setHighlightedIndex(index)
 	}
 
 	/**
-	 * Remove the highlighter
+	 * Hightlight the first tab item when defaultHighlighted is true and direction
+	 * is vertical
 	 */
-	const reset = () => {
-		setWithinWrapper(false)
-		styleHighlighter(false)
-		setHighlightedIndex(-1)
+	const highlightFirstItem = (delay: number) => {
+		setTimeout(() => {
+			if (!listRef.current) return
+			if (items[0] && direction === 'vertical' && defaultHighlighted) {
+				highlight(
+					listRef.current.children[0],
+					items[0].bgColor,
+					items[0].bgDark,
+					delay === 0 ? '' : 'animate-kbarHighlighter',
+					0,
+					'above'
+				)
+			} else {
+				reset()
+			}
+		}, delay)
 	}
 
-	// vertical tabs, register keyboard shortcuts
+	/* End Highlighting Methods */
+
+	/* Begin Vertical List Methods */
+
+	// Register keyboard shortcuts
 	if (direction === 'vertical') {
 		// navigation
 		useHotkeys(
@@ -164,6 +202,7 @@ const Tabs = (props: TabsProps) => {
 					listRef.current.children[targetIndex],
 					items[targetIndex].bgColor,
 					items[targetIndex].bgDark,
+					'',
 					targetIndex,
 					'above'
 				)
@@ -183,6 +222,7 @@ const Tabs = (props: TabsProps) => {
 					listRef.current.children[targetIndex],
 					items[targetIndex].bgColor,
 					items[targetIndex].bgDark,
+					'',
 					targetIndex,
 					'below'
 				)
@@ -207,22 +247,23 @@ const Tabs = (props: TabsProps) => {
 		)
 	}
 
-	// highlight the first tab by default if direction is vertical and
-	// defaultHighlighted is true
+	// Dynamically adjust the height of the list wrapper to fit the content
 	useEffect(() => {
-		if (!listRef.current) return
-		if (items[0] && direction === 'vertical' && defaultHighlighted) {
-			highlight(
-				listRef.current.children[0],
-				items[0].bgColor,
-				items[0].bgDark,
-				0,
-				'above'
-			)
-		} else {
-			reset()
-		}
-	}, [items, direction, defaultHighlighted, listRef])
+		if (direction !== 'vertical') return
+		if (!listRef.current || !verticalListWrapper.current) return
+		const listHeight = listRef.current.getBoundingClientRect().height
+		verticalListWrapper.current.style.height = `${
+			listHeight >= 340 ? 360 : listHeight + 20
+		}px`
+	}, [direction, defaultHighlighted, verticalListWrapper, listRef, items])
+
+	// Highlight the first item when defaultHighlighted is true
+	useEffect(() => {
+		// wait for list height to be updated
+		highlightFirstItem(highlightedIndex <= 0 ? 100 : 0)
+	}, [defaultHighlighted, items])
+
+	/* End Vertical List Methods */
 
 	return (
 		<div
@@ -253,7 +294,8 @@ const Tabs = (props: TabsProps) => {
 								'text-gray-500 dark:text-gray-400 dark:hover:text-gray-300 dark:transition-colors'
 							} ${className || ''} cursor-pointer rounded-md`}
 							onMouseEnter={(e) => {
-								item.hoverable !== false && highlight(e, bgColor, bgDark, index)
+								item.hoverable !== false &&
+									highlight(e, bgColor, bgDark, '', index)
 								// horizontal tabs, terminate highlighting on unhoverable items
 								item.hoverable === false && direction !== 'vertical' && reset()
 							}}

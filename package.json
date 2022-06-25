@@ -54,7 +54,7 @@
     "@ouorz/prettier-config": "*",
     "husky": "^8.0.1",
     "lint-staged": "^12.4.1",
-    "prettier": "^2.6.2",
+    "prettier": "^2.7.1",
     "turbo": "^1.2.11"
   },
   "husky": {

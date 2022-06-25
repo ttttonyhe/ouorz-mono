@@ -5,7 +5,10 @@ export type KbarContext = {
 	setInputValue: (value: string) => void
 }
 
-const kbarContext = createContext<KbarContext>(null)
+const kbarContext = createContext<KbarContext>({
+	inputValue: '',
+	setInputValue: () => {},
+})
 const KbarContextProvider = kbarContext.Provider
 
 export { kbarContext, KbarContextProvider }

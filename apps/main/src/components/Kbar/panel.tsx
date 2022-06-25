@@ -39,6 +39,24 @@ const ListComponent = ({
 }) => {
 	const { resolvedTheme } = useTheme()
 	const { loading } = useSelector(selectKbar)
+
+	// update vertical list wrapper height
+	// when the list is loading or no results found
+	useEffect(() => {
+		if (!verticalListWrapper.current) return
+		let wrapperHeight = 0
+
+		if (loading || !tabsListItems) {
+			wrapperHeight = 65
+		} else if (tabsListItems.length === 0) {
+			wrapperHeight = 66.39
+		}
+
+		if (wrapperHeight) {
+			verticalListWrapper.current.style.height = `${wrapperHeight}px`
+		}
+	}, [verticalListWrapper, tabsListItems])
+
 	if (loading || !tabsListItems) {
 		return (
 			<ContentLoader
@@ -85,6 +103,7 @@ const KbarPanel = () => {
 	const [initalListItems, setInitalListItems] = useState<TabItemProps[]>([])
 	const [tabsListItems, setTabsListItems] = useState<TabItemProps[]>([])
 
+	// Update list data for vertical Tabs component
 	useEffect(() => {
 		// Decorate list item actions
 		currentList(lists, location).map((item) => {
@@ -109,8 +128,7 @@ const KbarPanel = () => {
 			}
 		})
 
-		// Construct data for vertical Tabs component
-		const initialTabsListItems = currentList(lists, location).map((item) => {
+		const tabsListItems = currentList(lists, location).map((item) => {
 			return {
 				label: item.label,
 				icon: item.icon,
@@ -123,7 +141,9 @@ const KbarPanel = () => {
 				className: 'w-full !justify-start !p-4',
 				component:
 					item.hoverable === false ? (
-						<p className="text-sm text-gray-400 -my-2">{item.label}</p>
+						<p className="kbar-list-heading text-sm text-gray-400">
+							{item.label}
+						</p>
 					) : (
 						<div className="flex justify-between w-full items-center">
 							<div className={`flex gap-x-3 items-center ${item.color || ''}`}>
@@ -160,8 +180,13 @@ const KbarPanel = () => {
 					),
 			}
 		})
-		setInitalListItems(initialTabsListItems)
-		setTabsListItems(initialTabsListItems)
+
+		// update list data
+		setInitalListItems(tabsListItems)
+		setTabsListItems(tabsListItems)
+
+		// clear input value
+		setInputValue('')
 	}, [lists, location])
 
 	// Search list items
@@ -206,6 +231,7 @@ const KbarPanel = () => {
 						data-cy="kbar-input"
 						placeholder={placeholder}
 						onChange={(e) => setInputValue(e.target.value)}
+						value={inputValue}
 						autoFocus
 						className="flex-1 w-full bg-transparent rounded-tl-lg rounded-tr-lg text-lg py-4.5 px-5 outline-none text-gray-600 dark:text-gray-300"
 					/>
@@ -230,7 +256,7 @@ const KbarPanel = () => {
 					ref={verticalListWrapper}
 					className={`px-2.5 py-2.5 overflow-hidden ${
 						!loading && 'overflow-y-auto'
-					} max-h-[360px] kbar-mask`}
+					} max-h-[360px] kbar-mask kbar-list`}
 				>
 					<ListComponent
 						tabsListItems={tabsListItems}

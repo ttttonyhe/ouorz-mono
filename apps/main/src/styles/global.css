@@ -6,7 +6,7 @@
 }
 
 body {
-	@apply w-full
+	@apply w-full;
 }
 
 .nexment-admin-badge {
@@ -614,4 +614,17 @@ abbr[title] {
 /* FIXME: a possible nexment dependency - react-floater issue */
 .__floater {
 	display: none !important;
+}
+
+.kbar-list {
+	transition: height 100ms ease 0s;
+	will-change: height;
+}
+
+.kbar-list li .kbar-list-heading {
+	@apply mt-0.5 -mb-2;
+}
+
+.kbar-list li:first-child .kbar-list-heading {
+	@apply mt-0 -mb-1;
 }
