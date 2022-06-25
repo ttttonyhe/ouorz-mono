@@ -13,6 +13,10 @@
   <a href="https://github.com/HelipengTony/ouorz-mono">
     <img src="https://img.shields.io/github/license/HelipengTony/ouorz-mono.svg" alt="license">
   </a>
+  
+  <a href="https://github.com/HelipengTony/ouorz-mono/blob/main/LICENSE">
+    <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FHelipengTony%2Fouorz-mono.svg?type=shield" alt="license">
+  </a>
 </div>
 
 <br/>
@@ -107,6 +111,13 @@ Copy the codes in `apps/main/src/assets/scripts/vendors/wordpress/functions.php`
 
 ## Analytics App
 
+This project is based on [Umami](https://umami.is)
+
+### Geolocation Data Access
+Follow the instructions [here →](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data) to sign up for Maxmind GeoLite2, and retrieve a license key
+
+<br/>
+
 ### Project Setup
 
 ```bash
@@ -151,6 +162,8 @@ Work in progress
 ## Monorepo
 
 Build system: [Turborepo](https://turborepo.org)
+
+![Repobeats analytics image](https://repobeats.axiom.co/api/embed/f2cb67ca660ac944b8df17763a07e74eddbd187d.svg)
 
 <br/>
 <hr/>
@@ -242,3 +255,10 @@ Enabling diff-based deployment is highly recommended:
 ```bash
 git diff --quiet HEAD^ HEAD ./
 ```
+
+<br/>
+
+## License
+[GPL-3.0](https://github.com/HelipengTony/ouorz-mono/blob/main/LICENSE)
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHelipengTony%2Fouorz-mono.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHelipengTony%2Fouorz-mono?ref=badge_large)
