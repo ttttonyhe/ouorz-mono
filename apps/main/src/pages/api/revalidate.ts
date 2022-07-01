@@ -34,7 +34,7 @@ const handler = async (
 
 	// execute revalidation
 	try {
-		await res.unstable_revalidate(path)
+		await res.revalidate(path)
 		return res.json({ status: 401, revalidated: true })
 	} catch (err) {
 		return res.status(500).json({
