@@ -1,3 +1,4 @@
+// Tailwind and Custom CSS
 import '../styles/vendor.css'
 import '../styles/base.css'
 

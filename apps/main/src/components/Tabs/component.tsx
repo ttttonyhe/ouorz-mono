@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
+import { useMouseLeaveListener } from '~/hooks'
 import scrollToItemWithinDiv from '~/utilities/scrollTo'
 import { TabsProps } from '.'
 import TabItemComponent from './item'
@@ -15,7 +16,8 @@ const Tabs = (props: TabsProps) => {
 	/**
 	 * Remove the highlighter
 	 */
-	const reset = () => {
+	const reset = (skipVertical?: boolean) => {
+		if (skipVertical && direction === 'vertical') return
 		setWithinWrapper(false)
 		styleHighlighter(false)
 		setHighlightedIndex(-1)
@@ -115,7 +117,7 @@ const Tabs = (props: TabsProps) => {
 		index?: number,
 		from?: 'above' | 'below'
 	) => {
-		// skip unhoverable tabs
+		// skip unhoverable tabs and loop through the rest
 		if (items[index]?.hoverable === false && e instanceof Element) {
 			const targetIndex =
 				from === 'below'
@@ -265,12 +267,17 @@ const Tabs = (props: TabsProps) => {
 
 	/* End Vertical List Methods */
 
+	// Reset the highlighter when mouse leaves the viewport
+	useMouseLeaveListener(() => {
+		reset(true)
+	})
+
 	return (
 		<div
 			ref={wrapperRef}
-			className="relative"
+			className={`relative ${direction !== 'vertical' && 'tabs-wrapper'}`}
 			onMouseLeave={() => {
-				direction !== 'vertical' && reset()
+				reset(true)
 			}}
 		>
 			<div ref={highlighterRef} className="tabs-highlighter z-0" />
@@ -293,11 +300,13 @@ const Tabs = (props: TabsProps) => {
 								color ||
 								'text-gray-500 dark:text-gray-400 dark:hover:text-gray-300 dark:transition-colors'
 							} ${className || ''} cursor-pointer rounded-md`}
-							onMouseEnter={(e) => {
-								item.hoverable !== false &&
+							onMouseOver={(e) => {
+								if (item.hoverable !== false) {
 									highlight(e, bgColor, bgDark, '', index)
-								// horizontal tabs, terminate highlighting on unhoverable items
-								item.hoverable === false && direction !== 'vertical' && reset()
+								} else if (direction !== 'vertical') {
+									// horizontal tabs, terminate highlighting on unhoverable items
+									reset()
+								}
 							}}
 							onClick={onClick}
 						>

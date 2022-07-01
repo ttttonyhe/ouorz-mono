@@ -165,7 +165,8 @@ Work in progress
 
 ## Monorepo
 
-Build system: [Turborepo](https://turborepo.org)
+Build system: [Turborepo](https://turborepo.org) with Remote Caching
+Monorepo Manager: [Yarn Workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces)
 
 ![Repobeats analytics image](https://repobeats.axiom.co/api/embed/f2cb67ca660ac944b8df17763a07e74eddbd187d.svg)
 

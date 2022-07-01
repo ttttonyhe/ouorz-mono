@@ -611,7 +611,6 @@ abbr[title] {
 	right: 1px;
 }
 
-/* FIXME: a possible nexment dependency - react-floater issue */
 .__floater {
 	display: none !important;
 }
@@ -627,4 +626,13 @@ abbr[title] {
 
 .kbar-list li:first-child .kbar-list-heading {
 	@apply mt-0 -mb-1;
+}
+
+/* Workaround for React onMouseLeave not triggering when user's cursor is moving fast*/
+.tabs-wrapper .tabs-highlighter {
+	display: none;
+}
+
+.tabs-wrapper:hover .tabs-highlighter {
+	display: block;
 }

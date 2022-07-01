@@ -1,9 +1,9 @@
 {
   "name": "ouorz-mono",
-  "description": "Monorepo for Tony's Personal Site and Other Related Projects",
+  "description": "Monorepo for Tony's Personal Website and Related Projects",
   "version": "0.0.1",
   "packageManager": "yarn@1.22.18",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "GPL-3.0-or-later",
   "private": true,
   "engines": {
     "npm": ">=7.0.0",
@@ -23,6 +23,9 @@
     ]
   },
   "scripts": {
+    "main": "yarn workspace @ouorz/main",
+    "analytics": "yarn workspace @ouorz/analytics",
+    "ui": "yarn workspace @twilight-toolkit/ui",
     "dev": "turbo run dev --parallel",
     "dev:main": "turbo run dev --filter=@ouorz/main",
     "dev:analytics": "turbo run dev --filter=@ouorz/analytics",
