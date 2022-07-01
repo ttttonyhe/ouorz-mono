@@ -15,8 +15,7 @@
       "react-dom",
       "react/**",
       "react-dom/**",
-      "react-**",
-      "**-react"
+      "react-**"
     ],
     "packages": [
       "apps/*",
