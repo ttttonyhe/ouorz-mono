@@ -30,9 +30,6 @@
 <br/>
 <hr/>
 
-
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHelipengTony%2Fouorz-mono.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHelipengTony%2Fouorz-mono?ref=badge_large)
-
 ## Main App
 
 ### Past Iterations
