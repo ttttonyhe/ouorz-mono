@@ -1,4 +1,4 @@
-/// <reference types="@testing-library/cypress" />
+/// <reference types="cypress" />
 
 describe('Kbar', function () {
 	this.beforeEach(() => {

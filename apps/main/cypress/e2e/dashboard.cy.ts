@@ -1,4 +1,4 @@
-/// <reference types="@testing-library/cypress" />
+/// <reference types="cypress" />
 
 describe('Dashboard', function () {
   it('should display some blocks', function () {

@@ -1,4 +1,4 @@
-/// <reference types="@testing-library/cypress" />
+/// <reference types="cypress" />
 
 describe('Index', function () {
   it('should display some posts', function () {
