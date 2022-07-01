@@ -18,12 +18,13 @@
 }
 
 .links {
-	flex: 2;
+	flex: 1;
 	display: flex;
-	justify-content: center;
+	justify-content: left;
 	align-items: center;
 	font-size: var(--font-size-normal);
 	font-weight: 600;
+	margin-left: 15px;
 }
 
 .links a + a {

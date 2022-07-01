@@ -4,4 +4,5 @@
 	flex-direction: column;
 	padding: 0 30px;
 	background: var(--gray50);
+	border-radius: 10px;
 }

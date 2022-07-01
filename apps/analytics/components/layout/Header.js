@@ -21,15 +21,13 @@ export default function Header() {
 	return (
 		<>
 			<header className={classNames(styles.header, 'row')}>
-				<div className={styles.title}>
-					<Link href={pathname.includes('/share') ? HOMEPAGE_URL : '/'}>
-						{pathname === '/' ? 'ouorz-analytics' : 'Analytics'}
-					</Link>
-				</div>
 				{user && (
 					<>
 						<HamburgerButton />
 						<div className={styles.links}>
+							<Link href={pathname.includes('/share') ? HOMEPAGE_URL : '/'}>
+								<FormattedMessage id="label.home" defaultMessage="Home" />
+							</Link>
 							<Link href="/dashboard">
 								<FormattedMessage
 									id="label.dashboard"
