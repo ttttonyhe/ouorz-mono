@@ -8,6 +8,7 @@ import CardWithImagePodcast from '~/components/Card/WithImage/podcast'
 import { useDispatch } from '~/hooks'
 import { setReaderRequest } from '~/store/reader/actions'
 import { WPPost } from '~/constants/propTypes'
+import { Hover } from '~/components/Visual'
 
 interface Props {
 	item: WPPost
@@ -24,7 +25,12 @@ export default function CardWithImage({ item, sticky }: Props) {
 			return (
 				<div className="w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6">
 					<div className="p-5 lg:p-10 lg:grid lg:grid-flow-col lg:grid-cols-3 lg:gap-9">
-						<div className="dark:opacity-90 lg:block relative hidden rounded-md shadow-sm h-img min-h-full w-full col-span-1 col-end-2 border border-gray-200">
+						<Hover
+							perspective={1000}
+							max={25}
+							scale={1.01}
+							className="dark:opacity-90 lg:block relative hidden rounded-md shadow-sm hover:shadow-md h-img min-h-full w-full col-span-1 col-end-2 border border-gray-200 transition-all"
+						>
 							<Image
 								src={item.post_img.url}
 								layout="fill"
@@ -34,7 +40,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 								className="rounded-md"
 								alt={`featured-image-${item.post_title}`}
 							/>
-						</div>
+						</Hover>
 						<div className="col-span-2 col-end-4">
 							<div className="flex space-x-3 items-center">
 								<div className="flex space-x-2 col-start-1 col-end-3">

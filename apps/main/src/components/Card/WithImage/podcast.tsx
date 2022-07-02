@@ -5,6 +5,7 @@ import Image from 'next/image'
 import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
 import { WPPost } from '~/constants/propTypes'
+import { Hover } from '~/components/Visual'
 
 interface Props {
 	item: WPPost
@@ -15,7 +16,12 @@ const CardWithImagePodcast = ({ item, sticky }: Props) => {
 	return (
 		<div className="w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6">
 			<div className="lg:pt-10 pt-5 pl-5 pr-5 lg:pl-10 lg:pr-10 lg:grid lg:grid-flow-col lg:grid-cols-3 lg:gap-9">
-				<div className="lg:block hidden bg-gray-50 podcast-image-placeholder rounded-md shadow-sm border border-gray-200 dark:opacity-90">
+				<Hover
+					perspective={1000}
+					max={25}
+					scale={1.01}
+					className="lg:block hidden bg-gray-50 podcast-image-placeholder rounded-md shadow-sm hover:shadow-md border border-gray-200 dark:opacity-90"
+				>
 					<Image
 						src={item.post_img.url}
 						width={160}
@@ -25,7 +31,7 @@ const CardWithImagePodcast = ({ item, sticky }: Props) => {
 						className="rounded-md"
 						alt={`podcast-episode-cover-art-${item.post_title}`}
 					/>
-				</div>
+				</Hover>
 				<div className="col-span-2 col-end-4">
 					<div className="flex space-x-3 items-center mb-4">
 						<div className="flex space-x-2 col-start-1 col-end-3">

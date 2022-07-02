@@ -636,3 +636,9 @@ abbr[title] {
 .tabs-wrapper:hover .tabs-highlighter {
 	display: block;
 }
+
+.hovering-div {
+	will-change: transform;
+	display: inline-block;
+	transform-style: preserve-3d;
+}
