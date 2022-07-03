@@ -7,7 +7,15 @@ export const buttonTypes = propTypes.tuple(
 	'primary',
 	'menu-primary'
 )
+export const labelTypes = propTypes.tuple(
+	'sticky',
+	'primary',
+	'secondary',
+	'green',
+	'gray'
+)
 export const iconsNames = propTypes.tuple(...Object.keys(icons))
 
 export type ButtonTypes = typeof buttonTypes[number]
 export type IconNames = typeof iconsNames[number]
+export type LabelTypes = typeof labelTypes[number]

@@ -1,4 +1,4 @@
-import Label from '~/components/Label'
+import { Label } from '@twilight-toolkit/ui'
 import trimStr from '~/utilities/trimString'
 import Link from 'next/link'
 import Image from 'next/image'

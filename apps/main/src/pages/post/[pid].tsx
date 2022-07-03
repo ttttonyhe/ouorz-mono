@@ -10,7 +10,7 @@ import TimeAgo from 'react-timeago'
 import CommentBox from '~/components/CommentBox'
 import PostContent from '~/components/PostContent'
 import Link from 'next/link'
-import Label from '~/components/Label'
+import { Label } from '@twilight-toolkit/ui'
 import { CardTool } from '~/components/Card/WithImage/tool'
 
 // Utilities

@@ -1,4 +1,4 @@
-import Label from '~/components/Label'
+import { Label } from '@twilight-toolkit/ui'
 import CardFooter from '~/components/Card/Footer'
 import trimStr from '~/utilities/trimString'
 import Link from 'next/link'
@@ -23,7 +23,7 @@ export const CardTool = ({
 	return (
 		<Hover
 			perspective={2000}
-			max={15}
+			max={10}
 			className="w-full whitespace-nowrap lg:grid lg:grid-cols-8 lg:gap-3 rounded-md shadow-sm hover:shadow-md border border-gray-200 dark:border-gray-600 dark:bg-gray-600 overflow-hidden"
 		>
 			<div

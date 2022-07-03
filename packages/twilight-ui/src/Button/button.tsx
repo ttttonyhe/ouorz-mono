@@ -42,7 +42,9 @@ const Template = ({
 	return (
 		<button
 			type="button"
-			className={`${className ? `${className} ` : ''}${defaultClassName}`}
+			className={`${
+				className ? `${className} ` : ''
+			}${defaultClassName} effect-pressing`}
 			{...args}
 		>
 			{icon && (
@@ -55,7 +57,7 @@ const Template = ({
 	)
 }
 
-export const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
 	type = 'default',
 	icon,
 	className,

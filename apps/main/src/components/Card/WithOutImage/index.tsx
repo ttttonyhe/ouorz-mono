@@ -1,4 +1,4 @@
-import Label from '~/components/Label'
+import { Label } from '@twilight-toolkit/ui'
 import CardFooter from '~/components/Card/Footer'
 import trimStr from '~/utilities/trimString'
 import Link from 'next/link'
