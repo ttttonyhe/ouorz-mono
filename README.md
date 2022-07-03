@@ -17,10 +17,6 @@
   <a href="https://github.com/HelipengTony/ouorz-mono">
     <img src="https://img.shields.io/github/license/HelipengTony/ouorz-mono.svg" alt="license">
   </a>
-  
-  <a href="https://github.com/HelipengTony/ouorz-mono/blob/main/LICENSE">
-    <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FHelipengTony%2Fouorz-mono.svg?type=shield" alt="license">
-  </a>
 </div>
 
 <br/>
