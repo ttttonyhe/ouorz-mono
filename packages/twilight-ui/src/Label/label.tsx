@@ -1,6 +1,6 @@
 import React from 'react'
-import { Icon } from '@twilight-toolkit/ui'
-import { LabelTypes } from '../utils/propTypes'
+import Icon from '../Icon'
+import type { LabelTypes, IconNames } from '../utils/propTypes'
 
 interface Props {
 	/**
@@ -10,7 +10,7 @@ interface Props {
 	/**
 	 * Specify the name of the icon to be used
 	 */
-	icon?: string
+	icon?: IconNames
 	/**
 	 * The content inside the button
 	 */
