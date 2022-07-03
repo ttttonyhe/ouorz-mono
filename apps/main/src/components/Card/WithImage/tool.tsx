@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useDispatch } from '~/hooks'
 import { setReaderRequest } from '~/store/reader/actions'
 import { WPPost } from '~/constants/propTypes'
+import { Hover } from '~/components/Visual'
 
 interface Props {
 	item: WPPost
@@ -20,7 +21,11 @@ export const CardTool = ({
 }) => {
 	const dispatch = useDispatch()
 	return (
-		<div className="w-full whitespace-nowrap lg:grid lg:grid-cols-8 lg:gap-3 rounded-md shadow-sm border border-gray-200 dark:border-gray-600 dark:bg-gray-600 overflow-hidden">
+		<Hover
+			perspective={2000}
+			max={15}
+			className="w-full whitespace-nowrap lg:grid lg:grid-cols-8 lg:gap-3 rounded-md shadow-sm hover:shadow-md border border-gray-200 dark:border-gray-600 dark:bg-gray-600 overflow-hidden"
+		>
 			<div
 				className={`col-start-1 col-end-2 rounded-tl-md rounded-bl-md ${
 					item.post_metas.fineTool.itemImgBorder
@@ -65,7 +70,7 @@ export const CardTool = ({
 					</a>
 				</div>
 			</div>
-		</div>
+		</Hover>
 	)
 }
 
