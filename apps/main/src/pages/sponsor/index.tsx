@@ -113,7 +113,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
 							/>
 							<PageCard
 								title="Ethereum"
-								des="Ethereum Network"
+								des="ttttonyhe.eth"
 								icon="https://static.ouorz.com/eth.png"
 								href="https://static.ouorz.com/metamask.png"
 							/>
