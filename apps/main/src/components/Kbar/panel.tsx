@@ -13,10 +13,7 @@ import {
 	goToKbarLocation,
 	KbarLists,
 } from '~/store/kbar/actions'
-const ContentLoader = dynamic(
-	() => import('react-content-loader').then((mod) => mod.default),
-	{ ssr: false }
-)
+import ContentLoader from 'react-content-loader'
 
 // Kbar list data helper
 const currentList = (
@@ -60,6 +57,7 @@ const ListComponent = ({
 	if (loading || !tabsListItems) {
 		return (
 			<ContentLoader
+				uniqueKey="kbar-panel-skeleton"
 				speed={2}
 				width={50}
 				style={{ width: '100%' }}

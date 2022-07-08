@@ -21,7 +21,12 @@ const NextConfigs = {
 	},
 	compiler: {
 		removeConsole: {
-			exclude: ['error'],
+			exclude: ['log', 'error'],
+		},
+	},
+	experimental: {
+		images: {
+			allowFutureImage: true,
 		},
 	},
 }

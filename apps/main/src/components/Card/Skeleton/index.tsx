@@ -1,10 +1,5 @@
 import { useTheme } from 'next-themes'
 import ContentLoader from 'react-content-loader'
-// import dynamic from 'next/dynamic'
-// const ContentLoader = dynamic(
-// 	() => import('react-content-loader').then((mod) => mod.default),
-// 	{ ssr: false }
-// )
 
 export default function CardSkeleton() {
 	const { resolvedTheme } = useTheme()
@@ -12,6 +7,7 @@ export default function CardSkeleton() {
 		<div className="w-full p-10 shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6 text-center">
 			{/* @ts-ignore */}
 			<ContentLoader
+				uniqueKey="card-skeleton"
 				speed={2}
 				width={100}
 				style={{ width: '100%' }}
