@@ -25,14 +25,20 @@ const Header = () => {
 		>
 			<div className="cursor-pointer mx-auto hidden lg:flex space-x-3 items-center justify-center">
 				<div className="flex-shrink-0 h-7 w-7 border rounded-full border-gray-300 dark:border-gray-500">
-					<Image
-						className="rounded-full"
-						src="/tony.jpg"
-						alt="tony's logo"
-						height={18.77}
-						width={18.77}
-						layout="fixed"
-					/>
+					<a
+						href="https://opensea.io/assets/ethereum/0xe0be388ab81c47b0f098d2030a1c9ef190691a8a/2754"
+						target="_blank"
+						rel="noreferrer"
+					>
+						<Image
+							className="rounded-full"
+							src="/tony.png"
+							alt="Tony's NFT avatar"
+							height={18.77}
+							width={18.77}
+							layout="fixed"
+						/>
+					</a>
 				</div>
 				<div className="text-2 font-medium text-black">
 					<Link href="/" passHref>

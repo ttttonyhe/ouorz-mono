@@ -31,7 +31,7 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
 							<span className="animate-waveHand hover:animate-waveHandAgain inline-block cursor-pointer mr-2.5">
 								👋
 							</span>{' '}
-							Hey, I{"'"}m Tony
+							Hey, It{"'"}s Tony
 							<a
 								href="https://www.linkedin.com/in/lipenghe"
 								className="ml-2 mt-0.5 hidden lg:block"
@@ -43,10 +43,16 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
 								</span>
 							</a>
 						</h1>
-						<p className="text-3 lg:text-2 text-gray-500 dark:text-gray-200 leading-14 tracking-wider font-light pl-1.5 pb-1.5 pt-1">
-							I&apos;m currently living an absolutely not meaningless life with
-							totally not unachievable goals.
-						</p>
+						<div className="group">
+							<p className="group-hover:hidden block text-3 lg:text-2 text-gray-500 dark:text-gray-200 leading-14 tracking-wider font-light pl-1.5 pb-1.5 pt-1">
+								I&apos;m currently living an absolutely not meaningless life
+								with totally not unachievable goals.
+							</p>
+							<p className="group-hover:block hidden text-3 lg:text-2 text-gray-500 dark:text-gray-200 leading-14 tracking-wider font-light pl-1.5 pb-1.5 pt-1">
+								I&apos;m currently living a<del>n absolutely not</del> meaningless life
+								with <del>totally not</del> unachievable goals.
+							</p>
+						</div>
 					</div>
 					<Top />
 				</div>
