@@ -24,11 +24,12 @@ const Header = () => {
 			className="col-start-3 col-end-5 justify-center opacity-0 flex items-center"
 		>
 			<div className="cursor-pointer mx-auto hidden lg:flex space-x-3 items-center justify-center">
-				<div className="flex-shrink-0 h-7 w-7 border rounded-full border-gray-300 dark:border-gray-500">
+				<div className="flex items-center flex-shrink-0 h-7 w-7 border rounded-full border-gray-300 dark:border-gray-500">
 					<a
 						href="https://opensea.io/assets/ethereum/0xe0be388ab81c47b0f098d2030a1c9ef190691a8a/2754"
 						target="_blank"
 						rel="noreferrer"
+						className="flex"
 					>
 						<Image
 							className="rounded-full"
@@ -360,6 +361,48 @@ const Header = () => {
 				icon: 'briefCase',
 				link: {
 					external: 'https://www.linkedin.com/in/lipenghe',
+				},
+			},
+			{
+				label: 'Web 3.0',
+				id: 'web3-divider',
+				hoverable: false,
+			},
+			{
+				label: 'OpenSea',
+				id: 'opensea',
+				description: 'Link',
+				icon: 'openSea',
+				link: {
+					external: 'https://opensea.io/ttttonyhe',
+				},
+			},
+			{
+				label: 'MagicEden',
+				id: 'magicEden',
+				description: 'Link',
+				icon: 'magicEden',
+				link: {
+					external: 'https://magiceden.io/u/tonyhe',
+				},
+			},
+			{
+				label: 'Ethereum',
+				id: 'ens',
+				description: 'ttttonyhe.eth',
+				icon: 'eth',
+				link: {
+					external:
+						'https://app.ens.domains/address/0x8FE6fE9EC2a34D9e77Cdfeb5B2eaab5DfD8C2542',
+				},
+			},
+			{
+				label: 'Solana',
+				id: 'solana',
+				description: 'tonyhe.sol',
+				icon: 'solana',
+				link: {
+					external: 'https://naming.bonfida.org/#/domain/tonyhe',
 				},
 			},
 		]
