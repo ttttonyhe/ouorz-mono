@@ -85,9 +85,11 @@ module.exports = {
 				kbarBg: '200ms ease 0s 1 normal none running opacityProgressIn',
 				kbarBgOut: '200ms ease 0s 1 normal forwards running opacityProgressOut',
 				kbarTransition: '200ms ease 0s 1 normal none running kbarTransition',
-				kbarHighlighter: '100ms ease 0s 1 normal none running opacityProgressIn',
+				kbarHighlighter:
+					'100ms ease 0s 1 normal none running opacityProgressIn',
 				waveHand: 'wavingHand ease-in-out 1.5s 3',
 				waveHandAgain: 'wavingHand ease-in-out 1.5s infinite',
+				completePulse: 'completePulse ease-in-out 2.5s infinite',
 			},
 			keyframes: {
 				pointer: {
@@ -204,6 +206,17 @@ module.exports = {
 					'100%': {
 						transform: 'none',
 						transformOrigin: '70% 70%',
+					},
+				},
+				completePulse: {
+					'0%': {
+						opacity: 1,
+					},
+					'50%': {
+						opacity: 0,
+					},
+					'100%': {
+						opacity: 1,
 					},
 				},
 			},
