@@ -84,7 +84,7 @@ export default function Sponsor({ sponsors }: { sponsors: any }) {
 							/>
 							<PageCard
 								title="Wechat Pay"
-								des="Helipeng_tony"
+								des="ttttonyhe"
 								icon="wxpay"
 								className="text-green-600"
 								href="https://static.ouorz.com/wechatpay.png"
