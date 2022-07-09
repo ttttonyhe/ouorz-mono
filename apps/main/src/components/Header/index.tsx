@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import { useDispatch } from '~/hooks'
-import { setKbarToSearch, activateKbar } from '~/store/kbar/actions'
+import { updateKbarToSearch, activateKbar } from '~/store/kbar/actions'
 import { HeaderTransition, OffsetTransition } from '../Motion'
 import Tabs from '../Tabs'
 import Kbar from '../Kbar'
@@ -24,7 +24,7 @@ const Header = () => {
 			className="col-start-3 col-end-5 justify-center opacity-0 flex items-center"
 		>
 			<div className="cursor-pointer mx-auto hidden lg:flex space-x-3 items-center justify-center">
-				<div className="flex items-center flex-shrink-0 h-7 w-7 border rounded-full border-gray-300 dark:border-gray-500">
+				<div className="flex items-center flex-shrink-0 h-7 w-7 border rounded-full border-gray-300 dark:border-gray-500 -mt-0.5">
 					<a
 						href="https://opensea.io/assets/ethereum/0xe0be388ab81c47b0f098d2030a1c9ef190691a8a/2754"
 						target="_blank"
@@ -148,30 +148,44 @@ const Header = () => {
 				id: 'appearance-divider',
 				hoverable: false,
 			},
-			resolvedTheme === 'light'
-				? {
-						label: 'Set Theme to Dark',
-						id: 'darktheme',
-						shortcut: ['d'],
-						description: 'Command',
-						icon: 'moon',
-						action: () => setTheme('dark'),
-				  }
-				: {
-						label: 'Set Theme to Light',
-						id: 'lighttheme',
-						shortcut: ['l'],
-						description: 'Command',
-						icon: 'sun',
-						action: () => setTheme('light'),
-				  },
 			{
-				label: 'Set Theme to System',
-				id: 'systemtheme',
-				shortcut: ['y'],
-				description: 'Command',
-				icon: 'monitor',
-				action: () => setTheme('system'),
+				label: 'Themes',
+				id: 'themes',
+				icon: resolvedTheme === 'light' ? 'sun' : 'moon',
+				description: 'Choices',
+				shortcut: ['t'],
+				singleton: false,
+				sublist: {
+					key: 'themes',
+					list: [
+						resolvedTheme === 'light'
+							? {
+									label: 'Dark',
+									id: 'darktheme',
+									shortcut: ['d'],
+									description: 'Command',
+									icon: 'moon',
+									action: () => setTheme('dark'),
+							  }
+							: {
+									label: 'Light',
+									id: 'lighttheme',
+									shortcut: ['l'],
+									description: 'Command',
+									icon: 'sun',
+									action: () => setTheme('light'),
+							  },
+						{
+							label: 'Same as system',
+							id: 'systemtheme',
+							shortcut: ['y'],
+							description: 'Command',
+							icon: 'monitor',
+							action: () => setTheme('system'),
+						},
+					],
+					placeholder: 'Set theme to...',
+				},
 			},
 			{
 				label: 'Search',
@@ -184,7 +198,7 @@ const Header = () => {
 				icon: 'search',
 				shortcut: ['s'],
 				action: () => {
-					dispatch(setKbarToSearch())
+					dispatch(updateKbarToSearch())
 					trackEvent('searchBlogPosts', 'kbar')
 				},
 				description: 'Command',

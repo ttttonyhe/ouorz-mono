@@ -1,26 +1,32 @@
 import { call, put, select } from 'redux-saga/effects'
 import { selectKbar } from '../selectors'
 import {
-	addToKbarLists,
 	setKbarLoading,
-	updateKbarLocation,
+	setKbarList,
 	setKbarPlaceholder,
+	updateKbarLocation,
+	addToKbarLists,
 } from '../actions'
 import Fetcher from '~/lib/fetcher'
 import getApi from '~/utilities/api'
 
-export default function* setKbarToSearchSaga() {
+const searchLocation = ['home', 'search']
+
+export default function* updateKbarToSearchSaga() {
 	try {
+		// update kbar location
+		yield put(updateKbarLocation(searchLocation))
 		// start loading
 		yield put(setKbarLoading(true))
-		// set kbar location to search
-		yield put(updateKbarLocation(['home', 'search']))
 		// set kbar placeholder
 		yield put(setKbarPlaceholder('Search articles...'))
-		// get the kbar state
+
+		// get list cache
 		const { lists } = yield select(selectKbar)
-		// determine if search index is already loaded
-		if (!lists['search']) {
+		let searchList = lists['search']
+
+		// determine if post data is already in cache
+		if (!searchList) {
 			// fetch search index data
 			const searchData = yield call(
 				Fetcher,
@@ -28,8 +34,8 @@ export default function* setKbarToSearchSaga() {
 					searchIndexes: true,
 				})
 			)
-			// construct search index list data
-			const searchList = searchData.ids.map((id: number, index: number) => {
+			// construct post list data
+			searchList = searchData.ids.map((id: number, index: number) => {
 				const title = searchData.titles[index]
 				return {
 					label: title,
@@ -42,9 +48,13 @@ export default function* setKbarToSearchSaga() {
 					className: 'w-full !justify-start !p-4',
 				}
 			})
-			// add search index list to kbar lists
+			// add post list to cache
 			yield put(addToKbarLists('search', searchList))
 		}
+
+		// update current list
+		yield put(setKbarList(searchList))
+
 		// stop loading
 		yield put(setKbarLoading(false))
 	} catch (error) {

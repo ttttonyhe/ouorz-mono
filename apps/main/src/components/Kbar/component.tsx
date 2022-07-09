@@ -10,11 +10,7 @@ import {
 	useBodyScroll,
 } from '~/hooks'
 import { selectKbar } from '~/store/kbar/selectors'
-import {
-	activateKbar,
-	deactivateKbar,
-	goToKbarLocation,
-} from '~/store/kbar/actions'
+import { activateKbar, deactivateKbar, updateKbar } from '~/store/kbar/actions'
 import useAnalytics from '~/hooks/analytics'
 
 const Kbar = (props: KbarProps) => {
@@ -36,7 +32,12 @@ const Kbar = (props: KbarProps) => {
 		() => {
 			// non-home location, esc to go back to last location
 			if (location.length >= 2) {
-				dispatch(goToKbarLocation(location[location.length - 2]))
+				dispatch(
+					updateKbar({
+						key: location[location.length - 2],
+						location: location.slice(0, location.length - 1),
+					})
+				)
 			} else {
 				// home location, esc to hide kbar
 				dispatch(deactivateKbar())

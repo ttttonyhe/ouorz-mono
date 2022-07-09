@@ -16,6 +16,11 @@ export type KbarListItem = {
 	description?: string
 	hoverable?: boolean
 	singleton?: boolean
+	sublist?: {
+		key: string
+		list: KbarListItem[]
+		placeholder?: string
+	}
 }
 
 export interface KbarProps {

@@ -1,7 +1,7 @@
 import { put, delay } from 'redux-saga/effects'
 import {
-	setKbarAnimation,
 	setKbarLocation,
+	setKbarAnimation,
 	updateKbarLocation,
 } from '../actions'
 
@@ -15,7 +15,7 @@ export default function* updateKbarLocationSaga(
 		yield delay(200)
 		// remove animation
 		yield put(setKbarAnimation(''))
-		// set location in the store
+		// set kbar location
 		yield put(setKbarLocation(action.payload.location))
 	} catch (error) {
 		console.error(error)

@@ -618,6 +618,12 @@ abbr[title] {
 .kbar-list {
 	transition: height 100ms ease 0s;
 	will-change: height;
+	-ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.kbar-list::-webkit-scrollbar {
+  display: none;
 }
 
 .kbar-list li .kbar-list-heading {

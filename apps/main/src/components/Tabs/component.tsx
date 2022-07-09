@@ -261,9 +261,13 @@ const Tabs = (props: TabsProps) => {
 
 	// Highlight the first item when defaultHighlighted is true
 	useEffect(() => {
+		if (!listRef.current) return
+		const listHeight = listRef.current.getBoundingClientRect().height
+		const delay = listHeight <= 340 ? 0 : 100
+
 		// wait for list height to be updated
-		highlightFirstItem(highlightedIndex <= 0 ? 100 : 0)
-	}, [defaultHighlighted, items])
+		highlightFirstItem(highlightedIndex <= 0 ? delay : 0)
+	}, [defaultHighlighted, items, listRef])
 
 	/* End Vertical List Methods */
 

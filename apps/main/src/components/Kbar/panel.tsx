@@ -8,23 +8,8 @@ import { kbarContext } from './context'
 import Tabs, { TabItemProps } from '../Tabs'
 import HotkeyHelper from '../Helpers/hotkey'
 import { Icon } from '@twilight-toolkit/ui'
-import {
-	deactivateKbar,
-	goToKbarLocation,
-	KbarLists,
-} from '~/store/kbar/actions'
+import { deactivateKbar, updateKbar, KbarLists } from '~/store/kbar/actions'
 import ContentLoader from 'react-content-loader'
-
-// Kbar list data helper
-const currentList = (
-	lists: KbarLists,
-	location: string[]
-): KbarLists[string] => {
-	if (location.length - 1 >= 0 && lists[location[location.length - 1]]) {
-		return lists[location[location.length - 1]]
-	}
-	return []
-}
 
 // Kbar list helper component
 const ListComponent = ({
@@ -95,7 +80,7 @@ const KbarPanel = () => {
 	const router = useRouter()
 	const dispatch = useDispatch()
 	const { inputValue, setInputValue } = useContext(kbarContext)
-	const { lists, placeholder, animation, location, loading } =
+	const { list, lists, placeholder, animation, location, loading } =
 		useSelector(selectKbar)
 	const verticalListWrapper = useRef<HTMLDivElement>(null)
 	const [initalListItems, setInitalListItems] = useState<TabItemProps[]>([])
@@ -104,29 +89,46 @@ const KbarPanel = () => {
 	// Update list data for vertical Tabs component
 	useEffect(() => {
 		// Decorate list item actions
-		currentList(lists, location).map((item) => {
+		list.map((item) => {
 			// create action functions for link items
 			let actionFunc = item.action
 
-			if (item.link?.external) {
-				actionFunc = () => {
-					window.open(item.link.external, '_blank').focus()
+			// link
+			if (item.link) {
+				if (item.link.external) {
+					actionFunc = () => {
+						window.open(item.link.external, '_blank').focus()
+					}
+				} else if (item.link.internal) {
+					actionFunc = () => {
+						router.push(item.link.internal)
+					}
 				}
-			} else if (item.link?.internal) {
+			}
+
+			// sublist
+			if (item.sublist) {
 				actionFunc = () => {
-					router.push(item.link.internal)
+					dispatch(
+						updateKbar({
+							key: item.sublist.key,
+							location: [...location, item.sublist.key],
+							items: item.sublist.list,
+							placeholder: item.sublist.placeholder,
+						})
+					)
 				}
 			}
 
 			item.action = () => {
 				actionFunc()
-				if (item.singleton !== false) {
+				if (item.singleton !== false && !item.sublist) {
 					dispatch(deactivateKbar())
 				}
 			}
 		})
 
-		const tabsListItems = currentList(lists, location).map((item) => {
+		const tabsListItems = list.map((item) => {
 			return {
 				label: item.label,
 				icon: item.icon,
@@ -207,7 +209,7 @@ const KbarPanel = () => {
 		>
 			{
 				// register shortcuts of list items
-				currentList(lists, location).map((item, index) => {
+				list.map((item, index) => {
 					if (item.shortcut?.length) {
 						return <HotkeyHelper key={index} item={item} />
 					}
@@ -235,15 +237,20 @@ const KbarPanel = () => {
 					/>
 					<div className="flex items-center mr-5">
 						<ul className="flex list-none gap-x-2 text-gray-400 dark:text-gray-500">
-							{location.map((place) => (
+							{location.map((key) => (
 								<li
-									key={place}
+									key={key}
 									onClick={() => {
-										dispatch(goToKbarLocation(place))
+										dispatch(
+											updateKbar({
+												key,
+												location: location.slice(0, location.indexOf(key) + 1),
+											})
+										)
 									}}
 									className="cursor-pointer capitalize hover:bg-gray-100 dark:hover:bg-gray-800 dark:border-gray-600 border rounded-md py-1 text-xs px-2"
 								>
-									{place}
+									{key}
 								</li>
 							))}
 						</ul>

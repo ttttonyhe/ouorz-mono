@@ -1,15 +1,15 @@
 import activateKbarSaga from './activateKbar'
 import deactivateKbarSaga from './deactivateKbar'
-import setKbarToSearchSaga from './setKbarToSearch'
-import setKbarToHomeSaga from './setKbarToHome'
+import updateKbarToSearchSaga from './updateKbarToSearch'
+import updateKbarToHomeSaga from './updateKbarToHome'
+import updateKbarSaga from './updateKbar'
 import updateKbarLocationSaga from './updateKbarLocation'
-import goToKbarLocationSaga from './goToKbarLocation'
 
 export {
 	activateKbarSaga,
 	deactivateKbarSaga,
-	setKbarToSearchSaga,
-	setKbarToHomeSaga,
 	updateKbarLocationSaga,
-	goToKbarLocationSaga,
+	updateKbarToSearchSaga,
+	updateKbarToHomeSaga,
+	updateKbarSaga,
 }

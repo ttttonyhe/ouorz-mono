@@ -3,32 +3,29 @@ import type { KbarListItem } from '~/components/Kbar'
 // Actions watched by sagas
 export const ACTIVATE_KBAR = 'ACTIVATE_KBAR'
 export const DEACTIVATE_KBAR = 'DEACTIVATE_KBAR'
-export const SET_KBAR_TO_SEARCH = 'SET_KBAR_TO_SEARCH'
-export const SET_KBAR_TO_HOME = 'SET_KBAR_TO_HOME'
-export const GO_TO_KBAR_LOCATION = 'GO_TO_KBAR_LOCATION'
+export const UPDATE_KBAR_TO_SEARCH = 'SET_KBAR_TO_SEARCH'
+export const UPDATE_KBAR_TO_HOME = 'SET_KBAR_TO_HOME'
 export const UPDATE_KBAR_LOCATION = 'UPDATE_KBAR_LOCATION'
+export const UPDATE_KBAR = 'UPDATE_KBAR'
 
 // Actions not watched by sagas
 export const SHOW_KBAR = 'SHOW_KBAR'
 export const HIDE_KBAR = 'HIDE_KBAR'
 export const ADD_TO_KBAR_LISTS = 'ADD_TO_KBAR_LISTS'
+export const SET_KBAR_LIST = 'SET_KBAR_LIST'
 export const SET_KBAR_ANIMATION = 'SET_KBAR_ANIMATION'
 export const SET_KBAR_LOCATION = 'SET_KBAR_LOCATION'
 export const SET_KBAR_LOADING = 'SET_KBAR_LOADING'
 export const SET_KBAR_PLACEHOLDER = 'SET_KBAR_PLACEHOLDER'
 
 // Payload Types
+export type KbarList = KbarListItem[]
 export type KbarLists = {
-	[listKey: string]: KbarListItem[]
+	[listKey: string]: KbarList
 }
 
-// Location action set
-export const kbarLocationActionSet = {
-	home: SET_KBAR_TO_HOME,
-	search: SET_KBAR_TO_SEARCH,
-}
-
-// Action creators
+/* Action creators */
+/* Saga actions */
 export const activateKbar = (homeList: KbarListItem[]) => {
 	return {
 		type: ACTIVATE_KBAR,
@@ -45,20 +42,55 @@ export const deactivateKbar = () => {
 	}
 }
 
-export const setKbarToSearch = () => {
+// Perform transition animation and update Kbar location
+export const updateKbarLocation = (location: string[]) => {
 	return {
-		type: SET_KBAR_TO_SEARCH,
+		type: UPDATE_KBAR_LOCATION,
+		payload: {
+			location,
+		},
+	}
+}
+
+/*
+ * Generic update kbar request
+ * @note items will be to add to the cache if provided
+ */
+export const updateKbar = (params: {
+	key: string
+	location: string[]
+	placeholder?: string
+	items?: KbarListItem[]
+}) => {
+	return {
+		type: UPDATE_KBAR,
+		payload: {
+			key: params.key,
+			location: params.location,
+			items: params.items,
+			placeholder: params.placeholder,
+		},
+	}
+}
+
+// Update kbar to display a list of all blog posts for searching
+export const updateKbarToSearch = () => {
+	return {
+		type: UPDATE_KBAR_TO_SEARCH,
 		payload: null,
 	}
 }
 
-export const setKbarToHome = () => {
+// Update Kbar to display home list
+export const updateKbarToHome = () => {
 	return {
-		type: SET_KBAR_TO_HOME,
+		type: UPDATE_KBAR_TO_HOME,
 		payload: null,
 	}
 }
 
+/* Redux actions */
+/* UI actions */
 export const showKbar = () => {
 	return {
 		type: SHOW_KBAR,
@@ -73,15 +105,16 @@ export const hideKbar = () => {
 	}
 }
 
-export const goToKbarLocation = (location: string) => {
+export const setKbarAnimation = (state: 'in' | 'out' | 'transition' | '') => {
 	return {
-		type: GO_TO_KBAR_LOCATION,
+		type: SET_KBAR_ANIMATION,
 		payload: {
-			location,
+			state,
 		},
 	}
 }
 
+/* Data actions */
 export const addToKbarLists = (key: string, list: KbarListItem[]) => {
 	return {
 		type: ADD_TO_KBAR_LISTS,
@@ -92,11 +125,11 @@ export const addToKbarLists = (key: string, list: KbarListItem[]) => {
 	}
 }
 
-export const setKbarAnimation = (state: 'in' | 'out' | 'transition' | '') => {
+export const setKbarList = (list: KbarListItem[]) => {
 	return {
-		type: SET_KBAR_ANIMATION,
+		type: SET_KBAR_LIST,
 		payload: {
-			state,
+			list: list,
 		},
 	}
 }
@@ -104,15 +137,6 @@ export const setKbarAnimation = (state: 'in' | 'out' | 'transition' | '') => {
 export const setKbarLocation = (location: string[]) => {
 	return {
 		type: SET_KBAR_LOCATION,
-		payload: {
-			location,
-		},
-	}
-}
-
-export const updateKbarLocation = (location: string[]) => {
-	return {
-		type: UPDATE_KBAR_LOCATION,
 		payload: {
 			location,
 		},

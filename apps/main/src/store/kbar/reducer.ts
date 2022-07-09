@@ -1,7 +1,9 @@
 import { AnyAction } from '@reduxjs/toolkit'
-import { KbarLists, SET_KBAR_PLACEHOLDER } from './actions'
+import { KbarList, KbarLists } from './actions'
 import {
 	ADD_TO_KBAR_LISTS,
+	SET_KBAR_LIST,
+	SET_KBAR_PLACEHOLDER,
 	SET_KBAR_ANIMATION,
 	SET_KBAR_LOCATION,
 	SET_KBAR_LOADING,
@@ -10,17 +12,26 @@ import {
 } from './actions'
 
 type KbarState = {
+	// Kbar panel animation
 	animation: 'in' | 'out' | 'transition' | ''
+	// Kbar visibility
 	visible: boolean
+	// Current displaying list
+	list: KbarList
+	// Kbar list cache (key-list pairs)
 	lists: KbarLists
+	// Kbar location (an array of list keys)
 	location: string[]
+	// Kbar loading status
 	loading: boolean
+	// Kbar input placeholder
 	placeholder: string
 }
 
 const KbarInitialState: KbarState = {
 	animation: '',
 	visible: false,
+	list: [],
 	lists: {
 		home: [],
 	},
@@ -34,6 +45,11 @@ const kbarReducer = (
 	action: AnyAction
 ): typeof KbarInitialState => {
 	switch (action.type) {
+		case SET_KBAR_LIST:
+			return {
+				...state,
+				list: action.payload.list,
+			}
 		case ADD_TO_KBAR_LISTS:
 			return {
 				...state,
