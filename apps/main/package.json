@@ -19,7 +19,7 @@
     "@twilight-toolkit/ui": "*",
     "@twilight-toolkit/utils": "*",
     "cors": "^2.8.5",
-    "dotenv-webpack": "^7.1.1",
+    "dotenv-webpack": "^8.0.0",
     "html-to-text": "^8.2.0",
     "next": "^12.2.0",
     "next-transpile-modules": "^9.0.0",
