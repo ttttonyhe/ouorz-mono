@@ -1,5 +1,6 @@
 import { GlowingBackground } from '~/components/Visual'
 import { Icon } from '@twilight-toolkit/ui'
+import openLink from '~/utilities/externalLink'
 
 interface PropsType {
 	footer: string
@@ -8,10 +9,6 @@ interface PropsType {
 	icon: string
 	colorHex: string
 	subValue?: string
-}
-
-const navigateTo = (link: string) => {
-	window.open(link)
 }
 
 export default function MetricCard({
@@ -24,7 +21,7 @@ export default function MetricCard({
 }: PropsType) {
 	return (
 		<div
-			onClick={() => navigateTo(link)}
+			onClick={() => openLink(link)}
 			className="glowing-div flex items-center dark:bg-gray-800 dark:border-gray-800 rounded-md border shadow-sm hover:shadow-md py-4 px-5 bg-white cursor-pointer"
 			style={{ borderBottom: `5px solid ${colorHex}` }}
 		>

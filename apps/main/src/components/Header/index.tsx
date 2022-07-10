@@ -92,14 +92,14 @@ const Header = () => {
 						},
 				  }
 				: {
-						label: 'Sponsor',
+						label: 'Web 3',
 						className: 'hidden lg:block',
 						color: 'text-pink-500',
 						bgColor: 'bg-pink-100',
 						bgDark: 'dark:bg-pink-900',
-						icon: 'love',
+						icon: 'rainbow',
 						link: {
-							internal: '/sponsor',
+							internal: '/web3',
 						},
 				  },
 			{
@@ -425,7 +425,7 @@ const Header = () => {
 			<header
 				ref={headerRef}
 				id="header"
-				className="leading-14 lg:border-0 border-b dark:border-b-transparent border-gray-200 lg:bg-transparent dark:backdrop-blur-lg duration-300 grid grid-cols-6 fixed top-0 h-auto w-full lg:py-4 lg:px-5 py-2 px-1 z-10"
+				className="leading-14 lg:border-0 border-b dark:border-b-transparent border-gray-200 lg:bg-transparent dark:backdrop-blur-lg duration-300 grid grid-cols-6 fixed top-0 h-auto w-full lg:py-4 lg:px-5 py-2 px-1 z-50"
 			>
 				<div className="col-start-1 col-end-2 flex lg:space-x-2">
 					<Tabs items={leftTabItems} />

@@ -10,9 +10,14 @@ import getApi from '~/utilities/api'
 interface Sticky {
 	stickyNotFound: boolean
 	stickyPosts: any
+	greeting: string
 }
 
-export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
+export default function Home({
+	stickyNotFound,
+	stickyPosts,
+	greeting,
+}: Sticky) {
 	return (
 		<div>
 			<Head>
@@ -31,7 +36,7 @@ export default function Home({ stickyNotFound, stickyPosts }: Sticky) {
 							<span className="animate-waveHand hover:animate-waveHandAgain inline-block cursor-pointer mr-2.5">
 								👋
 							</span>{' '}
-							Hey, It{"'"}s Tony
+							Hey{greeting}
 							<a
 								href="https://www.linkedin.com/in/lipenghe"
 								className="ml-2 mt-0.5 hidden lg:block"
@@ -79,15 +84,19 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	const dataSticky = await resSticky.json()
 
 	let stickyNotFound = false
-
 	if (!dataSticky) {
 		stickyNotFound = true
 	}
+
+	const greeting = [" there, it's Tony", ', Tony here', ", I'm Tony"][
+		Math.floor(Math.random() * 10) % 3
+	]
 
 	return {
 		props: {
 			stickyNotFound: stickyNotFound,
 			stickyPosts: dataSticky,
+			greeting,
 		},
 	}
 }

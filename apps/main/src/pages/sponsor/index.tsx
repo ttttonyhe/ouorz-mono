@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { GetStaticProps } from 'next'
 import Content from '~/components/Content'
 import { Icon } from '@twilight-toolkit/ui'
-import PageCard from '~/components/PageCard'
+import PageCard from '~/components/Card/Page'
 import getApi from '~/utilities/api'
 import { GlowingBackground } from '~/components/Visual'
 

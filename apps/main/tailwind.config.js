@@ -293,5 +293,6 @@ module.exports = {
 			addUtilities(utilities)
 		},
 		require('@tailwindcss/typography'),
+		require('@tailwindcss/line-clamp'),
 	],
 }

@@ -19,6 +19,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 			title: 'Tony He',
 			site_url: 'https://www.ouorz.com',
 			feed_url: 'https://www.ouorz.com/rss',
+			generator: 'Next.js',
 		})
 
 		const response = await fetch(

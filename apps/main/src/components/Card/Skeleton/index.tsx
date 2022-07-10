@@ -5,7 +5,6 @@ export default function CardSkeleton() {
 	const { resolvedTheme } = useTheme()
 	return (
 		<div className="w-full p-10 shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6 text-center">
-			{/* @ts-ignore */}
 			<ContentLoader
 				uniqueKey="card-skeleton"
 				speed={2}

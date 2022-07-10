@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { GlowingBackground } from '~/components/Visual'
+import openLink from '~/utilities/externalLink'
 import { Icon } from '@twilight-toolkit/ui'
 
 interface Props {
@@ -28,13 +29,13 @@ export default function PageCard({
 			if (href.indexOf('http') === -1) {
 				router.push(href)
 			} else {
-				window.location.href = href
+				openLink(href)
 			}
 		}
 	}
 	return (
 		<div
-			className="glowing-div cursor-pointer hover:shadow-md transition-shadow shadow-sm border dark:border-0 pt-3 pb-4 px-4 bg-white dark:bg-gray-700 dark:border-gray-700 flex items-center rounded-md"
+			className="glowing-div cursor-pointer hover:shadow-md transition-shadow shadow-sm border dark:border-0 pt-3 pb-4 px-4 bg-white dark:bg-gray-700 flex items-center rounded-md"
 			onClick={handleClick}
 		>
 			<GlowingBackground />
@@ -71,7 +72,9 @@ export default function PageCard({
 					</h1>
 					<p
 						className={`text-4 text-gray-600 dark:text-gray-400 tracking-wide ${
-							wrappable ? 'mt-1 overflow-wrap-breakword leading-tight' : 'whitespace-nowrap'
+							wrappable
+								? 'mt-1 overflow-wrap-breakword leading-tight'
+								: 'whitespace-nowrap'
 						} overflow-hidden text-ellipsis`}
 					>
 						{des}

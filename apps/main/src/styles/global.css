@@ -619,11 +619,11 @@ abbr[title] {
 	transition: height 100ms ease 0s;
 	will-change: height;
 	-ms-overflow-style: none;
-  scrollbar-width: none;
+	scrollbar-width: none;
 }
 
 .kbar-list::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 .kbar-list li .kbar-list-heading {
@@ -647,4 +647,8 @@ abbr[title] {
 	will-change: transform;
 	display: inline-block;
 	transform-style: preserve-3d;
+}
+
+.overflow-wrap-breakword {
+	overflow-wrap: break-word;
 }

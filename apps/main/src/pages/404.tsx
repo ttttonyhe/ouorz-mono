@@ -4,7 +4,7 @@ import Content from '~/components/Content'
 import { Button } from '@twilight-toolkit/ui'
 import { useRouter } from 'next/router'
 
-export default function PageNotFound() {
+const PageNotFound = () => {
 	const router = useRouter()
 	return (
 		<div>
@@ -38,3 +38,5 @@ export default function PageNotFound() {
 		</div>
 	)
 }
+
+export default PageNotFound

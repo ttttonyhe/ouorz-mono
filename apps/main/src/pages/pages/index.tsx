@@ -3,7 +3,7 @@ import React from 'react'
 import Content from '~/components/Content'
 import Link from 'next/link'
 import { Icon } from '@twilight-toolkit/ui'
-import PageCard from '~/components/PageCard'
+import PageCard from '~/components/Card/Page'
 
 export default function Pages() {
 	return (

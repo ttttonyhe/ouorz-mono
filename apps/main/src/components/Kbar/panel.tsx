@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState, useRef } from 'react'
-import dynamic from 'next/dynamic'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from '~/hooks'
@@ -8,7 +7,7 @@ import { kbarContext } from './context'
 import Tabs, { TabItemProps } from '../Tabs'
 import HotkeyHelper from '../Helpers/hotkey'
 import { Icon } from '@twilight-toolkit/ui'
-import { deactivateKbar, updateKbar, KbarLists } from '~/store/kbar/actions'
+import { deactivateKbar, updateKbar } from '~/store/kbar/actions'
 import ContentLoader from 'react-content-loader'
 
 // Kbar list helper component
