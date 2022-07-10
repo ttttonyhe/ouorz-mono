@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { withSentry } from '@sentry/nextjs'
 
-type ETH_NFT = {
+type EthNFT = {
 	contract: {
 		address: string
 	}
@@ -18,15 +18,15 @@ type ETH_NFT = {
 		raw: string
 	}
 }
-type SOL_NFT = {
+type SolNFT = {
 	name: string
 	description: string
 	imageUrl: string
 	tokenAddress: string
 }
 export type ResDataType = {
-	eth: ETH_NFT[]
-	sol: SOL_NFT[]
+	eth: EthNFT[]
+	sol: SolNFT[]
 }
 
 const handler = async (
@@ -34,21 +34,21 @@ const handler = async (
 	res: NextApiResponse<ResDataType>
 ) => {
 	// Fetch ETH NFTs
-	const eth_response = await fetch(
+	const ethResponse = await fetch(
 		`${process.env.ALCHEMY_API_PATH}/getNFTs?owner=0x8FE6fE9EC2a34D9e77Cdfeb5B2eaab5DfD8C2542`,
 		{
 			method: 'GET',
 			headers: { 'content-type': 'application/json' },
 		}
 	)
-	const eth_data = await eth_response.json()
+	const ethData = await ethResponse.json()
 	// Only return NFTs with media content
-	eth_data['ownedNfts'] = eth_data['ownedNfts'].filter(
-		(nft: ETH_NFT) => nft.media[0].raw !== ''
+	ethData['ownedNfts'] = ethData['ownedNfts'].filter(
+		(nft: EthNFT) => nft.media[0].raw !== ''
 	)
 
 	// Fetch SOL NFTs
-	const sol_response = await fetch(process.env.QUICK_NODE_API_PATH, {
+	const solResponse = await fetch(process.env.QUICK_NODE_API_PATH, {
 		method: 'POST',
 		headers: { 'content-type': 'application/json' },
 		body: JSON.stringify({
@@ -63,15 +63,15 @@ const handler = async (
 			},
 		}),
 	})
-	const sol_data = await sol_response.json()
+	const solData = await solResponse.json()
 
 	res.setHeader(
 		'Cache-Control',
 		'public, s-maxage=1200, stale-while-revalidate=600'
 	)
 	return res.status(200).json({
-		eth: eth_data['ownedNfts'],
-		sol: sol_data['result']['assets'],
+		eth: ethData['ownedNfts'],
+		sol: solData['result']['assets'],
 	})
 }
 

@@ -89,6 +89,7 @@ const NFTCardLoading = () => {
 	return (
 		<div className="glowing-div flex items-center dark:bg-gray-800 dark:border dark:border-gray-700 rounded-md border shadow-sm hover:shadow-md transition-shadow bg-white w-50 z-40 p-[1px]">
 			<ContentLoader
+				className={resolvedTheme === undefined ? 'opacity-50' : ''}
 				uniqueKey="nft-card-skeleton"
 				speed={2}
 				width={100}
