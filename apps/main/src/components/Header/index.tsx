@@ -407,7 +407,7 @@ const Header = () => {
 				icon: 'eth',
 				link: {
 					external:
-						'https://app.ens.domains/address/0x8FE6fE9EC2a34D9e77Cdfeb5B2eaab5DfD8C2542',
+						'https://app.ens.domains/address/0x39a2Afd732cC5096D03AB0Ffea8D26Af955FA906',
 				},
 			},
 			{

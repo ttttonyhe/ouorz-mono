@@ -113,8 +113,8 @@ const Web3 = ({ sponsors }: { sponsors: any }) => {
 									<PageCard
 										title="Wallet Address"
 										iconSmall="wallet1"
-										des="0x8FE6fE9EC2a34D9e77Cdfeb5B2eaab5DfD8C2542"
-										href="https://etherscan.io/address/0x8FE6fE9EC2a34D9e77Cdfeb5B2eaab5DfD8C2542"
+										des="0x39a2Afd732cC5096D03AB0Ffea8D26Af955FA906"
+										href="https://etherscan.io/address/0x39a2Afd732cC5096D03AB0Ffea8D26Af955FA906"
 										className="text-black dark:text-white"
 										wrappable={true}
 									/>
@@ -124,7 +124,7 @@ const Web3 = ({ sponsors }: { sponsors: any }) => {
 										title="Name Service"
 										iconSmall="fingerprint"
 										des="(ENS) ttttonyhe.eth"
-										href="https://app.ens.domains/address/0x8FE6fE9EC2a34D9e77Cdfeb5B2eaab5DfD8C2542"
+										href="https://app.ens.domains/address/0x39a2Afd732cC5096D03AB0Ffea8D26Af955FA906"
 										className="text-black dark:text-white"
 										wrappable={true}
 									/>
