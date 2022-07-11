@@ -49,10 +49,11 @@ const handler = async (
 			console.error(err)
 			return []
 		})
+
 	// Only return NFTs with media content
-	ethData['ownedNfts'] = ethData['ownedNfts'].filter(
-		(nft: EthNFT) => nft.media[0].raw !== ''
-	)
+	ethData['ownedNfts'] = ethData['ownedNfts']
+		? ethData['ownedNfts'].filter((nft: EthNFT) => nft.media[0].raw !== '')
+		: []
 
 	// Fetch SOL NFTs
 	const solData = await fetch(process.env.QUICK_NODE_API_PATH, {
@@ -78,6 +79,12 @@ const handler = async (
 			console.error(err)
 			return []
 		})
+
+	if (!solData['result']) {
+		solData['result'] = {
+			assets: [],
+		}
+	}
 
 	res.setHeader(
 		'Cache-Control',
