@@ -34,21 +34,28 @@ const handler = async (
 	res: NextApiResponse<ResDataType>
 ) => {
 	// Fetch ETH NFTs
-	const ethResponse = await fetch(
+	const ethData = await fetch(
 		`${process.env.ALCHEMY_API_PATH}/getNFTs?owner=0x39a2Afd732cC5096D03AB0Ffea8D26Af955FA906`,
 		{
 			method: 'GET',
 			headers: { 'content-type': 'application/json' },
 		}
 	)
-	const ethData = await ethResponse.json()
+		.then((res) => {
+			if (res.status !== 200) return []
+			res.json()
+		})
+		.catch((err) => {
+			console.error(err)
+			return []
+		})
 	// Only return NFTs with media content
 	ethData['ownedNfts'] = ethData['ownedNfts'].filter(
 		(nft: EthNFT) => nft.media[0].raw !== ''
 	)
 
 	// Fetch SOL NFTs
-	const solResponse = await fetch(process.env.QUICK_NODE_API_PATH, {
+	const solData = await fetch(process.env.QUICK_NODE_API_PATH, {
 		method: 'POST',
 		headers: { 'content-type': 'application/json' },
 		body: JSON.stringify({
@@ -63,7 +70,14 @@ const handler = async (
 			},
 		}),
 	})
-	const solData = await solResponse.json()
+		.then((res) => {
+			if (res.status !== 200) return []
+			res.json()
+		})
+		.catch((err) => {
+			console.error(err)
+			return []
+		})
 
 	res.setHeader(
 		'Cache-Control',
