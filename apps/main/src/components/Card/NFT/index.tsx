@@ -36,10 +36,10 @@ const NFTCard = (props: PropsType) => {
 	return (
 		<div className="glowing-div flex items-center dark:bg-gray-700 dark:border-none border rounded-md shadow-sm hover:shadow-md transition-shadow bg-white cursor-pointer w-50 z-40">
 			<GlowingBackground />
-			<div className="glowing-div-content top-[0.5px] right-0 bottom-0 left-0 overflow-hidden rounded-[5px]">
+			<div className="glowing-div-content top-[0.5px] right-0 bottom-0 left-0 overflow-hidden rounded-[5px] h-full">
 				<div
 					onClick={() => openLink(link)}
-					className="lg:w-[196px] w-full h-[196px] bg-gray-200 dark:bg-gray-800"
+					className="lg:w-[196px] w-full h-[196px] bg-gray-200 dark:bg-gray-800 border-b dark:border-gray-700"
 				>
 					<div className="absolute top-3 px-3 z-20 flex justify-between text-gray-600 dark:text-gray-100 w-full">
 						<label className="p-0.5 shadow-sm bg-white dark:bg-gray-700 dark:bg-opacity-50 rounded-full">
