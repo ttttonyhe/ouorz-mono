@@ -35,7 +35,7 @@ const handler = async (
 ) => {
 	// Fetch ETH NFTs
 	const ethData = await fetch(
-		`${process.env.ALCHEMY_API_PATH}/getNFTs?owner=0x39a2Afd732cC5096D03AB0Ffea8D26Af955FA906`,
+		`${process.env.ALCHEMY_API_PATH}/getNFTs?owner=0x2650f08Da54F7019f9a3306bad0dfc8474644eAD`,
 		{
 			method: 'GET',
 			headers: { 'content-type': 'application/json' },
@@ -64,7 +64,7 @@ const handler = async (
 			jsonrpc: '2.0',
 			method: 'qn_fetchNFTs',
 			params: {
-				wallet: 'HCc9D96ZLZvkRpnQyETVGijTKMeJy5xWpzt2KS75dHXS',
+				wallet: 'G9T9yXeWLyspA9xLSLwZYvAPbSNV9E2NU7jWLpQDW6Re',
 				omitFields: ['provenance', 'traits'],
 				page: 1,
 				perPage: 40,
