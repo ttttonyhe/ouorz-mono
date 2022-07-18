@@ -78,7 +78,7 @@ const Web3 = ({ sponsors }: { sponsors: any }) => {
 								<PageCard
 									title="Native SegWit"
 									icon="wallet1"
-									des="bc1qunhurccut4x5wswtetd35xcnupajmh3nn48ft9"
+									des="bc1q6w0znvyyuag7egzgfke5j8f6f7r8laskfqstk4"
 									className="text-black dark:text-white"
 								/>
 							</div>
@@ -86,14 +86,14 @@ const Web3 = ({ sponsors }: { sponsors: any }) => {
 								<PageCard
 									title="SegWit"
 									iconSmall="wallet2"
-									des="3J88AW89vZ9Aoy7BmSk9eUmG7ZZYtazCqJ"
+									des="35Mb9GbWn5FWPU19X2EBvp9VR9cyZvDbG9"
 									className="text-black dark:text-white"
 									wrappable={true}
 								/>
 								<PageCard
 									title="Legacy"
 									iconSmall="wallet3"
-									des="13PUoNZTd5g2q1e9MMtPWVVJQnwv396wyX"
+									des="1N3gofgiLDF3oCrFiqRxpALSH2CeauSq6V"
 									className="text-black dark:text-white"
 									wrappable={true}
 								/>
@@ -145,8 +145,8 @@ const Web3 = ({ sponsors }: { sponsors: any }) => {
 									<PageCard
 										title="Wallet Address"
 										iconSmall="wallet1"
-										des="HCc9D96ZLZvkRpnQyETVGijTKMeJy5xWpzt2KS75dHXS"
-										href="https://solscan.io/account/HCc9D96ZLZvkRpnQyETVGijTKMeJy5xWpzt2KS75dHXS"
+										des="G9T9yXeWLyspA9xLSLwZYvAPbSNV9E2NU7jWLpQDW6Re"
+										href="https://solscan.io/account/G9T9yXeWLyspA9xLSLwZYvAPbSNV9E2NU7jWLpQDW6Re"
 										className="text-black dark:text-white"
 										wrappable={true}
 									/>
