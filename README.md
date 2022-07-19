@@ -94,7 +94,7 @@ Create a `.env` file with your configuration, see below for a list of environmen
   - REVALIDATION_REQUEST_TOKEN
 
 ```
-yarn run dev
+yarn run dev:main
 ```
 
 <br/>
@@ -133,8 +133,8 @@ Create a `.env` file with your configuration, see below for a list of environmen
 - MAXMIND_LICENSE_KEY
 
 ```
-yarn run build-postgresql-client
-yarn run dev
+yarn analytics run build-postgresql-client
+yarn run dev:analytics
 ```
 
 <br/>
