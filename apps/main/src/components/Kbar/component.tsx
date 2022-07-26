@@ -47,23 +47,6 @@ const Kbar = (props: KbarProps) => {
 			enableOnTags: ['INPUT'],
 		}
 	)
-	useHotkeys(
-		'backspace',
-		() => {
-			// del to go back to last location
-			if (location.length >= 2) {
-				dispatch(
-					updateKbar({
-						key: location[location.length - 2],
-						location: location.slice(0, location.length - 1),
-					})
-				)
-			}
-		},
-		{
-			enableOnTags: ['INPUT'],
-		}
-	)
 
 	// effects on kbar visibility change
 	useEffect(() => {
