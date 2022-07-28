@@ -34,7 +34,7 @@ const useListener = (
 	const [listening, setListening] = useState(true)
 
 	useEffect(() => {
-    const domElement = element || document
+		const domElement = element || document
 		domElement.addEventListener(type, listener)
 
 		const removeListener = () => {
