@@ -53,20 +53,34 @@
 Super opinionated, completely overkill.
 
 - TypeScript
-- React.js / Next.js
-  - `next/image`
-  - `next-themes`
-- SWR
-  - Infinite Loading
-  - Revalidation
-- Redux
+- Framework
+  - React (Next.js)
+    - `next/image`
+    - `next-themes`
+  - Foundation/Adaptor implementation coming soon
+- Data Fetching
+  - swr
+    - Infinite Loading
+    - Revalidation
+  - fetch (API Routes)
+- State Management
   - Redux Toolkit
   - Redux Saga
-- Tailwind CSS
-- WordPress
-  - WordPress REST API
-- Error Logging
+- Styling:
+  - styled-components
+  - Tailwind CSS
+- Content Management:
+  - WordPress (Qiniu - Static file storage)
+  - WP REST API (GraphQL implementation coming soon)
+  - Tencent Cloud CVM (Linux/Nginx/MySQL/PHP)
+  - Nexment (LeanCloud)
+  - Newsletter (Buttondown)
+- Error Logging & Web Vitals Metric
   - Sentry
+- Linters
+  - ESLint
+  - Prettier
+  - CommitLint
 
 <br/>
 
