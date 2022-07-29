@@ -3,8 +3,8 @@ import type { KbarListItem } from '~/components/Kbar'
 // Actions watched by sagas
 export const ACTIVATE_KBAR = 'ACTIVATE_KBAR'
 export const DEACTIVATE_KBAR = 'DEACTIVATE_KBAR'
-export const UPDATE_KBAR_TO_SEARCH = 'SET_KBAR_TO_SEARCH'
-export const UPDATE_KBAR_TO_HOME = 'SET_KBAR_TO_HOME'
+export const UPDATE_KBAR_TO_SEARCH = 'UPDATE_KBAR_TO_SEARCH'
+export const UPDATE_KBAR_TO_HOME = 'UPDATE_KBAR_TO_HOME'
 export const UPDATE_KBAR_LOCATION = 'UPDATE_KBAR_LOCATION'
 export const UPDATE_KBAR = 'UPDATE_KBAR'
 
