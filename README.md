@@ -161,9 +161,35 @@ Work in progress
 
 ## Monorepo
 
+### Tooling
+
 Build system: [Turborepo](https://turborepo.org) with Remote Caching
 
 Monorepo Manager: [Yarn Workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces)
+
+<br/>
+
+### Practices
+
+#### Running Scripts
++ Use project aliases to run commands in different packages more easily:
+  ```bash
+  yarn main run upgrade
+  ```
++ Use pre-defined Turborepo scripts whenever content awareness (i.e. caching) is needed:
+  ```bash
+  yarn run build:main
+  ```
+
+#### Managing Dependencies
++ Root `package.json` should only contain development dependencies
++ Use yarn's `nohoist` option to avoid version conflicts of dependencies in different packages
+
+> WIP
+
+<br/>
+
+### Statistics
 
 ![Repobeats analytics image](https://repobeats.axiom.co/api/embed/f2cb67ca660ac944b8df17763a07e74eddbd187d.svg)
 
