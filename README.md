@@ -1,6 +1,6 @@
 <div align="center">
   <h1>OUORZ-MONO</h1>
-  <p>Front-end codes that power <a href="https://www.ouorz.com" target="_blank">www.ouorz.com</a> and other related projects</p>
+  <p>Front-end code that powers <a href="https://www.ouorz.com" target="_blank">www.ouorz.com</a> and other related projects</p>
 
   <a href="https://github.com/HelipengTony/ouorz-mono">
     <img src="https://github.com/HelipengTony/ouorz-mono/workflows/Tests/badge.svg?branch=main" alt="build status">
@@ -21,7 +21,7 @@
 
 <br/>
 
-![Thumbnail_index](https://static.ouorz.com/screen-shot-ouorz-next.png)
+![screenshot-ouorz-com](https://user-images.githubusercontent.com/21199796/181861480-011d2fb7-6d7d-4d77-bbff-abb3c78c222d.png)
 
 <br/>
 <hr/>
