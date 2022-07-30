@@ -38,7 +38,7 @@ const ListComponent = ({
 		}
 	}, [verticalListWrapper, tabsListItems])
 
-	if (loading || !tabsListItems) {
+	if (loading || tabsListItems == null) {
 		return (
 			<ContentLoader
 				uniqueKey="kbar-panel-skeleton"
@@ -83,7 +83,7 @@ const KbarPanel = () => {
 		useSelector(selectKbar)
 	const verticalListWrapper = useRef<HTMLDivElement>(null)
 	const [initalListItems, setInitalListItems] = useState<TabItemProps[]>([])
-	const [tabsListItems, setTabsListItems] = useState<TabItemProps[]>([])
+	const [tabsListItems, setTabsListItems] = useState<TabItemProps[]>(null)
 
 	// Update list data for vertical Tabs component
 	useEffect(() => {
@@ -190,15 +190,17 @@ const KbarPanel = () => {
 
 	// Search list items
 	useEffect(() => {
-		const resultList = initalListItems.filter((item) => {
-			// filter out unhoverable items when input value is not empty
-			return (
-				!inputValue ||
-				(item.hoverable !== false &&
-					item.label.toLowerCase().includes(inputValue.toLowerCase()))
-			)
-		})
-		setTabsListItems(resultList)
+		if (initalListItems.length) {
+			const resultList = initalListItems.filter((item) => {
+				// filter out unhoverable items when input value is not empty
+				return (
+					!inputValue ||
+					(item.hoverable !== false &&
+						item.label.toLowerCase().includes(inputValue.toLowerCase()))
+				)
+			})
+			setTabsListItems(resultList)
+		}
 	}, [inputValue, initalListItems])
 
 	return (

@@ -29,11 +29,11 @@ export default function* activateKbarSaga(
 
 			// set animation
 			yield put(setKbarAnimation('in'))
-			// show the reader
-			yield put(showKbar())
-
 			// stop loading
 			yield put(setKbarLoading(false))
+
+			// show the kbar
+			yield put(showKbar())
 		} else {
 			throw new Error('No list data provided')
 		}

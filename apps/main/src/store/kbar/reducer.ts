@@ -79,10 +79,14 @@ const kbarReducer = (
 				location: action.payload.location,
 			}
 		case SET_KBAR_LOADING:
-			return {
+			let newState = {
 				...state,
 				loading: action.payload.status,
 			}
+			if (action.payload.status) {
+				newState.list = null
+			}
+			return newState
 		case SET_KBAR_PLACEHOLDER:
 			return {
 				...state,
