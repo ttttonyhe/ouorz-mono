@@ -88,7 +88,7 @@ const KbarPanel = () => {
 	// Update list data for vertical Tabs component
 	useEffect(() => {
 		// Decorate list item actions
-		list.map((item) => {
+		list?.forEach((item) => {
 			// create action functions for link items
 			let actionFunc = item.action
 
@@ -127,7 +127,7 @@ const KbarPanel = () => {
 			}
 		})
 
-		const tabsListItems = list.map((item) => {
+		const tabsListItems = list?.map((item) => {
 			return {
 				label: item.label,
 				icon: item.icon,
@@ -186,21 +186,22 @@ const KbarPanel = () => {
 
 		// clear input value
 		setInputValue('')
-	}, [lists, location])
+	}, [list, location])
 
 	// Search list items
 	useEffect(() => {
-		if (initalListItems.length) {
-			const resultList = initalListItems.filter((item) => {
-				// filter out unhoverable items when input value is not empty
-				return (
-					!inputValue ||
-					(item.hoverable !== false &&
-						item.label.toLowerCase().includes(inputValue.toLowerCase()))
-				)
-			})
-			setTabsListItems(resultList)
-		}
+		if (!initalListItems || !initalListItems.length) return
+
+		const resultList = initalListItems.filter((item) => {
+			// filter out unhoverable items when input value is not empty
+			return (
+				!inputValue ||
+				(item.hoverable !== false &&
+					item.label.toLowerCase().includes(inputValue.toLowerCase()))
+			)
+		})
+
+		setTabsListItems(resultList)
 	}, [inputValue, initalListItems])
 
 	return (
@@ -210,7 +211,7 @@ const KbarPanel = () => {
 		>
 			{
 				// register shortcuts of list items
-				list.map((item, index) => {
+				list?.map((item, index) => {
 					if (item.shortcut?.length) {
 						return <HotkeyHelper key={index} item={item} />
 					}
