@@ -17,6 +17,8 @@ const NextConfigs = {
 	// FIXME: https://github.com/getsentry/sentry-javascript/issues/4103
 	outputFileTracing: false,
 	images: {
+		minimumCacheTTL: 3600,
+		formats: ['image/avif', 'image/webp'],
 		domains: ['static.ouorz.com', 'storage.snapaper.com'],
 	},
 	compiler: {
