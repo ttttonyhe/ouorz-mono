@@ -62,6 +62,7 @@ Super opinionated, completely overkill.
   - swr
     - Infinite Loading
     - Revalidation
+    - Suspense
   - fetch (API Routes)
 - State Management
   - Redux Toolkit
@@ -72,7 +73,7 @@ Super opinionated, completely overkill.
 - Content Management:
   - WordPress (Qiniu - Static file storage)
   - WP REST API (GraphQL implementation coming soon)
-  - Tencent Cloud CVM (Linux/Nginx/MySQL/PHP)
+  - Tencent Cloud CVM (CentOS/Nginx/MySQL/PHP)
   - Nexment (LeanCloud)
   - Newsletter (Buttondown)
 - Error Logging & Web Vitals Metric
