@@ -17,26 +17,26 @@ const backgroundColor = (props: GlowingDivBackgroundProps) => {
 	return props.resolvedTheme === 'dark' && 'rgb(38,38,38)'
 }
 
-const GlowingBackground = () => {
-	const { resolvedTheme } = useTheme()
+const GlowingDivBackground = styled.div`
+	border-radius: 0.375rem;
+	pointer-events: none;
+	user-select: none;
+	position: absolute;
+	z-index: 1;
+	opacity: 1;
+	top: 1px;
+	bottom: 1px;
+	left: 1px;
+	right: 1px;
+	background: ${background};
+	background-color: ${backgroundColor};
+	contain: strict;
+	transition: opacity 400ms ease 0s;
+`
 
-	// style component
-	const GlowingDivBackground = styled.div`
-		border-radius: 0.375rem;
-		pointer-events: none;
-		user-select: none;
-		position: absolute;
-		z-index: 1;
-		opacity: 1;
-		top: 1px;
-		bottom: 1px;
-		left: 1px;
-		right: 1px;
-		background: ${background};
-		background-color: ${backgroundColor};
-		contain: strict;
-		transition: opacity 400ms ease 0s;
-	`
+const GlowingBackground = () => {
+	// FIXME: useTheme is not working with styled-components in SSR mode
+	const { resolvedTheme } = useTheme()
 	return <GlowingDivBackground resolvedTheme={resolvedTheme || 'dark'} />
 }
 

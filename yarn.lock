@@ -1585,6 +1585,15 @@
   resolved "https://registry.yarnpkg.com/@gilbarbara/deep-equal/-/deep-equal-0.1.1.tgz#91c8f291da6bf7e21cdbfb585fb072d59963acf3"
   integrity sha512-SjSBspHXlclODLtSoPIQwBhfeBjncC05NlNoFELJ6xZQkyYDJsVCcs7+f+etHR2cYPbHLjnh1C06lQlCbMEWEA==
 
+"@humanwhocodes/config-array@^0.10.4":
+  version "0.10.4"
+  resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.10.4.tgz#01e7366e57d2ad104feea63e72248f22015c520c"
+  integrity sha512-mXAIHxZT3Vcpg83opl1wGlVZ9xydbfZO3r5YfRSH6Gpp2J/PfdBP0wbDa2sO6/qRbcalpoevVyW6A/fI6LfeMw==
+  dependencies:
+    "@humanwhocodes/object-schema" "^1.2.1"
+    debug "^4.1.1"
+    minimatch "^3.0.4"
+
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.5"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.9.5.tgz#2cbaf9a89460da24b5ca6531b8bbfc23e1df50c7"
@@ -1593,6 +1602,11 @@
     "@humanwhocodes/object-schema" "^1.2.1"
     debug "^4.1.1"
     minimatch "^3.0.4"
+
+"@humanwhocodes/gitignore-to-minimatch@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@humanwhocodes/gitignore-to-minimatch/-/gitignore-to-minimatch-1.0.2.tgz#316b0a63b91c10e53f242efb4ace5c3b34e8728d"
+  integrity sha512-rSqmMJDdLFUsyxR6FMtD00nfQKKLFb1kv+qBbOVKqErvloEIJLo5bDTJTQNTYgeyp78JsA7u/NPi5jT1GR/MuA==
 
 "@humanwhocodes/object-schema@^1.2.1":
   version "1.2.1"
@@ -1822,10 +1836,10 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.1.6.tgz#5f44823a78335355f00f1687cfc4f1dafa3eca08"
   integrity sha512-Te/OBDXFSodPU6jlXYPAXpmZr/AkG6DCATAxttQxqOWaq6eDFX25Db3dK0120GZrSZmv4QCe9KsZmJKDbWs4OA==
 
-"@next/env@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.npmjs.org/@next/env/-/env-12.2.3.tgz#64f210e74c137d3d9feea738795b055a7f8aebe2"
-  integrity sha512-2lWKP5Xcvnor70NaaROZXBvU8z9mFReePCG8NhZw6NyNGnPvC+8s+Cre/63LAB1LKzWw/e9bZJnQUg0gYFRb2Q==
+"@next/env@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.npmjs.org/@next/env/-/env-12.2.4.tgz#5ba9bed9970be4113773233148b4539691bfc4fe"
+  integrity sha512-/gApFXWk5CCLFQJL5IYJXxPQuG5tz5nPX4l27A9Zm/+wJxiwFrRSP54AopDxIv4JRp/rGwcgk/lZS/0Clw8jYA==
 
 "@next/eslint-plugin-next@12.2.0", "@next/eslint-plugin-next@^12.1.6":
   version "12.2.0"
@@ -1839,125 +1853,125 @@
   resolved "https://registry.yarnpkg.com/@next/swc-android-arm-eabi/-/swc-android-arm-eabi-12.1.6.tgz#79a35349b98f2f8c038ab6261aa9cd0d121c03f9"
   integrity sha512-BxBr3QAAAXWgk/K7EedvzxJr2dE014mghBSA9iOEAv0bMgF+MRq4PoASjuHi15M2zfowpcRG8XQhMFtxftCleQ==
 
-"@next/swc-android-arm-eabi@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.npmjs.org/@next/swc-android-arm-eabi/-/swc-android-arm-eabi-12.2.3.tgz#91388c8ec117d59ee80d2c1d4dc65fdfd267d2d4"
-  integrity sha512-JxmCW9XB5PYnkGE67BdnBTdqW0SW6oMCiPMHLdjeRi4T3U4JJKJGnjQld99+6TPOfPWigtw3W7Cijp5gc+vJ/w==
+"@next/swc-android-arm-eabi@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.npmjs.org/@next/swc-android-arm-eabi/-/swc-android-arm-eabi-12.2.4.tgz#5c7f508f93baec810c96bf60128b7c1f2109bee2"
+  integrity sha512-P4YSFNpmXXSnn3P1qsOAqz+MX3On9fHrlc8ovb/CFJJoU+YLCR53iCEwfw39e0IZEgDA7ttgr108plF8mxaX0g==
 
 "@next/swc-android-arm64@12.1.6":
   version "12.1.6"
   resolved "https://registry.yarnpkg.com/@next/swc-android-arm64/-/swc-android-arm64-12.1.6.tgz#ec08ea61794f8752c8ebcacbed0aafc5b9407456"
   integrity sha512-EboEk3ROYY7U6WA2RrMt/cXXMokUTXXfnxe2+CU+DOahvbrO8QSWhlBl9I9ZbFzJx28AGB9Yo3oQHCvph/4Lew==
 
-"@next/swc-android-arm64@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.npmjs.org/@next/swc-android-arm64/-/swc-android-arm64-12.2.3.tgz#9be33553861f6494616b910a23abd5a1b0d7fb4b"
-  integrity sha512-3l4zXpWnzy0fqoedsFRxzMy/eGlMMqn6IwPEuBmtEQ4h7srmQFHyT+Bk+eVHb0o1RQ7/TloAa+mu8JX5tz/5tA==
+"@next/swc-android-arm64@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.npmjs.org/@next/swc-android-arm64/-/swc-android-arm64-12.2.4.tgz#f86411e0513419f027d16b2d4d823a3ca631a634"
+  integrity sha512-4o2n14E18O+8xHlf6dgJsWPXN9gmSmfIe2Z0EqKDIPBBkFt/2CyrH0+vwHnL2l7xkDHhOGfZYcYIWVUR5aNu0A==
 
 "@next/swc-darwin-arm64@12.1.6":
   version "12.1.6"
   resolved "https://registry.yarnpkg.com/@next/swc-darwin-arm64/-/swc-darwin-arm64-12.1.6.tgz#d1053805615fd0706e9b1667893a72271cd87119"
   integrity sha512-P0EXU12BMSdNj1F7vdkP/VrYDuCNwBExtRPDYawgSUakzi6qP0iKJpya2BuLvNzXx+XPU49GFuDC5X+SvY0mOw==
 
-"@next/swc-darwin-arm64@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-12.2.3.tgz#ce1a5a7320936b2644b765ace3283e5d1676b6a0"
-  integrity sha512-eutDO/RH6pf7+8zHo3i2GKLhF0qaMtxWpY8k3Oa1k+CyrcJ0IxwkfH/x3f75jTMeCrThn6Uu8j3WeZOxvhto1Q==
+"@next/swc-darwin-arm64@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-12.2.4.tgz#23db172f02f5cf0ceca5e0934cfde21f30cc7461"
+  integrity sha512-DcUO6MGBL9E3jj5o86MUnTOy4WawIJJhyCcFYO4f51sbl7+uPIYIx40eo98A6NwJEXazCqq1hLeqOaNTAIvDiQ==
 
 "@next/swc-darwin-x64@12.1.6":
   version "12.1.6"
   resolved "https://registry.yarnpkg.com/@next/swc-darwin-x64/-/swc-darwin-x64-12.1.6.tgz#2d1b926a22f4c5230d5b311f9c56cfdcc406afec"
   integrity sha512-9FptMnbgHJK3dRDzfTpexs9S2hGpzOQxSQbe8omz6Pcl7rnEp9x4uSEKY51ho85JCjL4d0tDLBcXEJZKKLzxNg==
 
-"@next/swc-darwin-x64@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-12.2.3.tgz#f70ce07016501c6f823035bc67296b8f80201145"
-  integrity sha512-lve+lnTiddXbcT3Lh2ujOFywQSEycTYQhuf6j6JrPu9oLQGS01kjIqqSj3/KMmSoppEnXo3BxkgYu+g2+ecHkA==
+"@next/swc-darwin-x64@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-12.2.4.tgz#820125d2a4d35cd9c807156a403a447360b5923f"
+  integrity sha512-IUlFMqeLjdIzDorrGC2Dt+2Ae3DbKQbRzCzmDq4/CP1+jJGeDXo/2AHnlE+WYnwQAC4KtAz6pbVnd3KstZWsVA==
 
-"@next/swc-freebsd-x64@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.npmjs.org/@next/swc-freebsd-x64/-/swc-freebsd-x64-12.2.3.tgz#ccc6fa4588dadec85458091aa19c17bc3e99a10d"
-  integrity sha512-V4bZU1qBFkULTPW53phY8ypioh3EERzHu9YKAasm9RxU4dj+8c/4s60y+kbFkFEEpIUgEU6yNuYZRR4lHHbUGA==
+"@next/swc-freebsd-x64@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.npmjs.org/@next/swc-freebsd-x64/-/swc-freebsd-x64-12.2.4.tgz#81ccd262c7ea3f7ed2de136c3402fc28cd103ce8"
+  integrity sha512-475vwyWcjnyDVDWLgAATP0HI8W1rwByc+uXk1B6KkAVFhkoDgH387LW0uNqxavK+VxCzj3avQXX/58XDvxtSlg==
 
 "@next/swc-linux-arm-gnueabihf@12.1.6":
   version "12.1.6"
   resolved "https://registry.yarnpkg.com/@next/swc-linux-arm-gnueabihf/-/swc-linux-arm-gnueabihf-12.1.6.tgz#c021918d2a94a17f823106a5e069335b8a19724f"
   integrity sha512-PvfEa1RR55dsik/IDkCKSFkk6ODNGJqPY3ysVUZqmnWMDSuqFtf7BPWHFa/53znpvVB5XaJ5Z1/6aR5CTIqxPw==
 
-"@next/swc-linux-arm-gnueabihf@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.npmjs.org/@next/swc-linux-arm-gnueabihf/-/swc-linux-arm-gnueabihf-12.2.3.tgz#d7a481d3ede14dee85707d0807b4a05cd2300950"
-  integrity sha512-MWxS/i+XSEKdQE0ZmdYkPPrWKBi4JwMVaXdOW9J/T/sZJsHsLlSC9ErBcNolKAJEVka+tnw9oPRyRCKOj+q0sw==
+"@next/swc-linux-arm-gnueabihf@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.npmjs.org/@next/swc-linux-arm-gnueabihf/-/swc-linux-arm-gnueabihf-12.2.4.tgz#5b543e461696adcb60c64b56fc81eaa9e3cfcdd8"
+  integrity sha512-qZW+L3iG3XSGtlOPmD5RRWXyk6ZNdscLV0BQjuDvP+exTg+uixqHXOHz0/GVATIJEBQOF0Kew7jAXVXEP+iRTQ==
 
 "@next/swc-linux-arm64-gnu@12.1.6":
   version "12.1.6"
   resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-12.1.6.tgz#ac55c07bfabde378dfa0ce2b8fc1c3b2897e81ae"
   integrity sha512-53QOvX1jBbC2ctnmWHyRhMajGq7QZfl974WYlwclXarVV418X7ed7o/EzGY+YVAEKzIVaAB9JFFWGXn8WWo0gQ==
 
-"@next/swc-linux-arm64-gnu@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.npmjs.org/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-12.2.3.tgz#6d105c971cc0957c25563aa98af475291b4cd8aa"
-  integrity sha512-ikXkqAmvEcWTzIQFDdmrUHLWzdDAF5s2pVsSpQn9rk/gK1i9webH1GRQd2bSM7JLuPBZSaYrNGvDTyHZdSEYlg==
+"@next/swc-linux-arm64-gnu@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.npmjs.org/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-12.2.4.tgz#f83b824d112494db41df69e2c456950a57deacba"
+  integrity sha512-fEPRjItWYaKyyG9N+2HIA59OBHIhk7WC+Rh+LwXsh0pQe870Ykpek3KQs0umjsrEGe57NyMomq3f80/N8taDvA==
 
 "@next/swc-linux-arm64-musl@12.1.6":
   version "12.1.6"
   resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-12.1.6.tgz#e429f826279894be9096be6bec13e75e3d6bd671"
   integrity sha512-CMWAkYqfGdQCS+uuMA1A2UhOfcUYeoqnTW7msLr2RyYAys15pD960hlDfq7QAi8BCAKk0sQ2rjsl0iqMyziohQ==
 
-"@next/swc-linux-arm64-musl@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.npmjs.org/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-12.2.3.tgz#bebfe490130e3cb8746a03d35a5a9e23ac0e6f9b"
-  integrity sha512-wE45gGFkeLLLnCoveKaBrdpYkkypl3qwNF2YhnfvfVK7etuu1O679LwClhCWinDVBr+KOkmyHok00Z+0uI1ycg==
+"@next/swc-linux-arm64-musl@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.npmjs.org/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-12.2.4.tgz#a7e575970fcd6166c7b506fd25121927c13349ee"
+  integrity sha512-rnCTzXII0EBCcFn9P5s/Dho2kPUMSX/bP0iOAj8wEI/IxUEfEElbin89zJoNW30cycHu19xY8YP4K2+hzciPzQ==
 
 "@next/swc-linux-x64-gnu@12.1.6":
   version "12.1.6"
   resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-12.1.6.tgz#1f276c0784a5ca599bfa34b2fcc0b38f3a738e08"
   integrity sha512-AC7jE4Fxpn0s3ujngClIDTiEM/CQiB2N2vkcyWWn6734AmGT03Duq6RYtPMymFobDdAtZGFZd5nR95WjPzbZAQ==
 
-"@next/swc-linux-x64-gnu@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-12.2.3.tgz#84a3d99f9d656fbc139f3a19f9b1baf73877d18f"
-  integrity sha512-MbFI6413VSXiREzHwYD8YAJLTknBaC+bmjXgdHEEdloeOuBFQGE3NWn3izOCTy8kV+s98VDQO8au7EKKs+bW0g==
+"@next/swc-linux-x64-gnu@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-12.2.4.tgz#4dd2ad1c72c160430199265e74b6d7037f2be4f5"
+  integrity sha512-PhXX6NSuIuhHInxPY2VkG2Bl7VllsD3Cjx+pQcS1wTym7Zt7UoLvn05PkRrkiyIkvR+UXnqPUM3TYiSbnemXEw==
 
 "@next/swc-linux-x64-musl@12.1.6":
   version "12.1.6"
   resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-12.1.6.tgz#1d9933dd6ba303dcfd8a2acd6ac7c27ed41e2eea"
   integrity sha512-c9Vjmi0EVk0Kou2qbrynskVarnFwfYIi+wKufR9Ad7/IKKuP6aEhOdZiIIdKsYWRtK2IWRF3h3YmdnEa2WLUag==
 
-"@next/swc-linux-x64-musl@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-12.2.3.tgz#a283431f8c6c830b4bd61147094f150ea7deeb6e"
-  integrity sha512-jMBD0Va6fInbPih/dNySlNY2RpjkK6MXS+UGVEvuTswl1MZr+iahvurmshwGKpjaRwVU4DSFMD8+gfWxsTFs1Q==
+"@next/swc-linux-x64-musl@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-12.2.4.tgz#15415b1e6b92ca19453c4c6113496685167b05d4"
+  integrity sha512-GmC/QROiUZpFirHRfPQqMyCXZ+5+ndbBZrMvL74HtQB/CKXB8K1VM+rvy9Gp/5OaU8Rxp48IcX79NOfI2LiXlA==
 
 "@next/swc-win32-arm64-msvc@12.1.6":
   version "12.1.6"
   resolved "https://registry.yarnpkg.com/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-12.1.6.tgz#2ef9837f12ca652b1783d72ecb86208906042f02"
   integrity sha512-3UTOL/5XZSKFelM7qN0it35o3Cegm6LsyuERR3/OoqEExyj3aCk7F025b54/707HTMAnjlvQK3DzLhPu/xxO4g==
 
-"@next/swc-win32-arm64-msvc@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.npmjs.org/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-12.2.3.tgz#bab9ba8736d81db128badb70024268469eaa9b34"
-  integrity sha512-Cq8ToPdc0jQP2C7pjChYctAsEe7+lO/B826ZCK5xFzobuHPiCyJ2Mzx/nEQwCY4SpYkeJQtCbwlCz5iyGW5zGg==
+"@next/swc-win32-arm64-msvc@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.npmjs.org/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-12.2.4.tgz#48344aded1702e321bef0fdefc3fb9f763c2ba25"
+  integrity sha512-9XKoCXbNZuaMRPtcKQz3+hgVpkMosaLlcxHFXT8/j4w61k7/qvEbrkMDS9WHNrD/xVcLycwhPRgXcns2K1BdBQ==
 
 "@next/swc-win32-ia32-msvc@12.1.6":
   version "12.1.6"
   resolved "https://registry.yarnpkg.com/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-12.1.6.tgz#74003d0aa1c59dfa56cb15481a5c607cbc0027b9"
   integrity sha512-8ZWoj6nCq6fI1yCzKq6oK0jE6Mxlz4MrEsRyu0TwDztWQWe7rh4XXGLAa2YVPatYcHhMcUL+fQQbqd1MsgaSDA==
 
-"@next/swc-win32-ia32-msvc@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.npmjs.org/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-12.2.3.tgz#feea6ada1ba3e897f39ded9f2de5006f4e1c928b"
-  integrity sha512-BtFq4c8IpeB0sDhJMHJFgm86rPkOvmYI8k3De8Y2kgNVWSeLQ0Q929PWf7e+GqcX1015ei/gEB41ZH8Iw49NzA==
+"@next/swc-win32-ia32-msvc@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.npmjs.org/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-12.2.4.tgz#e040fbf292205716c2c1d69d51c1c98fa59825ff"
+  integrity sha512-hEyRieZKH9iw4AzvXaQ+Fyb98k0G/o9QcRGxA1/O/O/elf1+Qvuwb15phT8GbVtIeNziy66XTPOhKKfdr8KyUg==
 
 "@next/swc-win32-x64-msvc@12.1.6":
   version "12.1.6"
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.1.6.tgz#a350caf42975e7197b24b495b8d764eec7e6a36e"
   integrity sha512-4ZEwiRuZEicXhXqmhw3+de8Z4EpOLQj/gp+D9fFWo6ii6W1kBkNNvvEx4A90ugppu+74pT1lIJnOuz3A9oQeJA==
 
-"@next/swc-win32-x64-msvc@12.2.3":
-  version "12.2.3"
-  resolved "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.2.3.tgz#403e1575a84c31cbd7f3c0ecd51b61bc25b7f808"
-  integrity sha512-huSNb98KSG77Kl96CoPgCwom28aamuUsPpRmn/4s9L0RNbbHVSkp9E6HA4yOAykZCEuWcdNsRLbVVuAbt8rtIw==
+"@next/swc-win32-x64-msvc@12.2.4":
+  version "12.2.4"
+  resolved "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.2.4.tgz#0134c4cd5df39033347614ce5fc26af485ac9048"
+  integrity sha512-5Pl1tdMJWLy4rvzU1ecx0nHWgDPqoYuvYoXE/5X0Clu9si/yOuBIj573F2kOTY7mu0LX2wgCJVSnyK0abHBxIw==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -2209,14 +2223,14 @@
     domhandler "^4.2.0"
     selderee "^0.6.0"
 
-"@sentry/browser@7.8.0":
-  version "7.8.0"
-  resolved "https://registry.npmjs.org/@sentry/browser/-/browser-7.8.0.tgz#0430d327d6a44901f42fdee11a8a983dfcebd7ab"
-  integrity sha512-khVrQ0/cfPgm4dAYc07TbHO+dGvaq5adjbIkzpQy0t64KI1GLz++JXv1GRHh5EF9J5kOTaDZX6EyKCa/zDNfxw==
+"@sentry/browser@7.9.0":
+  version "7.9.0"
+  resolved "https://registry.npmjs.org/@sentry/browser/-/browser-7.9.0.tgz#eb9aeebfd5fb758e484ebdc6ab420a2a620219bb"
+  integrity sha512-R0/EatdSBPZ+orsD5Mu/Gq8XmEfr/KCzJv05S35GVPDkIgczIJ2AYlHgchnEO0m63jDFyWLzUteQmPZ3pao9PQ==
   dependencies:
-    "@sentry/core" "7.8.0"
-    "@sentry/types" "7.8.0"
-    "@sentry/utils" "7.8.0"
+    "@sentry/core" "7.9.0"
+    "@sentry/types" "7.9.0"
+    "@sentry/utils" "7.9.0"
     tslib "^1.9.3"
 
 "@sentry/cli@^1.74.4":
@@ -2232,97 +2246,97 @@
     proxy-from-env "^1.1.0"
     which "^2.0.2"
 
-"@sentry/core@7.8.0":
-  version "7.8.0"
-  resolved "https://registry.npmjs.org/@sentry/core/-/core-7.8.0.tgz#3ab3a4cb4389527e3ca08031a02f010ec52287e8"
-  integrity sha512-Xogwy96P6o3qgSLIGHxzKnRxrky8QdHpnS4A6ZWjnnFFAJmMg3MPF9SmqK5dOUpO9K69jTad9vs6ES2qTydfIw==
+"@sentry/core@7.9.0":
+  version "7.9.0"
+  resolved "https://registry.npmjs.org/@sentry/core/-/core-7.9.0.tgz#fb9308e067a4b5794eb49f8bac303bb9c627b1a9"
+  integrity sha512-WVGd2hV7Clcpl7/GL8LsRr4Zk9o/7o4rZHfs1Qed5lMRNYcxiMwucC1CYILVpJqVfY+8vIRP9v9Ss9ta2VUikw==
   dependencies:
-    "@sentry/hub" "7.8.0"
-    "@sentry/types" "7.8.0"
-    "@sentry/utils" "7.8.0"
+    "@sentry/hub" "7.9.0"
+    "@sentry/types" "7.9.0"
+    "@sentry/utils" "7.9.0"
     tslib "^1.9.3"
 
-"@sentry/hub@7.8.0":
-  version "7.8.0"
-  resolved "https://registry.npmjs.org/@sentry/hub/-/hub-7.8.0.tgz#ba261fff11f389511b2a2f7ccd4466dc781d1a8d"
-  integrity sha512-L+aZ7XQJ5cM9NFBy/4caTyBVOc5DB6LK1wxPSFxCy1zsr/XpEYqTAy6ATRUeC0UKxdd/sN/lnQ8liGwVAc0gGQ==
+"@sentry/hub@7.9.0":
+  version "7.9.0"
+  resolved "https://registry.npmjs.org/@sentry/hub/-/hub-7.9.0.tgz#29d4c796006282a20e5f78a1bb156d8f5eacd772"
+  integrity sha512-KzPbGCB5mONgsXEzqHy6uOaOuqLnhmFmSpGg+M03J6UJnJaNM7nrNp80MhStmjLMq6whEYVE07DrMAn3+iaQdg==
   dependencies:
-    "@sentry/types" "7.8.0"
-    "@sentry/utils" "7.8.0"
+    "@sentry/types" "7.9.0"
+    "@sentry/utils" "7.9.0"
     tslib "^1.9.3"
 
-"@sentry/integrations@7.8.0":
-  version "7.8.0"
-  resolved "https://registry.npmjs.org/@sentry/integrations/-/integrations-7.8.0.tgz#d91809afd3fda44707695ea08a865292210e74f0"
-  integrity sha512-EdnkE4eIQsLH46X8HBdfG/4+M9yWMSLWNf5jebcNeYd3UtXfpkNRz10F8g/v9QpqEIHRmcD8o6vh8yVZAGO8cg==
+"@sentry/integrations@7.9.0":
+  version "7.9.0"
+  resolved "https://registry.npmjs.org/@sentry/integrations/-/integrations-7.9.0.tgz#f1db61ec426565ae70d98fa0d1d5a8e9f51761eb"
+  integrity sha512-HQX7Fxj9Kjobp8AVipPPusjpogRJuMYdCYtCJMUHpmGB9BVOZpKcnr5tUR39GNpTxlb0+L9/4ET6Bg+2HfIrRg==
   dependencies:
-    "@sentry/types" "7.8.0"
-    "@sentry/utils" "7.8.0"
+    "@sentry/types" "7.9.0"
+    "@sentry/utils" "7.9.0"
     localforage "^1.8.1"
     tslib "^1.9.3"
 
-"@sentry/nextjs@^7.8.0":
-  version "7.8.0"
-  resolved "https://registry.npmjs.org/@sentry/nextjs/-/nextjs-7.8.0.tgz#256f340770543e151dcabe12536e4c9850ace7b1"
-  integrity sha512-fgN99c0Hjrbx1AFHbjNe581bFzZSzcjpxen7Msf6vfmjKKzd5OZnmIG+HcbImkiDdSoXQ0H5xlZc9m80mnxG3g==
+"@sentry/nextjs@^7.9.0":
+  version "7.9.0"
+  resolved "https://registry.npmjs.org/@sentry/nextjs/-/nextjs-7.9.0.tgz#4f33127e94304efa3d68e2615c2a620dcc7b1c19"
+  integrity sha512-yToPcsoMwfFyUS7STmJdwbE6JxlUHaxxnO8Qwpu9jFF2dH925r3MBWkwR1H2wfR1GbOLVwGUmQIdL1LAR8novw==
   dependencies:
-    "@sentry/core" "7.8.0"
-    "@sentry/hub" "7.8.0"
-    "@sentry/integrations" "7.8.0"
-    "@sentry/node" "7.8.0"
-    "@sentry/react" "7.8.0"
-    "@sentry/tracing" "7.8.0"
-    "@sentry/types" "7.8.0"
-    "@sentry/utils" "7.8.0"
+    "@sentry/core" "7.9.0"
+    "@sentry/hub" "7.9.0"
+    "@sentry/integrations" "7.9.0"
+    "@sentry/node" "7.9.0"
+    "@sentry/react" "7.9.0"
+    "@sentry/tracing" "7.9.0"
+    "@sentry/types" "7.9.0"
+    "@sentry/utils" "7.9.0"
     "@sentry/webpack-plugin" "1.19.0"
     tslib "^1.9.3"
 
-"@sentry/node@7.8.0":
-  version "7.8.0"
-  resolved "https://registry.npmjs.org/@sentry/node/-/node-7.8.0.tgz#7b5f183d8717c5d106bf98936dcce3fa34a515f0"
-  integrity sha512-nnHeKVbOWlNC/ekgKJhSPDOJbw2W/Bk5OTRmJJm2TgrRS/RituogLjf9Ypw/oZOT4MWQHpn2qTI6yXta5WIQuw==
+"@sentry/node@7.9.0":
+  version "7.9.0"
+  resolved "https://registry.npmjs.org/@sentry/node/-/node-7.9.0.tgz#2ce1f9336a22cee3530ccd472081f71073af5116"
+  integrity sha512-MeggSCLyhUhsX3gRRvDhTADKYshuWjTRO/dUv3Jw+2xToSDvSWXJXDkIg5mCdlyOhh9/G+5xdWY58CfomzPZgg==
   dependencies:
-    "@sentry/core" "7.8.0"
-    "@sentry/hub" "7.8.0"
-    "@sentry/types" "7.8.0"
-    "@sentry/utils" "7.8.0"
+    "@sentry/core" "7.9.0"
+    "@sentry/hub" "7.9.0"
+    "@sentry/types" "7.9.0"
+    "@sentry/utils" "7.9.0"
     cookie "^0.4.1"
     https-proxy-agent "^5.0.0"
     lru_map "^0.3.3"
     tslib "^1.9.3"
 
-"@sentry/react@7.8.0":
-  version "7.8.0"
-  resolved "https://registry.npmjs.org/@sentry/react/-/react-7.8.0.tgz#6d4deea2b9b351454812945c414746d2c607b7db"
-  integrity sha512-oQLyRAyCBbb1sGnRjpeRNt7fKYYPoCM0XYiDdmudLFoQLkBNaVRm/JmYa+Ja009zV8NPG5v9yC8Ys/mIBLRgvg==
+"@sentry/react@7.9.0":
+  version "7.9.0"
+  resolved "https://registry.npmjs.org/@sentry/react/-/react-7.9.0.tgz#555a4a6093621ee0c3ce90804d3be28ca342670e"
+  integrity sha512-T3jHDH0AYmbyyufvKEOCFnIeLTU/bHUZM+e3eTevcq/eXFHS7JTK/8qsRnK0sYUT7/JolbpG/iq7QDkeGvSxpQ==
   dependencies:
-    "@sentry/browser" "7.8.0"
-    "@sentry/types" "7.8.0"
-    "@sentry/utils" "7.8.0"
+    "@sentry/browser" "7.9.0"
+    "@sentry/types" "7.9.0"
+    "@sentry/utils" "7.9.0"
     hoist-non-react-statics "^3.3.2"
     tslib "^1.9.3"
 
-"@sentry/tracing@7.8.0":
-  version "7.8.0"
-  resolved "https://registry.npmjs.org/@sentry/tracing/-/tracing-7.8.0.tgz#e803317f26bd54b05f95f78cdc456979f786627e"
-  integrity sha512-qhem3wJgyd2tgRk0nHMGkWtiI3ln0ZdN8N+5hLnW+CrSz8Xm5/L5gwWQszOFG7WCYM3wRYEV093MuHg+qTg8iA==
+"@sentry/tracing@7.9.0":
+  version "7.9.0"
+  resolved "https://registry.npmjs.org/@sentry/tracing/-/tracing-7.9.0.tgz#0cbbf5b61ee76b934d2e4160a0ad3daf0001237b"
+  integrity sha512-X4HQ7jjP7qyc4saCtq31kLqQzcBpRNifE9KccgEbNXAkKoMrg5F22oUlfN2EcEWy0vm1C23juseDsOSSMXAM+A==
   dependencies:
-    "@sentry/hub" "7.8.0"
-    "@sentry/types" "7.8.0"
-    "@sentry/utils" "7.8.0"
+    "@sentry/hub" "7.9.0"
+    "@sentry/types" "7.9.0"
+    "@sentry/utils" "7.9.0"
     tslib "^1.9.3"
 
-"@sentry/types@7.8.0":
-  version "7.8.0"
-  resolved "https://registry.npmjs.org/@sentry/types/-/types-7.8.0.tgz#009ee9c53b474030a6b14025a8904b6260d57484"
-  integrity sha512-X9D2jlcAzbJdCHA+eCMv2t5HI9769Qpx48e+sZiK7Oasy1jwQtqzQRaiI9fy/zZ+p7Fyerj/4WjW/E2c4dJ63w==
+"@sentry/types@7.9.0":
+  version "7.9.0"
+  resolved "https://registry.npmjs.org/@sentry/types/-/types-7.9.0.tgz#8fa952865fda76f7c7c7fc6c84043979a22043ae"
+  integrity sha512-VGnUgELVMpGJCYW1triO+5XSyaPjB2Zu6esUgbb8iJ5bi+OWtxklixXgwhdaTb0FDzmRL/T/pckmrIuBTLySHQ==
 
-"@sentry/utils@7.8.0":
-  version "7.8.0"
-  resolved "https://registry.npmjs.org/@sentry/utils/-/utils-7.8.0.tgz#ed9b9a607fa51125a48140b1ea836603202d3cc2"
-  integrity sha512-6WvXawUPs60R9MitHXFL533D/Ic9tqQZbvPnBXmAkfp90Y5rcoq2QfJjkqMk/Z+Gnplwi8/wcJCC8EtYKfWg6w==
+"@sentry/utils@7.9.0":
+  version "7.9.0"
+  resolved "https://registry.npmjs.org/@sentry/utils/-/utils-7.9.0.tgz#497c41efe1b32974208ca68570e42c853b874f77"
+  integrity sha512-4f9TZvAVopgG7Lp1TcPSekSX1Ashk68Et4T8Y+60EVX5se19i0hpytbHWWwrXSrb3w0KpGANk0byoZkdaTgkYA==
   dependencies:
-    "@sentry/types" "7.8.0"
+    "@sentry/types" "7.9.0"
     tslib "^1.9.3"
 
 "@sentry/webpack-plugin@1.19.0":
@@ -3728,10 +3742,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.21.tgz#0155ee46f6be28b2ff0342ca1a9b9fd4468bef41"
   integrity sha512-x5W9s+8P4XteaxT/jKF0PSb7XEvo5VmqEWgsMlyeY4ZlLK8I6aH6g5TPPyDlLAep+GYf4kefb7HFyc7PAO3m+Q==
 
-"@types/node@^18.6.2":
-  version "18.6.2"
-  resolved "https://registry.npmjs.org/@types/node/-/node-18.6.2.tgz#ffc5f0f099d27887c8d9067b54e55090fcd54126"
-  integrity sha512-KcfkBq9H4PI6Vpu5B/KoPeuVDAbmi+2mDBqGPGUgoL7yXQtcWGu2vJWmmRkneWK3Rh0nIAX192Aa87AqKHYChQ==
+"@types/node@^18.6.4":
+  version "18.6.4"
+  resolved "https://registry.npmjs.org/@types/node/-/node-18.6.4.tgz#fd26723a8a3f8f46729812a7f9b4fc2d1608ed39"
+  integrity sha512-I4BD3L+6AWiUobfxZ49DlU43gtI+FTHSv9pE2Zekg6KjMpre4ByusaljW3vYSLJrvQ1ck1hUaeVu8HVlY3vzHg==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -3796,10 +3810,10 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@^18.0.15":
-  version "18.0.15"
-  resolved "https://registry.npmjs.org/@types/react/-/react-18.0.15.tgz#d355644c26832dc27f3e6cbf0c4f4603fc4ab7fe"
-  integrity sha512-iz3BtLuIYH1uWdsv6wXYdhozhqj20oD4/Hk2DNXIn1kFsmp9x8d9QB6FnPhfkbhd2PgEONt9Q1x/ebkwjfFLow==
+"@types/react@^18.0.16":
+  version "18.0.16"
+  resolved "https://registry.npmjs.org/@types/react/-/react-18.0.16.tgz#8de9bf7feebfa520777e8d30815070b39cb663c0"
+  integrity sha512-3vX1dzVucqc2nhXtzyaParTIIRZeNbisRqLE7QdeLomVybEyeiuAouzZXgz71P+2kbJOqj3dy0fzoATg2I06GQ==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -4354,6 +4368,11 @@ acorn@^8.4.1, acorn@^8.5.0, acorn@^8.7.1:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.7.1.tgz#0197122c843d1bf6d0a5e83220a788f278f63c30"
   integrity sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A==
 
+acorn@^8.8.0:
+  version "8.8.0"
+  resolved "https://registry.npmjs.org/acorn/-/acorn-8.8.0.tgz#88c0187620435c7f6015803f5539dae05a9dbea8"
+  integrity sha512-QOxyigPVrpZ2GXT+PFyZTl6TtOFc5egxHIP9IlQ+RbupQuX4RkT/Bee4/kQuC02Xkzg84JcT7oLYtDIQxp+v7w==
+
 address@^1.0.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/address/-/address-1.2.0.tgz#d352a62c92fee90f89a693eccd2a8b2139ab02d9"
@@ -4840,6 +4859,18 @@ autoprefixer@^10.4.7:
     picocolors "^1.0.0"
     postcss-value-parser "^4.2.0"
 
+autoprefixer@^10.4.8:
+  version "10.4.8"
+  resolved "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.4.8.tgz#92c7a0199e1cfb2ad5d9427bd585a3d75895b9e5"
+  integrity sha512-75Jr6Q/XpTqEf6D2ltS5uMewJIx5irCU1oBYJrWjFenq/m12WRRrz6g15L1EIoYvPLXTbEry7rDOwrcYNj77xw==
+  dependencies:
+    browserslist "^4.21.3"
+    caniuse-lite "^1.0.30001373"
+    fraction.js "^4.2.0"
+    normalize-range "^0.1.2"
+    picocolors "^1.0.0"
+    postcss-value-parser "^4.2.0"
+
 autoprefixer@^9.8.6:
   version "9.8.8"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.8.8.tgz#fd4bd4595385fa6f06599de749a4d5f7a474957a"
@@ -5290,6 +5321,16 @@ browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.14.5, browserslist@^4
     node-releases "^2.0.5"
     update-browserslist-db "^1.0.4"
 
+browserslist@^4.21.3:
+  version "4.21.3"
+  resolved "https://registry.npmjs.org/browserslist/-/browserslist-4.21.3.tgz#5df277694eb3c48bc5c4b05af3e8b7e09c5a6d1a"
+  integrity sha512-898rgRXLAyRkM1GryrrBHGkqA5hlpkV5MhtZwg9QXeiyLUYs2k00Un05aX5l2/yJIOObYKOpS2JNo8nJDE7fWQ==
+  dependencies:
+    caniuse-lite "^1.0.30001370"
+    electron-to-chromium "^1.4.202"
+    node-releases "^2.0.6"
+    update-browserslist-db "^1.0.5"
+
 bser@2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/bser/-/bser-2.1.1.tgz#e6787da20ece9d07998533cfd9de6f5c38f4bc05"
@@ -5541,6 +5582,11 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001332, can
   version "1.0.30001361"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001361.tgz#ba2adb2527566fb96f3ac7c67698ae7fc495a28d"
   integrity sha512-ybhCrjNtkFji1/Wto6SSJKkWk6kZgVQsDq5QI83SafsF6FXv2JB4df9eEdH6g8sdGgqTXrFLjAxqBGgYoU3azQ==
+
+caniuse-lite@^1.0.30001370, caniuse-lite@^1.0.30001373:
+  version "1.0.30001374"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001374.tgz#3dab138e3f5485ba2e74bd13eca7fe1037ce6f57"
+  integrity sha512-mWvzatRx3w+j5wx/mpFN5v5twlPrabG8NqX2c6e45LCpymdoGqNvRkRutFUqpRTXKFQFNQJasvK0YT7suW6/Hw==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -6531,10 +6577,10 @@ cypress@*:
     untildify "^4.0.0"
     yauzl "^2.10.0"
 
-cypress@^10.3.1:
-  version "10.3.1"
-  resolved "https://registry.npmjs.org/cypress/-/cypress-10.3.1.tgz#7fab4ef43481c05a9a17ebe9a0ec860e15b95a19"
-  integrity sha512-As9HrExjAgpgjCnbiQCuPdw5sWKx5HUJcK2EOKziu642akwufr/GUeqL5UnCPYXTyyibvEdWT/pSC2qnGW/e5w==
+cypress@^10.4.0:
+  version "10.4.0"
+  resolved "https://registry.npmjs.org/cypress/-/cypress-10.4.0.tgz#bb5b3b6588ad49eff172fecf5778cc0da2980e4e"
+  integrity sha512-OM7F8MRE01SHQRVVzunid1ZK1m90XTxYnl+7uZfIrB4CYqUDCrZEeSyCXzIbsS6qcaijVCAhqDL60SxG8N6hew==
   dependencies:
     "@cypress/request" "^2.88.10"
     "@cypress/xvfb" "^1.2.4"
@@ -7115,6 +7161,11 @@ electron-to-chromium@^1.4.172:
   version "1.4.176"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.176.tgz#61ab2a1de3b5072ee31881a937c08ac6780d1cfa"
   integrity sha512-92JdgyRlcNDwuy75MjuFSb3clt6DGJ2IXSpg0MCjKd3JV9eSmuUAIyWiGAp/EtT0z2D4rqbYqThQLV90maH3Zw==
+
+electron-to-chromium@^1.4.202:
+  version "1.4.211"
+  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.211.tgz#afaa8b58313807501312d598d99b953568d60f91"
+  integrity sha512-BZSbMpyFQU0KBJ1JG26XGeFI3i4op+qOYGxftmZXFZoHkhLgsSv4DHDJfl8ogII3hIuzGt51PaZ195OVu0yJ9A==
 
 element-resize-detector@^1.2.2:
   version "1.2.4"
@@ -7697,13 +7748,14 @@ eslint@^8.16.0, eslint@^8.7.0:
     text-table "^0.2.0"
     v8-compile-cache "^2.0.3"
 
-eslint@^8.20.0:
-  version "8.20.0"
-  resolved "https://registry.npmjs.org/eslint/-/eslint-8.20.0.tgz#048ac56aa18529967da8354a478be4ec0a2bc81b"
-  integrity sha512-d4ixhz5SKCa1D6SCPrivP7yYVi7nyD6A4vs6HIAul9ujBzcEmZVM3/0NN/yu5nKhmO1wjp5xQ46iRfmDGlOviA==
+eslint@^8.21.0:
+  version "8.21.0"
+  resolved "https://registry.npmjs.org/eslint/-/eslint-8.21.0.tgz#1940a68d7e0573cef6f50037addee295ff9be9ef"
+  integrity sha512-/XJ1+Qurf1T9G2M5IHrsjp+xrGT73RZf23xA1z5wB1ZzzEAWSZKvRwhWxTFp1rvkvCfwcvAUNAP31bhKTTGfDA==
   dependencies:
     "@eslint/eslintrc" "^1.3.0"
-    "@humanwhocodes/config-array" "^0.9.2"
+    "@humanwhocodes/config-array" "^0.10.4"
+    "@humanwhocodes/gitignore-to-minimatch" "^1.0.2"
     ajv "^6.10.0"
     chalk "^4.0.0"
     cross-spawn "^7.0.2"
@@ -7713,14 +7765,17 @@ eslint@^8.20.0:
     eslint-scope "^7.1.1"
     eslint-utils "^3.0.0"
     eslint-visitor-keys "^3.3.0"
-    espree "^9.3.2"
+    espree "^9.3.3"
     esquery "^1.4.0"
     esutils "^2.0.2"
     fast-deep-equal "^3.1.3"
     file-entry-cache "^6.0.1"
+    find-up "^5.0.0"
     functional-red-black-tree "^1.0.1"
     glob-parent "^6.0.1"
     globals "^13.15.0"
+    globby "^11.1.0"
+    grapheme-splitter "^1.0.4"
     ignore "^5.2.0"
     import-fresh "^3.0.0"
     imurmurhash "^0.1.4"
@@ -7744,6 +7799,15 @@ espree@^9.0.0, espree@^9.3.2:
   integrity sha512-D211tC7ZwouTIuY5x9XnS0E9sWNChB7IYKX/Xp5eQj3nFXhqmiUDB9q27y76oFl8jTg3pXcQx/bpxMfs3CIZbA==
   dependencies:
     acorn "^8.7.1"
+    acorn-jsx "^5.3.2"
+    eslint-visitor-keys "^3.3.0"
+
+espree@^9.3.3:
+  version "9.3.3"
+  resolved "https://registry.npmjs.org/espree/-/espree-9.3.3.tgz#2dd37c4162bb05f433ad3c1a52ddf8a49dc08e9d"
+  integrity sha512-ORs1Rt/uQTqUKjDdGCyrtYxbazf5umATSf/K4qxjmZHORR6HJk+2s/2Pqe+Kk49HHINC/xNIrGfgh8sZcll0ng==
+  dependencies:
+    acorn "^8.8.0"
     acorn-jsx "^5.3.2"
     eslint-visitor-keys "^3.3.0"
 
@@ -8771,6 +8835,11 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.10.tgz#147d3a006da4ca3ce14728c7aefc287c367d7a6c"
   integrity sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==
 
+grapheme-splitter@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/grapheme-splitter/-/grapheme-splitter-1.0.4.tgz#9cf3a665c6247479896834af35cf1dbb4400767e"
+  integrity sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==
+
 handlebars@^4.7.7:
   version "4.7.7"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.7.tgz#9ce33416aad02dbd6c8fafa8240d5d98004945a1"
@@ -9053,10 +9122,10 @@ html-tags@^3.1.0:
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.2.0.tgz#dbb3518d20b726524e4dd43de397eb0a95726961"
   integrity sha512-vy7ClnArOZwCnqZgvv+ddgHgJiAFXe3Ge9ML5/mBctVJoUoYPCdxVucOywjDARn6CVoh3dRSFdPHy2sX80L0Wg==
 
-html-to-text@^8.2.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/html-to-text/-/html-to-text-8.2.0.tgz#8b35e280ba7fc27710b7aa76d4500aab30731924"
-  integrity sha512-CLXExYn1b++Lgri+ZyVvbUEFwzkLZppjjZOwB7X1qv2jIi8MrMEvxWX5KQ7zATAzTvcqgmtO00M2kCRMtEdOKQ==
+html-to-text@^8.2.1:
+  version "8.2.1"
+  resolved "https://registry.npmjs.org/html-to-text/-/html-to-text-8.2.1.tgz#4a75b8a1b646149bd71c50527adb568990bf459b"
+  integrity sha512-aN/3JvAk8qFsWVeE9InWAWueLXrbkoVZy0TkzaGhoRBC2gCFEeRLDDJN3/ijIGHohy6H+SZzUQWN/hcYtaPK8w==
   dependencies:
     "@selderee/plugin-htmlparser2" "^0.6.0"
     deepmerge "^4.2.2"
@@ -10285,6 +10354,11 @@ lilconfig@2.0.5, lilconfig@^2.0.3, lilconfig@^2.0.5:
   resolved "https://registry.yarnpkg.com/lilconfig/-/lilconfig-2.0.5.tgz#19e57fd06ccc3848fd1891655b5a447092225b25"
   integrity sha512-xaYmXZtTHPAw5m+xLN8ab9C+3a8YmV3asNSPOATITbtwrfbwaLJj8h66H1WMIpALCkqsIzK3h7oQ+PdX+LQ9Eg==
 
+lilconfig@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.npmjs.org/lilconfig/-/lilconfig-2.0.6.tgz#32a384558bd58af3d4c6e077dd1ad1d397bc69d4"
+  integrity sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==
+
 lines-and-columns@^1.1.6:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
@@ -11279,31 +11353,31 @@ next@12.1.6:
     "@next/swc-win32-ia32-msvc" "12.1.6"
     "@next/swc-win32-x64-msvc" "12.1.6"
 
-next@^12.2.3:
-  version "12.2.3"
-  resolved "https://registry.npmjs.org/next/-/next-12.2.3.tgz#c29d235ce480e589894dfab3120dade25d015a22"
-  integrity sha512-TA0tmSA6Dk6S6kfvCNbF7CWYW8468gZUxr/3/30z4KvAQbXnl2ASYZElVe7q/hBW/1F1ee0tSBlHa4/sn+ZIBw==
+next@^12.2.4:
+  version "12.2.4"
+  resolved "https://registry.npmjs.org/next/-/next-12.2.4.tgz#88f7a7a4cd76063704cda28b3b07c4217b8928b0"
+  integrity sha512-b1xlxEozmAWokAXzXsi5vlmU/IfJcFNIJA8dpU5UdkFbyDPio8wwb8mAQ/Y7rGtfTgG/t/u49BiyEA+xAgFvow==
   dependencies:
-    "@next/env" "12.2.3"
+    "@next/env" "12.2.4"
     "@swc/helpers" "0.4.3"
     caniuse-lite "^1.0.30001332"
     postcss "8.4.14"
     styled-jsx "5.0.2"
     use-sync-external-store "1.2.0"
   optionalDependencies:
-    "@next/swc-android-arm-eabi" "12.2.3"
-    "@next/swc-android-arm64" "12.2.3"
-    "@next/swc-darwin-arm64" "12.2.3"
-    "@next/swc-darwin-x64" "12.2.3"
-    "@next/swc-freebsd-x64" "12.2.3"
-    "@next/swc-linux-arm-gnueabihf" "12.2.3"
-    "@next/swc-linux-arm64-gnu" "12.2.3"
-    "@next/swc-linux-arm64-musl" "12.2.3"
-    "@next/swc-linux-x64-gnu" "12.2.3"
-    "@next/swc-linux-x64-musl" "12.2.3"
-    "@next/swc-win32-arm64-msvc" "12.2.3"
-    "@next/swc-win32-ia32-msvc" "12.2.3"
-    "@next/swc-win32-x64-msvc" "12.2.3"
+    "@next/swc-android-arm-eabi" "12.2.4"
+    "@next/swc-android-arm64" "12.2.4"
+    "@next/swc-darwin-arm64" "12.2.4"
+    "@next/swc-darwin-x64" "12.2.4"
+    "@next/swc-freebsd-x64" "12.2.4"
+    "@next/swc-linux-arm-gnueabihf" "12.2.4"
+    "@next/swc-linux-arm64-gnu" "12.2.4"
+    "@next/swc-linux-arm64-musl" "12.2.4"
+    "@next/swc-linux-x64-gnu" "12.2.4"
+    "@next/swc-linux-x64-musl" "12.2.4"
+    "@next/swc-win32-arm64-msvc" "12.2.4"
+    "@next/swc-win32-ia32-msvc" "12.2.4"
+    "@next/swc-win32-x64-msvc" "12.2.4"
 
 nextjs-progressbar@^0.0.14:
   version "0.0.14"
@@ -11409,6 +11483,11 @@ node-releases@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.5.tgz#280ed5bc3eba0d96ce44897d8aee478bfb3d9666"
   integrity sha512-U9h1NLROZTq9uE1SNffn6WuPDg8icmi3ns4rEl/oTfIle4iLjTliCzgTsbaIFMq/Xn078/lfY/BL0GWZ+psK4Q==
+
+node-releases@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.npmjs.org/node-releases/-/node-releases-2.0.6.tgz#8a7088c63a55e493845683ebf3c828d8c51c5503"
+  integrity sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==
 
 normalize-package-data@^2.3.2, normalize-package-data@^2.3.4, normalize-package-data@^2.5.0:
   version "2.5.0"
@@ -12741,6 +12820,15 @@ postcss@^7.0.14, postcss@^7.0.26, postcss@^7.0.32, postcss@^7.0.35, postcss@^7.0
   dependencies:
     picocolors "^0.2.1"
     source-map "^0.6.1"
+
+postcss@^8.4.16:
+  version "8.4.16"
+  resolved "https://registry.npmjs.org/postcss/-/postcss-8.4.16.tgz#33a1d675fac39941f5f445db0de4db2b6e01d43c"
+  integrity sha512-ipHE1XBvKzm5xI7hiHCZJCSugxvsdq2mPnsq5+UF+VHCjiBvtDrlxJfMBToWaP9D5XlgNmcFGqoHmUn0EYEaRQ==
+  dependencies:
+    nanoid "^3.3.4"
+    picocolors "^1.0.0"
+    source-map-js "^1.0.2"
 
 prebuild-install@^7.1.1:
   version "7.1.1"
@@ -14996,10 +15084,10 @@ tailwindcss@^3.0.24:
     quick-lru "^5.1.1"
     resolve "^1.22.0"
 
-tailwindcss@^3.1.6:
-  version "3.1.6"
-  resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.1.6.tgz#bcb719357776c39e6376a8d84e9834b2b19a49f1"
-  integrity sha512-7skAOY56erZAFQssT1xkpk+kWt2NrO45kORlxFPXUt3CiGsVPhH1smuH5XoDH6sGPXLyBv+zgCKA2HWBsgCytg==
+tailwindcss@^3.1.8:
+  version "3.1.8"
+  resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.1.8.tgz#4f8520550d67a835d32f2f4021580f9fddb7b741"
+  integrity sha512-YSneUCZSFDYMwk+TGq8qYFdCA3yfBRdBlS7txSq0LUmzyeqRe3a8fBQzbz9M3WS/iFT4BNf/nmw9mEzrnSaC0g==
   dependencies:
     arg "^5.0.2"
     chokidar "^3.5.3"
@@ -15010,7 +15098,7 @@ tailwindcss@^3.1.6:
     fast-glob "^3.2.11"
     glob-parent "^6.0.2"
     is-glob "^4.0.3"
-    lilconfig "^2.0.5"
+    lilconfig "^2.0.6"
     normalize-path "^3.0.0"
     object-hash "^3.0.0"
     picocolors "^1.0.0"
@@ -15879,6 +15967,14 @@ update-browserslist-db@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/update-browserslist-db/-/update-browserslist-db-1.0.4.tgz#dbfc5a789caa26b1db8990796c2c8ebbce304824"
   integrity sha512-jnmO2BEGUjsMOe/Fg9u0oczOe/ppIDZPebzccl1yDWGLFP16Pa1/RM5wEoKYPG2zstNcDuAStejyxsOuKINdGA==
+  dependencies:
+    escalade "^3.1.1"
+    picocolors "^1.0.0"
+
+update-browserslist-db@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/update-browserslist-db/-/update-browserslist-db-1.0.5.tgz#be06a5eedd62f107b7c19eb5bcefb194411abf38"
+  integrity sha512-dteFFpCyvuDdr9S/ff1ISkKt/9YZxKjI9WlRR99c180GaztJtRa/fn18FdxGVKVsnPY7/a/FDN68mcvUmP4U7Q==
   dependencies:
     escalade "^3.1.1"
     picocolors "^1.0.0"

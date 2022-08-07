@@ -1,20 +1,19 @@
 import Head from 'next/head'
-import React from 'react'
+import React, { Suspense } from 'react'
 import Link from 'next/link'
-import useSWR from 'swr'
 import { GetStaticProps } from 'next'
-import fetcher from '~/lib/fetcher'
 import Content from '~/components/Content'
 import { Icon } from '@twilight-toolkit/ui'
 import PageCard from '~/components/Card/Page'
-import { NFTCard, NFTCardLoading } from '~/components/Card/NFT'
-import { ResDataType } from '~/pages/api/nft'
+import CardEmpty from '~/components/Card/Empty'
+import { NFTCardLoading } from '~/components/Card/NFT'
+import ErrorBoundary from '~/components/ErrorBoundary'
 import getApi from '~/utilities/api'
 import { GlowingBackground } from '~/components/Visual'
 
-const Web3 = ({ sponsors }: { sponsors: any }) => {
-	const { data } = useSWR<ResDataType>('api/nft', fetcher)
+const NFTs = React.lazy(() => import('~/components/Grids/NFTs'))
 
+const Web3 = ({ sponsors }: { sponsors: any }) => {
 	return (
 		<div>
 			<Head>
@@ -175,43 +174,19 @@ const Web3 = ({ sponsors }: { sponsors: any }) => {
 							<span className="uppercase">Non-fungible Tokens (NFTs)</span>
 						</label>
 						<div className="mt-4">
-							<div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
-								{!data && (
-									<>
-										<NFTCardLoading uniqueKey="nft-card-skeleton-1" />
-										<NFTCardLoading uniqueKey="nft-card-skeleton-2" />
-										<NFTCardLoading uniqueKey="nft-card-skeleton-3" />
-									</>
-								)}
-								{data &&
-									data.eth.map((item, index: React.Key) => {
-										return (
-											<NFTCard
-												key={index}
-												image={item.media[0].raw}
-												title={item.title}
-												description={item.description}
-												tokenType={item.id.tokenMetadata.tokenType}
-												blockchain="ethereum"
-												contract={item.contract.address}
-												link={item.tokenUri.raw}
-											/>
-										)
-									})}
-								{data &&
-									data.sol.map((item, index: React.Key) => {
-										return (
-											<NFTCard
-												key={index}
-												image={item.imageUrl}
-												title={item.name}
-												description={item.description}
-												blockchain="solana"
-												token={item.tokenAddress}
-											/>
-										)
-									})}
-							</div>
+							<ErrorBoundary fallback={<CardEmpty />}>
+								<Suspense
+									fallback={
+										<>
+											<NFTCardLoading uniqueKey="nft-card-skeleton-1" />
+											<NFTCardLoading uniqueKey="nft-card-skeleton-2" />
+											<NFTCardLoading uniqueKey="nft-card-skeleton-3" />
+										</>
+									}
+								>
+									<NFTs />
+								</Suspense>
+							</ErrorBoundary>
 						</div>
 					</div>
 					<div className="mb-10">

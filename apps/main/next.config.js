@@ -22,6 +22,7 @@ const NextConfigs = {
 		domains: ['static.ouorz.com', 'storage.snapaper.com'],
 	},
 	compiler: {
+		styledComponents: true,
 		removeConsole: {
 			exclude: ['log', 'error'],
 		},
