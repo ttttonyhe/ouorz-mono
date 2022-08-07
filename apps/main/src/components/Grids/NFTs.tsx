@@ -8,7 +8,7 @@ const NFTs = () => {
 	const { data } = useSWR<ResDataType>('/api/nft', fetcher, { suspense: true })
 
 	return (
-		<div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
+		<>
 			{data.eth.map((item, index: React.Key) => {
 				return (
 					<NFTCard
@@ -35,7 +35,7 @@ const NFTs = () => {
 					/>
 				)
 			})}
-		</div>
+		</>
 	)
 }
 

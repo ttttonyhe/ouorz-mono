@@ -175,17 +175,19 @@ const Web3 = ({ sponsors }: { sponsors: any }) => {
 						</label>
 						<div className="mt-4">
 							<ErrorBoundary fallback={<CardEmpty />}>
-								<Suspense
-									fallback={
-										<>
-											<NFTCardLoading uniqueKey="nft-card-skeleton-1" />
-											<NFTCardLoading uniqueKey="nft-card-skeleton-2" />
-											<NFTCardLoading uniqueKey="nft-card-skeleton-3" />
-										</>
-									}
-								>
-									<NFTs />
-								</Suspense>
+								<div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
+									<Suspense
+										fallback={
+											<>
+												<NFTCardLoading uniqueKey="nft-card-skeleton-1" />
+												<NFTCardLoading uniqueKey="nft-card-skeleton-2" />
+												<NFTCardLoading uniqueKey="nft-card-skeleton-3" />
+											</>
+										}
+									>
+										<NFTs />
+									</Suspense>
+								</div>
 							</ErrorBoundary>
 						</div>
 					</div>
