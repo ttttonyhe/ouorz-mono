@@ -1,22 +1,22 @@
-import Head from 'next/head'
-import Page from '~/components/Page'
 import { GetServerSideProps } from 'next'
+import Head from 'next/head'
+import TimeAgo from 'react-timeago'
+import redirect from 'nextjs-redirect'
+import { NextPageWithLayout } from '~/pages/_app'
+import { contentLayout } from '~/components/Content'
 import getApi from '~/utilities/api'
 import SubscriptionBox from '~/components/SubscriptionBox'
-import TimeAgo from 'react-timeago'
 import CommentBox from '~/components/CommentBox'
 import PostContent from '~/components/PostContent'
-import redirect from 'nextjs-redirect'
 
 const Redirect = redirect('/404')
 
-export default function BlogPage({
-	status,
-	page,
-}: {
+interface Props {
 	status: boolean
 	page?: any
-}) {
+}
+
+const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 	if (status) {
 		return (
 			<div>
@@ -28,30 +28,28 @@ export default function BlogPage({
 					/>
 					<meta name="description" content={page.title.rendered} />
 				</Head>
-				<Page>
-					<article
-						data-cy="pageContent"
-						className="lg:shadow-sm lg:border lg:rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 p-5 lg:p-20 pt-24"
-					>
-						<div className="mb-20">
-							<h1 className="text-1.5 lg:text-postTitle font-medium tracking-wider leading-snug">
-								{page.title.rendered}
-							</h1>
-							<p className="flex text-5 lg:text-xl text-gray-500 dark:text-gray-400 space-x-2 mt-2 tracking-wide">
-								<span>
-									Posted <TimeAgo date={page.date} />
-								</span>
-								<span>·</span>
-								<span>{page.post_metas.views} Views</span>
-							</p>
-						</div>
-						<PostContent content={page.content.rendered} />
-					</article>
-					<div className="mt-5">
-						<SubscriptionBox type="lg" />
+				<article
+					data-cy="pageContent"
+					className="lg:shadow-sm lg:border lg:rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 p-5 lg:p-20 pt-24"
+				>
+					<div className="mb-20">
+						<h1 className="text-1.5 lg:text-postTitle font-medium tracking-wider leading-snug">
+							{page.title.rendered}
+						</h1>
+						<p className="flex text-5 lg:text-xl text-gray-500 dark:text-gray-400 space-x-2 mt-2 tracking-wide">
+							<span>
+								Posted <TimeAgo date={page.date} />
+							</span>
+							<span>·</span>
+							<span>{page.post_metas.views} Views</span>
+						</p>
 					</div>
-					<CommentBox />
-				</Page>
+					<PostContent content={page.content.rendered} />
+				</article>
+				<div className="mt-5">
+					<SubscriptionBox type="lg" />
+				</div>
+				<CommentBox />
 			</div>
 		)
 	} else {
@@ -107,3 +105,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		console.error(e)
 	}
 }
+
+BlogPage.layout = contentLayout
+
+export default BlogPage

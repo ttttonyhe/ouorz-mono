@@ -11,10 +11,14 @@ export default function Page(props: Props) {
 	return (
 		<div>
 			<Header />
-			<main className="w-full min-h-main lg:w-page h-auto mx-auto pt-0 lg:pt-24">
+			<main className="w-full min-h-main lg:w-content h-auto mx-auto pt-0 lg:pt-20 px-5 lg:px-10">
 				{children}
 			</main>
 			<Footer />
 		</div>
 	)
+}
+
+export const pageLayout = (page: React.ReactElement) => {
+	return <Page>{page}</Page>
 }

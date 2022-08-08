@@ -1,5 +1,7 @@
 import '~/assets/styles/vendors/tailwind.css'
 import '~/styles/global.css'
+import type { ReactElement, ReactNode } from 'react'
+import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import NextNprogress from 'nextjs-progressbar'
 import Script from 'next/script'
@@ -7,7 +9,17 @@ import { ThemeProvider } from 'next-themes'
 import { Provider as ReduxProvider } from 'react-redux'
 import store from '~/store'
 
-function App({ Component, pageProps }: AppProps) {
+export type NextPageWithLayout = NextPage & {
+	layout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+	Component: NextPageWithLayout
+}
+
+function App({ Component, pageProps }: AppPropsWithLayout) {
+	const getLayout = Component.layout ?? ((page) => page)
+
 	return (
 		<div>
 			{/* Analytics Script */}
@@ -34,7 +46,7 @@ function App({ Component, pageProps }: AppProps) {
 				{/* Redux Store Provider */}
 				<ReduxProvider store={store}>
 					<div className="bg-gbg dark:bg-neutral-900 dark:text-white min-h-screen">
-						<Component {...pageProps} />
+						{getLayout(<Component {...pageProps} />)}
 					</div>
 				</ReduxProvider>
 			</ThemeProvider>
