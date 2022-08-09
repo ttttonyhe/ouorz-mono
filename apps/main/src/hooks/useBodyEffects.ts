@@ -12,11 +12,9 @@ const useBodyScroll = (): [boolean, Dispatch<SetStateAction<boolean>>] => {
 	useEffect(() => {
 		if (!bodyRef || !bodyRef.current) return
 		if (scrollable) {
-			bodyRef.current.style.position = 'static'
-			bodyRef.current.style.overflowY = 'auto'
+			bodyRef.current.style.overflow = 'auto'
 		} else {
-			bodyRef.current.style.position = 'fixed'
-			bodyRef.current.style.overflowY = 'scroll'
+			bodyRef.current.style.overflow = 'hidden'
 		}
 	}, [scrollable])
 

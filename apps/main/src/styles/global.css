@@ -354,9 +354,9 @@ h5 {
 	@apply dark:text-gray-500;
 }
 
-.reader::-webkit-scrollbar {
+/* .reader::-webkit-scrollbar {
 	width: 0 !important;
-}
+} */
 
 .prose pre {
 	@apply dark:bg-gray-700;
@@ -651,4 +651,8 @@ abbr[title] {
 
 .overflow-wrap-breakword {
 	overflow-wrap: break-word;
+}
+
+.animation-fill-mode-forwards {
+	animation-fill-mode: forwards;
 }

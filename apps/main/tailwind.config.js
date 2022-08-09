@@ -80,7 +80,7 @@ module.exports = {
 				searchBgOut: 'opacityProgressOut ease-in-out .15s forwards',
 				search: '200ms ease 0s 1 normal none running search',
 				searchOut: '150ms ease 0s 1 normal forwards running searchOut',
-				kbar: '200ms ease 0s 1 normal none running kbar',
+				kbar: '200ms ease 0.25s 1 normal forwards running kbar',
 				kbarOut: '200ms ease 0s 1 normal forwards running kbarOut',
 				kbarBg: '200ms ease 0s 1 normal none running opacityProgressIn',
 				kbarBgOut: '200ms ease 0s 1 normal forwards running opacityProgressOut',

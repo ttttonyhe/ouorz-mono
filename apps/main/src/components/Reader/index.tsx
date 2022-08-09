@@ -19,7 +19,7 @@ export default function Reader() {
 		visible && (
 			<div>
 				<div
-					className={`z-10 reader-bg ${
+					className={`z-50 reader-bg ${
 						animation === 'in' ? 'animate-readerBg' : 'animate-readerBgOut'
 					}`}
 					onClick={() => {
@@ -27,7 +27,7 @@ export default function Reader() {
 					}}
 				/>
 				<div
-					className={`z-20 fixed bg-white dark:bg-gray-800 dark:border-gray-800 shadow-md reader overflow-y-auto overflow-hidden rounded-tl-xl rounded-tr-xl px-20 py-16 w-page mx-auto top-0 mt-20 ml-readerOffset ${
+					className={`z-[60] fixed bg-white dark:bg-gray-800 dark:border-gray-800 shadow-md reader overflow-y-auto overflow-hidden rounded-tl-xl rounded-tr-xl px-20 py-16 w-page mx-auto top-0 mt-20 ml-readerOffset ${
 						animation === 'in' ? 'animate-reader' : 'animate-readerOut'
 					}`}
 				>

@@ -218,13 +218,13 @@ const KbarPanel = () => {
 				})
 			}
 			<div
-				className={`z-50 w-[620px] border dark:border-gray-700 rounded-xl shadow-2xl overflow-hidden backdrop-blur-lg bg-white/70 dark:bg-black/70 mt-[8%] h-fit max-h-[420px] ${
+				className={`z-50 ml-[16px] w-[620px] border dark:border-gray-700 rounded-xl shadow-2xl overflow-hidden backdrop-blur-lg bg-white/70 dark:bg-black/70 mt-[8%] h-fit max-h-[420px] ${
 					animation === 'transition'
 						? 'animate-kbarTransition'
 						: animation === 'out'
 						? 'animate-kbarOut'
 						: animation === 'in'
-						? 'animate-kbar'
+						? 'animate-kbar opacity-0'
 						: ''
 				}`}
 			>
