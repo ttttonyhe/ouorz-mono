@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState, useRef } from 'react'
-import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from '~/hooks'
 import { selectKbar } from '~/store/kbar/selectors'
@@ -8,7 +7,6 @@ import Tabs, { TabItemProps } from '../Tabs'
 import HotkeyHelper from '../Helpers/hotkey'
 import { Icon } from '@twilight-toolkit/ui'
 import { deactivateKbar, updateKbar } from '~/store/kbar/actions'
-import ContentLoader from 'react-content-loader'
 
 // Kbar list helper component
 const ListComponent = ({
@@ -18,7 +16,6 @@ const ListComponent = ({
 	tabsListItems: TabItemProps[]
 	verticalListWrapper: React.MutableRefObject<HTMLDivElement>
 }) => {
-	const { resolvedTheme } = useTheme()
 	const { loading } = useSelector(selectKbar)
 
 	// update vertical list wrapper height
@@ -28,7 +25,7 @@ const ListComponent = ({
 		let wrapperHeight = 0
 
 		if (loading || !tabsListItems) {
-			wrapperHeight = 65
+			wrapperHeight = 360
 		} else if (tabsListItems.length === 0) {
 			wrapperHeight = 66.39
 		}
@@ -39,19 +36,7 @@ const ListComponent = ({
 	}, [verticalListWrapper, tabsListItems])
 
 	if (loading || tabsListItems == null) {
-		return (
-			<ContentLoader
-				uniqueKey="kbar-panel-skeleton"
-				speed={2}
-				width={50}
-				style={{ width: '100%' }}
-				height={45}
-				backgroundColor={resolvedTheme === 'dark' ? '#525252' : '#f3f3f3'}
-				foregroundColor={resolvedTheme === 'dark' ? '#737373' : '#ecebeb'}
-			>
-				<rect x="0" y="0" rx="5" ry="5" width="100%" height="45" />
-			</ContentLoader>
-		)
+		return <div data-cy="kbar-list-loading" className="h-full" />
 	}
 
 	if (tabsListItems.length === 0) {
@@ -79,7 +64,7 @@ const KbarPanel = () => {
 	const router = useRouter()
 	const dispatch = useDispatch()
 	const { inputValue, setInputValue } = useContext(kbarContext)
-	const { list, lists, placeholder, animation, location, loading } =
+	const { list, placeholder, animation, location, loading } =
 		useSelector(selectKbar)
 	const verticalListWrapper = useRef<HTMLDivElement>(null)
 	const [initalListItems, setInitalListItems] = useState<TabItemProps[]>([])
@@ -228,7 +213,11 @@ const KbarPanel = () => {
 						: ''
 				}`}
 			>
-				<div className="h-[60px] border-b dark:border-gray-700 flex">
+				<div
+					className={`h-[60px] border-b ${
+						loading ? 'dark:border-gray-800' : 'dark:border-gray-700'
+					} flex`}
+				>
 					<input
 						data-cy="kbar-input"
 						placeholder={placeholder}
@@ -257,6 +246,9 @@ const KbarPanel = () => {
 							))}
 						</ul>
 					</div>
+					{loading && (
+						<div className="animate-kbarLoadingBar kbar-loading-bar h-[1.5px] absolute bottom-[-1.25px] w-full z-50" />
+					)}
 				</div>
 				<div
 					data-cy="kbar-list"

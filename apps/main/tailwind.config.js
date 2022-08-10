@@ -87,6 +87,7 @@ module.exports = {
 				kbarTransition: '200ms ease 0s 1 normal none running kbarTransition',
 				kbarHighlighter:
 					'100ms ease 0s 1 normal none running opacityProgressIn',
+				kbarLoadingBar: 'gradientSwipe ease-in-out 2s infinite',
 				waveHand: 'wavingHand ease-in-out 1.5s 3',
 				waveHandAgain: 'wavingHand ease-in-out 1.5s infinite',
 				completePulse: 'completePulse ease-in-out 2.5s infinite',
@@ -184,6 +185,17 @@ module.exports = {
 					},
 					'100%': {
 						transform: 'scale(1)',
+					},
+				},
+				gradientSwipe: {
+					'0%': {
+						marginLeft: '-75%',
+					},
+					'50%': {
+						marginLeft: '75%',
+					},
+					'100%': {
+						marginLeft: '-75%',
 					},
 				},
 				wavingHand: {

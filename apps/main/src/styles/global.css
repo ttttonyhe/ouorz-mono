@@ -656,3 +656,21 @@ abbr[title] {
 .animation-fill-mode-forwards {
 	animation-fill-mode: forwards;
 }
+
+.kbar-loading-bar {
+	background: linear-gradient(
+		90deg,
+		rgba(245, 245, 245, 0.02),
+		rgba(212, 212, 212, 1) 50%,
+		rgba(245, 245, 245, 0.02)
+	);
+}
+
+.dark .kbar-loading-bar {
+	background: linear-gradient(
+		90deg,
+		rgba(62, 62, 62, 0.02),
+		rgba(82, 82, 82, 1) 50%,
+		rgba(62, 62, 62, 0.02)
+	);
+}
