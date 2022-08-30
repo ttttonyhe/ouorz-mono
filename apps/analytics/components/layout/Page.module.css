@@ -2,7 +2,8 @@
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	padding: 0 30px;
+	padding: 60px 40px;
 	background: var(--gray50);
-	border-radius: 10px;
+	border-radius: 15px;
+	box-shadow: 0 2px 4px rgb(0 0 0 / 2%), inset 0 -1px 0 rgb(0 0 0 / 6%);
 }

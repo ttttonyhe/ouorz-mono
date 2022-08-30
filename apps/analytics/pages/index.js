@@ -6,7 +6,7 @@ export default function DefaultPage() {
 	return (
 		<Layout>
 			<Page>
-				<h3 style={{ textAlign: 'center', margin: '50px 0px 20px 0px' }}>
+				<h3 style={{ textAlign: 'center', margin: '0 0 20px' }}>
 					<b>
 						Privacy-preserving website analytics service for&nbsp;
 						<a href="https://www.ouorz.com">Tony</a>&apos;s projects.
