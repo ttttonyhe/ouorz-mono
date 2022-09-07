@@ -65,7 +65,7 @@ const Label: React.FC<LabelProps> = ({ type, icon, children, preview }) => {
 				>
 					{children}
 					{icon && (
-						<span className="w-5 h-5 ml-1 group-hover:animate-pointer">
+						<span className="w-5 h-5 ml-1 group-hover:animate-pointerIn animate-pointerOut">
 							<Icon name={icon} />
 						</span>
 					)}

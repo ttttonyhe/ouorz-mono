@@ -72,7 +72,8 @@ module.exports = {
 				'-82': '-220px',
 			},
 			animation: {
-				pointer: 'pointer 1s infinite',
+				pointerIn: 'pointerIn running .25s forwards',
+				pointerOut: 'pointerOut running .25s forwards',
 				reader: 'moveUp ease-in-out .5s',
 				readerOut: 'moveDown ease-in-out .5s',
 				readerBg: 'opacityProgressIn ease-in-out .5s',
@@ -89,12 +90,20 @@ module.exports = {
 				waveHandAgain: 'wavingHand ease-in-out 1.5s infinite',
 			},
 			keyframes: {
-				pointer: {
-					'0%,100%': {
-						transform: 'translateX(0)',
+				pointerIn: {
+					'0%': {
+						transform: 'rotate(0deg)',
 					},
-					'50%': {
-						transform: 'translateX(15%)',
+					'100%': {
+						transform: 'rotate(-45deg)',
+					},
+				},
+				pointerOut: {
+					'0%': {
+						transform: 'rotate(-45deg)',
+					},
+					'100%': {
+						transform: 'rotate(0deg)',
 					},
 				},
 				moveUp: {
