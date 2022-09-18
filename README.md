@@ -41,7 +41,7 @@
 - SSR/SSG/On-demand ISR
 - Command palette
 - Redux + Redux Saga state management
-- Nexment comment system
+- [Nexment](https://github.com/HelipengTony/nexment) comment system
 - Dynamic table of contents sidebar
 - Personal dashboard
 - Dark mode
@@ -74,7 +74,7 @@ Super opinionated, completely overkill.
   - WordPress (Qiniu - Static file storage)
   - WP REST API (GraphQL implementation coming soon)
   - Tencent Cloud CVM (CentOS/Nginx/MySQL/PHP)
-  - Nexment (LeanCloud)
+  - [Nexment](https://github.com/HelipengTony/nexment) (LeanCloud)
   - Newsletter (Buttondown)
 - Error Logging & Web Vitals Metric
   - Sentry
