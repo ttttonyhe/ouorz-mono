@@ -38,13 +38,13 @@ const Home: NextPageWithLayout = ({
 						</span>{' '}
 						Hey{greeting}
 						<a
-							href="https://www.linkedin.com/in/lipenghe"
+							href="https://cal.com/tonyhe/15min"
 							className="ml-2 mt-0.5 hidden lg:block"
 							target="_blank"
 							rel="noreferrer"
 						>
 							<span className="text-sm flex items-center ml-2 py-1 px-2.5 border border-gray-400 hover:shadow-sm hover:border-gray-500 hover:text-gray-600 text-gray-500 dark:text-white dark:border-white dark:hover:opacity-80 rounded-md tracking-normal">
-								Open to work →
+								Let&apos;s chat →
 							</span>
 						</a>
 					</h1>
