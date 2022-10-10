@@ -71,7 +71,7 @@
   "optionalDependencies": {
     "@testing-library/cypress": "^8.0.3",
     "@types/chai": "^4.3.1",
-    "@types/jest": "^28.1.6",
+    "@types/jest": "^29.1.2",
     "@types/mocha": "^9.1.1",
     "cypress": "^10.4.0"
   }
