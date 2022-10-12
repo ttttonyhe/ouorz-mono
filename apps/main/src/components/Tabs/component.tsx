@@ -300,10 +300,10 @@ const Tabs = (props: TabsProps) => {
 						<li
 							key={item.label}
 							aria-label="tab"
-							className={`z-10 ${
+							className={`${direction !== 'vertical' && 'whitespace-nowrap'} ${
 								color ||
 								'text-gray-500 dark:text-gray-400 dark:hover:text-gray-300 dark:transition-colors'
-							} ${className || ''} cursor-pointer rounded-md`}
+							} ${className || ''} z-10 cursor-pointer rounded-md`}
 							onMouseOver={(e) => {
 								if (item.hoverable !== false) {
 									highlight(e, bgColor, bgDark, '', index)
