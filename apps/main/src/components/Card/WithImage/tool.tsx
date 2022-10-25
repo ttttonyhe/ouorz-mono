@@ -80,12 +80,10 @@ export default function CardWithImageTool({ item, sticky }: Props) {
 				<CardTool item={item} preview={true} />
 				<div className="mt-6">
 					<Link href={`/post/${item.id}`}>
-						<a>
-							<h1
-								className="font-medium text-2 lg:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5"
-								dangerouslySetInnerHTML={{ __html: item.post_title }}
-							/>
-						</a>
+						<h1
+							className="font-medium text-2 lg:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5"
+							dangerouslySetInnerHTML={{ __html: item.post_title }}
+						/>
 					</Link>
 					<p
 						className="text-gray-500 dark:text-gray-400 text-4 lg:text-3 tracking-wide leading-2 lg:leading-8 overflow-hidden text-ellipsis"

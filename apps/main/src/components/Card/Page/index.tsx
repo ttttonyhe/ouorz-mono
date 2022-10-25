@@ -47,7 +47,12 @@ export default function PageCard({
 						}`}
 					>
 						{icon.indexOf('://') > -1 ? (
-							<Image src={icon} width={35} height={35} />
+							<Image
+								src={icon}
+								width={35}
+								height={35}
+								alt={`remote image ${icon}`}
+							/>
 						) : (
 							<Icon name={icon} />
 						)}

@@ -34,13 +34,11 @@ const Friends: NextPageWithLayout = ({ friends }: { friends: any }) => {
 					<div className="h-full flex justify-end whitespace-nowrap items-center mt-2">
 						<div className="flex-1 px-5">
 							<p className="text-xl text-gray-500 dark:text-gray-400">
-								<Link href="/">
-									<a className="flex items-center">
-										<span className="w-6 h-6 mr-2">
-											<Icon name="left" />
-										</span>
-										Home
-									</a>
+								<Link href="/" className="flex items-center">
+									<span className="w-6 h-6 mr-2">
+										<Icon name="left" />
+									</span>
+									Home
 								</Link>
 							</p>
 						</div>
@@ -67,6 +65,7 @@ const Friends: NextPageWithLayout = ({ friends }: { friends: any }) => {
 								<a href={item.post_metas.link} target="_blank" rel="noreferrer">
 									<h1 className="flex items-center text-2xl tracking-wide font-medium mb-0.5">
 										<Image
+											alt={item.post_title}
 											src={item.post_img.url}
 											width={20}
 											height={20}

@@ -80,11 +80,9 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 				<div className="mb-20">
 					<div className="flex mb-3">
 						<Link href={`/cate/${post.post_categories[0].term_id}`}>
-							<a>
-								<Label type="primary" icon="cate">
-									{post.post_categories[0].name}
-								</Label>
-							</a>
+							<Label type="primary" icon="cate">
+								{post.post_categories[0].name}
+							</Label>
 						</Link>
 					</div>
 					<h1 className="text-1.5 lg:text-postTitle font-medium tracking-wider leading-snug">

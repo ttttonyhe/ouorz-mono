@@ -43,13 +43,11 @@ export default function Top() {
 			</div>
 			<div className="lg:col-start-4 lg:col-end-6">
 				<Link href="/post/126">
-					<a>
-						<Button type="primary" icon="right" className="w-full">
-							<span className="tracking-normal text-4 leading-14 lg:text-3">
-								More about me
-							</span>
-						</Button>
-					</a>
+					<Button type="primary" icon="right" className="w-full">
+						<span className="tracking-normal text-4 leading-14 lg:text-3">
+							More about me
+						</span>
+					</Button>
 				</Link>
 			</div>
 		</div>

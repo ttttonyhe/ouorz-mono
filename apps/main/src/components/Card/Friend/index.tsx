@@ -20,11 +20,9 @@ export default function CardFriend({ item }: Props) {
 				/>
 				<div>
 					<Link href={`/post/${item.id}`}>
-						<a>
-							<h1 className="font-medium text-2 text-gray-700 tracking-wider mb-1">
-								{item.post_title}
-							</h1>
-						</a>
+						<h1 className="font-medium text-2 text-gray-700 tracking-wider mb-1">
+							{item.post_title}
+						</h1>
 					</Link>
 					<p
 						className="text-gray-500 text-3 tracking-wide leading-8"

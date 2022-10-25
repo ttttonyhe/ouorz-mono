@@ -13,7 +13,6 @@ const NextConfigs = {
 	poweredByHeader: false,
 	productionBrowserSourceMaps: false,
 	compress: true,
-	swcMinify: true,
 	// FIXME: https://github.com/getsentry/sentry-javascript/issues/4103
 	outputFileTracing: false,
 	images: {
@@ -27,10 +26,8 @@ const NextConfigs = {
 			exclude: ['log', 'error'],
 		},
 	},
-	experimental: {
-		images: {
-			allowFutureImage: true,
-		},
+	sentry: {
+		hideSourceMaps: true,
 	},
 }
 

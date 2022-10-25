@@ -21,11 +21,9 @@ export default function CardWithOutImage({ item, sticky }: Props) {
 						<div className="flex space-x-2 col-start-1 col-end-3">
 							{sticky && <Label type="sticky" />}
 							<Link href={`/cate/${item.post_categories[0].term_id}`}>
-								<a>
-									<Label type="primary" icon="cate">
-										{item.post_categories[0].name}
-									</Label>
-								</a>
+								<Label type="primary" icon="cate">
+									{item.post_categories[0].name}
+								</Label>
 							</Link>
 						</div>
 						<div
@@ -42,11 +40,9 @@ export default function CardWithOutImage({ item, sticky }: Props) {
 					</div>
 					<div className="mt-6">
 						<Link href={`/post/${item.id}`}>
-							<a>
-								<h1 className="font-medium text-2 lg:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5">
-									{item.post_title}
-								</h1>
-							</a>
+							<h1 className="font-medium text-2 lg:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5">
+								{item.post_title}
+							</h1>
 						</Link>
 						<p
 							className="text-gray-500 dark:text-gray-400 text-4 lg:text-3 tracking-wide leading-2 lg:leading-8 overflow-hidden text-ellipsis"

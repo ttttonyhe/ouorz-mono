@@ -18,10 +18,8 @@ const TabItemComponent = (props: TabItemComponentProps) => {
 
 	if (link?.internal) {
 		return (
-			<Link href={link.internal}>
-				<a className="flex items-center w-full h-full">
-					<TabButton />
-				</a>
+			<Link href={link.internal} className="flex items-center w-full h-full">
+				<TabButton />
 			</Link>
 		)
 	}

@@ -32,9 +32,9 @@ export default function CardWithImage({ item, sticky }: Props) {
 							className="dark:opacity-90 lg:block relative hidden rounded-md shadow-sm hover:shadow-md h-img min-h-full w-full col-span-1 col-end-2 border border-gray-200 transition-all"
 						>
 							<Image
+								fill
 								src={item.post_img.url}
-								layout="fill"
-								objectFit="cover"
+								object-fit="cover"
 								placeholder="blur"
 								blurDataURL={`${item.post_img.url}?imageMogr2/format/webp/blur/1x0/quality/1|imageslim`}
 								className="rounded-md"
@@ -46,11 +46,9 @@ export default function CardWithImage({ item, sticky }: Props) {
 								<div className="flex space-x-2 col-start-1 col-end-3">
 									{sticky && <Label type="sticky" />}
 									<Link href={`/cate/${item.post_categories[0].term_id}`}>
-										<a>
-											<Label type="primary" icon="cate">
-												{item.post_categories[0].name}
-											</Label>
-										</a>
+										<Label type="primary" icon="cate">
+											{item.post_categories[0].name}
+										</Label>
 									</Link>
 								</div>
 								<div
@@ -67,12 +65,10 @@ export default function CardWithImage({ item, sticky }: Props) {
 							</div>
 							<div className="lg:mt-4 mt-6">
 								<Link href={`/post/${item.id}`}>
-									<a>
-										<h1
-											className="font-medium text-2 lg:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5"
-											dangerouslySetInnerHTML={{ __html: item.post_title }}
-										/>
-									</a>
+									<h1
+										className="font-medium text-2 lg:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5"
+										dangerouslySetInnerHTML={{ __html: item.post_title }}
+									/>
 								</Link>
 								<p
 									className="text-gray-500 dark:text-gray-400 text-4 lg:text-3 tracking-wide leading-2 lg:leading-8 overflow-hidden text-ellipsis"
