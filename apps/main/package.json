@@ -45,12 +45,6 @@
     "@types/rss": "^0.0.29",
     "@types/smoothscroll-polyfill": "^0.3.1",
     "@types/styled-components": "^5.1.26",
-    "@testing-library/cypress": "^8.0.3",
-    "@types/chai": "^4.3.3",
-    "@types/jest": "^29.2.0",
-    "@types/mocha": "^10.0.0",
-    "@types/cypress": "^1.1.3",
-    "cypress": "^10.11.0",
     "autoprefixer": "^10.4.12",
     "comma-number": "^2.1.0",
     "cssnano": "^5.1.13",
@@ -72,5 +66,13 @@
     "ts-loader": "^9.4.1",
     "typescript": "^4.8.4",
     "webpack": "^5.74.0"
+  },
+  "optionalDependencies": {
+    "@testing-library/cypress": "^8.0.3",
+    "@types/chai": "^4.3.3",
+    "@types/jest": "^29.2.0",
+    "@types/mocha": "^10.0.0",
+    "@types/cypress": "^1.1.3",
+    "cypress": "^10.11.0"
   }
 }
