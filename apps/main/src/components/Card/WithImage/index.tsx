@@ -29,15 +29,14 @@ export default function CardWithImage({ item, sticky }: Props) {
 							perspective={1000}
 							max={25}
 							scale={1.01}
-							className="dark:opacity-90 lg:block relative hidden rounded-md shadow-sm hover:shadow-md h-img min-h-full w-full col-span-1 col-end-2 border border-gray-200 transition-all"
+							className="dark:opacity-90 lg:block relative overflow-hidden hidden rounded-md shadow-sm hover:shadow-md h-img min-h-full w-full col-span-1 col-end-2 border border-gray-200 transition-all"
 						>
 							<Image
 								fill
 								src={item.post_img.url}
-								object-fit="cover"
 								placeholder="blur"
 								blurDataURL={`${item.post_img.url}?imageMogr2/format/webp/blur/1x0/quality/1|imageslim`}
-								className="rounded-md"
+								className="rounded-md object-cover"
 								alt={`featured-image-${item.post_title}`}
 							/>
 						</Hover>
