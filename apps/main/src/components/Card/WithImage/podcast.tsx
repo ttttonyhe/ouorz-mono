@@ -27,7 +27,7 @@ const CardWithImagePodcast = ({ item, sticky }: Props) => {
 						width={160}
 						height={160}
 						placeholder="blur"
-						blurDataURL={`${item.post_img.url}?imageMogr2/thumbnail/168x/format/webp/blur/1x0/quality/1|imageslim`}
+						blurDataURL={item.post_img.url}
 						className="rounded-md"
 						alt={`podcast-episode-cover-art-${item.post_title}`}
 					/>

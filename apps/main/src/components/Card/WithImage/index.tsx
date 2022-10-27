@@ -35,7 +35,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 								fill
 								src={item.post_img.url}
 								placeholder="blur"
-								blurDataURL={`${item.post_img.url}?imageMogr2/format/webp/blur/1x0/quality/1|imageslim`}
+								blurDataURL={item.post_img.url}
 								className="rounded-md object-cover"
 								alt={`featured-image-${item.post_title}`}
 							/>
