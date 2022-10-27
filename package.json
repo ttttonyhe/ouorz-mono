@@ -15,6 +15,9 @@
       "packages/*"
     ]
   },
+  "installConfig": {
+    "hoistingLimits": "workspaces"
+  },
   "scripts": {
     "main": "yarn workspace @ouorz/main",
     "analytics": "yarn workspace @ouorz/analytics",
