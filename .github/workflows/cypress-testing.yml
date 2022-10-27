@@ -25,12 +25,12 @@ jobs:
         with:
             fetch-depth: 2
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: 'yarn'
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
       - name: Setup Environment Variables for Main App
         run: |
           touch apps/main/.env

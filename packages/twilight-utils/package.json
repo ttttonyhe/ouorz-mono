@@ -4,7 +4,6 @@
   "description": "Twilight Toolkit Utilities",
   "license": "SEE LICENSE IN LICENSE",
   "main": "./dist/index.js",
-  "private": false,
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {

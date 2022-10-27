@@ -80,9 +80,9 @@
     "zustand": "^3.7.2"
   },
   "devDependencies": {
+    "@formatjs/cli": "^5.0.1",
     "@ouorz/eslint-config-next": "*",
     "@ouorz/prettier-config": "*",
-    "@formatjs/cli": "^5.0.1",
     "@rollup/plugin-buble": "^0.21.3",
     "@svgr/webpack": "^6.2.1",
     "cross-env": "^7.0.3",
