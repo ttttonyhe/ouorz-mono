@@ -55,9 +55,9 @@ Super opinionated, completely overkill.
 - TypeScript
 - Framework
   - React (Next.js)
-    - `next/image`
-    - `next-themes`
-  - Foundation/Adaptor implementation coming soon
+  - Foundation/Adaptor implementation *coming soon*
+  - Storybook
+  - Turborepo
 - Data Fetching
   - swr
     - Infinite Loading
@@ -82,6 +82,9 @@ Super opinionated, completely overkill.
   - ESLint
   - Prettier
   - CommitLint
+- CI/CD
+  - Github Actions
+  - Vercel
 
 <br/>
 
