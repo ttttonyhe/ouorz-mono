@@ -27,31 +27,35 @@
     },
     "@ouorz/main#build": {
       "dependsOn": [
-        "^build",
-        "$GITHUB_TOKEN",
-        "$NEXT_PUBLIC_LC_KEY",
-        "$NEXT_PUBLIC_LC_ID",
-        "$NEXT_PUBLIC_BUTTONDOWN_TOKEN",
-        "$NEXT_PUBLIC_SENTRY_DSN",
-        "$SENTRY_IGNORE_API_RESOLUTION_ERROR",
-        "$SENTRY_AUTH_TOKEN",
-        "$SENTRY_PROJECT",
-        "$SENTRY_ORG",
-        "$REVALIDATION_REQUEST_TOKEN"
+        "^build"
       ],
       "outputs": [
         ".next/**"
+      ],
+      "env": [
+        "GITHUB_TOKEN",
+        "NEXT_PUBLIC_LC_KEY",
+        "NEXT_PUBLIC_LC_ID",
+        "NEXT_PUBLIC_BUTTONDOWN_TOKEN",
+        "NEXT_PUBLIC_SENTRY_DSN",
+        "SENTRY_IGNORE_API_RESOLUTION_ERROR",
+        "SENTRY_AUTH_TOKEN",
+        "SENTRY_PROJECT",
+        "SENTRY_ORG",
+        "REVALIDATION_REQUEST_TOKEN"
       ]
     },
     "@ouorz/analytics#build": {
       "dependsOn": [
-        "^build",
-        "$DATABASE_URL",
-        "$HASH_SALT",
-        "$MAXMIND_LICENSE_KEY"
+        "^build"
       ],
       "outputs": [
         ".next/**"
+      ],
+      "env": [
+        "DATABASE_URL",
+        "HASH_SALT",
+        "MAXMIND_LICENSE_KEY"
       ]
     },
     "test": {
