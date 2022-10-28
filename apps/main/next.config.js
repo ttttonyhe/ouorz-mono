@@ -1,15 +1,8 @@
-const Dotenv = require('dotenv-webpack')
+/** @type {import('next').NextConfig} */
+
 const { withSentryConfig } = require('@sentry/nextjs')
-const withTM = require('next-transpile-modules')([
-	'@twilight-toolkit/ui',
-	'@twilight-toolkit/utils',
-])
 
 const NextConfigs = {
-	webpack(config) {
-		config.plugins.push(new Dotenv())
-		return config
-	},
 	poweredByHeader: false,
 	productionBrowserSourceMaps: false,
 	compress: true,
@@ -29,13 +22,14 @@ const NextConfigs = {
 	sentry: {
 		hideSourceMaps: true,
 	},
+	experimental: {
+		appDir: true,
+		transpilePackages: ['@twilight-toolkit/ui', '@twilight-toolkit/utils'],
+	},
 }
 
 const SentryWebpackPluginOptions = {
 	silent: true,
 }
 
-module.exports = withSentryConfig(
-	withTM(NextConfigs),
-	SentryWebpackPluginOptions
-)
+module.exports = withSentryConfig(NextConfigs, SentryWebpackPluginOptions)

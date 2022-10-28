@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from '@twilight-toolkit/ui'
 import Link from 'next/link'
 

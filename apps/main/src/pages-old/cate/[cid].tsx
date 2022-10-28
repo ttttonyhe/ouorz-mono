@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 import { GetServerSideProps } from 'next'
-import { NextPageWithLayout } from '~/pages/_app'
+import { NextPageWithLayout } from '~/pages-old/_app'
 import { pageLayout } from '~/components/Page'
 import List from '~/components/List'
 import getApi from '~/utilities/api'

@@ -1,15 +1,16 @@
+'use client'
+
 import Head from 'next/head'
 import React from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { Button } from '@twilight-toolkit/ui'
-import { NextPageWithLayout } from '~/pages/_app'
-import { pageLayout } from '~/components/Page'
+import Page from '~/components/Page'
 
-const PageNotFound: NextPageWithLayout = () => {
+const NotFound = () => {
 	const router = useRouter()
 
 	return (
-		<div>
+		<Page>
 			<Head>
 				<title>404 - TonyHe</title>
 				<link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -35,10 +36,8 @@ const PageNotFound: NextPageWithLayout = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</Page>
 	)
 }
 
-PageNotFound.layout = pageLayout
-
-export default PageNotFound
+export default NotFound

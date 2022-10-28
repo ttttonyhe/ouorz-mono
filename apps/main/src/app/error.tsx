@@ -1,19 +1,15 @@
+'use client'
+
 import Head from 'next/head'
 import React from 'react'
 import { Button } from '@twilight-toolkit/ui'
 import { useRouter } from 'next/router'
-import { captureException, flush } from '@sentry/nextjs'
-import { NextPageWithLayout } from '~/pages/_app'
-import { pageLayout } from '~/components/Page'
+import Page from '~/components/Page'
 
-interface Props {
-	statusCode: number
-}
-
-const ErrorPage: NextPageWithLayout = ({ statusCode }: Props) => {
+const Error = () => {
 	const router = useRouter()
 	return (
-		<div>
+		<Page>
 			<Head>
 				<title>Error - TonyHe</title>
 				<link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -24,9 +20,7 @@ const ErrorPage: NextPageWithLayout = ({ statusCode }: Props) => {
 						Oops
 					</h1>
 					<p className="text-3 lg:text-2 text-gray-500 leading-14 tracking-wide font-light">
-						{statusCode
-							? `An error with code ${statusCode} has occurred on the server`
-							: 'An error has occurred on the client'}
+						An error has occurred
 					</p>
 					<div className="inline-block justify-center mt-4">
 						<Button
@@ -41,21 +35,8 @@ const ErrorPage: NextPageWithLayout = ({ statusCode }: Props) => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</Page>
 	)
 }
 
-ErrorPage.layout = pageLayout
-
-ErrorPage.getInitialProps = async ({ res, err }) => {
-	const statusCode = res ? res.statusCode : err ? err.statusCode : 404
-
-	if (err) {
-		captureException(err)
-		await flush(2000)
-	}
-
-	return { statusCode }
-}
-
-export default ErrorPage
+export default Error

@@ -11,17 +11,17 @@
     "access": "public"
   },
   "dependencies": {
-    "@next/eslint-plugin-next": "^12.1.6",
-    "@typescript-eslint/eslint-plugin": "^5.25.0",
-    "@typescript-eslint/parser": "^5.26.0",
-    "eslint": "^8.16.0",
-    "eslint-config-next": "^12.1.6",
+    "@next/eslint-plugin-next": "^13.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "eslint": "^8.26.0",
+    "eslint-config-next": "^13.0.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.30.0",
-    "prettier-eslint": "^15.0.0"
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "prettier-eslint": "^15.0.1"
   }
 }

@@ -1,6 +1,8 @@
+'use client'
+
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { Icon } from '@twilight-toolkit/ui'
 import { useDispatch, useSelector } from '~/hooks'
 import { deactivateKbar } from '~/store/kbar/actions'
@@ -19,7 +21,7 @@ export default function Footer() {
 	const dispatch = useDispatch()
 	const { visible } = useSelector(selectKbar)
 	const { setTheme, theme, resolvedTheme } = useTheme()
-	const { pathname } = useRouter()
+	const pathname = usePathname()
 	const [mounted, setMounted] = useState(false)
 
 	useEffect(() => {

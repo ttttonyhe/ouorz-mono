@@ -1,7 +1,7 @@
 import React from 'react'
 import useSWR from 'swr'
 import fetcher from '~/lib/fetcher'
-import { ResDataType } from '~/pages/api/nft'
+import { ResDataType } from '~/pages-old/api/nft'
 import { NFTCard } from '~/components/Card/NFT'
 
 const NFTs = () => {
