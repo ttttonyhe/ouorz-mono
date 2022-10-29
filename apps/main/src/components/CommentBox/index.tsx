@@ -1,8 +1,7 @@
-import dynamic from 'next/dynamic'
+'use client'
+
 import { Icon } from '@twilight-toolkit/ui'
-const NexmentDiv = dynamic(() => import('~/components/Nexment'), {
-	ssr: false,
-})
+import Nexment from '~/components/Nexment'
 
 export default function CommentBox() {
 	return (
@@ -18,7 +17,7 @@ export default function CommentBox() {
 					Leave a comment to join the discussion
 				</p>
 			</div>
-			<NexmentDiv />
+			<Nexment />
 		</div>
 	)
 }

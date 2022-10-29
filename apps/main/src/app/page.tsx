@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import React from 'react'
 import Page from '~/components/Page'
 import List from '~/components/List'
@@ -73,7 +72,7 @@ const HomePage = async () => {
 				<Top />
 			</div>
 			<div className="mt-10">
-				{stickyPosts.length && (
+				{stickyPosts.length > 0 && (
 					<List.Static posts={stickyPosts} sticky={true} />
 				)}
 			</div>

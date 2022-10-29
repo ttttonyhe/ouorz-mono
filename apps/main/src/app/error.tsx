@@ -3,7 +3,7 @@
 import Head from 'next/head'
 import React from 'react'
 import { Button } from '@twilight-toolkit/ui'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import Page from '~/components/Page'
 
 const Error = () => {

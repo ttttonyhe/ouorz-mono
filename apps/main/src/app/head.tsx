@@ -1,5 +1,3 @@
-import Script from 'next/script'
-
 const Head = () => {
 	return (
 		<>
@@ -32,15 +30,6 @@ const Head = () => {
 				href="https://static.ouorz.com/tonyhe_rounded_apple_touch.png"
 			/>
 			<link rel="mask-icon" href="https://static.ouorz.com/ouorz-mask.ico" />
-			{/* Analytics Script */}
-			<Script
-				async
-				defer
-				data-do-not-track="true"
-				data-domains="www.ouorz.com"
-				data-website-id="e3d939fa-1fa0-4c06-adb1-1081d6b6686e"
-				src="https://analytics.ouorz.com/analytics.js"
-			/>
 		</>
 	)
 }
