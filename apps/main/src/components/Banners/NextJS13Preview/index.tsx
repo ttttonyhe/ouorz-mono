@@ -1,9 +1,10 @@
 import { Icon } from '@twilight-toolkit/ui'
 import Image from 'next/image'
+import blurDataUrl from '~/constants/blurDataUrl'
 
 const NextJS13Preview = () => {
 	return (
-		<div className="bg-white px-4 py-2.5 rounded-md w-full flex gap-x-4 shadow-sm  dark:bg-gray-800 dark:border-gray-800 border">
+		<div className="bg-white px-4 pl-4.5 py-2.5 rounded-md w-full flex gap-x-4 shadow-sm  dark:bg-gray-800 dark:border-gray-800 border">
 			<div className="flex items-center">
 				<Image
 					src="https://static.ouorz.com/nextjs-icon-light-background.svg"
@@ -11,6 +12,9 @@ const NextJS13Preview = () => {
 					height={30}
 					alt="NextJS"
 					className="dark:border dark:rounded-full"
+					loading="eager"
+					placeholder="blur"
+					blurDataURL={blurDataUrl}
 				/>
 			</div>
 			<div className="flex flex-1 justify-between items-center">
@@ -22,7 +26,7 @@ const NextJS13Preview = () => {
 							</p>
 						</div>
 						<div className="-translate-y-[1.5px]">
-							<label className="px-2 pt-[1px] pb-[2px] bg-blue-100 dark:bg-blue-800 text-[0.65rem] leading-[0.65rem] rounded-full text-blue-500 dark:text-blue-300">
+							<label className="px-2 pt-[1px] pb-[2px] bg-green-100 dark:bg-green-800 text-[0.65rem] leading-[0.65rem] rounded-full text-green-500 dark:text-green-300">
 								Alpha
 							</label>
 						</div>
