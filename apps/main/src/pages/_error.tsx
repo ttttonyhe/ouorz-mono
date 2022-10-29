@@ -3,7 +3,7 @@ import React from 'react'
 import { Button } from '@twilight-toolkit/ui'
 import { useRouter } from 'next/router'
 import { captureException, flush } from '@sentry/nextjs'
-import { NextPageWithLayout } from '~/pages-old/_app'
+import { NextPageWithLayout } from '~/pages/_app'
 import { pageLayout } from '~/components/Page'
 
 interface Props {

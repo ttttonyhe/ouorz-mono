@@ -11,6 +11,7 @@ import Footer from '~/components/Footer'
 // Global stylesheets
 import '~/assets/styles/vendors/tailwind.css'
 import '~/styles/global.css'
+import 'react-h5-audio-player/lib/styles.css'
 
 const RootLayout = ({ children }: LayoutProps) => {
 	return (
@@ -39,11 +40,11 @@ const RootLayout = ({ children }: LayoutProps) => {
 				>
 					{/* Redux Store Provider */}
 					<ReduxProvider store={store}>
-						<main className="bg-gbg dark:bg-neutral-900 dark:text-white min-h-screen">
-							<Header />
+						<Header />
+						<main className="bg-gbg dark:bg-neutral-900 dark:text-white min-h-screen pb-20">
 							{children}
-							<Footer />
 						</main>
+						<Footer />
 					</ReduxProvider>
 				</ThemeProvider>
 			</body>

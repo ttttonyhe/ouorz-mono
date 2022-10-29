@@ -20,6 +20,12 @@ declare global {
 		}
 	}
 
+	interface WPCate {
+		name: string
+		count: number
+		id: number
+	}
+
 	interface WPPost {
 		code: any
 		post_img: { url: any }
@@ -34,6 +40,7 @@ declare global {
 		}
 		date: Date
 		post_metas: {
+			link: string
 			status: string
 			markCount: number
 			views: number

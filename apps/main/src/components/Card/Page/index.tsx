@@ -1,8 +1,11 @@
-import { useRouter } from 'next/router'
+'use client'
+
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import { Icon } from '@twilight-toolkit/ui'
 import { GlowingBackground } from '~/components/Visual'
 import openLink from '~/utilities/externalLink'
-import { Icon } from '@twilight-toolkit/ui'
+import blurDataURL from '~/constants/blurDataUrl'
 
 interface Props {
 	title: string
@@ -52,6 +55,8 @@ export default function PageCard({
 								width={35}
 								height={35}
 								alt={`remote image ${icon}`}
+								placeholder="blur"
+								blurDataURL={blurDataURL}
 							/>
 						) : (
 							<Icon name={icon} />

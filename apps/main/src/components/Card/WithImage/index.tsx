@@ -7,8 +7,8 @@ import Image from 'next/image'
 import CardWithImagePodcast from '~/components/Card/WithImage/podcast'
 import { useDispatch } from '~/hooks'
 import { setReaderRequest } from '~/store/reader/actions'
-import { WPPost } from '~/constants/propTypes'
 import { Hover } from '~/components/Visual'
+import blurDataURL from '~/constants/blurDataUrl'
 
 interface Props {
 	item: WPPost
@@ -34,17 +34,17 @@ export default function CardWithImage({ item, sticky }: Props) {
 							<Image
 								fill
 								src={item.post_img.url}
-								placeholder="blur"
-								blurDataURL={item.post_img.url}
 								className="rounded-md object-cover"
 								alt={`featured-image-${item.post_title}`}
+								placeholder="blur"
+								blurDataURL={blurDataURL}
 							/>
 						</Hover>
 						<div className="col-span-2 col-end-4">
 							<div className="flex space-x-3 items-center">
 								<div className="flex space-x-2 col-start-1 col-end-3">
 									{sticky && <Label type="sticky" />}
-									<Link href={`/cate/${item.post_categories[0].term_id}`}>
+									<Link href={`/category/${item.post_categories[0].term_id}`}>
 										<Label type="primary" icon="cate">
 											{item.post_categories[0].name}
 										</Label>

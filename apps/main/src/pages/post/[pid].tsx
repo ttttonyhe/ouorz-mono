@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
-import { NextPageWithLayout } from '~/pages-old/_app'
+import { NextPageWithLayout } from '~/pages/_app'
 import { contentLayout } from '~/components/Content'
 const Aside = dynamic(() => import('~/components/Aside'), { ssr: false })
 
@@ -79,7 +79,7 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 			>
 				<div className="mb-20">
 					<div className="flex mb-3">
-						<Link href={`/cate/${post.post_categories[0].term_id}`}>
+						<Link href={`/category/${post.post_categories[0].term_id}`}>
 							<Label type="primary" icon="cate">
 								{post.post_categories[0].name}
 							</Label>

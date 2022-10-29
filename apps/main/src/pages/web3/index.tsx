@@ -1,16 +1,16 @@
 import Head from 'next/head'
-import React, { Suspense } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
+import dynamic from 'next/dynamic'
 import { Icon } from '@twilight-toolkit/ui'
-import { NextPageWithLayout } from '~/pages-old/_app'
+import { NextPageWithLayout } from '~/pages/_app'
 import { pageLayout } from '~/components/Page'
 import PageCard from '~/components/Card/Page'
-import CardEmpty from '~/components/Card/Empty'
-import { NFTCardLoading } from '~/components/Card/NFT'
-import ErrorBoundary from '~/components/ErrorBoundary'
 import getApi from '~/utilities/api'
-import { GlowingBackground } from '~/components/Visual'
+const GlowingBackground = dynamic(() => import('~/components/Visual/glowing'), {
+	ssr: false,
+})
 
 const NFTs = React.lazy(() => import('~/components/Grids/NFTs'))
 
@@ -172,21 +172,9 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						<span className="uppercase">Non-fungible Tokens (NFTs)</span>
 					</label>
 					<div className="mt-4">
-						<ErrorBoundary fallback={<CardEmpty />}>
-							<div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
-								<Suspense
-									fallback={
-										<>
-											<NFTCardLoading uniqueKey="nft-card-skeleton-1" />
-											<NFTCardLoading uniqueKey="nft-card-skeleton-2" />
-											<NFTCardLoading uniqueKey="nft-card-skeleton-3" />
-										</>
-									}
-								>
-									<NFTs />
-								</Suspense>
-							</div>
-						</ErrorBoundary>
+						<div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
+							<NFTs />
+						</div>
 					</div>
 				</div>
 				<div className="mb-10">

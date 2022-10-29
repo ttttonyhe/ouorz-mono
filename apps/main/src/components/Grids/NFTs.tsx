@@ -1,11 +1,34 @@
 import React from 'react'
 import useSWR from 'swr'
 import fetcher from '~/lib/fetcher'
-import { ResDataType } from '~/pages-old/api/nft'
+import { ResDataType } from '~/pages/api/nft'
 import { NFTCard } from '~/components/Card/NFT'
+import CardEmpty from '~/components/Card/Empty'
+import { NFTCardLoading } from '~/components/Card/NFT'
 
 const NFTs = () => {
-	const { data } = useSWR<ResDataType>('/api/nft', fetcher, { suspense: true })
+	const { data, error } = useSWR<ResDataType>('/api/nft', fetcher)
+
+	if (error) {
+		return <CardEmpty />
+	}
+
+	if (!data) {
+		return (
+			<>
+				<NFTCardLoading uniqueKey="nft-card-skeleton-1" />
+				<NFTCardLoading uniqueKey="nft-card-skeleton-2" />
+				<NFTCardLoading uniqueKey="nft-card-skeleton-3" />
+			</>
+		)
+	}
+
+	if (
+		data &&
+		(!data.eth || !data.eth.length || !data.sol || !data.eth.length)
+	) {
+		return <CardEmpty />
+	}
 
 	return (
 		<>

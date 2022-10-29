@@ -3,9 +3,8 @@ import trimStr from '~/utilities/trimString'
 import Link from 'next/link'
 import Image from 'next/image'
 import AudioPlayer from 'react-h5-audio-player'
-import 'react-h5-audio-player/lib/styles.css'
-import { WPPost } from '~/constants/propTypes'
 import { Hover } from '~/components/Visual'
+import blurDataURL from '~/constants/blurDataUrl'
 
 interface Props {
 	item: WPPost
@@ -26,17 +25,17 @@ const CardWithImagePodcast = ({ item, sticky }: Props) => {
 						src={item.post_img.url}
 						width={160}
 						height={160}
-						placeholder="blur"
-						blurDataURL={item.post_img.url}
 						className="rounded-md"
 						alt={`podcast-episode-cover-art-${item.post_title}`}
+						placeholder="blur"
+						blurDataURL={blurDataURL}
 					/>
 				</Hover>
 				<div className="col-span-2 col-end-4">
 					<div className="flex space-x-3 items-center mb-4">
 						<div className="flex space-x-2 col-start-1 col-end-3">
 							{sticky && <Label type="sticky" />}
-							<Link href={`/cate/${item.post_categories[0].term_id}`}>
+							<Link href={`/category/${item.post_categories[0].term_id}`}>
 								<Label type="primary" icon="microphone">
 									Episode {item.post_metas.podcast.episode}
 								</Label>

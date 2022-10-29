@@ -1,3 +1,5 @@
+'use client'
+
 import useSWR from 'swr'
 import fetcher from '~/lib/fetcher'
 import { Icon } from '@twilight-toolkit/ui'

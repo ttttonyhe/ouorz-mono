@@ -26,6 +26,12 @@ const NextConfigs = {
 		appDir: true,
 		transpilePackages: ['@twilight-toolkit/ui', '@twilight-toolkit/utils'],
 	},
+	typescript: {
+		ignoreBuildErrors: true,
+	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
 }
 
 const SentryWebpackPluginOptions = {

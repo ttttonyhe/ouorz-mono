@@ -1,3 +1,5 @@
+'use client'
+
 import useSWR from 'swr'
 import format from 'comma-number'
 import fetcher from '~/lib/fetcher'

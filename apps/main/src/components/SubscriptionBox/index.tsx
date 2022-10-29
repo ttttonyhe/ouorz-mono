@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { Icon } from '@twilight-toolkit/ui'
 import getApi from '~/utilities/api'

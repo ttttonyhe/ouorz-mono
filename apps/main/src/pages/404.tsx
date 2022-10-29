@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 import { useRouter } from 'next/router'
 import { Button } from '@twilight-toolkit/ui'
-import { NextPageWithLayout } from '~/pages-old/_app'
+import { NextPageWithLayout } from '~/pages/_app'
 import { pageLayout } from '~/components/Page'
 
 const PageNotFound: NextPageWithLayout = () => {
