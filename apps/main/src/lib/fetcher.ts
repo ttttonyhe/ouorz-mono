@@ -4,7 +4,7 @@ const host =
 		: 'https://www.ouoz.com'
 
 const Fetcher = async (route: string) => {
-	const res = await fetch(`${host}${route}`)
+	const res = await fetch(`${host}/${route}`)
 	return res.json()
 }
 

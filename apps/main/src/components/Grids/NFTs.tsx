@@ -7,7 +7,7 @@ import CardEmpty from '~/components/Card/Empty'
 import { NFTCardLoading } from '~/components/Card/NFT'
 
 const NFTs = () => {
-	const { data, error } = useSWR<ResDataType>('/api/nft', fetcher)
+	const { data, error } = useSWR<ResDataType>('api/nft', fetcher)
 
 	if (error) {
 		return <CardEmpty />
