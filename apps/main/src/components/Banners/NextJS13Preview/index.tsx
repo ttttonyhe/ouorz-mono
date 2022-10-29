@@ -37,6 +37,7 @@ const NextJS13Preview = () => {
 						className="text-gray-500 dark:text-gray-300"
 						href="https://preview.ouorz.com"
 						target="_blank"
+						rel="noreferrer"
 					>
 						<button className="w-[1.8rem] h-[1.8rem] hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md p-2">
 							<Icon name="right" />
