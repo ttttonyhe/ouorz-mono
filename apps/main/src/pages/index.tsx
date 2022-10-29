@@ -6,7 +6,7 @@ import { pageLayout } from '~/components/Page'
 import List from '~/components/List'
 import Top from '~/components/Top'
 import getApi from '~/utilities/api'
-// import ChirstmasBanner from '~/components/Banners/Christmas'
+import NextJS13Preview from '~/components/Banners/NextJS13Preview'
 
 interface Props {
 	stickyNotFound: boolean
@@ -64,6 +64,9 @@ const Home: NextPageWithLayout = ({
 			</div>
 			<div className="mt-10">
 				{!stickyNotFound && <List.Static posts={stickyPosts} sticky={true} />}
+			</div>
+			<div className="mt-5">
+				<NextJS13Preview />
 			</div>
 			<div className="mt-5">
 				<List type="index" />

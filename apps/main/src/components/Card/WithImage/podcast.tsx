@@ -6,6 +6,7 @@ import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
 import { WPPost } from '~/constants/propTypes'
 import { Hover } from '~/components/Visual'
+import blurDataUrl from '~/constants/blurDataUrl'
 
 interface Props {
 	item: WPPost
@@ -27,9 +28,10 @@ const CardWithImagePodcast = ({ item, sticky }: Props) => {
 						width={160}
 						height={160}
 						placeholder="blur"
-						blurDataURL={item.post_img.url}
+						blurDataURL={blurDataUrl}
 						className="rounded-md"
 						alt={`podcast-episode-cover-art-${item.post_title}`}
+						loading="lazy"
 					/>
 				</Hover>
 				<div className="col-span-2 col-end-4">

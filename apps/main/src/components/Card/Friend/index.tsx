@@ -17,6 +17,7 @@ export default function CardFriend({ item }: Props) {
 					height={50}
 					className="border shadow-sm"
 					alt={`${item.post_title} site image`}
+					loading="lazy"
 				/>
 				<div>
 					<Link href={`/post/${item.id}`}>

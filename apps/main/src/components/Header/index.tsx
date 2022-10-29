@@ -37,6 +37,7 @@ const Header = () => {
 							alt="Tony's NFT avatar"
 							height={18.77}
 							width={18.77}
+							loading="lazy"
 						/>
 					</a>
 				</div>

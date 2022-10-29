@@ -9,6 +9,7 @@ import { useDispatch } from '~/hooks'
 import { setReaderRequest } from '~/store/reader/actions'
 import { WPPost } from '~/constants/propTypes'
 import { Hover } from '~/components/Visual'
+import blurDataUrl from '~/constants/blurDataUrl'
 
 interface Props {
 	item: WPPost
@@ -35,9 +36,10 @@ export default function CardWithImage({ item, sticky }: Props) {
 								fill
 								src={item.post_img.url}
 								placeholder="blur"
-								blurDataURL={item.post_img.url}
+								blurDataURL={blurDataUrl}
 								className="rounded-md object-cover"
 								alt={`featured-image-${item.post_title}`}
+								loading="lazy"
 							/>
 						</Hover>
 						<div className="col-span-2 col-end-4">

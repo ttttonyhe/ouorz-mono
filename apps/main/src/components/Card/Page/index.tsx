@@ -52,6 +52,7 @@ export default function PageCard({
 								width={35}
 								height={35}
 								alt={`remote image ${icon}`}
+								loading="lazy"
 							/>
 						) : (
 							<Icon name={icon} />
