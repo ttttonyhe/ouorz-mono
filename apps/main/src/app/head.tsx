@@ -1,7 +1,8 @@
 const Head = () => {
 	return (
 		<>
-			<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+			<meta charSet="utf-8" />
+			<meta name="viewport" content="width=device-width" />
 			<meta name="description" content="A developer, blogger, podcaster" />
 			<meta name="robots" content="index,follow" />
 			<meta name="googlebot" content="index,follow" />
@@ -28,6 +29,7 @@ const Head = () => {
 				rel="apple-touch-icon"
 				href="https://static.ouorz.com/tonyhe_rounded_apple_touch.png"
 			/>
+			<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 			<link rel="mask-icon" href="https://static.ouorz.com/ouorz-mask.ico" />
 		</>
 	)
