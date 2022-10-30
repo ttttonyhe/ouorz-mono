@@ -16,6 +16,9 @@ import 'react-h5-audio-player/lib/styles.css'
 const RootLayout = ({ children }: LayoutProps) => {
 	return (
 		<html lang="zh-cn">
+			<head>
+				<title>TonyHe</title>
+			</head>
 			<body>
 				{/* Analytics Script */}
 				<Script

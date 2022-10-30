@@ -1,7 +1,6 @@
 const Head = () => {
 	return (
 		<>
-			<title>TonyHe</title>
 			<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 			<meta name="description" content="A developer, blogger, podcaster" />
 			<meta name="robots" content="index,follow" />

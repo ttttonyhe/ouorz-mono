@@ -156,9 +156,7 @@ const Web3Page = async () => {
 					<span className="uppercase">Non-fungible Tokens (NFTs)</span>
 				</label>
 				<div className="mt-4">
-					<div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
-						<NFTs />
-					</div>
+					<NFTs />
 				</div>
 			</div>
 			<div className="mb-10">

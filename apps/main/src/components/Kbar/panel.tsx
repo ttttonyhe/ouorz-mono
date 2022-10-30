@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useDispatch, useSelector } from '~/hooks'
 import { selectKbar } from '~/store/kbar/selectors'
 import { kbarContext } from './context'
