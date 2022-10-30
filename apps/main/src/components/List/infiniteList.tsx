@@ -48,7 +48,8 @@ const InfiniteList = (props: InfiniteListProps) => {
 
 	const { data, error, size, setSize } = useSWRInfinite(
 		(index) => `${url}&page=${index + 1}`,
-		(url) => fetch(url).then((res) => res.json())
+		(url) => fetch(url).then((res) => res.json()),
+		{ suspense: true }
 	)
 	const postData = data ? [].concat(...data) : []
 	const isEmpty = data?.[0]?.length === 0

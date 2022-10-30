@@ -26,6 +26,12 @@ const headingsData: {
 		note: '',
 		icon: '📑',
 	},
+	'/sponsor': {
+		title: 'Sponsor',
+		description: "Sponsor Tony's work",
+		note: 'I am developing and maintaining various open source projects and hosting a podcast about tech, life and career 🤓',
+		icon: '☕',
+	},
 }
 
 export default headingsData

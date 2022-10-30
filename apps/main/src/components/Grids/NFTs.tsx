@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import useSWR from 'swr'
 import fetcher from '~/lib/fetcher'
