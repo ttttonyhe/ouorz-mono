@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import CardWithImage from '~/components/Card/WithImage'
 import CardWithOutImage from '~/components/Card/WithOutImage'

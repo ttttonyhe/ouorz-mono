@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { ListTypes } from '~/constants/propTypes'
 import InfiniteList from './infiniteList'

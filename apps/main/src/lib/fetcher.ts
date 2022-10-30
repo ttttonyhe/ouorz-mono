@@ -1,10 +1,5 @@
-const host =
-	process.env.NODE_ENV === 'development'
-		? 'http://localhost:3333'
-		: 'https://www.ouoz.com'
-
 const Fetcher = async (route: string) => {
-	const res = await fetch(`${host}/${route}`)
+	const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/${route}`)
 	return res.json()
 }
 

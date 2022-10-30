@@ -1,5 +1,3 @@
-'use client'
-
 import List from './list'
 import StaticList from './staticList'
 import InfiniteList from './infiniteList'

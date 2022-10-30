@@ -42,7 +42,7 @@ const RootLayout = ({ children }: LayoutProps) => {
 					<ReduxProvider store={store}>
 						<Header />
 						<main className="bg-gbg dark:bg-neutral-900 dark:text-white min-h-screen pb-20">
-							{children}
+							<>{children}</>
 						</main>
 						<Footer />
 					</ReduxProvider>

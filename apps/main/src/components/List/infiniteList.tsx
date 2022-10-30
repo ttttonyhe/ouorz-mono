@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import useSWRInfinite from 'swr/infinite'
@@ -48,8 +50,7 @@ const InfiniteList = (props: InfiniteListProps) => {
 
 	const { data, error, size, setSize } = useSWRInfinite(
 		(index) => `${url}&page=${index + 1}`,
-		(url) => fetch(url).then((res) => res.json()),
-		{ suspense: true }
+		(url) => fetch(url).then((res) => res.json())
 	)
 	const postData = data ? [].concat(...data) : []
 	const isEmpty = data?.[0]?.length === 0

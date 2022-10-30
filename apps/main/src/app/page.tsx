@@ -1,4 +1,3 @@
-import React from 'react'
 import Page from '~/components/Page'
 import List from '~/components/List'
 import Top from '~/components/Top'
@@ -77,7 +76,7 @@ const HomePage = async () => {
 				)}
 			</div>
 			<div className="mt-5">
-				<List type="index" />
+				<List.Infinite type="index" />
 			</div>
 		</Page>
 	)
