@@ -57,6 +57,7 @@ export default function PageCard({
 								alt={`remote image ${icon}`}
 								placeholder="blur"
 								blurDataURL={blurDataURL}
+								loading="lazy"
 							/>
 						) : (
 							<Icon name={icon} />

@@ -29,6 +29,7 @@ const CardWithImagePodcast = ({ item, sticky }: Props) => {
 						alt={`podcast-episode-cover-art-${item.post_title}`}
 						placeholder="blur"
 						blurDataURL={blurDataURL}
+						loading="lazy"
 					/>
 				</Hover>
 				<div className="col-span-2 col-end-4">

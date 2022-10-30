@@ -76,6 +76,7 @@ const FriendsPage = async () => {
 										width={20}
 										height={20}
 										className="rounded-full border border-gray-200 dark:border-gray-500"
+										loading="lazy"
 									/>
 									<span className="ml-2">{item.post_title}</span>
 								</h1>

@@ -38,6 +38,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 								alt={`featured-image-${item.post_title}`}
 								placeholder="blur"
 								blurDataURL={blurDataURL}
+								loading="lazy"
 							/>
 						</Hover>
 						<div className="col-span-2 col-end-4">

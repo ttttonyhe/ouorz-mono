@@ -19,6 +19,7 @@ export default function CardFriend({ item }: Props) {
 					alt={`${item.post_title} site image`}
 					placeholder="blur"
 					blurDataURL={blurDataURL}
+					loading="lazy"
 				/>
 				<div>
 					<Link href={`/post/${item.id}`}>

@@ -4,7 +4,6 @@ import trimStr from '~/utilities/trimString'
 import Link from 'next/link'
 import { useDispatch } from '~/hooks'
 import { setReaderRequest } from '~/store/reader/actions'
-import { WPPost } from '~/constants/propTypes'
 
 interface Props {
 	item: WPPost
@@ -45,14 +44,14 @@ export const CardTool = ({
 				</div>
 				<div className="hidden lg:flex justify-end space-x-2">
 					{preview && (
-						<a
+						<div
 							data-oa="click-previewPost"
 							onClick={() => {
 								dispatch(setReaderRequest(item))
 							}}
 						>
 							<Label type="gray" icon="preview" />
-						</a>
+						</div>
 					)}
 					<a
 						href={item.post_metas.fineTool.itemLink}
