@@ -14,6 +14,7 @@ export default function CardSkeleton() {
 				height={100}
 				backgroundColor={resolvedTheme === 'dark' ? '#525252' : '#f3f3f3'}
 				foregroundColor={resolvedTheme === 'dark' ? '#737373' : '#ecebeb'}
+				title=""
 			>
 				<rect x="0" y="0" rx="5" ry="5" width="31%" height="100" />
 				<rect x="34%" y="0" rx="5" ry="5" width="66%" height="30" />

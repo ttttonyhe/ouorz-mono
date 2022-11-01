@@ -105,6 +105,7 @@ const NFTCardLoading = (props: { uniqueKey: string }) => {
 				height={305}
 				backgroundColor={resolvedTheme === 'dark' ? '#525252' : '#f3f3f3'}
 				foregroundColor={resolvedTheme === 'dark' ? '#373737' : '#ecebeb'}
+				title=""
 			>
 				<rect x="0" y="0" rx="5" ry="5" width="100%" height="190" />
 				<rect x="15" y="210" rx="5" ry="5" width="50%" height="25" />

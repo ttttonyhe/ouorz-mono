@@ -1,5 +1,7 @@
 import '~/assets/styles/vendors/tailwind.css'
 import '~/styles/global.css'
+import 'react-h5-audio-player/lib/styles.css'
+
 import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'

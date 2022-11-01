@@ -26,11 +26,11 @@ const Redirect = redirect('/404')
 interface Props {
 	status: boolean
 	post?: any
+	pid: string
 }
 
-const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
-	const router = useRouter()
-	const { pid } = router.query
+const BlogPost: NextPageWithLayout = ({ status, post, pid }: Props) => {
+	const title = `${post.title.rendered} - TonyHe`
 
 	if (!status) {
 		return (
@@ -60,7 +60,7 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 	return (
 		<div>
 			<Head>
-				<title>{post.title.rendered} - TonyHe</title>
+				<title>{title}</title>
 				<link
 					rel="icon"
 					href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📃</text></svg>"
@@ -148,6 +148,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 				props: {
 					status: true,
 					post: postData,
+					pid: pid,
 				},
 				revalidate: 3600 * 24,
 			}

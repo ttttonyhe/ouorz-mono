@@ -17,9 +17,7 @@ const RootLayout = ({ children }: LayoutProps) => {
 	return (
 		<html lang="zh-cn">
 			{/* FIXME: Next.js 13 a hydration error occurs if <head> is not present */}
-			<head>
-				<title>TonyHe</title>
-			</head>
+			<head />
 			<body>
 				{/* Analytics Script */}
 				<Script

@@ -17,11 +17,11 @@ const NFTs = () => {
 
 	if (!data) {
 		return (
-			<>
+			<div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
 				<NFTCardLoading uniqueKey="nft-card-skeleton-1" />
 				<NFTCardLoading uniqueKey="nft-card-skeleton-2" />
 				<NFTCardLoading uniqueKey="nft-card-skeleton-3" />
-			</>
+			</div>
 		)
 	}
 

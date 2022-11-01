@@ -3,6 +3,7 @@ const Head = () => {
 		<>
 			<meta charSet="utf-8" />
 			<meta name="viewport" content="width=device-width" />
+			<title>TonyHe</title>
 			<meta name="description" content="A developer, blogger, podcaster" />
 			<meta name="robots" content="index,follow" />
 			<meta name="googlebot" content="index,follow" />

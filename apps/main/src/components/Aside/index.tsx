@@ -1,11 +1,11 @@
 import { useState, useLayoutEffect } from 'react'
 import { Icon } from '@twilight-toolkit/ui'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import scrollToItemWithinDiv from '~/utilities/scrollTo'
 
 export default function Aside({ preNext }: { preNext: any }) {
-	const router = useRouter()
+	const pathname = usePathname()
 	const [headersResult, setHeadersResult] = useState<any>([])
 	const [headersEl, setHeadersEl] = useState<any>([])
 
@@ -132,7 +132,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 		return () => {
 			window.removeEventListener('scroll', handler)
 		}
-	}, [router.asPath])
+	}, [pathname])
 
 	const SubItem = ({
 		item,
