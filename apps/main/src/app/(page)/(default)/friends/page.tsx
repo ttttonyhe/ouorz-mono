@@ -39,7 +39,7 @@ const getFriends = async (count: number): Promise<WPPost[]> => {
 	const res = await fetch(
 		getApi({
 			cate: '2',
-			perPage: count,
+			perPage: 4,
 		}),
 		{
 			next: {
