@@ -48,7 +48,7 @@ const Home: NextPageWithLayout = ({
 							</span>
 						</a>
 					</h1>
-					<p className="group-hover:animate-none animate-completePulse text-3 lg:text-2 text-gray-500 dark:text-gray-200 leading-14 tracking-wider font-light pl-1.5 pb-1.5 pt-1">
+					<p className="text-3 lg:text-2 text-gray-500 dark:text-gray-200 leading-14 tracking-wider font-light pl-1.5 pb-1.5 pt-1">
 						I&apos;m currently living a<del>n absolutely not</del> meaningless
 						life with <del>totally not</del> unachievable goals.
 					</p>
