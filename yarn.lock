@@ -2945,6 +2945,7 @@ __metadata:
     "@twilight-toolkit/ui": "*"
     "@twilight-toolkit/utils": "*"
     "@types/chai": ^4.3.3
+    "@types/cors": ^2.8.12
     "@types/cypress": ^1.1.3
     "@types/jest": ^29.2.1
     "@types/lodash": ^4.14.187
@@ -5222,6 +5223,13 @@ __metadata:
   version: 2.1.2
   resolution: "@types/cookiejar@npm:2.1.2"
   checksum: f6e1903454007f86edd6c3520cbb4d553e1d4e17eaf1f77f6f75e3270f48cc828d74397a113a36942f5fe52f9fa71067bcfa738f53ad468fcca0bc52cb1cbd28
+  languageName: node
+  linkType: hard
+
+"@types/cors@npm:^2.8.12":
+  version: 2.8.12
+  resolution: "@types/cors@npm:2.8.12"
+  checksum: 8c45f112c7d1d2d831b4b266f2e6ed33a1887a35dcbfe2a18b28370751fababb7cd045e745ef84a523c33a25932678097bf79afaa367c6cb3fa0daa7a6438257
   languageName: node
   linkType: hard
 

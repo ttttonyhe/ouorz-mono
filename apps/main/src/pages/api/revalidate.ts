@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { withSentry } from '@sentry/nextjs'
 import Cors from 'cors'
 import { use } from '../../lib/middleware'
 
@@ -45,4 +44,4 @@ const handler = async (
 	}
 }
 
-export default withSentry(handler)
+export default handler

@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { withSentry } from '@sentry/nextjs'
 
 type ResDataType = {
 	followers: number
@@ -7,7 +6,7 @@ type ResDataType = {
 }
 
 const handler = async (
-	req: NextApiRequest,
+	_req: NextApiRequest,
 	res: NextApiResponse<ResDataType>
 ) => {
 	const userResponse = await fetch(
@@ -51,4 +50,4 @@ const handler = async (
 	})
 }
 
-export default withSentry(handler)
+export default handler

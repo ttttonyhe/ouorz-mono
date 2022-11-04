@@ -38,6 +38,7 @@
     "@ouorz/prettier-config": "*",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.7",
+    "@types/cors": "^2.8.12",
     "@types/lodash": "^4.14.187",
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.24",
