@@ -98,7 +98,9 @@ cd apps/main
 
 Create a `.env` file with your configuration, see below for a list of environment variables used in this project:
 
-- LeanCloud:
+- Environment
+  - NEXT_PUBLIC_HOST_URL
+- LeanCloud (for Nexment):
   - NEXT_PUBLIC_LC_KEY
   - NEXT_PUBLIC_LC_ID
 - Buttondown:

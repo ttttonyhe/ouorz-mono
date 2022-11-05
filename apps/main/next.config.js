@@ -6,8 +6,10 @@ const NextConfigs = {
 	poweredByHeader: false,
 	productionBrowserSourceMaps: false,
 	compress: true,
-	// FIXME: https://github.com/getsentry/sentry-javascript/issues/4103
-	outputFileTracing: false,
+	experimental: {
+		appDir: true,
+		transpilePackages: ['@twilight-toolkit/ui', '@twilight-toolkit/utils'],
+	},
 	images: {
 		minimumCacheTTL: 3600,
 		formats: ['image/avif', 'image/webp'],
@@ -19,13 +21,12 @@ const NextConfigs = {
 			exclude: ['log', 'error'],
 		},
 	},
+	// FIXME: https://github.com/getsentry/sentry-javascript/issues/4103
+	outputFileTracing: false,
 	sentry: {
 		hideSourceMaps: true,
 	},
-	experimental: {
-		appDir: true,
-		transpilePackages: ['@twilight-toolkit/ui', '@twilight-toolkit/utils'],
-	},
+	// FIXME: remove these before release
 	typescript: {
 		ignoreBuildErrors: true,
 	},
