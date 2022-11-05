@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { withSentry } from '@sentry/nextjs'
 
 type EthNFT = {
 	contract: {
@@ -18,12 +17,14 @@ type EthNFT = {
 		raw: string
 	}
 }
+
 type SolNFT = {
 	name: string
 	description: string
 	imageUrl: string
 	tokenAddress: string
 }
+
 export type ResDataType = {
 	eth: EthNFT[]
 	sol: SolNFT[]
@@ -96,4 +97,4 @@ const handler = async (
 	})
 }
 
-export default withSentry(handler)
+export default handler

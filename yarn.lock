@@ -2945,11 +2945,12 @@ __metadata:
     "@twilight-toolkit/ui": "*"
     "@twilight-toolkit/utils": "*"
     "@types/chai": ^4.3.3
+    "@types/cors": ^2.8.12
     "@types/cypress": ^1.1.3
-    "@types/jest": ^29.2.0
-    "@types/lodash": ^4.14.186
+    "@types/jest": ^29.2.1
+    "@types/lodash": ^4.14.187
     "@types/mocha": ^10.0.0
-    "@types/node": ^18.11.8
+    "@types/node": ^18.11.9
     "@types/react": ^18.0.24
     "@types/react-highlight": ^0.12.5
     "@types/rss": ^0.0.29
@@ -2967,7 +2968,7 @@ __metadata:
     nexment: ^0.0.669
     next: ^13.0.1
     next-themes: ^0.2.1
-    next-transpile-modules: ^9.1.0
+    next-transpile-modules: ^10.0.0
     nextjs-progressbar: ^0.0.16
     nextjs-redirect: ^6.0.1
     postcss: ^8.4.18
@@ -5239,6 +5240,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/cors@npm:^2.8.12":
+  version: 2.8.12
+  resolution: "@types/cors@npm:2.8.12"
+  checksum: 8c45f112c7d1d2d831b4b266f2e6ed33a1887a35dcbfe2a18b28370751fababb7cd045e745ef84a523c33a25932678097bf79afaa367c6cb3fa0daa7a6438257
+  languageName: node
+  linkType: hard
+
 "@types/cypress@npm:^1.1.3":
   version: 1.1.3
   resolution: "@types/cypress@npm:1.1.3"
@@ -5392,13 +5400,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^29.2.0":
-  version: 29.2.0
-  resolution: "@types/jest@npm:29.2.0"
+"@types/jest@npm:^29.2.1":
+  version: 29.2.1
+  resolution: "@types/jest@npm:29.2.1"
   dependencies:
     expect: ^29.0.0
     pretty-format: ^29.0.0
-  checksum: 6779e63d8d7507b116a61b2935a200e48531849fc1ac74090212759fe17716777ca6d2c3a8d927a563e9cfa474ae91d40b1688376ae80e3a08974b3c9e9691e1
+  checksum: 5610c9a44c57f6dc39cf54429ea8d04574ad4c3e3ddf9a2621882aa94a0758a42ca97a0d0aec41a8d0b149fa63bf3d077d1f07c1f1d82e3d89ad7408de211255
   languageName: node
   linkType: hard
 
@@ -5416,10 +5424,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.14.167, @types/lodash@npm:^4.14.186":
+"@types/lodash@npm:^4.14.167":
   version: 4.14.186
   resolution: "@types/lodash@npm:4.14.186"
   checksum: ee0c1368a8100bb6efb88335107473a41928fc307ff1ef4ff1278868ccddba9c04c68c36d1ffe3a0392ef4a956e1955f7de3203ec09df4f1655dd1b88485c549
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:^4.14.187":
+  version: 4.14.187
+  resolution: "@types/lodash@npm:4.14.187"
+  checksum: 5f8a4fe6d8a6785b8ecbd9efdc8b7d3341b873f63c5390ad0f269a517508e92c1b1d7d43e97bdfb6bba5bba9a8501b30a54f791ef4c30b854382745c75c607d4
   languageName: node
   linkType: hard
 
@@ -5484,10 +5499,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.11.8":
-  version: 18.11.8
-  resolution: "@types/node@npm:18.11.8"
-  checksum: 60b358f97c1a029722dc785811b217615ef20249c3fbde60a65869cfd7a5cd5b1872ee95c79c187ef70e5a078f4ac7670d2129803985268b1f021ad6e8040af8
+"@types/node@npm:^18.11.9":
+  version: 18.11.9
+  resolution: "@types/node@npm:18.11.9"
+  checksum: cc0aae109e9b7adefc32eecb838d6fad931663bb06484b5e9cbbbf74865c721b03d16fd8d74ad90e31dbe093d956a7c2c306ba5429ba0c00f3f7505103d7a496
   languageName: node
   linkType: hard
 
@@ -7967,9 +7982,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001426":
-  version: 1.0.30001427
-  resolution: "caniuse-lite@npm:1.0.30001427"
-  checksum: 7b21a7d1f10c07130cecb7e7c7c38fd031f3dbd49afaee53fa4bb07355f9765686cad14f6296fbb49838f525c35292278b2c5ee9109c363edea5e134514ab6bb
+  version: 1.0.30001429
+  resolution: "caniuse-lite@npm:1.0.30001429"
+  checksum: d1658080248ef5ef0f5157423b2766026e6aa45642ce3b2cc74859b6a54e39881dd902397a2368324ed30ed0cd40250f11a4a4f3773453cd57b88db5e5e5c76a
   languageName: node
   linkType: hard
 
@@ -15845,13 +15860,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-transpile-modules@npm:^9.1.0":
-  version: 9.1.0
-  resolution: "next-transpile-modules@npm:9.1.0"
+"next-transpile-modules@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "next-transpile-modules@npm:10.0.0"
   dependencies:
     enhanced-resolve: ^5.10.0
-    escalade: ^3.1.1
-  checksum: 8cc46196db3c2d2063fb29fe5b4d03c21065ab08130085b24d61e4ed512d99c12083d28179771cf02f70f8bf5970db0781a228aacf6cc61662dbdcabaddfc472
+  checksum: 3300fc7081f63b2c9487588db7cbe718f209dfd2111adec22d9c8af0e3c8ade2d95fd45f91e045546d78d98cafc78a49431de9a623360d33831b5e694bf007c9
   languageName: node
   linkType: hard
 

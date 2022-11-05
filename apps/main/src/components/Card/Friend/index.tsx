@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import trimStr from '~/utilities/trimString'
 import Image from 'next/image'
-import blurDataURL from '~/constants/blurDataUrl'
 
 interface Props {
 	item: WPPost
@@ -17,8 +16,6 @@ export default function CardFriend({ item }: Props) {
 					height={50}
 					className="border shadow-sm"
 					alt={`${item.post_title} site image`}
-					placeholder="blur"
-					blurDataURL={blurDataURL}
 					loading="lazy"
 				/>
 				<div>
