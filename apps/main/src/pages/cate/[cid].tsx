@@ -17,11 +17,13 @@ interface CateProps {
 const Redirect = redirect('/404')
 
 const Cate: NextPageWithLayout = ({ info }: CateProps) => {
+	const title = `${info.name} - TonyHe`
+
 	if (info.status) {
 		return (
 			<div>
 				<Head>
-					<title>{info.name} - TonyHe</title>
+					<title>{title}</title>
 					<link
 						rel="icon"
 						href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗂️</text></svg>"
