@@ -1,0 +1,54 @@
+.wp-list-table tr:not(.inline-edit-row):not(.no-items) td:not(.check-column) {
+   display: table-cell;
+}
+#wwa-show-progress .wwa-success, #wwa-show-test .wwa-success, #wwa-show-test-usernameless .wwa-success {
+    color: #2C8D46;
+}
+#wwa-show-progress .wwa-failed, #wwa-show-test .wwa-failed, #wwa-show-test-usernameless .wwa-failed {
+    color: #CA4A1F;
+}
+#wwa-show-progress, #wwa-show-test, #wwa-show-test-usernameless {
+    vertical-align: sub;
+}
+#wwa_log {
+    max-width: 100%;
+    font-family: Consolas,"Source Code Pro","Liberation Mono","Courier New",Courier,"Noto Sans", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN", "Microsoft YaHei",monospace;
+    white-space: pre;
+}
+#clear_log {
+    margin-top: 3px;
+}
+.wwa-table {
+    overflow-x: auto;
+}
+.wwa-table table {
+    min-width: 650px;
+}
+.wwa-table td a:nth-child(2) {
+    color: #a00;
+}
+.wwa-usernameless-th, .wwa-usernameless-td {
+    display: none;
+}
+#wwa-add-new-btn, #wwa-verify-btn, #wwa-test {
+    margin-top: 10px;
+}
+#wwa-show-test {
+    margin-top: 15px;
+    display: inline-block;
+}
+#wwa-new-block, #wwa-verify-block {
+    display: none;
+    padding: 0 20px 20px;
+    border: 1px solid #CCD0D4;
+    margin-top: 15px;
+    border-radius: 3px;
+    background-color: #ececec;
+}
+.wwa-cancel {
+    margin-top: 20px!important;
+    float: right;
+}
+#wp-webauthn-uv-warning {
+    margin: 15px 0 0;
+}

@@ -131,3 +131,40 @@ storybook-static
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Wordpress - ignore core, configuration, examples, uploads and logs.
+# https://github.com/github/gitignore/blob/main/WordPress.gitignore
+
+# Core
+#
+# Note: if you want to stage/commit WP core files
+# you can delete this whole section/until Configuration.
+apps/wordpress/wp-admin/
+apps/wordpress/wp-content/index.php
+apps/wordpress/wp-content/languages
+apps/wordpress/wp-content/plugins/index.php
+apps/wordpress/wp-content/themes/index.php
+apps/wordpress/wp-includes/
+apps/wordpress/index.php
+apps/wordpress/license.txt
+apps/wordpress/readme.html
+apps/wordpress/wp-*.php
+apps/wordpress/xmlrpc.php
+
+# Configuration
+wp-config.php
+
+# Example themes
+apps/wordpress/wp-content/themes/twenty*/
+
+# Example plugin
+apps/wordpress/wp-content/plugins/hello.php
+
+# Uploads
+apps/wordpress/wp-content/uploads/
+
+# Log files
+*.log
+
+# htaccess
+apps/wordpress/.htaccess
