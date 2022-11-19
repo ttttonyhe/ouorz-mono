@@ -4,7 +4,8 @@ on:
     branches:
       - main
     paths:
-      - 'apps/**'
+      - 'apps/analytics/**'
+      - 'apps/main/**'
       - '.github/workflows/**'
   pull_request:
     branches:

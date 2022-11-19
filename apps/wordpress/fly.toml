@@ -1,7 +1,7 @@
 app = "ouorz-wordpress"
 
 [env]
-  WORDPRESS_CONFIG_EXTRA = "define(\"MYSQL_CLIENT_FLAGS\", MYSQLI_CLIENT_SSL);define(\"WP_DEBUG_DISPLAY\", false);"
+  WORDPRESS_CONFIG_EXTRA = "define(\"MYSQL_CLIENT_FLAGS\", MYSQLI_CLIENT_SSL);define(\"WP_DEBUG_DISPLAY\", false);ini_set(\"display_errors\",\"Off\");ini_set(\"error_reporting\", E_ALL & ~E_NOTICE);"
 
 [mounts]
   destination = "/var/www/html/wp-content"
