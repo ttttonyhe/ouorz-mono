@@ -1,0 +1,26 @@
+{
+  "name":"wpserveur/wps-hide-login",
+  "description":"Protect your website by changing the login URL and preventing access to wp-login.php page and wp-admin directory while not logged-in.",
+  "keywords":[
+    "rename",
+    "login",
+    "wp-login",
+    "wp-login.php",
+    "custom login url"
+  ],
+  "homepage":"https://github.com/Tabrisrp/wps-hide-login",
+  "authors":[
+    {
+      "name":"WPServeur",
+      "email":"nicolas@wpserveur.net",
+      "homepage":"https://www.wpserveur.net/",
+      "role": "Lead Developer"
+    }
+  ],
+  "type":"wordpress-plugin",
+  "minimum-stability":"stable",
+  "license":"GPL-3.0+",
+  "require":{
+    "php":">=5.6.0"
+  }
+}

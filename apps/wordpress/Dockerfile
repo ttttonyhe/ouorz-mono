@@ -6,4 +6,5 @@ RUN set -eux; \
 COPY ./wp-content/themes/. ./wp-content/themes/
 COPY ./wp-content/plugins/. ./wp-content/plugins/
 COPY ./wp-content/uploads/. ./wp-content/uploads/
+COPY ./wp-content/object-cache.php ./wp-content/object-cache.php
 COPY custom.ini $PHP_INI_DIR/conf.d/

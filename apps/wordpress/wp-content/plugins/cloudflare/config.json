@@ -1,0 +1,29 @@
+{
+  "debug": false,
+  "featureManagerIsFullZoneProvisioningEnabled": false,
+  "isDNSPageEnabled": false,
+  "isSubdomainCheckEnabled": true,
+  "useHostAPILogin": false,
+  "homePageCards": [
+    "ApplyDefaultSettingsCard",
+    "AutomaticPlatformOptimizationCard",
+    "PurgeCacheCard"
+  ],
+  "moreSettingsCards": {
+    "container.moresettings.speed": [
+      "AlwaysOnlineCard",
+      "ImageOptimizationCard",
+      "PluginSpecificCacheCard",
+      "DevelopmentModeCard"
+    ],
+    "container.moresettings.security": [
+      "SecurityLevelCard",
+      "WAFCard",
+      "AdvanceDDoSCard",
+      "AutomaticHTTPSRewritesCard"
+    ]
+  },
+  "locale": "en",
+  "integrationName": "wordpress",
+  "version": "4.11.0"
+}

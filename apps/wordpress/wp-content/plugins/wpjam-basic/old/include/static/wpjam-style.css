@@ -1,0 +1,37 @@
+th.manage-column.column-thumbnail{width:80px;}
+
+.form-field input.type-multi-text{width:80%;}
+
+.mu_img{ position: relative; width: 100px; display: inline-block; margin-right: 10px; margin-bottom: 5px; }
+.mu_img .del_item{ position: absolute; top: -10px; right: -10px; font-size:12px; background: #f33; color: #fff; width: 20px; height: 20px; border-radius: 10px; text-align: center; line-height: 20px; text-decoration: none; }
+
+.postbox-container .form-table th {padding:12px 10px 12px 0; width:150px;}
+.postbox-container .form-table td {padding:6px;}
+
+span.green{font-size: large; font-weight: bold; color: green;}
+span.red{font-size: large; font-weight: bold; color: red;}
+
+a.nav-tab:focus{box-shadow:none;}
+
+.sub_field_label{min-width:80px;display: inline-block;}
+
+/*ThickBox*/
+#TB_title {height: 40px !important;}
+#TB_title #TB_ajaxWindowTitle{line-height: 40px; font-size:1.3em; padding-left:20px;}
+#TB_title #TB_closeWindowButton{left: auto;right: -30px;color: #eee;}
+#TB_title #TB_closeWindowButton:hover{color:#00a0d2;outline:0;-webkit-box-shadow:none;box-shadow:none}
+#TB_title .tb-close-icon {display: none; color: #666; text-align: center; line-height: 29px; width: 29px;height: 29px; position: absolute; top: 0; right: 0;}
+#TB_title #TB_closeWindowButton:after {content: "\f335"; font: 400 32px/29px dashicons; speak: none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+input[type="date"]{ background-color: #fff; border-color: #dfdfdf; border-radius: 3px; border-width: 1px; border-style: solid; color: #333; outline: 0; box-sizing: border-box; }
+.widefat td{ -ms-word-break: break-all; word-break: break-all; word-break:	break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto;}
+td img.weixin-avatar {vertical-align: top; margin-right: 10px; float:left;}
+html.TB_iframe #wpadminbar, html.TB_iframe #adminmenuwrap, html.TB_iframe #adminmenuback, html.TB_iframe .wrap h1, html.TB_iframe .wrap h2, html.TB_iframe .wrap h3, html.TB_iframe #wpfooter {display: none;}
+html.TB_iframe .wrap{margin-top: 0;}
+html.TB_iframe.wp-toolbar {padding: 0;}
+html.TB_iframe #wpcontent{ margin-left: 10px; }
+html.TB_iframe #wpbody {padding-top: 10px;}
+html.TB_iframe #wpbody-content {padding-bottom: 10px;}
+
+
+
+

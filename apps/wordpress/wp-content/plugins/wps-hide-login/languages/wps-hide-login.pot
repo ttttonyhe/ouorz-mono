@@ -1,0 +1,183 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: WPS Hide Login\n"
+"POT-Creation-Date: 2018-11-13 11:42+0100\n"
+"PO-Revision-Date: 2018-03-06 10:48+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: wps-hide-login.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: classes/plugin.php:169
+msgid "Please upgrade to the latest version of WordPress to activate"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: classes/plugin.php:169 classes/plugin.php:192 classes/plugin.php:605
+#: classes/plugin.php:614
+msgid "WPS Hide Login"
+msgstr ""
+
+#: classes/plugin.php:175
+msgid ""
+"WPS Hide Login could not be activated because you already have Rename wp-"
+"login.php active. Please uninstall rename wp-login.php to use WPS Hide Login"
+msgstr ""
+
+#: classes/plugin.php:193
+msgid ""
+"This option allows you to set a networkwide default, which can be overridden "
+"by individual sites. Simply go to to the site’s permalink settings to change "
+"the url."
+msgstr ""
+
+#: classes/plugin.php:194 classes/plugin.php:320
+#, php-format
+msgid ""
+"Need help? Try the <a href=\"%1$s\" target=\"_blank\">support forum</a>. "
+"This plugin is kindly brought to you by <a href=\"%2$s\" target=\"_blank"
+"\">WPServeur</a>"
+msgstr ""
+
+#: classes/plugin.php:197
+msgid "Networkwide default"
+msgstr ""
+
+#: classes/plugin.php:199
+msgid "Redirection url default"
+msgstr ""
+
+#: classes/plugin.php:239
+msgid "Login url"
+msgstr ""
+
+#: classes/plugin.php:247
+msgid "Redirection url"
+msgstr ""
+
+#: classes/plugin.php:320
+msgid "WordPress specialized hosting"
+msgstr ""
+
+#: classes/plugin.php:321
+msgid "Discover our other plugins:"
+msgstr ""
+
+#: classes/plugin.php:322 classes/plugin.php:323
+msgid "the plugin"
+msgstr ""
+
+#: classes/plugin.php:322
+msgid "WPS Bidouille"
+msgstr ""
+
+#: classes/plugin.php:323
+msgid "WPS Cleaner"
+msgstr ""
+
+#: classes/plugin.php:324
+msgid "and"
+msgstr ""
+
+#: classes/plugin.php:324
+msgid "WPS Limit Login"
+msgstr ""
+
+#: classes/plugin.php:333
+#, php-format
+msgid ""
+"To set a networkwide default, go to <a href=\"%s\">Network Settings</a>."
+msgstr ""
+
+#: classes/plugin.php:353
+msgid ""
+"Protect your website by changing the login URL and preventing access to the "
+"wp-login.php page and the wp-admin directory to non-connected people."
+msgstr ""
+
+#: classes/plugin.php:368
+msgid ""
+"Redirect URL when someone tries to access the wp-login.php page and the wp-"
+"admin directory while not logged in."
+msgstr ""
+
+#: classes/plugin.php:382
+#, php-format
+msgid ""
+"Your login page is now here: <strong><a href=\"%1$s\">%2$s</a></strong>. "
+"Bookmark this page!"
+msgstr ""
+
+#: classes/plugin.php:393 classes/plugin.php:397
+msgid "Settings"
+msgstr ""
+
+#: classes/plugin.php:413
+msgid "This feature is not enabled."
+msgstr ""
+
+#: classes/plugin.php:453
+msgid "This has been disabled"
+msgstr ""
+
+#: vendor/NicolasKulka/wp-dismissible-notices-handler/handler.php:228
+msgid "Dismissible Notices Handler Error:"
+msgstr ""
+
+#: vendor/NicolasKulka/wp-dismissible-notices-handler/handler.php:315
+#, php-format
+msgid "A notice with the ID %s has already been registered."
+msgstr ""
+
+#: vendor/NicolasKulka/wp-review-me/review.php:112
+msgid ""
+"Hey! It&#039;s been a little while that you&#039;ve been using this product. "
+"You might not realize it, but user reviews are such a great help to us. We "
+"would be so grateful if you could take a minute to leave a review on "
+"WordPress.org. Many thanks in advance :)"
+msgstr ""
+
+#: vendor/NicolasKulka/wp-review-me/review.php:113
+msgid "Click here to leave your review"
+msgstr ""
+
+#: vendor/NicolasKulka/wp-review-me/review.php:167
+#, php-format
+msgid "Dependencies are missing. Please run a %s."
+msgstr ""
+
+#: vendor/NicolasKulka/wp-review-me/review.php:228
+msgid "WP Review Me Error:"
+msgstr ""
+
+#: wps-hide-login.php:41
+msgid ""
+"Do you like plugin WPS Hide Login? <br> Thank you for taking a few seconds "
+"to note us on"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Protect your website by changing the login URL and preventing access to wp-"
+"login.php page and wp-admin directory while not logged-in"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WPServeur, NicolasKulka, tabrisrp"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://wpserveur.net"
+msgstr ""

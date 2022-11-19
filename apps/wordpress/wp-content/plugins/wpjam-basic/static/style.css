@@ -1,0 +1,261 @@
+.abscenter{left: 50%; top: 50%; transform: translate(-50%, -50%);}
+.green{font-size: larger; font-weight: 500; color: green;}
+.red{font-size: larger; font-weight: 500; color: red;}
+
+input[type=text]{height:28px;}
+
+.wpjam-tooltip{position: relative; display: inline-block; color:#555 !important;}
+.wpjam-tooltip .wpjam-tooltip-text{visibility: hidden; opacity: 0; transition: opacity 0.3s; max-width: 300px; min-width: 200px; background-color: #ddd; padding: 5px; border-radius: 6px; text-align:center; position: absolute; z-index: 10000; bottom: 125%;}
+.wpjam-tooltip .wpjam-tooltip-text p{margin: 4px;}
+.wpjam-tooltip .wpjam-tooltip-text::after{content: " "; position: absolute; top: 100%; border-width: 5px; border-style: solid; border-color: #ddd transparent transparent transparent;}
+.wpjam-tooltip:hover .wpjam-tooltip-text{visibility: visible; opacity: 1;}
+
+.notice p a {text-decoration: none;}
+.notice p a span.dashicons{height:16px; font-size:16px; line-height:18px;}
+
+#tb_modal{display:none;}
+
+form table.form-table tr > td:only-child{padding:15px 10px 15px 0;}
+form table.form-table th a,
+form table.form-table td a{text-decoration: none;}
+
+p.description{font-size: 13px!important;}
+span.description{color: #646970;}
+
+div.wpjam-media-buttons{display: inline-block; float:none;}
+div.wpjam-file{display: flex; gap: 4px;}
+
+div.sub-field{margin-bottom:12px; line-height: 30px;}
+div.sub-field span.dashicons{line-height: 30px;}
+label.sub-field-label{min-width:76px; padding-right:4px; font-weight:500; display: table-cell; vertical-align: top;}
+label.sub-field-label + div.sub-field-detail{max-width: calc(100% - 80px); display: table-cell;}
+
+div.field-group{display: flex; flex-wrap: wrap; align-items: flex-start;}
+div.field-group div.sub-field{margin-right: 6px;}
+div.field-group div.sub-field:last-child{margin-right: 0;}
+div.field-group div.sub-field div.sub-field-detail{padding-right: 4px;}
+div.field-group div.sub-field:last-child div.sub-field-detail{padding-right: 0;}
+div.field-group div.sub-field:not(:first-child) label.sub-field-label{min-width: initial;}
+
+div.mu-item{margin-bottom:6px;}
+div.mu-item:last-child{margin-bottom:0;}
+div.mu-item span.dashicons-menu{color: #ccc; width: 30px; height: 30px; font-size:30px; line-height: 30px; cursor: pointer;}
+div.mu-item > a.button{margin:0 6px;}
+
+div.mu-fields > div.mu-item{margin-bottom:12px; padding-bottom:12px; border-bottom: 1px solid #E5E5E5;}
+div.mu-fields > div.mu-item:last-child{margin-bottom: 0; border-bottom: 0; padding-bottom: 0;}
+div.mu-fields > div.mu-item > a{margin-left:80px;}
+div.mu-fields > div.mu-item.field-group div.sub-field{margin-bottom: 0;}
+div.mu-fields > div.mu-item.field-group > a{margin-left:0;}
+
+div.mu-imgs{display: flex; flex-wrap: wrap; align-items: center; max-width: 720px;}
+div.mu-imgs > div.mu-item{width:100px; height: 100px; margin: 10px 20px 10px 0; position: relative;}
+div.mu-imgs > div.mu-item img {width:100px; height: 100px !important; object-fit: cover;}
+
+div.mu-texts > div.mu-item,
+div.mu-files > div.mu-item{display: flex; align-items: center;}
+
+div.wpjam-img{display: inline-block;}
+div.wpjam-img a.del-item-icon{display: none;}
+div.wpjam-img .wp-media-buttons .add_media{padding-left: 5px;}
+div.wpjam-img.has-img .wp-media-buttons{display: none;}
+div.wpjam-img.has-img a.del-item-icon{display: block;}
+div.wpjam-img img{max-width:300px !important; max-height: 300px !important; object-fit: cover;}
+
+div.wpjam-mu-img{box-sizing:border-box; color: #ccc; background: #f7f7f7; border: 2px solid #ccc; border-radius: 8px; width: 100px; height: 100px;}
+div.wpjam-mu-img.dashicons:before{line-height: 100px; font-size: 32px; font-weight: 100;}
+div.wpjam-mu-img a.del-item-icon{display: none;}
+
+div.wpjam-mu-img,
+div.wpjam-img{position: relative; cursor:pointer; text-decoration: none;}
+
+a.del-item-icon{position: absolute; font-size: 20px; top: -10px; right: -10px; border-radius: 10px; color:#ffffff; background: #cc3333; text-decoration: none; opacity: 0.8;cursor: pointer;}
+
+div.mu-item span.wpjam-query-title{margin:0 2px 4px 0;}
+span.wpjam-query-title{box-sizing: border-box; vertical-align: top; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: default;padding: 4px 8px 4px 4px; background: #e5e5e5; border-radius: 4px; height: 28px; line-height: 20px;}
+span.wpjam-query-title.hidden{display: none;}
+span.wpjam-query-title span.dashicons{font-size: 18px; line-height: 18px; height: 18px; width: 18px; cursor: pointer; color: #0073aa;}
+
+span.all-options{width: 250px;}
+span.large-text{width: 99%;}
+span.small-text{width: 50px;}
+span.tiny-text{width: 35px;}
+
+a.wpjam-button{text-decoration: none;}
+p.submit span.spinner{float:none; margin: 0 0 0 10px;}
+
+div.tabs h2.nav-tab-wrapper ul,
+div.tabs h2.nav-tab-wrapper li{margin:0;}
+a.nav-tab:focus{box-shadow:none;}
+
+#post-body #normal-sortables{min-height: 0;}
+div#postexcerpt div.inside p{display: none;}
+div.postbox table.form-table th {padding:12px 10px 12px 0; width:120px;}
+div.postbox table.form-table td {padding:6px;}
+
+div.postbox.tabs table.form-table th{width: 100px;}
+div#poststuff div.postbox .nav-tab-wrapper{padding-bottom: 0; border-color: #ddd;}
+div#poststuff div.postbox .nav-tab-wrapper a.nav-tab{background: #f3f5f6; border-color: #ddd;}
+div#poststuff div.postbox .nav-tab-wrapper a.nav-tab-active{background: #fff; border-bottom-color: #fff;}
+div#poststuff div.postbox.closed .nav-tab-wrapper a.nav-tab-active{background: #fff; border-color: #ddd;}
+
+.tablenav{height: auto; min-height: 44px; margin-bottom: -5px;}
+.tablenav .actions{padding:0 8px 6px 0;}
+.tablenav .actions input,
+.tablenav .actions span.wpjam-query-title{float: left; margin-right: 6px; max-width: 12.5rem;}
+.tablenav .overallactions{overflow: inherit;}
+.tablenav .overallactions a{margin:1px 8px 0 0;}
+.widefat td{overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; hyphens: auto;}
+
+ul.subsubsub{margin-bottom: 6px;}
+
+table.wp-list-table th.check-column span.dashicons{margin-left:6px; color:#999; font-size: 16px; width: 16px; height:16px;}
+table.wp-list-table th.check-column span.spinner{margin:4px 0 0 0;}
+
+table.wp-list-table .pending th,
+table.wp-list-table .pending td{background-color: #f0f6fc;}
+table.wp-list-table .pending th.check-column {border-left: 4px solid #0073aa;}
+table.wp-list-table .pending th.check-column input{margin-left: 4px;}
+
+table.wp-list-table .unapproved th,
+table.wp-list-table .unapproved td{background-color: #fcf9e8;}
+table.wp-list-table .unapproved th.check-column {border-left: 4px solid #d63638;}
+table.wp-list-table .unapproved th.check-column input{margin-left: 4px;}
+table.wp-list-table .approve a,
+table.wp-list-table .audit a,
+table.wp-list-table .publish a{color: #007017;}
+table.wp-list-table .unapprove a,
+table.wp-list-table .unpublish a{color: #996800;}
+
+table.wp-list-table .dashicons,
+table.wp-list-table .dashicons-before:before{width: 16px; height: 16px; font-size: 16px;}
+table.wp-list-table td pre{white-space: pre-wrap; max-width: 800px; margin-top: 0;}
+
+table.wp-list-table a.ui-sortable-handle{cursor: move;}
+
+table.wp-list-table tr.ui-sortable-helper,
+table.wp-list-table tr.ui-sortable-placeholder{background: #eeffee;}
+
+table.wp-list-table tbody tr.ui-sortable-item:first-of-type span.up, 
+table.wp-list-table tbody tr.ui-sortable-item:last-of-type span.down,
+table.wp-list-table tbody tr.ui-sortable-item:first-child:nth-last-child(1) span.move,
+table.wp-list-table tbody tr.ui-sortable-item:first-child:nth-last-child(2) span.move,
+table.wp-list-table tbody tr.ui-sortable-item:first-child:nth-last-child(2) ~ tr.ui-sortable-item span.move{display: none;}
+
+a.wpjam-thumbnail-wrap{position: relative;}
+a.wpjam-thumbnail-wrap:focus{outline: 0; box-shadow: none;}
+a.wpjam-thumbnail-wrap img,
+.no-thumbnail{float:left; margin:0px 10px 10px 0; border-radius: 4px; border: 1px solid #eee;}
+.no-thumbnail{display: inline-block; text-align: center; font-size: 12px; font-weight: 100; width: 50px; height: 50px; line-height: 50px; background: #eee; color: #555;}
+a.wpjam-thumbnail-wrap:hover:after{content: "\f464"; font-size: 16px; font-family: dashicons; padding:2px; line-height:1; top:-4px; right:6px; position: absolute; border-radius: 10px; color: #fff; background: #2271b1; opacity: 0.8;}
+
+div#col-left .left-item.left-current{background-color: #f0f6fc; color: #3c434a;}
+div#col-left .left-item{cursor: pointer;}
+
+div.items.image-list{float: left;}
+div.items.image-list .item{display:flex; flex-direction: column; float: left; margin:10px 30px 20px 0; position: relative; text-align: center;}
+div.items.image-list .item span.item-title,
+div.image-list .item span.row-actions{font-size:smaller; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+div.items.image-list .add-item{margin:10px 0px 20px 0;}
+div.items.image-list .add-item.dashicons{background:#f9f9f9; border-radius:4px; border:1px solid #ccc; font-size:32px; color:#ccc; padding: 0;}
+.striped>tbody>:nth-child(odd) .add-item.dashicons{background:#fff;}
+
+div.items.text-list .item{display: flex; margin-bottom: 10px; max-width: 400px;}
+div.items.text-list .item a.text{display: inline-block; width: 130px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; margin-right: 10px; vertical-align: middle;}
+
+.wp-picker-container .wp-color-result-text{color:inherit;}
+.wp-picker-container input[type=text].wp-color-picker{margin:0 2px;}
+.wp-picker-container .wp-picker-clear{min-height:30px;}
+
+.list-table.layout-calendar .tablenav.top{text-align: center;}
+table#wpjam_calendar{width:100%; margin:20px 0;}
+table#wpjam_calendar caption{font-size:x-large; padding:30px 0;}
+table#wpjam_calendar a{text-decoration: none;}
+table#wpjam_calendar thead th,
+table#wpjam_calendar tfoot th{font-size:larger; font-weight: bold;}
+table#wpjam_calendar tbody td,
+table#wpjam_calendar thead th,
+table#wpjam_calendar tfoot th{border-right:1px solid #c3c4c7; border-bottom:1px solid #c3c4c7;}
+table#wpjam_calendar tbody td:last-child,
+table#wpjam_calendar thead th:last-child,
+table#wpjam_calendar tfoot th:last-child{border-right:none;}
+table#wpjam_calendar tbody tr:last-child td,
+table#wpjam_calendar tfoot tr:last-child th{border-bottom:none;}
+table#wpjam_calendar tbody td.weekend,
+table#wpjam_calendar thead th.weekend,
+table#wpjam_calendar tfoot th.weekend{background: #f6f7f7;}
+
+table#wpjam_calendar tbody td .date-meta{min-height: 24px;}
+table#wpjam_calendar tbody td span.day{display: inline-block; width: 20px; height: 20px; line-height: 20px; text-align: center;}
+table#wpjam_calendar tbody td span.day.today{color:#fff; border-radius: 10px; background: red;}
+
+table#wpjam_calendar tbody td a.list-table-action{display: none;}
+table#wpjam_calendar tbody td:hover a.list-table-action{display: inline;}
+
+table#wpjam_calendar tfoot td{padding-top: 40px;}
+table#wpjam_calendar tfoot td a{font-size:20px;}
+table#wpjam_calendar tfoot td#next a{float: right;}
+
+#TB_window #TB_title{height: 40px;}
+#TB_window #TB_title #TB_ajaxWindowTitle{line-height: 40px; font-size:1.3em; padding-left:20px;}
+#TB_window #TB_title #TB_closeWindowButton{left: auto; right: -30px; color: #eee;}
+#TB_window #TB_title #TB_closeWindowButton:hover{color:#00a0d2;}
+#TB_window #TB_title #TB_closeWindowButton:after{content: "\f335"; font: 400 32px/29px dashicons; speak: none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}
+#TB_window #TB_title .tb-close-icon{display: none;}
+#TB_window #TB_ajaxContent{background:#f1f1f1; padding:2px 25px 15px 25px;}
+#TB_window #TB_ajaxContent .form-table th{width: 18%; min-width: 80px;}
+#TB_window img{max-width: 100%; height:auto;}
+#TB_window div.notice{margin: 5px 0px 2px;}
+
+#TB_window img#TB_Image{margin:15px 15px 5px 15px;}
+#TB_window #TB_caption a{text-decoration: none;}
+
+.ui-autocomplete{z-index: 1000000 !important;} /*要超过 TB z-index 才行，不然弹窗不行*/
+
+div.news-items{width:360px; box-shadow:1px 1px 10px #CCC; border-radius:4px; margin-bottom: 10px;}
+div.news-items div.big{position:relative;}
+div.news-items div.news-item:first-child:nth-last-child(1){position:inherit; padding-bottom: 12px;}
+div.news-items div.big span.news-item-title{font-size: 16px; color: #fff; padding: 12px; box-sizing: border-box; width:100%; bottom:0; left: 0; background: linear-gradient(180deg,transparent,rgba(0,0,0,.6)); position:absolute;}
+div.news-items div.news-item:first-child:nth-last-child(1) span.news-item-title{color: inherit; background: inherit; position: inherit; display: block;}
+div.news-items div.big span.news-item-excerpt{display: block; box-sizing: border-box; width:100%; padding:12px;}
+div.news-items div.big span.item-thumb{width: 360px; height: 150px; overflow: hidden; display: block; position: relative;}
+div.news-items div.big span.item-thumb img{border-radius: 4px; position: relative; left : 50%; top : 50%; transform: translate(-50%, -50%);}
+div.news-items div.small{padding:12px 12px 0 12px; display: flex; flex-direction: row-reverse; justify-content:space-between; width:100%; box-sizing: border-box;}
+div.news-items div.small span.news-item-title{width: 260px; height: 60px; display: flex; align-items: center; padding-bottom: 12px; font-size:14px; border-bottom: 1px solid #DDD;}
+div.news-items div.small:last-child span.news-item-title{border-bottom: 0;}
+div.news-items div.small span.item-thumb{width: 60px; height: 60px; overflow: hidden;}
+div.news-items div.small span.item-thumb img{position: relative; left : 50%; top : 50%; transform: translate(-50%, -50%);}
+
+#wpjam_modal_wrap{position: fixed; bottom: 8px; right: 10px; background: #fff; box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3); z-index: 1000000;}
+
+.welcome-panel.wpjam-welcome-panel{background: #fff;}
+.welcome-panel.wpjam-welcome-panel::before{display: none;}
+.welcome-panel.wpjam-welcome-panel h2{font-size: 32px; color: initial;}
+.welcome-panel.wpjam-welcome-panel .welcome-panel-content{min-height: initial;}
+.welcome-panel.wpjam-welcome-panel .welcome-panel-column-container{margin: 0;}
+
+@media screen and (max-width: 830px){
+	#TB_window #TB_title #TB_closeWindowButton{right: 0; top: -30px;} 
+	#TB_window #TB_ajaxContent .form-table th{width: inherit;}
+}
+
+@media screen and (max-width: 782px){
+	div.mu-fields > div.mu-item.field-group div.sub-field{margin-bottom: 4px;}
+	div.sub-field + a.button{margin-bottom: 4px;}
+
+	div.sub-field,
+	div.sub-field span.dashicons{line-height: 40px;}
+	div.mu-item span.dashicons-menu{height: 40px; line-height: 40px; margin-bottom: 4px;}
+
+	input[type=text]{height:40px;}
+	input.hidden{display: none !important;}
+}
+
+@media screen and (min-width: 783px){
+	#adminmenu .awaiting-mod,
+	#adminmenu .update-plugins{line-height: 18px; transform: scale(0.92);}
+	.post-com-count-pending{line-height: 20px !important; height: 20px !important; left:-6px !important; border-radius: 12px !important; min-width: 10px !important; transform: scale(0.833333);}
+
+	table.wp-list-table td .row-action{display: none;}
+	table.wp-list-table td:hover .row-action{display: initial;}
+}

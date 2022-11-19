@@ -159,6 +159,9 @@ Optionally, `WORDPRESS_CONFIG_EXTRA` can be set to include other configurations:
   - `define("MYSQL_CLIENT_FLAGS", MYSQLI_CLIENT_SSL);`
 - Turn Off PHP Warnings & Notices:
   - `ini_set("error_reporting", E_ALL & ~E_NOTICE);`
+- Redis Object Cache:
+  - `define("WP_REDIS_HOST", "redis_database_host");`
+  - `define("WP_REDIS_PASSWORD", "redis_database_pwd");"`
 
 <br/>
 
@@ -375,6 +378,14 @@ fly volumes create ouorz_wordpress_wp_content --region hkg --size 1 --no-encrypt
 ```bash
 fly scale count 3
 ```
+
+Optionally, Fly.io offers full-managed Redis databases which can be created using the following commands:
+
+```bash
+fly redis create
+```
+
+Traffic is automatically routed through a private IPv6 address restricted to your Fly organization.
 
 <br/>
 

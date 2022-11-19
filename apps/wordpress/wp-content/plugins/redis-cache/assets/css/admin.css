@@ -1,0 +1,196 @@
+#rediscache .content-column {
+    margin-bottom: 3em;
+}
+
+#rediscache .sidebar-column h6 {
+    margin: 5px 0;
+    padding: 10px 0;
+    font-size: 13px;
+    line-height: 19px;
+    border-bottom: 1px solid #ccc;
+}
+
+#rediscache .tab-pane {
+    display: none;
+}
+
+#rediscache .tab-pane.active {
+    display: block;
+}
+
+#rediscache .form-table th,
+#rediscache .form-table td {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+#rediscache .form-table .success {
+    color: #008a20;
+}
+
+#rediscache .form-table .warning {
+    color: #dba617;
+}
+
+#rediscache .form-table .error {
+    color: #d63638;
+}
+
+#rediscache .form-table td ul {
+    margin: 0;
+}
+
+#rediscache .form-table .description.is-notice {
+    max-width: 25rem;
+    color: #d54e21;
+}
+
+#rediscache .form-table .description.is-notice a {
+    color: #d54e21;
+}
+
+#rediscache .card ul {
+    list-style: circle;
+    padding-left: 25px;
+}
+
+#rediscache .tab-pane-metrics .card {
+    min-width: auto;
+    max-width: 100%;
+    padding: 0;
+}
+
+#rediscache .nav-tab-wrapper .nav-tab-disabled {
+    cursor: not-allowed;
+    background-color: #e5e5e5 !important;
+}
+
+#rediscache .tab-pane-diagnostics p {
+    margin-top: 20px;
+}
+
+#rediscache #diagnostics-pane .card {
+    width: 100%;
+    max-width: 100%;
+}
+
+#rediscache #diagnostics-pane pre {
+    height: 400px;
+    overflow: scroll;
+}
+
+#rediscache .compatibility {
+    display: flex;
+    max-width: 520px;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+#rediscache .compatibility + ul {
+    margin-top: 0;
+    padding-left: 50px;
+    list-style: circle;
+    max-width: 470px;
+    color: #666;
+}
+
+#rediscache .compatibility .dashicons {
+    margin-right: 5px;
+}
+
+@media screen and (min-width: 1200px) {
+    #rediscache .columns {
+        display: flex;
+    }
+
+    #rediscache .content-column {
+        flex-grow: 1;
+    }
+
+    #rediscache .sidebar-column {
+        max-width: 400px;
+        margin-left: 20px;
+    }
+}
+
+#dashboard_rediscache .inside {
+    margin: 0;
+    padding: 0;
+}
+
+#widget-redis-stats ul {
+    margin: 11px 11px 0;
+    display: flex;
+}
+
+#widget-redis-stats ul li {
+    margin-bottom: 0;
+}
+
+#metrics-pane #widget-redis-stats ul {
+    display: block;
+    list-style-type: none;
+    text-align: center;
+    font-size: 14px;
+}
+
+#metrics-pane #widget-redis-stats ul li {
+    display: inline;
+    list-style-type: none;
+}
+
+#widget-redis-stats ul a {
+    padding: 0 7px;
+    text-decoration: none;
+}
+
+#widget-redis-stats ul a:hover {
+    color: #135e96;
+}
+
+#widget-redis-stats ul a.active {
+    color: #1d2327;
+}
+
+#redis-stats-chart .apexcharts-annotations {
+    display: none;
+    opacity: 0.75;
+}
+
+#redis-stats-chart .apexcharts-tooltip,
+#redis-stats-chart .apexcharts-tooltip-title {
+    font-size: 13px;
+}
+
+#redis-stats-chart .apexcharts-tooltip {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    border: none;
+    box-shadow: none;
+    background: #fff;
+    margin-top: 1px;
+}
+
+#redis-stats-chart .apexcharts-tooltip-title {
+    margin-bottom: 0;
+    padding: 0 15px;
+    border-bottom: none;
+    background-color: transparent;
+}
+
+#redis-stats-chart .apexcharts-tooltip-series-group {
+    display: flex;
+    padding-bottom: 0;
+    padding: 0 15px;
+}
+
+#redis-stats-chart .apexcharts-tooltip-y-group {
+    padding: 0;
+}
+
+#redis-stats-chart .apexcharts-tooltip-text-value {
+    margin-left: 0;
+    font-variant-numeric: tabular-nums;
+}
