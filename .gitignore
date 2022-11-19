@@ -142,7 +142,7 @@ storybook-static
 apps/wordpress/wp-admin/
 apps/wordpress/wp-content/index.php
 apps/wordpress/wp-content/languages
-apps/wordpress/wp-content/plugins
+apps/wordpress/wp-content/plugins/index.php
 apps/wordpress/wp-content/themes/index.php
 apps/wordpress/wp-includes/
 apps/wordpress/index.php
