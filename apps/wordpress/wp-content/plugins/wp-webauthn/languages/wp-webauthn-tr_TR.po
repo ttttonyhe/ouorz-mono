@@ -1,0 +1,644 @@
+# Copyright (C) 2021 Axton
+# This file is distributed under the same license as the WP-WebAuthn plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP-WebAuthn\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-webauthn\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;"
+"_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
+"esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: \n"
+"Language: tr_TR\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#. Plugin Name of the plugin
+msgid "WP-WebAuthn"
+msgstr "WP-WebAuthn"
+
+#. Plugin URI of the plugin
+msgid "https://flyhigher.top"
+msgstr "https://flyhigher.top"
+
+#. Description of the plugin
+msgid ""
+"WP-WebAuthn allows you to safely login to your WordPress site without "
+"password."
+msgstr ""
+"WP-WebAuthn, WordPress sitenize şifre olmadan güvenle giriş yapmanızı sağlar."
+
+#. Author of the plugin
+msgid "Axton"
+msgstr "Axton"
+
+#. Author URI of the plugin
+msgid "https://axton.cc"
+msgstr "https://axton.cc"
+
+#: wwa-admin-content.php:6 wwa-admin-content.php:202
+msgid "Log count: "
+msgstr "Günlük sayısı: "
+
+#: wwa-admin-content.php:14
+msgid ""
+"PHP extension gmp doesn't seem to exist, rendering WP-WebAuthn unable to "
+"function."
+msgstr ""
+"PHP uzantısı gmp yok gibi görünüyor ve WP-WebAuthn işlevini yerine "
+"getiremiyor."
+
+#: wwa-admin-content.php:18
+msgid ""
+"PHP extension mbstring doesn't seem to exist, rendering WP-WebAuthn unable "
+"to function."
+msgstr ""
+"PHP uzantısı mbstring mevcut görünmüyor ve WP-WebAuthn işlevini yerine "
+"getiremiyor."
+
+#: wwa-admin-content.php:22
+msgid ""
+"WebAuthn features are restricted to websites in secure contexts. Please make "
+"sure your website is served over HTTPS or locally with <code>localhost</"
+"code>."
+msgstr ""
+"WebAuthn özellikleri, güvenli bağlamlardaki web siteleriyle sınırlıdır. "
+"Lütfen web sitenizin HTTPS üzerinden veya yerel olarak <code>localhost</"
+"code> ile sunulduğundan emin olun."
+
+#: wwa-admin-content.php:87
+msgid "Settings saved."
+msgstr "Ayarlar kaydedildi."
+
+#: wwa-admin-content.php:89
+msgid "Settings NOT saved."
+msgstr "Ayarlar KAYDEDİLMEDİ."
+
+#: wwa-admin-content.php:104
+msgid "Preferred login method"
+msgstr "Tercih edilen oturum açma yöntemi"
+
+#: wwa-admin-content.php:108
+msgid "Prefer WebAuthn"
+msgstr "WebAuthn'u Tercih Et"
+
+#: wwa-admin-content.php:109
+msgid "Prefer password"
+msgstr "Şifre tercih et"
+
+#: wwa-admin-content.php:110 wwa-profile-content.php:56
+msgid "WebAuthn Only"
+msgstr "Yalnızca WebAuthn"
+
+#: wwa-admin-content.php:112
+msgid ""
+"When using \"WebAuthn Only\", password login will be completely disabled. "
+"Please make sure your browser supports WebAuthn, otherwise you may unable to "
+"login.<br>User that doesn't have any registered authenticator (e.g. new "
+"user) will unable to login when using \"WebAuthn Only\".<br>When the browser "
+"does not support WebAuthn, the login method will default to password if "
+"password login is not disabled."
+msgstr ""
+"\"Yalnızca WebAuthn\" kullanılırken, şifre girişi tamamen devre dışı "
+"bırakılacaktır. Lütfen tarayıcınızın WebAuthn'u desteklediğinden emin olun, "
+"aksi takdirde oturum açamayabilirsiniz. <br> Kayıtlı bir kimlik "
+"doğrulayıcısı olmayan kullanıcılar (ör. Yeni kullanıcı) \"Yalnızca WebAuthn"
+"\" kullanırken oturum açamaz. <br> Tarayıcı yaptığında WebAuthn'u "
+"desteklemezse, parola ile oturum açma devre dışı bırakılmamışsa oturum açma "
+"yöntemi varsayılan olarak parola olacaktır."
+
+#: wwa-admin-content.php:116
+msgid "Website identifier"
+msgstr "Web sitesi tanımlayıcı"
+
+#: wwa-admin-content.php:119
+msgid ""
+"This identifier is for identification purpose only and <strong>DOES NOT</"
+"strong> affect the authentication process in anyway."
+msgstr ""
+"Bu tanımlayıcı yalnızca tanımlama amaçlıdır ve kimlik doğrulama sürecini "
+"hiçbir şekilde <strong>ETKİLEMEZ</strong>."
+
+#: wwa-admin-content.php:123
+msgid "Website domain"
+msgstr "Web sitesi domaini"
+
+#: wwa-admin-content.php:126
+msgid ""
+"This field <strong>MUST</strong> be exactly the same with the current domain "
+"or parent domain."
+msgstr ""
+"Bu alan, mevcut alan adı veya üst alan adı ile tam olarak aynı "
+"<strong>OLMALIDIR</strong>."
+
+#: wwa-admin-content.php:130
+msgid "Allow to remember login"
+msgstr "Girişin hatırlanmasına izin ver"
+
+#: wwa-admin-content.php:139 wwa-admin-content.php:150
+#: wwa-admin-content.php:183 wwa-admin-content.php:199
+#: wwa-profile-content.php:130 wwa-shortcodes.php:118
+msgid "Enable"
+msgstr "Etkinleştir"
+
+#: wwa-admin-content.php:140 wwa-admin-content.php:151
+#: wwa-admin-content.php:184 wwa-admin-content.php:200
+#: wwa-profile-content.php:131 wwa-shortcodes.php:118
+msgid "Disable"
+msgstr "Devredışı Bırak"
+
+#: wwa-admin-content.php:141
+msgid ""
+"Show the 'Remember Me' checkbox beside the login form when using WebAuthn."
+msgstr ""
+"WebAuthn'u kullanırken giriş formunun yanında 'Beni Hatırla' onay kutusunu "
+"gösterin."
+
+#: wwa-admin-content.php:146
+msgid "Require user verification"
+msgstr "Kullanıcı doğrulaması gerektir"
+
+#: wwa-admin-content.php:152
+msgid ""
+"User verification can improve security, but is not fully supported by mobile "
+"devices. <br> If you cannot register or verify your authenticators, please "
+"consider disabling user verification."
+msgstr ""
+"Kullanıcı doğrulama, güvenliği artırabilir, ancak mobil cihazlar tarafından "
+"tam olarak desteklenmemektedir. <br> Doğrulayıcılarınızı kaydedemiyor veya "
+"doğrulayamıyorsanız, lütfen kullanıcı doğrulamasını devre dışı bırakmayı "
+"düşünün."
+
+#: wwa-admin-content.php:157
+msgid "Allow a specific type of authenticator"
+msgstr "Belirli bir kimlik doğrulayıcı türüne izin ver"
+
+#: wwa-admin-content.php:166 wwa-profile-content.php:15
+#: wwa-profile-content.php:111 wwa-shortcodes.php:33 wwa-shortcodes.php:118
+msgid "Any"
+msgstr "Herhangi"
+
+#: wwa-admin-content.php:167 wwa-profile-content.php:112 wwa-shortcodes.php:118
+msgid "Platform (e.g. built-in fingerprint sensors)"
+msgstr "Platform (ör. Yerleşik parmak izi sensörleri)"
+
+#: wwa-admin-content.php:168 wwa-profile-content.php:113 wwa-shortcodes.php:118
+msgid "Roaming (e.g. USB security keys)"
+msgstr "Mobil (ör. USB güvenlik anahtarları)"
+
+#: wwa-admin-content.php:170
+msgid ""
+"If a type is selected, the browser will only prompt for authenticators of "
+"selected type when authenticating and user can only register authenticators "
+"of selected type."
+msgstr ""
+"Bir tür seçilirse, tarayıcı kimlik doğrulama sırasında yalnızca seçilen "
+"türdeki kimlik doğrulayıcıları ister ve kullanıcı yalnızca seçilen türdeki "
+"kimlik doğrulayıcıları kaydedebilir."
+
+#: wwa-admin-content.php:174
+msgid "Allow to login without username"
+msgstr "Kullanıcı adı olmadan giriş yapmaya izin ver"
+
+#: wwa-admin-content.php:185
+msgid ""
+"Allow users to register authenticator with usernameless authentication "
+"feature and login without username.<br><strong>User verification will be "
+"enabled automatically when authenticating with usernameless authentication "
+"feature.</strong><br>Some authenticators and some browsers <strong>DO NOT</"
+"strong> support this feature."
+msgstr ""
+"Kullanıcıların, kimlik doğrulayıcısını gereksiz kimlik doğrulama özelliği "
+"ile kaydetmesine ve kullanıcı adı olmadan oturum açmasına izin verin. <br> "
+"<strong> Kullanılmayan kimlik doğrulama özelliği ile kimlik doğrulaması "
+"yapılırken kullanıcı doğrulama otomatik olarak etkinleştirilecektir. </"
+"strong> <br> Bazı kimlik doğrulayıcılar ve bazı tarayıcılar bu özelliği "
+"desteklemeyebilir."
+
+#: wwa-admin-content.php:190
+msgid "Logging"
+msgstr "Günlük tutuluyor"
+
+#: wwa-admin-content.php:202
+msgid "Clear log"
+msgstr "Günlüğü temizle"
+
+#: wwa-admin-content.php:204
+msgid ""
+"For debugging only. Enable only when needed.<br><strong>Note: Logs may "
+"contain sensitive information.</strong>"
+msgstr ""
+"Yalnızca hata ayıklama için. Yalnızca gerektiğinde etkinleştirin. "
+"<br><strong>Not: Günlükler hassas bilgiler içerebilir.</strong>"
+
+#: wwa-admin-content.php:213
+msgid "Log"
+msgstr "Günlük"
+
+#: wwa-admin-content.php:215
+msgid "Automatic update every 5 seconds."
+msgstr "Her 5 saniyede bir otomatik güncelleme."
+
+#: wwa-admin-content.php:219
+msgid ""
+"To register a new authenticator or edit your authenticators, please go to <a "
+"href=\"%s#wwa-webauthn-start\">your profile</a>."
+msgstr ""
+"Yeni bir kimlik doğrulayıcı kaydettirmek veya kimlik doğrulayıcılarınızı "
+"düzenlemek için lütfen <a href=\"%s#wwa-webauthn-start\"> profilinize </a> "
+"gidin."
+
+#: wwa-functions.php:148 wwa-shortcodes.php:88
+msgid "Auth"
+msgstr "Yetkilendirme"
+
+#: wwa-functions.php:149 wwa-shortcodes.php:11 wwa-shortcodes.php:85
+#: wwa-shortcodes.php:88
+msgid "Authenticate with WebAuthn"
+msgstr "WebAuthn ile kimlik doğrulama"
+
+#: wwa-functions.php:150 wwa-shortcodes.php:12
+msgid "Hold on..."
+msgstr "Bekle..."
+
+#: wwa-functions.php:151 wwa-shortcodes.php:13
+msgid "Please proceed..."
+msgstr "Lütfen devam edin..."
+
+#: wwa-functions.php:152 wwa-shortcodes.php:14
+msgid "Authenticating..."
+msgstr "Kimlik doğrulanıyor..."
+
+#: wwa-functions.php:153 wwa-shortcodes.php:15
+msgid "Authenticated"
+msgstr "Kimliği doğrulandı"
+
+#: wwa-functions.php:154 wwa-shortcodes.php:16
+msgid "Auth failed"
+msgstr "Yetkilendirme başarısız oldu"
+
+#: wwa-functions.php:155
+msgid ""
+"It looks like your browser doesn't support WebAuthn, which means you may "
+"unable to login."
+msgstr ""
+"Görünüşe göre tarayıcınız WebAuthn'u desteklemiyor, bu da oturum "
+"açamayabileceğiniz anlamına geliyor."
+
+#: wwa-functions.php:156 wwa-shortcodes.php:88
+msgid "Username"
+msgstr "Kullanıcı adı"
+
+#: wwa-functions.php:158
+msgid "<strong>Error</strong>: The username field is empty."
+msgstr "<strong>Hata</strong>: Kullanıcı adı alanı boş."
+
+#: wwa-functions.php:159 wwa-shortcodes.php:42
+msgid "Try to enter the username"
+msgstr "Kullanıcı adını girmeyi deneyin"
+
+#: wwa-functions.php:176
+msgid "Logging in with password has been disabled by the site manager."
+msgstr "Şifre ile oturum açma site yöneticisi tarafından devre dışı bırakıldı."
+
+#: wwa-functions.php:182
+msgid "Logging in with password has been disabled for this account."
+msgstr "Bu hesap için şifre ile giriş devre dışı bırakıldı."
+
+#: wwa-functions.php:220
+msgid ""
+"Logging in with password has been disabled for %s but you haven't register "
+"any WebAuthn authenticator yet. You may unable to login again once you log "
+"out. <a href=\"%s#wwa-webauthn-start\">Register</a>"
+msgstr ""
+"Parola ile oturum açma %s için devre dışı bırakıldı, ancak henüz herhangi "
+"bir WebAuthn doğrulayıcısı kaydetmediniz. Oturumu kapattıktan sonra tekrar "
+"oturum açamayabilirsiniz. <a href=\"%s#wwa-webauthn-start\"> Kaydolun </a>"
+
+#: wwa-functions.php:220 wwa-functions.php:265
+msgid "the site"
+msgstr "site"
+
+#: wwa-functions.php:220
+msgid "your account"
+msgstr "hesabınız"
+
+#: wwa-functions.php:265
+msgid ""
+"Logging in with password has been disabled for %s but <strong>this account</"
+"strong> haven't register any WebAuthn authenticator yet. This user may "
+"unable to login."
+msgstr ""
+"Şifre ile giriş %s için devre dışı bırakıldı, ancak <strong>bu hesap</"
+"strong> henüz herhangi bir WebAuthn doğrulayıcısı kaydetmedi. Bu kullanıcı "
+"giriş yapamayabilir."
+
+#: wwa-functions.php:265
+msgid "this account"
+msgstr "bu hesap"
+
+#: wwa-functions.php:293
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: wwa-functions.php:301
+msgid "GitHub"
+msgstr "GitHub"
+
+#: wwa-functions.php:302
+msgid "Documentation"
+msgstr "Dokümantasyon"
+
+#: wwa-profile-content.php:7
+msgid "Initializing..."
+msgstr "Başlatılıyor..."
+
+#: wwa-profile-content.php:8 wwa-shortcodes.php:37
+msgid "Please follow instructions to finish registration..."
+msgstr "Kaydı tamamlamak için lütfen talimatları izleyin..."
+
+#: wwa-profile-content.php:9 wwa-shortcodes.php:38
+msgctxt "action"
+msgid "Registered"
+msgstr "Kayıtlı"
+
+#: wwa-profile-content.php:10 wwa-shortcodes.php:39
+msgid "Registration failed"
+msgstr "Kayıt başarısız"
+
+#: wwa-profile-content.php:11 wwa-shortcodes.php:40
+msgid "Your browser does not support WebAuthn"
+msgstr "Tarayıcınız WebAuthn'u desteklemiyor"
+
+#: wwa-profile-content.php:12 wwa-shortcodes.php:41
+msgid "Registrating..."
+msgstr "Kaydediliyor..."
+
+#: wwa-profile-content.php:13 wwa-shortcodes.php:21
+msgid "Please enter the authenticator identifier"
+msgstr "Lütfen kimlik doğrulayıcı tanımlayıcıyı girin"
+
+#: wwa-profile-content.php:14 wwa-shortcodes.php:26
+msgid "Loading failed, maybe try refreshing?"
+msgstr "Yükleme başarısız oldu, belki yenilemeyi deneyin?"
+
+#: wwa-profile-content.php:16 wwa-shortcodes.php:34
+msgid "Platform authenticator"
+msgstr "Platform doğrulayıcı"
+
+#: wwa-profile-content.php:17 wwa-shortcodes.php:35
+msgid "Roaming authenticator"
+msgstr "Mobil kimlik doğrulayıcı"
+
+#: wwa-profile-content.php:18 wwa-shortcodes.php:36
+msgid "Remove"
+msgstr "Kaldırmak"
+
+#: wwa-profile-content.php:19 wwa-shortcodes.php:22
+msgid "Please follow instructions to finish verification..."
+msgstr "Doğrulamayı tamamlamak için lütfen talimatları izleyin..."
+
+#: wwa-profile-content.php:20 wwa-shortcodes.php:23
+msgid "Verifying..."
+msgstr "Doğrulanıyor..."
+
+#: wwa-profile-content.php:21 wwa-shortcodes.php:24
+msgid "Verification failed"
+msgstr "Doğrulama başarısız oldu"
+
+#: wwa-profile-content.php:22 wwa-shortcodes.php:25
+msgid "Verification passed! You can now log in through WebAuthn"
+msgstr "Doğrulama geçti! Artık WebAuthn aracılığıyla giriş yapabilirsiniz"
+
+#: wwa-profile-content.php:23 wwa-shortcodes.php:32
+msgid "No registered authenticators"
+msgstr "Kayıtlı kimlik doğrulayıcı yok"
+
+#: wwa-profile-content.php:24 wwa-shortcodes.php:27
+msgid "Confirm removal of authenticator: "
+msgstr "Kimlik doğrulayıcının kaldırılmasını onaylayın: "
+
+#: wwa-profile-content.php:25 wwa-shortcodes.php:28
+msgid "Removing..."
+msgstr "Kaldırılıyor..."
+
+#: wwa-profile-content.php:26 wwa-shortcodes.php:29
+msgid "Rename"
+msgstr "Yeniden adlandır"
+
+#: wwa-profile-content.php:27 wwa-shortcodes.php:30
+msgid "Rename the authenticator"
+msgstr "Doğrulayıcıyı yeniden adlandır"
+
+#: wwa-profile-content.php:28 wwa-shortcodes.php:31
+msgid "Renaming..."
+msgstr "Yeniden adlandırılıyor..."
+
+#: wwa-profile-content.php:29 wwa-shortcodes.php:10
+msgid "Ready"
+msgstr "Hazır"
+
+#: wwa-profile-content.php:30 wwa-shortcodes.php:17
+msgid "No"
+msgstr "Hayır"
+
+#: wwa-profile-content.php:31 wwa-shortcodes.php:18
+msgid " (Unavailable)"
+msgstr " (Kullanılamaz)"
+
+#: wwa-profile-content.php:32 wwa-shortcodes.php:19
+msgid "The site administrator has disabled usernameless login feature."
+msgstr "Site yöneticisi, gereksiz oturum açma özelliğini devre dışı bıraktı."
+
+#: wwa-profile-content.php:33 wwa-shortcodes.php:43
+msgid ""
+"After removing this authenticator, you will not be able to login with "
+"WebAuthn"
+msgstr ""
+"Bu doğrulayıcıyı kaldırdıktan sonra, WebAuthn ile oturum açamayacaksınız"
+
+#: wwa-profile-content.php:34 wwa-shortcodes.php:44
+msgid " (Disabled)"
+msgstr " (Devredışı)"
+
+#: wwa-profile-content.php:35 wwa-shortcodes.php:45
+msgid "The site administrator only allow platform authenticators currently."
+msgstr ""
+"Site yöneticisi şu anda yalnızca platform kimlik doğrulayıcılarına izin "
+"veriyor."
+
+#: wwa-profile-content.php:36 wwa-shortcodes.php:46
+msgid "The site administrator only allow roaming authenticators currently."
+msgstr ""
+"Site yöneticisi şu anda yalnızca mobil kimlik doğrulayıcılarına izin veriyor."
+
+#: wwa-profile-content.php:50
+msgid ""
+"This site is not correctly configured to use WebAuthn. Please contact the "
+"site administrator."
+msgstr ""
+"Bu site, WebAuthn kullanmak için doğru şekilde yapılandırılmamış. Lütfen "
+"site yöneticisiyle iletişime geçin."
+
+#: wwa-profile-content.php:60
+msgid "Disable password login for this account"
+msgstr "Bu hesap için şifre girişini devre dışı bırakın"
+
+#: wwa-profile-content.php:62
+msgid ""
+"When checked, password login will be completely disabled. Please make sure "
+"your browser supports WebAuthn and you have a registered authenticator, "
+"otherwise you may unable to login."
+msgstr ""
+"İşaretlendiğinde, şifre girişi tamamen devre dışı bırakılacaktır. Lütfen "
+"tarayıcınızın WebAuthn'u desteklediğinden ve kayıtlı bir kimlik "
+"doğrulayıcınız olduğundan emin olun, aksi takdirde oturum açamayabilirsiniz."
+
+#: wwa-profile-content.php:62
+msgid "The site administrator has disabled password login for the whole site."
+msgstr "Site yöneticisi tüm site için şifre girişini devre dışı bıraktı."
+
+#: wwa-profile-content.php:66
+msgid "Registered WebAuthn Authenticators"
+msgstr "Kayıtlı WebAuthn Kimlik Doğrulayıcıları"
+
+#: wwa-profile-content.php:71 wwa-profile-content.php:86 wwa-shortcodes.php:156
+#: wwa-shortcodes.php:158
+msgid "Identifier"
+msgstr "Tanımlayıcı"
+
+#: wwa-profile-content.php:72 wwa-profile-content.php:87 wwa-shortcodes.php:156
+#: wwa-shortcodes.php:158
+msgid "Type"
+msgstr "Tip"
+
+#: wwa-profile-content.php:73 wwa-profile-content.php:88 wwa-shortcodes.php:156
+#: wwa-shortcodes.php:158
+msgctxt "time"
+msgid "Registered"
+msgstr "Kayıtlı"
+
+#: wwa-profile-content.php:74 wwa-profile-content.php:89
+msgid "Last used"
+msgstr "Son kullanım"
+
+#: wwa-profile-content.php:75 wwa-profile-content.php:90 wwa-shortcodes.php:156
+#: wwa-shortcodes.php:158
+msgid "Usernameless"
+msgstr "Kullanıcı adsız"
+
+#: wwa-profile-content.php:76 wwa-profile-content.php:91 wwa-shortcodes.php:156
+#: wwa-shortcodes.php:158
+msgid "Action"
+msgstr "Eylem"
+
+#: wwa-profile-content.php:81 wwa-shortcodes.php:157
+msgid "Loading..."
+msgstr "Yükleniyor..."
+
+#: wwa-profile-content.php:98 wwa-profile-content.php:101
+msgid "Register New Authenticator"
+msgstr "Yeni Kimlik Doğrulayıcıyı Kaydet"
+
+#: wwa-profile-content.php:98 wwa-profile-content.php:142
+msgid "Verify Authenticator"
+msgstr "Kimlik Doğrulayıcıyı Doğrula"
+
+#: wwa-profile-content.php:102
+msgid ""
+"You are about to associate an authenticator with the current account <strong>"
+"%s</strong>.<br>You can register multiple authenticators for an account."
+msgstr ""
+"Bir doğrulayıcıyı geçerli hesapla <strong>%s</strong> ilişkilendirmek "
+"üzeresiniz. <br> Bir hesap için birden fazla doğrulayıcı kaydedebilirsiniz."
+
+#: wwa-profile-content.php:105 wwa-shortcodes.php:118
+msgid "Type of authenticator"
+msgstr "Doğrulayıcı türü"
+
+#: wwa-profile-content.php:115 wwa-shortcodes.php:118
+msgid ""
+"If a type is selected, the browser will only prompt for authenticators of "
+"selected type. <br> Regardless of the type, you can only log in with the "
+"very same authenticators you've registered."
+msgstr ""
+"Bir tür seçilirse, tarayıcı yalnızca seçilen türdeki doğrulayıcıları "
+"soracaktır. <br> Türüne bakılmaksızın, yalnızca kaydettiğiniz kimlik "
+"doğrulayıcılarla giriş yapabilirsiniz."
+
+#: wwa-profile-content.php:119
+msgid "Authenticator Identifier"
+msgstr "Kimlik Doğrulayıcı Tanımlayıcı"
+
+#: wwa-profile-content.php:122 wwa-shortcodes.php:118
+msgid ""
+"An easily identifiable name for the authenticator. <strong>DOES NOT</strong> "
+"affect the authentication process in anyway."
+msgstr ""
+"Kimlik doğrulayıcı için kolayca tanımlanabilen bir ad. Kimlik doğrulama "
+"sürecini hiçbir şekilde <strong>ETKİLEMEZ</strong>."
+
+#: wwa-profile-content.php:127 wwa-shortcodes.php:118
+msgid "Login without username"
+msgstr "Kullanıcı adı olmadan giriş yap"
+
+#: wwa-profile-content.php:132 wwa-shortcodes.php:118
+msgid ""
+"If registered authenticator with this feature, you can login without enter "
+"your username.<br>Some authenticators like U2F-only authenticators and some "
+"browsers <strong>DO NOT</strong> support this feature.<br>A record will be "
+"stored in the authenticator permanently untill you reset it."
+msgstr ""
+"Kimlik doğrulayıcısı bu özellikle kaydolduysa, kullanıcı adınızı girmeden "
+"oturum açabilirsiniz. <br> Yalnızca U2F kimlik doğrulayıcıları gibi bazı "
+"kimlik doğrulayıcılar ve bazı tarayıcılar bu özelliği <strong>DESTEKLEMEZ</"
+"strong>. <br> Kayıtlar kimlik doğrulayıcısında siz sıfırlayana kadar kalıcı "
+"olarak duracak."
+
+#: wwa-profile-content.php:138
+msgid "Start Registration"
+msgstr "Kaydı Başlat"
+
+#: wwa-profile-content.php:143
+msgid ""
+"Click Test Login to verify that the registered authenticators are working."
+msgstr ""
+"Kayıtlı kimlik doğrulayıcıların çalıştığını doğrulamak için Oturum Açmayı "
+"Test Et'e tıklayın."
+
+#: wwa-profile-content.php:144 wwa-shortcodes.php:144
+msgid "Test Login"
+msgstr "Test Girişi"
+
+#: wwa-profile-content.php:146 wwa-shortcodes.php:144
+msgid "Test Login (usernameless)"
+msgstr "Test Girişi (kullanıcı adsız)"
+
+#: wwa-shortcodes.php:20
+msgid "Error: The username field is empty."
+msgstr "Hata: Kullanıcı adı alanı boş."
+
+#: wwa-shortcodes.php:88
+msgid "Authenticate with password"
+msgstr "Parola ile doğrulayın"
+
+#: wwa-shortcodes.php:105 wwa-shortcodes.php:133 wwa-shortcodes.php:166
+msgid "You haven't logged in yet."
+msgstr "Henüz giriş yapmadınız."
+
+#: wwa-shortcodes.php:118
+msgid "Authenticator identifier"
+msgstr "Kimlik doğrulayıcı tanımlayıcı"
+
+#: wwa-shortcodes.php:118
+msgid "Start registration"
+msgstr "Kaydı başlat"

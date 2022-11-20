@@ -120,7 +120,7 @@ yarn run dev:main
 
 ## WordPress App
 
-This project is wrapped up in a Docker container built based on the official WordPress Docker image: [wordpress:php7.4-apache](https://hub.docker.com/layers/library/wordpress/php7.4-apache/images/sha256-d6afa3d31c57cea278f30aecdab123611f0fc2672f3dc167e8fd3116c0b0af5e).
+This project is wrapped up in a Docker container built based on the official WordPress Docker image: [wordpress:php8.0-apache](https://hub.docker.com/layers/library/wordpress/php8.0-apache/images/sha256-121ce32b1837fa372989ae498eee6c7ff49e022715e035e00d65c8d07592a5d9).
 
 <br/>
 
@@ -159,9 +159,11 @@ Optionally, `WORDPRESS_CONFIG_EXTRA` can be set to include other configurations:
   - `define("MYSQL_CLIENT_FLAGS", MYSQLI_CLIENT_SSL);`
 - Turn Off PHP Warnings & Notices:
   - `ini_set("error_reporting", E_ALL & ~E_NOTICE);`
+  - `ini_set("display_errors","Off")`
 - Redis Object Cache:
   - `define("WP_REDIS_HOST", "redis_database_host");`
   - `define("WP_REDIS_PASSWORD", "redis_database_pwd");"`
+  - `define("WP_REDIS_PORT", "redis_database_port")`
 
 <br/>
 

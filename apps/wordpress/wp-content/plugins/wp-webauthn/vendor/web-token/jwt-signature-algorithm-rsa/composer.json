@@ -1,0 +1,31 @@
+{
+    "name": "web-token/jwt-signature-algorithm-rsa",
+    "description": "RSA Based Signature Algorithms the JWT Framework.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["JWS", "JWT", "JWE", "JWA", "JWK", "JWKSet", "Jot", "Jose", "RFC7515", "RFC7516", "RFC7517", "RFC7518", "RFC7519", "RFC7520", "Bundle", "Symfony"],
+    "homepage": "https://github.com/web-token",
+    "authors": [
+        {
+            "name": "Florent Morselli",
+            "homepage": "https://github.com/Spomky"
+        },{
+            "name": "All contributors",
+            "homepage": "https://github.com/web-token/jwt-framework/contributors"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Jose\\Component\\Signature\\Algorithm\\":  ""
+        }
+    },
+    "require": {
+        "brick/math": "^0.8.17|^0.9",
+        "ext-openssl": "*",
+        "web-token/jwt-signature": "^2.1"
+    },
+    "suggest": {
+        "ext-gmp": "GMP or BCMath is highly recommended to improve the library performance",
+        "ext-bcmath": "GMP or BCMath is highly recommended to improve the library performance"
+    }
+}

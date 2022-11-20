@@ -168,3 +168,5 @@ apps/wordpress/wp-content/uploads/
 
 # htaccess
 apps/wordpress/.htaccess
+
+dev.sh

@@ -392,7 +392,7 @@ class GHF_Markdown_Parser extends MarkdownExtra_Parser {
 		$classname =& $matches[2];
 		$codeblock = preg_replace_callback('/^\n+/', array( $this, '_doFencedCodeBlocks_newlines' ), $matches[4] );
 
-		if ( $classname{0} == '.' )
+		if ( $classname[0] == '.' )
 			$classname = substr( $classname, 1 );
 
 		$codeblock = esc_html( $codeblock );

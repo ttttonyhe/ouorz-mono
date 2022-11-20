@@ -1,10 +1,8 @@
 <?php
-require get_template_directory() . '/inc/setting.php';
-//setting
-require get_template_directory() . '/inc/views.php';
 //views
-require get_template_directory() . '/inc/rewrite.php';
+require get_template_directory() . '/inc/views.php';
 //页面伪静态
+require get_template_directory() . '/inc/rewrite.php';
 
 //文章meta
 
@@ -76,10 +74,9 @@ function lb_time_since($older_date, $comment_date = false) {
 
 //插入文章内链 by suxing
 //添加按钮
-add_action('media_buttons_context', 'mee_insert_post_custom_button');
+add_action('media_buttons', 'mee_insert_post_custom_button');
 function mee_insert_post_custom_button($_var) {
-  $_var .= '<button type="button" id="insert-media-button" class="button insert-post-embed" data-editor="content"><span class="dashicons dashicons-pressthis"></span>插入文章</button><div class="smilies-wrap"></div><script>jQuery(document).ready(function(){jQuery(document).on("click", ".insert-post-embed",function(){var post_id=prompt("输入单个文章ID","");if (post_id!=null && post_id!=""){send_to_editor("[fa_insert_post ids="+ post_id +"]");}return false;});});</script>';
-  return $_var;
+  printf('<button type="button" id="insert-media-button" class="button insert-post-embed" data-editor="content"><span class="dashicons dashicons-pressthis"></span>Insert Post</button><div class="smilies-wrap"></div><script>jQuery(document).ready(function(){jQuery(document).on("click", ".insert-post-embed",function(){prompt("Copy the following shortcode","[fa_insert_post ids=123]")});});</script>');
 }
 //插入文章
 function fa_insert_posts($atts, $content = null) {
