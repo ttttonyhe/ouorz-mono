@@ -119,6 +119,11 @@ yarn run dev:main
 <hr/>
 
 ## WordPress App
+> **Warning**
+> 
+> Running WordPress in a Docker container is extremely slow on lower-spec machines
+> 
+> \>=1 GB of RAM without MySQL 8, or >=2 GB of RAM with MySQL 8 is recommended
 
 This project is wrapped up in a Docker container built based on the official WordPress Docker image: [wordpress:php8.0-apache](https://hub.docker.com/layers/library/wordpress/php8.0-apache/images/sha256-121ce32b1837fa372989ae498eee6c7ff49e022715e035e00d65c8d07592a5d9).
 
