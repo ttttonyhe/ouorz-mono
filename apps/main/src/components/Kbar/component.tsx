@@ -22,14 +22,21 @@ const Kbar = (props: KbarProps) => {
 	const { trackEvent } = useAnalytics()
 
 	// register keybinding that triggers/hides the kbar
-	useHotkeys('ctrl+k, command+k', (e) => {
-		e.preventDefault()
-		dispatch(activateKbar(props.list))
-		trackEvent('activateKbar', 'hotkey')
-	})
+	useHotkeys(
+		'ctrl+k, meta+k',
+		() => {
+			dispatch(activateKbar(props.list))
+			trackEvent('activateKbar', 'hotkey')
+		},
+		{
+			preventDefault: true,
+		},
+		[props]
+	)
 	useHotkeys(
 		'esc',
 		() => {
+			console.log('location:', location)
 			// non-home location, esc to go back to last location
 			if (location.length >= 2) {
 				dispatch(
@@ -44,8 +51,9 @@ const Kbar = (props: KbarProps) => {
 			}
 		},
 		{
-			enableOnTags: ['INPUT'],
-		}
+			enableOnFormTags: ['INPUT'],
+		},
+		[location]
 	)
 
 	// effects on kbar visibility change

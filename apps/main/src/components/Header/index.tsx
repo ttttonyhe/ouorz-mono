@@ -4,7 +4,6 @@ import React, { useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
-import { useRouter as useRouterLegacy } from 'next/router'
 import { useTheme } from 'next-themes'
 import { useDispatch } from '~/hooks'
 import { updateKbarToSearch, activateKbar } from '~/store/kbar/actions'
@@ -16,7 +15,6 @@ import useAnalytics from '~/hooks/analytics'
 const Header = () => {
 	const { setTheme, resolvedTheme } = useTheme()
 	const router = useRouter()
-	const routerLegacy = useRouterLegacy()
 	const pathname = usePathname()
 	const dispatch = useDispatch()
 	const headerRef = useRef<HTMLDivElement>(null)
@@ -86,8 +84,10 @@ const Header = () => {
 			},
 		]
 
+		console.log('pathname:', pathname)
+
 		const rightTabItems = [
-			(pathname || routerLegacy.asPath).split('/').length > 2
+			pathname.split('/').length > 2
 				? {
 						label: 'Home',
 						className: 'hidden lg:block',

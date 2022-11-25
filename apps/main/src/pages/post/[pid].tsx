@@ -18,7 +18,6 @@ import { CardTool } from '~/components/Card/WithImage/tool'
 import trimStr from '~/utilities/trimString'
 import getApi from '~/utilities/api'
 import redirect from 'nextjs-redirect'
-import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 const Redirect = redirect('/404')

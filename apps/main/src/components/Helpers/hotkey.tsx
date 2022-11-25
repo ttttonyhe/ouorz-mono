@@ -8,16 +8,15 @@ import { useHotkeys } from 'react-hotkeys-hook'
  * @param {{ item: KbarListItem }} { item }
  * @return {*}
  */
-const HotkeyHelper = ({ item }: { item: KbarListItem }) => {
+const HotkeyHelper = ({ item }: { item: KbarListItem }): null => {
 	useHotkeys(
 		`shift+${item.shortcut.join('+')}`,
-		(e) => {
-			e.preventDefault()
-			item.action()
-		},
+		() => item.action(),
 		{
-			enableOnTags: ['INPUT'],
-		}
+			enableOnFormTags: ['INPUT'],
+			preventDefault: true,
+		},
+		[item]
 	)
 	// render nothing
 	return null
