@@ -24,7 +24,12 @@ interface Props {
 type NativeAttrs = Omit<React.LabelHTMLAttributes<any>, keyof Props>
 export type LabelProps = Props & NativeAttrs
 
-const Label: React.FC<LabelProps> = ({ type, icon, children, preview }) => {
+const Label: React.FC<LabelProps> = ({
+	type = 'primary',
+	icon = '',
+	children = 'Label',
+	preview = false,
+}) => {
 	switch (type) {
 		case 'sticky':
 			return (
@@ -84,11 +89,5 @@ const Label: React.FC<LabelProps> = ({ type, icon, children, preview }) => {
 	}
 }
 
-Label.defaultProps = {
-	type: 'primary',
-	icon: '',
-	preview: false,
-	children: 'Label',
-}
 Label.displayName = 'Label'
 export default Label

@@ -1,13 +1,14 @@
 'use client'
 
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { usePathname } from 'next/navigation'
-import { Icon } from '@twilight-toolkit/ui'
+import { Button, Icon } from '@twilight-toolkit/ui'
 import { useDispatch, useSelector } from '~/hooks'
 import { deactivateKbar } from '~/store/kbar/actions'
 import { selectKbar } from '~/store/kbar/selectors'
 import smoothScroll from 'smoothscroll-polyfill'
+import { OffsetTransition } from '../Motion'
 
 const themes = ['system', 'dark', 'light']
 const icons = [
@@ -23,6 +24,7 @@ export default function Footer() {
 	const { setTheme, theme, resolvedTheme } = useTheme()
 	const pathname = usePathname()
 	const [mounted, setMounted] = useState(false)
+	const backToTopRef = useRef<HTMLButtonElement>(null)
 
 	useEffect(() => {
 		smoothScroll.polyfill()
@@ -59,28 +61,31 @@ export default function Footer() {
 	return (
 		<footer className="border-gray-200 dark:border-gray-700 dark:bg-gray-800 border-t border-b text-center py-4 bg-white">
 			<div className="fixed bottom-8 left-8 text-gray-500 dark:text-gray-300">
-				<button
+				<Button
 					aria-label="change theme"
 					onClick={() => {
 						setTheme(targetThemes[themes.indexOf(theme)])
 					}}
-					className="w-full p-3 shadow-sm border border-gray-300 dark:border-gray-800 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
+					className="w-full !p-3 shadow-sm border border-gray-300 dark:border-gray-800 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
 				>
 					<span className="w-7 h-7">{icons[themes.indexOf(theme)]}</span>
-				</button>
+				</Button>
 			</div>
 			<div className="fixed bottom-8 right-8 text-gray-500 dark:text-gray-300">
-				<button
-					aria-label="change theme"
-					onClick={() => {
-						window.scrollTo({ top: 0, behavior: 'smooth' })
-					}}
-					className="w-full p-3 shadow-sm border border-gray-300 dark:border-gray-800 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
-				>
-					<span className="w-7 h-7">
-						<Icon name="arrowUp" />
-					</span>
-				</button>
+				<OffsetTransition componentRef={backToTopRef}>
+					<button
+						ref={backToTopRef}
+						aria-label="change theme"
+						onClick={() => {
+							window.scrollTo({ top: 0, behavior: 'smooth' })
+						}}
+						className="effect-pressing w-full p-3 shadow-sm border border-gray-300 dark:border-gray-800 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
+					>
+						<span className="w-7 h-7">
+							<Icon name="arrowUp" />
+						</span>
+					</button>
+				</OffsetTransition>
 			</div>
 			<p className="text-gray-500 text-4 tracking-wide dark:text-gray-400">
 				<a

@@ -5,7 +5,7 @@ import 'react-h5-audio-player/lib/styles.css'
 import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
-import NextNprogress from 'nextjs-progressbar'
+import { ProgressBar } from '~/components/Visual'
 import Script from 'next/script'
 import { ThemeProvider } from 'next-themes'
 import { Provider as ReduxProvider } from 'react-redux'
@@ -34,7 +34,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
 				src="https://analytics.ouorz.com/analytics.js"
 			/>
 			{/* NProgress Loading Progress Bar */}
-			<NextNprogress
+			<ProgressBar
 				color="#d4d4d8"
 				height={2}
 				options={{ showSpinner: false }}

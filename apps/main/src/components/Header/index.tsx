@@ -7,7 +7,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { useDispatch } from '~/hooks'
 import { updateKbarToSearch, activateKbar } from '~/store/kbar/actions'
-import { HeaderTransition, OffsetTransition } from '../Motion'
+import { BoxShadowTransition, OffsetTransition } from '../Motion'
 import Tabs from '../Tabs'
 import Kbar from '../Kbar'
 import useAnalytics from '~/hooks/analytics'
@@ -83,8 +83,6 @@ const Header = () => {
 				),
 			},
 		]
-
-		console.log('pathname:', pathname)
 
 		const rightTabItems = [
 			pathname.split('/').length > 2
@@ -447,9 +445,9 @@ const Header = () => {
 	}
 
 	return (
-		<HeaderTransition componentRef={headerRef}>
+		<BoxShadowTransition componentRef={headerRef}>
 			<HeaderComponent />
-		</HeaderTransition>
+		</BoxShadowTransition>
 	)
 }
 

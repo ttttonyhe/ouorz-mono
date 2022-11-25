@@ -2,7 +2,7 @@ import React from 'react'
 import ScrollWrapper from './scroll'
 
 interface Props {
-	componentRef: React.MutableRefObject<HTMLDivElement>
+	componentRef: React.MutableRefObject<any>
 	children: React.ReactNode
 }
 

@@ -1,4 +1,5 @@
 import GlowingBackground from './glowing'
 import Hover from './hovering'
+import ProgressBar from './progressBar'
 
-export { GlowingBackground, Hover }
+export { GlowingBackground, Hover, ProgressBar }

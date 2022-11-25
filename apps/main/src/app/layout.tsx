@@ -2,9 +2,9 @@
 
 import { ThemeProvider } from 'next-themes'
 import { Provider as ReduxProvider } from 'react-redux'
-import NextNprogress from 'nextjs-progressbar'
 import Script from 'next/script'
 import store from '~/store'
+import { ProgressBar } from '~/components/Visual'
 import Header from '~/components/Header'
 import Footer from '~/components/Footer'
 
@@ -29,7 +29,7 @@ const RootLayout = ({ children }: LayoutProps) => {
 					src="https://analytics.ouorz.com/analytics.js"
 				/>
 				{/* NProgress Loading Progress Bar */}
-				<NextNprogress
+				<ProgressBar
 					color="#d4d4d8"
 					height={2}
 					options={{ showSpinner: false }}

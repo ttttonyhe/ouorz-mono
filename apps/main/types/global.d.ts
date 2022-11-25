@@ -18,6 +18,11 @@ declare global {
 				uuid?: string
 			) => void
 		}
+		// navigation
+		navigation: {
+			addEventListener: any
+			removeEventListener: any
+		}
 	}
 
 	interface WPCate {

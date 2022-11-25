@@ -59,8 +59,8 @@ const Template = ({
 
 const Button: React.FC<ButtonProps> = ({
 	type = 'default',
-	icon,
-	className,
+	icon = '',
+	className = '',
 	children = 'Button',
 	...rest
 }) => {
@@ -116,11 +116,5 @@ const Button: React.FC<ButtonProps> = ({
 	}
 }
 
-Button.defaultProps = {
-	type: 'default',
-	icon: '',
-	className: '',
-	children: 'Button',
-}
 Button.displayName = 'Button'
 export default Button
