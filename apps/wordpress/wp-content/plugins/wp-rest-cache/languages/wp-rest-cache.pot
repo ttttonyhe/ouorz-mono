@@ -1,0 +1,275 @@
+# Copyright (C) 2020 Acato
+# This file is distributed under the same license as the WP REST Cache plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP REST Cache 2020.2.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-rest-cache\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-10-12T14:16:07+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: wp-rest-cache\n"
+
+#. Plugin Name of the plugin
+msgid "WP REST Cache"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.acato.nl"
+msgstr ""
+
+#. Description of the plugin
+msgid "Adds caching to the WP REST API"
+msgstr ""
+
+#. Author of the plugin
+msgid "Acato"
+msgstr ""
+
+#: admin/class-admin.php:121
+msgid "Caches"
+msgstr ""
+
+#: admin/class-admin.php:155
+#: admin/partials/header.php:16
+#: admin/partials/sub-settings.php:17
+msgid "Settings"
+msgstr ""
+
+#: admin/class-admin.php:208
+msgid "Clear REST cache"
+msgstr ""
+
+#. translators: %1$s: source-directory, %2$s: target-directory
+#: admin/class-admin.php:279
+msgid "You are not getting the best caching result! <br/>Please copy %1$s to %2$s"
+msgstr ""
+
+#: admin/class-admin.php:298
+msgid "We have detected you are using external object caching. If you are using Memcache(d) as external object cache, please make sure you visit this plugin's settings page and check the `Using Memcache(d)` checkbox."
+msgstr ""
+
+#: admin/class-admin.php:326
+msgid "Hide this message"
+msgstr ""
+
+#. translators: %s: api-type
+#: admin/includes/class-api-caches-table.php:55
+msgid "Invalid API type: %s"
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:64
+msgid "Endpoint API Cache"
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:65
+#: admin/partials/header.php:18
+msgid "Endpoint API Caches"
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:106
+msgid "No caches available"
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:135
+msgid "Details"
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:145
+#: admin/includes/class-api-caches-table.php:258
+msgid "Flush cache"
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:155
+#: admin/includes/class-api-caches-table.php:259
+msgid "Delete cache record"
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:173
+#: admin/includes/class-api-caches-table.php:174
+#: admin/partials/sub-cache-details.php:64
+#: admin/partials/sub-cache-details.php:65
+msgid "Cache is ready to be served."
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:181
+#: admin/includes/class-api-caches-table.php:182
+#: admin/partials/sub-cache-details.php:72
+#: admin/partials/sub-cache-details.php:73
+#: admin/partials/sub-cache-details.php:99
+msgid "Cache is expired or flushed."
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:220
+#: admin/partials/sub-cache-details.php:33
+msgid "Cache Key"
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:221
+#: admin/partials/sub-cache-details.php:41
+msgid "Request URI"
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:222
+msgid "Request Headers"
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:223
+msgid "Request Method"
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:224
+#: admin/partials/sub-cache-details.php:45
+msgid "Object Type"
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:225
+#: admin/partials/sub-cache-details.php:49
+msgid "Expiration"
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:226
+#: admin/partials/sub-cache-details.php:53
+msgid "# Cache Hits"
+msgstr ""
+
+#: admin/includes/class-api-caches-table.php:227
+#: admin/partials/sub-cache-details.php:57
+msgid "Active"
+msgstr ""
+
+#: admin/partials/caches-table.php:22
+msgid "Search"
+msgstr ""
+
+#: admin/partials/header.php:20
+msgid "Clear Caches"
+msgstr ""
+
+#: admin/partials/sub-cache-details.php:14
+msgid "Cache details"
+msgstr ""
+
+#: admin/partials/sub-cache-details.php:25
+msgid "Cache info"
+msgstr ""
+
+#: admin/partials/sub-cache-details.php:29
+msgid "Sorry the cache could not be found."
+msgstr ""
+
+#: admin/partials/sub-cache-details.php:37
+msgid "Cache Type"
+msgstr ""
+
+#: admin/partials/sub-cache-details.php:86
+msgid "Cached request headers"
+msgstr ""
+
+#: admin/partials/sub-cache-details.php:95
+msgid "Cache data"
+msgstr ""
+
+#: admin/partials/sub-clear-cache.php:52
+msgid "Clear REST Cache"
+msgstr ""
+
+#: admin/partials/sub-clear-cache.php:57
+msgid "Starting..."
+msgstr ""
+
+#: admin/partials/sub-clear-cache.php:77
+msgid "Caches cleared!"
+msgstr ""
+
+#: admin/partials/sub-settings.php:32
+msgid "Cache timeout"
+msgstr ""
+
+#: admin/partials/sub-settings.php:40
+msgid "Minute(s)"
+msgstr ""
+
+#: admin/partials/sub-settings.php:44
+msgid "Hour(s)"
+msgstr ""
+
+#: admin/partials/sub-settings.php:48
+msgid "Day(s)"
+msgstr ""
+
+#: admin/partials/sub-settings.php:52
+msgid "Week(s)"
+msgstr ""
+
+#: admin/partials/sub-settings.php:56
+msgid "Month(s)"
+msgstr ""
+
+#: admin/partials/sub-settings.php:60
+msgid "Year(s)"
+msgstr ""
+
+#: admin/partials/sub-settings.php:64
+msgid "Time until expiration of cache. (Default = 1 year)"
+msgstr ""
+
+#: admin/partials/sub-settings.php:68
+msgid "Global cacheable request headers"
+msgstr ""
+
+#: admin/partials/sub-settings.php:73
+msgid "Which request headers should be cached (and used to distinguish separate caches). This can be a comma separated list of headers. If you want to use headers for only certain REST calls please see the FAQ."
+msgstr ""
+
+#: admin/partials/sub-settings.php:77
+msgid "Enable cache regeneration"
+msgstr ""
+
+#: admin/partials/sub-settings.php:82
+msgid "Will enable a cron that regenerates expired or flushed caches."
+msgstr ""
+
+#: admin/partials/sub-settings.php:86
+msgid "Regeneration interval"
+msgstr ""
+
+#: admin/partials/sub-settings.php:100
+msgid "Max number regenerate caches"
+msgstr ""
+
+#: admin/partials/sub-settings.php:105
+msgid "How many caches should be regenerated at maximum per interval? Increasing this number will increase the load on your server when the regeneration process is running."
+msgstr ""
+
+#: admin/partials/sub-settings.php:113
+msgid "Memcache(d) used"
+msgstr ""
+
+#: admin/partials/sub-settings.php:118
+msgid "Are you using Memcache(d) as external object caching?"
+msgstr ""
+
+#: includes/caching/class-caching.php:268
+msgid "Invalid strictness"
+msgstr ""
+
+#: includes/caching/class-caching.php:656
+#: includes/caching/class-caching.php:930
+msgid "Flushed"
+msgstr ""
+
+#: includes/caching/class-caching.php:658
+#: includes/caching/class-caching.php:932
+msgid "Expired"
+msgstr ""
+
+#: includes/caching/class-caching.php:661
+#: includes/caching/class-caching.php:935
+msgid "Unlimited"
+msgstr ""

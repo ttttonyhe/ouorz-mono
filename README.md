@@ -118,13 +118,71 @@ yarn run dev:main
 ```
 
 <br/>
+<hr/>
 
-### WordPress REST API configurations
+## WordPress App
 
-> **Warning**:
-> May not be up-to-date all the time
+This project is wrapped up in a Docker container built based on the official WordPress Docker image: [wordpress:php8.0-apache](https://hub.docker.com/layers/library/wordpress/php8.0-apache/images/sha256-121ce32b1837fa372989ae498eee6c7ff49e022715e035e00d65c8d07592a5d9).
 
-Copy the codes in `apps/main/src/assets/scripts/vendors/wordpress/functions.php` and add them to your WordPress theme's `functions.php`
+<br/>
+
+### Static Image
+
+Each build outputs a static Docker image (similar to a typical containerized application) which means updating WordPress itself or adding new themes/plugins requires redeployment.
+
+<br/>
+
+### Persistent Storage
+
+All uploads are stored in an external store (Qiniu, similar to AWS S3), therefore `wp-content/uploads` can be treated as temporary data.
+
+<br/>
+
+### Custom Themes
+
+`main` app uses WordPress REST API to fetch data, `wordpress` app functions as a headless CMS. The theme `peg` is used to customize the behaviour of the REST API endpoints, therefore `peg/functions.php` should be the main focus when it comes to the development of `wordpress` app.
+
+<br/>
+
+### Environment Variables
+
+- MySQL Database:
+  - WORDPRESS_DB_HOST
+  - WORDPRESS_DB_NAME
+  - WORDPRESS_DB_PASSWORD
+  - WORDPRESS_DB_USER
+  - WORDPRESS_TABLE_PREFIX
+- Settings:
+  - WORDPRESS_DEBUG
+
+Optionally, `WORDPRESS_CONFIG_EXTRA` can be set to include other configurations:
+
+- MySQL SSL Connection:
+  - `define("MYSQL_CLIENT_FLAGS", MYSQLI_CLIENT_SSL);`
+- Turn Off PHP Warnings & Notices:
+  - `ini_set("error_reporting", E_ALL & ~E_NOTICE);`
+  - `ini_set("display_errors","Off")`
+- Redis Object Cache:
+  - `define("WP_REDIS_HOST", "redis_database_host");`
+  - `define("WP_REDIS_PASSWORD", "redis_database_pwd");"`
+  - `define("WP_REDIS_PORT", "redis_database_port")`
+
+<br/>
+
+### Local Development
+
+```bash
+docker build --tag ouorz-wordpress .
+docker run -p 8080:80 \
+-e WORDPRESS_DB_HOST=[dev_database_host] \
+-e WORDPRESS_DB_USER=[dev_database_user] \
+-e WORDPRESS_DB_PASSWORD=[dev_database_pwd] \
+-e WORDPRESS_DB_NAME=[dev_database_name] \
+-e WORDPRESS_DEBUG=true \
+-e WORDPRESS_CONFIG_EXTRA="define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);" \
+-e WORDPRESS_TABLE_PREFIX=[dev_database_prefix] \
+ouorz-wordpress
+```
 
 <br/>
 <hr/>
@@ -257,6 +315,14 @@ yarn run test:main
 
 ## Deployment
 
+### apps/wordpress
+
+Build then deploy the Docker image via `apps/wordpress/Dockerfile`.
+
+> Note: by default, the image listens on port 80, rather than the more common 8080
+
+<br/>
+
 ### apps/main
 
 This project utilizes a combination of Server-side Rendering (SSR) and (On-demand) Incremental Static Generation (ISG):
@@ -284,6 +350,46 @@ To deploy the storybook, export it as a static web app:
 ```bash
 yarn run build:twilight:ui:storybook
 ```
+
+<br/>
+
+### Deploy with Fly.io
+
+Configuration file `fly.toml` can be found under `apps/wordpress`. Persistent storage should mount to `/var/www/html/wp-content`.
+
+```bash
+fly launch
+
+fly secrets set \
+WORDPRESS_DB_HOST=[dev_database_host] \
+WORDPRESS_DB_USER=[dev_database_user] \
+WORDPRESS_DB_PASSWORD=[dev_database_pwd] \
+WORDPRESS_DB_NAME=[dev_database_name] \
+WORDPRESS_DEBUG=false \
+WORDPRESS_TABLE_PREFIX=[dev_database_prefix] \
+
+fly deploy
+```
+
+Optionally, volumes with the same name can be created in multiple Fly.io regions which allows Fly to run one or more instances of the app in multiple regions:
+
+```bash
+fly volumes create ouorz_wordpress_wp_content --region yyz --size 1 --no-encryption
+fly volumes create ouorz_wordpress_wp_content --region fra --size 1 --no-encryption
+fly volumes create ouorz_wordpress_wp_content --region hkg --size 1 --no-encryption
+```
+
+```bash
+fly scale count 3
+```
+
+Optionally, Fly.io offers full-managed Redis databases which can be created using the following commands:
+
+```bash
+fly redis create
+```
+
+Traffic is automatically routed through a private IPv6 address restricted to your Fly organization.
 
 <br/>
 

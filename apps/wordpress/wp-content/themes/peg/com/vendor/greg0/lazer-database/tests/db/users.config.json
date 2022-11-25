@@ -1,0 +1,1 @@
+{"last_id":4,"schema":{"id":"integer","name":"string","email":"string"},"relations":{"news":{"type":"hasMany","keys":{"local":"id","foreign":"author_id"}},"comments":{"type":"hasMany","keys":{"local":"id","foreign":"author_id"}}}}

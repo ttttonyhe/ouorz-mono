@@ -1,0 +1,62 @@
+[
+    {
+        "name": "greg0/lazer-database",
+        "version": "1.1.9",
+        "version_normalized": "1.1.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Greg0/Lazer-Database.git",
+            "reference": "c6ba14550b2e44f95855f3ab9d71f235033c8bad"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Greg0/Lazer-Database/zipball/c6ba14550b2e44f95855f3ab9d71f235033c8bad",
+            "reference": "c6ba14550b2e44f95855f3ab9d71f235033c8bad",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "php": ">=5.6"
+        },
+        "require-dev": {
+            "mikey179/vfsstream": "~1.6",
+            "phpunit/phpunit": "^5.6"
+        },
+        "time": "2020-02-11T20:24:07+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Lazer\\": "src/",
+                "Lazer\\Test\\": "tests/src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Grzegorz Kuźnik",
+                "email": "gerg0sz92@gmail.com",
+                "role": "Owner"
+            }
+        ],
+        "description": "PHP library to use JSON files like flat-file database",
+        "homepage": "https://github.com/Greg0/Lazer-Database",
+        "keywords": [
+            "Simple",
+            "database",
+            "db",
+            "file",
+            "flat",
+            "json",
+            "lazer"
+        ]
+    }
+]
