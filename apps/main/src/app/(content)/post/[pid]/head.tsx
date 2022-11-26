@@ -1,8 +1,14 @@
+import { redirect } from 'next/navigation'
 import { getPostData, PostProps } from './page'
 import trimStr from '~/utilities/trimString'
 
 const PostHead = async ({ params }: PostProps) => {
 	const post = await getPostData(params.pid)
+
+	if (!post) {
+		return redirect('/404')
+	}
+
 	const title = `${post.title.rendered} - TonyHe`
 
 	return (

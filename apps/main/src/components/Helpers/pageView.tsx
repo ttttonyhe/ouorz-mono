@@ -3,11 +3,11 @@
 import { useEffect } from 'react'
 import getApi from '~/utilities/api'
 
-const PageView = ({ pid }: { pid: string }) => {
+const PageView = ({ id }: { id: string }) => {
 	useEffect(() => {
 		fetch(
 			getApi({
-				visit: parseInt(pid),
+				visit: parseInt(id),
 			})
 		).catch((err) => {
 			console.error(err)

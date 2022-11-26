@@ -17,7 +17,7 @@ export interface PostProps {
 }
 
 /**
- * Get post data for blog post with id `pid`
+ * Get post data for the blog post with id `pid`
  *
  * @param {string} pid
  * @return {*}  {Promise<WPPost>}
@@ -42,7 +42,7 @@ export const getPostData = async (pid: string): Promise<WPPost> => {
  *
  * @return {*}  {Promise<number[]>}
  */
-const getPostIds = async (): Promise<number[]> => {
+const getPostIDs = async (): Promise<number[]> => {
 	const res = await fetch(
 		getApi({
 			postIDs: true,
@@ -53,7 +53,7 @@ const getPostIds = async (): Promise<number[]> => {
 }
 
 export const generateStaticParams = async (): Promise<{ pid: string }[]> => {
-	const postIDs: number[] = await getPostIds()
+	const postIDs: number[] = await getPostIDs()
 	return postIDs.map((id) => ({
 		pid: id.toString(),
 	}))
@@ -64,12 +64,12 @@ const BlogPost = async ({ params }: PostProps) => {
 	const post = await getPostData(pid)
 
 	if (!post) {
-		redirect('/404')
+		return redirect('/404')
 	}
 
 	return (
 		<div>
-			<PageView pid={pid} />
+			<PageView id={pid} />
 			<article
 				data-cy="postContent"
 				className="lg:shadow-sm lg:border lg:rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 p-5 lg:p-20 lg:pt-20 pt-24"
