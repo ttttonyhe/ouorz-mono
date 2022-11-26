@@ -1,3 +1,5 @@
+'use client'
+
 import useDebounce from './useDebounce'
 import { useDispatch, useSelector } from './store'
 import { useBodyPointerEvents, useBodyScroll } from './useBodyEffects'

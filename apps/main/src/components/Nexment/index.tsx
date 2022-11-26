@@ -1,10 +1,12 @@
-import { useRouter } from 'next/router'
+'use client'
+
+import { usePathname } from 'next/navigation'
 import { NexmentContainer } from 'nexment'
 
 const Nexment = () => {
-	const router = useRouter()
+	const pathname = usePathname()
 	const config = {
-		pageKey: router.asPath.split('/')[2].toString(),
+		pageKey: pathname.split('/')[2].toString(),
 		enableLinkInput: true,
 		enableReplyListModal: true,
 		descriptionTag: false,
@@ -49,6 +51,7 @@ const Nexment = () => {
 			},
 		],
 	}
+
 	if (process.env.NEXT_PUBLIC_LC_ID && process.env.NEXT_PUBLIC_LC_KEY) {
 		return <NexmentContainer config={config} />
 	} else {

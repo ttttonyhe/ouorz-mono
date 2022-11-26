@@ -39,6 +39,7 @@ declare global {
 			four: string
 		}
 		post_categories: { term_id: number; name: string }[]
+		post_prenext: string
 		id: string
 		title: {
 			rendered: string
