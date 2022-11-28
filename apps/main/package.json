@@ -58,7 +58,7 @@
     "postcss": "^8.4.18",
     "react-content-loader": "^6.2.0",
     "react-h5-audio-player": "^3.8.6",
-    "react-highlight": "^0.14.0",
+    "react-highlight": "^0.15.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-timeago": "^7.1.0",
     "smoothscroll-polyfill": "^0.4.4",
