@@ -1,7 +1,12 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { NexmentContainer } from 'nexment'
+
+let NexmentContainer = null
+if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
+	const nexment = require('nexment')
+	NexmentContainer = nexment.NexmentContainer
+}
 
 const Nexment = () => {
 	const pathname = usePathname()
@@ -53,7 +58,7 @@ const Nexment = () => {
 	}
 
 	if (process.env.NEXT_PUBLIC_LC_ID && process.env.NEXT_PUBLIC_LC_KEY) {
-		return <NexmentContainer config={config} />
+		return NexmentContainer && <NexmentContainer config={config} />
 	} else {
 		return <></>
 	}

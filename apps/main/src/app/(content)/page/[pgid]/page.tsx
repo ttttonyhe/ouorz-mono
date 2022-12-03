@@ -3,7 +3,7 @@ import TimeAgo from '~/components/TimeAgo'
 import PageView from '~/components/Helpers/pageView'
 import getApi from '~/utilities/api'
 import SubscriptionBox from '~/components/SubscriptionBox'
-// import CommentBox from '~/components/CommentBox'
+import CommentBox from '~/components/CommentBox'
 import PostContent from '~/components/PostContent'
 
 export interface PageProps {
@@ -60,7 +60,7 @@ const BlogPage = async ({ params }: PageProps) => {
 			<div className="mt-5">
 				<SubscriptionBox type="lg" />
 			</div>
-			{/* <CommentBox /> */}
+			<CommentBox />
 		</>
 	)
 }

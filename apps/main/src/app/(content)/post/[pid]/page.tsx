@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import TimeAgo from '~/components/TimeAgo'
 import SubscriptionBox from '~/components/SubscriptionBox'
-// import CommentBox from '~/components/CommentBox'
+import CommentBox from '~/components/CommentBox'
 import PostContent from '~/components/PostContent'
 import { Label } from '@twilight-toolkit/ui'
 import { CardTool } from '~/components/Card/WithImage/tool'
@@ -115,7 +115,7 @@ const BlogPost = async ({ params }: PostProps) => {
 			<div className="lg:mt-5 border-t border-gray-200 lg:border-none">
 				<SubscriptionBox type="lg" />
 			</div>
-			{/* <CommentBox /> */}
+			<CommentBox />
 		</div>
 	)
 }

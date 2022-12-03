@@ -1,8 +1,7 @@
 'use client'
 
 import { Icon } from '@twilight-toolkit/ui'
-import dynamic from 'next/dynamic'
-const Nexment = dynamic(() => import('~/components/Nexment'), { ssr: false })
+import Nexment from '~/components/Nexment'
 
 export default function CommentBox() {
 	return (
