@@ -24,7 +24,7 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 		if (data.creation_date) {
 			setSubscribed(true)
 		} else {
-			alert('An error has occurred, please try again')
+			alert('An error has occurred, please try again.')
 		}
 	}
 
@@ -36,7 +36,7 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 						<span className="w-7 h-7 mr-2">
 							<Icon name="subscribe" />
 						</span>
-						Get post updates straight to your inbox
+						New Article Everytime I Publish
 					</p>
 				</div>
 				<div className="flex justify-end w-full">
@@ -76,7 +76,7 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 						Subscribe
 					</h1>
 					<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 mt-2 mb-5">
-						Get post updates straight to your inbox
+						New Article Everytime I Publish
 					</p>
 				</div>
 				<div className="w-full grid grid-cols-3 gap-5">
