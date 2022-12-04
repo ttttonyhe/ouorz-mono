@@ -69,6 +69,7 @@ export default function Footer() {
 			</div>
 			<div className="fixed bottom-8 right-8 text-gray-500 dark:text-gray-300">
 				<button
+					data-oa="click-backToTop"
 					aria-label="change theme"
 					onClick={() => {
 						window.scrollTo({ top: 0, behavior: 'smooth' })

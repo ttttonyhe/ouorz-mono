@@ -8,6 +8,7 @@ interface Props {
 export default function CardClickable({ stopLoading, setStopLoading }: Props) {
 	return (
 		<div
+			data-oa="click-loadingSwitch"
 			className="hover:shadow-inner cursor-pointer w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6 text-center"
 			onClick={() => {
 				setStopLoading(!stopLoading)

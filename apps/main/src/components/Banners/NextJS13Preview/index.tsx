@@ -42,6 +42,7 @@ const NextJS13Preview = () => {
 						href="https://preview.ouorz.com"
 						target="_blank"
 						rel="noreferrer"
+						data-oa="click-nextjs13Ppreview"
 					>
 						<button className="w-[1.8rem] h-[1.8rem] hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md p-2">
 							<Icon name="right" />

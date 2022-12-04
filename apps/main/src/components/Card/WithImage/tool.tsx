@@ -58,6 +58,7 @@ export const CardTool = ({
 						href={item.post_metas.fineTool.itemLink}
 						target="_blank"
 						rel="noreferrer"
+						data-oa="click-visitTool"
 					>
 						<Label type="green" icon="right" preview={preview}>
 							{item.post_metas.fineTool.itemLinkName}

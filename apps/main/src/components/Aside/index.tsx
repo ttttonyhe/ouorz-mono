@@ -180,6 +180,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 					}}
 					key={item[0]}
 					onClick={() => scrollToHeading(headersEl[item[0]])}
+					data-oa="click-tocItem"
 				>
 					{recursionTimes > 0 ? (
 						<SubItem
