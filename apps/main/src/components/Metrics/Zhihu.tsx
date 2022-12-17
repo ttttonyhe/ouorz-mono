@@ -13,7 +13,7 @@ export default function ZhihuMetric() {
 		<MetricCard
 			icon="thumbDown"
 			value={followers}
-			footer="Zhihu Followers"
+			description="Zhihu Followers"
 			link={link}
 			colorHex="#9CA3AF"
 		/>

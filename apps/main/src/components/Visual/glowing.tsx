@@ -1,8 +1,11 @@
 import styled from 'styled-components'
 import { useTheme } from 'next-themes'
 
-// styled component props
-type GlowingDivBackgroundProps = {
+interface GlowingBackgroundProps {
+	rounded?: 'sm' | 'md' | 'xl'
+}
+
+interface GlowingDivBackgroundProps extends GlowingBackgroundProps {
 	resolvedTheme: string
 }
 
@@ -13,12 +16,24 @@ const background = (props: GlowingDivBackgroundProps) => {
 		`radial-gradient(200px circle at var(--x-px) var(--y-px), rgba(255, 255, 255, 0.1), transparent)`
 	)
 }
+
 const backgroundColor = (props: GlowingDivBackgroundProps) => {
 	return props.resolvedTheme === 'dark' && 'rgb(38,38,38)'
 }
 
+const borderRadius = (props: GlowingDivBackgroundProps) => {
+	switch (props.rounded) {
+		case 'sm':
+			return '0.125rem'
+		case 'md':
+			return '0.375rem'
+		case 'xl':
+			return '0.75rem'
+	}
+}
+
 const GlowingDivBackground = styled.div`
-	border-radius: 0.375rem;
+	border-radius: ${borderRadius};
 	pointer-events: none;
 	user-select: none;
 	position: absolute;
@@ -34,10 +49,16 @@ const GlowingDivBackground = styled.div`
 	transition: opacity 400ms ease 0s;
 `
 
-const GlowingBackground = () => {
+const GlowingBackground = ({ rounded }: GlowingBackgroundProps) => {
 	// FIXME: useTheme is not working with styled-components in SSR mode
 	const { resolvedTheme } = useTheme()
-	return <GlowingDivBackground resolvedTheme={resolvedTheme || 'dark'} />
+
+	return (
+		<GlowingDivBackground
+			rounded={rounded || 'md'}
+			resolvedTheme={resolvedTheme || 'dark'}
+		/>
+	)
 }
 
 export default GlowingBackground

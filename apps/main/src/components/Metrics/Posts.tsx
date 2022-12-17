@@ -13,7 +13,7 @@ export default function PostsMetric() {
 		<MetricCard
 			icon="eye"
 			value={views}
-			footer="Blog Post Views"
+			description="Blog Post Views"
 			link={link}
 			colorHex="#F59E0B"
 		/>

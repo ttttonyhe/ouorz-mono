@@ -11,7 +11,6 @@ import NexmentMetric from '~/components/Metrics/Nexment'
 import SspaiMetric from '~/components/Metrics/Sspai'
 import TwitterMetric from '~/components/Metrics/Twitter'
 // import ZhihuMetric from '~/components/Metrics/Zhihu'
-// import JMSMetric from '~/components/Metrics/JMS'
 
 const Dashboard: NextPageWithLayout = () => {
 	return (
@@ -48,9 +47,19 @@ const Dashboard: NextPageWithLayout = () => {
 						</div>
 					</div>
 				</div>
-				<div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
+				<div className="border shadow-sm w-full py-4 px-4.5 flex rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
 					<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
-						Personal dashboard to track metrics across various platforms
+						Personal dashboard tracking various metrics of this website, and
+						across platforms like Twitter, GitHub, and more. Inspired by{' '}
+						<a
+							className="text-gray-700 dark:text-gray-200 font-medium"
+							href="https://leerob.io/dashboard"
+							target="_blank"
+							rel="noreferrer"
+						>
+							Lee Robinson →
+						</a>
+						.
 					</p>
 				</div>
 			</div>
@@ -58,14 +67,31 @@ const Dashboard: NextPageWithLayout = () => {
 				className="glowing-area mt-5 mb-10 grid lg:grid-cols-2 gap-4"
 				data-cy="metricCards"
 			>
-				<NexmentMetric />
 				<TwitterMetric />
 				<SspaiMetric />
-				<PostsMetric />
 				<GithubStarMetric />
 				<GithubFollowerMetric />
-				{/* <ZhihuMetric />
-					<JMSMetric /> */}
+			</div>
+			<div className="border shadow-sm w-full py-4 px-4.5 flex rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
+				<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
+					For detailed data analytics, see:{' '}
+					<a
+						className="text-gray-700 dark:text-gray-200 font-medium"
+						href="https://analytics.ouorz.com/share/E4O9QpCn/ouorz-next"
+						target="_blank"
+						rel="noreferrer"
+					>
+						ouorz-analytics →
+					</a>
+				</p>
+			</div>
+			<div
+				className="glowing-area mt-5 mb-10 grid lg:grid-cols-2 gap-4"
+				data-cy="metricCards"
+			>
+				<NexmentMetric />
+				<PostsMetric />
+				{/* <ZhihuMetric /> */}
 			</div>
 		</div>
 	)

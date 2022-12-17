@@ -13,7 +13,7 @@ export default function SspaiMetric() {
 		<MetricCard
 			icon="flag"
 			value={followers}
-			footer="SSPAI Followers"
+			description="SSPAI Followers"
 			link={link}
 			colorHex="#da282b"
 		/>

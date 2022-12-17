@@ -11,11 +11,11 @@ export default function GithubFollowerMetric() {
 
 	return (
 		<MetricCard
-			icon="users"
+			icon="github"
 			value={followers}
-			footer="Github Followers"
+			description="Github Followers"
 			link={link}
-			colorHex="#9CA3AF"
+			colorHex="#333333"
 		/>
 	)
 }

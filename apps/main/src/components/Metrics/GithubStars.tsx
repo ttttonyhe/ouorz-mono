@@ -13,7 +13,7 @@ export default function GithubStarMetric() {
 		<MetricCard
 			icon="star"
 			value={stars}
-			footer="Github Stars"
+			description="Github Stars"
 			link={link}
 			colorHex="#9CA3AF"
 		/>

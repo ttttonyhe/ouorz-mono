@@ -11,9 +11,9 @@ export default function TwitterMetric() {
 
 	return (
 		<MetricCard
-			icon="userAdd"
+			icon="twitter"
 			value={followers}
-			footer="Twitter Followers"
+			description="Twitter Followers"
 			link={link}
 			colorHex="#3ba2f2"
 		/>

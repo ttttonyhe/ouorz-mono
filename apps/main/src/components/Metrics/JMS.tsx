@@ -13,8 +13,8 @@ export default function JMSMetric() {
 		<MetricCard
 			icon="plane"
 			value={used}
-			subValue={total}
-			footer="Just My Socks"
+			denominator={total}
+			description="Just My Socks"
 			link={link}
 			colorHex="#9CA3AF"
 		/>
