@@ -5,7 +5,7 @@ type ResDataType = {
 	stars: number
 }
 
-const handler = async (
+const github = async (
 	_req: NextApiRequest,
 	res: NextApiResponse<ResDataType>
 ) => {
@@ -50,4 +50,4 @@ const handler = async (
 	})
 }
 
-export default handler
+export default github

@@ -30,10 +30,7 @@ export type ResDataType = {
 	sol: SolNFT[]
 }
 
-const handler = async (
-	_req: NextApiRequest,
-	res: NextApiResponse<ResDataType>
-) => {
+const nft = async (_req: NextApiRequest, res: NextApiResponse<ResDataType>) => {
 	// Fetch ETH NFTs
 	const ethData = await fetch(
 		`${process.env.ALCHEMY_API_PATH}/getNFTs?owner=0x2650f08Da54F7019f9a3306bad0dfc8474644eAD`,
@@ -97,4 +94,4 @@ const handler = async (
 	})
 }
 
-export default handler
+export default nft

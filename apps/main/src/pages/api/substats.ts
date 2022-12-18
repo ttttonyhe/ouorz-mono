@@ -6,7 +6,7 @@ type ResDataType = {
 	zhihuFollowers: number
 }
 
-const handler = async (
+const substats = async (
 	_req: NextApiRequest,
 	res: NextApiResponse<ResDataType>
 ) => {
@@ -28,4 +28,4 @@ const handler = async (
 	})
 }
 
-export default handler
+export default substats

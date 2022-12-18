@@ -14,7 +14,7 @@ export default function NexmentMetric() {
 		<MetricCard
 			icon="chat"
 			value={count}
-			description="Blog Comments"
+			description="All-Time Comments"
 			link={link}
 			colorHex="#10B981"
 		/>

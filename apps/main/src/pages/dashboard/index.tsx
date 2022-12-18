@@ -10,6 +10,7 @@ import PostsMetric from '~/components/Metrics/Posts'
 import NexmentMetric from '~/components/Metrics/Nexment'
 import SspaiMetric from '~/components/Metrics/Sspai'
 import TwitterMetric from '~/components/Metrics/Twitter'
+import PageViewsMetric from '~/components/Metrics/PageViews'
 // import ZhihuMetric from '~/components/Metrics/Zhihu'
 
 const Dashboard: NextPageWithLayout = () => {
@@ -91,6 +92,7 @@ const Dashboard: NextPageWithLayout = () => {
 			>
 				<NexmentMetric />
 				<PostsMetric />
+				<PageViewsMetric />
 				{/* <ZhihuMetric /> */}
 			</div>
 		</div>

@@ -5,7 +5,7 @@ type ResDataType = {
 	count: number
 }
 
-const handler = async (
+const posts = async (
 	_req: NextApiRequest,
 	res: NextApiResponse<ResDataType>
 ) => {
@@ -26,4 +26,4 @@ const handler = async (
 	})
 }
 
-export default handler
+export default posts

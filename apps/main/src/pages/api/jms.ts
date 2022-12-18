@@ -5,10 +5,7 @@ type ResDataType = {
 	used: number
 }
 
-const handler = async (
-	_req: NextApiRequest,
-	res: NextApiResponse<ResDataType>
-) => {
+const jms = async (_req: NextApiRequest, res: NextApiResponse<ResDataType>) => {
 	const response = await fetch(process.env.JMS_API_PATH)
 
 	const data = await response.json()
@@ -24,4 +21,4 @@ const handler = async (
 	})
 }
 
-export default handler
+export default jms

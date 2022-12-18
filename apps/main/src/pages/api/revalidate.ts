@@ -8,7 +8,7 @@ type ResDataType = {
 	message?: string
 }
 
-const handler = async (
+const revalidate = async (
 	req: NextApiRequest,
 	res: NextApiResponse<ResDataType>
 ) => {
@@ -44,4 +44,4 @@ const handler = async (
 	}
 }
 
-export default handler
+export default revalidate
