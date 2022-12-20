@@ -48,7 +48,7 @@ const Dashboard: NextPageWithLayout = () => {
 						</div>
 					</div>
 				</div>
-				<div className="border shadow-sm w-full py-4 px-4.5 flex rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
+				<div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
 					<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
 						Personal dashboard tracking various metrics of this website, and
 						across platforms like Twitter, GitHub, and more. Inspired by{' '}
@@ -73,7 +73,7 @@ const Dashboard: NextPageWithLayout = () => {
 				<GithubStarMetric />
 				<GithubFollowerMetric />
 			</div>
-			<div className="border shadow-sm w-full py-4 px-4.5 flex rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
+			<div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
 				<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
 					For detailed data analytics, see:{' '}
 					<a

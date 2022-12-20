@@ -1,6 +1,5 @@
 import { Icon } from '@twilight-toolkit/ui'
 import Image from 'next/image'
-import blurDataUrl from '~/constants/blurDataUrl'
 
 const NextJS13Preview = () => {
 	return (
@@ -13,8 +12,6 @@ const NextJS13Preview = () => {
 					alt="NextJS"
 					className="dark:border dark:rounded-full"
 					loading="eager"
-					placeholder="blur"
-					blurDataURL={blurDataUrl}
 				/>
 			</div>
 			<div className="flex flex-1 justify-between items-center">
