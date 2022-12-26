@@ -8,8 +8,8 @@ const NextConfigs = {
 	compress: true,
 	experimental: {
 		appDir: true,
-		transpilePackages: ['@twilight-toolkit/ui', '@twilight-toolkit/utils'],
 	},
+	transpilePackages: ['@twilight-toolkit/ui', '@twilight-toolkit/utils'],
 	images: {
 		minimumCacheTTL: 3600,
 		formats: ['image/avif', 'image/webp'],

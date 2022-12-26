@@ -4,8 +4,9 @@ import { usePathname } from 'next/navigation'
 
 let NexmentContainer = null
 if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
-	const nexment = require('nexment')
-	NexmentContainer = nexment.NexmentContainer
+	import('nexment').then((module) => {
+		NexmentContainer = module.NexmentContainer
+	})
 }
 
 const Nexment = () => {
