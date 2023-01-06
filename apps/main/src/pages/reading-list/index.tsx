@@ -45,7 +45,7 @@ const ReadingList: NextPageWithLayout = () => {
 								</span>
 							</h2>
 							<p className="text-sm text-neutral-500 dark:text-gray-400 -mt-1">
-								I'm reading or re-reading (on average) a book a week in 2023
+								I{"'"}m reading or re-reading (on average) a book a week in 2023
 							</p>
 						</div>
 					</div>
@@ -76,7 +76,9 @@ const ReadingList: NextPageWithLayout = () => {
 				<div className="mt-4">
 					<div className="grid grid-cols-2 gap-4">
 						{currentlyReading && !currentlyReadingError ? (
-							currentlyReading.books.map((book: Book) => <BookCard {...book} />)
+							currentlyReading.books.map((book: Book) => (
+								<BookCard key={book.title} {...book} />
+							))
 						) : (
 							<>
 								<BookCardLoading uniqueKey="cr-1" />
@@ -99,7 +101,9 @@ const ReadingList: NextPageWithLayout = () => {
 				<div className="mt-4">
 					<div className="grid grid-cols-2 gap-4">
 						{all && !allError ? (
-							all.books.map((book: Book) => <BookCard {...book} />)
+							all.books.map((book: Book) => (
+								<BookCard key={book.title} {...book} />
+							))
 						) : (
 							<>
 								<BookCardLoading uniqueKey="a-1" />

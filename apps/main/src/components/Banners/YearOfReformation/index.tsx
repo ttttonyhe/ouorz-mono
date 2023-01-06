@@ -31,6 +31,7 @@ const YearOfReformation = () => {
 					<a
 						href="https://notion.ouorz.com"
 						target="_blank"
+						rel="noreferrer"
 						className="flex items-center gap-x-[4px] rounded-md shadow-sm border dark:border-gray-600 dark:bg-gray-700 py-1 px-3 font-serif hover:bg-gray-50 dark:hover:bg-gray-600"
 					>
 						<span className="lg:w-[16px] lg:h-[16px] h-4.5 w-4.5">
