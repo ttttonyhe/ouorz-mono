@@ -3,6 +3,7 @@ import { useTheme } from 'next-themes'
 import ContentLoader from 'react-content-loader'
 import openLink from '~/utilities/externalLink'
 import { Book } from '~/pages/api/goodreads'
+import blurDataUrl from '~/constants/blurDataUrl'
 
 const BookCard = (props: Book) => {
 	const { title, author, imageURL, link, dateAdded } = props
@@ -20,6 +21,9 @@ const BookCard = (props: Book) => {
 						src={imageURL}
 						alt={title}
 						className="rounded-md"
+						placeholder="blur"
+						blurDataURL={blurDataUrl}
+						loading="lazy"
 					/>
 				</div>
 				<div className="group-hover:hidden">
