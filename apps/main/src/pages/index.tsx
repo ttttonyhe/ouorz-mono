@@ -7,6 +7,7 @@ import List from '~/components/List'
 import Top from '~/components/Top'
 import getApi from '~/utilities/api'
 import NextJS13Preview from '~/components/Banners/NextJS13Preview'
+import YearOfReformation from '~/components/Banners/YearOfReformation'
 
 interface Props {
 	stickyNotFound: boolean
@@ -60,6 +61,9 @@ const Home: NextPageWithLayout = ({
 			</div>
 			<div className="mt-5">
 				<NextJS13Preview />
+			</div>
+			<div className="mt-5">
+				<YearOfReformation />
 			</div>
 			<div className="mt-5">
 				<List type="index" />

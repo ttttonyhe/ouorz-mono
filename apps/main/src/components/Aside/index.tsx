@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Icon } from '@twilight-toolkit/ui'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -121,7 +121,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 		window.scrollTo({ top: elY, behavior: 'smooth' })
 	}
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		const result = getAllHeaders()
 		const handler = result[1]
 		setHeadersResult(result[0][0])

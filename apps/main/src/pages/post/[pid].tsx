@@ -1,8 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import dynamic from 'next/dynamic'
 import { NextPageWithLayout } from '~/pages/_app'
 import { contentLayout } from '~/components/Content'
-const Aside = dynamic(() => import('~/components/Aside'), { ssr: false })
+import Aside from '~/components/Aside'
 
 // Components
 import Head from 'next/head'
