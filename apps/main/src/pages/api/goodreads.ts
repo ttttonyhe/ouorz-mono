@@ -1,12 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import Parser from 'rss-parser'
 
-type Book = {
+export type Book = {
 	title: string
 	link: string
 	imageURL: string
 	author: string
-	dateAdded: string | Date
+	dateAdded: string
 }
 
 type ReqQueryType = {

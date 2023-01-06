@@ -175,7 +175,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 				<div className="mb-10">
 					<hr className="dark:border-gray-600" />
 				</div>
-				<div className="mb-10">
+				<div className="mb-28">
 					<label className="rounded-tl-xl rounded-tr-xl bg-white dark:bg-gray-700 dark:border-gray-600 shadow-sm border border-gray-300 tracking-wider font-medium pb-1 pt-[4px] px-4 inline-flex items-center">
 						<span className="w-5 h-5 flex mr-1.5 text-pink-500">
 							<Icon name="love" />

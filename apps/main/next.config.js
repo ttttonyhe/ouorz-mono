@@ -10,7 +10,7 @@ const NextConfigs = {
 	images: {
 		minimumCacheTTL: 3600,
 		formats: ['image/avif', 'image/webp'],
-		domains: ['static.ouorz.com', 'storage.snapaper.com'],
+		domains: ['static.ouorz.com', 'storage.snapaper.com', 'i.gr-assets.com'],
 	},
 	compiler: {
 		styledComponents: true,
