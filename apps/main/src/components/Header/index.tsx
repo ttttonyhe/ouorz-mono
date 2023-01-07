@@ -305,6 +305,15 @@ const Header = () => {
 				},
 			},
 			{
+				label: 'Reading List',
+				id: 'reading-list',
+				description: 'Page',
+				icon: 'bookOpen',
+				link: {
+					internal: '/reading-list',
+				},
+			},
+			{
 				label: 'Links',
 				id: 'links-divider',
 				hoverable: false,

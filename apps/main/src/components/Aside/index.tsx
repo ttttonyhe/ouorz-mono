@@ -98,13 +98,13 @@ export default function Aside({ preNext }: { preNext: any }) {
 					lastHeaderOffset = result[1][currentHeaderId - 1]
 					currentHeaderOffset = result[1][currentHeaderId]
 				} else {
-					document.getElementById(`header0`).classList.remove('toc-active')
+					document.getElementById(`header0`)?.classList.remove('toc-active')
 					currentHeaderId = 1
 					currentHeaderOffset = result[1][1]
 					lastHeaderOffset = result[1][0]
 				}
 			} else if (scrollPosition > lastHeaderOffset && currentHeaderId === 1) {
-				document.getElementById(`header0`).classList.add('toc-active')
+				document.getElementById(`header0`)?.classList.add('toc-active')
 				scrollToItemWithinDiv(listDiv, document.getElementById(`header0`))
 			}
 		}

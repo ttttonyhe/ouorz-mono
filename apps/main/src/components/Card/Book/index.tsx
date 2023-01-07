@@ -17,7 +17,7 @@ const BookCard = (props: Book) => {
 				<div className="px-4.5 py-4">
 					<Image
 						width={35}
-						height={40}
+						height={52}
 						src={imageURL}
 						alt={title}
 						className="rounded-md"
@@ -35,7 +35,7 @@ const BookCard = (props: Book) => {
 					</p>
 				</div>
 				<div className="pr-4.5 group-hover:opacity-100 opacity-0 group-hover:flex-1 transition-opacity ease-in-out duration-300">
-					<p className="group-hover:block hidden text-xs dark:text-white">
+					<p className="group-hover:block hidden text-xs font-medium dark:text-white">
 						{title}
 					</p>
 				</div>
@@ -62,7 +62,7 @@ const BookCardLoading = (props: { uniqueKey: string }) => {
 				backgroundColor={resolvedTheme === 'dark' ? '#525252' : '#f3f3f3'}
 				foregroundColor={resolvedTheme === 'dark' ? '#373737' : '#ecebeb'}
 			>
-				<rect x="15" y="13" rx="5" ry="5" width="35" height="50" />
+				<rect x="15" y="13" rx="5" ry="5" width="35" height="52" />
 				<rect x="65" y="18" rx="5" ry="5" width="70%" height="20" />
 				<rect x="65" y="43" rx="5" ry="5" width="50%" height="15" />
 				<rect x="0" y="75" rx="0" ry="0" width="100%" height="1" />

@@ -45,7 +45,7 @@ const YearOfReformation = () => {
 						href="/post/978"
 						className="flex p-[4.5px] dark:p-[3.5px] rounded-full group overflow-hidden items-center text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-transparent dark:border dark:border-gray-600"
 					>
-						<span className="group-hover:ml-0 -ml-[91px] transition-all ease-in-out leading-none mr-[6px] group-hover:mr-[2px] pl-[6px]">
+						<span className="group-hover:ml-0 -ml-[91px] transition-all ease-in-out leading-none mr-[6px] group-hover:mr-[2px] pl-[8.5px]">
 							<span className="group-hover:opacity-100 opacity-0 delay-100 transition-all ease-in-out text-xs">
 								More to Come
 							</span>
