@@ -57,7 +57,7 @@ export default function Footer() {
 	if (!mounted) return null
 
 	return (
-		<footer className="border-gray-200 dark:border-gray-700 dark:bg-gray-800 border-t border-b text-center py-4 bg-white">
+		<footer className="mt-20 border-gray-200 dark:border-gray-700 dark:bg-gray-800 border-t border-b text-center py-4 bg-white">
 			<div className="fixed bottom-8 left-8 text-gray-500 dark:text-gray-300">
 				<Button
 					aria-label="change theme"
