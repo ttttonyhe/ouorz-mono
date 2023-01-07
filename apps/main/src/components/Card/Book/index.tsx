@@ -26,16 +26,16 @@ const BookCard = (props: Book) => {
 						loading="lazy"
 					/>
 				</div>
-				<div className="group-hover:hidden">
-					<p className="dark:text-white font-medium tracking-wider leading-tight whitespace-nowrap overflow-hidden overflow-ellipsis w-[215px]">
+				<div className="lg:group-hover:hidden py-2">
+					<p className="dark:text-white text-sm lg:text-normal font-medium tracking-wider leading-tight whitespace-nowrap overflow-hidden overflow-ellipsis lg:w-[215px] w-40">
 						{title}
 					</p>
-					<p className="text-gray-500 dark:text-gray-400 text-sm font-light tracking-wide mt-1">
+					<p className="text-gray-500 dark:text-gray-400 lg:text-sm text-xs font-light tracking-wide mt-1 whitespace-nowrap">
 						{author}
 					</p>
 				</div>
-				<div className="pr-4.5 group-hover:opacity-100 opacity-0 group-hover:flex-1 transition-opacity ease-in-out duration-300">
-					<p className="group-hover:block hidden text-xs font-medium dark:text-white">
+				<div className="pr-4.5 lg:group-hover:opacity-100 opacity-0 lg:group-hover:flex-1 transition-opacity ease-in-out duration-300">
+					<p className="lg:group-hover:block hidden text-xs font-medium dark:text-white">
 						{title}
 					</p>
 				</div>
@@ -63,7 +63,7 @@ const BookCardLoading = (props: { uniqueKey: string }) => {
 				foregroundColor={resolvedTheme === 'dark' ? '#373737' : '#ecebeb'}
 			>
 				<rect x="15" y="13" rx="5" ry="5" width="35" height="52" />
-				<rect x="65" y="18" rx="5" ry="5" width="70%" height="20" />
+				<rect x="65" y="18" rx="5" ry="5" width="65%" height="20" />
 				<rect x="65" y="43" rx="5" ry="5" width="50%" height="15" />
 				<rect x="0" y="79" rx="0" ry="0" width="100%" height="1" />
 				<rect x="15" y="87" rx="5" ry="5" width="68" height="15" />
