@@ -13,7 +13,7 @@ const getPinnedPosts = async (): Promise<WPPost[]> => {
 		getApi({
 			sticky: true,
 			perPage: 10,
-			cateExclude: '5,2,74',
+			cateExclude: '5,2,74,335',
 		}),
 		{ next: { revalidate: 36000 } }
 	)
