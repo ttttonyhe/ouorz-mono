@@ -17,7 +17,7 @@ const PodcastCard = (props: PodcastCardProps) => {
 			onClick={() => openLink(link)}
 			className="group flex items-center dark:bg-gray-700 dark:border-gray-700 border rounded-md shadow-sm hover:shadow-md transition-shadow bg-white cursor-pointer w-50 z-40"
 		>
-			<div className="group-hover:opacity-0 opacity-100 overflow-hidden rounded-[5px] h-full">
+			<div className="lg:group-hover:opacity-0 opacity-100 overflow-hidden rounded-[5px] h-full">
 				<div className="w-full lg:h-[196px] h-auto bg-gray-200 dark:bg-gray-800 border-b dark:border-gray-700">
 					<img
 						className="rounded-tl-md rounded-tr-md w-full h-full z-10"
@@ -37,7 +37,7 @@ const PodcastCard = (props: PodcastCardProps) => {
 					/>
 				</div>
 			</div>
-			<div className="absolute group-hover:opacity-100 opacity-0 overflow-hidden rounded-md transition-opacity ease-in-out duration-300 h-full left-5 top-8 w-40">
+			<div className="lg:absolute hidden group-hover:opacity-100 opacity-0 overflow-hidden rounded-md transition-opacity ease-in-out duration-300 h-full left-5 top-8 w-40">
 				<img className="rounded-md w-10 h-10 mb-2" src={imageURL} alt={title} />
 				<h2 className="text-sm font-bold tracking-wider mb-1 whitespace-nowrap text-ellipsis overflow-hidden text-black dark:text-white">
 					{title}
