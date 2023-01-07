@@ -18,6 +18,7 @@ export interface WPPost {
 	}
 	date: Date
 	post_metas: {
+		link?: string
 		status: string
 		markCount: number
 		views: number

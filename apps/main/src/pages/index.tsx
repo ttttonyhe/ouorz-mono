@@ -79,7 +79,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		getApi({
 			sticky: true,
 			perPage: 10,
-			cateExclude: '5,2,74',
+			cateExclude: '5,2,74,335',
 		})
 	)
 	const dataSticky = await resSticky.json()

@@ -23,17 +23,17 @@ const getApiUrl = ({ type, cate, target }: InfiniteListProps) => {
 			return getApi({
 				sticky: false,
 				perPage: 10,
-				cateExclude: '5,2,74,334',
+				cateExclude: '5,2,74,334,335',
 			})
 		case 'cate':
 			return getApi({
 				perPage: 10,
 				cate: `${cate}`,
-				cateExclude: '5,2,74,334',
+				cateExclude: '5,2,74,334,335',
 			})
 		case 'search':
 			return getApi({
-				cateExclude: '5,2,74,334',
+				cateExclude: '5,2,74,334,335',
 				search: target,
 			})
 		default:
