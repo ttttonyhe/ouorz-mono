@@ -37,17 +37,23 @@ const PodcastCard = (props: PodcastCardProps) => {
 					/>
 				</div>
 			</div>
-			<div className="lg:absolute hidden group-hover:opacity-100 opacity-0 overflow-hidden rounded-md transition-opacity ease-in-out duration-300 h-full left-5 top-8 w-40">
-				<img className="rounded-md w-10 h-10 mb-2" src={imageURL} alt={title} />
-				<h2 className="text-sm font-bold tracking-wider mb-1 whitespace-nowrap text-ellipsis overflow-hidden text-black dark:text-white">
-					{title}
-				</h2>
-				<p
-					className="text-xs font-medium tracking-wide text-gray-800 dark:text-gray-300 line-clamp-2 group-hover:line-clamp-none leading-snug"
-					dangerouslySetInnerHTML={{
-						__html: description,
-					}}
-				/>
+			<div className="lg:block hidden absolute group-hover:opacity-100 opacity-0 overflow-hidden rounded-md transition-opacity ease-in-out duration-300 h-full left-5 top-8 w-40">
+				<div className="translate-y-1 group-hover:translate-y-0 transition-all duration-300 ease-in-out">
+					<img
+						className="rounded-md w-10 h-10 mb-2 border"
+						src={imageURL}
+						alt={title}
+					/>
+					<h2 className="text-sm font-bold tracking-wider mb-1 text-black dark:text-white">
+						{title}
+					</h2>
+					<p
+						className="text-xs font-medium tracking-wide text-gray-800 dark:text-gray-300 line-clamp-2 group-hover:line-clamp-none leading-snug"
+						dangerouslySetInnerHTML={{
+							__html: description,
+						}}
+					/>
+				</div>
 			</div>
 		</div>
 	)
