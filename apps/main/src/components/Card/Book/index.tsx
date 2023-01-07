@@ -65,9 +65,9 @@ const BookCardLoading = (props: { uniqueKey: string }) => {
 				<rect x="15" y="13" rx="5" ry="5" width="35" height="52" />
 				<rect x="65" y="18" rx="5" ry="5" width="70%" height="20" />
 				<rect x="65" y="43" rx="5" ry="5" width="50%" height="15" />
-				<rect x="0" y="75" rx="0" ry="0" width="100%" height="1" />
-				<rect x="15" y="85" rx="5" ry="5" width="68" height="15" />
-				<rect x="217" y="85" rx="5" ry="5" width="68" height="15" />
+				<rect x="0" y="79" rx="0" ry="0" width="100%" height="1" />
+				<rect x="15" y="87" rx="5" ry="5" width="68" height="15" />
+				<rect x="76%" y="87" rx="5" ry="5" width="19%" height="15" />
 			</ContentLoader>
 		</div>
 	)

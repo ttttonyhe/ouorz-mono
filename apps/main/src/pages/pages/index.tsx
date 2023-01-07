@@ -71,11 +71,11 @@ const Pages: NextPageWithLayout = () => {
 					href="/friends"
 				/>
 				<PageCard
-					title="Thoughts"
-					des="Random but memorable"
-					icon="lightBulb"
+					title="Reading List"
+					des="My book shelf"
+					icon="bookmark"
 					className="text-red-400"
-					href="https://notion.ouorz.com"
+					href="/reading-list"
 				/>
 				<PageCard
 					title="Analytics"
