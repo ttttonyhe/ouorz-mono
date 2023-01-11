@@ -114,7 +114,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 
 	/**
 	 * Scroll heading into view
-	 * @param el heading DOM Elment
+	 * @param el heading DOM Element
 	 */
 	const scrollToHeading = (el: Element) => {
 		const elY = el.getBoundingClientRect().top + window.pageYOffset - 75

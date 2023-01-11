@@ -7,7 +7,7 @@
     "dev:test": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ./src -c .eslintrc.js --fix --ext js,ts,tsx,json",
+    "lint": "next lint --fix",
     "test:open": "cypress open",
     "test": "cypress run",
     "upgrade": "ncu --upgrade",
