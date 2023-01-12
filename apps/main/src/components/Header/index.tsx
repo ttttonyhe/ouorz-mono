@@ -314,6 +314,15 @@ const Header = () => {
 				},
 			},
 			{
+				label: 'Podcasts',
+				id: 'podcasts',
+				description: 'Page',
+				icon: 'microphone',
+				link: {
+					internal: '/podcasts',
+				},
+			},
+			{
 				label: 'Links',
 				id: 'links-divider',
 				hoverable: false,
