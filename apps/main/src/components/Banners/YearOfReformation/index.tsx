@@ -43,12 +43,12 @@ const YearOfReformation = () => {
 						href="/post/978"
 						className="flex p-[4.5px] dark:p-[3.5px] rounded-full group overflow-hidden items-center text-gray-500 dark:text-gray-500 bg-gray-100 dark:bg-transparent dark:border dark:border-gray-600"
 					>
-						<span className="group-hover:ml-0 -ml-[91px] transition-all ease-in-out leading-none mr-[5px] group-hover:mr-[2px] pl-[8.5px]">
+						<span className="group-hover:ml-[0.5rem] -ml-[5.5rem] transition-all ease-in-out leading-none mr-[0.6rem] py-[0.05rem] group-hover:mr-[0.25rem]">
 							<span className="group-hover:opacity-100 opacity-0 delay-100 transition-all ease-in-out text-xs">
 								More to Come
 							</span>
 						</span>
-						<span className="lg:w-[16px] lg:h-[16px] h-4.5 w-4.5 translate-x-[1px] translate-y-[0.5px]">
+						<span className="lg:w-[16px] lg:h-[16px] h-4.5 w-4.5">
 							<Icon name="chevronRight" />
 						</span>
 					</Link>
