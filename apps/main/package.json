@@ -44,7 +44,7 @@
     "@types/node": "^18.11.17",
     "@types/react": "^18.0.26",
     "@types/react-highlight": "^0.12.5",
-    "@types/rss": "^0.0.29",
+    "@types/rss": "^0.0.30",
     "@types/smoothscroll-polyfill": "^0.3.1",
     "@types/styled-components": "^5.1.26",
     "autoprefixer": "^10.4.13",
