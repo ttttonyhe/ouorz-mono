@@ -31,7 +31,7 @@ jobs:
           node-version: 16
           cache: 'yarn'
       - name: Install Dependencies
-        run: yarn install --immutable
+        run: yarn install
       - name: Setup Environment Variables for Main App
         run: |
           touch apps/main/.env
