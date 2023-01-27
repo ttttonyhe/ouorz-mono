@@ -1,4 +1,4 @@
-name: CodeQL Code Scanning
+name: CodeQL Code Scanning [Deprecated]
 
 on:
   pull_request:
