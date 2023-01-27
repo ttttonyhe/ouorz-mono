@@ -2889,7 +2889,7 @@ __metadata:
     is-docker: ^3.0.0
     is-localhost-ip: ^1.4.0
     isbot: ^3.5.0
-    jose: 2.0.5
+    jose: 2.0.6
     lint-staged: ^12.4.1
     maxmind: ^4.3.6
     moment-timezone: ^0.5.34
@@ -14230,12 +14230,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:2.0.5":
-  version: 2.0.5
-  resolution: "jose@npm:2.0.5"
+"jose@npm:2.0.6":
+  version: 2.0.6
+  resolution: "jose@npm:2.0.6"
   dependencies:
     "@panva/asn1.js": ^1.0.0
-  checksum: 80a3447b51f794f8f2c7e21395dd880b55d374a055564595c69ff17722fb07aeb2dff722b5da9030651f67fafc7494e9ec5f5b56f5e1836d1ac94e604e6096ea
+  checksum: c13a95f38fc175eb7522579fc6490fd29e3ca08dd33454295af48ab096674f6e434f5784b1a8d6b8f361c38971c8fb8840b06efce3ce6128b032e2b3de55ea25
   languageName: node
   linkType: hard
 
