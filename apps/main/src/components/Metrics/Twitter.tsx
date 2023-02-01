@@ -4,9 +4,9 @@ import fetcher from '~/lib/fetcher'
 import MetricCard from './Card'
 
 export default function TwitterMetric() {
-	const { data } = useSWR('api/substats', fetcher)
+	const { data } = useSWR('api/twitter', fetcher)
 
-	const followers = format(data?.twitterFollowers)
+	const followers = format(data?.followers)
 	const link = 'https://twitter.com/ttttonyhe'
 
 	return (

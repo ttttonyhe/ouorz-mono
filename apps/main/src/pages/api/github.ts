@@ -1,30 +1,25 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { GITHUB_API } from '~/constants/apiURLs'
 
 type ResDataType = {
 	followers: number
 	stars: number
 }
 
+const headers = {
+	Authorization: process.env.GITHUB_TOKEN,
+}
+
 const github = async (
 	_req: NextApiRequest,
 	res: NextApiResponse<ResDataType>
 ) => {
-	const userResponse = await fetch(
-		'https://api.github.com/users/HelipengTony',
-		{
-			headers: {
-				Authorization: process.env.GITHUB_TOKEN,
-			},
-		}
-	)
-	const userReposResponse = await fetch(
-		'https://api.github.com/users/HelipengTony/repos?per_page=100',
-		{
-			headers: {
-				Authorization: process.env.GITHUB_TOKEN,
-			},
-		}
-	)
+	const userResponse = await fetch(GITHUB_API.USER, {
+		headers,
+	})
+	const userReposResponse = await fetch(`${GITHUB_API.REPOS}?per_page=100`, {
+		headers,
+	})
 
 	const user = await userResponse.json()
 	const repositories = await userReposResponse.json()

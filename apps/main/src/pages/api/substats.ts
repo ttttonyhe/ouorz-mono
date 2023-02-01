@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { SUBSTATS_API } from '~/constants/apiURLs'
 
 type ResDataType = {
 	twitterFollowers: number
@@ -10,9 +11,7 @@ const substats = async (
 	_req: NextApiRequest,
 	res: NextApiResponse<ResDataType>
 ) => {
-	const response = await fetch(
-		'https://api.spencerwoo.com/substats/?source=sspai&queryKey=tonyhe&source=twitter&queryKey=ttttonyhe&source=zhihu&queryKey=helipengtony'
-	)
+	const response = await fetch(SUBSTATS_API.SSPAI)
 
 	const data = await response.json()
 

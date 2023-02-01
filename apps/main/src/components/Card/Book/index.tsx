@@ -3,7 +3,7 @@ import { useTheme } from 'next-themes'
 import ContentLoader from 'react-content-loader'
 import openLink from '~/utilities/externalLink'
 import { Book } from '~/pages/api/goodreads'
-import blurDataUrl from '~/constants/blurDataUrl'
+import blurDataURL from '~/constants/blurDataURL'
 
 const BookCard = (props: Book) => {
 	const { title, author, imageURL, link, dateAdded } = props
@@ -22,7 +22,7 @@ const BookCard = (props: Book) => {
 						alt={title}
 						className="rounded-md"
 						placeholder="blur"
-						blurDataURL={blurDataUrl}
+						blurDataURL={blurDataURL}
 						loading="lazy"
 					/>
 				</div>

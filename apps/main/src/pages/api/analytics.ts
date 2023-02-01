@@ -1,20 +1,21 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { ANALYTICS_API } from '~/constants/apiURLs'
 
 type ResDataType = {
 	views: number
 }
 
+const duration = 7 * 24 * 3600 * 1000
+
 const analytics = async (
 	_req: NextApiRequest,
 	res: NextApiResponse<ResDataType>
 ) => {
-	const startAt = new Date(
-		new Date().getTime() - 7 * 24 * 3600 * 1000
-	).getTime()
+	const startAt = new Date(new Date().getTime() - duration).getTime()
 	const endAt = new Date().getTime()
 
 	const response = await fetch(
-		`https://analytics.ouorz.com/api/website/1/stats?start_at=${startAt}&end_at=${endAt}`,
+		`${ANALYTICS_API.STATS}?start_at=${startAt}&end_at=${endAt}`,
 		{
 			headers: {
 				Accept: 'application/json',

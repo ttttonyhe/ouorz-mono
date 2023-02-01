@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import Parser from 'rss-parser'
+import { GOODREADS_API } from '~/constants/apiURLs'
 
 export type Book = {
 	title: string
@@ -18,8 +19,6 @@ type ResDataType = {
 }
 
 const parser = new Parser()
-const feedURL =
-	'https://www.goodreads.com/review/list_rss/146097881?key=YdulPNTVXpB1iC4Hx05BcR-W8j9wAT4Nip56cjwulPilbx02'
 const feedShelfNames = {
 	currentlyReading: 'currently-reading',
 	all: '#ALL#',
@@ -31,7 +30,7 @@ const goodreads = async (
 ) => {
 	const { shelf } = req.query as ReqQueryType
 	const feed = await parser.parseURL(
-		`${feedURL}&shelf=${
+		`${GOODREADS_API.RSS}&shelf=${
 			feedShelfNames[shelf] || feedShelfNames['currentlyReading']
 		}`
 	)

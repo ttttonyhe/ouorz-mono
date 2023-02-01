@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { WORDPRESS_API } from '~/constants/apiURLs'
 
 type ResDataType = {
 	views: number
@@ -9,9 +10,7 @@ const posts = async (
 	_req: NextApiRequest,
 	res: NextApiResponse<ResDataType>
 ) => {
-	const response = await fetch(
-		'https://blog.ouorz.com/wp-json/tony/v1/poststats'
-	)
+	const response = await fetch(WORDPRESS_API.POSTSTATS)
 
 	const data = await response.json()
 
