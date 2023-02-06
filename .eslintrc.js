@@ -1,9 +1,9 @@
 module.exports = {
-  root: true,
-  extends: ["@ouorz/eslint-config-next"],
-  settings: {
-    next: {
-      rootDir: ["apps/*/"],
-    },
-  },
-};
+	root: true,
+	extends: ['@ouorz/eslint-config-next'],
+	settings: {
+		next: {
+			rootDir: ['apps/*/'],
+		},
+	},
+}

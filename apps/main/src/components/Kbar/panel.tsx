@@ -105,10 +105,10 @@ const KbarPanel = () => {
 			}
 
 			item.action = () => {
-				actionFunc()
 				if (item.singleton !== false && !item.sublist) {
 					dispatch(deactivateKbar())
 				}
+				actionFunc()
 			}
 		})
 
