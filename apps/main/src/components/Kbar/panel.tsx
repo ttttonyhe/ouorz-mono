@@ -107,8 +107,12 @@ const KbarPanel = () => {
 			item.action = () => {
 				if (item.singleton !== false && !item.sublist) {
 					dispatch(deactivateKbar())
+					setTimeout(() => {
+						actionFunc()
+					}, 200)
+				} else {
+					actionFunc()
 				}
-				actionFunc()
 			}
 		})
 
