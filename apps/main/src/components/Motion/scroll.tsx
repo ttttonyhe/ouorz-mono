@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 
 interface Props {
@@ -11,6 +11,7 @@ interface Props {
 const ScrollWrapper = (props: Props) => {
 	const { handler: applyEffect, startPosition, endPosition, children } = props
 	const { resolvedTheme } = useTheme()
+	const [yOffset, setYOffset] = useState(0)
 
 	const handler = () => {
 		let position = window.pageYOffset
@@ -23,6 +24,7 @@ const ScrollWrapper = (props: Props) => {
 			position = endPosition
 		}
 
+		setYOffset(position)
 		applyEffect(position)
 	}
 
@@ -36,6 +38,10 @@ const ScrollWrapper = (props: Props) => {
 			window.removeEventListener('scroll', handler)
 		}
 	}, [resolvedTheme])
+
+	if (yOffset < startPosition) {
+		return null
+	}
 
 	return <>{children}</>
 }

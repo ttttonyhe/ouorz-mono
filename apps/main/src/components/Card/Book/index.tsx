@@ -34,8 +34,8 @@ const BookCard = (props: Book) => {
 						{author}
 					</p>
 				</div>
-				<div className="pr-4.5 lg:group-hover:opacity-100 opacity-0 lg:group-hover:flex-1 transition-opacity ease-in-out duration-300">
-					<p className="lg:group-hover:block hidden text-xs font-medium dark:text-white line-clamp-3">
+				<div className="pr-4.5 lg:group-hover:opacity-100 opacity-0 lg:group-hover:flex-1 transition-opacity ease-in-out duration-300 line-clamp-3">
+					<p className="lg:group-hover:block hidden text-xs font-medium dark:text-white">
 						{title}
 					</p>
 				</div>
