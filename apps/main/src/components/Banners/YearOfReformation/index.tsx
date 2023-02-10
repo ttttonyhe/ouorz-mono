@@ -48,7 +48,7 @@ const YearOfReformation = () => {
 								More to Come
 							</span>
 						</span>
-						<span className="h-[16px] w-[16px] transition-all ease-in-out mr-[1px] group-hover:-mr-[14px]">
+						<span className="h-[16px] w-[16px] transition-all ease-in-out mr-[3px] group-hover:-mr-[14px]">
 							<Icon name="chevronRight" />
 						</span>
 					</Link>
