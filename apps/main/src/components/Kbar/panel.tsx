@@ -67,7 +67,7 @@ const KbarPanel = () => {
 	const { list, placeholder, animation, location, loading } =
 		useSelector(selectKbar)
 	const verticalListWrapper = useRef<HTMLDivElement>(null)
-	const [initalListItems, setInitalListItems] = useState<TabItemProps[]>([])
+	const [initialListItems, setiInitialListItems] = useState<TabItemProps[]>([])
 	const [tabsListItems, setTabsListItems] = useState<TabItemProps[]>(null)
 
 	// Update list data for vertical Tabs component
@@ -173,7 +173,7 @@ const KbarPanel = () => {
 		})
 
 		// update list data
-		setInitalListItems(tabsListItems)
+		setiInitialListItems(tabsListItems)
 		setTabsListItems(tabsListItems)
 
 		// clear input value
@@ -182,9 +182,9 @@ const KbarPanel = () => {
 
 	// Search list items
 	useEffect(() => {
-		if (!initalListItems || !initalListItems.length) return
+		if (!initialListItems || !initialListItems.length) return
 
-		const resultList = initalListItems.filter((item) => {
+		const resultList = initialListItems.filter((item) => {
 			// filter out unhoverable items when input value is not empty
 			return (
 				!inputValue ||
@@ -194,7 +194,7 @@ const KbarPanel = () => {
 		})
 
 		setTabsListItems(resultList)
-	}, [inputValue, initalListItems])
+	}, [inputValue, initialListItems])
 
 	return (
 		<div
