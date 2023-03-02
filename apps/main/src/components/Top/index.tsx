@@ -13,7 +13,7 @@ export default function Top() {
 					<Button
 						type="default"
 						icon="github"
-						className="w-full text-gray-700 text-3 leading-14"
+						className="!w-full text-gray-700 text-3 leading-14"
 					>
 						<span className="tracking-normal">Github</span>
 					</Button>
@@ -26,7 +26,7 @@ export default function Top() {
 					<Button
 						type="default"
 						icon="twitter"
-						className="w-full text-blue-400 text-3 leading-14"
+						className="!w-full text-blue-400 text-3 leading-14"
 					>
 						<span className="tracking-normal">Twitter</span>
 					</Button>
@@ -35,7 +35,7 @@ export default function Top() {
 					<Button
 						type="default"
 						icon="email"
-						className="w-full text-gray-500 text-3 leading-14"
+						className="!w-full text-gray-500 text-3 leading-14"
 					>
 						<span className="tracking-normal">Email</span>
 					</Button>
@@ -43,7 +43,7 @@ export default function Top() {
 			</div>
 			<div className="lg:col-start-4 lg:col-end-6">
 				<Link href="/post/126">
-					<Button type="primary" icon="right" className="w-full">
+					<Button type="primary" icon="right" className="!w-full">
 						<span className="tracking-normal text-4 leading-14 lg:text-3">
 							More about me
 						</span>
