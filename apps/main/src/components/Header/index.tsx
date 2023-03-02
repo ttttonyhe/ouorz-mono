@@ -134,16 +134,20 @@ const Header = () => {
 				action: () => router.back(),
 				description: 'Command',
 			},
-			{
-				label: 'Home',
-				id: 'home',
-				icon: 'home',
-				shortcut: ['h'],
-				description: 'Command',
-				link: {
-					internal: '/',
-				},
-			},
+			...(router.asPath.split('/').length > 2
+				? [
+						{
+							label: 'Home',
+							id: 'home',
+							icon: 'home',
+							shortcut: ['h'],
+							description: 'Command',
+							link: {
+								internal: '/',
+							},
+						},
+				  ]
+				: []),
 			{
 				label: 'Appearance',
 				id: 'appearance-divider',
