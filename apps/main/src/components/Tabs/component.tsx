@@ -196,7 +196,8 @@ const Tabs = (props: TabsProps) => {
 		// navigation
 		useHotkeys(
 			'down',
-			() => {
+			(e) => {
+				e.preventDefault()
 				const targetIndex =
 					highlightedIndex + 1 < items.length ? highlightedIndex + 1 : 0
 				highlight(
@@ -209,14 +210,14 @@ const Tabs = (props: TabsProps) => {
 				)
 			},
 			{
-				preventDefault: true,
-				enableOnFormTags: ['INPUT'],
+				enableOnTags: ['INPUT'],
 			},
 			[highlightedIndex]
 		)
 		useHotkeys(
 			'up',
-			() => {
+			(e) => {
+				e.preventDefault()
 				const targetIndex =
 					highlightedIndex - 1 >= 0 ? highlightedIndex - 1 : items.length - 1
 				highlight(
@@ -229,21 +230,20 @@ const Tabs = (props: TabsProps) => {
 				)
 			},
 			{
-				preventDefault: true,
-				enableOnFormTags: ['INPUT'],
+				enableOnTags: ['INPUT'],
 			},
 			[highlightedIndex]
 		)
 		// action triggerer
 		useHotkeys(
 			'enter',
-			() => {
+			(e) => {
+				e.preventDefault()
 				items[highlightedIndex].onClick !== null &&
 					items[highlightedIndex].onClick()
 			},
 			{
-				preventDefault: true,
-				enableOnFormTags: ['INPUT'],
+				enableOnTags: ['INPUT'],
 			},
 			[highlightedIndex]
 		)
