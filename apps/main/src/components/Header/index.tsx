@@ -67,7 +67,7 @@ const Header = () => {
 					<div
 						data-oa="click-activateKbar"
 						data-cy="cmdkbutton"
-						className="py-1 px-5 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex lg:flex"
+						className="py-1 px-5 rounded-md cursor-pointer focus:outline-none justify-center items-center gap-x-1.5 text-xl tracking-wider flex lg:flex"
 						onClick={() => dispatch(activateKbar(kbarItems))}
 					>
 						<div
@@ -76,6 +76,7 @@ const Header = () => {
 						>
 							⌘+K
 						</div>
+						Command Menu
 					</div>
 				),
 			},
