@@ -3012,7 +3012,7 @@ __metadata:
     react-dom: ^18.2.0
     react-h5-audio-player: ^3.8.6
     react-highlight: ^0.15.0
-    react-hotkeys-hook: ^4.3.7
+    react-hotkeys-hook: ^3.4.7
     react-infinite-scroll-component: ^6.1.0
     react-redux: ^8.0.5
     react-snowfall: ^1.2.1
@@ -12832,6 +12832,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hotkeys-js@npm:3.9.4":
+  version: 3.9.4
+  resolution: "hotkeys-js@npm:3.9.4"
+  checksum: 98c3121d458f960c8804f5d8d6be02c4187aaeee5a0b7df28c8d99705e5f65f67b1140658d8128401892bb07b19d18c5e9ea9e84fe170fb06206b639ad53438b
+  languageName: node
+  linkType: hard
+
 "html-entities@npm:^2.1.0":
   version: 2.3.3
   resolution: "html-entities@npm:2.3.3"
@@ -18951,13 +18958,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hotkeys-hook@npm:^4.3.7":
-  version: 4.3.7
-  resolution: "react-hotkeys-hook@npm:4.3.7"
+"react-hotkeys-hook@npm:^3.4.7":
+  version: 3.4.7
+  resolution: "react-hotkeys-hook@npm:3.4.7"
+  dependencies:
+    hotkeys-js: 3.9.4
   peerDependencies:
     react: ">=16.8.1"
     react-dom: ">=16.8.1"
-  checksum: f37330e17a320bfb83b1e8d8cb0f4e465fda0ea62c5db59d9a67ccbec6066b317e6f621c796a86cbca958ba3a240be1d00d3a18f4675c30a79b9f6bd28f2d741
+  checksum: 1ec5d197377713168454d0c4c3f8d609cf8302afd276b267a219beb956de6df5c9a5baf06c244c45368c64538e0881d65eb844bd56c45823752fc8deeaf41031
   languageName: node
   linkType: hard
 
