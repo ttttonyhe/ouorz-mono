@@ -11,12 +11,12 @@ import { useHotkeys } from 'react-hotkeys-hook'
 const HotkeyHelper = ({ item }: { item: KbarListItem }) => {
 	useHotkeys(
 		`shift+${item.shortcut.join('+')}`,
-		(e) => {
-			e.preventDefault()
+		() => {
 			item.action()
 		},
 		{
-			enableOnTags: ['INPUT'],
+			preventDefault: true,
+			enableOnFormTags: ['INPUT'],
 		}
 	)
 	// render nothing
