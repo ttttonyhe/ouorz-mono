@@ -29,8 +29,8 @@ const NextJS13Preview = () => {
 						</div>
 					</div>
 					<p className="text-gray-400 text-xs">
-						Powered by nested layouts, React server components, Suspense
-						streaming and more...
+						Powered by nested layouts, React server components, streaming SSR
+						and more...
 					</p>
 				</div>
 				<div>
