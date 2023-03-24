@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
 import { Button } from '@twilight-toolkit/ui'
-import { useRouter } from 'next/router'
 import { captureException, flush } from '@sentry/nextjs'
 import { NextPageWithLayout } from '~/pages/_app'
 import { pageLayout } from '~/components/Page'
@@ -11,7 +10,6 @@ interface Props {
 }
 
 const ErrorPage: NextPageWithLayout = ({ statusCode }: Props) => {
-	const router = useRouter()
 	return (
 		<div>
 			<Head>
@@ -20,7 +18,7 @@ const ErrorPage: NextPageWithLayout = ({ statusCode }: Props) => {
 			</Head>
 			<div className="lg:mt-20 mt-0 lg:pt-0 pt-24 justify-center">
 				<div className="text-center">
-					<h1 className="font-medium text-3xl leading-14 lg:text-1 text-black tracking-wide mb-0.5">
+					<h1 className="font-medium text-3xl leading-14 lg:text-1 text-black dark:text-white tracking-wide mb-0.5">
 						Oops
 					</h1>
 					<p className="text-3 lg:text-2 text-gray-500 leading-14 tracking-wide font-light">
@@ -31,10 +29,10 @@ const ErrorPage: NextPageWithLayout = ({ statusCode }: Props) => {
 					<div className="inline-block justify-center mt-4">
 						<Button
 							type="primary"
-							onClick={() => {
-								router.push('/')
-							}}
 							className="mx-auto"
+							onClick={() => {
+								location.href = '/'
+							}}
 						>
 							Back to Home
 						</Button>
