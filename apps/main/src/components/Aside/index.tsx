@@ -252,7 +252,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 							<span className="w-[19px] h-[19px] mr-2 -mt-[1.5px]">
 								<Icon name="toc" />
 							</span>
-							Contents
+							On This Page
 						</h1>
 						<ul
 							className="max-h-[70vh] aside-mask overflow-hidden overflow-y-auto overscroll-contain text-xl px-3 py-3 transition-colors duration-300 text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300"
