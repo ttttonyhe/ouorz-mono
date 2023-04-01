@@ -4,6 +4,7 @@ import ScrollWrapper from './scroll'
 interface Props {
 	componentRef: React.MutableRefObject<any>
 	children: React.ReactNode
+	disabled?: boolean
 }
 
 const OffsetTransition = (props: Props) => {
@@ -14,6 +15,10 @@ const OffsetTransition = (props: Props) => {
 
 		ref.current.style.transform = `translateY(${(125 - position) * 0.5 || 0}%)`
 		ref.current.style.opacity = `${(position - 50) * (1 / 75)}`
+	}
+
+	if (props.disabled) {
+		return <>{children}</>
 	}
 
 	return (

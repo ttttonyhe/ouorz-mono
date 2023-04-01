@@ -19,6 +19,8 @@ import getApi from '~/utilities/api'
 import redirect from 'nextjs-redirect'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import { useDispatch } from '~/hooks'
+import { setHeaderTitle } from '~/store/general/actions'
 
 const Redirect = redirect('/404')
 
@@ -29,6 +31,8 @@ interface Props {
 
 const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 	const router = useRouter()
+	const dispatch = useDispatch()
+
 	const { pid } = router.query
 	const title = `${post.title.rendered} - TonyHe`
 
@@ -45,8 +49,8 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 		)
 	}
 
-	// Run once, increse post views
 	useEffect(() => {
+		dispatch(setHeaderTitle(post.title.rendered))
 		fetch(
 			getApi({
 				// @ts-ignore
