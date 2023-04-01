@@ -29,7 +29,7 @@ const HeaderSearchBarComponent = ({
 			<input
 				type="text"
 				className="rounded-md px-3 py-2 pl-[54px] text-sm w-full bg-white text-gray-500 dark:bg-gray-800 bg-opacity-90 hover:bg-neutral-50 dark:bg-opacity-50 dark:hover:bg-opacity-100 dark:shadow-sm border border-gray-200 dark:border-gray-700 dark:hover:border-gray-700 transition-shadow outline-none"
-				placeholder="Command palette..."
+				placeholder="Type your command or search..."
 				onFocus={activateKbar}
 			/>
 		</div>
