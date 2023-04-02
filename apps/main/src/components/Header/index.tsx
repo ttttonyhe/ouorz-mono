@@ -19,9 +19,9 @@ const HeaderSearchBarComponent = ({
 	activateKbar,
 }: HeaderSearchBarComponentProps) => {
 	return (
-		<div className="lg:flex hidden w-[620px]">
+		<div className="lg:flex hidden lg:w-[70%] xl:w-[620px]">
 			<div
-				aria-label="Command + K to Open Command Palette"
+				aria-label="Command + K to open the command palette"
 				className="top-[6px] left-3 z-10 bg-gray-50 text-gray-400 dark:bg-transparent dark:border-gray-600 px-1.5 py-0.5 text-xs border rounded-md absolute"
 			>
 				⌘+K
@@ -31,6 +31,8 @@ const HeaderSearchBarComponent = ({
 				className="rounded-md px-3 py-2 pl-[54px] text-sm w-full bg-white text-gray-500 dark:bg-gray-800 bg-opacity-90 hover:bg-neutral-50 dark:bg-opacity-50 dark:hover:bg-opacity-100 dark:shadow-sm border border-gray-200 dark:border-gray-700 dark:hover:border-gray-700 transition-shadow outline-none"
 				placeholder="Type your command or search..."
 				onFocus={activateKbar}
+				data-oa="click-activateKbar"
+				data-cy="cmdkbutton"
 			/>
 		</div>
 	)

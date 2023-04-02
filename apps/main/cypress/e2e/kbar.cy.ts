@@ -52,7 +52,7 @@ describe('Kbar', function () {
 
 	context('click on cmd + k button', () => {
 		it('should display kbar background and panel', function () {
-			cy.get('[data-cy="cmdkbutton"]').click({ force: true })
+			cy.get('[data-cy="cmdkbutton"]').focus()
 			cy.get('[data-cy="kbar-bg"]').should('exist')
 			cy.get('[data-cy="kbar-panel"]').should('exist')
 		})

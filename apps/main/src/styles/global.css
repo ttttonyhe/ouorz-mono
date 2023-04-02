@@ -674,3 +674,13 @@ abbr[title] {
 		rgba(62, 62, 62, 0.02)
 	);
 }
+
+@media screen and (min-width: 2048px) {
+	.more-to-come {
+		@apply w-[103px];
+	}
+
+	.dark .more-to-come {
+		@apply w-[104px];
+	}
+}
