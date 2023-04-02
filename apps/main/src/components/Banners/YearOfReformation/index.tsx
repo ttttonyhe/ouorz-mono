@@ -43,8 +43,8 @@ const YearOfReformation = () => {
 						href="/post/978"
 						className="flex justify-center items-center h-[25px] w-[25px] transition-all ease-in-out hover:w-[115px] rounded-full group overflow-hidden text-gray-500 dark:text-gray-500 bg-gray-100 dark:bg-transparent dark:border dark:border-gray-600"
 					>
-						<span className="more-to-come leading-none transition-all ease-in-out absolute w-[101px] dark:w-[100px] flex right-0 justify-end pr-1 gap-x-[4px]">
-							<span className="group-hover:opacity-100 hidden group-hover:block opacity-0 delay-100 transition-all ease-in-out text-xs -mt-[1px]">
+						<span className="more-to-come leading-none transition-all ease-in-out absolute w-[115px] flex right-0 justify-end pr-1 gap-x-[4px]">
+							<span className="group-hover:opacity-100 hidden group-hover:block opacity-0 delay-100 transition-all ease-in-out text-xs -mt-[0.5px]">
 								More to Come
 							</span>
 							<span className="h-[16px] w-[16px] transition-all ease-in-out">
