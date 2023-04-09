@@ -33,6 +33,7 @@ const Label: React.FC<LabelProps> = ({
 	icon,
 	children,
 	preview,
+	className,
 	iconClassName,
 	...props
 }) => {
@@ -108,7 +109,9 @@ const Label: React.FC<LabelProps> = ({
 			return (
 				<label
 					{...props}
-					className="cursor-pointer justify-center font-medium items-center h-full flex w-min px-2 py-2 bg-green-100 dark:bg-green-700 hover:bg-green-200 dark:hover:bg-green-600 text-center rounded-md text-xl tracking-wide text-green-500 dark:text-green-300 align-middle effect-pressing"
+					className={`cursor-pointer justify-center font-medium items-center h-full flex w-min px-2 py-2 bg-green-100 dark:bg-green-700 hover:bg-green-200 dark:hover:bg-green-600 text-center rounded-md text-xl tracking-wide text-green-500 dark:text-green-300 align-middle effect-pressing ${
+						className ?? ''
+					}`}
 				>
 					{icon && (
 						<span className="lg:w-[19px] lg:h-[19px] h-4 w-4">

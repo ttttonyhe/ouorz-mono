@@ -6,6 +6,7 @@ import { OPENAI_API } from '~/constants/apiURLs'
 import { use } from '../../lib/middleware'
 
 type ReqBodyType = {
+	identifier: string
 	content: string
 }
 
@@ -48,7 +49,7 @@ const summarize = async (
 		res
 	)
 
-	let { content } = req.body as ReqBodyType
+	let { identifier, content } = req.body as ReqBodyType
 
 	if (content) {
 		content = removeCodeBlocks(content)
@@ -64,12 +65,13 @@ const summarize = async (
 			const response = await fetch(OPENAI_API.CACHING_PROXY, {
 				method: 'POST',
 				headers: {
-					...(isAdmin && {
-						'Cache-Control': req.headers['cache-control'],
-					}),
 					'Content-Type': 'application/json',
 					Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-					Origin: isAdmin ? 'https://www.ouorz.com' : req.headers.origin,
+					Origin: req.headers.origin,
+					...(isAdmin && {
+						'Cache-Control': req.headers['cache-control'],
+						Origin: 'https://www.ouorz.com',
+					}),
 				},
 				body: JSON.stringify({
 					targetUrl: OPENAI_API.COMPLETIONS,
@@ -82,6 +84,7 @@ const summarize = async (
 						frequency_penalty: 0.0,
 						presence_penalty: 1,
 					},
+					targetIdentifier: identifier,
 				}),
 			})
 
