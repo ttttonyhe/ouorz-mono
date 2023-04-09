@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { OPENAI_API } from '~/constants/apiURLs'
 import html2plaintext from 'html2plaintext'
