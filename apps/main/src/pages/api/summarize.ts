@@ -1,7 +1,9 @@
 /* eslint-disable camelcase */
+import Cors from 'cors'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { OPENAI_API } from '~/constants/apiURLs'
 import html2plaintext from 'html2plaintext'
+import { OPENAI_API } from '~/constants/apiURLs'
+import { use } from '../../lib/middleware'
 
 type ReqBodyType = {
 	content: string
@@ -38,6 +40,14 @@ const summarize = async (
 	req: NextApiRequest,
 	res: NextApiResponse<ResDataType>
 ) => {
+	await use(
+		Cors({
+			methods: ['POST'],
+		}),
+		req,
+		res
+	)
+
 	let { content } = req.body as ReqBodyType
 
 	if (content) {
@@ -51,7 +61,10 @@ const summarize = async (
 			const response = await fetch(OPENAI_API.CACHING_PROXY, {
 				method: 'POST',
 				headers: {
-					'Cache-Control': 'no-cache',
+					...(req.headers['token'] ===
+						process.env.REVALIDATION_REQUEST_TOKEN && {
+						'Cache-Control': req.headers['cache-control'],
+					}),
 					'Content-Type': 'application/json',
 					Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
 					Origin: req.headers.origin,
