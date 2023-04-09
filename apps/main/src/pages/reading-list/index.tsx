@@ -38,7 +38,7 @@ const ReadingList: NextPageWithLayout = () => {
 							</i>
 						</div>
 						<div>
-							<h2 className="font-medium text-[28px] text-black dark:text-white tracking-wide flex items-center gap-x-1.5">
+							<h2 className="font-medium text-[28px] text-black dark:text-white tracking-wide flex items-center gap-x-1.5 whitespace-nowrap">
 								Reading List{' '}
 								<span className="text-xs py-0.5 px-2 text-yellow-500 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-800 rounded-full border border-yellow-300 dark:border-yellow-700">
 									2023

@@ -17,7 +17,7 @@ const YearOfReformation = () => {
 					</label>
 				</div>
 			</div>
-			<div className="flex items-center justify-between gap-x-2.5 mt-4 px-4.5 pb-4 text-sm text-gray-600 dark:text-gray-300">
+			<div className="flex items-center justify-between gap-x-2.5 mt-4 px-4.5 pb-4 text-sm text-gray-600 dark:text-gray-300 whitespace-nowrap">
 				<div className="flex gap-x-2.5 items-center">
 					<Link
 						href="/reading-list"

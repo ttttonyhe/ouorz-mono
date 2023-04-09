@@ -64,7 +64,7 @@ const Podcasts: NextPageWithLayout = () => {
 			<div className="my-5">
 				<hr className="dark:border-gray-600" />
 			</div>
-			<section className="mb-10 mt-4 grid grid-cols-3 gap-4">
+			<section className="mb-10 mt-4 grid lg:grid-cols-3 grid-cols-2 gap-4">
 				{data && !error ? (
 					data.map((podcast: WPPost) => (
 						<PodcastCard

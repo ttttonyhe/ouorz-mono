@@ -2,9 +2,11 @@ import { useRouter } from 'next/router'
 import { NexmentContainer } from 'nexment'
 
 const Nexment = () => {
-	const router = useRouter()
+	const { query } = useRouter()
+	const pageKey = query.pid ?? query.pgid
+
 	const config = {
-		pageKey: router.asPath.split('/')[2].toString(),
+		pageKey: pageKey as string,
 		enableLinkInput: true,
 		enableReplyListModal: true,
 		descriptionTag: false,
@@ -49,11 +51,16 @@ const Nexment = () => {
 			},
 		],
 	}
-	if (process.env.NEXT_PUBLIC_LC_ID && process.env.NEXT_PUBLIC_LC_KEY) {
+
+	if (
+		process.env.NEXT_PUBLIC_LC_ID &&
+		process.env.NEXT_PUBLIC_LC_KEY &&
+		pageKey
+	) {
 		return <NexmentContainer config={config} />
-	} else {
-		return <></>
 	}
+
+	return null
 }
 
 export default Nexment

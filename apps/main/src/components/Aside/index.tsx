@@ -57,59 +57,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 			]
 		}
 
-		let currentHeaderId = 1
-		let currentHeaderOffset = result[1][1]
-		let lastHeaderOffset = result[1][0]
-
-		/**
-		 * Scroll event handler
-		 */
-		const handleScroll = () => {
-			const scrollPosition = window.pageYOffset - 250
-			const listDiv = document.getElementById('toc')
-
-			if (scrollPosition >= currentHeaderOffset) {
-				document
-					.getElementById(`header${currentHeaderId - 1}`)
-					.classList.remove('toc-active')
-				document
-					.getElementById(`header${currentHeaderId}`)
-					.classList.add('toc-active')
-				scrollToItemWithinDiv(
-					listDiv,
-					document.getElementById(`header${currentHeaderId}`)
-				)
-				lastHeaderOffset = currentHeaderOffset
-				currentHeaderId += 1
-				currentHeaderOffset = result[1][currentHeaderId]
-			} else if (scrollPosition < lastHeaderOffset) {
-				if (currentHeaderId - 2 >= 0) {
-					document
-						.getElementById(`header${currentHeaderId - 1}`)
-						.classList.remove('toc-active')
-					document
-						.getElementById(`header${currentHeaderId - 2}`)
-						.classList.add('toc-active')
-					scrollToItemWithinDiv(
-						listDiv,
-						document.getElementById(`header${currentHeaderId - 2}`)
-					)
-					currentHeaderId -= 1
-					lastHeaderOffset = result[1][currentHeaderId - 1]
-					currentHeaderOffset = result[1][currentHeaderId]
-				} else {
-					document.getElementById(`header0`)?.classList.remove('toc-active')
-					currentHeaderId = 1
-					currentHeaderOffset = result[1][1]
-					lastHeaderOffset = result[1][0]
-				}
-			} else if (scrollPosition > lastHeaderOffset && currentHeaderId === 1) {
-				document.getElementById(`header0`)?.classList.add('toc-active')
-				scrollToItemWithinDiv(listDiv, document.getElementById(`header0`))
-			}
-		}
-
-		return [result, handleScroll, headerElements]
+		return [result, headerElements]
 	}
 
 	/**
@@ -122,17 +70,68 @@ export default function Aside({ preNext }: { preNext: any }) {
 	}
 
 	useEffect(() => {
-		const result = getAllHeaders()
-		const handler = result[1]
-		setHeadersResult(result[0][0])
-		setHeadersEl(result[2])
-		if (result[2].length) {
-			window.addEventListener('scroll', handler)
+		const [result, elements] = getAllHeaders()
+		setHeadersResult(result[0])
+		setHeadersEl(elements)
+
+		let currentHeaderId = 1
+		let currentHeaderOffset = result[1][1]
+		let lastHeaderOffset = result[1][0]
+
+		/**
+		 * Scroll event handler
+		 */
+		const scrollHandler = () => {
+			const scrollPosition = window.pageYOffset - 250
+			const listDiv = document.getElementById('toc')
+
+			const firstHeader = document.getElementById(`header0`)
+			const currentHeader = document.getElementById(`header${currentHeaderId}`)
+			const prevHeader = document.getElementById(`header${currentHeaderId - 1}`)
+			const prevPrevHeader = document.getElementById(
+				`header${currentHeaderId - 2}`
+			)
+
+			if (scrollPosition >= currentHeaderOffset) {
+				prevHeader?.classList.remove('toc-active')
+				currentHeader?.classList.add('toc-active')
+				if (currentHeader) {
+					scrollToItemWithinDiv(listDiv, currentHeader)
+				}
+				lastHeaderOffset = currentHeaderOffset
+				currentHeaderId += 1
+				currentHeaderOffset = result[1][currentHeaderId]
+			} else if (scrollPosition < lastHeaderOffset) {
+				if (currentHeaderId - 2 >= 0) {
+					prevHeader?.classList.remove('toc-active')
+					prevPrevHeader?.classList.add('toc-active')
+					if (prevPrevHeader) {
+						scrollToItemWithinDiv(listDiv, prevPrevHeader)
+					}
+					currentHeaderId -= 1
+					lastHeaderOffset = result[1][currentHeaderId - 1]
+					currentHeaderOffset = result[1][currentHeaderId]
+				} else {
+					firstHeader?.classList.remove('toc-active')
+					currentHeaderId = 1
+					currentHeaderOffset = result[1][1]
+					lastHeaderOffset = result[1][0]
+				}
+			} else if (scrollPosition > lastHeaderOffset && currentHeaderId === 1) {
+				firstHeader?.classList.add('toc-active')
+				if (firstHeader) {
+					scrollToItemWithinDiv(listDiv, firstHeader)
+				}
+			}
+		}
+
+		if (elements.length) {
+			window.addEventListener('scroll', scrollHandler)
 		}
 		return () => {
-			window.removeEventListener('scroll', handler)
+			window.removeEventListener('scroll', scrollHandler)
 		}
-	}, [router.asPath])
+	}, [router.pathname])
 
 	const SubItem = ({
 		item,

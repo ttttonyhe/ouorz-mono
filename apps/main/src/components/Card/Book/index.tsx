@@ -13,8 +13,8 @@ const BookCard = (props: Book) => {
 			onClick={() => openLink(link)}
 			className="group flex flex-col dark:bg-gray-800 dark:border-none border rounded-md shadow-sm hover:shadow-md transition-shadow bg-white cursor-pointer w-50 z-40"
 		>
-			<div className="flex flex-1 items-center">
-				<div className="px-4.5 py-4">
+			<div className="flex flex-1 items-center lg:py-0 py-1 justify-center">
+				<div className="px-4.5 py-4 lg:block hidden">
 					<Image
 						width={35}
 						height={52}
@@ -34,7 +34,7 @@ const BookCard = (props: Book) => {
 						{author}
 					</p>
 				</div>
-				<div className="pr-4.5 lg:group-hover:opacity-100 opacity-0 lg:group-hover:flex-1 transition-opacity ease-in-out duration-300 line-clamp-3">
+				<div className="pr-4.5 hidden lg:block lg:group-hover:opacity-100 opacity-0 lg:group-hover:flex-1 transition-opacity ease-in-out duration-300 line-clamp-3">
 					<p className="lg:group-hover:block hidden text-xs font-medium dark:text-white">
 						{title}
 					</p>

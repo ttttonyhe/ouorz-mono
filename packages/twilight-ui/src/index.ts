@@ -13,3 +13,8 @@ export type { IconProps } from './Icon'
 // Label
 export { default as Label } from './Label'
 export type { LabelProps } from './Label'
+
+
+// LabelGroup
+export { default as LabelGroup } from './LabelGroup'
+export type { LabelGroupProps } from './LabelGroup'

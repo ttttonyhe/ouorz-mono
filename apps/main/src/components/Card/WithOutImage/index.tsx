@@ -19,7 +19,7 @@ export default function CardWithOutImage({ item, sticky }: Props) {
 				<div className="col-span-2 col-end-4">
 					<div className="grid grid-cols-4 items-center">
 						<div className="flex space-x-2 col-start-1 col-end-3">
-							{sticky && <Label type="sticky" />}
+							{sticky && <Label type="sticky-icon" />}
 							<Link href={`/cate/${item.post_categories[0].term_id}`}>
 								<Label type="primary" icon="cate">
 									{item.post_categories[0].name}

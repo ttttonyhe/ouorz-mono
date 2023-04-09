@@ -74,6 +74,10 @@ module.exports = {
 			animation: {
 				pointerIn: 'pointerIn ease-in-out .25s forwards',
 				pointerOut: 'pointerOut ease-in-out .25s forwards',
+				appear: 'opacityProgressIn ease-in-out .25s forwards',
+				disappear: 'opacityProgressOut ease-in-out .25s forwards',
+				shrinkDisappear: 'shrinkDisappear ease-in-out .5s forwards',
+				expandImageCardInfo: 'expandImageCardInfo ease-in-out .25s forwards',
 				reader: 'moveUp ease-in-out .5s',
 				readerOut: 'moveDown ease-in-out .5s',
 				readerBg: 'opacityProgressIn ease-in-out .5s',
@@ -94,6 +98,24 @@ module.exports = {
 				completePulse: 'completePulse ease-in-out 2.5s infinite',
 			},
 			keyframes: {
+				expandImageCardInfo: {
+					'0%': {
+						width: '363px',
+					},
+					'100%': {
+						width: '100%',
+					},
+				},
+				shrinkDisappear: {
+					'0%': {
+						transform: 'scale(1)',
+						opacity: '1',
+					},
+					'100%': {
+						transform: 'scale(0.9)',
+						opacity: '0',
+					},
+				},
 				pointerIn: {
 					'0%': {
 						transform: 'rotate(0deg)',
@@ -314,6 +336,5 @@ module.exports = {
 			addUtilities(utilities)
 		},
 		require('@tailwindcss/typography'),
-		require('@tailwindcss/line-clamp'),
 	],
 }

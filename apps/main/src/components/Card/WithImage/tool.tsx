@@ -51,7 +51,7 @@ export const CardTool = ({
 								dispatch(setReaderRequest(item))
 							}}
 						>
-							<Label type="gray" icon="preview" />
+							<Label type="gray-icon" icon="preview" />
 						</a>
 					)}
 					<a

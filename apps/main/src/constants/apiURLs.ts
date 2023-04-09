@@ -28,3 +28,8 @@ export const WORDPRESS_API = {
 export const SUBSTATS_API = {
 	SSPAI: 'https://api.spencerwoo.com/substats/?source=sspai&queryKey=tonyhe',
 }
+
+export const OPENAI_API = {
+	CACHING_PROXY: 'https://proxy.lune.one',
+	COMPLETIONS: 'https://api.openai.com/v1/completions',
+}

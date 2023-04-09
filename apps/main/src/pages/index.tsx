@@ -1,6 +1,6 @@
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NextPageWithLayout } from '~/pages/_app'
 import { pageLayout } from '~/components/Page'
 import List from '~/components/List'
@@ -9,17 +9,21 @@ import getApi from '~/utilities/api'
 import NextJS13Preview from '~/components/Banners/NextJS13Preview'
 import YearOfReformation from '~/components/Banners/YearOfReformation'
 
+const GREETINGS = [" there, it's Tony", ', Tony here', ", I'm Tony"]
+
 interface Props {
 	stickyNotFound: boolean
 	stickyPosts: any
-	greeting: string
 }
 
-const Home: NextPageWithLayout = ({
-	stickyNotFound,
-	stickyPosts,
-	greeting,
-}: Props) => {
+const Home: NextPageWithLayout = ({ stickyNotFound, stickyPosts }: Props) => {
+	const [greeting, setGreeting] = useState(GREETINGS[0])
+
+	useEffect(() => {
+		const greetingNumber = Math.floor(Math.random() * 10) % 3
+		setGreeting(GREETINGS[greetingNumber])
+	}, [])
+
 	return (
 		<div>
 			<Head>
@@ -74,31 +78,23 @@ const Home: NextPageWithLayout = ({
 
 Home.layout = pageLayout
 
-export const getServerSideProps: GetServerSideProps = async () => {
-	const resSticky = await fetch(
+export const getStaticProps: GetStaticProps = async () => {
+	const getStickyPostsResponse = await fetch(
 		getApi({
 			sticky: true,
 			perPage: 10,
 			cateExclude: '5,2,74,335',
 		})
 	)
-	const dataSticky = await resSticky.json()
 
-	let stickyNotFound = false
-	if (!dataSticky) {
-		stickyNotFound = true
-	}
-
-	const greeting = [" there, it's Tony", ', Tony here', ", I'm Tony"][
-		Math.floor(Math.random() * 10) % 3
-	]
+	const stickyPostData = await getStickyPostsResponse.json()
 
 	return {
 		props: {
-			stickyNotFound: stickyNotFound,
-			stickyPosts: dataSticky,
-			greeting,
+			stickyNotFound: !stickyPostData,
+			stickyPosts: stickyPostData,
 		},
+		revalidate: 3600 * 24 * 31,
 	}
 }
 

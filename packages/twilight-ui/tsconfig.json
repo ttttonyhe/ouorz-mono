@@ -17,7 +17,6 @@
 		"paths": {
 			"@twilight-toolkit/utils": ["../twilight-utils/src/index"]
 		},
-		"suppressImplicitAnyIndexErrors": true,
 		"allowSyntheticDefaultImports": true,
 		"experimentalDecorators": true,
 		"noImplicitReturns": true,

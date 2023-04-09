@@ -8,11 +8,13 @@ export const buttonTypes = propTypes.tuple(
 	'menu-primary'
 )
 export const labelTypes = propTypes.tuple(
-	'sticky',
 	'primary',
 	'secondary',
 	'green',
-	'gray'
+	'gray-icon',
+	'orange-icon',
+	'sticky-icon',
+	'green-icon'
 )
 export const iconsNames = propTypes.tuple(...Object.keys(icons))
 

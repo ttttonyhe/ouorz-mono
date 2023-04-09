@@ -40,7 +40,7 @@ Secondary.args = {
 
 export const Sticky = Template.bind({})
 Sticky.args = {
-	type: 'sticky',
+	type: 'sticky-icon',
 	children: 'Pinned',
 }
 
@@ -58,9 +58,23 @@ GreenPreview.args = {
 	preview: true,
 }
 
+export const GreenIcon = Template.bind({})
+GreenIcon.args = {
+	type: 'green-icon',
+	icon: 'preview',
+	children: 'Label',
+}
+
 export const GrayIcon = Template.bind({})
 GrayIcon.args = {
-	type: 'gray',
+	type: 'gray-icon',
+	icon: 'preview',
+	children: 'Label',
+}
+
+export const OrangeIcon = Template.bind({})
+OrangeIcon.args = {
+	type: 'orange-icon',
 	icon: 'preview',
 	children: 'Label',
 }
