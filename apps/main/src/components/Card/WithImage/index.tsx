@@ -13,6 +13,7 @@ import blurDataURL from '~/constants/blurDataURL'
 import { useCallback, useState } from 'react'
 import { useRouter } from 'next/router'
 import useInterval from '~/hooks/useInterval'
+import useAnalytics from '~/hooks/analytics'
 
 interface Props {
 	item: WPPost
@@ -20,6 +21,7 @@ interface Props {
 }
 
 export default function CardWithImage({ item, sticky }: Props) {
+	const { trackEvent } = useAnalytics()
 	const dispatch = useDispatch()
 	const router = useRouter()
 
@@ -30,6 +32,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 	const [showThumbnail, setShowThumbnail] = useState<boolean>(true)
 
 	const handleSummarize = useCallback(async () => {
+		trackEvent('summarizePost', 'click')
 		setSummarizing(true)
 
 		try {
@@ -121,15 +124,13 @@ export default function CardWithImage({ item, sticky }: Props) {
 									</Label>
 								</Link>
 							</div>
-							<div
-								data-oa="click-previewPost"
-								className="justify-end hidden lg:flex lg:w-auto w-full"
-							>
+							<div className="justify-end hidden lg:flex lg:w-auto w-full">
 								<LabelGroup className="h-[33px]">
 									<Label
 										type="secondary"
 										icon="preview"
 										onClick={() => {
+											trackEvent('previewPost', 'click')
 											dispatch(setReaderRequest(item))
 										}}
 									>
