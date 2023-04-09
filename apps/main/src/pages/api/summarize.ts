@@ -51,7 +51,7 @@ const summarize = async (
 			const response = await fetch(OPENAI_API.CACHING_PROXY, {
 				method: 'POST',
 				headers: {
-					// 'Cache-Control': 'no-cache',
+					'Cache-Control': 'no-cache',
 					'Content-Type': 'application/json',
 					Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
 					Origin: req.headers.origin,
