@@ -57,17 +57,19 @@ const summarize = async (
 		content = removeTrailingSpaces(content)
 		content = content.slice(0, 1925)
 
+		const isAdmin =
+			req.headers['token'] === process.env.REVALIDATION_REQUEST_TOKEN
+
 		try {
 			const response = await fetch(OPENAI_API.CACHING_PROXY, {
 				method: 'POST',
 				headers: {
-					...(req.headers['token'] ===
-						process.env.REVALIDATION_REQUEST_TOKEN && {
+					...(isAdmin && {
 						'Cache-Control': req.headers['cache-control'],
 					}),
 					'Content-Type': 'application/json',
 					Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-					Origin: req.headers.origin,
+					Origin: isAdmin ? 'https://www.ouorz.com' : req.headers.origin,
 				},
 				body: JSON.stringify({
 					targetUrl: OPENAI_API.COMPLETIONS,
