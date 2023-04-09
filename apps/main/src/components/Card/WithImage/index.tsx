@@ -50,7 +50,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 			const data = await res.json()
 
 			setTimeout(() => {
-				setOutputText(data.choices[0].text)
+				setOutputText(data.choices[0].text.replace(/^: /, ''))
 				setSummarizing(false)
 				setTimeout(() => {
 					setShowThumbnail(false)
