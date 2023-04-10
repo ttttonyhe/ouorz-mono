@@ -1,9 +1,7 @@
 /* eslint-disable camelcase */
-import Cors from 'cors'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import html2plaintext from 'html2plaintext'
 import { OPENAI_API } from '~/constants/apiURLs'
-import { use } from '../../lib/middleware'
 
 type ReqBodyType = {
 	identifier: string
@@ -41,14 +39,6 @@ const summarize = async (
 	req: NextApiRequest,
 	res: NextApiResponse<ResDataType>
 ) => {
-	await use(
-		Cors({
-			methods: ['POST'],
-		}),
-		req,
-		res
-	)
-
 	let { identifier, content } = req.body as ReqBodyType
 
 	if (content) {
@@ -58,9 +48,6 @@ const summarize = async (
 		content = removeTrailingSpaces(content)
 		content = content.slice(0, 1925)
 
-		const isAdmin =
-			req.headers['token'] === process.env.REVALIDATION_REQUEST_TOKEN
-
 		try {
 			const response = await fetch(OPENAI_API.CACHING_PROXY, {
 				method: 'POST',
@@ -68,10 +55,6 @@ const summarize = async (
 					'Content-Type': 'application/json',
 					Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
 					Origin: req.headers.origin,
-					...(isAdmin && {
-						'Cache-Control': req.headers['cache-control'],
-						Origin: 'https://www.ouorz.com',
-					}),
 				},
 				body: JSON.stringify({
 					targetUrl: OPENAI_API.COMPLETIONS,
