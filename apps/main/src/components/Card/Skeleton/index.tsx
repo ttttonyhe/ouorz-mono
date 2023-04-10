@@ -1,12 +1,21 @@
+import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
 import ContentLoader from 'react-content-loader'
 
 export default function CardSkeleton() {
+	const [className, setClassName] = useState<string>('opacity-50')
 	const { resolvedTheme } = useTheme()
+
+	useEffect(() => {
+		if (resolvedTheme) {
+			setClassName('')
+		}
+	}, [resolvedTheme])
+
 	return (
 		<div className="w-full p-10 shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6 text-center">
 			<ContentLoader
-				className={resolvedTheme === undefined ? 'opacity-50' : ''}
+				className={className}
 				uniqueKey="card-skeleton"
 				speed={2}
 				width={100}

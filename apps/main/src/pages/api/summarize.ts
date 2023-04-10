@@ -41,7 +41,7 @@ const summarize = async (
 ) => {
 	let { identifier, content } = req.body as ReqBodyType
 
-	if (content) {
+	if (identifier && content) {
 		content = removeCodeBlocks(content)
 		content = html2plaintext(content)
 		content = removeLinks(content)
@@ -74,7 +74,7 @@ const summarize = async (
 			const data = await response.json()
 
 			res.setHeader('Cache-Control', `public, s-maxage=${3600 * 24 * 31}`)
-
+			
 			return res.status(200).json(data)
 		} catch (error) {
 			console.error(error)
@@ -82,7 +82,7 @@ const summarize = async (
 		}
 	}
 
-	return res.status(400).json({ error: 'No content provided' })
+	return res.status(400).json({ error: 'Required fields missing' })
 }
 
 export const config = {

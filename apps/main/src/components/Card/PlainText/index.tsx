@@ -23,11 +23,16 @@ export default function CardPlainText({ item }: Props) {
 	 */
 	const upvote = async (id: number) => {
 		setUpvoting(true)
-		await fetch(getApi({ mark: id })).then(async (res: any) => {
-			const data = await res.json()
-			setUpvotes(data.markCountNow)
-			setUpvoting(false)
-		})
+		await fetch(getApi({ mark: id }))
+			.then(() => {
+				setTimeout(() => {
+					setUpvoting(false)
+					setUpvotes((prev) => prev + 1)
+				}, 500)
+			})
+			.catch(() => {
+				setUpvoting(false)
+			})
 	}
 
 	const doUpvote = useDebounce(upvote, 2000)
@@ -42,7 +47,7 @@ export default function CardPlainText({ item }: Props) {
 			</div>
 			<div className="pt-3 pb-3 px-5 lg:pt-2 lg:pb-2 lg:px-10 items-center w-full h-auto border-t rounded-br-md rounded-bl-md border-gray-100 dark:border-gray-700">
 				<p className="flex space-x-2 text-5 lg:text-4 tracking-wide leading-2 lg:leading-8 text-gray-500 dark:text-gray-400 items-center">
-					<span
+					<button
 						className="flex items-center space-x-1 text-red-400 hover:text-red-500 cursor-pointer rounded-md"
 						onClick={() => {
 							if (!upvoting) {
@@ -59,8 +64,10 @@ export default function CardPlainText({ item }: Props) {
 								<Icon name="love" />
 							</i>
 						)}
-						<em className="not-italic">{upvotes}</em>
-					</span>
+						<em className={`not-italic ${!upvoting ? 'animate-appear' : ''}`}>
+							{upvotes}
+						</em>
+					</button>
 					<span className="lg:block hidden">·</span>
 					<span className="lg:block hidden">
 						Posted <TimeAgo date={item.date} />

@@ -22,7 +22,7 @@ const HeaderSearchBarComponent = ({
 		<div className="lg:flex hidden lg:w-[70%] xl:w-[620px]">
 			<div
 				aria-label="Command + K to open the command palette"
-				className="top-[6px] left-3 z-10 bg-gray-50 text-gray-400 dark:bg-transparent dark:border-gray-600 px-1.5 py-0.5 text-xs border rounded-md absolute"
+				className="top-[6px] left-3 z-10 bg-gray-50 text-gray-400 dark:bg-transparent dark:border-gray-600 px-1.5 py-0.5 text-xs border rounded-md absolute cursor-not-allowed"
 			>
 				⌘+K
 			</div>

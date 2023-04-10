@@ -69,13 +69,13 @@ const Label: React.FC<LabelProps> = ({
 		case 'green':
 			return (
 				<label
-					className={`group cursor-pointer justify-center font-medium items-center h-full flex w-min ${
+					className={`group cursor-pointer justify-center font-medium items-center h-full flex gap-x-1 w-min ${
 						preview ? 'px-3 py-0.5' : 'px-4 py-1.5'
 					} bg-green-100 dark:bg-green-800 hover:bg-green-200 dark:hover:bg-green-700 text-center rounded-md text-xl tracking-wide text-green-500 dark:text-green-400 align-middle effect-pressing`}
 				>
 					{children}
 					{icon && (
-						<span className="w-5 h-5 opacity-0 transition-all ease-in-out -ml-5 group-hover:ml-1 group-hover:-mr-1 group-hover:opacity-100">
+						<span className="lg:w-[19px] lg:h-[19px] w-4 h-4 opacity-0 transition-all ease-in-out -ml-5 group-hover:ml-0 group-hover:mr-0 -mr-1 group-hover:opacity-100">
 							<Icon name={icon} />
 						</span>
 					)}
