@@ -74,7 +74,7 @@ const summarize = async (
 			const data = await response.json()
 
 			res.setHeader('Cache-Control', `public, s-maxage=${3600 * 24 * 31}`)
-			
+
 			return res.status(200).json(data)
 		} catch (error) {
 			console.error(error)
