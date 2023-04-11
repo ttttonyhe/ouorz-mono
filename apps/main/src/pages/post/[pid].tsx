@@ -53,9 +53,14 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 		dispatch(setHeaderTitle(post.title.rendered))
 		fetch(
 			getApi({
-				// @ts-ignore
-				visit: pid,
-			})
+				visit: true,
+			}),
+			{
+				method: 'POST',
+				body: JSON.stringify({
+					id: pid,
+				}),
+			}
 		).catch((err) => {
 			console.error(err)
 		})

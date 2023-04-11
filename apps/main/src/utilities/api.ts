@@ -6,7 +6,7 @@ type Parameters = {
 	getCate?: boolean
 	mark?: number
 	page?: number
-	visit?: number
+	visit?: boolean
 	post?: number
 	search?: string
 	sponsor?: boolean
@@ -47,7 +47,7 @@ const getApi = (props: Parameters) => {
 	}
 
 	if (props.visit) {
-		return `https://blog.ouorz.com/wp-json/tony/v1/visit/${props.visit}`
+		return 'https://blog.ouorz.com/wp-json/tony/v1/visit'
 	}
 
 	if (props.sponsor) {
