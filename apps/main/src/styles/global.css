@@ -459,6 +459,10 @@ h5 {
 	@apply dark:border-gray-500;
 }
 
+.nexment-comment-area .nexment-comment-area-top input:nth-child(1) {
+	@apply dark:border-r-gray-500;
+}
+
 .nexment-popover p {
 	@apply dark:text-white;
 	@apply mt-4;
@@ -477,6 +481,26 @@ h5 {
 	.nexment-emoji-section-header
 	b {
 	@apply dark:text-white;
+}
+
+.nexment-comments-div .nexment-comments-title h5 {
+	@apply flex items-center gap-x-1;
+}
+
+.nexment-comments-replyto {
+	@apply flex items-center gap-x-1;
+}
+
+.nexment-comments-div .nexment-comments-replyto svg {
+	@apply !translate-y-[1px];
+}
+
+.nexment-comments-list-item-div .rodal .rodal-dialog {
+	@apply dark:bg-gray-800;
+}
+
+.nexment-reply-container .nexment-reply-primary {
+	@apply dark:border-gray-500;
 }
 
 @media screen and (min-width: 1280px) {

@@ -55,7 +55,7 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 							onChange={(e) => {
 								setEmail(e.target.value)
 							}}
-							onKeyPress={(e) => {
+							onKeyDown={(e) => {
 								if (e.key === 'Enter') {
 									doSubscribe()
 								}
@@ -65,68 +65,68 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 				</div>
 			</div>
 		)
-	} else {
-		return (
-			<div className="border shadow-sm w-full p-10 lg:py-11 lg:px-20 rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2 lg:block hidden">
-				<div>
-					<h1 className="flex text-3xl font-medium text-gray-700 dark:text-white tracking-wide items-center">
-						<span className="w-9 h-9 mr-2">
-							<Icon name="subscribe" />
-						</span>
-						Subscribe
-					</h1>
-					<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 mt-2 mb-5">
-						New Article Everytime I Publish
-					</p>
-				</div>
-				<div className="w-full grid grid-cols-3 gap-5">
-					<div className="col-start-1 col-end-3 w-full grid grid-cols-3 rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 text-gray-600 dark:text-gray-400 tracking-wide">
-						<input
-							type="email"
-							value={email}
-							className="col-start-1 col-end-3 w-full font-light border-r-0 rounded-tl-md rounded-bl-md px-4 py-2 focus:outline-none shadow-sm border border-gray-200 dark:border-gray-500 focus:border-gray-300 dark:bg-gray-600"
-							placeholder="Email address"
-							onChange={(e) => {
-								setEmail(e.target.value)
-							}}
-							onKeyPress={(e) => {
-								if (e.key === 'Enter') {
-									doSubscribe()
-								}
-							}}
-						/>
-						{subscribed ? (
-							<div className="bg-green-500 border border-green-600 cursor-pointer shadow-sm col-start-3 col-end-4 rounded-tr-md rounded-br-md text-center text-green-50 flex items-center">
-								<span className="mx-auto">Succeed</span>
-							</div>
-						) : (
-							<div
-								className="bg-blue-50 border border-blue-200 dark:border-blue-400 dark:bg-blue-500 hover:bg-blue-100 hover:border-blue-300 cursor-pointer shadow-sm col-start-3 col-end-4 rounded-tr-md rounded-br-md text-center text-blue-500 dark:text-white flex items-center"
-								onClick={() => {
-									doSubscribe()
-								}}
-							>
-								<span className="mx-auto">
-									{processing ? 'Processing...' : 'Subscribe'}
-								</span>
-							</div>
-						)}
-					</div>
-					<a
-						href="https://discord.gg/TTwGnMgcxr"
-						target="_blank"
-						rel="noreferrer"
-						className="flex text-indigo-700 dark:text-indigo-50 col-start-3 col-end-4 border-indigo-200 dark:border-indigo-400 dark:bg-indigo-500 hover:border-indigo-300 hover:bg-indigo-100 border text-center bg-indigo-50 rounded-md shadow-sm items-center justify-center"
-					>
-						<i className="w-5 h-5 mr-1.5">
-							<Icon name="chatRounded" />
-						</i>{' '}
-						Discord Server
-					</a>
-				</div>
-			</div>
-		)
 	}
+
+	return (
+		<div className="border shadow-sm w-full p-10 lg:py-11 lg:px-20 rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2 lg:block hidden">
+			<div>
+				<h1 className="flex text-3xl font-medium text-gray-700 dark:text-white tracking-wide items-center">
+					<span className="w-9 h-9 mr-2">
+						<Icon name="subscribe" />
+					</span>
+					Subscribe
+				</h1>
+				<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 mt-2 mb-5">
+					New Article Everytime I Publish
+				</p>
+			</div>
+			<div className="w-full grid grid-cols-3 gap-5">
+				<div className="col-start-1 col-end-3 w-full grid grid-cols-3 rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 text-gray-600 dark:text-gray-400 tracking-wide">
+					<input
+						type="email"
+						value={email}
+						className="col-start-1 col-end-3 w-full font-light border-r-0 rounded-tl-md rounded-bl-md px-4 py-2 focus:outline-none shadow-sm border border-gray-200 dark:border-gray-500 focus:border-gray-300 dark:bg-gray-600"
+						placeholder="Email address"
+						onChange={(e) => {
+							setEmail(e.target.value)
+						}}
+						onKeyDown={(e) => {
+							if (e.key === 'Enter') {
+								doSubscribe()
+							}
+						}}
+					/>
+					{subscribed ? (
+						<div className="bg-green-500 border border-green-600 cursor-pointer shadow-sm col-start-3 col-end-4 rounded-tr-md rounded-br-md text-center text-green-50 flex items-center">
+							<span className="mx-auto">Succeed</span>
+						</div>
+					) : (
+						<button
+							className="bg-blue-50 border border-blue-200 dark:border-blue-400 dark:bg-blue-500 hover:bg-blue-100 dark:hover:bg-blue-600 hover:border-blue-300 dark:hover:border-blue-400 cursor-pointer shadow-sm col-start-3 col-end-4 rounded-tr-md rounded-br-md text-center text-blue-500 dark:text-white flex items-center"
+							onClick={() => {
+								doSubscribe()
+							}}
+						>
+							<span className="mx-auto">
+								{processing ? 'Processing...' : 'Subscribe'}
+							</span>
+						</button>
+					)}
+				</div>
+				<a
+					href="https://discord.gg/TTwGnMgcxr"
+					target="_blank"
+					rel="noreferrer"
+					className="flex text-indigo-700 dark:text-indigo-50 col-start-3 col-end-4 border-indigo-200 dark:border-indigo-400 dark:bg-indigo-500 dark:hover:bg-indigo-600 hover:border-indigo-300 dark:hover:border-indigo-400 hover:bg-indigo-100 border text-center bg-indigo-50 rounded-md shadow-sm items-center justify-center"
+				>
+					<i className="w-5 h-5 mr-1.5">
+						<Icon name="chatRounded" />
+					</i>{' '}
+					Discord Server
+				</a>
+			</div>
+		</div>
+	)
 }
 
 export default SubscriptionBox
