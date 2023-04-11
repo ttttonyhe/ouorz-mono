@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import { Icon } from '@twilight-toolkit/ui'
 import TimeAgo from 'react-timeago'
 import { WPPost } from '~/constants/propTypes'
+import useAnalytics from '~/hooks/analytics'
 
 export default function CardFooter({ item }: { item: WPPost }) {
+	const { trackEvent } = useAnalytics()
 	const [canShare, setCanShare] = useState<boolean | undefined>()
 
 	const doShare = async () => {
@@ -12,7 +14,7 @@ export default function CardFooter({ item }: { item: WPPost }) {
 				title: item.post_title,
 				url: `${window.location.origin}/post/${item.id}`,
 			})
-			console.log('Link shared successfully')
+			trackEvent('sharePost', 'click')
 		} catch (err) {
 			console.error('Failed to share:', err.message)
 		}
