@@ -45,14 +45,14 @@ export const CardTool = ({
 				</div>
 				<div className="hidden lg:flex justify-end space-x-2">
 					{preview && (
-						<a
+						<Label
+							type="gray-icon"
+							icon="preview"
 							data-oa="click-previewPost"
 							onClick={() => {
 								dispatch(setReaderRequest(item))
 							}}
-						>
-							<Label type="gray-icon" icon="preview" />
-						</a>
+						/>
 					)}
 					<a
 						href={item.post_metas.fineTool.itemLink}

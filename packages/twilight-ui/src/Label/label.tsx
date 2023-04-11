@@ -96,7 +96,7 @@ const Label: React.FC<LabelProps> = ({
 			return (
 				<label
 					{...props}
-					className="cursor-pointer justify-center font-medium items-center h-full flex w-min px-2 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-center rounded-md text-xl tracking-wide text-gray-500 dark:text-gray-300 align-middle effect-pressing"
+					className="cursor-pointer justify-center font-medium items-center h-full flex w-min px-2 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-500 text-center rounded-md text-xl tracking-wide text-gray-500 dark:text-gray-300 align-middle effect-pressing"
 				>
 					{icon && (
 						<span className="lg:w-[19px] lg:h-[19px] h-4 w-4">
