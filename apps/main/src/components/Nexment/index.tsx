@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
-import { NexmentContainer } from 'nexment'
+import Nexment from 'nexment'
 
-const Nexment = () => {
+const NexmentComponent = () => {
 	const { query } = useRouter()
 	const pageKey = query.pid ?? query.pgid
 
@@ -57,10 +57,10 @@ const Nexment = () => {
 		process.env.NEXT_PUBLIC_LC_KEY &&
 		pageKey
 	) {
-		return <NexmentContainer config={config} />
+		return <Nexment config={config} />
 	}
 
 	return null
 }
 
-export default Nexment
+export default NexmentComponent
