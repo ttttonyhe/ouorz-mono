@@ -48,12 +48,20 @@ const InfiniteList = (props: InfiniteListProps) => {
 
 	const { data, error, size, setSize } = useSWRInfinite(
 		(index) => `${url}&page=${index + 1}`,
-		(url) => fetch(url).then((res) => res.json())
+		async (url) => {
+			const res = await fetch(url)
+			if (!res.ok) {
+				throw new Error()
+			}
+			return res.json()
+		}
 	)
 	const postData = data ? [].concat(...data) : []
 	const isEmpty = data?.[0]?.length === 0
 	const isReachingEnd =
 		isEmpty || (data && data[data.length - 1]?.length < 10) || error
+
+	console.log(error)
 
 	return (
 		<InfiniteScroll

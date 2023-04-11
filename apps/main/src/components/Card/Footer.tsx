@@ -51,7 +51,7 @@ export default function CardFooter({ item }: { item: WPPost }) {
 						<span>{item.post_metas.views} Views</span>
 						<span>·</span>
 						<button
-							className="flex gap-x-1 items-center hover:text-gray-600 dark:hover:text-gray-300"
+							className="effect-pressing flex gap-x-1 items-center hover:text-gray-600 dark:hover:text-gray-300"
 							onClick={doShare}
 						>
 							<span className="w-[15px] h-[15px]">

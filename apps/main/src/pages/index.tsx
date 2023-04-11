@@ -44,7 +44,7 @@ const Home: NextPageWithLayout = ({ stickyNotFound, stickyPosts }: Props) => {
 						Hey{greeting}
 						<a
 							href="https://cal.com/tonyhe/15min"
-							className="ml-2 mt-0.5 hidden lg:block"
+							className="effect-pressing ml-2 mt-0.5 hidden lg:block"
 							target="_blank"
 							rel="noreferrer"
 						>

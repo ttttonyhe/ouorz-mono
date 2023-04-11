@@ -59,15 +59,15 @@ export default function Footer() {
 	return (
 		<footer className="mt-20 border-gray-200 dark:border-gray-700 dark:bg-gray-800 border-t border-b text-center py-4 bg-white">
 			<div className="fixed bottom-8 left-8 text-gray-500 dark:text-gray-300">
-				<Button
+				<button
 					aria-label="change theme"
 					onClick={() => {
 						setTheme(targetThemes[themes.indexOf(theme)])
 					}}
-					className="w-full !p-3 shadow-sm border border-gray-300 dark:border-gray-800 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
+					className="effect-pressing w-full !p-3 shadow-sm border border-gray-300 dark:border-gray-700 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
 				>
 					<span className="w-7 h-7">{icons[themes.indexOf(theme)]}</span>
-				</Button>
+				</button>
 			</div>
 			<div className="fixed bottom-8 right-8 text-gray-500 dark:text-gray-300">
 				<OffsetTransition componentRef={backToTopRef}>
@@ -77,7 +77,7 @@ export default function Footer() {
 						onClick={() => {
 							window.scrollTo({ top: 0, behavior: 'smooth' })
 						}}
-						className="effect-pressing w-full p-3 shadow-sm border border-gray-300 dark:border-gray-800 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
+						className="effect-pressing w-full p-3 shadow-sm border border-gray-300 dark:border-gray-700 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
 					>
 						<span className="w-7 h-7">
 							<Icon name="arrowUp" />

@@ -164,8 +164,8 @@ export default function CardWithImage({ item, sticky }: Props) {
 						{summary && !showThumbnail ? (
 							<div className="lg:mt-4 mt-6 animate-appear">
 								<Link href={`/post/${item.id}`}>
-									<div className="group flex mb-4 gap-x-2 flex-col border dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 shadow-sm">
-										<h2 className="flex items-center gap-x-1 justify-between text-sm font-semibold dark:border-gray-600 dark:text-gray-300 text-gray-500 px-3.5 uppercase tracking-wide py-2 w-full border-b">
+									<div className="group flex mb-4 gap-x-2 flex-col border dark:border-gray-600 dark:hover:border-gray-500 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm">
+										<h2 className="flex items-center gap-x-1 justify-between text-sm font-semibold dark:border-gray-600 dark:group-hover:border-gray-500 dark:text-gray-300 text-gray-500 px-3.5 uppercase tracking-wide py-2 w-full border-b">
 											TITLE
 											<span className="opacity-0 group-hover:opacity-100 -mr-2 group-hover:mr-0 transition-all w-4 h-4">
 												<Icon name="right" />

@@ -21,7 +21,7 @@ const YearOfReformation = () => {
 				<div className="flex gap-x-2.5 items-center">
 					<Link
 						href="/reading-list"
-						className="flex items-center gap-x-[4px] rounded-md shadow-sm border dark:border-gray-700 dark:bg-gray-700 py-1 px-3 font-serif hover:bg-gray-50 dark:hover:bg-gray-600 dark:hover:border-gray-600"
+						className="effect-pressing flex items-center gap-x-[4px] rounded-md shadow-sm border dark:border-gray-700 dark:bg-gray-700 py-1 px-3 font-serif hover:bg-gray-50 dark:hover:bg-gray-600 dark:hover:border-gray-600"
 					>
 						<span className="lg:w-[16px] lg:h-[16px] h-4.5 w-4.5">
 							<Icon name="bookOpen" />
@@ -30,7 +30,7 @@ const YearOfReformation = () => {
 					</Link>
 					<Link
 						href="/podcasts"
-						className="flex items-center gap-x-[4px] rounded-md shadow-sm border dark:border-gray-700 dark:bg-gray-700 py-1 px-3 font-serif hover:bg-gray-50 dark:hover:bg-gray-600 dark:hover:border-gray-600"
+						className="effect-pressing flex items-center gap-x-[4px] rounded-md shadow-sm border dark:border-gray-700 dark:bg-gray-700 py-1 px-3 font-serif hover:bg-gray-50 dark:hover:bg-gray-600 dark:hover:border-gray-600"
 					>
 						<span className="lg:w-[16px] lg:h-[16px] h-4.5 w-4.5">
 							<Icon name="microphone" />
@@ -43,7 +43,7 @@ const YearOfReformation = () => {
 						href="/post/978"
 						className="flex justify-center items-center h-[25px] w-[25px] transition-all ease-in-out hover:w-[115px] rounded-full group overflow-hidden text-gray-500 dark:text-gray-500 bg-gray-100 dark:bg-transparent dark:border dark:border-gray-600"
 					>
-						<span className="more-to-come leading-none transition-all ease-in-out absolute w-[115px] flex right-0 justify-end dark:pr-1 pr-[4px] gap-x-[4px]">
+						<span className="effect-pressing more-to-come leading-none transition-all ease-in-out absolute w-[115px] flex right-0 justify-end dark:pr-1 pr-[4px] gap-x-[4px]">
 							<span className="group-hover:opacity-100 hidden group-hover:block opacity-0 delay-100 transition-all ease-in-out text-xs -mt-[0.5px]">
 								More to Come
 							</span>

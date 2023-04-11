@@ -13,7 +13,7 @@ export default function CardSkeleton() {
 	}, [resolvedTheme])
 
 	return (
-		<div className="w-full p-10 shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6 text-center animate-appear">
+		<div className="w-full p-10 shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6 text-center">
 			<ContentLoader
 				className={className}
 				uniqueKey="card-skeleton"
