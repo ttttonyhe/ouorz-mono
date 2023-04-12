@@ -2998,7 +2998,7 @@ __metadata:
     eslint: ^8.38.0
     highlight.js: ^11.7.0
     html2plaintext: ^2.1.4
-    nexment: ^0.0.672
+    nexment: ^0.0.673
     next: ^13.3.0
     next-themes: ^0.2.1
     next-transpile-modules: ^10.0.0
@@ -16059,9 +16059,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nexment@npm:^0.0.672":
-  version: 0.0.672
-  resolution: "nexment@npm:0.0.672"
+"nexment@npm:^0.0.673":
+  version: 0.0.673
+  resolution: "nexment@npm:0.0.673"
   dependencies:
     email-validator: ^2.0.4
     github-markdown-css: ^5.2.0
@@ -16086,7 +16086,7 @@ __metadata:
     unfetch: ^5.0.0
   peerDependencies:
     react: ">=18"
-  checksum: 28212c5c70876394ffc37fcb7332166e3ee72d8fdb39f59b919b56b1106e28a76b2eef0fb69d0e765726c2c0b0bdc6264f70a09a76d8b6772b75ad53a6ac975e
+  checksum: a3bea520aa45533d68aad82658f97a2c80d65568f076ea670e4d177bd6f13c622caff1aaea2945bc5dcd6f72d7f5224f91ec9cbe535b557b1b6c18cc8b1b1130
   languageName: node
   linkType: hard
 
