@@ -1,10 +1,10 @@
 import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import Icon from '.'
 import icons from './icons'
 
-export default {
+const meta: Meta<typeof Icon> = {
 	title: 'Components/ Icon',
 	component: Icon,
 	argTypes: {
@@ -13,9 +13,11 @@ export default {
 			control: { type: 'select' },
 		},
 	},
-} as ComponentMeta<typeof Icon>
+}
 
-const Template: ComponentStory<typeof Icon> = (args) => {
+export default meta
+
+const Template: StoryFn<typeof Icon> = (args) => {
 	return (
 		<i className="flex w-8 h-8">
 			<Icon {...args} />
@@ -23,4 +25,6 @@ const Template: ComponentStory<typeof Icon> = (args) => {
 	)
 }
 
-export const Default = Template.bind({})
+export const Default = {
+	render: Template,
+}

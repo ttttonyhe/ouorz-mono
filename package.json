@@ -47,6 +47,7 @@
     "upgrade:dev": "turbo run upgrade --parallel --filter=./apps/* && yarn install",
     "upgrade:dev:analytics": "turbo run upgrade --parallel --filter=@ouorz/analytics && yarn install",
     "upgrade:dev:main": "turbo run upgrade --filter=@ouorz/main && yarn install",
+    "upgrade:dev:twilight:ui": "turbo run upgrade --filter=@twilight-toolkit/ui && yarn install",
     "upgrade:prod:main": "yarn run upgrade:dev:main && yarn install --ignore-optional",
     "clean": "turbo run clean --parallel && rm -rf node_modules"
   },

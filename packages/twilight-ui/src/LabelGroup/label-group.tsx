@@ -24,4 +24,5 @@ LabelGroup.defaultProps = {
 	),
 }
 LabelGroup.displayName = 'LabelGroup'
+
 export default LabelGroup

@@ -1,44 +1,48 @@
-import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import Button from './button'
 import { iconsNames } from '../utils/propTypes'
 
-export default {
+const meta: Meta<typeof Button> = {
 	title: 'Components/ Button',
 	component: Button,
+	tags: ['button', 'input', 'autodocs'],
 	argTypes: {
 		icon: {
 			options: iconsNames,
 			control: { type: 'select' },
 		},
 	},
-} as ComponentMeta<typeof Button>
-
-const Template: ComponentStory<typeof Button> = ({ children, ...args }) => {
-	return <Button {...args}>{children}</Button>
 }
 
-export const Default = Template.bind({})
-Default.args = {
-	type: 'default',
-	children: 'Button',
+export default meta
+
+type Story = StoryObj<typeof Button>
+
+export const Default: Story = {
+	args: {
+		type: 'default',
+		children: 'Button',
+	},
 }
 
-export const MenuDefault = Template.bind({})
-MenuDefault.args = {
-	type: 'menu-default',
-	children: 'Button',
+export const MenuDefault: Story = {
+	args: {
+		type: 'menu-default',
+		children: 'Button',
+	},
 }
 
-export const Primary = Template.bind({})
-Primary.args = {
-	type: 'primary',
-	children: 'Button',
+export const Primary: Story = {
+	args: {
+		type: 'primary',
+		children: 'Button',
+	},
 }
 
-export const MenuPrimary = Template.bind({})
-MenuPrimary.args = {
-	type: 'menu-primary',
-	children: 'Button',
+export const MenuPrimary: Story = {
+	args: {
+		type: 'menu-primary',
+		children: 'Button',
+	},
 }

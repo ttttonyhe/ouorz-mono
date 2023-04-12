@@ -1,13 +1,14 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
 
-module.exports = {
+/** @type { import('@storybook/react-webpack5').StorybookConfig } */
+const config = {
 	staticDirs: ['./public'],
 	stories: ['../stories/**/*.stories.ts', '../src/**/*.stories.@(mdx|tsx)'],
 	addons: [
 		{
 			name: '@storybook/addon-essentials',
 			options: {
-				actions: true,
+				actions: false,
 				backgrounds: false,
 				controls: true,
 				docs: true,
@@ -19,15 +20,12 @@ module.exports = {
 		},
 		// Support Tailwind CSS
 		{
-			name: '@storybook/addon-postcss',
+			name: '@storybook/addon-styling',
 			options: {
-				postcssLoaderOptions: {
-					implementation: require('postcss'),
-				},
+				postCss: true,
 			},
 		},
 		'@storybook/addon-links',
-		'@storybook/addon-a11y',
 		'@storybook/addon-storysource',
 		'storybook-dark-mode',
 		'storybook-addon-turbo-build',
@@ -44,16 +42,13 @@ module.exports = {
 		},
 	},
 	features: {
-		// Enable code splitting
-		storyStoreV7: true,
+		storyStoreV7: false,
 	},
-	framework: '@storybook/react',
-	core: {
-		builder: {
-			name: '@storybook/builder-webpack5',
-			options: {
-				// Webpack features
-				lazyCompilation: true,
+	framework: {
+		name: '@storybook/react-webpack5',
+		options: {
+			builder: {
+				lazyCompilation: false,
 				fsCache: true,
 			},
 		},
@@ -68,4 +63,10 @@ module.exports = {
 		]
 		return config
 	},
+	docs: {
+		autodocs: 'tag',
+		defaultName: 'Documentation',
+	},
 }
+
+export default config

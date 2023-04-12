@@ -13,7 +13,6 @@
 		"isolatedModules": true,
 		"noImplicitAny": false,
 		"baseUrl": "./",
-		"suppressImplicitAnyIndexErrors": true,
 		"allowSyntheticDefaultImports": true,
 		"experimentalDecorators": true,
 		"noImplicitReturns": true,

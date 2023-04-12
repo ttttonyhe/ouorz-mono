@@ -146,4 +146,5 @@ Label.defaultProps = {
 	iconClassName: '',
 }
 Label.displayName = 'Label'
+
 export default Label
