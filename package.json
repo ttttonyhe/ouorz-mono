@@ -65,21 +65,5 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "lint-staged": {
-    "apps/main/**/*.+(ts|tsx)": [
-      "yarn run lint:main",
-      "prettier --write apps/main/**/*.+(ts|tsx)"
-    ],
-    "apps/analytics/**/*.+(js|jsx)": [
-      "yarn run lint:analytics",
-      "prettier --write apps/analytics/**/*.+(js|jsx)"
-    ],
-    "packages/twilight-ui/**/*.+(ts|tsx)": [
-      "prettier --write packages/twilight-ui/**/*.+(ts|tsx)"
-    ],
-    "packages/twilight-utils/**/*.+(ts|tsx)": [
-      "prettier --write packages/twilight-utils/**/*.+(ts|tsx)"
-    ]
   }
 }
