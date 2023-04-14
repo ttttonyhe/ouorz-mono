@@ -23,9 +23,6 @@ const NextConfigs = {
 	sentry: {
 		hideSourceMaps: true,
 	},
-	eslint: {
-		ignoreDuringBuilds: true,
-	},
 }
 
 const SentryWebpackPluginOptions = {
