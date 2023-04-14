@@ -55,8 +55,10 @@ export default async (req, res) => {
 
 		const stats = Object.keys(metrics[0]).reduce((obj, key) => {
 			obj[key] = {
-				value: Number(metrics[0][key]) || 0,
-				change: Number(metrics[0][key] - prevPeriod[0][key]) || 0,
+				value: Number.parseInt(metrics[0][key].toString()) || 0,
+				change:
+					Number.parseInt((metrics[0][key] || 0).toString()) -
+						Number.parseInt((prevPeriod[0][key] || 0).toString()) || 0,
 			}
 			return obj
 		}, {})
