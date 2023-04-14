@@ -706,19 +706,33 @@ abbr[title] {
 	background-clip: padding-box;
 }
 
+::-webkit-scrollbar {
+	@apply bg-gbg;
+	width: 16px;
+}
+
+.reader::-webkit-scrollbar {
+	@apply bg-transparent;
+}
+
+.aside-mask::-webkit-scrollbar {
+	@apply bg-transparent;
+}
+
 @media (prefers-color-scheme: dark) {
 	::-webkit-scrollbar-thumb {
 		@apply bg-gray-600 hover:bg-gray-500;
 	}
-}
 
-::-webkit-scrollbar {
-	@apply bg-transparent;
-	width: 16px;
-}
-
-@media (prefers-color-scheme: dark) {
 	::-webkit-scrollbar {
 		@apply bg-neutral-900;
+	}
+
+	.reader::-webkit-scrollbar {
+		@apply bg-gray-800;
+	}
+
+	.aside-mask::-webkit-scrollbar {
+		@apply bg-gray-800;
 	}
 }
