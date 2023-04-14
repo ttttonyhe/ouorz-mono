@@ -43,7 +43,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
-    "@ouorz/eslint-config-next": "workspace:*",
+    "@ouorz/eslint-config-root": "workspace:*",
     "@ouorz/prettier-config": "workspace:*",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",

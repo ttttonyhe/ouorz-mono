@@ -70,6 +70,7 @@ jobs:
       - name: Run Cypress for Main App
         uses: cypress-io/github-action@v5
         with:
+          install: false
           working-directory: apps/main
           start: pnpm run dev:test
           wait-on: 'http://localhost:3000'

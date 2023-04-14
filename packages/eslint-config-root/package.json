@@ -1,0 +1,15 @@
+{
+  "name": "@ouorz/eslint-config-root",
+  "version": "0.0.1",
+  "main": "index.js",
+  "description": "ESLint config for ouorz monorepo root",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo"
+  },
+  "dependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-turbo": "latest"
+  }
+}

@@ -44,5 +44,5 @@ export interface WPPost {
 	}
 }
 
-export type ListTypes = typeof listTypes[number]
-export type LabelTypes = typeof labelTypes[number]
+export type ListTypes = (typeof listTypes)[number]
+export type LabelTypes = (typeof labelTypes)[number]

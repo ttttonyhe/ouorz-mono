@@ -7,7 +7,7 @@ module.exports = {
 		'plugin:@next/next/recommended',
 	],
 	ignorePatterns: ['node_modules', 'dist'],
-	plugins: ['react', '@typescript-eslint', 'prettier', 'cypress'],
+	plugins: ['react', '@typescript-eslint', 'cypress'],
 	env: {
 		node: true,
 		browser: true,
