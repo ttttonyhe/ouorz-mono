@@ -16,8 +16,8 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "@sentry/nextjs": "^7.47.0",
-    "@twilight-toolkit/ui": "*",
-    "@twilight-toolkit/utils": "*",
+    "@twilight-toolkit/ui": "workspace:*",
+    "@twilight-toolkit/utils": "workspace:*",
     "cors": "^2.8.5",
     "dotenv-webpack": "^8.0.1",
     "html2plaintext": "^2.1.4",
@@ -35,13 +35,13 @@
     "styled-components": "^5.3.9"
   },
   "devDependencies": {
-    "@ouorz/eslint-config-next": "*",
-    "@ouorz/prettier-config": "*",
+    "@ouorz/eslint-config-next": "workspace:*",
+    "@ouorz/prettier-config": "workspace:*",
     "@tailwindcss/typography": "^0.5.9",
     "@types/cors": "^2.8.13",
     "@types/lodash": "^4.14.192",
     "@types/node": "^18.15.11",
-    "@types/react": "^18.0.34",
+    "@types/react": "^18.0.35",
     "@types/react-highlight": "^0.12.5",
     "@types/rss": "^0.0.30",
     "@types/smoothscroll-polyfill": "^0.3.1",
@@ -66,7 +66,7 @@
     "tailwindcss": "^3.3.1",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.4",
-    "webpack": "^5.78.0"
+    "webpack": "^5.79.0"
   },
   "optionalDependencies": {
     "@testing-library/cypress": "^9.0.0",

@@ -18,7 +18,7 @@ To use Twilight Toolkit inside ouorz monorepo Next.js apps, follow these steps:
    ```json
    {
    	"dependencies": {
-   		"@twilight-toolkit/ui": "*"
+   		"@twilight-toolkit/ui": "workspace:*"
    	}
    }
    ```

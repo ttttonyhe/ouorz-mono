@@ -2,26 +2,14 @@
   "name": "ouorz-mono",
   "description": "Monorepo for Tony's Personal Website and Related Projects",
   "version": "0.0.1",
-  "packageManager": "yarn@3.2.4",
+  "packageManager": "pnpm@8.2.0",
   "license": "GPL-3.0-or-later",
   "private": true,
   "engines": {
     "npm": ">=6.14.6",
-    "node": ">=14.6.0 <19.0.0"
-  },
-  "workspaces": {
-    "packages": [
-      "apps/*",
-      "packages/*"
-    ]
-  },
-  "installConfig": {
-    "hoistingLimits": "workspaces"
+    "node": ">=16.0.0 <19.0.0"
   },
   "scripts": {
-    "main": "yarn workspace @ouorz/main",
-    "analytics": "yarn workspace @ouorz/analytics",
-    "ui": "yarn workspace @twilight-toolkit/ui",
     "dev": "turbo run dev --parallel",
     "dev:main": "turbo run dev --filter=@ouorz/main",
     "dev:analytics": "turbo run dev --filter=@ouorz/analytics",
@@ -44,18 +32,19 @@
     "start": "turbo run start --parallel",
     "start:main": "turbo run start --filter=@ouorz/main",
     "start:analytics": "turbo run start --filter=@ouorz/analytics",
-    "upgrade:dev": "turbo run upgrade --parallel --filter=./apps/* && yarn install",
-    "upgrade:dev:analytics": "turbo run upgrade --parallel --filter=@ouorz/analytics && yarn install",
-    "upgrade:dev:main": "turbo run upgrade --filter=@ouorz/main && yarn install",
-    "upgrade:dev:twilight:ui": "turbo run upgrade --filter=@twilight-toolkit/ui && yarn install",
-    "upgrade:prod:main": "yarn run upgrade:dev:main && yarn install --ignore-optional",
-    "clean": "turbo run clean --parallel && rm -rf node_modules"
+    "upgrade:dev": "turbo run upgrade --parallel --filter=./apps/* && pnpm install",
+    "upgrade:dev:analytics": "turbo run upgrade --parallel --filter=@ouorz/analytics && pnpm install",
+    "upgrade:dev:main": "turbo run upgrade --filter=@ouorz/main && pnpm install",
+    "upgrade:dev:twilight:ui": "turbo run upgrade --filter=@twilight-toolkit/ui && pnpm install",
+    "upgrade:prod:main": "pnpm run upgrade:dev:main && pnpm install --no-optional",
+    "clean": "turbo run clean --parallel && rm -rf node_modules",
+    "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
-    "@ouorz/eslint-config-next": "*",
-    "@ouorz/prettier-config": "*",
+    "@ouorz/eslint-config-next": "workspace:*",
+    "@ouorz/prettier-config": "workspace:*",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",

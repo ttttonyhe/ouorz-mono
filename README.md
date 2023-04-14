@@ -85,7 +85,7 @@ Super opinionated, completely overkill.
 
 ```bash
 git clone git@github.com:HelipengTony/ouorz-mono.git
-yarn install
+pnpm install
 cd apps/main
 ```
 
@@ -105,7 +105,7 @@ Create a `.env` file with your configuration, see below for a list of environmen
   - REVALIDATION_REQUEST_TOKEN
 
 ```
-yarn run dev:main
+pnpm run dev:main
 ```
 
 <br/>
@@ -196,7 +196,7 @@ Follow the instructions [here →](https://dev.maxmind.com/geoip/geolite2-free-g
 
 ```bash
 git clone git@github.com:HelipengTony/ouorz-mono.git
-yarn install
+pnpm install
 cd apps/analytics
 ```
 
@@ -207,8 +207,8 @@ Create a `.env` file with your configuration, see below for a list of environmen
 - MAXMIND_LICENSE_KEY
 
 ```
-yarn analytics run build-postgresql-client
-yarn run dev:analytics
+pnpm --filter @ouorz/analytics run build-postgresql-client
+pnpm run dev:analytics
 ```
 
 <br/>
@@ -242,7 +242,7 @@ Work in progress
 
 Build system: [Turborepo](https://turborepo.org) with Remote Caching
 
-Monorepo Manager: [Yarn Workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces)
+Monorepo Manager: [PNpm](https://pnpm.io/workspaces)
 
 <br/>
 
@@ -251,16 +251,15 @@ Monorepo Manager: [Yarn Workspaces](https://classic.yarnpkg.com/lang/en/docs/wor
 #### Running Scripts
 + Use project aliases to run commands in different packages more easily:
   ```bash
-  yarn main run upgrade
+  pnpm --filter @ouorz/main run upgrade
   ```
 + Use pre-defined Turborepo scripts whenever content awareness (i.e. caching) is needed:
   ```bash
-  yarn run build:main
+  pnpm run build:main
   ```
 
 #### Managing Dependencies
 + Root `package.json` should only contain development dependencies
-+ Use yarn's `nohoist` option to avoid version conflicts of dependencies in different packages
 
 > WIP
 
@@ -290,18 +289,18 @@ Test runner: [Cypress](https://www.cypress.io)
 Start server:
 
 ```bash
-yarn run build:main
-yarn run start:main
+pnpm run build:main
+pnpm run start:main
 
 # or
 cd apps/main
-yarn run dev:test
+pnpm run dev:test
 ```
 
 Run tests:
 
 ```bash
-yarn run test:main
+pnpm run test:main
 ```
 
 `apps/main` uses Cypress Dashboard, disable it by changing the configuration file accordingly.
@@ -324,8 +323,8 @@ Build then deploy the Docker image via `apps/wordpress/Dockerfile`.
 This project utilizes a combination of Server-side Rendering (SSR) and (On-demand) Incremental Static Generation (ISG):
 
 ```bash
-yarn run build:main
-yarn run start:main
+pnpm run build:main
+pnpm run start:main
 ```
 
 <br/>
@@ -333,8 +332,8 @@ yarn run start:main
 ### apps/analytics
 
 ```bash
-yarn run build:analytics
-yarn run start:analytics
+pnpm run build:analytics
+pnpm run start:analytics
 ```
 
 <br/>
@@ -344,7 +343,7 @@ yarn run start:analytics
 To deploy the storybook, export it as a static web app:
 
 ```bash
-yarn run build:twilight:ui:storybook
+pnpm run build:twilight:ui:storybook
 ```
 
 <br/>
@@ -394,7 +393,7 @@ Traffic is automatically routed through a private IPv6 address restricted to you
 Make sure to set root directory path to `apps/<project-name>`, then update build command to the following:
 
 ```bash
-cd ../.. && yarn run build:<project-name>
+cd ../.. && pnpm run build:<project-name>
 ```
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/HelipengTony/ouorz-mono)

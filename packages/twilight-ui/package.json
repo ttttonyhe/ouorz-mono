@@ -17,13 +17,13 @@
     "webpack": "^5"
   },
   "scripts": {
-    "dev": "yarn run build --watch",
+    "dev": "pnpm run build --watch",
     "storybook": "storybook dev -p 6006 --quiet",
     "build": "tsup src/index.ts --format cjs,esm --dts --clean --external react --silent",
     "build:storybook": "storybook build",
     "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo",
     "upgrade": "ncu --upgrade",
-    "prepublishOnly": "yarn run build"
+    "prepublishOnly": "pnpm run build"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
@@ -56,6 +56,6 @@
     "util": "^0.12.5"
   },
   "dependencies": {
-    "@twilight-toolkit/utils": "*"
+    "@twilight-toolkit/utils": "workspace:*"
   }
 }

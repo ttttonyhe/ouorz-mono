@@ -1,4 +1,5 @@
 name: Cypress E2E Tests
+
 on:
   push:
     branches:
@@ -13,25 +14,48 @@ on:
     paths:
       - 'apps/**'
       - '.github/workflows/**'
+
 jobs:
   cypress:
     name: Testing
     runs-on: ubuntu-latest
     env:
-       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-            fetch-depth: 2
-      - name: Setup Node.js environment
+
+      - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
-          cache: 'yarn'
-      - name: Install Dependencies
-        run: yarn install
+          node-version: 18
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
       - name: Setup Environment Variables for Main App
         run: |
           touch apps/main/.env
@@ -42,12 +66,13 @@ jobs:
           echo NEXT_PUBLIC_BUTTONDOWN_TOKEN=${{ secrets.BUTTONDOWN_TOKEN }} >> apps/main/.env
           echo NEXT_PUBLIC_LC_KEY=${{ secrets.LC_KEY }} >> apps/main/.env
           echo NEXT_PUBLIC_LC_ID=${{ secrets.LC_ID }} >> apps/main/.env
+
       - name: Run Cypress for Main App
         uses: cypress-io/github-action@v4
         with:
           working-directory: apps/main
-          start: yarn run dev:test
-          wait-on: "http://localhost:3000"
+          start: pnpm run dev:test
+          wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           record: true
           browser: chrome
@@ -55,13 +80,16 @@ jobs:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Setup Environment Variables for Analytics App
         run: |
           touch apps/analytics/.env
           echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> apps/analytics/.env
           echo HASH_SALT=${{ secrets.HASH_SALT }} >> apps/analytics/.env
           echo MAXMIND_LICENSE_KEY=${{ secrets.MAXMIND_LICENSE_KEY }} >> apps/analytics/.env
+
       - name: Build Prisma Client
-        run: cd apps/analytics && yarn run build-postgresql-client
+        run: cd apps/analytics && pnpm run build-postgresql-client
+
       - name: Build Analytics App
-        run: yarn run build:analytics
+        run: pnpm run build:analytics

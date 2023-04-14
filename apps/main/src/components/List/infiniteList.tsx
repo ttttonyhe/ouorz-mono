@@ -61,8 +61,6 @@ const InfiniteList = (props: InfiniteListProps) => {
 	const isReachingEnd =
 		isEmpty || (data && data[data.length - 1]?.length < 10) || error
 
-	console.log(error)
-
 	return (
 		<InfiniteScroll
 			dataLength={postData.length}

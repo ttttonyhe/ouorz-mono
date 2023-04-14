@@ -14,10 +14,10 @@
     }
   },
   "scripts": {
-    "dev": "yarn run build --watch",
+    "dev": "pnpm run build --watch",
     "build": "tsup src/index.ts --format cjs,esm --dts --clean --silent",
     "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo",
-    "prepublishOnly": "yarn run build"
+    "prepublishOnly": "pnpm run build"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
