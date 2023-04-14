@@ -1,5 +1,5 @@
 .effect-pressing {
-	@apply active:scale-[0.985] active:translate-y-[0.5px] transition-transform duration-[50ms] ease-linear;
+	@apply active:!scale-[0.985] active:!translate-y-[0.5px] transition-transform duration-[50ms] ease-linear;
 }
 
 .label-group {
