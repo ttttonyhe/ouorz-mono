@@ -1,4 +1,4 @@
-name: Main App Testing
+name: Main App Tests
 
 on:
   push:
@@ -15,9 +15,13 @@ on:
       - '.github/workflows/**'
 
 jobs:
-  cypress:
-    name: Cypress E2E Testing
+  run-cypress-tests:
+    name: Run Cypress E2E Tests
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        container: [1, 2, 3, 4]
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
@@ -78,6 +82,8 @@ jobs:
           wait-on-timeout: 120
           record: true
           browser: chrome
+          parallel: true
+          group: 'Main App Tests'
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}

@@ -1,4 +1,4 @@
-name: Analytics App Testing
+name: Analytics App Tests
 
 on:
   push:
@@ -15,8 +15,8 @@ on:
       - '.github/workflows/**'
 
 jobs:
-  testing:
-    name: Testing
+  run-smoke-test:
+    name: Smoke test
     runs-on: ubuntu-latest
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
