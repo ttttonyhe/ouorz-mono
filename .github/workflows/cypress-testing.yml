@@ -54,7 +54,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Setup Environment Variables for Main App
         run: |
@@ -68,7 +68,7 @@ jobs:
           echo NEXT_PUBLIC_LC_ID=${{ secrets.LC_ID }} >> apps/main/.env
 
       - name: Run Cypress for Main App
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         with:
           working-directory: apps/main
           start: pnpm run dev:test
