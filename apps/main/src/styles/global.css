@@ -708,10 +708,17 @@ abbr[title] {
 
 @media (prefers-color-scheme: dark) {
 	::-webkit-scrollbar-thumb {
-		@apply bg-neutral-900 hover:bg-gray-500;
+		@apply bg-gray-600 hover:bg-gray-500;
 	}
 }
 
 ::-webkit-scrollbar {
+	@apply bg-transparent;
 	width: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+	::-webkit-scrollbar {
+		@apply bg-neutral-900;
+	}
 }
