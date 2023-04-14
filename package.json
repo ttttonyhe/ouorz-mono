@@ -1,13 +1,13 @@
 {
   "name": "ouorz-mono",
   "description": "Monorepo for Tony's Personal Website and Related Projects",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "packageManager": "pnpm@8.2.0",
   "license": "GPL-3.0-or-later",
   "private": true,
   "engines": {
-    "npm": ">=6.14.6",
-    "node": ">=16.0.0 <19.0.0"
+    "pnpm": ">=8",
+    "node": ">=18.0.0"
   },
   "scripts": {
     "dev": "turbo run dev --parallel",

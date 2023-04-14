@@ -1,0 +1,71 @@
+name: Analytics App Testing
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/analytics/**'
+      - '.github/workflows/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'apps/analytics/**'
+      - '.github/workflows/**'
+
+jobs:
+  testing:
+    name: Testing
+    runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: |
+            ~/.cache/Cypress
+            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Setup environment variables
+        run: |
+          touch apps/analytics/.env
+          echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> apps/analytics/.env
+          echo HASH_SALT=${{ secrets.HASH_SALT }} >> apps/analytics/.env
+          echo MAXMIND_LICENSE_KEY=${{ secrets.MAXMIND_LICENSE_KEY }} >> apps/analytics/.env
+
+      - name: Build Prisma client
+        run: cd apps/analytics && pnpm run build-postgresql-client
+
+      - name: Build app
+        run: pnpm run build:analytics
