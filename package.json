@@ -12,6 +12,7 @@
   "scripts": {
     "dev": "turbo run dev --parallel",
     "dev:main": "turbo run dev --filter=@ouorz/main",
+    "dev:test:main": "turbo run dev:test --filter=@ouorz/main",
     "dev:analytics": "turbo run dev --filter=@ouorz/analytics",
     "dev:twilight": "turbo run dev --parallel --filter=./packages/twilight-*",
     "dev:twilight:ui": "turbo run dev --filter=@twilight-toolkit/ui",
