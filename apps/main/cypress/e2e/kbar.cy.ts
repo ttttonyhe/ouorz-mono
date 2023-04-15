@@ -5,11 +5,11 @@ describe('Kbar', function () {
 		cy.viewport('macbook-13')
 		cy.visit('/')
 		// FIXME: this is a workaround for cypress to wait for the kbar component to load
-		cy.wait(100)
+		cy.wait(1000)
 	})
 
 	context('enter key combination cmd + k', () => {
-		it.skip('should display kbar background and panel', function () {
+		it('should display kbar background and panel', function () {
 			cy.get('body').type('{ctrl}k', { release: false })
 			cy.get('[data-cy="kbar-bg"]').should('exist')
 			cy.get('[data-cy="kbar-panel"]').should('exist')
@@ -51,7 +51,7 @@ describe('Kbar', function () {
 	})
 
 	context('click on cmd + k button', () => {
-		it.skip('should display kbar background and panel', function () {
+		it('should display kbar background and panel', function () {
 			cy.get('[data-cy="cmdkbutton"]').focus()
 			cy.get('[data-cy="kbar-bg"]').should('exist')
 			cy.get('[data-cy="kbar-panel"]').should('exist')
