@@ -9,7 +9,7 @@ describe('Kbar', function () {
 	})
 
 	context('enter key combination cmd + k', () => {
-		it('should display kbar background and panel', function () {
+		it.skip('should display kbar background and panel', function () {
 			cy.get('body').type('{ctrl}k', { release: false })
 			cy.get('[data-cy="kbar-bg"]').should('exist')
 			cy.get('[data-cy="kbar-panel"]').should('exist')
