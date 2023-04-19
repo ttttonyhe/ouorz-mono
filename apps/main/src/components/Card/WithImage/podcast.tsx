@@ -63,6 +63,7 @@ const CardWithImagePodcast = ({ item, sticky }: Props) => {
 					className="podcast-player focus:outline-none"
 					autoPlayAfterSrcChange={false}
 					src={item.post_metas.podcast.audioUrl}
+					preload="metadata"
 				/>
 			</div>
 		</div>
