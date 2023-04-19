@@ -1,9 +1,9 @@
 const trimStr = (str: string, n: number) => {
-	if (str.replace(/[\u4e00-\u9fa5]/g, '**').length <= n) {
+	if (str.replace(/[\u4e00-\u9fa5]/g, "**").length <= n) {
 		return str
 	} else {
 		let len = 0
-		let tmpStr = ''
+		let tmpStr = ""
 		for (let i = 0; i < str.length; i++) {
 			if (/[\u4e00-\u9fa5]/.test(str[i])) {
 				len += 2
@@ -16,7 +16,7 @@ const trimStr = (str: string, n: number) => {
 				tmpStr += str[i]
 			}
 		}
-		return tmpStr.replace(' ', '') + ' ...'
+		return tmpStr.replace(" ", "") + " ..."
 	}
 }
 

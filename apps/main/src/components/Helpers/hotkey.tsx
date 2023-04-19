@@ -1,5 +1,5 @@
-import { KbarListItem } from '../Kbar'
-import { useHotkeys } from 'react-hotkeys-hook'
+import { KbarListItem } from "../Kbar"
+import { useHotkeys } from "react-hotkeys-hook"
 
 /**
  *  Helper component to use react-hotkeys-hook to register hotkeys
@@ -10,13 +10,13 @@ import { useHotkeys } from 'react-hotkeys-hook'
  */
 const HotkeyHelper = ({ item }: { item: KbarListItem }) => {
 	useHotkeys(
-		`shift+${item.shortcut.join('+')}`,
+		`shift+${item.shortcut.join("+")}`,
 		(e) => {
 			e.preventDefault()
 			item.action()
 		},
 		{
-			enableOnTags: ['INPUT'],
+			enableOnTags: ["INPUT"],
 		}
 	)
 	// render nothing

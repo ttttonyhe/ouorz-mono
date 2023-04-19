@@ -1,19 +1,19 @@
-import { Icon, Label, LabelGroup } from '@twilight-toolkit/ui'
-import CardFooter from '~/components/Card/Footer'
-import CardWithImageTool from '~/components/Card/WithImage/tool'
-import trimStr from '~/utilities/trimString'
-import Link from 'next/link'
-import Image from 'next/image'
-import CardWithImagePodcast from '~/components/Card/WithImage/podcast'
-import { useDispatch } from '~/hooks'
-import { setReaderRequest } from '~/store/reader/actions'
-import { WPPost } from '~/constants/propTypes'
-import { Hover } from '~/components/Visual'
-import blurDataURL from '~/constants/blurDataURL'
-import { useCallback, useState } from 'react'
-import { useRouter } from 'next/router'
-import useInterval from '~/hooks/useInterval'
-import useAnalytics from '~/hooks/analytics'
+import { Icon, Label, LabelGroup } from "@twilight-toolkit/ui"
+import CardFooter from "~/components/Card/Footer"
+import CardWithImageTool from "~/components/Card/WithImage/tool"
+import trimStr from "~/utilities/trimString"
+import Link from "next/link"
+import Image from "next/image"
+import CardWithImagePodcast from "~/components/Card/WithImage/podcast"
+import { useDispatch } from "~/hooks"
+import { setReaderRequest } from "~/store/reader/actions"
+import { WPPost } from "~/constants/propTypes"
+import { Hover } from "~/components/Visual"
+import blurDataURL from "~/constants/blurDataURL"
+import { useCallback, useState } from "react"
+import { useRouter } from "next/router"
+import useInterval from "~/hooks/useInterval"
+import useAnalytics from "~/hooks/analytics"
 
 interface Props {
 	item: WPPost
@@ -26,20 +26,20 @@ export default function CardWithImage({ item, sticky }: Props) {
 	const router = useRouter()
 
 	const [summarizing, setSummarizing] = useState<boolean>(false)
-	const [summary, setSummary] = useState<string>('')
-	const [outputText, setOutputText] = useState<string>('')
+	const [summary, setSummary] = useState<string>("")
+	const [outputText, setOutputText] = useState<string>("")
 	const [outputing, setOutputing] = useState<boolean>(false)
 	const [showThumbnail, setShowThumbnail] = useState<boolean>(true)
 
 	const handleSummarize = useCallback(async () => {
-		trackEvent('summarizePost', 'click')
+		trackEvent("summarizePost", "click")
 		setSummarizing(true)
 
 		try {
-			const res = await fetch('api/summarize', {
-				method: 'POST',
+			const res = await fetch("api/summarize", {
+				method: "POST",
 				headers: {
-					'Content-Type': 'application/json',
+					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
 					identifier: `posts/${item.id}`,
@@ -50,7 +50,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 			const data = await res.json()
 
 			setTimeout(() => {
-				setOutputText(data.choices[0].text.replace(/^: /, ''))
+				setOutputText(data.choices[0].text.replace(/^: /, ""))
 				setSummarizing(false)
 				setTimeout(() => {
 					setShowThumbnail(false)
@@ -83,7 +83,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 
 	const summarized = !summarizing && summary
 
-	if (typeof item.post_metas.fineTool === 'undefined') {
+	if (typeof item.post_metas.fineTool === "undefined") {
 		if (item.post_categories[0].term_id === 120) {
 			return <CardWithImagePodcast item={item} sticky={sticky} />
 		}
@@ -96,8 +96,8 @@ export default function CardWithImage({ item, sticky }: Props) {
 						max={25}
 						scale={1.01}
 						className={`dark:opacity-90 relative overflow-hidden hidden rounded-md shadow-sm hover:shadow-md h-img min-h-full w-full col-span-1 col-end-2 border border-gray-200 transition-all ${
-							showThumbnail ? 'lg:block' : 'lg:hidden'
-						} ${summarized ? 'animate-shrinkDisappear' : ''}`}
+							showThumbnail ? "lg:block" : "lg:hidden"
+						} ${summarized ? "animate-shrinkDisappear" : ""}`}
 					>
 						<Image
 							fill
@@ -112,8 +112,8 @@ export default function CardWithImage({ item, sticky }: Props) {
 					<div
 						className={`col-end-4 ${
 							showThumbnail
-								? 'col-span-2'
-								: 'col-span-3 animate-expandImageCardInfo ml-auto'
+								? "col-span-2"
+								: "col-span-3 animate-expandImageCardInfo ml-auto"
 						}`}
 					>
 						<div className="flex space-x-3 items-center">
@@ -131,7 +131,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 										type="secondary"
 										icon="preview"
 										onClick={() => {
-											trackEvent('previewPost', 'click')
+											trackEvent("previewPost", "click")
 											dispatch(setReaderRequest(item))
 										}}
 									>
@@ -150,7 +150,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 										<Label
 											type="orange-icon"
 											icon="openai"
-											iconClassName={summarizing ? 'animate-spin' : ''}
+											iconClassName={summarizing ? "animate-spin" : ""}
 											onClick={() => {
 												if (!summarizing && !summary && !outputText) {
 													handleSummarize()

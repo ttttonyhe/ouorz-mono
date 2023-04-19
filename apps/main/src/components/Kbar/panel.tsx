@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState, useRef } from 'react'
-import { useRouter } from 'next/router'
-import { useDispatch, useSelector } from '~/hooks'
-import { selectKbar } from '~/store/kbar/selectors'
-import { kbarContext } from './context'
-import Tabs, { TabItemProps } from '../Tabs'
-import HotkeyHelper from '../Helpers/hotkey'
-import { Icon } from '@twilight-toolkit/ui'
-import { deactivateKbar, updateKbar } from '~/store/kbar/actions'
+import React, { useContext, useEffect, useState, useRef } from "react"
+import { useRouter } from "next/router"
+import { useDispatch, useSelector } from "~/hooks"
+import { selectKbar } from "~/store/kbar/selectors"
+import { kbarContext } from "./context"
+import Tabs, { TabItemProps } from "../Tabs"
+import HotkeyHelper from "../Helpers/hotkey"
+import { Icon } from "@twilight-toolkit/ui"
+import { deactivateKbar, updateKbar } from "~/store/kbar/actions"
 
 // Kbar list helper component
 const ListComponent = ({
@@ -81,7 +81,7 @@ const KbarPanel = () => {
 			if (item.link) {
 				if (item.link.external) {
 					actionFunc = () => {
-						window.open(item.link.external, '_blank').focus()
+						window.open(item.link.external, "_blank").focus()
 					}
 				} else if (item.link.internal) {
 					actionFunc = () => {
@@ -129,7 +129,7 @@ const KbarPanel = () => {
 				link: item.link,
 				onClick: item.action,
 				hoverable: item.hoverable,
-				className: 'w-full !justify-start !p-4',
+				className: "w-full !justify-start !p-4",
 				component:
 					item.hoverable === false ? (
 						<p className="kbar-list-heading text-sm text-gray-400">
@@ -137,7 +137,7 @@ const KbarPanel = () => {
 						</p>
 					) : (
 						<div className="flex justify-between w-full items-center">
-							<div className={`flex gap-x-3 items-center ${item.color || ''}`}>
+							<div className={`flex gap-x-3 items-center ${item.color || ""}`}>
 								{item.icon && (
 									<span className="h-5 w-5 flex items-center">
 										<Icon name={item.icon} />
@@ -177,7 +177,7 @@ const KbarPanel = () => {
 		setTabsListItems(tabsListItems)
 
 		// clear input value
-		setInputValue('')
+		setInputValue("")
 	}, [list, location])
 
 	// Search list items
@@ -211,18 +211,18 @@ const KbarPanel = () => {
 			}
 			<div
 				className={`z-50 ml-[16px] w-[620px] border dark:border-gray-700 rounded-xl shadow-2xl overflow-hidden backdrop-blur-lg bg-white/70 dark:bg-black/70 mt-[8%] h-fit max-h-[420px] ${
-					animation === 'transition'
-						? 'animate-kbarTransition'
-						: animation === 'out'
-						? 'animate-kbarOut'
-						: animation === 'in'
-						? 'animate-kbar opacity-0'
-						: ''
+					animation === "transition"
+						? "animate-kbarTransition"
+						: animation === "out"
+						? "animate-kbarOut"
+						: animation === "in"
+						? "animate-kbar opacity-0"
+						: ""
 				}`}
 			>
 				<div
 					className={`h-[60px] border-b ${
-						loading ? 'dark:border-gray-800' : 'dark:border-gray-700'
+						loading ? "dark:border-gray-800" : "dark:border-gray-700"
 					} flex`}
 				>
 					<input
@@ -261,7 +261,7 @@ const KbarPanel = () => {
 					data-cy="kbar-list"
 					ref={verticalListWrapper}
 					className={`px-2.5 py-2.5 overflow-hidden ${
-						!loading && 'overflow-y-auto'
+						!loading && "overflow-y-auto"
 					} max-h-[360px] kbar-mask kbar-list`}
 				>
 					<ListComponent

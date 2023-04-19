@@ -5,7 +5,7 @@ import Document, {
 	NextScript,
 	DocumentContext,
 	DocumentInitialProps,
-} from 'next/document'
+} from "next/document"
 
 class AppDocument extends Document {
 	static async getInitialProps(

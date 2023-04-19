@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { GITHUB_API } from '~/constants/apiURLs'
+import type { NextApiRequest, NextApiResponse } from "next"
+import { GITHUB_API } from "~/constants/apiURLs"
 
 type ResDataType = {
 	followers: number
@@ -29,14 +29,14 @@ const github = async (
 	)
 	const stars = mine.reduce(
 		(accumulator: any, repository: { [x: string]: any }) => {
-			return accumulator + repository['stargazers_count']
+			return accumulator + repository["stargazers_count"]
 		},
 		0
 	)
 
 	res.setHeader(
-		'Cache-Control',
-		'public, s-maxage=1200, stale-while-revalidate=600'
+		"Cache-Control",
+		"public, s-maxage=1200, stale-while-revalidate=600"
 	)
 
 	return res.status(200).json({

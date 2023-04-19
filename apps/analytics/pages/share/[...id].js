@@ -1,8 +1,8 @@
-import React from 'react'
-import { useRouter } from 'next/router'
-import Layout from 'components/layout/Layout'
-import WebsiteDetails from 'components/pages/WebsiteDetails'
-import useShareToken from 'hooks/useShareToken'
+import React from "react"
+import { useRouter } from "next/router"
+import Layout from "components/layout/Layout"
+import WebsiteDetails from "components/pages/WebsiteDetails"
+import useShareToken from "hooks/useShareToken"
 
 export default function SharePage() {
 	const router = useRouter()

@@ -1,11 +1,11 @@
-import React from 'react'
-import { FormattedMessage } from 'react-intl'
-import { listTimeZones } from 'timezone-support'
-import DropDown from 'components/common/DropDown'
-import Button from 'components/common/Button'
-import useTimezone from 'hooks/useTimezone'
-import { getTimezone } from 'lib/date'
-import styles from './TimezoneSetting.module.css'
+import React from "react"
+import { FormattedMessage } from "react-intl"
+import { listTimeZones } from "timezone-support"
+import DropDown from "components/common/DropDown"
+import Button from "components/common/Button"
+import useTimezone from "hooks/useTimezone"
+import { getTimezone } from "lib/date"
+import styles from "./TimezoneSetting.module.css"
 
 export default function TimezoneSetting() {
 	const [timezone, saveTimezone] = useTimezone()

@@ -1,22 +1,22 @@
-import React, { useMemo, useState } from 'react'
-import { FormattedMessage, useIntl } from 'react-intl'
-import { FixedSizeList } from 'react-window'
-import firstBy from 'thenby'
-import Icon from 'components/common/Icon'
-import Tag from 'components/common/Tag'
-import Dot from 'components/common/Dot'
-import FilterButtons from 'components/common/FilterButtons'
-import NoData from 'components/common/NoData'
-import { getDeviceMessage, labels } from 'components/messages'
-import useLocale from 'hooks/useLocale'
-import useCountryNames from 'hooks/useCountryNames'
-import { BROWSERS } from 'lib/constants'
-import Bolt from 'assets/bolt.svg'
-import Visitor from 'assets/visitor.svg'
-import Eye from 'assets/eye.svg'
-import { stringToColor } from 'lib/format'
-import { dateFormat } from 'lib/date'
-import styles from './RealtimeLog.module.css'
+import React, { useMemo, useState } from "react"
+import { FormattedMessage, useIntl } from "react-intl"
+import { FixedSizeList } from "react-window"
+import firstBy from "thenby"
+import Icon from "components/common/Icon"
+import Tag from "components/common/Tag"
+import Dot from "components/common/Dot"
+import FilterButtons from "components/common/FilterButtons"
+import NoData from "components/common/NoData"
+import { getDeviceMessage, labels } from "components/messages"
+import useLocale from "hooks/useLocale"
+import useCountryNames from "hooks/useCountryNames"
+import { BROWSERS } from "lib/constants"
+import Bolt from "assets/bolt.svg"
+import Visitor from "assets/visitor.svg"
+import Eye from "assets/eye.svg"
+import { stringToColor } from "lib/format"
+import { dateFormat } from "lib/date"
+import styles from "./RealtimeLog.module.css"
 
 const TYPE_ALL = 0
 const TYPE_PAGEVIEW = 1
@@ -38,7 +38,7 @@ export default function RealtimeLog({ data, websites, websiteId }) {
 	const logs = useMemo(() => {
 		const { pageviews, sessions, events } = data
 		const logs = [...pageviews, ...sessions, ...events].sort(
-			firstBy('created_at', -1)
+			firstBy("created_at", -1)
 		)
 		if (filter) {
 			return logs.filter((row) => getType(row) === filter)
@@ -148,7 +148,7 @@ export default function RealtimeLog({ data, websites, websiteId }) {
 	}
 
 	function getTime({ created_at }) {
-		return dateFormat(new Date(created_at), 'pp', locale)
+		return dateFormat(new Date(created_at), "pp", locale)
 	}
 
 	function getColor(row) {

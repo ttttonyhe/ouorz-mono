@@ -1,4 +1,4 @@
-import Kbar from './component'
+import Kbar from "./component"
 
 export type KbarListItem = {
 	id: string

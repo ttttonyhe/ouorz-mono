@@ -1,4 +1,4 @@
-import { createContext } from 'react'
+import { createContext } from "react"
 
 export type KbarContext = {
 	inputValue: string
@@ -6,7 +6,7 @@ export type KbarContext = {
 }
 
 const kbarContext = createContext<KbarContext>({
-	inputValue: '',
+	inputValue: "",
 	setInputValue: () => {},
 })
 const KbarContextProvider = kbarContext.Provider

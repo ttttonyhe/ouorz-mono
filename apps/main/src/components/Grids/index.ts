@@ -1,3 +1,3 @@
-import NFTs from './NFTs'
+import NFTs from "./NFTs"
 
 export { NFTs }

@@ -1,15 +1,15 @@
-import { AnyAction } from '@reduxjs/toolkit'
-import { SET_READER, SET_ANIMATION, SHOW_READER, HIDE_READER } from './actions'
-import { WPPost } from '~/constants/propTypes'
+import { AnyAction } from "@reduxjs/toolkit"
+import { SET_READER, SET_ANIMATION, SHOW_READER, HIDE_READER } from "./actions"
+import { WPPost } from "~/constants/propTypes"
 
 type ReaderState = {
-	animation: 'in' | 'out' | ''
+	animation: "in" | "out" | ""
 	visible: boolean
 	postData?: WPPost
 }
 
 const ReaderInitialState: ReaderState = {
-	animation: '',
+	animation: "",
 	visible: false,
 	postData: null,
 }

@@ -1,11 +1,11 @@
-import { getWebsiteByShareId } from 'lib/queries'
-import { ok, notFound, methodNotAllowed } from 'lib/response'
-import { createToken } from 'lib/crypto'
+import { getWebsiteByShareId } from "lib/queries"
+import { ok, notFound, methodNotAllowed } from "lib/response"
+import { createToken } from "lib/crypto"
 
 export default async (req, res) => {
 	const { id } = req.query
 
-	if (req.method === 'GET') {
+	if (req.method === "GET") {
 		const website = await getWebsiteByShareId(id)
 
 		if (website) {

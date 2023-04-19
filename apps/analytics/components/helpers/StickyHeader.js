@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react'
-import classNames from 'classnames'
+import React, { useState, useRef, useEffect } from "react"
+import classNames from "classnames"
 
 export default function StickyHeader({
 	className,
@@ -27,11 +27,11 @@ export default function StickyHeader({
 
 		if (enabled) {
 			checkPosition()
-			window.addEventListener('scroll', checkPosition)
+			window.addEventListener("scroll", checkPosition)
 		}
 
 		return () => {
-			window.removeEventListener('scroll', checkPosition)
+			window.removeEventListener("scroll", checkPosition)
 		}
 	}, [sticky, enabled])
 

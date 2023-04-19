@@ -1,7 +1,7 @@
-import cors from 'cors'
-import { getSession } from './session'
-import { getAuthToken } from './auth'
-import { unauthorized, badRequest, serverError } from './response'
+import cors from "cors"
+import { getSession } from "./session"
+import { getAuthToken } from "./auth"
+import { unauthorized, badRequest, serverError } from "./response"
 
 export function createMiddleware(middleware) {
 	return (req, res) =>

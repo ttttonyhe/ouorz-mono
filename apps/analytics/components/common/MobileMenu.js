@@ -1,12 +1,12 @@
-import classNames from 'classnames'
-import Link from './Link'
-import Button from './Button'
-import XMark from 'assets/xmark.svg'
-import styles from './MobileMenu.module.css'
+import classNames from "classnames"
+import Link from "./Link"
+import Button from "./Button"
+import XMark from "assets/xmark.svg"
+import styles from "./MobileMenu.module.css"
 
 export default function MobileMenu({ items = [], onClose }) {
 	return (
-		<div className={classNames(styles.menu, 'container')}>
+		<div className={classNames(styles.menu, "container")}>
 			<div className={styles.header}>
 				<Button icon={<XMark />} onClick={onClose} />
 			</div>

@@ -1,23 +1,23 @@
-import React, { useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-import Link from 'next/link'
-import classNames from 'classnames'
-import PageHeader from 'components/layout/PageHeader'
-import Button from 'components/common/Button'
-import Icon from 'components/common/Icon'
-import Table from 'components/common/Table'
-import Modal from 'components/common/Modal'
-import Toast from 'components/common/Toast'
-import AccountEditForm from 'components/forms/AccountEditForm'
-import ButtonLayout from 'components/layout/ButtonLayout'
-import DeleteForm from 'components/forms/DeleteForm'
-import useFetch from 'hooks/useFetch'
-import Pen from 'assets/pen.svg'
-import Plus from 'assets/plus.svg'
-import Trash from 'assets/trash.svg'
-import Check from 'assets/check.svg'
-import LinkIcon from 'assets/external-link.svg'
-import styles from './AccountSettings.module.css'
+import React, { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import Link from "next/link"
+import classNames from "classnames"
+import PageHeader from "components/layout/PageHeader"
+import Button from "components/common/Button"
+import Icon from "components/common/Icon"
+import Table from "components/common/Table"
+import Modal from "components/common/Modal"
+import Toast from "components/common/Toast"
+import AccountEditForm from "components/forms/AccountEditForm"
+import ButtonLayout from "components/layout/ButtonLayout"
+import DeleteForm from "components/forms/DeleteForm"
+import useFetch from "hooks/useFetch"
+import Pen from "assets/pen.svg"
+import Plus from "assets/plus.svg"
+import Trash from "assets/trash.svg"
+import Check from "assets/check.svg"
+import LinkIcon from "assets/external-link.svg"
+import styles from "./AccountSettings.module.css"
 
 export default function AccountSettings() {
 	const [addAccount, setAddAccount] = useState()
@@ -57,32 +57,32 @@ export default function AccountSettings() {
 
 	const columns = [
 		{
-			key: 'username',
+			key: "username",
 			label: <FormattedMessage id="label.username" defaultMessage="Username" />,
-			className: 'col-12 col-lg-4',
+			className: "col-12 col-lg-4",
 		},
 		{
-			key: 'is_admin',
+			key: "is_admin",
 			label: (
 				<FormattedMessage
 					id="label.administrator"
 					defaultMessage="Administrator"
 				/>
 			),
-			className: 'col-12 col-lg-3',
+			className: "col-12 col-lg-3",
 			render: Checkmark,
 		},
 		{
-			key: 'dashboard',
+			key: "dashboard",
 			label: (
 				<FormattedMessage id="label.dashboard" defaultMessage="Dashboard" />
 			),
-			className: 'col-12 col-lg-3',
+			className: "col-12 col-lg-3",
 			render: DashboardLink,
 		},
 		{
-			key: 'actions',
-			className: classNames(styles.buttons, 'col-12 col-lg-2 pt-2 pt-md-0'),
+			key: "actions",
+			className: classNames(styles.buttons, "col-12 col-lg-2 pt-2 pt-md-0"),
 			render: Buttons,
 		},
 	]
@@ -136,7 +136,7 @@ export default function AccountSettings() {
 					}
 				>
 					<AccountEditForm
-						values={{ ...editAccount, password: '' }}
+						values={{ ...editAccount, password: "" }}
 						onSave={handleSave}
 						onClose={handleClose}
 					/>
@@ -165,7 +165,7 @@ export default function AccountSettings() {
 				>
 					<DeleteForm
 						values={{
-							type: 'account',
+							type: "account",
 							id: deleteAccount.user_id,
 							name: deleteAccount.username,
 						}}

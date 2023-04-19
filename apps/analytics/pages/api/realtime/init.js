@@ -1,13 +1,13 @@
-import { subMinutes } from 'date-fns'
-import { useAuth } from 'lib/middleware'
-import { ok, methodNotAllowed } from 'lib/response'
-import { getUserWebsites, getRealtimeData } from 'lib/queries'
-import { createToken } from 'lib/crypto'
+import { subMinutes } from "date-fns"
+import { useAuth } from "lib/middleware"
+import { ok, methodNotAllowed } from "lib/response"
+import { getUserWebsites, getRealtimeData } from "lib/queries"
+import { createToken } from "lib/crypto"
 
 export default async (req, res) => {
 	await useAuth(req, res)
 
-	if (req.method === 'GET') {
+	if (req.method === "GET") {
 		const { user_id } = req.auth
 
 		const websites = await getUserWebsites(user_id)

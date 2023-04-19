@@ -1,19 +1,19 @@
-import React, { useMemo } from 'react'
-import classNames from 'classnames'
-import PageviewsChart from './PageviewsChart'
-import MetricsBar from './MetricsBar'
-import WebsiteHeader from './WebsiteHeader'
-import DateFilter from 'components/common/DateFilter'
-import StickyHeader from 'components/helpers/StickyHeader'
-import ErrorMessage from 'components/common/ErrorMessage'
-import FilterTags from 'components/metrics/FilterTags'
-import useFetch from 'hooks/useFetch'
-import useDateRange from 'hooks/useDateRange'
-import useTimezone from 'hooks/useTimezone'
-import usePageQuery from 'hooks/usePageQuery'
-import { getDateArray, getDateLength, getDateRangeValues } from 'lib/date'
-import useApi from 'hooks/useApi'
-import styles from './WebsiteChart.module.css'
+import React, { useMemo } from "react"
+import classNames from "classnames"
+import PageviewsChart from "./PageviewsChart"
+import MetricsBar from "./MetricsBar"
+import WebsiteHeader from "./WebsiteHeader"
+import DateFilter from "components/common/DateFilter"
+import StickyHeader from "components/helpers/StickyHeader"
+import ErrorMessage from "components/common/ErrorMessage"
+import FilterTags from "components/metrics/FilterTags"
+import useFetch from "hooks/useFetch"
+import useDateRange from "hooks/useDateRange"
+import useTimezone from "hooks/useTimezone"
+import usePageQuery from "hooks/usePageQuery"
+import { getDateArray, getDateLength, getDateRangeValues } from "lib/date"
+import useApi from "hooks/useApi"
+import styles from "./WebsiteChart.module.css"
 
 export default function WebsiteChart({
 	websiteId,
@@ -68,7 +68,7 @@ export default function WebsiteChart({
 	}
 
 	async function handleDateChange(value) {
-		if (value === 'all') {
+		if (value === "all") {
 			const { data, ok } = await get(`/website/${websiteId}`)
 			if (ok) {
 				setDateRange({
@@ -89,9 +89,9 @@ export default function WebsiteChart({
 				domain={domain}
 				showLink={showLink}
 			/>
-			<div className={classNames(styles.header, 'row')}>
+			<div className={classNames(styles.header, "row")}>
 				<StickyHeader
-					className={classNames(styles.metrics, 'col row')}
+					className={classNames(styles.metrics, "col row")}
 					stickyClassName={styles.sticky}
 					enabled={stickyHeader}
 				>
@@ -102,7 +102,7 @@ export default function WebsiteChart({
 					<div className="col-12 col-lg-9">
 						<MetricsBar websiteId={websiteId} />
 					</div>
-					<div className={classNames(styles.filter, 'col-12 col-lg-3')}>
+					<div className={classNames(styles.filter, "col-12 col-lg-3")}>
 						<DateFilter
 							value={value}
 							startDate={startDate}
@@ -113,7 +113,7 @@ export default function WebsiteChart({
 				</StickyHeader>
 			</div>
 			<div className="row">
-				<div className={classNames(styles.chart, 'col')}>
+				<div className={classNames(styles.chart, "col")}>
 					{error && <ErrorMessage />}
 					<PageviewsChart
 						websiteId={websiteId}

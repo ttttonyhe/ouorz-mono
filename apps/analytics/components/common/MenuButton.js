@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import Menu from 'components/common/Menu'
-import Button from 'components/common/Button'
-import useDocumentClick from 'hooks/useDocumentClick'
-import styles from './MenuButton.module.css'
+import React, { useState, useRef } from "react"
+import PropTypes from "prop-types"
+import classNames from "classnames"
+import Menu from "components/common/Menu"
+import Button from "components/common/Button"
+import useDocumentClick from "hooks/useDocumentClick"
+import styles from "./MenuButton.module.css"
 
 function MenuButton({
 	icon,
@@ -13,8 +13,8 @@ function MenuButton({
 	buttonClassName,
 	buttonVariant,
 	menuClassName,
-	menuPosition = 'bottom',
-	menuAlign = 'right',
+	menuPosition = "bottom",
+	menuAlign = "right",
 	onSelect,
 	renderValue,
 	hideLabel,
@@ -82,8 +82,8 @@ MenuButton.propTypes = {
 	),
 	buttonClassName: PropTypes.string,
 	menuClassName: PropTypes.string,
-	menuPosition: PropTypes.oneOf(['top', 'bottom']),
-	menuAlign: PropTypes.oneOf(['left', 'right']),
+	menuPosition: PropTypes.oneOf(["top", "bottom"]),
+	menuAlign: PropTypes.oneOf(["left", "right"]),
 	onSelect: PropTypes.func,
 	renderValue: PropTypes.func,
 }

@@ -1,31 +1,31 @@
-import Button from 'components/common/Button'
-import XMark from 'assets/xmark.svg'
-import Bars from 'assets/bars.svg'
-import { useState } from 'react'
-import styles from './HamburgerButton.module.css'
-import MobileMenu from './MobileMenu'
-import { FormattedMessage } from 'react-intl'
+import Button from "components/common/Button"
+import XMark from "assets/xmark.svg"
+import Bars from "assets/bars.svg"
+import { useState } from "react"
+import styles from "./HamburgerButton.module.css"
+import MobileMenu from "./MobileMenu"
+import { FormattedMessage } from "react-intl"
 
 const menuItems = [
 	{
 		label: <FormattedMessage id="label.dashboard" defaultMessage="Dashboard" />,
-		value: '/dashboard',
+		value: "/dashboard",
 	},
 	{
 		label: <FormattedMessage id="label.realtime" defaultMessage="Realtime" />,
-		value: '/realtime',
+		value: "/realtime",
 	},
 	{
 		label: <FormattedMessage id="label.settings" defaultMessage="Settings" />,
-		value: '/settings',
+		value: "/settings",
 	},
 	{
 		label: <FormattedMessage id="label.profile" defaultMessage="Profile" />,
-		value: '/settings/profile',
+		value: "/settings/profile",
 	},
 	{
 		label: <FormattedMessage id="label.logout" defaultMessage="Logout" />,
-		value: '/logout',
+		value: "/logout",
 	},
 ]
 

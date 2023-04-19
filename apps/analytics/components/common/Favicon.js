@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styles from './Favicon.module.css'
+import React from "react"
+import PropTypes from "prop-types"
+import styles from "./Favicon.module.css"
 
 function getHostName(url) {
 	const match = url.match(

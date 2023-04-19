@@ -1,8 +1,8 @@
-import React, { useMemo, useRef } from 'react'
-import { format, parseISO, startOfMinute, subMinutes, isBefore } from 'date-fns'
-import PageviewsChart from './PageviewsChart'
-import { getDateArray } from 'lib/date'
-import { DEFAULT_ANIMATION_DURATION, REALTIME_RANGE } from 'lib/constants'
+import React, { useMemo, useRef } from "react"
+import { format, parseISO, startOfMinute, subMinutes, isBefore } from "date-fns"
+import PageviewsChart from "./PageviewsChart"
+import { getDateArray } from "lib/date"
+import { DEFAULT_ANIMATION_DURATION, REALTIME_RANGE } from "lib/constants"
 
 function mapData(data) {
 	let last = 0
@@ -12,7 +12,7 @@ function mapData(data) {
 		const { created_at } = val
 		const t = startOfMinute(parseISO(created_at))
 		if (t.getTime() > last) {
-			obj = { t: format(t, 'yyyy-LL-dd HH:mm:00'), y: 1 }
+			obj = { t: format(t, "yyyy-LL-dd HH:mm:00"), y: 1 }
 			arr.push(obj)
 			last = t
 		} else {

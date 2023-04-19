@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from "react"
 
 function isInViewport(element) {
 	const rect = element.getBoundingClientRect()
@@ -26,16 +26,16 @@ export default function CheckVisible({ className, children }) {
 
 		checkPosition()
 
-		window.addEventListener('scroll', checkPosition)
+		window.addEventListener("scroll", checkPosition)
 
 		return () => {
-			window.removeEventListener('scroll', checkPosition)
+			window.removeEventListener("scroll", checkPosition)
 		}
 	}, [visible])
 
 	return (
 		<div ref={ref} className={className} data-visible={visible}>
-			{typeof children === 'function' ? children(visible) : children}
+			{typeof children === "function" ? children(visible) : children}
 		</div>
 	)
 }

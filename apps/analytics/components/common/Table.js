@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import NoData from 'components/common/NoData'
-import styles from './Table.module.css'
+import React from "react"
+import PropTypes from "prop-types"
+import classNames from "classnames"
+import NoData from "components/common/NoData"
+import styles from "./Table.module.css"
 
 function Table({
 	columns,
@@ -21,7 +21,7 @@ function Table({
 	return (
 		<div className={classNames(styles.table, className)}>
 			{showHeader && (
-				<div className={classNames(styles.header, 'row')}>
+				<div className={classNames(styles.header, "row")}>
 					{columns.map(({ key, label, className, style, header }) => (
 						<div
 							key={key}
@@ -75,7 +75,7 @@ Table.propTypes = {
 export default Table
 
 export const TableRow = ({ columns, row }) => (
-	<div className={classNames(styles.row, 'row')}>
+	<div className={classNames(styles.row, "row")}>
 		{columns.map(({ key, label, render, className, style, cell }, index) => (
 			<div
 				key={`${key}-${index}`}

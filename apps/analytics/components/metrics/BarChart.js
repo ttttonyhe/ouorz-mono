@@ -1,15 +1,15 @@
-import React, { useState, useRef, useEffect } from 'react'
-import classNames from 'classnames'
-import ChartJS from 'chart.js'
-import Legend from 'components/metrics/Legend'
-import { formatLongNumber } from 'lib/format'
-import { dateFormat } from 'lib/date'
-import useLocale from 'hooks/useLocale'
-import useTheme from 'hooks/useTheme'
-import useForceUpdate from 'hooks/useForceUpdate'
-import { DEFAULT_ANIMATION_DURATION, THEME_COLORS } from 'lib/constants'
-import styles from './BarChart.module.css'
-import ChartTooltip from './ChartTooltip'
+import React, { useState, useRef, useEffect } from "react"
+import classNames from "classnames"
+import ChartJS from "chart.js"
+import Legend from "components/metrics/Legend"
+import { formatLongNumber } from "lib/format"
+import { dateFormat } from "lib/date"
+import useLocale from "hooks/useLocale"
+import useTheme from "hooks/useTheme"
+import useForceUpdate from "hooks/useForceUpdate"
+import { DEFAULT_ANIMATION_DURATION, THEME_COLORS } from "lib/constants"
+import styles from "./BarChart.module.css"
+import ChartTooltip from "./ChartTooltip"
 
 export default function BarChart({
 	chartId,
@@ -37,40 +37,40 @@ export default function BarChart({
 	}
 
 	function renderXLabel(label, index, values) {
-		if (loading) return ''
+		if (loading) return ""
 		const d = new Date(values[index].value)
 		const sw = canvas.current.width / window.devicePixelRatio
 
 		switch (unit) {
-			case 'minute':
-				return index % 2 === 0 ? dateFormat(d, 'H:mm', locale) : ''
-			case 'hour':
-				return dateFormat(d, 'p', locale)
-			case 'day':
+			case "minute":
+				return index % 2 === 0 ? dateFormat(d, "H:mm", locale) : ""
+			case "hour":
+				return dateFormat(d, "p", locale)
+			case "day":
 				if (records > 25) {
 					if (sw <= 275) {
-						return index % 10 === 0 ? dateFormat(d, 'M/d', locale) : ''
+						return index % 10 === 0 ? dateFormat(d, "M/d", locale) : ""
 					}
 					if (sw <= 550) {
-						return index % 5 === 0 ? dateFormat(d, 'M/d', locale) : ''
+						return index % 5 === 0 ? dateFormat(d, "M/d", locale) : ""
 					}
 					if (sw <= 700) {
-						return index % 2 === 0 ? dateFormat(d, 'M/d', locale) : ''
+						return index % 2 === 0 ? dateFormat(d, "M/d", locale) : ""
 					}
-					return dateFormat(d, 'MMM d', locale)
+					return dateFormat(d, "MMM d", locale)
 				}
 				if (sw <= 375) {
-					return index % 2 === 0 ? dateFormat(d, 'MMM d', locale) : ''
+					return index % 2 === 0 ? dateFormat(d, "MMM d", locale) : ""
 				}
 				if (sw <= 425) {
-					return dateFormat(d, 'MMM d', locale)
+					return dateFormat(d, "MMM d", locale)
 				}
-				return dateFormat(d, 'EEE M/d', locale)
-			case 'month':
+				return dateFormat(d, "EEE M/d", locale)
+			case "month":
 				if (sw <= 330) {
-					return index % 2 === 0 ? dateFormat(d, 'MMM', locale) : ''
+					return index % 2 === 0 ? dateFormat(d, "MMM", locale) : ""
 				}
-				return dateFormat(d, 'MMM', locale)
+				return dateFormat(d, "MMM", locale)
 			default:
 				return label
 		}
@@ -88,7 +88,7 @@ export default function BarChart({
 			return
 		}
 
-		const [label, value] = body[0].lines[0].split(':')
+		const [label, value] = body[0].lines[0].split(":")
 
 		setTooltip({
 			title: dateFormat(new Date(+title[0]), getTooltipFormat(unit), locale),
@@ -100,10 +100,10 @@ export default function BarChart({
 
 	function getTooltipFormat(unit) {
 		switch (unit) {
-			case 'hour':
-				return 'EEE p — PPP'
+			case "hour":
+				return "EEE p — PPP"
 			default:
-				return 'PPPP'
+				return "PPPP"
 		}
 	}
 
@@ -128,11 +128,11 @@ export default function BarChart({
 			scales: {
 				xAxes: [
 					{
-						type: 'time',
-						distribution: 'series',
+						type: "time",
+						distribution: "series",
 						time: {
 							unit,
-							tooltipFormat: 'x',
+							tooltipFormat: "x",
 						},
 						ticks: {
 							callback: renderXLabel,
@@ -168,7 +168,7 @@ export default function BarChart({
 		onCreate(options)
 
 		chart.current = new ChartJS(canvas.current, {
-			type: 'bar',
+			type: "bar",
 			data: {
 				datasets,
 			},

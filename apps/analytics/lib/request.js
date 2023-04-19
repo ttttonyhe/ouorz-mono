@@ -1,8 +1,8 @@
-import path from 'path'
-import requestIp from 'request-ip'
-import { browserName, detectOS } from 'detect-browser'
-import isLocalhost from 'is-localhost-ip'
-import maxmind from 'maxmind'
+import path from "path"
+import requestIp from "request-ip"
+import { browserName, detectOS } from "detect-browser"
+import isLocalhost from "is-localhost-ip"
+import maxmind from "maxmind"
 
 import {
 	DESKTOP_OS,
@@ -10,7 +10,7 @@ import {
 	DESKTOP_SCREEN_WIDTH,
 	LAPTOP_SCREEN_WIDTH,
 	MOBILE_SCREEN_WIDTH,
-} from './constants'
+} from "./constants"
 
 let lookup
 
@@ -20,8 +20,8 @@ export function getIpAddress(req) {
 		return req.headers[process.env.CLIENT_IP_HEADER]
 	}
 	// Cloudflare
-	else if (req.headers['cf-connecting-ip']) {
-		return req.headers['cf-connecting-ip']
+	else if (req.headers["cf-connecting-ip"]) {
+		return req.headers["cf-connecting-ip"]
 	}
 
 	return requestIp.getClientIp(req)
@@ -30,35 +30,35 @@ export function getIpAddress(req) {
 export function getDevice(screen, browser, os) {
 	if (!screen) return
 
-	const [width] = screen.split('x')
+	const [width] = screen.split("x")
 
 	if (DESKTOP_OS.includes(os)) {
-		if (os === 'Chrome OS' || width < DESKTOP_SCREEN_WIDTH) {
-			return 'laptop'
+		if (os === "Chrome OS" || width < DESKTOP_SCREEN_WIDTH) {
+			return "laptop"
 		}
-		return 'desktop'
+		return "desktop"
 	} else if (MOBILE_OS.includes(os)) {
-		if (os === 'Amazon OS' || width > MOBILE_SCREEN_WIDTH) {
-			return 'tablet'
+		if (os === "Amazon OS" || width > MOBILE_SCREEN_WIDTH) {
+			return "tablet"
 		}
-		return 'mobile'
+		return "mobile"
 	}
 
 	if (width >= DESKTOP_SCREEN_WIDTH) {
-		return 'desktop'
+		return "desktop"
 	} else if (width >= LAPTOP_SCREEN_WIDTH) {
-		return 'laptop'
+		return "laptop"
 	} else if (width >= MOBILE_SCREEN_WIDTH) {
-		return 'tablet'
+		return "tablet"
 	} else {
-		return 'mobile'
+		return "mobile"
 	}
 }
 
 export async function getCountry(req, ip) {
 	// Cloudflare
-	if (req.headers['cf-ipcountry']) {
-		return req.headers['cf-ipcountry']
+	if (req.headers["cf-ipcountry"]) {
+		return req.headers["cf-ipcountry"]
 	}
 
 	// Ignore local ips
@@ -69,7 +69,7 @@ export async function getCountry(req, ip) {
 	// Database lookup
 	if (!lookup) {
 		lookup = await maxmind.open(
-			path.resolve('./public/geo/GeoLite2-Country.mmdb')
+			path.resolve("./public/geo/GeoLite2-Country.mmdb")
 		)
 	}
 
@@ -79,7 +79,7 @@ export async function getCountry(req, ip) {
 }
 
 export async function getClientInfo(req, { screen }) {
-	const userAgent = req.headers['user-agent']
+	const userAgent = req.headers["user-agent"]
 	const ip = getIpAddress(req)
 	const country = await getCountry(req, ip)
 	const browser = browserName(userAgent)
@@ -90,7 +90,7 @@ export async function getClientInfo(req, { screen }) {
 }
 
 export function getJsonBody(req) {
-	if ((req.headers['content-type'] || '').indexOf('text/plain') !== -1) {
+	if ((req.headers["content-type"] || "").indexOf("text/plain") !== -1) {
 		return JSON.parse(req.body)
 	}
 

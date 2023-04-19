@@ -1,8 +1,8 @@
-import React from 'react'
-import { useRouter } from 'next/router'
-import classNames from 'classnames'
-import NavMenu from 'components/common/NavMenu'
-import styles from './MenuLayout.module.css'
+import React from "react"
+import { useRouter } from "next/router"
+import classNames from "classnames"
+import NavMenu from "components/common/NavMenu"
+import styles from "./MenuLayout.module.css"
 
 export default function MenuLayout({
 	menu,
@@ -24,18 +24,18 @@ export default function MenuLayout({
 	}
 
 	return (
-		<div className={classNames(styles.container, className, 'row')}>
+		<div className={classNames(styles.container, className, "row")}>
 			<NavMenu
 				options={menu}
 				selectedOption={selectedOption}
-				className={classNames(styles.menu, menuClassName, 'col-12 col-lg-2')}
+				className={classNames(styles.menu, menuClassName, "col-12 col-lg-2")}
 				onSelect={handleSelect}
 			/>
 			<div
 				className={classNames(
 					styles.content,
 					contentClassName,
-					'col-12 col-lg-10'
+					"col-12 col-lg-10"
 				)}
 			>
 				{children}

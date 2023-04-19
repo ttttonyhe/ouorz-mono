@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
-import { Icon } from '@twilight-toolkit/ui'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
-import scrollToItemWithinDiv from '~/utilities/scrollTo'
+import { useState, useEffect } from "react"
+import { Icon } from "@twilight-toolkit/ui"
+import { useRouter } from "next/router"
+import Link from "next/link"
+import scrollToItemWithinDiv from "~/utilities/scrollTo"
 
 export default function Aside({ preNext }: { preNext: any }) {
 	const router = useRouter()
@@ -16,24 +16,24 @@ export default function Aside({ preNext }: { preNext: any }) {
 		const result: any = [[], []]
 		const headerElements: any = []
 
-		const toc: any = document.querySelector('#toc')
-			? document.querySelector('#toc').getElementsByTagName('li')
+		const toc: any = document.querySelector("#toc")
+			? document.querySelector("#toc").getElementsByTagName("li")
 			: []
 
 		for (let i = 0, n = toc.length; i < n; i++) {
-			toc[i].classList.remove('toc-active')
+			toc[i].classList.remove("toc-active")
 		}
 
 		const headers: any = document
-			.querySelector('.prose')
-			.getElementsByTagName('*')
+			.querySelector(".prose")
+			.getElementsByTagName("*")
 
 		let minLevel: number
 
 		for (let i = 0, n: number = headers.length; i < n; i++) {
 			if (
 				/^h\d{1}$/gi.test(headers[i].nodeName) &&
-				headers[i].parentElement.className !== 'embed-content'
+				headers[i].parentElement.className !== "embed-content"
 			) {
 				const headerLevel: number = parseInt(headers[i].tagName.substring(1, 2))
 				const headerOffset: number = headers[i].offsetTop
@@ -66,7 +66,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 	 */
 	const scrollToHeading = (el: Element) => {
 		const elY = el.getBoundingClientRect().top + window.pageYOffset - 75
-		window.scrollTo({ top: elY, behavior: 'smooth' })
+		window.scrollTo({ top: elY, behavior: "smooth" })
 	}
 
 	useEffect(() => {
@@ -83,7 +83,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 		 */
 		const scrollHandler = () => {
 			const scrollPosition = window.pageYOffset - 250
-			const listDiv = document.getElementById('toc')
+			const listDiv = document.getElementById("toc")
 
 			const firstHeader = document.getElementById(`header0`)
 			const currentHeader = document.getElementById(`header${currentHeaderId}`)
@@ -93,8 +93,8 @@ export default function Aside({ preNext }: { preNext: any }) {
 			)
 
 			if (scrollPosition >= currentHeaderOffset) {
-				prevHeader?.classList.remove('toc-active')
-				currentHeader?.classList.add('toc-active')
+				prevHeader?.classList.remove("toc-active")
+				currentHeader?.classList.add("toc-active")
 				if (currentHeader) {
 					scrollToItemWithinDiv(listDiv, currentHeader)
 				}
@@ -103,8 +103,8 @@ export default function Aside({ preNext }: { preNext: any }) {
 				currentHeaderOffset = result[1][currentHeaderId]
 			} else if (scrollPosition < lastHeaderOffset) {
 				if (currentHeaderId - 2 >= 0) {
-					prevHeader?.classList.remove('toc-active')
-					prevPrevHeader?.classList.add('toc-active')
+					prevHeader?.classList.remove("toc-active")
+					prevPrevHeader?.classList.add("toc-active")
 					if (prevPrevHeader) {
 						scrollToItemWithinDiv(listDiv, prevPrevHeader)
 					}
@@ -112,13 +112,13 @@ export default function Aside({ preNext }: { preNext: any }) {
 					lastHeaderOffset = result[1][currentHeaderId - 1]
 					currentHeaderOffset = result[1][currentHeaderId]
 				} else {
-					firstHeader?.classList.remove('toc-active')
+					firstHeader?.classList.remove("toc-active")
 					currentHeaderId = 1
 					currentHeaderOffset = result[1][1]
 					lastHeaderOffset = result[1][0]
 				}
 			} else if (scrollPosition > lastHeaderOffset && currentHeaderId === 1) {
-				firstHeader?.classList.add('toc-active')
+				firstHeader?.classList.add("toc-active")
 				if (firstHeader) {
 					scrollToItemWithinDiv(listDiv, firstHeader)
 				}
@@ -126,10 +126,10 @@ export default function Aside({ preNext }: { preNext: any }) {
 		}
 
 		if (elements.length) {
-			window.addEventListener('scroll', scrollHandler)
+			window.addEventListener("scroll", scrollHandler)
 		}
 		return () => {
-			window.removeEventListener('scroll', scrollHandler)
+			window.removeEventListener("scroll", scrollHandler)
 		}
 	}, [router.asPath])
 
@@ -146,11 +146,11 @@ export default function Aside({ preNext }: { preNext: any }) {
 			return (
 				<div
 					className={`${
-						recursionTimes == 0 ? 'border-l-0' : ''
+						recursionTimes == 0 ? "border-l-0" : ""
 					}toc-sub py-2 -my-2 whitespace-nowrap text-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700`}
 					style={{
-						paddingLeft: recursionTimes == 0 ? '0px' : '10px',
-						marginLeft: recursionTimes == 0 ? '0px' : '10px',
+						paddingLeft: recursionTimes == 0 ? "0px" : "10px",
+						marginLeft: recursionTimes == 0 ? "0px" : "10px",
 					}}
 				>
 					{recursionTimes > 0 ? (
@@ -169,13 +169,13 @@ export default function Aside({ preNext }: { preNext: any }) {
 				<li
 					className={`${
 						item[1] !== 0
-							? 'toc-sub hover:rounded-tl-none hover:rounded-bl-none'
-							: ''
+							? "toc-sub hover:rounded-tl-none hover:rounded-bl-none"
+							: ""
 					} py-2 pr-[10px] whitespace-nowrap text-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 hover:rounded-md dark:hover:bg-gray-700`}
 					id={`header${item[0]}`}
 					style={{
-						paddingLeft: '10px',
-						marginLeft: item[1] !== 0 ? `10px` : '0px',
+						paddingLeft: "10px",
+						marginLeft: item[1] !== 0 ? `10px` : "0px",
 					}}
 					key={item[0]}
 					onClick={() => scrollToHeading(headersEl[item[0]])}
@@ -197,21 +197,21 @@ export default function Aside({ preNext }: { preNext: any }) {
 
 	const Tour = () => {
 		const b =
-			preNext['next'][0] && [58, 5, 2, 74].indexOf(preNext['next'][2]) === -1
+			preNext["next"][0] && [58, 5, 2, 74].indexOf(preNext["next"][2]) === -1
 		const a =
-			preNext['prev'][0] && [58, 5, 2, 74].indexOf(preNext['prev'][2]) === -1
+			preNext["prev"][0] && [58, 5, 2, 74].indexOf(preNext["prev"][2]) === -1
 		if (a || b) {
 			return (
 				<div
 					className={`bg-white text-gray-700 dark:bg-gray-800 dark:border-gray-800 dark:text-gray-400 shadow-sm border rounded-xl mt-5 text-xl grid ${
-						a && b ? 'grid-cols-2' : 'grid-cols-1'
+						a && b ? "grid-cols-2" : "grid-cols-1"
 					} tour`}
 				>
 					{a && (
 						<Link href={`/post/${preNext.prev[0]}`} passHref>
 							<div
 								className={`px-6 py-3 flex items-center justify-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 ${
-									b ? 'rounded-tl-xl rounded-bl-xl' : 'rounded-xl'
+									b ? "rounded-tl-xl rounded-bl-xl" : "rounded-xl"
 								}`}
 							>
 								<span className="w-6 h-6 mr-2">
@@ -225,7 +225,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 						<Link href={`/post/${preNext.next[0]}`} passHref>
 							<div
 								className={`px-6 py-3 flex items-center justify-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 ${
-									a ? 'rounded-tr-xl rounded-br-xl' : 'rounded-xl'
+									a ? "rounded-tr-xl rounded-br-xl" : "rounded-xl"
 								}`}
 							>
 								Next
@@ -273,7 +273,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 					<Tour />
 				</div>
 			) : (
-				''
+				""
 			)}
 		</aside>
 	)

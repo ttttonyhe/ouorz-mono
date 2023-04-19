@@ -1,20 +1,20 @@
-import { useTheme } from 'next-themes'
-import { useEffect, useState, useRef } from 'react'
-import { useRouter } from 'next/router'
-import { Button, Icon } from '@twilight-toolkit/ui'
-import { useDispatch, useSelector } from '~/hooks'
-import { deactivateKbar } from '~/store/kbar/actions'
-import { selectKbar } from '~/store/kbar/selectors'
-import smoothScroll from 'smoothscroll-polyfill'
-import { OffsetTransition } from '../Motion'
+import { useTheme } from "next-themes"
+import { useEffect, useState, useRef } from "react"
+import { useRouter } from "next/router"
+import { Button, Icon } from "@twilight-toolkit/ui"
+import { useDispatch, useSelector } from "~/hooks"
+import { deactivateKbar } from "~/store/kbar/actions"
+import { selectKbar } from "~/store/kbar/selectors"
+import smoothScroll from "smoothscroll-polyfill"
+import { OffsetTransition } from "../Motion"
 
-const themes = ['system', 'dark', 'light']
+const themes = ["system", "dark", "light"]
 const icons = [
 	<Icon key="system" name="gear" />,
 	<Icon key="dark" name="moon" />,
 	<Icon key="light" name="sun" />,
 ]
-const targetThemes = ['dark', 'light', 'system']
+const targetThemes = ["dark", "light", "system"]
 
 export default function Footer() {
 	const dispatch = useDispatch()
@@ -31,22 +31,22 @@ export default function Footer() {
 
 	useEffect(() => {
 		// Cursor glowing effect
-		if (resolvedTheme === 'dark') {
-			const glowingArea = document.querySelector('.glowing-area')
-			const glowingDivs = document.querySelectorAll('.glowing-div')
+		if (resolvedTheme === "dark") {
+			const glowingArea = document.querySelector(".glowing-area")
+			const glowingDivs = document.querySelectorAll(".glowing-div")
 
 			if (glowingArea) {
 				const handler = (ev: any) => {
 					glowingDivs.forEach((featureEl: any) => {
 						const rect = featureEl.getBoundingClientRect()
-						featureEl.style.setProperty('--x', ev.clientX - rect.left)
-						featureEl.style.setProperty('--y', ev.clientY - rect.top)
+						featureEl.style.setProperty("--x", ev.clientX - rect.left)
+						featureEl.style.setProperty("--y", ev.clientY - rect.top)
 					})
 				}
-				glowingArea.addEventListener('pointermove', handler)
+				glowingArea.addEventListener("pointermove", handler)
 
 				return () => {
-					glowingArea.removeEventListener('pointermove', handler)
+					glowingArea.removeEventListener("pointermove", handler)
 				}
 			}
 		}
@@ -75,7 +75,7 @@ export default function Footer() {
 						ref={backToTopRef}
 						aria-label="change theme"
 						onClick={() => {
-							window.scrollTo({ top: 0, behavior: 'smooth' })
+							window.scrollTo({ top: 0, behavior: "smooth" })
 						}}
 						className="effect-pressing w-full p-3 shadow-sm border border-gray-300 dark:border-gray-700 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
 					>
@@ -92,16 +92,16 @@ export default function Footer() {
 					rel="noreferrer"
 				>
 					@ttttonyhe
-				</a>{' '}
-				<span>·</span>{' '}
+				</a>{" "}
+				<span>·</span>{" "}
 				<a
 					href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
 					target="_blank"
 					rel="noreferrer"
 				>
 					CC BY-NC-SA 4.0
-				</a>{' '}
-				<span>·</span>{' '}
+				</a>{" "}
+				<span>·</span>{" "}
 				<a
 					href="https://github.com/HelipengTony/ouorz-mono"
 					target="_blank"

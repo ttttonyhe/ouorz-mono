@@ -1,9 +1,9 @@
-import useStore, { setUser } from 'store/app';
+import useStore, { setUser } from "store/app"
 
-const selector = state => state.user;
+const selector = (state) => state.user
 
 export default function useUser() {
-  const user = useStore(selector);
+	const user = useStore(selector)
 
-  return { user, setUser };
+	return { user, setUser }
 }

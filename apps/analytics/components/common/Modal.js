@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import ReactDOM from 'react-dom'
-import { useSpring, animated } from 'react-spring'
-import styles from './Modal.module.css'
+import React from "react"
+import PropTypes from "prop-types"
+import ReactDOM from "react-dom"
+import { useSpring, animated } from "react-spring"
+import styles from "./Modal.module.css"
 
 function Modal({ title, children }) {
 	const props = useSpring({ opacity: 1, from: { opacity: 0 } })
@@ -14,7 +14,7 @@ function Modal({ title, children }) {
 				<div className={styles.body}>{children}</div>
 			</div>
 		</animated.div>,
-		document.getElementById('__modals')
+		document.getElementById("__modals")
 	)
 }
 

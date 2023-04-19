@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import PropTypes from 'prop-types'
-import { FormattedMessage } from 'react-intl'
-import useStore from 'store/queries'
-import { setDateRange } from 'store/websites'
-import Button from './Button'
-import Refresh from 'assets/redo.svg'
-import Dots from 'assets/ellipsis-h.svg'
-import useDateRange from 'hooks/useDateRange'
+import React, { useState, useEffect, useCallback } from "react"
+import PropTypes from "prop-types"
+import { FormattedMessage } from "react-intl"
+import useStore from "store/queries"
+import { setDateRange } from "store/websites"
+import Button from "./Button"
+import Refresh from "assets/redo.svg"
+import Dots from "assets/ellipsis-h.svg"
+import useDateRange from "hooks/useDateRange"
 
 function RefreshButton({ websiteId }) {
 	const [dateRange] = useDateRange(websiteId)

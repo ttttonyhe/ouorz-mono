@@ -1,20 +1,20 @@
-import React, { useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-import { Formik, Form, Field } from 'formik'
-import Button from 'components/common/Button'
+import React, { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { Formik, Form, Field } from "formik"
+import Button from "components/common/Button"
 import FormLayout, {
 	FormButtons,
 	FormError,
 	FormMessage,
 	FormRow,
-} from 'components/layout/FormLayout'
-import Checkbox from 'components/common/Checkbox'
-import { DOMAIN_REGEX } from 'lib/constants'
-import useApi from 'hooks/useApi'
+} from "components/layout/FormLayout"
+import Checkbox from "components/common/Checkbox"
+import { DOMAIN_REGEX } from "lib/constants"
+import useApi from "hooks/useApi"
 
 const initialValues = {
-	name: '',
-	domain: '',
+	name: "",
+	domain: "",
 	public: false,
 }
 
@@ -47,7 +47,7 @@ export default function WebsiteEditForm({ values, onSave, onClose }) {
 	const [message, setMessage] = useState()
 
 	const handleSubmit = async (values) => {
-		const { ok, data } = await post('/website', values)
+		const { ok, data } = await post("/website", values)
 
 		if (ok) {
 			onSave()

@@ -1,9 +1,9 @@
-import Image from 'next/image'
-import { useTheme } from 'next-themes'
-import ContentLoader from 'react-content-loader'
-import openLink from '~/utilities/externalLink'
-import { Book } from '~/pages/api/goodreads'
-import blurDataURL from '~/constants/blurDataURL'
+import Image from "next/image"
+import { useTheme } from "next-themes"
+import ContentLoader from "react-content-loader"
+import openLink from "~/utilities/externalLink"
+import { Book } from "~/pages/api/goodreads"
+import blurDataURL from "~/constants/blurDataURL"
 
 const BookCard = (props: Book) => {
 	const { title, author, imageURL, link, dateAdded } = props
@@ -53,14 +53,14 @@ const BookCardLoading = (props: { uniqueKey: string }) => {
 	return (
 		<div className="flex items-center dark:bg-gray-800 dark:border dark:border-gray-700 rounded-md border shadow-sm bg-white w-50 z-40 p-[1px]">
 			<ContentLoader
-				className={resolvedTheme === undefined ? 'opacity-50' : ''}
+				className={resolvedTheme === undefined ? "opacity-50" : ""}
 				uniqueKey={props.uniqueKey}
 				speed={2}
 				width={100}
-				style={{ width: '100%' }}
+				style={{ width: "100%" }}
 				height={107}
-				backgroundColor={resolvedTheme === 'dark' ? '#525252' : '#f3f3f3'}
-				foregroundColor={resolvedTheme === 'dark' ? '#373737' : '#ecebeb'}
+				backgroundColor={resolvedTheme === "dark" ? "#525252" : "#f3f3f3"}
+				foregroundColor={resolvedTheme === "dark" ? "#373737" : "#ecebeb"}
 			>
 				<rect x="15" y="13" rx="5" ry="5" width="35" height="52" />
 				<rect x="65" y="18" rx="5" ry="5" width="65%" height="20" />

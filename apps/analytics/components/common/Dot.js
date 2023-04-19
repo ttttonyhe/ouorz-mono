@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import styles from './Dot.module.css'
+import React from "react"
+import PropTypes from "prop-types"
+import classNames from "classnames"
+import styles from "./Dot.module.css"
 
 function Dot({ color, size, className }) {
 	return (
@@ -9,8 +9,8 @@ function Dot({ color, size, className }) {
 			<div
 				style={{ background: color }}
 				className={classNames(styles.dot, className, {
-					[styles.small]: size === 'small',
-					[styles.large]: size === 'large',
+					[styles.small]: size === "small",
+					[styles.large]: size === "large",
 				})}
 			/>
 		</div>
@@ -19,7 +19,7 @@ function Dot({ color, size, className }) {
 
 Dot.propTypes = {
 	color: PropTypes.string,
-	size: PropTypes.oneOf(['small', 'large']),
+	size: PropTypes.oneOf(["small", "large"]),
 	className: PropTypes.string,
 }
 

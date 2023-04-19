@@ -1,5 +1,5 @@
-import { Icon } from '@twilight-toolkit/ui'
-import Image from 'next/image'
+import { Icon } from "@twilight-toolkit/ui"
+import Image from "next/image"
 
 const NextJS13Preview = () => {
 	return (

@@ -1,6 +1,6 @@
-import React from 'react'
-import classNames from 'classnames'
-import styles from './Page.module.css'
+import React from "react"
+import classNames from "classnames"
+import styles from "./Page.module.css"
 
 export default class Page extends React.Component {
 	getSnapshotBeforeUpdate() {

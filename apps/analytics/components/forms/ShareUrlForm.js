@@ -1,9 +1,9 @@
-import React, { useRef } from 'react'
-import { FormattedMessage } from 'react-intl'
-import { useRouter } from 'next/router'
-import Button from 'components/common/Button'
-import FormLayout, { FormButtons, FormRow } from 'components/layout/FormLayout'
-import CopyButton from 'components/common/CopyButton'
+import React, { useRef } from "react"
+import { FormattedMessage } from "react-intl"
+import { useRouter } from "next/router"
+import Button from "components/common/Button"
+import FormLayout, { FormButtons, FormRow } from "components/layout/FormLayout"
+import CopyButton from "components/common/CopyButton"
 
 export default function TrackingCodeForm({ values, onClose }) {
 	const ref = useRef()

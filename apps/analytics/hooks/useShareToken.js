@@ -1,26 +1,26 @@
-import { useEffect } from 'react';
-import useStore, { setShareToken } from 'store/app';
-import useApi from './useApi';
+import { useEffect } from "react"
+import useStore, { setShareToken } from "store/app"
+import useApi from "./useApi"
 
-const selector = state => state.shareToken;
+const selector = (state) => state.shareToken
 
 export default function useShareToken(shareId) {
-  const shareToken = useStore(selector);
-  const { get } = useApi();
+	const shareToken = useStore(selector)
+	const { get } = useApi()
 
-  async function loadToken(id) {
-    const { data } = await get(`/share/${id}`);
+	async function loadToken(id) {
+		const { data } = await get(`/share/${id}`)
 
-    if (data) {
-      setShareToken(data);
-    }
-  }
+		if (data) {
+			setShareToken(data)
+		}
+	}
 
-  useEffect(() => {
-    if (shareId) {
-      loadToken(shareId);
-    }
-  }, [shareId]);
+	useEffect(() => {
+		if (shareId) {
+			loadToken(shareId)
+		}
+	}, [shareId])
 
-  return shareToken;
+	return shareToken
 }

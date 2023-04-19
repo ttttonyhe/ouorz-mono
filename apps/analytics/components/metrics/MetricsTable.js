@@ -1,18 +1,18 @@
-import React, { useMemo } from 'react'
-import { FormattedMessage } from 'react-intl'
-import firstBy from 'thenby'
-import classNames from 'classnames'
-import Link from 'components/common/Link'
-import Loading from 'components/common/Loading'
-import useFetch from 'hooks/useFetch'
-import Arrow from 'assets/arrow-right.svg'
-import { percentFilter } from 'lib/filters'
-import useDateRange from 'hooks/useDateRange'
-import usePageQuery from 'hooks/usePageQuery'
-import ErrorMessage from 'components/common/ErrorMessage'
-import DataTable from './DataTable'
-import { DEFAULT_ANIMATION_DURATION } from 'lib/constants'
-import styles from './MetricsTable.module.css'
+import React, { useMemo } from "react"
+import { FormattedMessage } from "react-intl"
+import firstBy from "thenby"
+import classNames from "classnames"
+import Link from "components/common/Link"
+import Loading from "components/common/Loading"
+import useFetch from "hooks/useFetch"
+import Arrow from "assets/arrow-right.svg"
+import { percentFilter } from "lib/filters"
+import useDateRange from "hooks/useDateRange"
+import usePageQuery from "hooks/usePageQuery"
+import ErrorMessage from "components/common/ErrorMessage"
+import DataTable from "./DataTable"
+import { DEFAULT_ANIMATION_DURATION } from "lib/constants"
+import styles from "./MetricsTable.module.css"
 
 export default function MetricsTable({
 	websiteId,
@@ -59,9 +59,9 @@ export default function MetricsTable({
 			if (limit) {
 				return items
 					.filter((e, i) => i < limit)
-					.sort(firstBy('y', -1).thenBy('x'))
+					.sort(firstBy("y", -1).thenBy("x"))
 			}
-			return items.sort(firstBy('y', -1).thenBy('x'))
+			return items.sort(firstBy("y", -1).thenBy("x"))
 		}
 		return []
 	}, [data, error, dataFilter, filterOptions])

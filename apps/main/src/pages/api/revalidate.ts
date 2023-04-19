@@ -1,6 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import Cors from 'cors'
-import { use } from '../../lib/middleware'
+import type { NextApiRequest, NextApiResponse } from "next"
+import Cors from "cors"
+import { use } from "../../lib/middleware"
 
 type ResDataType = {
 	status: number
@@ -15,7 +15,7 @@ const revalidate = async (
 	// apply CORS middleware
 	await use(
 		Cors({
-			methods: ['POST'],
+			methods: ["POST"],
 		}),
 		req,
 		res
@@ -28,7 +28,7 @@ const revalidate = async (
 	if (token !== process.env.REVALIDATION_REQUEST_TOKEN) {
 		return res
 			.status(401)
-			.json({ status: 401, revalidated: false, message: 'Invalid token' })
+			.json({ status: 401, revalidated: false, message: "Invalid token" })
 	}
 
 	// execute revalidation
@@ -39,7 +39,7 @@ const revalidate = async (
 		return res.status(500).json({
 			status: 500,
 			revalidated: false,
-			message: 'A server side error has occured, make sure path exists',
+			message: "A server side error has occured, make sure path exists",
 		})
 	}
 }

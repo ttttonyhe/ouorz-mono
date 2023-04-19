@@ -1,5 +1,5 @@
-import React from 'react'
-import ScrollWrapper from './scroll'
+import React from "react"
+import ScrollWrapper from "./scroll"
 
 interface Props {
 	componentRef: React.MutableRefObject<any>

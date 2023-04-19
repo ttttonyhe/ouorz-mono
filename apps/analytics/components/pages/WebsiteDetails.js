@@ -1,27 +1,27 @@
-import React, { useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-import classNames from 'classnames'
-import WebsiteChart from 'components/metrics/WebsiteChart'
-import WorldMap from 'components/common/WorldMap'
-import Page from 'components/layout/Page'
-import GridLayout, { GridRow, GridColumn } from 'components/layout/GridLayout'
-import MenuLayout from 'components/layout/MenuLayout'
-import Link from 'components/common/Link'
-import Loading from 'components/common/Loading'
-import Arrow from 'assets/arrow-right.svg'
-import PagesTable from 'components/metrics/PagesTable'
-import ReferrersTable from 'components/metrics/ReferrersTable'
-import BrowsersTable from 'components/metrics/BrowsersTable'
-import OSTable from 'components/metrics/OSTable'
-import DevicesTable from 'components/metrics/DevicesTable'
-import CountriesTable from 'components/metrics/CountriesTable'
-import LanguagesTable from 'components/metrics/LanguagesTable'
-import EventsTable from 'components/metrics/EventsTable'
-import EventsChart from 'components/metrics/EventsChart'
-import useFetch from 'hooks/useFetch'
-import usePageQuery from 'hooks/usePageQuery'
-import { DEFAULT_ANIMATION_DURATION } from 'lib/constants'
-import styles from './WebsiteDetails.module.css'
+import React, { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import classNames from "classnames"
+import WebsiteChart from "components/metrics/WebsiteChart"
+import WorldMap from "components/common/WorldMap"
+import Page from "components/layout/Page"
+import GridLayout, { GridRow, GridColumn } from "components/layout/GridLayout"
+import MenuLayout from "components/layout/MenuLayout"
+import Link from "components/common/Link"
+import Loading from "components/common/Loading"
+import Arrow from "assets/arrow-right.svg"
+import PagesTable from "components/metrics/PagesTable"
+import ReferrersTable from "components/metrics/ReferrersTable"
+import BrowsersTable from "components/metrics/BrowsersTable"
+import OSTable from "components/metrics/OSTable"
+import DevicesTable from "components/metrics/DevicesTable"
+import CountriesTable from "components/metrics/CountriesTable"
+import LanguagesTable from "components/metrics/LanguagesTable"
+import EventsTable from "components/metrics/EventsTable"
+import EventsChart from "components/metrics/EventsChart"
+import useFetch from "hooks/useFetch"
+import usePageQuery from "hooks/usePageQuery"
+import { DEFAULT_ANIMATION_DURATION } from "lib/constants"
+import styles from "./WebsiteDetails.module.css"
 
 const views = {
 	url: PagesTable,
@@ -45,7 +45,7 @@ export default function WebsiteDetails({ websiteId }) {
 	} = usePageQuery()
 
 	const BackButton = () => (
-		<div key="back-button" className={classNames(styles.backButton, 'col-12')}>
+		<div key="back-button" className={classNames(styles.backButton, "col-12")}>
 			<Link
 				key="back-button"
 				href={resolve({ view: undefined })}
@@ -63,19 +63,19 @@ export default function WebsiteDetails({ websiteId }) {
 		},
 		{
 			label: <FormattedMessage id="metrics.pages" defaultMessage="Pages" />,
-			value: resolve({ view: 'url' }),
+			value: resolve({ view: "url" }),
 		},
 		{
 			label: (
 				<FormattedMessage id="metrics.referrers" defaultMessage="Referrers" />
 			),
-			value: resolve({ view: 'referrer' }),
+			value: resolve({ view: "referrer" }),
 		},
 		{
 			label: (
 				<FormattedMessage id="metrics.browsers" defaultMessage="Browsers" />
 			),
-			value: resolve({ view: 'browser' }),
+			value: resolve({ view: "browser" }),
 		},
 		{
 			label: (
@@ -84,27 +84,27 @@ export default function WebsiteDetails({ websiteId }) {
 					defaultMessage="Operating system"
 				/>
 			),
-			value: resolve({ view: 'os' }),
+			value: resolve({ view: "os" }),
 		},
 		{
 			label: <FormattedMessage id="metrics.devices" defaultMessage="Devices" />,
-			value: resolve({ view: 'device' }),
+			value: resolve({ view: "device" }),
 		},
 		{
 			label: (
 				<FormattedMessage id="metrics.countries" defaultMessage="Countries" />
 			),
-			value: resolve({ view: 'country' }),
+			value: resolve({ view: "country" }),
 		},
 		{
 			label: (
 				<FormattedMessage id="metrics.languages" defaultMessage="Languages" />
 			),
-			value: resolve({ view: 'language' }),
+			value: resolve({ view: "language" }),
 		},
 		{
 			label: <FormattedMessage id="metrics.events" defaultMessage="Events" />,
-			value: resolve({ view: 'event' }),
+			value: resolve({ view: "event" }),
 		},
 	]
 
@@ -129,7 +129,7 @@ export default function WebsiteDetails({ websiteId }) {
 	return (
 		<Page>
 			<div className="row">
-				<div className={classNames(styles.chart, 'col')}>
+				<div className={classNames(styles.chart, "col")}>
 					<WebsiteChart
 						websiteId={websiteId}
 						title={data.name}

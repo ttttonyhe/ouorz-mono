@@ -1,21 +1,21 @@
-import moment from 'moment-timezone'
-import prisma from 'lib/db'
-import { subMinutes } from 'date-fns'
+import moment from "moment-timezone"
+import prisma from "lib/db"
+import { subMinutes } from "date-fns"
 import {
 	MYSQL,
 	POSTGRESQL,
 	MYSQL_DATE_FORMATS,
 	POSTGRESQL_DATE_FORMATS,
 	URL_LENGTH,
-} from 'lib/constants'
+} from "lib/constants"
 
 export function getDatabase() {
 	const type =
 		process.env.DATABASE_TYPE ||
-		(process.env.DATABASE_URL && process.env.DATABASE_URL.split(':')[0])
+		(process.env.DATABASE_URL && process.env.DATABASE_URL.split(":")[0])
 
-	if (type === 'postgres') {
-		return 'postgresql'
+	if (type === "postgres") {
+		return "postgresql"
 	}
 
 	return type
@@ -33,7 +33,7 @@ export function getDateQuery(field, unit, timezone) {
 
 	if (db === MYSQL) {
 		if (timezone) {
-			const tz = moment.tz(timezone).format('Z')
+			const tz = moment.tz(timezone).format("Z")
 
 			return `DATE_FORMAT(convert_tz(${field},'+00:00','${tz}'), '${MYSQL_DATE_FORMATS[unit]}')`
 		}
@@ -63,39 +63,39 @@ export function getFilterQuery(table, filters = {}, params = []) {
 		}
 
 		switch (key) {
-			case 'url':
-				if (table === 'pageview' || table === 'event') {
+			case "url":
+				if (table === "pageview" || table === "event") {
 					arr.push(`and ${table}.${key}=$${params.length + 1}`)
 					params.push(decodeURIComponent(value))
 				}
 				break
 
-			case 'os':
-			case 'browser':
-			case 'device':
-			case 'country':
-				if (table === 'session') {
+			case "os":
+			case "browser":
+			case "device":
+			case "country":
+				if (table === "session") {
 					arr.push(`and ${table}.${key}=$${params.length + 1}`)
 					params.push(decodeURIComponent(value))
 				}
 				break
 
-			case 'event_type':
-				if (table === 'event') {
+			case "event_type":
+				if (table === "event") {
 					arr.push(`and ${table}.${key}=$${params.length + 1}`)
 					params.push(decodeURIComponent(value))
 				}
 				break
 
-			case 'referrer':
-				if (table === 'pageview') {
+			case "referrer":
+				if (table === "pageview") {
 					arr.push(`and ${table}.referrer like $${params.length + 1}`)
 					params.push(`%${decodeURIComponent(value)}%`)
 				}
 				break
 
-			case 'domain':
-				if (table === 'pageview') {
+			case "domain":
+				if (table === "pageview") {
 					arr.push(`and ${table}.referrer not like $${params.length + 1}`)
 					arr.push(`and ${table}.referrer not like '/%'`)
 					params.push(`%://${value}/%`)
@@ -106,7 +106,7 @@ export function getFilterQuery(table, filters = {}, params = []) {
 		return arr
 	}, [])
 
-	return query.join('\n')
+	return query.join("\n")
 }
 
 export function parseFilters(table, filters = {}, params = []) {
@@ -134,10 +134,10 @@ export function parseFilters(table, filters = {}, params = []) {
 		joinSession:
 			os || browser || device || country
 				? `inner join session on ${table}.session_id = session.session_id`
-				: '',
-		pageviewQuery: getFilterQuery('pageview', pageviewFilters, params),
-		sessionQuery: getFilterQuery('session', sessionFilters, params),
-		eventQuery: getFilterQuery('event', eventFilters, params),
+				: "",
+		pageviewQuery: getFilterQuery("pageview", pageviewFilters, params),
+		sessionQuery: getFilterQuery("session", sessionFilters, params),
+		eventQuery: getFilterQuery("event", eventFilters, params),
 	}
 }
 
@@ -151,10 +151,10 @@ export async function rawQuery(query, params = []) {
 	const db = getDatabase()
 
 	if (db !== POSTGRESQL && db !== MYSQL) {
-		return Promise.reject(new Error('Unknown database.'))
+		return Promise.reject(new Error("Unknown database."))
 	}
 
-	const sql = db === MYSQL ? query.replace(/\$[0-9]+/g, '?') : query
+	const sql = db === MYSQL ? query.replace(/\$[0-9]+/g, "?") : query
 
 	return runQuery(prisma.$queryRawUnsafe.apply(prisma, [sql, ...params]))
 }
@@ -196,7 +196,7 @@ export async function getUserWebsites(user_id) {
 				user_id,
 			},
 			orderBy: {
-				name: 'asc',
+				name: "asc",
 			},
 		})
 	)
@@ -207,10 +207,10 @@ export async function getAllWebsites() {
 		prisma.website.findMany({
 			orderBy: [
 				{
-					user_id: 'asc',
+					user_id: "asc",
 				},
 				{
-					name: 'asc',
+					name: "asc",
 				},
 			],
 			include: {
@@ -328,9 +328,9 @@ export async function getAccounts() {
 	return runQuery(
 		prisma.account.findMany({
 			orderBy: [
-				{ is_admin: 'desc' },
+				{ is_admin: "desc" },
 				{
-					username: 'asc',
+					username: "asc",
 				},
 			],
 		})
@@ -440,7 +440,7 @@ export async function getEvents(websites, start_at) {
 export function getWebsiteStats(website_id, start_at, end_at, filters = {}) {
 	const params = [website_id, start_at, end_at]
 	const { pageviewQuery, sessionQuery, joinSession } = parseFilters(
-		'pageview',
+		"pageview",
 		filters,
 		params
 	)
@@ -453,9 +453,9 @@ export function getWebsiteStats(website_id, start_at, end_at, filters = {}) {
         sum(t.time) as "totaltime"
       from (
          select pageview.session_id,
-           ${getDateQuery('pageview.created_at', 'hour')},
+           ${getDateQuery("pageview.created_at", "hour")},
            count(*) c,
-           ${getTimestampInterval('pageview.created_at')} as "time"
+           ${getTimestampInterval("pageview.created_at")} as "time"
          from pageview
            ${joinSession}
          where pageview.website_id=$1
@@ -473,21 +473,21 @@ export function getPageviewStats(
 	website_id,
 	start_at,
 	end_at,
-	timezone = 'utc',
-	unit = 'day',
-	count = '*',
+	timezone = "utc",
+	unit = "day",
+	count = "*",
 	filters = {}
 ) {
 	const params = [website_id, start_at, end_at]
 	const { pageviewQuery, sessionQuery, joinSession } = parseFilters(
-		'pageview',
+		"pageview",
 		filters,
 		params
 	)
 
 	return rawQuery(
 		`
-    select ${getDateQuery('pageview.created_at', unit, timezone)} t,
+    select ${getDateQuery("pageview.created_at", unit, timezone)} t,
       count(${count}) y
     from pageview
       ${joinSession}
@@ -511,7 +511,7 @@ export function getSessionMetrics(
 ) {
 	const params = [website_id, start_at, end_at]
 	const { pageviewQuery, sessionQuery, joinSession } = parseFilters(
-		'pageview',
+		"pageview",
 		filters,
 		params
 	)
@@ -587,8 +587,8 @@ export function getEventMetrics(
 	website_id,
 	start_at,
 	end_at,
-	timezone = 'utc',
-	unit = 'day',
+	timezone = "utc",
+	unit = "day",
 	filters = {}
 ) {
 	const params = [website_id, start_at, end_at]
@@ -597,12 +597,12 @@ export function getEventMetrics(
 		`
     select
       event_value x,
-      ${getDateQuery('created_at', unit, timezone)} t,
+      ${getDateQuery("created_at", unit, timezone)} t,
       count(*) y
     from event
     where website_id=$1
     and created_at between $2 and $3
-    ${getFilterQuery('event', filters, params)}
+    ${getFilterQuery("event", filters, params)}
     group by 1, 2
     order by 2
     `,

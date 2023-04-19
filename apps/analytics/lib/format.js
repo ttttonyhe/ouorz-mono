@@ -16,22 +16,22 @@ export function parseTime(val) {
 
 export function formatTime(val) {
 	const { hour, minutes, seconds } = parseTime(val)
-	const h = hour > 0 ? `${hour}:` : ''
-	const m = hour > 0 ? minutes.toString().padStart(2, '0') : minutes
-	const s = seconds.toString().padStart(2, '0')
+	const h = hour > 0 ? `${hour}:` : ""
+	const m = hour > 0 ? minutes.toString().padStart(2, "0") : minutes
+	const s = seconds.toString().padStart(2, "0")
 
 	return `${h}${m}:${s}`
 }
 
-export function formatShortTime(val, formats = ['m', 's'], space = '') {
+export function formatShortTime(val, formats = ["m", "s"], space = "") {
 	const { days, hours, minutes, seconds, ms } = parseTime(val)
-	let t = ''
+	let t = ""
 
-	if (days > 0 && formats.indexOf('d') !== -1) t += `${days}d${space}`
-	if (hours > 0 && formats.indexOf('h') !== -1) t += `${hours}h${space}`
-	if (minutes > 0 && formats.indexOf('m') !== -1) t += `${minutes}m${space}`
-	if (seconds > 0 && formats.indexOf('s') !== -1) t += `${seconds}s${space}`
-	if (ms > 0 && formats.indexOf('ms') !== -1) t += `${ms}ms`
+	if (days > 0 && formats.indexOf("d") !== -1) t += `${days}d${space}`
+	if (hours > 0 && formats.indexOf("h") !== -1) t += `${hours}h${space}`
+	if (minutes > 0 && formats.indexOf("m") !== -1) t += `${minutes}m${space}`
+	if (seconds > 0 && formats.indexOf("s") !== -1) t += `${seconds}s${space}`
+	if (ms > 0 && formats.indexOf("ms") !== -1) t += `${ms}ms`
 
 	if (!t) {
 		return `0${formats[formats.length - 1]}`
@@ -65,16 +65,16 @@ export function formatLongNumber(value) {
 
 export function stringToColor(str) {
 	if (!str) {
-		return '#ffffff'
+		return "#ffffff"
 	}
 	let hash = 0
 	for (let i = 0; i < str.length; i++) {
 		hash = str.charCodeAt(i) + ((hash << 5) - hash)
 	}
-	let color = '#'
+	let color = "#"
 	for (let i = 0; i < 3; i++) {
 		let value = (hash >> (i * 8)) & 0xff
-		color += ('00' + value.toString(16)).substr(-2)
+		color += ("00" + value.toString(16)).substr(-2)
 	}
 	return color
 }

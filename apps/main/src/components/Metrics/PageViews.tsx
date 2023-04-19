@@ -1,13 +1,13 @@
-import useSWR from 'swr'
-import format from 'comma-number'
-import fetcher from '~/lib/fetcher'
-import MetricCard from './Card'
+import useSWR from "swr"
+import format from "comma-number"
+import fetcher from "~/lib/fetcher"
+import MetricCard from "./Card"
 
 export default function PageViewsMetric() {
-	const { data } = useSWR('api/analytics', fetcher)
+	const { data } = useSWR("api/analytics", fetcher)
 
 	const views = format(data?.views)
-	const link = 'https://analytics.ouorz.com/share/E4O9QpCn/ouorz-next'
+	const link = "https://analytics.ouorz.com/share/E4O9QpCn/ouorz-next"
 
 	return (
 		<MetricCard

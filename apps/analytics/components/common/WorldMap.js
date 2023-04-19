@@ -1,20 +1,20 @@
-import React, { useState, useMemo } from 'react'
-import { useRouter } from 'next/router'
-import PropTypes from 'prop-types'
-import ReactTooltip from 'react-tooltip'
+import React, { useState, useMemo } from "react"
+import { useRouter } from "next/router"
+import PropTypes from "prop-types"
+import ReactTooltip from "react-tooltip"
 import {
 	ComposableMap,
 	Geographies,
 	Geography,
 	ZoomableGroup,
-} from 'react-simple-maps'
-import classNames from 'classnames'
-import { colord } from 'colord'
-import useTheme from 'hooks/useTheme'
-import { ISO_COUNTRIES, THEME_COLORS, MAP_FILE } from 'lib/constants'
-import styles from './WorldMap.module.css'
-import useCountryNames from 'hooks/useCountryNames'
-import useLocale from 'hooks/useLocale'
+} from "react-simple-maps"
+import classNames from "classnames"
+import { colord } from "colord"
+import useTheme from "hooks/useTheme"
+import { ISO_COUNTRIES, THEME_COLORS, MAP_FILE } from "lib/constants"
+import styles from "./WorldMap.module.css"
+import useCountryNames from "hooks/useCountryNames"
+import useLocale from "hooks/useLocale"
 
 function WorldMap({ data, className }) {
 	const { basePath } = useRouter()
@@ -33,7 +33,7 @@ function WorldMap({ data, className }) {
 	const countryNames = useCountryNames(locale)
 
 	function getFillColor(code) {
-		if (code === 'AQ') return
+		if (code === "AQ") return
 		const country = data?.find(({ x }) => x === code)
 
 		if (!country) {
@@ -41,16 +41,16 @@ function WorldMap({ data, className }) {
 		}
 
 		return colord(colors.baseColor)
-			[theme === 'light' ? 'lighten' : 'darken'](0.4 * (1.0 - country.z / 100))
+			[theme === "light" ? "lighten" : "darken"](0.4 * (1.0 - country.z / 100))
 			.toHex()
 	}
 
 	function getOpacity(code) {
-		return code === 'AQ' ? 0 : 1
+		return code === "AQ" ? 0 : 1
 	}
 
 	function handleHover(code) {
-		if (code === 'AQ') return
+		if (code === "AQ") return
 		const country = data?.find(({ x }) => x === code)
 		setTooltip(`${countryNames[code]}: ${country?.y || 0} visitors`)
 	}
@@ -76,9 +76,9 @@ function WorldMap({ data, className }) {
 										stroke={colors.strokeColor}
 										opacity={getOpacity(code)}
 										style={{
-											default: { outline: 'none' },
-											hover: { outline: 'none', fill: colors.hoverColor },
-											pressed: { outline: 'none' },
+											default: { outline: "none" },
+											hover: { outline: "none", fill: colors.hoverColor },
+											pressed: { outline: "none" },
 										}}
 										onMouseOver={() => handleHover(code)}
 										onMouseOut={() => setTooltip(null)}

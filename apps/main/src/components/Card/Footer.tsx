@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
-import { Icon } from '@twilight-toolkit/ui'
-import TimeAgo from 'react-timeago'
-import { WPPost } from '~/constants/propTypes'
-import useAnalytics from '~/hooks/analytics'
+import { useEffect, useState } from "react"
+import { Icon } from "@twilight-toolkit/ui"
+import TimeAgo from "react-timeago"
+import { WPPost } from "~/constants/propTypes"
+import useAnalytics from "~/hooks/analytics"
 
 export default function CardFooter({ item }: { item: WPPost }) {
 	const { trackEvent } = useAnalytics()
@@ -14,9 +14,9 @@ export default function CardFooter({ item }: { item: WPPost }) {
 				title: item.post_title,
 				url: `${window.location.origin}/post/${item.id}`,
 			})
-			trackEvent('sharePost', 'click')
+			trackEvent("sharePost", "click")
 		} catch (err) {
-			console.error('Failed to share:', err.message)
+			console.error("Failed to share:", err.message)
 		}
 	}
 
@@ -28,7 +28,7 @@ export default function CardFooter({ item }: { item: WPPost }) {
 		<div className="py-3 px-5 lg:py-2 lg:px-10 items-center w-full h-auto border-t rounded-br-md rounded-bl-md border-gray-100 dark:border-gray-700">
 			<p
 				className={`flex justify-between items-center text-5 lg:text-4 tracking-wide leading-2 lg:leading-8 text-gray-500 dark:text-gray-400 whitespace-nowrap ${
-					canShare === false ? 'animate-appear' : ''
+					canShare === false ? "animate-appear" : ""
 				}`}
 			>
 				<span className="flex gap-x-2 items-center">

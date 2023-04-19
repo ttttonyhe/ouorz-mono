@@ -1,15 +1,15 @@
-import React, { MutableRefObject, useRef } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { useRouter } from 'next/router'
-import { useTheme } from 'next-themes'
-import { useDispatch, useSelector } from '~/hooks'
-import { updateKbarToSearch, activateKbar } from '~/store/kbar/actions'
-import { HeaderTransition, OffsetTransition } from '../Motion'
-import Tabs from '../Tabs'
-import Kbar from '../Kbar'
-import useAnalytics from '~/hooks/analytics'
-import { selectGeneral } from '~/store/general/selectors'
+import React, { MutableRefObject, useRef } from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { useRouter } from "next/router"
+import { useTheme } from "next-themes"
+import { useDispatch, useSelector } from "~/hooks"
+import { updateKbarToSearch, activateKbar } from "~/store/kbar/actions"
+import { HeaderTransition, OffsetTransition } from "../Motion"
+import Tabs from "../Tabs"
+import Kbar from "../Kbar"
+import useAnalytics from "~/hooks/analytics"
+import { selectGeneral } from "~/store/general/selectors"
 
 interface HeaderSearchBarComponentProps {
 	activateKbar: () => void
@@ -64,11 +64,11 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 	const { setTheme, resolvedTheme } = useTheme()
 	const titleRef = useRef<HTMLDivElement>(null)
 
-	const nonHomePage = router.asPath.split('/').length > 2
+	const nonHomePage = router.asPath.split("/").length > 2
 
 	const leftTabItems = [
 		{
-			label: 'Avatar',
+			label: "Avatar",
 			hoverable: false,
 			component: (
 				<div className="px-5 cursor-pointer mx-auto hidden lg:flex space-x-3 items-center justify-center group">
@@ -100,10 +100,10 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			),
 		},
 		{
-			label: 'Newsletter',
-			icon: 'subscribe',
+			label: "Newsletter",
+			icon: "subscribe",
 			link: {
-				external: 'https://buttondown.email/helipeng',
+				external: "https://buttondown.email/helipeng",
 			},
 		},
 	]
@@ -111,357 +111,357 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 	const rightTabItems = [
 		nonHomePage
 			? {
-					label: 'Home',
-					className: 'hidden lg:block',
-					icon: 'home',
+					label: "Home",
+					className: "hidden lg:block",
+					icon: "home",
 					link: {
-						internal: '/',
+						internal: "/",
 					},
 			  }
 			: {
-					label: 'Web 3',
-					className: 'hidden lg:block',
-					color: 'text-pink-500',
-					bgColor: 'bg-pink-100',
-					bgDark: 'dark:bg-pink-900',
-					icon: 'rainbow',
+					label: "Web 3",
+					className: "hidden lg:block",
+					color: "text-pink-500",
+					bgColor: "bg-pink-100",
+					bgDark: "dark:bg-pink-900",
+					icon: "rainbow",
 					link: {
-						internal: '/web3',
+						internal: "/web3",
 					},
 			  },
 		{
-			label: 'Pages',
-			className: 'hidden lg:block',
-			icon: 'pages',
+			label: "Pages",
+			className: "hidden lg:block",
+			icon: "pages",
 			link: {
-				internal: '/pages',
+				internal: "/pages",
 			},
 		},
 		{
-			label: 'About',
-			icon: 'me',
+			label: "About",
+			icon: "me",
 			link: {
-				internal: '/post/126',
+				internal: "/post/126",
 			},
 		},
 	]
 
 	const kbarItems = [
 		{
-			label: 'Navigation',
-			id: 'navigation-divider',
+			label: "Navigation",
+			id: "navigation-divider",
 			hoverable: false,
 		},
 		{
-			label: 'Go Back',
-			id: 'back',
-			icon: 'left',
-			shortcut: ['b'],
+			label: "Go Back",
+			id: "back",
+			icon: "left",
+			shortcut: ["b"],
 			action: () => router.back(),
-			description: 'Command',
+			description: "Command",
 		},
 		{
-			label: 'Home',
-			id: 'home',
-			icon: 'home',
-			shortcut: ['h'],
-			description: 'Command',
+			label: "Home",
+			id: "home",
+			icon: "home",
+			shortcut: ["h"],
+			description: "Command",
 			link: {
-				internal: '/',
+				internal: "/",
 			},
 		},
 		{
-			label: 'Appearance',
-			id: 'appearance-divider',
+			label: "Appearance",
+			id: "appearance-divider",
 			hoverable: false,
 		},
 		{
-			label: 'Themes',
-			id: 'themes',
-			icon: resolvedTheme === 'light' ? 'sun' : 'moon',
-			description: 'Choices',
-			shortcut: ['t'],
+			label: "Themes",
+			id: "themes",
+			icon: resolvedTheme === "light" ? "sun" : "moon",
+			description: "Choices",
+			shortcut: ["t"],
 			singleton: false,
 			sublist: {
-				key: 'themes',
+				key: "themes",
 				list: [
-					resolvedTheme === 'light'
+					resolvedTheme === "light"
 						? {
-								label: 'Dark',
-								id: 'darktheme',
-								shortcut: ['d'],
-								description: 'Command',
-								icon: 'moon',
-								action: () => setTheme('dark'),
+								label: "Dark",
+								id: "darktheme",
+								shortcut: ["d"],
+								description: "Command",
+								icon: "moon",
+								action: () => setTheme("dark"),
 						  }
 						: {
-								label: 'Light',
-								id: 'lighttheme',
-								shortcut: ['l'],
-								description: 'Command',
-								icon: 'sun',
-								action: () => setTheme('light'),
+								label: "Light",
+								id: "lighttheme",
+								shortcut: ["l"],
+								description: "Command",
+								icon: "sun",
+								action: () => setTheme("light"),
 						  },
 					{
-						label: 'Same as system',
-						id: 'systemtheme',
-						shortcut: ['y'],
-						description: 'Command',
-						icon: 'monitor',
-						action: () => setTheme('system'),
+						label: "Same as system",
+						id: "systemtheme",
+						shortcut: ["y"],
+						description: "Command",
+						icon: "monitor",
+						action: () => setTheme("system"),
 					},
 				],
-				placeholder: 'Set theme to...',
+				placeholder: "Set theme to...",
 			},
 		},
 		{
-			label: 'Search',
-			id: 'search-divider',
+			label: "Search",
+			id: "search-divider",
 			hoverable: false,
 		},
 		{
-			label: 'Search Blog Posts',
-			id: 'search',
-			icon: 'search',
-			shortcut: ['s'],
+			label: "Search Blog Posts",
+			id: "search",
+			icon: "search",
+			shortcut: ["s"],
 			action: () => {
 				dispatch(updateKbarToSearch())
-				trackEvent('searchBlogPosts', 'kbar')
+				trackEvent("searchBlogPosts", "kbar")
 			},
-			description: 'Command',
+			description: "Command",
 			singleton: false,
 		},
 		{
-			label: 'Actions',
-			id: 'actions-divider',
+			label: "Actions",
+			id: "actions-divider",
 			hoverable: false,
 		},
 		{
-			label: 'Subscribe to Newsletter',
-			id: 'newletter',
-			description: 'Link',
-			icon: 'subscribe',
-			color: 'text-blue-500',
-			bgColor: 'bg-blue-100',
-			bgDark: 'dark:bg-blue-900',
+			label: "Subscribe to Newsletter",
+			id: "newletter",
+			description: "Link",
+			icon: "subscribe",
+			color: "text-blue-500",
+			bgColor: "bg-blue-100",
+			bgDark: "dark:bg-blue-900",
 			link: {
-				external: 'https://buttondown.email/helipeng',
+				external: "https://buttondown.email/helipeng",
 			},
 		},
 		{
-			label: 'Join Discord Server',
-			id: 'discord',
-			description: 'Link',
-			icon: 'chatRounded',
-			color: 'text-purple-400',
-			bgColor: 'bg-purple-100',
-			bgDark: 'dark:bg-purple-900',
+			label: "Join Discord Server",
+			id: "discord",
+			description: "Link",
+			icon: "chatRounded",
+			color: "text-purple-400",
+			bgColor: "bg-purple-100",
+			bgDark: "dark:bg-purple-900",
 			link: {
-				external: 'https://discord.gg/TTwGnMgcxr',
+				external: "https://discord.gg/TTwGnMgcxr",
 			},
 		},
 		{
-			label: 'Sponsor Me',
-			id: 'sponsor',
-			description: 'Page',
-			icon: 'love',
-			color: 'text-pink-500',
-			bgColor: 'bg-pink-100',
-			bgDark: 'dark:bg-pink-900',
+			label: "Sponsor Me",
+			id: "sponsor",
+			description: "Page",
+			icon: "love",
+			color: "text-pink-500",
+			bgColor: "bg-pink-100",
+			bgDark: "dark:bg-pink-900",
 			link: {
-				internal: '/sponsor',
+				internal: "/sponsor",
 			},
 		},
 		{
-			label: 'Email Me',
-			id: 'email',
-			description: 'Link',
-			icon: 'email',
+			label: "Email Me",
+			id: "email",
+			description: "Link",
+			icon: "email",
 			link: {
-				external: 'mailto:tony.hlp@hotmail.com',
+				external: "mailto:tony.hlp@hotmail.com",
 			},
 		},
 		{
-			label: 'Leave a Comment',
-			id: 'comment',
-			description: 'Page',
-			icon: 'comments',
+			label: "Leave a Comment",
+			id: "comment",
+			description: "Page",
+			icon: "comments",
 			link: {
-				internal: '/page/249',
+				internal: "/page/249",
 			},
 		},
 		{
-			label: 'Ask me Anything',
-			id: 'ama',
-			description: 'Page',
-			icon: 'question',
+			label: "Ask me Anything",
+			id: "ama",
+			description: "Page",
+			icon: "question",
 			link: {
-				internal: '/page/765',
+				internal: "/page/765",
 			},
 		},
 		{
-			label: 'Pages',
-			id: 'pages-divider',
+			label: "Pages",
+			id: "pages-divider",
 			hoverable: false,
 		},
 		{
-			label: 'About',
-			id: 'about',
-			description: 'Page',
-			icon: 'me',
+			label: "About",
+			id: "about",
+			description: "Page",
+			icon: "me",
 			link: {
-				internal: '/post/126',
+				internal: "/post/126",
 			},
 		},
 		{
-			label: 'Dashboard',
-			id: 'dashboard',
-			description: 'Page',
-			icon: 'ppt',
+			label: "Dashboard",
+			id: "dashboard",
+			description: "Page",
+			icon: "ppt",
 			link: {
-				internal: '/dashboard',
+				internal: "/dashboard",
 			},
 		},
 		{
-			label: 'Friends',
-			id: 'links',
-			description: 'Page',
-			icon: 'people',
+			label: "Friends",
+			id: "links",
+			description: "Page",
+			icon: "people",
 			link: {
-				internal: '/friends',
+				internal: "/friends",
 			},
 		},
 		{
-			label: 'Reading List',
-			id: 'reading-list',
-			description: 'Page',
-			icon: 'bookOpen',
+			label: "Reading List",
+			id: "reading-list",
+			description: "Page",
+			icon: "bookOpen",
 			link: {
-				internal: '/reading-list',
+				internal: "/reading-list",
 			},
 		},
 		{
-			label: 'Podcasts',
-			id: 'podcasts',
-			description: 'Page',
-			icon: 'microphone',
+			label: "Podcasts",
+			id: "podcasts",
+			description: "Page",
+			icon: "microphone",
 			link: {
-				internal: '/podcasts',
+				internal: "/podcasts",
 			},
 		},
 		{
-			label: 'Links',
-			id: 'links-divider',
+			label: "Links",
+			id: "links-divider",
 			hoverable: false,
 		},
 		{
-			label: 'Analytics',
-			id: 'analytics',
-			description: 'Link',
-			icon: 'growth',
+			label: "Analytics",
+			id: "analytics",
+			description: "Link",
+			icon: "growth",
 			link: {
-				external: 'https://analytics.ouorz.com/share/E4O9QpCn/ouorz-next',
+				external: "https://analytics.ouorz.com/share/E4O9QpCn/ouorz-next",
 			},
 		},
 		{
-			label: 'Thoughts',
-			id: 'thoughts',
-			description: 'Link',
-			icon: 'lightBulb',
+			label: "Thoughts",
+			id: "thoughts",
+			description: "Link",
+			icon: "lightBulb",
 			link: {
-				external: 'https://notion.ouorz.com',
+				external: "https://notion.ouorz.com",
 			},
 		},
 		{
-			label: 'Podcast',
-			id: 'podcast',
-			description: 'Link',
-			icon: 'mic',
+			label: "Podcast",
+			id: "podcast",
+			description: "Link",
+			icon: "mic",
 			link: {
-				external: 'https://kukfm.com',
+				external: "https://kukfm.com",
 			},
 		},
 		{
-			label: 'Snapod',
-			id: 'snapod',
-			description: 'Link',
-			icon: 'microphone',
+			label: "Snapod",
+			id: "snapod",
+			description: "Link",
+			icon: "microphone",
 			link: {
-				external: 'https://www.snapodcast.com',
+				external: "https://www.snapodcast.com",
 			},
 		},
 		{
-			label: 'Social',
-			id: 'social-divider',
+			label: "Social",
+			id: "social-divider",
 			hoverable: false,
 		},
 		{
-			label: 'Twitter',
-			id: 'twitter',
-			description: 'Link',
-			icon: 'twitter',
+			label: "Twitter",
+			id: "twitter",
+			description: "Link",
+			icon: "twitter",
 			link: {
-				external: 'https://twitter.com/ttttonyhe',
+				external: "https://twitter.com/ttttonyhe",
 			},
 		},
 		{
-			label: 'GitHub',
-			id: 'github',
-			description: 'Link',
-			icon: 'github',
+			label: "GitHub",
+			id: "github",
+			description: "Link",
+			icon: "github",
 			link: {
-				external: 'https://github.com/HelipengTony',
+				external: "https://github.com/HelipengTony",
 			},
 		},
 		{
-			label: 'LinkedIn',
-			id: 'linkedin',
-			description: 'Link',
-			icon: 'briefCase',
+			label: "LinkedIn",
+			id: "linkedin",
+			description: "Link",
+			icon: "briefCase",
 			link: {
-				external: 'https://www.linkedin.com/in/lipenghe',
+				external: "https://www.linkedin.com/in/lipenghe",
 			},
 		},
 		{
-			label: 'Web 3.0',
-			id: 'web3-divider',
+			label: "Web 3.0",
+			id: "web3-divider",
 			hoverable: false,
 		},
 		{
-			label: 'OpenSea',
-			id: 'opensea',
-			description: 'Link',
-			icon: 'openSea',
+			label: "OpenSea",
+			id: "opensea",
+			description: "Link",
+			icon: "openSea",
 			link: {
-				external: 'https://opensea.io/ttttonyhe',
+				external: "https://opensea.io/ttttonyhe",
 			},
 		},
 		{
-			label: 'MagicEden',
-			id: 'magicEden',
-			description: 'Link',
-			icon: 'magicEden',
+			label: "MagicEden",
+			id: "magicEden",
+			description: "Link",
+			icon: "magicEden",
 			link: {
-				external: 'https://magiceden.io/u/tonyhe',
+				external: "https://magiceden.io/u/tonyhe",
 			},
 		},
 		{
-			label: 'Ethereum',
-			id: 'ens',
-			description: 'ttttonyhe.eth',
-			icon: 'eth',
+			label: "Ethereum",
+			id: "ens",
+			description: "ttttonyhe.eth",
+			icon: "eth",
 			link: {
 				external:
-					'https://app.ens.domains/address/0x2650f08Da54F7019f9a3306bad0dfc8474644eAD',
+					"https://app.ens.domains/address/0x2650f08Da54F7019f9a3306bad0dfc8474644eAD",
 			},
 		},
 		{
-			label: 'Solana',
-			id: 'solana',
-			description: 'tonyhe.sol',
-			icon: 'solana',
+			label: "Solana",
+			id: "solana",
+			description: "tonyhe.sol",
+			icon: "solana",
 			link: {
-				external: 'https://naming.bonfida.org/#/domain/tonyhe',
+				external: "https://naming.bonfida.org/#/domain/tonyhe",
 			},
 		},
 	]

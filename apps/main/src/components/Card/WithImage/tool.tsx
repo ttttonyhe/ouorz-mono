@@ -1,10 +1,10 @@
-import { Label } from '@twilight-toolkit/ui'
-import CardFooter from '~/components/Card/Footer'
-import trimStr from '~/utilities/trimString'
-import Link from 'next/link'
-import { useDispatch } from '~/hooks'
-import { setReaderRequest } from '~/store/reader/actions'
-import { WPPost } from '~/constants/propTypes'
+import { Label } from "@twilight-toolkit/ui"
+import CardFooter from "~/components/Card/Footer"
+import trimStr from "~/utilities/trimString"
+import Link from "next/link"
+import { useDispatch } from "~/hooks"
+import { setReaderRequest } from "~/store/reader/actions"
+import { WPPost } from "~/constants/propTypes"
 
 interface Props {
 	item: WPPost
@@ -24,14 +24,14 @@ export const CardTool = ({
 			<div
 				className={`col-start-1 col-end-2 rounded-tl-md rounded-bl-md ${
 					item.post_metas.fineTool.itemImgBorder
-						? 'border-r border-gray-200 dark:border-gray-600'
-						: ''
+						? "border-r border-gray-200 dark:border-gray-600"
+						: ""
 				}`}
 				style={{
-					backgroundImage: 'url(' + item.post_img.url + ')',
-					backgroundSize: 'cover',
-					backgroundRepeat: 'no-repeat',
-					backgroundPosition: 'center',
+					backgroundImage: "url(" + item.post_img.url + ")",
+					backgroundSize: "cover",
+					backgroundRepeat: "no-repeat",
+					backgroundPosition: "center",
 				}}
 			/>
 			<div className="col-start-2 col-end-9 grid grid-cols-2 items-center pl-3 lg:pl-0 py-2 pr-3">
@@ -74,7 +74,7 @@ export default function CardWithImageTool({ item, sticky }: Props) {
 	return (
 		<div
 			className={`w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border ${
-				sticky ? 'border-t-4 border-t-yellow-200 mb-6' : 'mb-6'
+				sticky ? "border-t-4 border-t-yellow-200 mb-6" : "mb-6"
 			}`}
 		>
 			<div className="p-5 lg:p-10">

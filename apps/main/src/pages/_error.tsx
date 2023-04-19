@@ -1,9 +1,9 @@
-import Head from 'next/head'
-import React from 'react'
-import { Button } from '@twilight-toolkit/ui'
-import { captureException, flush } from '@sentry/nextjs'
-import { NextPageWithLayout } from '~/pages/_app'
-import { pageLayout } from '~/components/Page'
+import Head from "next/head"
+import React from "react"
+import { Button } from "@twilight-toolkit/ui"
+import { captureException, flush } from "@sentry/nextjs"
+import { NextPageWithLayout } from "~/pages/_app"
+import { pageLayout } from "~/components/Page"
 
 interface Props {
 	statusCode: number
@@ -24,14 +24,14 @@ const ErrorPage: NextPageWithLayout = ({ statusCode }: Props) => {
 					<p className="text-3 lg:text-2 text-gray-500 leading-14 tracking-wide font-light">
 						{statusCode
 							? `An error with code ${statusCode} has occurred on the server`
-							: 'An error has occurred on the client'}
+							: "An error has occurred on the client"}
 					</p>
 					<div className="inline-block justify-center mt-4">
 						<Button
 							type="primary"
 							className="mx-auto"
 							onClick={() => {
-								location.href = '/'
+								location.href = "/"
 							}}
 						>
 							Back to Home

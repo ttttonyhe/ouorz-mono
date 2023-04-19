@@ -1,6 +1,6 @@
-import { checkPassword, createSecureToken } from 'lib/crypto'
-import { getAccountByUsername } from 'lib/queries'
-import { ok, unauthorized, badRequest } from 'lib/response'
+import { checkPassword, createSecureToken } from "lib/crypto"
+import { getAccountByUsername } from "lib/queries"
+import { ok, unauthorized, badRequest } from "lib/response"
 
 export default async (req, res) => {
 	const { username, password } = req.body

@@ -1,30 +1,30 @@
-import React, { useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-import classNames from 'classnames'
-import Link from 'components/common/Link'
-import Table from 'components/common/Table'
-import Button from 'components/common/Button'
-import OverflowText from 'components/common/OverflowText'
-import PageHeader from 'components/layout/PageHeader'
-import Modal from 'components/common/Modal'
-import WebsiteEditForm from 'components/forms/WebsiteEditForm'
-import ResetForm from 'components/forms/ResetForm'
-import DeleteForm from 'components/forms/DeleteForm'
-import TrackingCodeForm from 'components/forms/TrackingCodeForm'
-import ShareUrlForm from 'components/forms/ShareUrlForm'
-import EmptyPlaceholder from 'components/common/EmptyPlaceholder'
-import ButtonLayout from 'components/layout/ButtonLayout'
-import Toast from 'components/common/Toast'
-import Favicon from 'components/common/Favicon'
-import Pen from 'assets/pen.svg'
-import Trash from 'assets/trash.svg'
-import Reset from 'assets/redo.svg'
-import Plus from 'assets/plus.svg'
-import Code from 'assets/code.svg'
-import LinkIcon from 'assets/link.svg'
-import useFetch from 'hooks/useFetch'
-import useUser from 'hooks/useUser'
-import styles from './WebsiteSettings.module.css'
+import React, { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import classNames from "classnames"
+import Link from "components/common/Link"
+import Table from "components/common/Table"
+import Button from "components/common/Button"
+import OverflowText from "components/common/OverflowText"
+import PageHeader from "components/layout/PageHeader"
+import Modal from "components/common/Modal"
+import WebsiteEditForm from "components/forms/WebsiteEditForm"
+import ResetForm from "components/forms/ResetForm"
+import DeleteForm from "components/forms/DeleteForm"
+import TrackingCodeForm from "components/forms/TrackingCodeForm"
+import ShareUrlForm from "components/forms/ShareUrlForm"
+import EmptyPlaceholder from "components/common/EmptyPlaceholder"
+import ButtonLayout from "components/layout/ButtonLayout"
+import Toast from "components/common/Toast"
+import Favicon from "components/common/Favicon"
+import Pen from "assets/pen.svg"
+import Trash from "assets/trash.svg"
+import Reset from "assets/redo.svg"
+import Plus from "assets/plus.svg"
+import Code from "assets/code.svg"
+import LinkIcon from "assets/link.svg"
+import useFetch from "hooks/useFetch"
+import useUser from "hooks/useUser"
+import styles from "./WebsiteSettings.module.css"
 
 export default function WebsiteSettings() {
 	const { user } = useUser()
@@ -37,7 +37,7 @@ export default function WebsiteSettings() {
 	const [saved, setSaved] = useState(0)
 	const [message, setMessage] = useState()
 	const { data } = useFetch(
-		'/websites',
+		"/websites",
 		{ params: { include_all: !!user?.is_admin } },
 		[saved]
 	)
@@ -111,45 +111,45 @@ export default function WebsiteSettings() {
 
 	const adminColumns = [
 		{
-			key: 'name',
+			key: "name",
 			label: <FormattedMessage id="label.name" defaultMessage="Name" />,
-			className: 'col-12 col-lg-4 col-xl-3',
+			className: "col-12 col-lg-4 col-xl-3",
 			render: DetailsLink,
 		},
 		{
-			key: 'domain',
+			key: "domain",
 			label: <FormattedMessage id="label.domain" defaultMessage="Domain" />,
-			className: 'col-12 col-lg-4 col-xl-3',
+			className: "col-12 col-lg-4 col-xl-3",
 			render: Domain,
 		},
 		{
-			key: 'account',
+			key: "account",
 			label: <FormattedMessage id="label.owner" defaultMessage="Owner" />,
-			className: 'col-12 col-lg-4 col-xl-1',
+			className: "col-12 col-lg-4 col-xl-1",
 		},
 		{
-			key: 'action',
-			className: classNames(styles.buttons, 'col-12 col-xl-5 pt-2 pt-xl-0'),
+			key: "action",
+			className: classNames(styles.buttons, "col-12 col-xl-5 pt-2 pt-xl-0"),
 			render: Buttons,
 		},
 	]
 
 	const columns = [
 		{
-			key: 'name',
+			key: "name",
 			label: <FormattedMessage id="label.name" defaultMessage="Name" />,
-			className: 'col-12 col-lg-6 col-xl-4',
+			className: "col-12 col-lg-6 col-xl-4",
 			render: DetailsLink,
 		},
 		{
-			key: 'domain',
+			key: "domain",
 			label: <FormattedMessage id="label.domain" defaultMessage="Domain" />,
-			className: 'col-12 col-lg-6 col-xl-4',
+			className: "col-12 col-lg-6 col-xl-4",
 			render: Domain,
 		},
 		{
-			key: 'action',
-			className: classNames(styles.buttons, 'col-12 col-xl-4 pt-2 pt-xl-0'),
+			key: "action",
+			className: classNames(styles.buttons, "col-12 col-xl-4 pt-2 pt-xl-0"),
 			render: Buttons,
 		},
 	]
@@ -254,7 +254,7 @@ export default function WebsiteSettings() {
 				>
 					<ResetForm
 						values={{
-							type: 'website',
+							type: "website",
 							id: resetWebsite.website_id,
 							name: resetWebsite.name,
 						}}
@@ -274,7 +274,7 @@ export default function WebsiteSettings() {
 				>
 					<DeleteForm
 						values={{
-							type: 'website',
+							type: "website",
 							id: deleteWebsite.website_id,
 							name: deleteWebsite.name,
 						}}

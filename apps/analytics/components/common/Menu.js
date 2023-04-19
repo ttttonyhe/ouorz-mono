@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import styles from './Menu.module.css'
+import React from "react"
+import PropTypes from "prop-types"
+import classNames from "classnames"
+import styles from "./Menu.module.css"
 
 function Menu({
 	options = [],
 	selectedOption,
 	className,
 	float,
-	align = 'left',
+	align = "left",
 	optionClassName,
 	selectedClassName,
 	onSelect = () => {},
@@ -17,10 +17,10 @@ function Menu({
 		<div
 			className={classNames(styles.menu, className, {
 				[styles.float]: float,
-				[styles.top]: float === 'top',
-				[styles.bottom]: float === 'bottom',
-				[styles.left]: align === 'left',
-				[styles.right]: align === 'right',
+				[styles.top]: float === "top",
+				[styles.bottom]: float === "bottom",
+				[styles.left]: align === "left",
+				[styles.right]: align === "right",
 			})}
 		>
 			{options
@@ -71,8 +71,8 @@ Menu.propTypes = {
 	),
 	selectedOption: PropTypes.any,
 	className: PropTypes.string,
-	float: PropTypes.oneOf(['top', 'bottom']),
-	align: PropTypes.oneOf(['left', 'right']),
+	float: PropTypes.oneOf(["top", "bottom"]),
+	align: PropTypes.oneOf(["left", "right"]),
 	optionClassName: PropTypes.string,
 	selectedClassName: PropTypes.string,
 	onSelect: PropTypes.func,

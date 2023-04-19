@@ -1,10 +1,10 @@
-import { FormattedMessage } from 'react-intl'
-import Link from 'components/common/Link'
-import WebsiteChart from 'components/metrics/WebsiteChart'
-import Page from 'components/layout/Page'
-import EmptyPlaceholder from 'components/common/EmptyPlaceholder'
-import Arrow from 'assets/arrow-right.svg'
-import styles from './WebsiteList.module.css'
+import { FormattedMessage } from "react-intl"
+import Link from "components/common/Link"
+import WebsiteChart from "components/metrics/WebsiteChart"
+import Page from "components/layout/Page"
+import EmptyPlaceholder from "components/common/EmptyPlaceholder"
+import Arrow from "assets/arrow-right.svg"
+import styles from "./WebsiteList.module.css"
 
 export default function WebsiteList({ websites, limit }) {
 	if (websites.length === 0) {

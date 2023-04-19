@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react"
 
 /**
  * Hook to debounce a function

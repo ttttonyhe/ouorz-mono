@@ -1,20 +1,20 @@
-import Head from 'next/head'
-import React from 'react'
-import { GetServerSideProps } from 'next'
-import { NextPageWithLayout } from '~/pages/_app'
-import { pageLayout } from '~/components/Page'
-import List from '~/components/List'
-import getApi from '~/utilities/api'
-import SubscriptionBox from '~/components/SubscriptionBox'
-import { Icon } from '@twilight-toolkit/ui'
-import Link from 'next/link'
-import redirect from 'nextjs-redirect'
+import Head from "next/head"
+import React from "react"
+import { GetServerSideProps } from "next"
+import { NextPageWithLayout } from "~/pages/_app"
+import { pageLayout } from "~/components/Page"
+import List from "~/components/List"
+import getApi from "~/utilities/api"
+import SubscriptionBox from "~/components/SubscriptionBox"
+import { Icon } from "@twilight-toolkit/ui"
+import Link from "next/link"
+import redirect from "nextjs-redirect"
 
 interface CateProps {
 	info: { status: boolean; name: string; count: number; id: number }
 }
 
-const Redirect = redirect('/404')
+const Redirect = redirect("/404")
 
 const Cate: NextPageWithLayout = ({ info }: CateProps) => {
 	const title = `${info.name} - TonyHe`

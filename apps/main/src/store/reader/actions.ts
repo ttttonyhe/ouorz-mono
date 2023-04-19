@@ -1,14 +1,14 @@
-import { WPPost } from '~/constants/propTypes'
+import { WPPost } from "~/constants/propTypes"
 
 // Actions watched by sagas
-export const SET_READER_REQUEST = 'SET_READER_REQUEST'
-export const HIDE_READER_REQUEST = 'HIDE_READER_REQUEST'
+export const SET_READER_REQUEST = "SET_READER_REQUEST"
+export const HIDE_READER_REQUEST = "HIDE_READER_REQUEST"
 
 // Actions not watched by sagas
-export const SET_READER = 'SET_READER'
-export const SHOW_READER = 'SHOW_READER'
-export const HIDE_READER = 'HIDE_READER'
-export const SET_ANIMATION = 'SET_ANIMATION'
+export const SET_READER = "SET_READER"
+export const SHOW_READER = "SHOW_READER"
+export const HIDE_READER = "HIDE_READER"
+export const SET_ANIMATION = "SET_ANIMATION"
 
 // Action creators
 export const setReaderRequest = (postData: WPPost) => {
@@ -29,7 +29,7 @@ export const setReader = (postData: WPPost) => {
 	}
 }
 
-export const setReaderAnimation = (state: 'in' | 'out' | '') => {
+export const setReaderAnimation = (state: "in" | "out" | "") => {
 	return {
 		type: SET_ANIMATION,
 		payload: {

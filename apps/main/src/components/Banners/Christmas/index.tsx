@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import SnowFall from 'react-snowfall'
+import React, { useEffect } from "react"
+import SnowFall from "react-snowfall"
 
 const ChirstmasBanner = () => {
 	const [showSnow, setShowSnow] = React.useState(true)

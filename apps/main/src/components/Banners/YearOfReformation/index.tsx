@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import { Icon } from '@twilight-toolkit/ui'
+import Link from "next/link"
+import { Icon } from "@twilight-toolkit/ui"
 
 const YearOfReformation = () => {
 	return (

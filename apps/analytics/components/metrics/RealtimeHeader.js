@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react'
-import { FormattedMessage } from 'react-intl'
-import { differenceInMinutes } from 'date-fns'
-import PageHeader from 'components/layout/PageHeader'
-import DropDown from 'components/common/DropDown'
-import ActiveUsers from './ActiveUsers'
-import MetricCard from './MetricCard'
-import styles from './RealtimeHeader.module.css'
+import React, { useMemo } from "react"
+import { FormattedMessage } from "react-intl"
+import { differenceInMinutes } from "date-fns"
+import PageHeader from "components/layout/PageHeader"
+import DropDown from "components/common/DropDown"
+import ActiveUsers from "./ActiveUsers"
+import MetricCard from "./MetricCard"
+import styles from "./RealtimeHeader.module.css"
 
 export default function RealtimeHeader({
 	websites,

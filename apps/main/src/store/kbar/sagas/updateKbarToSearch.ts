@@ -1,16 +1,16 @@
-import { call, put, select } from 'redux-saga/effects'
-import { selectKbar } from '../selectors'
+import { call, put, select } from "redux-saga/effects"
+import { selectKbar } from "../selectors"
 import {
 	setKbarLoading,
 	setKbarList,
 	setKbarPlaceholder,
 	updateKbarLocation,
 	addToKbarLists,
-} from '../actions'
-import Fetcher from '~/lib/fetcher'
-import getApi from '~/utilities/api'
+} from "../actions"
+import Fetcher from "~/lib/fetcher"
+import getApi from "~/utilities/api"
 
-const searchLocation = ['home', 'search']
+const searchLocation = ["home", "search"]
 
 export default function* updateKbarToSearchSaga() {
 	try {
@@ -19,11 +19,11 @@ export default function* updateKbarToSearchSaga() {
 		// start loading
 		yield put(setKbarLoading(true))
 		// set kbar placeholder
-		yield put(setKbarPlaceholder('Search articles...'))
+		yield put(setKbarPlaceholder("Search articles..."))
 
 		// get list cache
 		const { lists } = yield select(selectKbar)
-		let searchList = lists['search']
+		let searchList = lists["search"]
 
 		// determine if post data is already in cache
 		if (!searchList) {
@@ -45,11 +45,11 @@ export default function* updateKbarToSearchSaga() {
 					onClick: () => {
 						window.location.href = `https://www.ouorz.com/post/${id}`
 					},
-					className: 'w-full !justify-start !p-4',
+					className: "w-full !justify-start !p-4",
 				}
 			})
 			// add post list to cache
-			yield put(addToKbarLists('search', searchList))
+			yield put(addToKbarLists("search", searchList))
 		}
 
 		// update current list

@@ -1,8 +1,8 @@
-import React from 'react'
-import Head from 'next/head'
-import Header from 'components/layout/Header'
-import Footer from 'components/layout/Footer'
-import useLocale from 'hooks/useLocale'
+import React from "react"
+import Head from "next/head"
+import Header from "components/layout/Header"
+import Footer from "components/layout/Footer"
+import useLocale from "hooks/useLocale"
 
 export default function Layout({
 	title,

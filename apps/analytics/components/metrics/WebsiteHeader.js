@@ -1,15 +1,15 @@
-import React from 'react'
-import classNames from 'classnames'
-import { FormattedMessage } from 'react-intl'
-import Link from 'components/common/Link'
-import OverflowText from 'components/common/OverflowText'
-import PageHeader from 'components/layout/PageHeader'
-import RefreshButton from 'components/common/RefreshButton'
-import ButtonLayout from 'components/layout/ButtonLayout'
-import Favicon from 'components/common/Favicon'
-import ActiveUsers from './ActiveUsers'
-import Arrow from 'assets/arrow-right.svg'
-import styles from './WebsiteHeader.module.css'
+import React from "react"
+import classNames from "classnames"
+import { FormattedMessage } from "react-intl"
+import Link from "components/common/Link"
+import OverflowText from "components/common/OverflowText"
+import PageHeader from "components/layout/PageHeader"
+import RefreshButton from "components/common/RefreshButton"
+import ButtonLayout from "components/layout/ButtonLayout"
+import Favicon from "components/common/Favicon"
+import ActiveUsers from "./ActiveUsers"
+import Arrow from "assets/arrow-right.svg"
+import styles from "./WebsiteHeader.module.css"
 
 export default function WebsiteHeader({
 	websiteId,
@@ -40,7 +40,7 @@ export default function WebsiteHeader({
 			<div
 				className={classNames(
 					styles.title,
-					'col-10 col-lg-4 order-1 order-lg-1'
+					"col-10 col-lg-4 order-1 order-lg-1"
 				)}
 			>
 				{header}
@@ -48,7 +48,7 @@ export default function WebsiteHeader({
 			<div
 				className={classNames(
 					styles.active,
-					'col-12 col-lg-4 order-3 order-lg-2'
+					"col-12 col-lg-4 order-3 order-lg-2"
 				)}
 			>
 				<ActiveUsers websiteId={websiteId} />

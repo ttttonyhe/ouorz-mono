@@ -1,4 +1,4 @@
-import { put, select } from 'redux-saga/effects'
+import { put, select } from "redux-saga/effects"
 import {
 	addToKbarLists,
 	setKbarList,
@@ -7,17 +7,17 @@ import {
 	updateKbar,
 	updateKbarToHome,
 	updateKbarToSearch,
-} from '../actions'
-import { selectKbar } from '../selectors'
+} from "../actions"
+import { selectKbar } from "../selectors"
 
 export default function* updateKbarSaga(action: ReturnType<typeof updateKbar>) {
 	try {
 		// delegate special update requests to their own saga
 		switch (action.payload.key) {
-			case 'home':
+			case "home":
 				yield put(updateKbarToHome())
 				return
-			case 'search':
+			case "search":
 				yield put(updateKbarToSearch())
 				return
 		}

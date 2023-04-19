@@ -1,10 +1,10 @@
-import React from 'react'
-import MetricsTable from './MetricsTable'
-import { percentFilter } from 'lib/filters'
-import { FormattedMessage } from 'react-intl'
-import FilterLink from 'components/common/FilterLink'
-import useCountryNames from 'hooks/useCountryNames'
-import useLocale from 'hooks/useLocale'
+import React from "react"
+import MetricsTable from "./MetricsTable"
+import { percentFilter } from "lib/filters"
+import { FormattedMessage } from "react-intl"
+import FilterLink from "components/common/FilterLink"
+import useCountryNames from "hooks/useCountryNames"
+import useLocale from "hooks/useLocale"
 
 export default function CountriesTable({ websiteId, onDataLoad, ...props }) {
 	const { locale } = useLocale()

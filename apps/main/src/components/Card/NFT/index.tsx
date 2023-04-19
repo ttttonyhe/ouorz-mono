@@ -1,8 +1,8 @@
-import { useTheme } from 'next-themes'
-import ContentLoader from 'react-content-loader'
-import { GlowingBackground } from '~/components/Visual'
-import { Icon } from '@twilight-toolkit/ui'
-import openLink from '~/utilities/externalLink'
+import { useTheme } from "next-themes"
+import ContentLoader from "react-content-loader"
+import { GlowingBackground } from "~/components/Visual"
+import { Icon } from "@twilight-toolkit/ui"
+import openLink from "~/utilities/externalLink"
 
 interface PropsType {
 	blockchain: string
@@ -17,28 +17,28 @@ interface PropsType {
 }
 
 const NFTCard = (props: PropsType) => {
-	let icon = 'question'
+	let icon = "question"
 	let tokenLink = props.link
 	let link = props.link
 	let imageSrc = props.image
-	const description = props.description || 'Just another NFT'
+	const description = props.description || "Just another NFT"
 
 	// Determine token link based on blockchain
 	switch (props.blockchain) {
-		case 'ethereum':
-			icon = 'eth'
+		case "ethereum":
+			icon = "eth"
 			tokenLink = `https://etherscan.io/address/${props.contract}`
 			break
-		case 'solana':
-			icon = 'solana'
+		case "solana":
+			icon = "solana"
 			tokenLink = `https://solscan.io/token/${props.token}`
 			link = tokenLink
 			break
 	}
 
 	// Map ipfs hash to gateway url
-	if (imageSrc.includes('ipfs://')) {
-		imageSrc = `https://dweb.link/ipfs/${imageSrc.replace('ipfs://', '')}`
+	if (imageSrc.includes("ipfs://")) {
+		imageSrc = `https://dweb.link/ipfs/${imageSrc.replace("ipfs://", "")}`
 	}
 
 	return (
@@ -97,14 +97,14 @@ const NFTCardLoading = (props: { uniqueKey: string }) => {
 	return (
 		<div className="glowing-div flex items-center dark:bg-gray-800 dark:border dark:border-gray-700 rounded-md border shadow-sm hover:shadow-md transition-shadow bg-white w-50 z-40 p-[1px]">
 			<ContentLoader
-				className={resolvedTheme === undefined ? 'opacity-50' : ''}
+				className={resolvedTheme === undefined ? "opacity-50" : ""}
 				uniqueKey={props.uniqueKey}
 				speed={2}
 				width={100}
-				style={{ width: '100%' }}
+				style={{ width: "100%" }}
 				height={305}
-				backgroundColor={resolvedTheme === 'dark' ? '#525252' : '#f3f3f3'}
-				foregroundColor={resolvedTheme === 'dark' ? '#373737' : '#ecebeb'}
+				backgroundColor={resolvedTheme === "dark" ? "#525252" : "#f3f3f3"}
+				foregroundColor={resolvedTheme === "dark" ? "#373737" : "#ecebeb"}
 			>
 				<rect x="0" y="0" rx="5" ry="5" width="100%" height="190" />
 				<rect x="15" y="210" rx="5" ry="5" width="50%" height="25" />

@@ -1,25 +1,25 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react'
-import { FormattedMessage } from 'react-intl'
-import { subMinutes, startOfMinute } from 'date-fns'
-import firstBy from 'thenby'
-import Page from 'components/layout/Page'
-import GridLayout, { GridRow, GridColumn } from 'components/layout/GridLayout'
-import RealtimeChart from 'components/metrics/RealtimeChart'
-import RealtimeLog from 'components/metrics/RealtimeLog'
-import RealtimeHeader from 'components/metrics/RealtimeHeader'
-import WorldMap from 'components/common/WorldMap'
-import DataTable from 'components/metrics/DataTable'
-import RealtimeViews from 'components/metrics/RealtimeViews'
-import useFetch from 'hooks/useFetch'
-import useLocale from 'hooks/useLocale'
-import useCountryNames from 'hooks/useCountryNames'
-import { percentFilter } from 'lib/filters'
+import React, { useState, useEffect, useMemo, useCallback } from "react"
+import { FormattedMessage } from "react-intl"
+import { subMinutes, startOfMinute } from "date-fns"
+import firstBy from "thenby"
+import Page from "components/layout/Page"
+import GridLayout, { GridRow, GridColumn } from "components/layout/GridLayout"
+import RealtimeChart from "components/metrics/RealtimeChart"
+import RealtimeLog from "components/metrics/RealtimeLog"
+import RealtimeHeader from "components/metrics/RealtimeHeader"
+import WorldMap from "components/common/WorldMap"
+import DataTable from "components/metrics/DataTable"
+import RealtimeViews from "components/metrics/RealtimeViews"
+import useFetch from "hooks/useFetch"
+import useLocale from "hooks/useLocale"
+import useCountryNames from "hooks/useCountryNames"
+import { percentFilter } from "lib/filters"
 import {
 	SHARE_TOKEN_HEADER,
 	REALTIME_RANGE,
 	REALTIME_INTERVAL,
-} from 'lib/constants'
-import styles from './RealtimeDashboard.module.css'
+} from "lib/constants"
+import styles from "./RealtimeDashboard.module.css"
 
 function mergeData(state, data, time) {
 	const ids = state.map(({ __id }) => __id)
@@ -37,8 +37,8 @@ export default function RealtimeDashboard() {
 	const countryNames = useCountryNames(locale)
 	const [data, setData] = useState()
 	const [websiteId, setWebsiteId] = useState(0)
-	const { data: init, loading } = useFetch('/realtime/init')
-	const { data: updates } = useFetch('/realtime/update', {
+	const { data: init, loading } = useFetch("/realtime/init")
+	const { data: updates } = useFetch("/realtime/update", {
 		params: { start_at: data?.timestamp },
 		disabled: !init?.websites?.length || !data,
 		interval: REALTIME_INTERVAL,
@@ -82,7 +82,7 @@ export default function RealtimeDashboard() {
 						}
 						return arr
 					}, [])
-					.sort(firstBy('y', -1))
+					.sort(firstBy("y", -1))
 			)
 		}
 		return []

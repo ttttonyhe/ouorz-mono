@@ -1,21 +1,21 @@
-import React, { useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-import { Formik, Form, Field } from 'formik'
-import { useRouter } from 'next/router'
-import Button from 'components/common/Button'
+import React, { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { Formik, Form, Field } from "formik"
+import { useRouter } from "next/router"
+import Button from "components/common/Button"
 import FormLayout, {
 	FormButtons,
 	FormError,
 	FormMessage,
 	FormRow,
-} from 'components/layout/FormLayout'
-import Icon from 'components/common/Icon'
-import useApi from 'hooks/useApi'
-import { setItem } from 'lib/web'
-import { AUTH_TOKEN } from 'lib/constants'
-import { setUser } from 'store/app'
-import Logo from 'assets/logo.svg'
-import styles from './LoginForm.module.css'
+} from "components/layout/FormLayout"
+import Icon from "components/common/Icon"
+import useApi from "hooks/useApi"
+import { setItem } from "lib/web"
+import { AUTH_TOKEN } from "lib/constants"
+import { setUser } from "store/app"
+import Logo from "assets/logo.svg"
+import styles from "./LoginForm.module.css"
 
 const validate = ({ username, password }) => {
 	const errors = {}
@@ -40,7 +40,7 @@ export default function LoginForm() {
 	const [message, setMessage] = useState()
 
 	const handleSubmit = async ({ username, password }) => {
-		const { ok, status, data } = await post('/auth/login', {
+		const { ok, status, data } = await post("/auth/login", {
 			username,
 			password,
 		})
@@ -50,7 +50,7 @@ export default function LoginForm() {
 
 			setUser(data.user)
 
-			await router.push('/')
+			await router.push("/")
 
 			return null
 		} else {
@@ -71,8 +71,8 @@ export default function LoginForm() {
 		<FormLayout className={styles.login}>
 			<Formik
 				initialValues={{
-					username: '',
-					password: '',
+					username: "",
+					password: "",
 				}}
 				validate={validate}
 				onSubmit={handleSubmit}

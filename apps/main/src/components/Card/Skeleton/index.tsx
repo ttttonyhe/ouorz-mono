@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react'
-import { useTheme } from 'next-themes'
-import ContentLoader from 'react-content-loader'
+import { useEffect, useState } from "react"
+import { useTheme } from "next-themes"
+import ContentLoader from "react-content-loader"
 
 export default function CardSkeleton() {
-	const [className, setClassName] = useState<string>('opacity-50')
+	const [className, setClassName] = useState<string>("opacity-50")
 	const { resolvedTheme } = useTheme()
 
 	useEffect(() => {
 		if (resolvedTheme) {
-			setClassName('')
+			setClassName("")
 		}
 	}, [resolvedTheme])
 
@@ -19,10 +19,10 @@ export default function CardSkeleton() {
 				uniqueKey="card-skeleton"
 				speed={2}
 				width={100}
-				style={{ width: '100%' }}
+				style={{ width: "100%" }}
 				height={100}
-				backgroundColor={resolvedTheme === 'dark' ? '#525252' : '#f3f3f3'}
-				foregroundColor={resolvedTheme === 'dark' ? '#737373' : '#ecebeb'}
+				backgroundColor={resolvedTheme === "dark" ? "#525252" : "#f3f3f3"}
+				foregroundColor={resolvedTheme === "dark" ? "#737373" : "#ecebeb"}
 			>
 				<rect x="0" y="0" rx="5" ry="5" width="31%" height="100" />
 				<rect x="34%" y="0" rx="5" ry="5" width="66%" height="30" />

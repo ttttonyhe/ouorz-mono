@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import Button from './Button'
-import { FormattedMessage } from 'react-intl'
+import React, { useState } from "react"
+import PropTypes from "prop-types"
+import Button from "./Button"
+import { FormattedMessage } from "react-intl"
 
 const defaultText = (
 	<FormattedMessage
@@ -16,7 +16,7 @@ function CopyButton({ element, ...props }) {
 	function handleClick() {
 		if (element?.current) {
 			element.current.select()
-			document.execCommand('copy')
+			document.execCommand("copy")
 			setText(<FormattedMessage id="message.copied" defaultMessage="Copied!" />)
 			window.getSelection().removeAllRanges()
 		}

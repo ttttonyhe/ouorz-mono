@@ -1,29 +1,29 @@
-import create from 'zustand';
-import produce from 'immer';
-import app from './app';
-import { getDateRange } from '../lib/date';
+import create from "zustand"
+import produce from "immer"
+import app from "./app"
+import { getDateRange } from "../lib/date"
 
-const store = create(() => ({}));
+const store = create(() => ({}))
 
 export function setDateRange(websiteId, value) {
-  store.setState(
-    produce(state => {
-      if (!state[websiteId]) {
-        state[websiteId] = {};
-      }
+	store.setState(
+		produce((state) => {
+			if (!state[websiteId]) {
+				state[websiteId] = {}
+			}
 
-      let dateRange = value;
+			let dateRange = value
 
-      if (typeof value === 'string') {
-        const { locale } = app.getState();
-        dateRange = getDateRange(value, locale);
-      }
+			if (typeof value === "string") {
+				const { locale } = app.getState()
+				dateRange = getDateRange(value, locale)
+			}
 
-      state[websiteId].dateRange = { ...dateRange, modified: Date.now() };
+			state[websiteId].dateRange = { ...dateRange, modified: Date.now() }
 
-      return state;
-    }),
-  );
+			return state
+		})
+	)
 }
 
-export default store;
+export default store

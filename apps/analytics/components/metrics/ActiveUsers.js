@@ -1,9 +1,9 @@
-import React, { useMemo } from 'react'
-import { FormattedMessage } from 'react-intl'
-import classNames from 'classnames'
-import useFetch from 'hooks/useFetch'
-import Dot from 'components/common/Dot'
-import styles from './ActiveUsers.module.css'
+import React, { useMemo } from "react"
+import { FormattedMessage } from "react-intl"
+import classNames from "classnames"
+import useFetch from "hooks/useFetch"
+import Dot from "components/common/Dot"
+import styles from "./ActiveUsers.module.css"
 
 export default function ActiveUsers({
 	websiteId,

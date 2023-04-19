@@ -1,7 +1,7 @@
-import { updateWebsite, createWebsite, getWebsiteById } from 'lib/queries'
-import { useAuth } from 'lib/middleware'
-import { uuid, getRandomChars } from 'lib/crypto'
-import { ok, unauthorized, methodNotAllowed } from 'lib/response'
+import { updateWebsite, createWebsite, getWebsiteById } from "lib/queries"
+import { useAuth } from "lib/middleware"
+import { uuid, getRandomChars } from "lib/crypto"
+import { ok, unauthorized, methodNotAllowed } from "lib/response"
 
 export default async (req, res) => {
 	await useAuth(req, res)
@@ -9,7 +9,7 @@ export default async (req, res) => {
 	const { user_id, is_admin } = req.auth
 	const { website_id, enable_share_url } = req.body
 
-	if (req.method === 'POST') {
+	if (req.method === "POST") {
 		const { name, domain } = req.body
 
 		if (website_id) {

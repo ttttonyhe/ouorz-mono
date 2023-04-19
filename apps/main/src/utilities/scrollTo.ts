@@ -26,13 +26,13 @@ const scrollToItemWithinDiv = (
 			// we're near the top of the list
 			parent.scrollTo({
 				top: parent.scrollTop + scrollTop - 100,
-				behavior: 'smooth',
+				behavior: "smooth",
 			})
 		} else {
 			// we're near the bottom of the list
 			parent.scrollTo({
 				top: parent.scrollTop + scrollBot + 100,
-				behavior: 'smooth',
+				behavior: "smooth",
 			})
 		}
 	}

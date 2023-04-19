@@ -1,15 +1,15 @@
-import { GetStaticProps } from 'next'
-import Head from 'next/head'
-import React, { useEffect, useState } from 'react'
-import { NextPageWithLayout } from '~/pages/_app'
-import { pageLayout } from '~/components/Page'
-import List from '~/components/List'
-import Top from '~/components/Top'
-import getApi from '~/utilities/api'
-import NextJS13Preview from '~/components/Banners/NextJS13Preview'
-import YearOfReformation from '~/components/Banners/YearOfReformation'
+import { GetStaticProps } from "next"
+import Head from "next/head"
+import React, { useEffect, useState } from "react"
+import { NextPageWithLayout } from "~/pages/_app"
+import { pageLayout } from "~/components/Page"
+import List from "~/components/List"
+import Top from "~/components/Top"
+import getApi from "~/utilities/api"
+import NextJS13Preview from "~/components/Banners/NextJS13Preview"
+import YearOfReformation from "~/components/Banners/YearOfReformation"
 
-const GREETINGS = [" there, it's Tony", ', Tony here', ", I'm Tony"]
+const GREETINGS = [" there, it's Tony", ", Tony here", ", I'm Tony"]
 
 interface Props {
 	stickyNotFound: boolean
@@ -40,7 +40,7 @@ const Home: NextPageWithLayout = ({ stickyNotFound, stickyPosts }: Props) => {
 					<h1 className="flex items-center font-medium text-3xl leading-14 lg:text-1 text-black dark:text-white tracking-wide mb-0.5 whitespace-nowrap">
 						<span className="animate-waveHand hover:animate-waveHandAgain inline-block cursor-pointer mr-2.5">
 							👋
-						</span>{' '}
+						</span>{" "}
 						Hey{greeting}
 						<a
 							href="https://cal.com/tonyhe/15min"
@@ -83,7 +83,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		getApi({
 			sticky: true,
 			perPage: 10,
-			cateExclude: '5,2,74,335',
+			cateExclude: "5,2,74,335",
 		})
 	)
 

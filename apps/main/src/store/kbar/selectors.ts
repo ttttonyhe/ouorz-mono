@@ -1,4 +1,4 @@
-import type { RootState } from '..'
+import type { RootState } from ".."
 
 const selectKbar = (state: RootState) => state.kbar
 

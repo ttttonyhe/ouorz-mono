@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-import { Formik, Form, Field } from 'formik'
-import Button from 'components/common/Button'
+import React, { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { Formik, Form, Field } from "formik"
+import Button from "components/common/Button"
 import FormLayout, {
 	FormButtons,
 	FormError,
 	FormMessage,
 	FormRow,
-} from 'components/layout/FormLayout'
-import useApi from 'hooks/useApi'
+} from "components/layout/FormLayout"
+import useApi from "hooks/useApi"
 
 const initialValues = {
-	username: '',
-	password: '',
+	username: "",
+	password: "",
 }
 
 const validate = ({ user_id, username, password }) => {
@@ -37,7 +37,7 @@ export default function AccountEditForm({ values, onSave, onClose }) {
 	const [message, setMessage] = useState()
 
 	const handleSubmit = async (values) => {
-		const { ok, data } = await post('/account', values)
+		const { ok, data } = await post("/account", values)
 
 		if (ok) {
 			onSave()

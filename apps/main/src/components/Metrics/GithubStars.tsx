@@ -1,13 +1,13 @@
-import useSWR from 'swr'
-import format from 'comma-number'
-import fetcher from '~/lib/fetcher'
-import MetricCard from './Card'
+import useSWR from "swr"
+import format from "comma-number"
+import fetcher from "~/lib/fetcher"
+import MetricCard from "./Card"
 
 export default function GithubStarMetric() {
-	const { data } = useSWR('api/github', fetcher)
+	const { data } = useSWR("api/github", fetcher)
 
 	const stars = format(data?.stars)
-	const link = 'https://github.com/HelipengTony'
+	const link = "https://github.com/HelipengTony"
 
 	return (
 		<MetricCard

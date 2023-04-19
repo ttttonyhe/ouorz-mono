@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import Menu from './Menu'
-import useDocumentClick from 'hooks/useDocumentClick'
-import Chevron from 'assets/chevron-down.svg'
-import styles from './Dropdown.module.css'
-import Icon from './Icon'
+import React, { useState, useRef } from "react"
+import PropTypes from "prop-types"
+import classNames from "classnames"
+import Menu from "./Menu"
+import useDocumentClick from "hooks/useDocumentClick"
+import Chevron from "assets/chevron-down.svg"
+import styles from "./Dropdown.module.css"
+import Icon from "./Icon"
 
 function DropDown({
 	value,

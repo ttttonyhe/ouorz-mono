@@ -1,6 +1,6 @@
-import { getAccountById, deleteAccount } from 'lib/queries'
-import { useAuth } from 'lib/middleware'
-import { methodNotAllowed, ok, unauthorized } from 'lib/response'
+import { getAccountById, deleteAccount } from "lib/queries"
+import { useAuth } from "lib/middleware"
+import { methodNotAllowed, ok, unauthorized } from "lib/response"
 
 export default async (req, res) => {
 	await useAuth(req, res)
@@ -13,13 +13,13 @@ export default async (req, res) => {
 		return unauthorized(res)
 	}
 
-	if (req.method === 'GET') {
+	if (req.method === "GET") {
 		const account = await getAccountById(user_id)
 
 		return ok(res, account)
 	}
 
-	if (req.method === 'DELETE') {
+	if (req.method === "DELETE") {
 		await deleteAccount(user_id)
 
 		return ok(res)

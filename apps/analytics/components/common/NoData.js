@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import { FormattedMessage } from 'react-intl'
-import styles from './NoData.module.css'
+import React from "react"
+import PropTypes from "prop-types"
+import classNames from "classnames"
+import { FormattedMessage } from "react-intl"
+import styles from "./NoData.module.css"
 
 function NoData({ className }) {
 	return (

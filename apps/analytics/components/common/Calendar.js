@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import classNames from 'classnames'
+import React, { useState } from "react"
+import classNames from "classnames"
 import {
 	startOfWeek,
 	startOfMonth,
@@ -15,23 +15,23 @@ import {
 	isSameDay,
 	isBefore,
 	isAfter,
-} from 'date-fns'
-import Button from './Button'
-import useLocale from 'hooks/useLocale'
-import { dateFormat } from 'lib/date'
-import { chunk } from 'lib/array'
-import { getDateLocale } from 'lib/lang'
-import Chevron from 'assets/chevron-down.svg'
-import Cross from 'assets/times.svg'
-import styles from './Calendar.module.css'
-import Icon from './Icon'
+} from "date-fns"
+import Button from "./Button"
+import useLocale from "hooks/useLocale"
+import { dateFormat } from "lib/date"
+import { chunk } from "lib/array"
+import { getDateLocale } from "lib/lang"
+import Chevron from "assets/chevron-down.svg"
+import Cross from "assets/times.svg"
+import styles from "./Calendar.module.css"
+import Icon from "./Icon"
 
 export default function Calendar({ date, minDate, maxDate, onChange }) {
 	const { locale } = useLocale()
 	const [selectMonth, setSelectMonth] = useState(false)
 	const [selectYear, setSelectYear] = useState(false)
 
-	const month = dateFormat(date, 'MMMM', locale)
+	const month = dateFormat(date, "MMMM", locale)
 	const year = date.getFullYear()
 
 	function toggleMonthSelect() {
@@ -143,7 +143,7 @@ const DaySelector = ({ date, minDate, maxDate, locale, onSelect }) => {
 				<tr>
 					{daysOfWeek.map((day, i) => (
 						<th key={i} className={locale}>
-							{dateFormat(day, 'EEE', locale)}
+							{dateFormat(day, "EEE", locale)}
 						</th>
 					))}
 				</tr>
@@ -206,7 +206,7 @@ const MonthSelector = ({ date, minDate, maxDate, locale, onSelect }) => {
 										!disabled ? () => handleSelect(month.getMonth()) : null
 									}
 								>
-									{dateFormat(month, 'MMMM', locale)}
+									{dateFormat(month, "MMMM", locale)}
 								</td>
 							)
 						})}

@@ -1,6 +1,6 @@
-import dynamic from 'next/dynamic'
-import { Icon } from '@twilight-toolkit/ui'
-const NexmentDiv = dynamic(() => import('~/components/Nexment'), {
+import dynamic from "next/dynamic"
+import { Icon } from "@twilight-toolkit/ui"
+const NexmentDiv = dynamic(() => import("~/components/Nexment"), {
 	ssr: false,
 })
 

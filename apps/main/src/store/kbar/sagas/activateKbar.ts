@@ -1,4 +1,4 @@
-import { put } from 'redux-saga/effects'
+import { put } from "redux-saga/effects"
 import {
 	activateKbar,
 	addToKbarLists,
@@ -8,7 +8,7 @@ import {
 	setKbarLoading,
 	setKbarList,
 	setKbarPlaceholder,
-} from '../actions'
+} from "../actions"
 
 export default function* activateKbarSaga(
 	action: ReturnType<typeof activateKbar>
@@ -19,23 +19,23 @@ export default function* activateKbarSaga(
 			yield put(setKbarLoading(true))
 
 			// add home list to cache
-			yield put(addToKbarLists('home', action.payload.homeList))
+			yield put(addToKbarLists("home", action.payload.homeList))
 			// set current display list
 			yield put(setKbarList(action.payload.homeList))
 			// set kbar placeholder
-			yield put(setKbarPlaceholder('Type your command or search...'))
+			yield put(setKbarPlaceholder("Type your command or search..."))
 			// set kbar location in the store
-			yield put(setKbarLocation(['home']))
+			yield put(setKbarLocation(["home"]))
 
 			// set animation
-			yield put(setKbarAnimation('in'))
+			yield put(setKbarAnimation("in"))
 			// stop loading
 			yield put(setKbarLoading(false))
 
 			// show the kbar
 			yield put(showKbar())
 		} else {
-			throw new Error('No list data provided')
+			throw new Error("No list data provided")
 		}
 	} catch (error) {
 		console.error(error)

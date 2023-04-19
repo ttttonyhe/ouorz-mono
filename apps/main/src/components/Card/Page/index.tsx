@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router'
-import Image from 'next/image'
-import { GlowingBackground } from '~/components/Visual'
-import openLink from '~/utilities/externalLink'
-import { Icon } from '@twilight-toolkit/ui'
+import { useRouter } from "next/router"
+import Image from "next/image"
+import { GlowingBackground } from "~/components/Visual"
+import openLink from "~/utilities/externalLink"
+import { Icon } from "@twilight-toolkit/ui"
 
 interface Props {
 	title: string
@@ -26,7 +26,7 @@ export default function PageCard({
 	const router = useRouter()
 	const handleClick = () => {
 		if (href) {
-			if (href.indexOf('http') === -1) {
+			if (href.indexOf("http") === -1) {
 				router.push(href)
 			} else {
 				openLink(href)
@@ -43,10 +43,10 @@ export default function PageCard({
 				{icon && (
 					<div
 						className={`lg:flex justify-center items-center hidden w-20 h-auto border-r border-r-gray-200 dark:border-r-gray-600 pr-3 mr-4 ${
-							className ? className : ''
+							className ? className : ""
 						}`}
 					>
-						{icon.indexOf('://') > -1 ? (
+						{icon.indexOf("://") > -1 ? (
 							<Image
 								src={icon}
 								width={35}
@@ -62,13 +62,13 @@ export default function PageCard({
 				<div className="w-full">
 					<h1
 						className={`flex items-center text-2xl tracking-wide font-medium ${
-							iconSmall || wrappable ? '' : '-mb-1'
+							iconSmall || wrappable ? "" : "-mb-1"
 						}`}
 					>
 						{iconSmall && (
 							<span
 								className={`lg:block hidden w-7 h-7 mr-1.5 ${
-									className ? className : ''
+									className ? className : ""
 								}`}
 							>
 								<Icon name={iconSmall} />
@@ -79,8 +79,8 @@ export default function PageCard({
 					<p
 						className={`text-4 text-gray-600 dark:text-gray-400 tracking-wide ${
 							wrappable
-								? 'mt-1 overflow-wrap-breakword leading-tight'
-								: 'whitespace-nowrap'
+								? "mt-1 overflow-wrap-breakword leading-tight"
+								: "whitespace-nowrap"
 						} overflow-hidden text-ellipsis`}
 					>
 						{des}

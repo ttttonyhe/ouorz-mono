@@ -1,10 +1,10 @@
-import React from 'react'
-import { useIntl } from 'react-intl'
-import { colord } from 'colord'
-import CheckVisible from 'components/helpers/CheckVisible'
-import BarChart from './BarChart'
-import useTheme from 'hooks/useTheme'
-import { THEME_COLORS, DEFAULT_ANIMATION_DURATION } from 'lib/constants'
+import React from "react"
+import { useIntl } from "react-intl"
+import { colord } from "colord"
+import CheckVisible from "components/helpers/CheckVisible"
+import BarChart from "./BarChart"
+import useTheme from "hooks/useTheme"
+import { THEME_COLORS, DEFAULT_ANIMATION_DURATION } from "lib/constants"
 
 export default function PageviewsChart({
 	websiteId,
@@ -37,13 +37,13 @@ export default function PageviewsChart({
 
 		datasets[0].data = data.sessions
 		datasets[0].label = intl.formatMessage({
-			id: 'metrics.unique-visitors',
-			defaultMessage: 'Unique visitors',
+			id: "metrics.unique-visitors",
+			defaultMessage: "Unique visitors",
 		})
 		datasets[1].data = data.pageviews
 		datasets[1].label = intl.formatMessage({
-			id: 'metrics.page-views',
-			defaultMessage: 'Page views',
+			id: "metrics.page-views",
+			defaultMessage: "Page views",
 		})
 	}
 
@@ -61,8 +61,8 @@ export default function PageviewsChart({
 					datasets={[
 						{
 							label: intl.formatMessage({
-								id: 'metrics.unique-visitors',
-								defaultMessage: 'Unique visitors',
+								id: "metrics.unique-visitors",
+								defaultMessage: "Unique visitors",
 							}),
 							data: data.sessions,
 							lineTension: 0,
@@ -72,8 +72,8 @@ export default function PageviewsChart({
 						},
 						{
 							label: intl.formatMessage({
-								id: 'metrics.page-views',
-								defaultMessage: 'Page views',
+								id: "metrics.page-views",
+								defaultMessage: "Page views",
 							}),
 							data: data.pageviews,
 							lineTension: 0,

@@ -1,12 +1,12 @@
-import { Label } from '@twilight-toolkit/ui'
-import trimStr from '~/utilities/trimString'
-import Link from 'next/link'
-import Image from 'next/image'
-import AudioPlayer from 'react-h5-audio-player'
-import 'react-h5-audio-player/lib/styles.css'
-import { WPPost } from '~/constants/propTypes'
-import { Hover } from '~/components/Visual'
-import blurDataURL from '~/constants/blurDataURL'
+import { Label } from "@twilight-toolkit/ui"
+import trimStr from "~/utilities/trimString"
+import Link from "next/link"
+import Image from "next/image"
+import AudioPlayer from "react-h5-audio-player"
+import "react-h5-audio-player/lib/styles.css"
+import { WPPost } from "~/constants/propTypes"
+import { Hover } from "~/components/Visual"
+import blurDataURL from "~/constants/blurDataURL"
 
 interface Props {
 	item: WPPost

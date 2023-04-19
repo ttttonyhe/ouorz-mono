@@ -1,8 +1,8 @@
-import React from 'react'
-import { FormattedMessage } from 'react-intl'
-import FilterLink from 'components/common/FilterLink'
-import MetricsTable from 'components/metrics/MetricsTable'
-import { BROWSERS } from 'lib/constants'
+import React from "react"
+import { FormattedMessage } from "react-intl"
+import FilterLink from "components/common/FilterLink"
+import MetricsTable from "components/metrics/MetricsTable"
+import { BROWSERS } from "lib/constants"
 
 export default function BrowsersTable({ websiteId, ...props }) {
 	function renderLink({ x: browser }) {

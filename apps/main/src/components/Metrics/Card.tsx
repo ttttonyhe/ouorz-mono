@@ -1,6 +1,6 @@
-import { GlowingBackground } from '~/components/Visual'
-import { Icon } from '@twilight-toolkit/ui'
-import openLink from '~/utilities/externalLink'
+import { GlowingBackground } from "~/components/Visual"
+import { Icon } from "@twilight-toolkit/ui"
+import openLink from "~/utilities/externalLink"
 
 interface MetricCardProps {
 	description: string
@@ -13,8 +13,8 @@ interface MetricCardProps {
 
 export default function MetricCard(props: MetricCardProps) {
 	const { description, value, link, icon, colorHex, denominator } = props
-	const valueLoaded = value && value !== 'NaN'
-	const denominatorLoaded = denominator && denominator !== 'NaN'
+	const valueLoaded = value && value !== "NaN"
+	const denominatorLoaded = denominator && denominator !== "NaN"
 
 	return (
 		<div
@@ -41,12 +41,12 @@ export default function MetricCard(props: MetricCardProps) {
 				</figure>
 				<h1
 					className={`font-bold text-[1.875rem] tracking-wide flex items-center -mb-0.5 ${
-						!valueLoaded && 'animate-pulse'
+						!valueLoaded && "animate-pulse"
 					}`}
 				>
 					<span>
-						{valueLoaded ? value : '- - -'}
-						{denominatorLoaded && '/' + denominator}
+						{valueLoaded ? value : "- - -"}
+						{denominatorLoaded && "/" + denominator}
 					</span>
 				</h1>
 				<p className="flex items-center text-gray-700 text-opacity-70 font-medium dark:text-gray-400 tracking-wide overflow-hidden text-ellipsis whitespace-nowrap">

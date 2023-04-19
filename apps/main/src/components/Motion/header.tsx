@@ -1,6 +1,6 @@
-import React from 'react'
-import { useTheme } from 'next-themes'
-import ScrollWrapper from './scroll'
+import React from "react"
+import { useTheme } from "next-themes"
+import ScrollWrapper from "./scroll"
 
 interface Props {
 	componentRef: React.MutableRefObject<HTMLDivElement>
@@ -13,7 +13,7 @@ const BoxShadowTransition = (props: Props) => {
 
 	const handler = (position: number) => {
 		if (!ref?.current) return
-		if (resolvedTheme === 'dark') {
+		if (resolvedTheme === "dark") {
 			ref.current.style.background = `rgba(38, 38, 38, ${
 				position * (0.8 / 40) || 0
 			})`

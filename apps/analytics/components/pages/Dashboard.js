@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-import { useRouter } from 'next/router'
-import Page from 'components/layout/Page'
-import WebsiteList from 'components/pages/WebsiteList'
-import Button from 'components/common/Button'
-import useFetch from 'hooks/useFetch'
-import useStore from 'store/app'
-import styles from './WebsiteList.module.css'
+import { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { useRouter } from "next/router"
+import Page from "components/layout/Page"
+import WebsiteList from "components/pages/WebsiteList"
+import Button from "components/common/Button"
+import useFetch from "hooks/useFetch"
+import useStore from "store/app"
+import styles from "./WebsiteList.module.css"
 
 const selector = (state) => state.dashboard
 
@@ -17,7 +17,7 @@ export default function Dashboard() {
 	const store = useStore(selector)
 	const { limit } = store
 	const [max, setMax] = useState(limit)
-	const { data } = useFetch('/websites', { params: { user_id: userId } })
+	const { data } = useFetch("/websites", { params: { user_id: userId } })
 
 	function handleMore() {
 		setMax(max + limit)

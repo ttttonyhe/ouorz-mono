@@ -1,4 +1,4 @@
-import type { RootState } from '..'
+import type { RootState } from ".."
 
 const selectGeneral = (state: RootState) => state.general
 

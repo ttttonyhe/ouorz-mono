@@ -1,7 +1,7 @@
-import React from 'react'
-import MetricsTable from './MetricsTable'
-import { FormattedMessage } from 'react-intl'
-import FilterLink from 'components/common/FilterLink'
+import React from "react"
+import MetricsTable from "./MetricsTable"
+import { FormattedMessage } from "react-intl"
+import FilterLink from "components/common/FilterLink"
 
 export default function OSTable({ websiteId, ...props }) {
 	function renderLink({ x: os }) {

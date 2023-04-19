@@ -1,16 +1,16 @@
-import { getWebsiteByUuid, getSessionByUuid, createSession } from 'lib/queries'
-import { getJsonBody, getClientInfo } from 'lib/request'
-import { uuid, isValidUuid, parseToken } from 'lib/crypto'
+import { getWebsiteByUuid, getSessionByUuid, createSession } from "lib/queries"
+import { getJsonBody, getClientInfo } from "lib/request"
+import { uuid, isValidUuid, parseToken } from "lib/crypto"
 
 export async function getSession(req) {
 	const { payload } = getJsonBody(req)
 
 	if (!payload) {
-		throw new Error('Invalid request')
+		throw new Error("Invalid request")
 	}
 
 	const { website: website_uuid, hostname, screen, language } = payload
-	const cache = req.headers['x-ouorz-analytics-cache']
+	const cache = req.headers["x-ouorz-analytics-cache"]
 
 	if (cache) {
 		const result = await parseToken(cache)
@@ -57,7 +57,7 @@ export async function getSession(req) {
 				return null
 			}
 		} catch (e) {
-			if (!e.message.includes('Unique constraint')) {
+			if (!e.message.includes("Unique constraint")) {
 				throw e
 			}
 		}

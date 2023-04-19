@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import { Icon } from '@twilight-toolkit/ui'
-import { TabItemComponentProps } from '.'
+import Link from "next/link"
+import { Icon } from "@twilight-toolkit/ui"
+import { TabItemComponentProps } from "."
 
 const TabItemComponent = (props: TabItemComponentProps) => {
 	const { label, icon, link } = props

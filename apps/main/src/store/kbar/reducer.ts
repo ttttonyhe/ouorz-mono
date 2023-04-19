@@ -1,5 +1,5 @@
-import { AnyAction } from '@reduxjs/toolkit'
-import { KbarList, KbarLists } from './actions'
+import { AnyAction } from "@reduxjs/toolkit"
+import { KbarList, KbarLists } from "./actions"
 import {
 	ADD_TO_KBAR_LISTS,
 	SET_KBAR_LIST,
@@ -9,11 +9,11 @@ import {
 	SET_KBAR_LOADING,
 	HIDE_KBAR,
 	SHOW_KBAR,
-} from './actions'
+} from "./actions"
 
 type KbarState = {
 	// Kbar panel animation
-	animation: 'in' | 'out' | 'transition' | ''
+	animation: "in" | "out" | "transition" | ""
 	// Kbar visibility
 	visible: boolean
 	// Current displaying list
@@ -29,15 +29,15 @@ type KbarState = {
 }
 
 const KbarInitialState: KbarState = {
-	animation: '',
+	animation: "",
 	visible: false,
 	list: [],
 	lists: {
 		home: [],
 	},
-	location: ['home'],
+	location: ["home"],
 	loading: false,
-	placeholder: 'Type your command or search...',
+	placeholder: "Type your command or search...",
 }
 
 const kbarReducer = (

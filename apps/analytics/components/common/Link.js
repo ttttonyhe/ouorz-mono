@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import NextLink from 'next/link'
-import Icon from './Icon'
-import styles from './Link.module.css'
+import React from "react"
+import PropTypes from "prop-types"
+import classNames from "classnames"
+import NextLink from "next/link"
+import Icon from "./Icon"
+import styles from "./Link.module.css"
 
 function Link({
 	className,
@@ -18,9 +18,9 @@ function Link({
 		<NextLink {...props}>
 			<a
 				className={classNames(styles.link, className, {
-					[styles.large]: size === 'large',
-					[styles.small]: size === 'small',
-					[styles.xsmall]: size === 'xsmall',
+					[styles.large]: size === "large",
+					[styles.small]: size === "small",
+					[styles.xsmall]: size === "xsmall",
 					[styles.iconRight]: iconRight,
 				})}
 				onClick={onClick}
@@ -36,7 +36,7 @@ Link.propTypes = {
 	className: PropTypes.string,
 	icon: PropTypes.node,
 	children: PropTypes.node,
-	size: PropTypes.oneOf(['large', 'small', 'xsmall']),
+	size: PropTypes.oneOf(["large", "small", "xsmall"]),
 	iconRight: PropTypes.bool,
 }
 

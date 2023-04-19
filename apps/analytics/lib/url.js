@@ -1,9 +1,9 @@
 export function removeTrailingSlash(url) {
-	return url && url.length > 1 && url.endsWith('/') ? url.slice(0, -1) : url
+	return url && url.length > 1 && url.endsWith("/") ? url.slice(0, -1) : url
 }
 
 export function removeWWW(url) {
-	return url && url.length > 1 && url.startsWith('www.') ? url.slice(4) : url
+	return url && url.length > 1 && url.startsWith("www.") ? url.slice(4) : url
 }
 
 export function getDomainName(str) {
@@ -23,10 +23,10 @@ export function getQueryString(params = {}) {
 	}, [])
 
 	if (map.length) {
-		return `?${map.join('&')}`
+		return `?${map.join("&")}`
 	}
 
-	return ''
+	return ""
 }
 
 export function makeUrl(url, params) {

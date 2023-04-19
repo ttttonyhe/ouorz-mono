@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router'
-import Nexment from 'nexment'
+import { useRouter } from "next/router"
+import Nexment from "nexment"
 
 const NexmentComponent = () => {
 	const { query } = useRouter()
@@ -13,41 +13,41 @@ const NexmentComponent = () => {
 		leancloud: {
 			appId: process.env.NEXT_PUBLIC_LC_ID,
 			appKey: process.env.NEXT_PUBLIC_LC_KEY,
-			serverURL: 'https://ouorz-nexment.ouorz.com',
+			serverURL: "https://ouorz-nexment.ouorz.com",
 		},
 		admin: {
-			name: 'TonyHe',
-			email: 'tony.hlp@hotmail.com',
+			name: "TonyHe",
+			email: "tony.hlp@hotmail.com",
 		},
 		blackList: [
 			{
-				name: '快递',
-				keyword: '代发',
-				link: '88danhaowang.com',
-				email: '461646@qq.com',
+				name: "快递",
+				keyword: "代发",
+				link: "88danhaowang.com",
+				email: "461646@qq.com",
 			},
 			{
-				name: 'rthj',
-				keyword: '单号',
-				link: 'dh5u.com',
+				name: "rthj",
+				keyword: "单号",
+				link: "dh5u.com",
 			},
 			{
-				keyword: '快递',
+				keyword: "快递",
 			},
 			{
-				keyword: '空包',
+				keyword: "空包",
 			},
 			{
-				keyword: '快递',
+				keyword: "快递",
 			},
 			{
-				keyword: '快发',
+				keyword: "快发",
 			},
 			{
-				keyword: '快单',
+				keyword: "快单",
 			},
 			{
-				keyword: '一毛钱',
+				keyword: "一毛钱",
 			},
 		],
 	}

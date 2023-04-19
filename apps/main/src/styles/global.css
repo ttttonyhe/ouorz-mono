@@ -600,7 +600,7 @@ abbr[title] {
 
 .glowing-div:before,
 .glowing-div::after {
-	content: '';
+	content: "";
 	pointer-events: none;
 	user-select: none;
 	position: absolute;

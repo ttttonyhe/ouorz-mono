@@ -1,6 +1,6 @@
-import { getAllWebsites, getUserWebsites } from 'lib/queries'
-import { useAuth } from 'lib/middleware'
-import { ok, methodNotAllowed, unauthorized } from 'lib/response'
+import { getAllWebsites, getUserWebsites } from "lib/queries"
+import { useAuth } from "lib/middleware"
+import { ok, methodNotAllowed, unauthorized } from "lib/response"
 
 export default async (req, res) => {
 	await useAuth(req, res)
@@ -9,7 +9,7 @@ export default async (req, res) => {
 	const { user_id, include_all } = req.query
 	const userId = +user_id
 
-	if (req.method === 'GET') {
+	if (req.method === "GET") {
 		if (userId && userId !== current_user_id && !is_admin) {
 			return unauthorized(res)
 		}

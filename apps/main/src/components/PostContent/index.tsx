@@ -1,5 +1,5 @@
-import Highlight from 'react-highlight'
-import 'highlight.js/styles/atom-one-dark.css'
+import Highlight from "react-highlight"
+import "highlight.js/styles/atom-one-dark.css"
 
 const HighlightComponent = Highlight as any
 

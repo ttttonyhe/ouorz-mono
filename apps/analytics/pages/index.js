@@ -1,19 +1,19 @@
-import Link from 'next/link'
-import Layout from 'components/layout/Layout'
-import Page from 'components/layout/Page'
+import Link from "next/link"
+import Layout from "components/layout/Layout"
+import Page from "components/layout/Page"
 
 export default function DefaultPage() {
 	return (
 		<Layout>
 			<Page>
-				<h3 style={{ textAlign: 'center', margin: '0 0 20px' }}>
+				<h3 style={{ textAlign: "center", margin: "0 0 20px" }}>
 					<b>
 						Privacy-preserving website analytics service for&nbsp;
 						<a href="https://www.ouorz.com">Tony</a>&apos;s projects.
 					</b>
 				</h3>
 				<br />
-				<div style={{padding: '0px 20px'}}>
+				<div style={{ padding: "0px 20px" }}>
 					<h3>
 						<b>Features</b>
 					</h3>

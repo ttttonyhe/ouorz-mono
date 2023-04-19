@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import React from 'react'
-import { NextPageWithLayout } from '~/pages/_app'
-import { pageLayout } from '~/components/Page'
-import Link from 'next/link'
-import { Icon } from '@twilight-toolkit/ui'
-import PageCard from '~/components/Card/Page'
+import Head from "next/head"
+import React from "react"
+import { NextPageWithLayout } from "~/pages/_app"
+import { pageLayout } from "~/components/Page"
+import Link from "next/link"
+import { Icon } from "@twilight-toolkit/ui"
+import PageCard from "~/components/Card/Page"
 
 const Pages: NextPageWithLayout = () => {
 	return (

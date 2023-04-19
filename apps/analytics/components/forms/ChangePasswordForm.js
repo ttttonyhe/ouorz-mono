@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-import { Formik, Form, Field } from 'formik'
-import Button from 'components/common/Button'
+import React, { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { Formik, Form, Field } from "formik"
+import Button from "components/common/Button"
 import FormLayout, {
 	FormButtons,
 	FormError,
 	FormMessage,
 	FormRow,
-} from 'components/layout/FormLayout'
-import useApi from 'hooks/useApi'
+} from "components/layout/FormLayout"
+import useApi from "hooks/useApi"
 
 const initialValues = {
-	current_password: '',
-	new_password: '',
-	confirm_password: '',
+	current_password: "",
+	new_password: "",
+	confirm_password: "",
 }
 
 const validate = ({ current_password, new_password, confirm_password }) => {
@@ -50,7 +50,7 @@ export default function ChangePasswordForm({ values, onSave, onClose }) {
 	const [message, setMessage] = useState()
 
 	const handleSubmit = async (values) => {
-		const { ok, data } = await post('/account/password', values)
+		const { ok, data } = await post("/account/password", values)
 
 		if (ok) {
 			onSave()

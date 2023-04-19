@@ -1,4 +1,4 @@
-import React, { useRef, useState, MouseEvent, CSSProperties } from 'react'
+import React, { useRef, useState, MouseEvent, CSSProperties } from "react"
 
 interface Props {
 	className?: string
@@ -11,8 +11,8 @@ interface Props {
 }
 
 const Hover = ({
-	className = '',
-	easing = 'cubic-bezier(0.03, 0.98, 0.52, 0.99)',
+	className = "",
+	easing = "cubic-bezier(0.03, 0.98, 0.52, 0.99)",
 	scale = 1,
 	speed = 400,
 	perspective = 1000,
@@ -34,7 +34,7 @@ const Hover = ({
 	}
 
 	const handleOnMouseMove = (event: MouseEvent) => {
-		if (updateCall.current !== null && typeof window !== 'undefined') {
+		if (updateCall.current !== null && typeof window !== "undefined") {
 			window.cancelAnimationFrame(updateCall.current)
 		}
 		updateCall.current = requestAnimationFrame(() => updateElementStyle(event))
@@ -104,13 +104,13 @@ const Hover = ({
 		transitionTimeout.current = setTimeout(() => {
 			setTiltStyles((prevStyle) => ({
 				...prevStyle,
-				transition: '',
+				transition: "",
 			}))
 		}, speed)
 	}
 
 	const handleReset = () => {
-		if (typeof window !== 'undefined') {
+		if (typeof window !== "undefined") {
 			window.requestAnimationFrame(() => {
 				setTiltStyles((prevStyle) => ({
 					...prevStyle,

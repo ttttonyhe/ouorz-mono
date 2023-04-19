@@ -1,9 +1,9 @@
-import React from 'react'
-import { Icon } from '@twilight-toolkit/ui'
-import getApi from '~/utilities/api'
+import React from "react"
+import { Icon } from "@twilight-toolkit/ui"
+import getApi from "~/utilities/api"
 
 const SubscriptionBox = ({ type }: { type: string }) => {
-	const [email, setEmail] = React.useState<string>('')
+	const [email, setEmail] = React.useState<string>("")
 	const [subscribed, setSubscribed] = React.useState<boolean>(false)
 	const [processing, setProcessing] = React.useState<boolean>(false)
 
@@ -11,12 +11,12 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 		setProcessing(true)
 
 		const data = await fetch(getApi({ subs: true }), {
-			method: 'post',
+			method: "post",
 			headers: {
-				'Content-Type': 'application/json',
+				"Content-Type": "application/json",
 				Authorization: process.env.NEXT_PUBLIC_BUTTONDOWN_TOKEN,
 			},
-			body: JSON.stringify({ email: email, tags: ['Blog Newsletter'] }),
+			body: JSON.stringify({ email: email, tags: ["Blog Newsletter"] }),
 		})
 			.then((res) => res.json())
 			.finally(() => setProcessing(false))
@@ -24,11 +24,11 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 		if (data.creation_date) {
 			setSubscribed(true)
 		} else {
-			alert('An error has occurred, please try again.')
+			alert("An error has occurred, please try again.")
 		}
 	}
 
-	if (type === 'sm') {
+	if (type === "sm") {
 		return (
 			<div className="border shadow-sm w-full py-3 px-5 hidden lg:flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2 space-x-4">
 				<div>
@@ -49,14 +49,14 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 							type="email"
 							value={email}
 							className={`${
-								processing ? 'animate-pulse' : ''
+								processing ? "animate-pulse" : ""
 							} text-4 px-4 h-8 focus:outline-none w-10/12 shadow-sm rounded-md border bg-white dark:bg-gray-700 dark:border-gray-700 text-gray-500 dark:text-gray-400 tracking-wide flex justify-items-center`}
 							placeholder="Email address"
 							onChange={(e) => {
 								setEmail(e.target.value)
 							}}
 							onKeyDown={(e) => {
-								if (e.key === 'Enter') {
+								if (e.key === "Enter") {
 									doSubscribe()
 								}
 							}}
@@ -91,7 +91,7 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 							setEmail(e.target.value)
 						}}
 						onKeyDown={(e) => {
-							if (e.key === 'Enter') {
+							if (e.key === "Enter") {
 								doSubscribe()
 							}
 						}}
@@ -108,7 +108,7 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 							}}
 						>
 							<span className="mx-auto">
-								{processing ? 'Processing...' : 'Subscribe'}
+								{processing ? "Processing..." : "Subscribe"}
 							</span>
 						</button>
 					)}
@@ -121,7 +121,7 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 				>
 					<i className="w-5 h-5 mr-1.5">
 						<Icon name="chatRounded" />
-					</i>{' '}
+					</i>{" "}
 					Discord Server
 				</a>
 			</div>

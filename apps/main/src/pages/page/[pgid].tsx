@@ -1,15 +1,15 @@
-import { GetServerSideProps } from 'next'
-import Head from 'next/head'
-import TimeAgo from 'react-timeago'
-import redirect from 'nextjs-redirect'
-import { NextPageWithLayout } from '~/pages/_app'
-import { contentLayout } from '~/components/Content'
-import getApi from '~/utilities/api'
-import SubscriptionBox from '~/components/SubscriptionBox'
-import CommentBox from '~/components/CommentBox'
-import PostContent from '~/components/PostContent'
+import { GetServerSideProps } from "next"
+import Head from "next/head"
+import TimeAgo from "react-timeago"
+import redirect from "nextjs-redirect"
+import { NextPageWithLayout } from "~/pages/_app"
+import { contentLayout } from "~/components/Content"
+import getApi from "~/utilities/api"
+import SubscriptionBox from "~/components/SubscriptionBox"
+import CommentBox from "~/components/CommentBox"
+import PostContent from "~/components/PostContent"
 
-const Redirect = redirect('/404')
+const Redirect = redirect("/404")
 
 interface Props {
 	status: boolean

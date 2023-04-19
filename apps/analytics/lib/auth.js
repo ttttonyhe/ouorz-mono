@@ -1,12 +1,12 @@
-import { parseSecureToken, parseToken } from './crypto'
-import { SHARE_TOKEN_HEADER } from './constants'
-import { getWebsiteById } from './queries'
+import { parseSecureToken, parseToken } from "./crypto"
+import { SHARE_TOKEN_HEADER } from "./constants"
+import { getWebsiteById } from "./queries"
 
 export async function getAuthToken(req) {
 	try {
 		const token = req.headers.authorization
 
-		return parseSecureToken(token.split(' ')[1])
+		return parseSecureToken(token.split(" ")[1])
 	} catch {
 		return null
 	}
@@ -16,11 +16,11 @@ export async function isValidToken(token, validation) {
 	try {
 		const result = await parseToken(token)
 
-		if (typeof validation === 'object') {
+		if (typeof validation === "object") {
 			return !Object.keys(validation).find(
 				(key) => result[key] !== validation[key]
 			)
-		} else if (typeof validation === 'function') {
+		} else if (typeof validation === "function") {
 			return validation(result)
 		}
 	} catch (e) {
@@ -38,7 +38,7 @@ export async function allowQuery(req, skipToken) {
 	const website = await getWebsiteById(websiteId)
 
 	if (website) {
-		if (token && token !== 'undefined' && !skipToken) {
+		if (token && token !== "undefined" && !skipToken) {
 			return isValidToken(token, { website_id: websiteId })
 		}
 

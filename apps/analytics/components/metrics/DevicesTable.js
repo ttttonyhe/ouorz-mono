@@ -1,8 +1,8 @@
-import React from 'react'
-import MetricsTable from './MetricsTable'
-import { useIntl, FormattedMessage } from 'react-intl'
-import { getDeviceMessage } from 'components/messages'
-import FilterLink from 'components/common/FilterLink'
+import React from "react"
+import MetricsTable from "./MetricsTable"
+import { useIntl, FormattedMessage } from "react-intl"
+import { getDeviceMessage } from "components/messages"
+import FilterLink from "components/common/FilterLink"
 
 export default function DevicesTable({ websiteId, ...props }) {
 	const { formatMessage } = useIntl()

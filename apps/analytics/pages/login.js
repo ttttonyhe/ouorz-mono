@@ -1,6 +1,6 @@
-import React from 'react'
-import Layout from 'components/layout/Layout'
-import LoginForm from 'components/forms/LoginForm'
+import React from "react"
+import Layout from "components/layout/Layout"
+import LoginForm from "components/forms/LoginForm"
 
 export default function LoginPage() {
 	if (process.env.DISABLE_LOGIN) {

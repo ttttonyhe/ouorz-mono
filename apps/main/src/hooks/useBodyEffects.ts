@@ -1,10 +1,10 @@
-import { useEffect, useState, useRef, Dispatch, SetStateAction } from 'react'
+import { useEffect, useState, useRef, Dispatch, SetStateAction } from "react"
 
 /**
  * Hook to turn on/off body scrolling
  */
 const useBodyScroll = (): [boolean, Dispatch<SetStateAction<boolean>>] => {
-	if (typeof document === 'undefined') return [false, (t: boolean) => t]
+	if (typeof document === "undefined") return [false, (t: boolean) => t]
 
 	const bodyRef = useRef<HTMLElement>(document.body)
 	const [scrollable, setScrollable] = useState(true)
@@ -12,9 +12,9 @@ const useBodyScroll = (): [boolean, Dispatch<SetStateAction<boolean>>] => {
 	useEffect(() => {
 		if (!bodyRef || !bodyRef.current) return
 		if (scrollable) {
-			bodyRef.current.style.overflow = 'auto'
+			bodyRef.current.style.overflow = "auto"
 		} else {
-			bodyRef.current.style.overflow = 'hidden'
+			bodyRef.current.style.overflow = "hidden"
 		}
 	}, [scrollable])
 
@@ -28,16 +28,16 @@ const useBodyPointerEvents = (): [
 	boolean,
 	Dispatch<SetStateAction<boolean>>
 ] => {
-	if (typeof document === 'undefined') return [false, (t: boolean) => t]
+	if (typeof document === "undefined") return [false, (t: boolean) => t]
 
 	const bodyRef = useRef<HTMLElement>(document.body)
 	const [pointerEvents, setPointerEvents] = useState(true)
 
 	useEffect(() => {
 		if (pointerEvents) {
-			bodyRef.current.style.pointerEvents = 'auto'
+			bodyRef.current.style.pointerEvents = "auto"
 		} else {
-			bodyRef.current.style.pointerEvents = 'none'
+			bodyRef.current.style.pointerEvents = "none"
 		}
 	}, [pointerEvents])
 

@@ -1,13 +1,13 @@
-import '~/assets/styles/vendors/tailwind.css'
-import '~/styles/global.css'
-import type { ReactElement, ReactNode } from 'react'
-import type { NextPage } from 'next'
-import type { AppProps } from 'next/app'
-import NextNprogress from 'nextjs-progressbar'
-import Script from 'next/script'
-import { ThemeProvider } from 'next-themes'
-import { Provider as ReduxProvider } from 'react-redux'
-import store from '~/store'
+import "~/assets/styles/vendors/tailwind.css"
+import "~/styles/global.css"
+import type { ReactElement, ReactNode } from "react"
+import type { NextPage } from "next"
+import type { AppProps } from "next/app"
+import NextNprogress from "nextjs-progressbar"
+import Script from "next/script"
+import { ThemeProvider } from "next-themes"
+import { Provider as ReduxProvider } from "react-redux"
+import store from "~/store"
 
 export type NextPageWithLayout = NextPage & {
 	layout?: (page: ReactElement) => ReactNode

@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useHotkeys } from 'react-hotkeys-hook'
-import { useMouseLeaveListener } from '~/hooks'
-import scrollToItemWithinDiv from '~/utilities/scrollTo'
-import { TabsProps } from '.'
-import TabItemComponent from './item'
+import React, { useEffect, useRef, useState } from "react"
+import { useHotkeys } from "react-hotkeys-hook"
+import { useMouseLeaveListener } from "~/hooks"
+import scrollToItemWithinDiv from "~/utilities/scrollTo"
+import { TabsProps } from "."
+import TabItemComponent from "./item"
 
 const Tabs = (props: TabsProps) => {
 	const { items, direction, defaultHighlighted, verticalListWrapper } = props
@@ -17,7 +17,7 @@ const Tabs = (props: TabsProps) => {
 	 * Remove the highlighter
 	 */
 	const reset = (skipVertical?: boolean) => {
-		if (skipVertical && direction === 'vertical') return
+		if (skipVertical && direction === "vertical") return
 		setWithinWrapper(false)
 		styleHighlighter(false)
 		setHighlightedIndex(-1)
@@ -47,21 +47,21 @@ const Tabs = (props: TabsProps) => {
 
 		// animation duration
 		highlighterRef.current.style.transitionDuration =
-			visible && (withinWrapper || highlightedIndex > 0) ? '150ms' : '0ms'
+			visible && (withinWrapper || highlightedIndex > 0) ? "150ms" : "0ms"
 
 		// visibility
-		highlighterRef.current.style.opacity = visible ? '1' : '0'
+		highlighterRef.current.style.opacity = visible ? "1" : "0"
 
 		// width
 		if (visible) {
 			highlighterRef.current.style.width =
 				highlightedIndex === -1 &&
 				defaultHighlighted &&
-				direction === 'vertical'
-					? '100%'
+				direction === "vertical"
+					? "100%"
 					: `${tabBoundingBox.width}px`
 		} else {
-			highlighterRef.current.style.width = '0'
+			highlighterRef.current.style.width = "0"
 		}
 
 		// height
@@ -69,33 +69,33 @@ const Tabs = (props: TabsProps) => {
 			highlighterRef.current.style.height =
 				highlightedIndex === -1 &&
 				defaultHighlighted &&
-				direction === 'vertical'
-					? '46.3889px'
+				direction === "vertical"
+					? "46.3889px"
 					: `${tabBoundingBox.height}px`
 		} else {
-			highlighterRef.current.style.height = '0'
+			highlighterRef.current.style.height = "0"
 		}
 
 		// position
 		if (visible) {
 			highlighterRef.current.style.transform =
-				direction === 'vertical'
+				direction === "vertical"
 					? `translateY(${tabBoundingBox.top - wrapperBoundingBox.top}px)`
 					: `translateX(${tabBoundingBox.left - wrapperBoundingBox.left}px)`
 		} else {
-			highlighterRef.current.style.transform = 'none'
+			highlighterRef.current.style.transform = "none"
 		}
 
 		// background color and class name
 		if (visible) {
 			highlighterRef.current.className = [
-				'tabs-highlighter z-0',
-				className || '',
-				bgColor || 'bg-menu',
-				bgDark || 'dark:bg-gray-700/40 backdrop-blur-sm',
-			].join(' ')
+				"tabs-highlighter z-0",
+				className || "",
+				bgColor || "bg-menu",
+				bgDark || "dark:bg-gray-700/40 backdrop-blur-sm",
+			].join(" ")
 		} else {
-			highlighterRef.current.className = ''
+			highlighterRef.current.className = ""
 		}
 	}
 
@@ -115,12 +115,12 @@ const Tabs = (props: TabsProps) => {
 		bgDark?: string,
 		className?: string,
 		index?: number,
-		from?: 'above' | 'below'
+		from?: "above" | "below"
 	) => {
 		// skip unhoverable tabs and loop through the rest
 		if (items[index]?.hoverable === false && e instanceof Element) {
 			const targetIndex =
-				from === 'below'
+				from === "below"
 					? index - 1 >= 0
 						? index - 1
 						: items.length - 1
@@ -172,14 +172,14 @@ const Tabs = (props: TabsProps) => {
 	const highlightFirstItem = (delay: number) => {
 		setTimeout(() => {
 			if (!listRef.current) return
-			if (items[0] && direction === 'vertical' && defaultHighlighted) {
+			if (items[0] && direction === "vertical" && defaultHighlighted) {
 				highlight(
 					listRef.current.children[0],
 					items[0].bgColor,
 					items[0].bgDark,
-					delay === 0 ? '' : 'animate-kbarHighlighter',
+					delay === 0 ? "" : "animate-kbarHighlighter",
 					0,
-					'above'
+					"above"
 				)
 			} else {
 				reset()
@@ -192,10 +192,10 @@ const Tabs = (props: TabsProps) => {
 	/* Begin Vertical List Methods */
 
 	// Register keyboard shortcuts
-	if (direction === 'vertical') {
+	if (direction === "vertical") {
 		// navigation
 		useHotkeys(
-			'down',
+			"down",
 			(e) => {
 				e.preventDefault()
 				const targetIndex =
@@ -204,18 +204,18 @@ const Tabs = (props: TabsProps) => {
 					listRef.current.children[targetIndex],
 					items[targetIndex].bgColor,
 					items[targetIndex].bgDark,
-					'',
+					"",
 					targetIndex,
-					'above'
+					"above"
 				)
 			},
 			{
-				enableOnTags: ['INPUT'],
+				enableOnTags: ["INPUT"],
 			},
 			[highlightedIndex]
 		)
 		useHotkeys(
-			'up',
+			"up",
 			(e) => {
 				e.preventDefault()
 				const targetIndex =
@@ -224,26 +224,26 @@ const Tabs = (props: TabsProps) => {
 					listRef.current.children[targetIndex],
 					items[targetIndex].bgColor,
 					items[targetIndex].bgDark,
-					'',
+					"",
 					targetIndex,
-					'below'
+					"below"
 				)
 			},
 			{
-				enableOnTags: ['INPUT'],
+				enableOnTags: ["INPUT"],
 			},
 			[highlightedIndex]
 		)
 		// action triggerer
 		useHotkeys(
-			'enter',
+			"enter",
 			(e) => {
 				e.preventDefault()
 				items[highlightedIndex].onClick !== null &&
 					items[highlightedIndex].onClick()
 			},
 			{
-				enableOnTags: ['INPUT'],
+				enableOnTags: ["INPUT"],
 			},
 			[highlightedIndex]
 		)
@@ -251,7 +251,7 @@ const Tabs = (props: TabsProps) => {
 
 	// Dynamically adjust the height of the list wrapper to fit the content
 	useEffect(() => {
-		if (direction !== 'vertical') return
+		if (direction !== "vertical") return
 		if (!listRef.current || !verticalListWrapper.current) return
 		const listHeight = listRef.current.getBoundingClientRect().height
 		verticalListWrapper.current.style.height = `${
@@ -279,7 +279,7 @@ const Tabs = (props: TabsProps) => {
 	return (
 		<div
 			ref={wrapperRef}
-			className={`relative ${direction !== 'vertical' && 'tabs-wrapper'}`}
+			className={`relative ${direction !== "vertical" && "tabs-wrapper"}`}
 			onMouseLeave={() => {
 				reset(true)
 			}}
@@ -288,9 +288,9 @@ const Tabs = (props: TabsProps) => {
 			<ul
 				data-cy="tabs-list"
 				className={`items-center list-none ${
-					direction === 'vertical'
-						? 'grid grid-flow-row'
-						: 'flex flex-row gap-x-2'
+					direction === "vertical"
+						? "grid grid-flow-row"
+						: "flex flex-row gap-x-2"
 				}`}
 				ref={listRef}
 			>
@@ -300,14 +300,14 @@ const Tabs = (props: TabsProps) => {
 						<li
 							key={item.label}
 							aria-label="tab"
-							className={`${direction !== 'vertical' && 'whitespace-nowrap'} ${
+							className={`${direction !== "vertical" && "whitespace-nowrap"} ${
 								color ||
-								'text-gray-500 dark:text-gray-400 dark:hover:text-gray-300 dark:transition-colors'
-							} ${className || ''} z-10 cursor-pointer rounded-md`}
+								"text-gray-500 dark:text-gray-400 dark:hover:text-gray-300 dark:transition-colors"
+							} ${className || ""} z-10 cursor-pointer rounded-md`}
 							onMouseOver={(e) => {
 								if (item.hoverable !== false) {
-									highlight(e, bgColor, bgDark, '', index)
-								} else if (direction !== 'vertical') {
+									highlight(e, bgColor, bgDark, "", index)
+								} else if (direction !== "vertical") {
 									// horizontal tabs, terminate highlighting on unhoverable items
 									reset()
 								}

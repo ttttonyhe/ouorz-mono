@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-import { Formik, Form, Field } from 'formik'
-import Button from 'components/common/Button'
+import React, { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { Formik, Form, Field } from "formik"
+import Button from "components/common/Button"
 import FormLayout, {
 	FormButtons,
 	FormError,
 	FormMessage,
 	FormRow,
-} from 'components/layout/FormLayout'
-import useApi from 'hooks/useApi'
+} from "components/layout/FormLayout"
+import useApi from "hooks/useApi"
 
-const CONFIRMATION_WORD = 'RESET'
+const CONFIRMATION_WORD = "RESET"
 
 const validate = ({ confirmation }) => {
 	const errors = {}
@@ -50,7 +50,7 @@ export default function ResetForm({ values, onSave, onClose }) {
 	return (
 		<FormLayout>
 			<Formik
-				initialValues={{ confirmation: '', ...values }}
+				initialValues={{ confirmation: "", ...values }}
 				validate={validate}
 				onSubmit={handleSubmit}
 			>

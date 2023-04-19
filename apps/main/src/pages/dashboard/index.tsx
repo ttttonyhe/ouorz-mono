@@ -1,16 +1,16 @@
-import Head from 'next/head'
-import React from 'react'
-import Link from 'next/link'
-import { Icon } from '@twilight-toolkit/ui'
-import { NextPageWithLayout } from '~/pages/_app'
-import { pageLayout } from '~/components/Page'
-import GithubStarMetric from '~/components/Metrics/GithubStars'
-import GithubFollowerMetric from '~/components/Metrics/GithubFollowers'
-import PostsMetric from '~/components/Metrics/Posts'
-import NexmentMetric from '~/components/Metrics/Nexment'
-import SspaiMetric from '~/components/Metrics/Sspai'
-import TwitterMetric from '~/components/Metrics/Twitter'
-import PageViewsMetric from '~/components/Metrics/PageViews'
+import Head from "next/head"
+import React from "react"
+import Link from "next/link"
+import { Icon } from "@twilight-toolkit/ui"
+import { NextPageWithLayout } from "~/pages/_app"
+import { pageLayout } from "~/components/Page"
+import GithubStarMetric from "~/components/Metrics/GithubStars"
+import GithubFollowerMetric from "~/components/Metrics/GithubFollowers"
+import PostsMetric from "~/components/Metrics/Posts"
+import NexmentMetric from "~/components/Metrics/Nexment"
+import SspaiMetric from "~/components/Metrics/Sspai"
+import TwitterMetric from "~/components/Metrics/Twitter"
+import PageViewsMetric from "~/components/Metrics/PageViews"
 // import ZhihuMetric from '~/components/Metrics/Zhihu'
 
 const Dashboard: NextPageWithLayout = () => {
@@ -51,7 +51,7 @@ const Dashboard: NextPageWithLayout = () => {
 				<div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
 					<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
 						Personal dashboard tracking various metrics of this website, and
-						across platforms like Twitter, GitHub, and more. Inspired by{' '}
+						across platforms like Twitter, GitHub, and more. Inspired by{" "}
 						<a
 							className="text-gray-700 dark:text-gray-200 font-medium"
 							href="https://leerob.io/dashboard"
@@ -75,7 +75,7 @@ const Dashboard: NextPageWithLayout = () => {
 			</div>
 			<div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
 				<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
-					For detailed data analytics, see:{' '}
+					For detailed data analytics, see:{" "}
 					<a
 						className="text-gray-700 dark:text-gray-200 font-medium"
 						href="https://analytics.ouorz.com/share/E4O9QpCn/ouorz-next"

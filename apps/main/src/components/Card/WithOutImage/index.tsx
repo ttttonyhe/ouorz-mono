@@ -1,10 +1,10 @@
-import { Label } from '@twilight-toolkit/ui'
-import CardFooter from '~/components/Card/Footer'
-import trimStr from '~/utilities/trimString'
-import Link from 'next/link'
-import { useDispatch } from '~/hooks'
-import { setReaderRequest } from '~/store/reader/actions'
-import { WPPost } from '~/constants/propTypes'
+import { Label } from "@twilight-toolkit/ui"
+import CardFooter from "~/components/Card/Footer"
+import trimStr from "~/utilities/trimString"
+import Link from "next/link"
+import { useDispatch } from "~/hooks"
+import { setReaderRequest } from "~/store/reader/actions"
+import { WPPost } from "~/constants/propTypes"
 
 interface Props {
 	item: WPPost

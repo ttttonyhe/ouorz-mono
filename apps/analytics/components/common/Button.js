@@ -1,12 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import ReactTooltip from 'react-tooltip'
-import classNames from 'classnames'
-import Icon from './Icon'
-import styles from './Button.module.css'
+import React from "react"
+import PropTypes from "prop-types"
+import ReactTooltip from "react-tooltip"
+import classNames from "classnames"
+import Icon from "./Icon"
+import styles from "./Button.module.css"
 
 function Button({
-	type = 'button',
+	type = "button",
 	icon,
 	size,
 	variant,
@@ -27,12 +27,12 @@ function Button({
 			data-offset={JSON.stringify({ left: 10 })}
 			type={type}
 			className={classNames(styles.button, className, {
-				[styles.large]: size === 'large',
-				[styles.small]: size === 'small',
-				[styles.xsmall]: size === 'xsmall',
-				[styles.action]: variant === 'action',
-				[styles.danger]: variant === 'danger',
-				[styles.light]: variant === 'light',
+				[styles.large]: size === "large",
+				[styles.small]: size === "small",
+				[styles.xsmall]: size === "xsmall",
+				[styles.action]: variant === "action",
+				[styles.danger]: variant === "danger",
+				[styles.light]: variant === "light",
 				[styles.iconRight]: iconRight,
 			})}
 			disabled={disabled}
@@ -47,10 +47,10 @@ function Button({
 }
 
 Button.propTypes = {
-	type: PropTypes.oneOf(['button', 'submit', 'reset']),
+	type: PropTypes.oneOf(["button", "submit", "reset"]),
 	icon: PropTypes.node,
-	size: PropTypes.oneOf(['xlarge', 'large', 'medium', 'small', 'xsmall']),
-	variant: PropTypes.oneOf(['action', 'danger', 'light']),
+	size: PropTypes.oneOf(["xlarge", "large", "medium", "small", "xsmall"]),
+	variant: PropTypes.oneOf(["action", "danger", "light"]),
 	children: PropTypes.node,
 	className: PropTypes.string,
 	tooltip: PropTypes.node,

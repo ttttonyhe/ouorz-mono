@@ -1,21 +1,21 @@
-import Head from 'next/head'
-import React from 'react'
-import useSWR from 'swr'
-import Link from 'next/link'
-import { Icon } from '@twilight-toolkit/ui'
-import fetcher from '~/lib/fetcher'
-import { NextPageWithLayout } from '~/pages/_app'
-import { pageLayout } from '~/components/Page'
-import getApi from '~/utilities/api'
-import { PodcastCard, PodcastCardLoading } from '~/components/Card/Podcast'
-import { WPPost } from '~/constants/propTypes'
+import Head from "next/head"
+import React from "react"
+import useSWR from "swr"
+import Link from "next/link"
+import { Icon } from "@twilight-toolkit/ui"
+import fetcher from "~/lib/fetcher"
+import { NextPageWithLayout } from "~/pages/_app"
+import { pageLayout } from "~/components/Page"
+import getApi from "~/utilities/api"
+import { PodcastCard, PodcastCardLoading } from "~/components/Card/Podcast"
+import { WPPost } from "~/constants/propTypes"
 
 const Podcasts: NextPageWithLayout = () => {
 	const { data, error } = useSWR(
 		getApi({
 			perPage: 100,
-			cate: '335',
-			cateExclude: '5,2,74,334',
+			cate: "335",
+			cateExclude: "5,2,74,334",
 		}),
 		fetcher
 	)

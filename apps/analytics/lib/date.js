@@ -1,4 +1,4 @@
-import moment from 'moment-timezone'
+import moment from "moment-timezone"
 import {
 	addMinutes,
 	addHours,
@@ -24,8 +24,8 @@ import {
 	differenceInCalendarMonths,
 	differenceInCalendarYears,
 	format,
-} from 'date-fns'
-import { getDateLocale } from 'lib/lang'
+} from "date-fns"
+import { getDateLocale } from "lib/lang"
 
 export function getTimezone() {
 	return moment.tz.guess()
@@ -35,7 +35,7 @@ export function getLocalTime(t) {
 	return addMinutes(new Date(t), new Date().getTimezoneOffset())
 }
 
-export function getDateRange(value, locale = 'en-US') {
+export function getDateRange(value, locale = "en-US") {
 	const now = new Date()
 	const dateLocale = getDateLocale(locale)
 
@@ -47,46 +47,46 @@ export function getDateRange(value, locale = 'en-US') {
 
 	if (+num === 1) {
 		switch (unit) {
-			case 'day':
+			case "day":
 				return {
 					startDate: startOfDay(now),
 					endDate: endOfDay(now),
-					unit: 'hour',
+					unit: "hour",
 					value,
 				}
-			case 'week':
+			case "week":
 				return {
 					startDate: startOfWeek(now, { locale: dateLocale }),
 					endDate: endOfWeek(now, { locale: dateLocale }),
-					unit: 'day',
+					unit: "day",
 					value,
 				}
-			case 'month':
+			case "month":
 				return {
 					startDate: startOfMonth(now),
 					endDate: endOfMonth(now),
-					unit: 'day',
+					unit: "day",
 					value,
 				}
-			case 'year':
+			case "year":
 				return {
 					startDate: startOfYear(now),
 					endDate: endOfYear(now),
-					unit: 'month',
+					unit: "month",
 					value,
 				}
 		}
 	}
 
 	switch (unit) {
-		case 'day':
+		case "day":
 			return {
 				startDate: subDays(startOfDay(now), num - 1),
 				endDate: endOfDay(now),
 				unit,
 				value,
 			}
-		case 'hour':
+		case "hour":
 			return {
 				startDate: subHours(startOfHour(now), num - 1),
 				endDate: endOfHour(now),
@@ -97,24 +97,24 @@ export function getDateRange(value, locale = 'en-US') {
 }
 
 export function getDateRangeValues(startDate, endDate) {
-	let unit = 'year'
+	let unit = "year"
 	if (differenceInHours(endDate, startDate) <= 48) {
-		unit = 'hour'
+		unit = "hour"
 	} else if (differenceInCalendarDays(endDate, startDate) <= 90) {
-		unit = 'day'
+		unit = "day"
 	} else if (differenceInCalendarMonths(endDate, startDate) <= 24) {
-		unit = 'month'
+		unit = "month"
 	}
 
 	return { startDate: startOfDay(startDate), endDate: endOfDay(endDate), unit }
 }
 
 export function getDateFromString(str) {
-	const [ymd, hms] = str.split(' ')
-	const [year, month, day] = ymd.split('-')
+	const [ymd, hms] = str.split(" ")
+	const [year, month, day] = ymd.split("-")
 
 	if (hms) {
-		const [hour, min, sec] = hms.split(':')
+		const [hour, min, sec] = hms.split(":")
 
 		return new Date(year, month - 1, day, hour, min, sec)
 	}
@@ -159,13 +159,13 @@ export function getDateLength(startDate, endDate, unit) {
 }
 
 export const customFormats = {
-	'en-US': {
-		p: 'ha',
-		pp: 'h:mm:ss',
+	"en-US": {
+		p: "ha",
+		pp: "h:mm:ss",
 	},
 }
 
-export function dateFormat(date, str, locale = 'en-US') {
+export function dateFormat(date, str, locale = "en-US") {
 	return format(date, customFormats?.[locale]?.[str] || str, {
 		locale: getDateLocale(locale),
 	})

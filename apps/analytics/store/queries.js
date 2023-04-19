@@ -1,9 +1,9 @@
-import create from 'zustand';
+import create from "zustand"
 
-const store = create(() => ({}));
+const store = create(() => ({}))
 
 export function saveQuery(url, data) {
-  store.setState({ [url]: data });
+	store.setState({ [url]: data })
 }
 
-export default store;
+export default store

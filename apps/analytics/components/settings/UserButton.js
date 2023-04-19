@@ -1,13 +1,13 @@
-import React from 'react'
-import { FormattedMessage } from 'react-intl'
-import { useRouter } from 'next/router'
-import MenuButton from 'components/common/MenuButton'
-import Icon from 'components/common/Icon'
-import User from 'assets/user.svg'
-import styles from './UserButton.module.css'
-import { removeItem } from 'lib/web'
-import { AUTH_TOKEN } from 'lib/constants'
-import useUser from 'hooks/useUser'
+import React from "react"
+import { FormattedMessage } from "react-intl"
+import { useRouter } from "next/router"
+import MenuButton from "components/common/MenuButton"
+import Icon from "components/common/Icon"
+import User from "assets/user.svg"
+import styles from "./UserButton.module.css"
+import { removeItem } from "lib/web"
+import { AUTH_TOKEN } from "lib/constants"
+import useUser from "hooks/useUser"
 
 export default function UserButton() {
 	const { user } = useUser()
@@ -22,25 +22,25 @@ export default function UserButton() {
 					values={{ username: <b>{user.username}</b> }}
 				/>
 			),
-			value: 'username',
+			value: "username",
 			className: styles.username,
 		},
 		{
 			label: <FormattedMessage id="label.profile" defaultMessage="Profile" />,
-			value: 'profile',
+			value: "profile",
 		},
 		{
 			label: <FormattedMessage id="label.logout" defaultMessage="Logout" />,
-			value: 'logout',
+			value: "logout",
 		},
 	]
 
 	function handleSelect(value) {
-		if (value === 'logout') {
+		if (value === "logout") {
 			removeItem(AUTH_TOKEN)
-			router.push('/login')
-		} else if (value === 'profile') {
-			router.push('/settings/profile')
+			router.push("/login")
+		} else if (value === "profile") {
+			router.push("/settings/profile")
 		}
 	}
 

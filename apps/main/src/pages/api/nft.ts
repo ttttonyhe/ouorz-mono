@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from "next"
 
 type EthNFT = {
 	contract: {
@@ -35,8 +35,8 @@ const nft = async (_req: NextApiRequest, res: NextApiResponse<ResDataType>) => {
 	const ethData = await fetch(
 		`${process.env.ALCHEMY_API_PATH}/getNFTs?owner=0x2650f08Da54F7019f9a3306bad0dfc8474644eAD`,
 		{
-			method: 'GET',
-			headers: { 'content-type': 'application/json' },
+			method: "GET",
+			headers: { "content-type": "application/json" },
 		}
 	)
 		.then((res) => {
@@ -49,21 +49,21 @@ const nft = async (_req: NextApiRequest, res: NextApiResponse<ResDataType>) => {
 		})
 
 	// Only return NFTs with media content
-	ethData['ownedNfts'] = ethData['ownedNfts']
-		? ethData['ownedNfts'].filter((nft: EthNFT) => nft.media[0].raw !== '')
+	ethData["ownedNfts"] = ethData["ownedNfts"]
+		? ethData["ownedNfts"].filter((nft: EthNFT) => nft.media[0].raw !== "")
 		: []
 
 	// Fetch SOL NFTs
 	const solData = await fetch(process.env.QUICK_NODE_API_PATH, {
-		method: 'POST',
-		headers: { 'content-type': 'application/json' },
+		method: "POST",
+		headers: { "content-type": "application/json" },
 		body: JSON.stringify({
 			id: 67,
-			jsonrpc: '2.0',
-			method: 'qn_fetchNFTs',
+			jsonrpc: "2.0",
+			method: "qn_fetchNFTs",
 			params: {
-				wallet: 'G9T9yXeWLyspA9xLSLwZYvAPbSNV9E2NU7jWLpQDW6Re',
-				omitFields: ['provenance', 'traits'],
+				wallet: "G9T9yXeWLyspA9xLSLwZYvAPbSNV9E2NU7jWLpQDW6Re",
+				omitFields: ["provenance", "traits"],
 				page: 1,
 				perPage: 40,
 			},
@@ -78,19 +78,19 @@ const nft = async (_req: NextApiRequest, res: NextApiResponse<ResDataType>) => {
 			return []
 		})
 
-	if (!solData['result']) {
-		solData['result'] = {
+	if (!solData["result"]) {
+		solData["result"] = {
 			assets: [],
 		}
 	}
 
 	res.setHeader(
-		'Cache-Control',
-		'public, s-maxage=1200, stale-while-revalidate=600'
+		"Cache-Control",
+		"public, s-maxage=1200, stale-while-revalidate=600"
 	)
 	return res.status(200).json({
-		eth: ethData['ownedNfts'],
-		sol: solData['result']['assets'],
+		eth: ethData["ownedNfts"],
+		sol: solData["result"]["assets"],
 	})
 }
 

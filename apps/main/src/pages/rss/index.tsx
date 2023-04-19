@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import { GetServerSideProps } from 'next'
-import { FC } from 'react'
-import RSS from 'rss'
-import getApi from '~/utilities/api'
+import { GetServerSideProps } from "next"
+import { FC } from "react"
+import RSS from "rss"
+import getApi from "~/utilities/api"
 
 type RSSData = {
 	ids: number[]
@@ -16,10 +16,10 @@ const RSSFeed: FC = () => null
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 	if (res) {
 		const feed = new RSS({
-			title: 'Tony He',
-			site_url: 'https://www.ouorz.com',
-			feed_url: 'https://www.ouorz.com/rss',
-			generator: 'Next.js',
+			title: "Tony He",
+			site_url: "https://www.ouorz.com",
+			feed_url: "https://www.ouorz.com/rss",
+			generator: "Next.js",
 		})
 
 		const response = await fetch(
@@ -39,7 +39,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 			})
 		})
 
-		res.setHeader('Content-Type', 'text/xml')
+		res.setHeader("Content-Type", "text/xml")
 		res.write(feed.xml())
 		res.end()
 	}

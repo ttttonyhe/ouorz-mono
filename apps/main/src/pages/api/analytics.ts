@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { ANALYTICS_API } from '~/constants/apiURLs'
+import type { NextApiRequest, NextApiResponse } from "next"
+import { ANALYTICS_API } from "~/constants/apiURLs"
 
 type ResDataType = {
 	views: number
@@ -18,7 +18,7 @@ const analytics = async (
 		`${ANALYTICS_API.STATS}?start_at=${startAt}&end_at=${endAt}`,
 		{
 			headers: {
-				Accept: 'application/json',
+				Accept: "application/json",
 				Authorization: `Bearer ${process.env.ANALYTICS_TOKEN}`,
 			},
 		}
@@ -27,8 +27,8 @@ const analytics = async (
 	const allTimeViews: number = response.pageviews?.value || 0
 
 	res.setHeader(
-		'Cache-Control',
-		'public, s-maxage=1200, stale-while-revalidate=600'
+		"Cache-Control",
+		"public, s-maxage=1200, stale-while-revalidate=600"
 	)
 
 	return res.status(200).json({

@@ -1,9 +1,9 @@
-import React, { useMemo, useState, useCallback } from 'react'
-import { FormattedMessage } from 'react-intl'
-import firstBy from 'thenby'
-import { percentFilter } from 'lib/filters'
-import DataTable from './DataTable'
-import FilterButtons from 'components/common/FilterButtons'
+import React, { useMemo, useState, useCallback } from "react"
+import { FormattedMessage } from "react-intl"
+import firstBy from "thenby"
+import { percentFilter } from "lib/filters"
+import DataTable from "./DataTable"
+import FilterButtons from "components/common/FilterButtons"
 
 const FILTER_REFERRERS = 0
 const FILTER_PAGES = 1
@@ -37,7 +37,7 @@ export default function RealtimeViews({ websiteId, data, websites }) {
 	]
 
 	const renderLink = ({ x }) => {
-		const domain = x.startsWith('/') ? getDomain(websiteId) : ''
+		const domain = x.startsWith("/") ? getDomain(websiteId) : ""
 		return (
 			<a href={`//${domain}${x}`} target="_blank" rel="noreferrer noopener">
 				{x}
@@ -50,8 +50,8 @@ export default function RealtimeViews({ websiteId, data, websites }) {
 			const referrers = percentFilter(
 				pageviews
 					.reduce((arr, { referrer }) => {
-						if (referrer?.startsWith('http')) {
-							const hostname = new URL(referrer).hostname.replace(/^www\./, '')
+						if (referrer?.startsWith("http")) {
+							const hostname = new URL(referrer).hostname.replace(/^www\./, "")
 
 							if (hostname && !domains.includes(hostname)) {
 								const row = arr.find(({ x }) => x === hostname)
@@ -65,13 +65,13 @@ export default function RealtimeViews({ websiteId, data, websites }) {
 						}
 						return arr
 					}, [])
-					.sort(firstBy('y', -1))
+					.sort(firstBy("y", -1))
 			)
 
 			const pages = percentFilter(
 				pageviews
 					.reduce((arr, { url, website_id }) => {
-						if (url?.startsWith('/')) {
+						if (url?.startsWith("/")) {
 							if (!websiteId && websites.length > 1) {
 								url = `${getDomain(website_id)}${url}`
 							}
@@ -85,7 +85,7 @@ export default function RealtimeViews({ websiteId, data, websites }) {
 						}
 						return arr
 					}, [])
-					.sort(firstBy('y', -1))
+					.sort(firstBy("y", -1))
 			)
 
 			return [referrers, pages]

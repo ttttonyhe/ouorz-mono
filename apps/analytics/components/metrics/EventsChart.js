@@ -1,12 +1,12 @@
-import React, { useMemo } from 'react'
-import { colord } from 'colord'
-import BarChart from './BarChart'
-import { getDateArray, getDateLength } from 'lib/date'
-import useFetch from 'hooks/useFetch'
-import useDateRange from 'hooks/useDateRange'
-import useTimezone from 'hooks/useTimezone'
-import usePageQuery from 'hooks/usePageQuery'
-import { EVENT_COLORS } from 'lib/constants'
+import React, { useMemo } from "react"
+import { colord } from "colord"
+import BarChart from "./BarChart"
+import { getDateArray, getDateLength } from "lib/date"
+import useFetch from "hooks/useFetch"
+import useDateRange from "hooks/useDateRange"
+import useTimezone from "hooks/useTimezone"
+import usePageQuery from "hooks/usePageQuery"
+import { EVENT_COLORS } from "lib/constants"
 
 export default function EventsChart({ websiteId, className, token }) {
 	const [{ startDate, endDate, unit, modified }] = useDateRange(websiteId)

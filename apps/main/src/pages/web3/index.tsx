@@ -1,15 +1,15 @@
-import Head from 'next/head'
-import React from 'react'
-import Link from 'next/link'
-import { GetStaticProps } from 'next'
-import { Icon } from '@twilight-toolkit/ui'
-import { NextPageWithLayout } from '~/pages/_app'
-import { pageLayout } from '~/components/Page'
-import PageCard from '~/components/Card/Page'
-import getApi from '~/utilities/api'
-import { GlowingBackground } from '~/components/Visual'
+import Head from "next/head"
+import React from "react"
+import Link from "next/link"
+import { GetStaticProps } from "next"
+import { Icon } from "@twilight-toolkit/ui"
+import { NextPageWithLayout } from "~/pages/_app"
+import { pageLayout } from "~/components/Page"
+import PageCard from "~/components/Card/Page"
+import getApi from "~/utilities/api"
+import { GlowingBackground } from "~/components/Visual"
 
-const NFTs = React.lazy(() => import('~/components/Grids/NFTs'))
+const NFTs = React.lazy(() => import("~/components/Grids/NFTs"))
 
 const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 	return (
@@ -33,7 +33,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 							</div>
 							<div>
 								<h2 className="font-medium text-[28px] text-black dark:text-white tracking-wide flex items-center gap-x-1.5">
-									Web 3.0{' '}
+									Web 3.0{" "}
 									<span className="text-xs py-0.5 px-2 text-green-500 dark:text-green-400 bg-green-50 dark:bg-green-800 rounded-full border border-green-300 dark:border-green-700">
 										Beta
 									</span>

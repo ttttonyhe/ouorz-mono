@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-import classNames from 'classnames'
-import Loading from 'components/common/Loading'
-import ErrorMessage from 'components/common/ErrorMessage'
-import useFetch from 'hooks/useFetch'
-import useDateRange from 'hooks/useDateRange'
-import usePageQuery from 'hooks/usePageQuery'
-import { formatShortTime, formatNumber, formatLongNumber } from 'lib/format'
-import MetricCard from './MetricCard'
-import styles from './MetricsBar.module.css'
+import React, { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import classNames from "classnames"
+import Loading from "components/common/Loading"
+import ErrorMessage from "components/common/ErrorMessage"
+import useFetch from "hooks/useFetch"
+import useDateRange from "hooks/useDateRange"
+import usePageQuery from "hooks/usePageQuery"
+import { formatShortTime, formatNumber, formatLongNumber } from "lib/format"
+import MetricCard from "./MetricCard"
+import styles from "./MetricsBar.module.css"
 
 export default function MetricsBar({ websiteId, className }) {
 	const [dateRange] = useDateRange(websiteId)
@@ -96,7 +96,7 @@ export default function MetricsBar({ websiteId, className }) {
 											100 || 0
 								: 0
 						}
-						format={(n) => Number(n).toFixed(0) + '%'}
+						format={(n) => Number(n).toFixed(0) + "%"}
 						reverseColors
 					/>
 					<MetricCard
@@ -119,10 +119,10 @@ export default function MetricsBar({ websiteId, className }) {
 								: 0
 						}
 						format={(n) =>
-							`${n < 0 ? '-' : ''}${formatShortTime(
+							`${n < 0 ? "-" : ""}${formatShortTime(
 								Math.abs(~~n),
-								['m', 's'],
-								' '
+								["m", "s"],
+								" "
 							)}`
 						}
 					/>

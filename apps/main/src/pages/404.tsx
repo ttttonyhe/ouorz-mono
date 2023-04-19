@@ -1,9 +1,9 @@
-import Head from 'next/head'
-import React from 'react'
-import { useRouter } from 'next/router'
-import { Button } from '@twilight-toolkit/ui'
-import { NextPageWithLayout } from '~/pages/_app'
-import { pageLayout } from '~/components/Page'
+import Head from "next/head"
+import React from "react"
+import { useRouter } from "next/router"
+import { Button } from "@twilight-toolkit/ui"
+import { NextPageWithLayout } from "~/pages/_app"
+import { pageLayout } from "~/components/Page"
 
 const PageNotFound: NextPageWithLayout = () => {
 	const router = useRouter()
@@ -26,7 +26,7 @@ const PageNotFound: NextPageWithLayout = () => {
 						<Button
 							type="primary"
 							onClick={() => {
-								router.push('/')
+								router.push("/")
 							}}
 							className="mx-auto"
 						>

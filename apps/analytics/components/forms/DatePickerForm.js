@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-import { isAfter, isBefore, isSameDay } from 'date-fns'
-import Calendar from 'components/common/Calendar'
-import Button from 'components/common/Button'
-import { FormButtons } from 'components/layout/FormLayout'
-import { getDateRangeValues } from 'lib/date'
-import styles from './DatePickerForm.module.css'
-import ButtonGroup from 'components/common/ButtonGroup'
+import React, { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { isAfter, isBefore, isSameDay } from "date-fns"
+import Calendar from "components/common/Calendar"
+import Button from "components/common/Button"
+import { FormButtons } from "components/layout/FormLayout"
+import { getDateRangeValues } from "lib/date"
+import styles from "./DatePickerForm.module.css"
+import ButtonGroup from "components/common/ButtonGroup"
 
 const FILTER_DAY = 0
 const FILTER_RANGE = 1
@@ -48,9 +48,9 @@ export default function DatePickerForm({
 
 	function handleSave() {
 		if (selected === FILTER_DAY) {
-			onChange({ ...getDateRangeValues(date, date), value: 'custom' })
+			onChange({ ...getDateRangeValues(date, date), value: "custom" })
 		} else {
-			onChange({ ...getDateRangeValues(startDate, endDate), value: 'custom' })
+			onChange({ ...getDateRangeValues(startDate, endDate), value: "custom" })
 		}
 	}
 

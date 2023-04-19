@@ -1,12 +1,12 @@
-import { AnyAction } from '@reduxjs/toolkit'
-import { SET_HEADER_TITLE } from './actions'
+import { AnyAction } from "@reduxjs/toolkit"
+import { SET_HEADER_TITLE } from "./actions"
 
 type GeneralState = {
 	headerTitle: string
 }
 
 const GeneralInitialState: GeneralState = {
-	headerTitle: 'Tony He',
+	headerTitle: "Tony He",
 }
 
 const generalReducer = (

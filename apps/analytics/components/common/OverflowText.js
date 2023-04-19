@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import ReactTooltip from 'react-tooltip'
+import PropTypes from "prop-types"
+import React, { useCallback, useEffect, useRef, useState } from "react"
+import ReactTooltip from "react-tooltip"
 
-import styles from './OverflowText.module.css'
+import styles from "./OverflowText.module.css"
 
 const OverflowText = ({ children, tooltipId }) => {
 	const measureEl = useRef()
@@ -28,7 +28,7 @@ const OverflowText = ({ children, tooltipId }) => {
 		// Destructure ref in case it changes out from under us
 		const el = measureEl.current
 
-		if ('ResizeObserver' in global) {
+		if ("ResizeObserver" in global) {
 			// Ideally, we have access to ResizeObservers
 			const observer = new ResizeObserver(() => {
 				measure(el)
@@ -39,9 +39,9 @@ const OverflowText = ({ children, tooltipId }) => {
 			// Otherwise, fall back to measuring on window resizes
 			const handler = () => measure(el)
 
-			window.addEventListener('resize', handler, { passive: true })
+			window.addEventListener("resize", handler, { passive: true })
 			return () =>
-				window.removeEventListener('resize', handler, { passive: true })
+				window.removeEventListener("resize", handler, { passive: true })
 		}
 	})
 

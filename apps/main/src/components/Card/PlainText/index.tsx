@@ -1,9 +1,9 @@
-import React from 'react'
-import TimeAgo from 'react-timeago'
-import { Icon } from '@twilight-toolkit/ui'
-import getApi from '~/utilities/api'
-import { useDebounce } from '~/hooks'
-import { WPPost } from '~/constants/propTypes'
+import React from "react"
+import TimeAgo from "react-timeago"
+import { Icon } from "@twilight-toolkit/ui"
+import getApi from "~/utilities/api"
+import { useDebounce } from "~/hooks"
+import { WPPost } from "~/constants/propTypes"
 
 interface Props {
 	item: WPPost
@@ -64,7 +64,7 @@ export default function CardPlainText({ item }: Props) {
 								<Icon name="love" />
 							</i>
 						)}
-						<em className={`not-italic ${!upvoting ? 'animate-appear' : ''}`}>
+						<em className={`not-italic ${!upvoting ? "animate-appear" : ""}`}>
 							{upvotes}
 						</em>
 					</button>

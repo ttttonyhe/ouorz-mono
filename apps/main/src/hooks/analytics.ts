@@ -17,7 +17,7 @@ const dummyReturn = {
  *	Get the analytics object
  */
 const getAnalytics = () => {
-	if (process.env.NODE_ENV === 'development' || typeof window === 'undefined') {
+	if (process.env.NODE_ENV === "development" || typeof window === "undefined") {
 		return dummyReturn
 	}
 

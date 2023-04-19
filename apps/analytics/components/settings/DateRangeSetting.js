@@ -1,15 +1,15 @@
-import React from 'react'
-import { FormattedMessage } from 'react-intl'
-import DateFilter, { filterOptions } from 'components/common/DateFilter'
-import Button from 'components/common/Button'
-import useDateRange from 'hooks/useDateRange'
-import { DEFAULT_DATE_RANGE } from 'lib/constants'
-import styles from './DateRangeSetting.module.css'
+import React from "react"
+import { FormattedMessage } from "react-intl"
+import DateFilter, { filterOptions } from "components/common/DateFilter"
+import Button from "components/common/Button"
+import useDateRange from "hooks/useDateRange"
+import { DEFAULT_DATE_RANGE } from "lib/constants"
+import styles from "./DateRangeSetting.module.css"
 
 export default function DateRangeSetting() {
 	const [dateRange, setDateRange] = useDateRange()
 	const { startDate, endDate, value } = dateRange
-	const options = filterOptions.filter((e) => e.value !== 'all')
+	const options = filterOptions.filter((e) => e.value !== "all")
 
 	function handleChange(value) {
 		setDateRange(value)

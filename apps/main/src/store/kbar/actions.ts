@@ -1,22 +1,22 @@
-import type { KbarListItem } from '~/components/Kbar'
+import type { KbarListItem } from "~/components/Kbar"
 
 // Actions watched by sagas
-export const ACTIVATE_KBAR = 'ACTIVATE_KBAR'
-export const DEACTIVATE_KBAR = 'DEACTIVATE_KBAR'
-export const UPDATE_KBAR_TO_SEARCH = 'UPDATE_KBAR_TO_SEARCH'
-export const UPDATE_KBAR_TO_HOME = 'UPDATE_KBAR_TO_HOME'
-export const UPDATE_KBAR_LOCATION = 'UPDATE_KBAR_LOCATION'
-export const UPDATE_KBAR = 'UPDATE_KBAR'
+export const ACTIVATE_KBAR = "ACTIVATE_KBAR"
+export const DEACTIVATE_KBAR = "DEACTIVATE_KBAR"
+export const UPDATE_KBAR_TO_SEARCH = "UPDATE_KBAR_TO_SEARCH"
+export const UPDATE_KBAR_TO_HOME = "UPDATE_KBAR_TO_HOME"
+export const UPDATE_KBAR_LOCATION = "UPDATE_KBAR_LOCATION"
+export const UPDATE_KBAR = "UPDATE_KBAR"
 
 // Actions not watched by sagas
-export const SHOW_KBAR = 'SHOW_KBAR'
-export const HIDE_KBAR = 'HIDE_KBAR'
-export const ADD_TO_KBAR_LISTS = 'ADD_TO_KBAR_LISTS'
-export const SET_KBAR_LIST = 'SET_KBAR_LIST'
-export const SET_KBAR_ANIMATION = 'SET_KBAR_ANIMATION'
-export const SET_KBAR_LOCATION = 'SET_KBAR_LOCATION'
-export const SET_KBAR_LOADING = 'SET_KBAR_LOADING'
-export const SET_KBAR_PLACEHOLDER = 'SET_KBAR_PLACEHOLDER'
+export const SHOW_KBAR = "SHOW_KBAR"
+export const HIDE_KBAR = "HIDE_KBAR"
+export const ADD_TO_KBAR_LISTS = "ADD_TO_KBAR_LISTS"
+export const SET_KBAR_LIST = "SET_KBAR_LIST"
+export const SET_KBAR_ANIMATION = "SET_KBAR_ANIMATION"
+export const SET_KBAR_LOCATION = "SET_KBAR_LOCATION"
+export const SET_KBAR_LOADING = "SET_KBAR_LOADING"
+export const SET_KBAR_PLACEHOLDER = "SET_KBAR_PLACEHOLDER"
 
 // Payload Types
 export type KbarList = KbarListItem[]
@@ -105,7 +105,7 @@ export const hideKbar = () => {
 	}
 }
 
-export const setKbarAnimation = (state: 'in' | 'out' | 'transition' | '') => {
+export const setKbarAnimation = (state: "in" | "out" | "transition" | "") => {
 	return {
 		type: SET_KBAR_ANIMATION,
 		payload: {

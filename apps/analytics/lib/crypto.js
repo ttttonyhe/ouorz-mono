@@ -1,16 +1,16 @@
-import crypto from 'crypto'
-import { v4, v5, validate } from 'uuid'
-import bcrypt from 'bcryptjs'
-import { JWT, JWE, JWK } from 'jose'
-import { startOfMonth } from 'date-fns'
+import crypto from "crypto"
+import { v4, v5, validate } from "uuid"
+import bcrypt from "bcryptjs"
+import { JWT, JWE, JWK } from "jose"
+import { startOfMonth } from "date-fns"
 
 const SALT_ROUNDS = 10
 const KEY = JWK.asKey(Buffer.from(secret()))
 const ROTATING_SALT = hash(startOfMonth(new Date()).toUTCString())
-const CHARS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+const CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 export function hash(...args) {
-	return crypto.createHash('sha512').update(args.join('')).digest('hex')
+	return crypto.createHash("sha512").update(args.join("")).digest("hex")
 }
 
 export function secret() {
@@ -24,7 +24,7 @@ export function salt() {
 export function uuid(...args) {
 	if (!args.length) return v4()
 
-	return v5(args.join(''), salt())
+	return v5(args.join(""), salt())
 }
 
 export function isValidUuid(s) {
@@ -32,7 +32,7 @@ export function isValidUuid(s) {
 }
 
 export function getRandomChars(n) {
-	let s = ''
+	let s = ""
 	for (let i = 0; i < n; i++) {
 		s += CHARS[Math.floor(Math.random() * CHARS.length)]
 	}

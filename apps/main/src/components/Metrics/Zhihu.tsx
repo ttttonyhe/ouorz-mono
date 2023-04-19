@@ -1,13 +1,13 @@
-import useSWR from 'swr'
-import format from 'comma-number'
-import fetcher from '~/lib/fetcher'
-import MetricCard from './Card'
+import useSWR from "swr"
+import format from "comma-number"
+import fetcher from "~/lib/fetcher"
+import MetricCard from "./Card"
 
 export default function ZhihuMetric() {
-	const { data } = useSWR('api/substats', fetcher)
+	const { data } = useSWR("api/substats", fetcher)
 
 	const followers = format(data?.zhihuFollowers)
-	const link = 'https://www.zhihu.com/people/helipengtony'
+	const link = "https://www.zhihu.com/people/helipengtony"
 
 	return (
 		<MetricCard

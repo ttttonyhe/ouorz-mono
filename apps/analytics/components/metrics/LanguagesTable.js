@@ -1,9 +1,9 @@
-import React from 'react'
-import MetricsTable from './MetricsTable'
-import { percentFilter } from 'lib/filters'
-import { FormattedMessage } from 'react-intl'
-import useLanguageNames from 'hooks/useLanguageNames'
-import useLocale from 'hooks/useLocale'
+import React from "react"
+import MetricsTable from "./MetricsTable"
+import { percentFilter } from "lib/filters"
+import { FormattedMessage } from "react-intl"
+import useLanguageNames from "hooks/useLanguageNames"
+import useLocale from "hooks/useLocale"
 
 export default function LanguagesTable({ websiteId, onDataLoad, ...props }) {
 	const { locale } = useLocale()
@@ -14,7 +14,7 @@ export default function LanguagesTable({ websiteId, onDataLoad, ...props }) {
 			<div className={locale}>
 				{languageNames[x] ?? (
 					<FormattedMessage id="label.unknown" defaultMessage="Unknown" />
-				)}{' '}
+				)}{" "}
 			</div>
 		)
 	}

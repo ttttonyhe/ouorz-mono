@@ -3,17 +3,17 @@ import {
 	getAccountByUsername,
 	updateAccount,
 	createAccount,
-} from 'lib/queries'
-import { useAuth } from 'lib/middleware'
-import { hashPassword } from 'lib/crypto'
-import { ok, unauthorized, methodNotAllowed, badRequest } from 'lib/response'
+} from "lib/queries"
+import { useAuth } from "lib/middleware"
+import { hashPassword } from "lib/crypto"
+import { ok, unauthorized, methodNotAllowed, badRequest } from "lib/response"
 
 export default async (req, res) => {
 	await useAuth(req, res)
 
 	const { user_id: current_user_id, is_admin: current_user_is_admin } = req.auth
 
-	if (req.method === 'POST') {
+	if (req.method === "POST") {
 		const { user_id, username, password, is_admin } = req.body
 
 		if (user_id) {
@@ -36,7 +36,7 @@ export default async (req, res) => {
 					const accountByUsername = await getAccountByUsername(username)
 
 					if (accountByUsername) {
-						return badRequest(res, 'Account already exists')
+						return badRequest(res, "Account already exists")
 					}
 				}
 
@@ -50,7 +50,7 @@ export default async (req, res) => {
 			const accountByUsername = await getAccountByUsername(username)
 
 			if (accountByUsername) {
-				return badRequest(res, 'Account already exists')
+				return badRequest(res, "Account already exists")
 			}
 
 			const created = await createAccount({

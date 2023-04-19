@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 
 type MouseEventHandler = (event: MouseEvent) => any
 
@@ -9,7 +9,7 @@ export const useMouseLeaveListener = (
 	eventHandler: MouseEventHandler,
 	element?: HTMLElement | Document
 ) => {
-	const type = 'mouseleave'
+	const type = "mouseleave"
 	const handler: MouseEventHandler = (event) => {
 		if (
 			event.clientY <= 0 ||

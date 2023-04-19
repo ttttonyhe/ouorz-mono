@@ -1,13 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect } from "react"
 
 export default function useDocumentClick(handler) {
-  useEffect(() => {
-    document.addEventListener('click', handler);
+	useEffect(() => {
+		document.addEventListener("click", handler)
 
-    return () => {
-      document.removeEventListener('click', handler);
-    };
-  }, [handler]);
+		return () => {
+			document.removeEventListener("click", handler)
+		}
+	}, [handler])
 
-  return null;
+	return null
 }

@@ -1,13 +1,13 @@
-import { makeUrl } from './url'
+import { makeUrl } from "./url"
 
 export const apiRequest = (method, url, body, headers) => {
 	return fetch(url, {
 		method,
-		cache: 'no-cache',
-		credentials: 'same-origin',
+		cache: "no-cache",
+		credentials: "same-origin",
 		headers: {
-			Accept: 'application/json',
-			'Content-Type': 'application/json',
+			Accept: "application/json",
+			"Content-Type": "application/json",
 			...headers,
 		},
 		body,
@@ -25,16 +25,16 @@ export const apiRequest = (method, url, body, headers) => {
 }
 
 export const get = (url, params, headers) =>
-	apiRequest('get', makeUrl(url, params), undefined, headers)
+	apiRequest("get", makeUrl(url, params), undefined, headers)
 
 export const del = (url, params, headers) =>
-	apiRequest('delete', makeUrl(url, params), undefined, headers)
+	apiRequest("delete", makeUrl(url, params), undefined, headers)
 
 export const post = (url, params, headers) =>
-	apiRequest('post', url, JSON.stringify(params), headers)
+	apiRequest("post", url, JSON.stringify(params), headers)
 
 export const put = (url, params, headers) =>
-	apiRequest('put', url, JSON.stringify(params), headers)
+	apiRequest("put", url, JSON.stringify(params), headers)
 
 export const hook = (_this, method, callback) => {
 	const orig = _this[method]
@@ -49,7 +49,7 @@ export const hook = (_this, method, callback) => {
 export const doNotTrack = () => {
 	const { doNotTrack, navigator, external } = window
 
-	const msTrackProtection = 'msTrackingProtectionEnabled'
+	const msTrackProtection = "msTrackingProtectionEnabled"
 	const msTracking = () => {
 		return (
 			external && msTrackProtection in external && external[msTrackProtection]()
@@ -59,11 +59,11 @@ export const doNotTrack = () => {
 	const dnt =
 		doNotTrack || navigator.doNotTrack || navigator.msDoNotTrack || msTracking()
 
-	return dnt == '1' || dnt === 'yes'
+	return dnt == "1" || dnt === "yes"
 }
 
 export const setItem = (key, data, session) => {
-	if (typeof window !== 'undefined' && data) {
+	if (typeof window !== "undefined" && data) {
 		;(session ? sessionStorage : localStorage).setItem(
 			key,
 			JSON.stringify(data)
@@ -72,12 +72,12 @@ export const setItem = (key, data, session) => {
 }
 
 export const getItem = (key, session) =>
-	typeof window !== 'undefined'
+	typeof window !== "undefined"
 		? JSON.parse((session ? sessionStorage : localStorage).getItem(key) || null)
 		: null
 
 export const removeItem = (key, session) => {
-	if (typeof window !== 'undefined') {
+	if (typeof window !== "undefined") {
 		;(session ? sessionStorage : localStorage).removeItem(key)
 	}
 }

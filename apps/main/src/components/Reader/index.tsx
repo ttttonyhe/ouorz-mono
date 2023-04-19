@@ -1,10 +1,10 @@
-import PostContent from '../PostContent'
-import { useEffect } from 'react'
-import TimeAgo from 'react-timeago'
-import { useBodyScroll } from '~/hooks'
-import { useSelector, useDispatch } from '~/hooks'
-import { selectReader } from '~/store/reader/selectors'
-import { hideReaderRequest } from '~/store/reader/actions'
+import PostContent from "../PostContent"
+import { useEffect } from "react"
+import TimeAgo from "react-timeago"
+import { useBodyScroll } from "~/hooks"
+import { useSelector, useDispatch } from "~/hooks"
+import { selectReader } from "~/store/reader/selectors"
+import { hideReaderRequest } from "~/store/reader/actions"
 
 export default function Reader() {
 	const [_, setBodyScrollable] = useBodyScroll()
@@ -20,7 +20,7 @@ export default function Reader() {
 			<div>
 				<div
 					className={`z-50 reader-bg ${
-						animation === 'in' ? 'animate-readerBg' : 'animate-readerBgOut'
+						animation === "in" ? "animate-readerBg" : "animate-readerBgOut"
 					}`}
 					onClick={() => {
 						dispatch(hideReaderRequest())
@@ -28,7 +28,7 @@ export default function Reader() {
 				/>
 				<div
 					className={`z-[60] fixed bg-white dark:bg-gray-800 dark:border-gray-800 shadow-md reader overflow-y-auto overflow-hidden rounded-tl-xl rounded-tr-xl px-20 py-16 w-page mx-auto top-0 mt-20 ml-readerOffset ${
-						animation === 'in' ? 'animate-reader' : 'animate-readerOut'
+						animation === "in" ? "animate-reader" : "animate-readerOut"
 					}`}
 				>
 					<h1 className="text-postTitle font-medium tracking-wider leading-snug">

@@ -1,28 +1,28 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
-import { NextPageWithLayout } from '~/pages/_app'
-import { contentLayout } from '~/components/Content'
-import Aside from '~/components/Aside'
+import { GetStaticPaths, GetStaticProps } from "next"
+import { NextPageWithLayout } from "~/pages/_app"
+import { contentLayout } from "~/components/Content"
+import Aside from "~/components/Aside"
 
 // Components
-import Head from 'next/head'
-import SubscriptionBox from '~/components/SubscriptionBox'
-import TimeAgo from 'react-timeago'
-import CommentBox from '~/components/CommentBox'
-import PostContent from '~/components/PostContent'
-import Link from 'next/link'
-import { Label } from '@twilight-toolkit/ui'
-import { CardTool } from '~/components/Card/WithImage/tool'
+import Head from "next/head"
+import SubscriptionBox from "~/components/SubscriptionBox"
+import TimeAgo from "react-timeago"
+import CommentBox from "~/components/CommentBox"
+import PostContent from "~/components/PostContent"
+import Link from "next/link"
+import { Label } from "@twilight-toolkit/ui"
+import { CardTool } from "~/components/Card/WithImage/tool"
 
 // Utilities
-import trimStr from '~/utilities/trimString'
-import getApi from '~/utilities/api'
-import redirect from 'nextjs-redirect'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import { useDispatch } from '~/hooks'
-import { setHeaderTitle } from '~/store/general/actions'
+import trimStr from "~/utilities/trimString"
+import getApi from "~/utilities/api"
+import redirect from "nextjs-redirect"
+import { useRouter } from "next/router"
+import { useEffect } from "react"
+import { useDispatch } from "~/hooks"
+import { setHeaderTitle } from "~/store/general/actions"
 
-const Redirect = redirect('/404')
+const Redirect = redirect("/404")
 
 interface Props {
 	status: boolean
@@ -56,7 +56,7 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 				visit: true,
 			}),
 			{
-				method: 'POST',
+				method: "POST",
 				body: JSON.stringify({
 					id: pid,
 				}),
@@ -178,7 +178,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		params: { pid: id.toString() },
 	}))
 
-	return { paths, fallback: 'blocking' }
+	return { paths, fallback: "blocking" }
 }
 
 BlogPost.layout = contentLayout

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useTheme } from 'next-themes'
+import React, { useState, useEffect } from "react"
+import { useTheme } from "next-themes"
 
 interface Props {
 	handler: (postition: number) => void
@@ -32,10 +32,10 @@ const ScrollWrapper = (props: Props) => {
 		// invoke scroll handler once after changing theme
 		handler()
 
-		window.addEventListener('scroll', handler, { passive: true })
+		window.addEventListener("scroll", handler, { passive: true })
 
 		return () => {
-			window.removeEventListener('scroll', handler)
+			window.removeEventListener("scroll", handler)
 		}
 	}, [resolvedTheme])
 

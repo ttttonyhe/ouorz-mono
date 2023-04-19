@@ -1,7 +1,7 @@
-import React from 'react'
-import Dot from 'components/common/Dot'
-import styles from './ChartTooltip.module.css'
-import ReactTooltip from 'react-tooltip'
+import React from "react"
+import Dot from "components/common/Dot"
+import styles from "./ChartTooltip.module.css"
+import ReactTooltip from "react-tooltip"
 
 export default function ChartTooltip({ chartId, tooltip }) {
 	if (!tooltip) {

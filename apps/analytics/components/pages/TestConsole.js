@@ -1,27 +1,27 @@
-import React, { useState } from 'react'
-import classNames from 'classnames'
-import Head from 'next/head'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import Page from 'components/layout/Page'
-import PageHeader from 'components/layout/PageHeader'
-import DropDown from 'components/common/DropDown'
-import WebsiteChart from 'components/metrics/WebsiteChart'
-import EventsChart from 'components/metrics/EventsChart'
-import Button from 'components/common/Button'
-import EmptyPlaceholder from 'components/common/EmptyPlaceholder'
-import Icon from 'components/common/Icon'
-import useFetch from 'hooks/useFetch'
-import useUser from 'hooks/useUser'
-import ChevronDown from 'assets/chevron-down.svg'
-import styles from './TestConsole.module.css'
+import React, { useState } from "react"
+import classNames from "classnames"
+import Head from "next/head"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import Page from "components/layout/Page"
+import PageHeader from "components/layout/PageHeader"
+import DropDown from "components/common/DropDown"
+import WebsiteChart from "components/metrics/WebsiteChart"
+import EventsChart from "components/metrics/EventsChart"
+import Button from "components/common/Button"
+import EmptyPlaceholder from "components/common/EmptyPlaceholder"
+import Icon from "components/common/Icon"
+import useFetch from "hooks/useFetch"
+import useUser from "hooks/useUser"
+import ChevronDown from "assets/chevron-down.svg"
+import styles from "./TestConsole.module.css"
 
 export default function TestConsole() {
 	const { user } = useUser()
 	const [website, setWebsite] = useState()
 	const [show, setShow] = useState(true)
 	const { basePath } = useRouter()
-	const { data } = useFetch('/websites')
+	const { data } = useFetch("/websites")
 
 	if (!data || !user?.is_admin) {
 		return null
@@ -41,16 +41,16 @@ export default function TestConsole() {
 
 	function handleClick() {
 		window.ouorzAnalytics.trackView(
-			'/js-view-test',
-			'https://analytics.ouorz.com'
+			"/js-view-test",
+			"https://analytics.ouorz.com"
 		)
-		window.ouorzAnalytics.trackEvent('clickJSTest', 'click')
+		window.ouorzAnalytics.trackEvent("clickJSTest", "click")
 	}
 
 	return (
 		<Page>
 			<Head>
-				{typeof window !== 'undefined' && website && (
+				{typeof window !== "undefined" && website && (
 					<script
 						async
 						defer
@@ -63,7 +63,7 @@ export default function TestConsole() {
 			<PageHeader>
 				<div>Test Console</div>
 				<DropDown
-					value={selectedValue || 'Select website'}
+					value={selectedValue || "Select website"}
 					options={options}
 					onChange={handleSelect}
 				/>
@@ -79,7 +79,7 @@ export default function TestConsole() {
 						/>
 					</div>
 					{show && (
-						<div className={classNames(styles.test, 'row')}>
+						<div className={classNames(styles.test, "row")}>
 							<div className="col-4">
 								<PageHeader>Page links</PageHeader>
 								<div>

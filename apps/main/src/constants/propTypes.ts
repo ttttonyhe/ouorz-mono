@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import { tuple } from '~/utilities/dataTypes'
+import { tuple } from "~/utilities/dataTypes"
 
-const listTypes = tuple('index', 'cate', 'search')
-const labelTypes = tuple('sticky', 'primary', 'secondary', 'green', 'gray')
+const listTypes = tuple("index", "cate", "search")
+const labelTypes = tuple("sticky", "primary", "secondary", "green", "gray")
 
 export interface WPPost {
 	code: any

@@ -1,13 +1,13 @@
-import useSWR from 'swr'
-import format from 'comma-number'
-import fetcher from '~/lib/fetcher'
-import MetricCard from './Card'
+import useSWR from "swr"
+import format from "comma-number"
+import fetcher from "~/lib/fetcher"
+import MetricCard from "./Card"
 
 export default function SspaiMetric() {
-	const { data } = useSWR('api/substats', fetcher)
+	const { data } = useSWR("api/substats", fetcher)
 
 	const followers = format(data?.sspaiFollowers)
-	const link = 'https://sspai.com/u/tonyhe'
+	const link = "https://sspai.com/u/tonyhe"
 
 	return (
 		<MetricCard

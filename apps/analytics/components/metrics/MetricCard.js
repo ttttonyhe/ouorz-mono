@@ -1,7 +1,7 @@
-import React from 'react'
-import { useSpring, animated } from 'react-spring'
-import { formatNumber } from '../../lib/format'
-import styles from './MetricCard.module.css'
+import React from "react"
+import { useSpring, animated } from "react-spring"
+import { formatNumber } from "../../lib/format"
+import styles from "./MetricCard.module.css"
 
 const MetricCard = ({
 	value = 0,
@@ -34,7 +34,7 @@ const MetricCard = ({
 						}`}
 					>
 						{changeProps.x.interpolate(
-							(x) => `${change >= 0 ? '+' : ''}${format(x)}`
+							(x) => `${change >= 0 ? "+" : ""}${format(x)}`
 						)}
 					</animated.span>
 				)}

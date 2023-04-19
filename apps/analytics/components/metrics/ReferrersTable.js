@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-import MetricsTable from './MetricsTable'
-import FilterButtons from 'components/common/FilterButtons'
-import FilterLink from 'components/common/FilterLink'
-import { refFilter } from 'lib/filters'
+import React, { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import MetricsTable from "./MetricsTable"
+import FilterButtons from "components/common/FilterButtons"
+import FilterLink from "components/common/FilterLink"
+import { refFilter } from "lib/filters"
 
 export const FILTER_DOMAIN_ONLY = 0
 export const FILTER_COMBINED = 1

@@ -1,7 +1,7 @@
-import Link from 'next/link'
-import trimStr from '~/utilities/trimString'
-import Image from 'next/image'
-import { WPPost } from '~/constants/propTypes'
+import Link from "next/link"
+import trimStr from "~/utilities/trimString"
+import Image from "next/image"
+import { WPPost } from "~/constants/propTypes"
 
 interface Props {
 	item: WPPost

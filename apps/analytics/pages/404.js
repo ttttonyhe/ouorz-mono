@@ -1,6 +1,6 @@
-import React from 'react'
-import Layout from 'components/layout/Layout'
-import { FormattedMessage } from 'react-intl'
+import React from "react"
+import Layout from "components/layout/Layout"
+import { FormattedMessage } from "react-intl"
 
 export default function Custom404() {
 	return (

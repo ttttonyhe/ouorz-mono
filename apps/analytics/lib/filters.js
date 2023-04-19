@@ -1,8 +1,8 @@
-import { removeTrailingSlash, removeWWW, getDomainName } from './url'
+import { removeTrailingSlash, removeWWW, getDomainName } from "./url"
 
 export const urlFilter = (data, { raw }) => {
 	const isValidUrl = (url) => {
-		return url !== '' && url !== null && !url.startsWith('#')
+		return url !== "" && url !== null && !url.startsWith("#")
 	}
 
 	if (raw) {
@@ -13,7 +13,7 @@ export const urlFilter = (data, { raw }) => {
 		try {
 			const { pathname, search } = new URL(url, location.origin)
 
-			if (search.startsWith('?/')) {
+			if (search.startsWith("?/")) {
 				return `${pathname}${search}`
 			}
 
@@ -51,10 +51,10 @@ export const refFilter = (data, { domain, domainOnly, raw }) => {
 
 	const isValidRef = (referrer) => {
 		return (
-			referrer !== '' &&
+			referrer !== "" &&
 			referrer !== null &&
-			!referrer.startsWith('/') &&
-			!referrer.startsWith('#')
+			!referrer.startsWith("/") &&
+			!referrer.startsWith("#")
 		)
 	}
 
@@ -72,14 +72,14 @@ export const refFilter = (data, { domain, domainOnly, raw }) => {
 				return removeWWW(hostname)
 			}
 
-			if (!origin || origin === 'null') {
+			if (!origin || origin === "null") {
 				return `${protocol}${removeTrailingSlash(pathname)}`
 			}
 
-			if (protocol.startsWith('http')) {
+			if (protocol.startsWith("http")) {
 				const path = removeTrailingSlash(pathname)
-				const referrer = searchParams.get('referrer')
-				const query = referrer ? `?referrer=${referrer}` : ''
+				const referrer = searchParams.get("referrer")
+				const query = referrer ? `?referrer=${referrer}` : ""
 
 				return removeTrailingSlash(`${removeWWW(hostname)}${path}`) + query
 			}
@@ -123,7 +123,7 @@ export const eventTypeFilter = (data, types) => {
 	}
 
 	return data.filter(({ x }) => {
-		const [event] = x.split('\t')
+		const [event] = x.split("\t")
 		return types.some((type) => type === event)
 	})
 }

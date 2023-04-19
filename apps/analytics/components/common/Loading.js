@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import styles from './Loading.module.css'
+import React from "react"
+import PropTypes from "prop-types"
+import classNames from "classnames"
+import styles from "./Loading.module.css"
 
 function Loading({ className }) {
 	return (

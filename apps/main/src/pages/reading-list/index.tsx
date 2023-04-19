@@ -1,21 +1,21 @@
-import Head from 'next/head'
-import React from 'react'
-import useSWR from 'swr'
-import Link from 'next/link'
-import { Icon } from '@twilight-toolkit/ui'
-import fetcher from '~/lib/fetcher'
-import { NextPageWithLayout } from '~/pages/_app'
-import { pageLayout } from '~/components/Page'
-import { BookCard, BookCardLoading } from '~/components/Card/Book'
-import type { Book } from '~/pages/api/goodreads'
+import Head from "next/head"
+import React from "react"
+import useSWR from "swr"
+import Link from "next/link"
+import { Icon } from "@twilight-toolkit/ui"
+import fetcher from "~/lib/fetcher"
+import { NextPageWithLayout } from "~/pages/_app"
+import { pageLayout } from "~/components/Page"
+import { BookCard, BookCardLoading } from "~/components/Card/Book"
+import type { Book } from "~/pages/api/goodreads"
 
 const ReadingList: NextPageWithLayout = () => {
 	const { data: currentlyReading, error: currentlyReadingError } = useSWR(
-		'api/goodreads',
+		"api/goodreads",
 		fetcher
 	)
 	const { data: all, error: allError } = useSWR(
-		'api/goodreads?shelf=all',
+		"api/goodreads?shelf=all",
 		fetcher
 	)
 
@@ -39,7 +39,7 @@ const ReadingList: NextPageWithLayout = () => {
 						</div>
 						<div>
 							<h2 className="font-medium text-[28px] text-black dark:text-white tracking-wide flex items-center gap-x-1.5 whitespace-nowrap">
-								Reading List{' '}
+								Reading List{" "}
 								<span className="text-xs py-0.5 px-2 text-yellow-500 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-800 rounded-full border border-yellow-300 dark:border-yellow-700">
 									2023
 								</span>

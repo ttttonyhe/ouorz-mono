@@ -1,16 +1,16 @@
-import { useRouter } from 'next/router'
-import { FormattedMessage } from 'react-intl'
-import classNames from 'classnames'
-import dynamic from 'next/dynamic'
-import Link from 'components/common/Link'
-import LanguageButton from 'components/settings/LanguageButton'
-import HamburgerButton from 'components/common/HamburgerButton'
-import UserButton from 'components/settings/UserButton'
-import styles from './Header.module.css'
-import useUser from 'hooks/useUser'
-import { HOMEPAGE_URL } from 'lib/constants'
+import { useRouter } from "next/router"
+import { FormattedMessage } from "react-intl"
+import classNames from "classnames"
+import dynamic from "next/dynamic"
+import Link from "components/common/Link"
+import LanguageButton from "components/settings/LanguageButton"
+import HamburgerButton from "components/common/HamburgerButton"
+import UserButton from "components/settings/UserButton"
+import styles from "./Header.module.css"
+import useUser from "hooks/useUser"
+import { HOMEPAGE_URL } from "lib/constants"
 
-const ThemeButton = dynamic(() => import('components/settings/ThemeButton'), {
+const ThemeButton = dynamic(() => import("components/settings/ThemeButton"), {
 	ssr: false,
 })
 
@@ -20,12 +20,12 @@ export default function Header() {
 
 	return (
 		<>
-			<header className={classNames(styles.header, 'row')}>
+			<header className={classNames(styles.header, "row")}>
 				{user && (
 					<>
 						<HamburgerButton />
 						<div className={styles.links}>
-							<Link href={pathname.includes('/share') ? HOMEPAGE_URL : '/'}>
+							<Link href={pathname.includes("/share") ? HOMEPAGE_URL : "/"}>
 								<FormattedMessage id="label.home" defaultMessage="Home" />
 							</Link>
 							<Link href="/dashboard">

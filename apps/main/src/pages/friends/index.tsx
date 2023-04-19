@@ -1,14 +1,14 @@
-import Head from 'next/head'
-import React from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { GetStaticProps } from 'next'
-import { NextPageWithLayout } from '~/pages/_app'
-import { pageLayout } from '~/components/Page'
-import trimStr from '~/utilities/trimString'
-import getApi from '~/utilities/api'
-import { Icon } from '@twilight-toolkit/ui'
-import { GlowingBackground } from '~/components/Visual'
+import Head from "next/head"
+import React from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { GetStaticProps } from "next"
+import { NextPageWithLayout } from "~/pages/_app"
+import { pageLayout } from "~/components/Page"
+import trimStr from "~/utilities/trimString"
+import getApi from "~/utilities/api"
+import { Icon } from "@twilight-toolkit/ui"
+import { GlowingBackground } from "~/components/Visual"
 
 const Friends: NextPageWithLayout = ({ friends }: { friends: any }) => {
 	return (
@@ -103,7 +103,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 	const res = await fetch(
 		getApi({
-			cate: '2',
+			cate: "2",
 			perPage: count,
 		})
 	)

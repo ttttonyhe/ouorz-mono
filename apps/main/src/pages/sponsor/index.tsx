@@ -1,13 +1,13 @@
-import Head from 'next/head'
-import React from 'react'
-import Link from 'next/link'
-import { GetStaticProps } from 'next'
-import { Icon } from '@twilight-toolkit/ui'
-import { NextPageWithLayout } from '~/pages/_app'
-import { pageLayout } from '~/components/Page'
-import PageCard from '~/components/Card/Page'
-import getApi from '~/utilities/api'
-import { GlowingBackground } from '~/components/Visual'
+import Head from "next/head"
+import React from "react"
+import Link from "next/link"
+import { GetStaticProps } from "next"
+import { Icon } from "@twilight-toolkit/ui"
+import { NextPageWithLayout } from "~/pages/_app"
+import { pageLayout } from "~/components/Page"
+import PageCard from "~/components/Card/Page"
+import getApi from "~/utilities/api"
+import { GlowingBackground } from "~/components/Visual"
 
 const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 	return (

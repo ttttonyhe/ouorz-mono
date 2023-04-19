@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-import { useRouter } from 'next/router'
-import Page from 'components/layout/Page'
-import MenuLayout from 'components/layout/MenuLayout'
-import WebsiteSettings from 'components/settings/WebsiteSettings'
-import AccountSettings from 'components/settings/AccountSettings'
-import ProfileSettings from 'components/settings/ProfileSettings'
-import useUser from 'hooks/useUser'
+import React, { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import { useRouter } from "next/router"
+import Page from "components/layout/Page"
+import MenuLayout from "components/layout/MenuLayout"
+import WebsiteSettings from "components/settings/WebsiteSettings"
+import AccountSettings from "components/settings/AccountSettings"
+import ProfileSettings from "components/settings/ProfileSettings"
+import useUser from "hooks/useUser"
 
-const WEBSITES = '/settings'
-const ACCOUNTS = '/settings/accounts'
-const PROFILE = '/settings/profile'
+const WEBSITES = "/settings"
+const ACCOUNTS = "/settings/accounts"
+const PROFILE = "/settings/profile"
 
 export default function Settings() {
 	const { user } = useUser()

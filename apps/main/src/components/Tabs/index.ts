@@ -1,5 +1,5 @@
-import React from 'react'
-import Tabs from './component'
+import React from "react"
+import Tabs from "./component"
 
 export interface TabItemProps {
 	className?: string
@@ -19,7 +19,7 @@ export interface TabItemProps {
 
 export interface TabsProps {
 	items: TabItemProps[]
-	direction?: 'vertical'
+	direction?: "vertical"
 	defaultHighlighted?: boolean
 	verticalListWrapper?: React.MutableRefObject<HTMLElement>
 }

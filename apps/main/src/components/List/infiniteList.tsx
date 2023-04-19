@@ -1,12 +1,12 @@
-import React from 'react'
-import InfiniteScroll from 'react-infinite-scroll-component'
-import useSWRInfinite from 'swr/infinite'
-import CardEmpty from '~/components/Card/Empty'
-import CardSkeleton from '~/components/Card/Skeleton'
-import CardClickable from '~/components/Card/Clickable'
-import getApi from '~/utilities/api'
-import StaticList from './staticList'
-import { ListTypes } from '~/constants/propTypes'
+import React from "react"
+import InfiniteScroll from "react-infinite-scroll-component"
+import useSWRInfinite from "swr/infinite"
+import CardEmpty from "~/components/Card/Empty"
+import CardSkeleton from "~/components/Card/Skeleton"
+import CardClickable from "~/components/Card/Clickable"
+import getApi from "~/utilities/api"
+import StaticList from "./staticList"
+import { ListTypes } from "~/constants/propTypes"
 
 export interface InfiniteListProps {
 	type: ListTypes
@@ -19,21 +19,21 @@ export interface InfiniteListProps {
  */
 const getApiUrl = ({ type, cate, target }: InfiniteListProps) => {
 	switch (type) {
-		case 'index':
+		case "index":
 			return getApi({
 				sticky: false,
 				perPage: 10,
-				cateExclude: '5,2,74,334,335',
+				cateExclude: "5,2,74,334,335",
 			})
-		case 'cate':
+		case "cate":
 			return getApi({
 				perPage: 10,
 				cate: `${cate}`,
-				cateExclude: '5,2,74,334,335',
+				cateExclude: "5,2,74,334,335",
 			})
-		case 'search':
+		case "search":
 			return getApi({
-				cateExclude: '5,2,74,334,335',
+				cateExclude: "5,2,74,334,335",
 				search: target,
 			})
 		default:
@@ -88,7 +88,7 @@ const InfiniteList = (props: InfiniteListProps) => {
 				)
 			}
 			scrollThreshold="50px"
-			scrollableTarget={type === 'search' ? 'searchResultsDiv' : ''}
+			scrollableTarget={type === "search" ? "searchResultsDiv" : ""}
 		>
 			<StaticList posts={postData} />
 		</InfiniteScroll>

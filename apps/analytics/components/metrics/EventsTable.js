@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import { FormattedMessage } from 'react-intl'
-import MetricsTable from './MetricsTable'
-import Tag from 'components/common/Tag'
-import DropDown from 'components/common/DropDown'
-import { eventTypeFilter } from 'lib/filters'
-import usePageQuery from 'hooks/usePageQuery'
-import styles from './EventsTable.module.css'
+import React, { useState } from "react"
+import { FormattedMessage } from "react-intl"
+import MetricsTable from "./MetricsTable"
+import Tag from "components/common/Tag"
+import DropDown from "components/common/DropDown"
+import { eventTypeFilter } from "lib/filters"
+import usePageQuery from "hooks/usePageQuery"
+import styles from "./EventsTable.module.css"
 
 const EVENT_FILTER_DEFAULT = {
-	value: 'all',
+	value: "all",
 	label: <FormattedMessage id="label.all-events" defaultMessage="All events" />,
 }
 
@@ -23,12 +23,12 @@ export default function EventsTable({ websiteId, ...props }) {
 	]
 
 	function handleDataLoad(data) {
-		setEventTypes([...new Set(data.map(({ x }) => x.split('\t')[0]))])
+		setEventTypes([...new Set(data.map(({ x }) => x.split("\t")[0]))])
 		props.onDataLoad?.(data)
 	}
 
 	function handleChange(value) {
-		router.replace(resolve({ eventType: value === 'all' ? undefined : value }))
+		router.replace(resolve({ eventType: value === "all" ? undefined : value }))
 		setEventType(value)
 	}
 
@@ -63,7 +63,7 @@ export default function EventsTable({ websiteId, ...props }) {
 }
 
 const Label = ({ value }) => {
-	const [event, label] = value.split('\t')
+	const [event, label] = value.split("\t")
 	return (
 		<>
 			<Tag>{event}</Tag>

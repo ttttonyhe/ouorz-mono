@@ -1,6 +1,6 @@
-import { useTheme } from 'next-themes'
-import ContentLoader from 'react-content-loader'
-import openLink from '~/utilities/externalLink'
+import { useTheme } from "next-themes"
+import ContentLoader from "react-content-loader"
+import openLink from "~/utilities/externalLink"
 
 interface PodcastCardProps {
 	title: string
@@ -64,14 +64,14 @@ const PodcastCardLoading = (props: { uniqueKey: string }) => {
 	return (
 		<div className="flex items-center dark:bg-gray-800 dark:border dark:border-gray-700 rounded-md border shadow-sm hover:shadow-md transition-shadow bg-white w-50 z-40">
 			<ContentLoader
-				className={resolvedTheme === undefined ? 'opacity-50' : ''}
+				className={resolvedTheme === undefined ? "opacity-50" : ""}
 				uniqueKey={props.uniqueKey}
 				speed={2}
 				width={100}
-				style={{ width: '100%' }}
+				style={{ width: "100%" }}
 				height={305}
-				backgroundColor={resolvedTheme === 'dark' ? '#525252' : '#f3f3f3'}
-				foregroundColor={resolvedTheme === 'dark' ? '#373737' : '#ecebeb'}
+				backgroundColor={resolvedTheme === "dark" ? "#525252" : "#f3f3f3"}
+				foregroundColor={resolvedTheme === "dark" ? "#373737" : "#ecebeb"}
 			>
 				<rect x="0" y="0" rx="5" ry="5" width="99.7%" height="195" />
 				<rect x="15" y="222" rx="5" ry="5" width="50%" height="20" />

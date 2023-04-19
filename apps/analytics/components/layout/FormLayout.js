@@ -1,8 +1,8 @@
-import React from 'react'
-import { useSpring, animated } from 'react-spring'
-import classNames from 'classnames'
-import { ErrorMessage } from 'formik'
-import styles from './FormLayout.module.css'
+import React from "react"
+import { useSpring, animated } from "react-spring"
+import classNames from "classnames"
+import { ErrorMessage } from "formik"
+import styles from "./FormLayout.module.css"
 
 export default function FormLayout({ className, children }) {
 	return <div className={classNames(styles.form, className)}>{children}</div>
