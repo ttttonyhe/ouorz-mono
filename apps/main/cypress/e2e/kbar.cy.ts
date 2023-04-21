@@ -32,7 +32,7 @@ describe("Kbar", function () {
 				// use kbar to search articles
 				cy.get('[data-cy="kbar-input"]').type("search blog posts")
 				// start intercepting the request to get search results
-				cy.intercept("GET", "**/searchIndexes", {
+				cy.intercept("GET", "**/api/search", {
 					fixture: "searchIndex.json",
 				}).as("requestSearchIndex")
 				cy.get('[data-cy="tabs-list"]').last().click()
