@@ -7,8 +7,6 @@ import {
 	updateKbarLocation,
 	addToKbarLists,
 } from "../actions"
-import Fetcher from "~/lib/fetcher"
-import getApi from "~/utilities/api"
 
 const searchLocation = ["home", "search"]
 
@@ -28,26 +26,35 @@ export default function* updateKbarToSearchSaga() {
 		// determine if post data is already in cache
 		if (!searchList) {
 			// fetch search index data
-			const searchData = yield call(
-				Fetcher,
-				getApi({
-					searchIndexes: true,
+			const searchData = yield call(async (path) => {
+				const res = await fetch(path, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						query: "",
+					}),
 				})
-			)
+				return await res.json()
+			}, "api/search")
 			// construct post list data
-			searchList = searchData.ids.map((id: number, index: number) => {
-				const title = searchData.titles[index]
-				return {
-					label: title,
-					link: {
-						internal: `/post/${id}`,
-					},
-					onClick: () => {
-						window.location.href = `https://www.ouorz.com/post/${id}`
-					},
-					className: "w-full !justify-start !p-4",
+			searchList = searchData.hits.map(
+				(object: { post_id: string; post_title: string }) => {
+					const id = object.post_id
+					const title = object.post_title
+					return {
+						label: title,
+						link: {
+							internal: `/post/${id}`,
+						},
+						onClick: () => {
+							window.location.href = `https://www.ouorz.com/post/${id}`
+						},
+						className: "w-full !justify-start !p-4",
+					}
 				}
-			})
+			)
 			// add post list to cache
 			yield put(addToKbarLists("search", searchList))
 		}
