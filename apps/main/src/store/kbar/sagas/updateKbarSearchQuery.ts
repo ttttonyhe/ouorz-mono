@@ -36,8 +36,9 @@ export default function* updateKbarSearchQuerySaga(
 			}, "/api/search")
 
 			// construct post list data
+			const totalResultLength = searchData.hits.length
 			searchList = searchData.hits.map(
-				(object: { post_id: string; post_title: string }) => {
+				(object: { post_id: string; post_title: string }, index: number) => {
 					const id = object.post_id
 					const title = object.post_title
 					return {
@@ -49,6 +50,7 @@ export default function* updateKbarSearchQuerySaga(
 							window.location.href = `https://www.ouorz.com/post/${id}`
 						},
 						className: "w-full !justify-start !p-4",
+						description: `${index + 1} / ${totalResultLength}`,
 					}
 				}
 			)
@@ -56,7 +58,9 @@ export default function* updateKbarSearchQuerySaga(
 			// add post list to cache
 			yield put(addToKbarLists(cacheKey, searchList))
 
-			yield delay(1000)
+			yield delay(500)
+		} else {
+			yield delay(100)
 		}
 
 		// update current list

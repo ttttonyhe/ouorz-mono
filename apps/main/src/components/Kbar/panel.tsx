@@ -151,7 +151,11 @@ const KbarPanel = () => {
 						</p>
 					) : (
 						<div className="flex justify-between w-full items-center">
-							<div className={`flex gap-x-3 items-center ${item.color || ""}`}>
+							<div
+								className={`flex gap-x-3 items-center w-4/5 ${
+									item.color || ""
+								}`}
+							>
 								{item.icon && (
 									<span className="h-5 w-5 flex items-center">
 										<Icon name={item.icon} />

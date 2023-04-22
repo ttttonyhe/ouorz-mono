@@ -16,7 +16,11 @@ export default function* updateKbarToSearchSaga() {
 		yield put(setKbarLoading(true))
 
 		// set kbar placeholder
-		yield put(setKbarPlaceholder("Search articles..."))
+		yield put(
+			setKbarPlaceholder(
+				"Search articles... (10 most revelant results are returned)"
+			)
+		)
 
 		// stop loading
 		yield put(setKbarLoading(false))

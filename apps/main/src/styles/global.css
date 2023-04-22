@@ -569,7 +569,7 @@ abbr[title] {
 	top: 0;
 	left: 0;
 	transition: 0.15s ease;
-	transition-property: width, transform, opacity;
+	transition-property: width, height, transform, opacity;
 }
 
 .kbar-mask {
