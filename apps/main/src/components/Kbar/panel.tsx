@@ -256,10 +256,21 @@ const KbarPanel = () => {
 								<li
 									key={key}
 									onClick={() => {
+										const newLocation = location.slice(
+											0,
+											location.indexOf(key) + 1
+										)
+
+										if (
+											JSON.stringify(newLocation) === JSON.stringify(location)
+										) {
+											return
+										}
+
 										dispatch(
 											updateKbar({
 												key,
-												location: location.slice(0, location.indexOf(key) + 1),
+												location: newLocation,
 											})
 										)
 										setInputValue("")
