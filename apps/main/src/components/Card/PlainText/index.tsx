@@ -2,7 +2,7 @@ import React from "react"
 import TimeAgo from "react-timeago"
 import { Icon } from "@twilight-toolkit/ui"
 import getApi from "~/utilities/api"
-import { useDebounce } from "~/hooks"
+import { useDebouncedFunction } from "~/hooks"
 import { WPPost } from "~/constants/propTypes"
 
 interface Props {
@@ -35,7 +35,7 @@ export default function CardPlainText({ item }: Props) {
 			})
 	}
 
-	const doUpvote = useDebounce(upvote, 2000)
+	const doUpvote = useDebouncedFunction(upvote, 2000)
 
 	return (
 		<div className="w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6">
