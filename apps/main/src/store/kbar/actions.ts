@@ -4,6 +4,7 @@ import type { KbarListItem } from "~/components/Kbar"
 export const ACTIVATE_KBAR = "ACTIVATE_KBAR"
 export const DEACTIVATE_KBAR = "DEACTIVATE_KBAR"
 export const UPDATE_KBAR_TO_SEARCH = "UPDATE_KBAR_TO_SEARCH"
+export const UPDATE_KBAR_SEARCH_QUERY = "UPDATE_KBAR_SEARCH_QUERY"
 export const UPDATE_KBAR_TO_HOME = "UPDATE_KBAR_TO_HOME"
 export const UPDATE_KBAR_LOCATION = "UPDATE_KBAR_LOCATION"
 export const UPDATE_KBAR = "UPDATE_KBAR"
@@ -86,6 +87,16 @@ export const updateKbarToHome = () => {
 	return {
 		type: UPDATE_KBAR_TO_HOME,
 		payload: null,
+	}
+}
+
+// Update Kbar search query (search via Algolia)
+export const updateKbarSearchQuery = (query: string) => {
+	return {
+		type: UPDATE_KBAR_SEARCH_QUERY,
+		payload: {
+			query,
+		},
 	}
 }
 

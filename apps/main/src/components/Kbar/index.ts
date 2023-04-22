@@ -12,7 +12,6 @@ export type KbarListItem = {
 		external?: string
 	}
 	shortcut?: string[]
-	action?: () => void
 	description?: string
 	hoverable?: boolean
 	singleton?: boolean
@@ -21,6 +20,8 @@ export type KbarListItem = {
 		list: KbarListItem[]
 		placeholder?: string
 	}
+	action?: () => void
+	onInputChange?: (newValue: string) => void
 }
 
 export interface KbarProps {

@@ -3,11 +3,15 @@ import Link from "next/link"
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { useTheme } from "next-themes"
-import { useDispatch, useSelector } from "~/hooks"
-import { updateKbarToSearch, activateKbar } from "~/store/kbar/actions"
+import { useDebounce, useDispatch, useSelector } from "~/hooks"
+import {
+	updateKbarToSearch,
+	activateKbar,
+	updateKbarSearchQuery,
+} from "~/store/kbar/actions"
 import { HeaderTransition, OffsetTransition } from "../Motion"
 import Tabs from "../Tabs"
-import Kbar from "../Kbar"
+import Kbar, { KbarListItem } from "../Kbar"
 import useAnalytics from "~/hooks/analytics"
 import { selectGeneral } from "~/store/general/selectors"
 
@@ -146,7 +150,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 		},
 	]
 
-	const kbarItems = [
+	const kbarItems: KbarListItem[] = [
 		{
 			label: "Navigation",
 			id: "navigation-divider",
@@ -224,12 +228,15 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			id: "search",
 			icon: "search",
 			shortcut: ["s"],
+			description: "Command",
+			singleton: false,
 			action: () => {
 				dispatch(updateKbarToSearch())
 				trackEvent("searchBlogPosts", "kbar")
 			},
-			description: "Command",
-			singleton: false,
+			onInputChange: (query: string) => {
+				dispatch(updateKbarSearchQuery(query))
+			},
 		},
 		{
 			label: "Actions",

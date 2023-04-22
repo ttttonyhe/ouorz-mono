@@ -8,20 +8,24 @@ import {
 	useDispatch,
 	useBodyPointerEvents,
 	useBodyScroll,
+	useDebounce,
 } from "~/hooks"
 import { selectKbar } from "~/store/kbar/selectors"
 import { activateKbar, deactivateKbar, updateKbar } from "~/store/kbar/actions"
 import useAnalytics from "~/hooks/analytics"
+import { searchLocation } from "~/store/kbar/sagas/updateKbarToSearch"
 
 const Kbar = (props: KbarProps) => {
 	const dispatch = useDispatch()
 	const { visible, animation, location } = useSelector(selectKbar)
 	const [kbarInputValue, setInputValue] = useState("")
+	const [kbarInputValueChangeHandler, setKbarInputValueChangeHandler] =
+		useState(undefined)
 	const [, setBodyPointerEvents] = useBodyPointerEvents()
 	const [, setBodyScroll] = useBodyScroll()
 	const { trackEvent } = useAnalytics()
 
-	// register keybinding that triggers/hides the kbar
+	// Register keybinding that triggers/hides the kbar
 	useHotkeys("ctrl+k, command+k", (e) => {
 		e.preventDefault()
 		dispatch(activateKbar(props.list))
@@ -30,6 +34,8 @@ const Kbar = (props: KbarProps) => {
 	useHotkeys(
 		"esc",
 		() => {
+			setInputValue("")
+			setKbarInputValueChangeHandler(undefined)
 			// non-home location, esc to go back to last location
 			if (location.length >= 2) {
 				dispatch(
@@ -48,13 +54,13 @@ const Kbar = (props: KbarProps) => {
 		}
 	)
 
-	// effects on kbar visibility change
+	// Visibility effects
 	useEffect(() => {
 		// clear input value when kbar is closed
 		!visible && setInputValue("")
-		// disbale body pointer events when kbar is open
+
+		// disbale scrolling and pointer events when kbar is open
 		setBodyPointerEvents(!visible)
-		// disbale body scroll when kbar is open
 		setBodyScroll(!visible)
 
 		return () => {
@@ -63,12 +69,25 @@ const Kbar = (props: KbarProps) => {
 		}
 	}, [visible])
 
+	// Input effects
+	useDebounce(
+		() => {
+			if (location === searchLocation && kbarInputValueChangeHandler) {
+				kbarInputValueChangeHandler(kbarInputValue)
+			}
+		},
+		300,
+		[location, kbarInputValueChangeHandler, kbarInputValue]
+	)
+
 	return (
 		visible && (
 			<KbarContextProvider
 				value={{
 					inputValue: kbarInputValue,
 					setInputValue,
+					inputValueChangeHandler: kbarInputValueChangeHandler,
+					setInputValueChangeHandler: setKbarInputValueChangeHandler,
 				}}
 			>
 				<div

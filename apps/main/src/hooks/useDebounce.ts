@@ -1,25 +1,16 @@
-import { useState } from "react"
+import { DependencyList, useEffect } from "react"
+import useTimeoutFunction from "./useTimeoutFunction"
 
-/**
- * Hook to debounce a function
- *
- * @param {*} func
- * @param {number} delay
- * @return {*} debounced func
- */
-const useDebounce = <T>(
-	func: (...props: any[]) => T,
-	delay: number
-): typeof func => {
-	const [lastTime, setLastTime] = useState(0)
+export type UseDebounceReturn = [() => boolean | null, () => void]
 
-	const debouncedFunc = (...props: any[]): T => {
-		if (lastTime > Date.now() - delay) return
-		setLastTime(Date.now())
-		return func(...props)
-	}
+export default function useDebounce(
+	fn: Function,
+	ms: number = 0,
+	deps: DependencyList = []
+): UseDebounceReturn {
+	const [isReady, cancel, reset] = useTimeoutFunction(fn, ms)
 
-	return debouncedFunc
+	useEffect(reset, deps)
+
+	return [isReady, cancel]
 }
-
-export default useDebounce

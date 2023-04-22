@@ -63,7 +63,12 @@ const ListComponent = ({
 const KbarPanel = () => {
 	const router = useRouter()
 	const dispatch = useDispatch()
-	const { inputValue, setInputValue } = useContext(kbarContext)
+	const {
+		inputValue,
+		setInputValue,
+		inputValueChangeHandler,
+		setInputValueChangeHandler,
+	} = useContext(kbarContext)
 	const { list, placeholder, animation, location, loading } =
 		useSelector(selectKbar)
 	const verticalListWrapper = useRef<HTMLDivElement>(null)
@@ -115,6 +120,15 @@ const KbarPanel = () => {
 					}, 200)
 				} else {
 					actionFunc()
+				}
+
+				// clear input value
+				setInputValue("")
+
+				if (item.onInputChange) {
+					setInputValueChangeHandler(() => item.onInputChange)
+				} else {
+					setInputValueChangeHandler(undefined)
 				}
 			}
 		})
@@ -175,14 +189,17 @@ const KbarPanel = () => {
 		// update list data
 		setiInitialListItems(tabsListItems)
 		setTabsListItems(tabsListItems)
-
-		// clear input value
-		setInputValue("")
 	}, [list, location])
 
 	// Search list items
 	useEffect(() => {
-		if (!initialListItems || !initialListItems.length) return
+		if (
+			!initialListItems ||
+			!initialListItems.length ||
+			!!inputValueChangeHandler
+		) {
+			return
+		}
 
 		const resultList = initialListItems.filter((item) => {
 			// filter out unhoverable items when input value is not empty
@@ -245,6 +262,8 @@ const KbarPanel = () => {
 												location: location.slice(0, location.indexOf(key) + 1),
 											})
 										)
+										setInputValue("")
+										setInputValueChangeHandler(undefined)
 									}}
 									className="cursor-pointer capitalize hover:bg-gray-100 dark:hover:bg-gray-800 dark:border-gray-600 border rounded-md py-1 text-xs px-2"
 								>

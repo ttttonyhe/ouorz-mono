@@ -14,7 +14,9 @@ import {
 	UPDATE_KBAR_TO_SEARCH,
 	UPDATE_KBAR_TO_HOME,
 	UPDATE_KBAR,
+	UPDATE_KBAR_SEARCH_QUERY,
 } from "./actions"
+import updateKbarSearchQuerySaga from "./sagas/updateKbarSearchQuery"
 
 // Custom takeLatest function to:
 // 1. Delegate update kbar requests to their own saga
@@ -35,6 +37,9 @@ const takeLatestUpdateAction = (pattern: string | string[]) => {
 				case UPDATE_KBAR_TO_SEARCH:
 					saga = updateKbarToSearchSaga
 					break
+				case UPDATE_KBAR_SEARCH_QUERY:
+					saga = updateKbarSearchQuerySaga
+					break
 				default:
 					saga = updateKbarSaga
 			}
@@ -52,5 +57,6 @@ export default [
 		UPDATE_KBAR,
 		UPDATE_KBAR_TO_HOME,
 		UPDATE_KBAR_TO_SEARCH,
+		UPDATE_KBAR_SEARCH_QUERY,
 	]),
 ]

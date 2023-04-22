@@ -8,13 +8,15 @@ const client = algoliasearch(
 
 const search = async (req: NextApiRequest, res: NextApiResponse) => {
 	const { query } = req.body
+	const searchQuery = typeof query === "string" ? query : ""
+
 	const { results } = await client.search({
 		requests: [
 			{
 				indexName: process.env.ALGOLIA_INDEX_NAME,
-				query: typeof query === "string" ? query : query[0],
+				query: searchQuery,
 				attributesToRetrieve: ["post_title", "post_id"],
-				hitsPerPage: 1000,
+				hitsPerPage: 10,
 				facetFilters: [
 					"post_type_label:Posts",
 					[
