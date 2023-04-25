@@ -3,11 +3,14 @@ import { Icon } from "@twilight-toolkit/ui"
 import { useRouter } from "next/router"
 import Link from "next/link"
 import scrollToItemWithinDiv from "~/utilities/scrollTo"
+import { debounce } from "lodash"
 
 export default function Aside({ preNext }: { preNext: any }) {
 	const router = useRouter()
 	const [headersResult, setHeadersResult] = useState<any>([])
 	const [headersEl, setHeadersEl] = useState<any>([])
+
+	const scrollToItemWithinDivDebounced = debounce(scrollToItemWithinDiv, 200)
 
 	/**
 	 * Get all headers
@@ -96,7 +99,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 				prevHeader?.classList.remove("toc-active")
 				currentHeader?.classList.add("toc-active")
 				if (currentHeader) {
-					scrollToItemWithinDiv(listDiv, currentHeader)
+					scrollToItemWithinDivDebounced(listDiv, currentHeader)
 				}
 				lastHeaderOffset = currentHeaderOffset
 				currentHeaderId += 1
@@ -106,7 +109,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 					prevHeader?.classList.remove("toc-active")
 					prevPrevHeader?.classList.add("toc-active")
 					if (prevPrevHeader) {
-						scrollToItemWithinDiv(listDiv, prevPrevHeader)
+						scrollToItemWithinDivDebounced(listDiv, prevPrevHeader)
 					}
 					currentHeaderId -= 1
 					lastHeaderOffset = result[1][currentHeaderId - 1]
@@ -120,7 +123,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 			} else if (scrollPosition > lastHeaderOffset && currentHeaderId === 1) {
 				firstHeader?.classList.add("toc-active")
 				if (firstHeader) {
-					scrollToItemWithinDiv(listDiv, firstHeader)
+					scrollToItemWithinDivDebounced(listDiv, firstHeader)
 				}
 			}
 		}
