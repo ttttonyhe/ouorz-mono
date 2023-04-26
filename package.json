@@ -42,14 +42,14 @@
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.6.0",
-    "@commitlint/config-conventional": "^17.6.0",
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
     "@ouorz/eslint-config-root": "workspace:*",
     "@ouorz/prettier-config": "workspace:*",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.1",
-    "prettier": "^2.8.7",
-    "turbo": "^1.9.1"
+    "prettier": "^2.8.8",
+    "turbo": "^1.9.3"
   },
   "husky": {
     "hooks": {
