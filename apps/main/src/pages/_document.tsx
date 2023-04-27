@@ -29,7 +29,7 @@ class AppDocument extends Document {
 					<meta property="og:title" content="TonyHe" />
 					<meta
 						property="og:description"
-						content="Developer, blogger, podcaster"
+						content="Living an absolutely not meaningless life with totally not unachievable goals."
 					/>
 					<meta
 						property="og:image"

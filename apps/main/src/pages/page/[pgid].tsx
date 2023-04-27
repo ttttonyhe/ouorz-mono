@@ -8,6 +8,10 @@ import getApi from "~/utilities/api"
 import SubscriptionBox from "~/components/SubscriptionBox"
 import CommentBox from "~/components/CommentBox"
 import PostContent from "~/components/PostContent"
+import { useEffect } from "react"
+import { useRouter } from "next/router"
+import { useDispatch } from "~/hooks"
+import { setHeaderTitle } from "~/store/general/actions"
 
 const Redirect = redirect("/404")
 
@@ -17,7 +21,19 @@ interface Props {
 }
 
 const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
+	const router = useRouter()
+	const dispatch = useDispatch()
+
+	const { pgid } = router.query
 	const title = `${page.title.rendered} - TonyHe`
+
+	useEffect(() => {
+		dispatch(setHeaderTitle(page.title.rendered))
+
+		return () => {
+			dispatch(setHeaderTitle(""))
+		}
+	}, [pgid])
 
 	if (status) {
 		return (
@@ -54,18 +70,18 @@ const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 				<CommentBox />
 			</div>
 		)
-	} else {
-		return (
-			<Redirect>
-				<div className="text-center shadow-sm border rounded-md rounded-tl-none rounded-tr-none border-t-0 w-1/3 mx-auto bg-white py-3 animate-pulse">
-					<h1 className="text-lg font-medium">404 Not Found</h1>
-					<p className="text-gray-500 font-light tracking-wide text-sm">
-						redirecting...
-					</p>
-				</div>
-			</Redirect>
-		)
 	}
+
+	return (
+		<Redirect>
+			<div className="text-center shadow-sm border rounded-md rounded-tl-none rounded-tr-none border-t-0 w-1/3 mx-auto bg-white py-3 animate-pulse">
+				<h1 className="text-lg font-medium">404 Not Found</h1>
+				<p className="text-gray-500 font-light tracking-wide text-sm">
+					redirecting...
+				</p>
+			</div>
+		</Redirect>
+	)
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

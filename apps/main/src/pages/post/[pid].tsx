@@ -64,7 +64,10 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 		).catch((err) => {
 			console.error(err)
 		})
-	}, [])
+		return () => {
+			dispatch(setHeaderTitle(""))
+		}
+	}, [pid])
 
 	return (
 		<div>
