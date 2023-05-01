@@ -24,6 +24,15 @@ class AppDocument extends Document {
 					<meta name="twitter:card" content="summary_large_image" />
 					<meta name="twitter:site" content="@ttttonyhe" />
 					<meta name="twitter:creator" content="@ttttonyhe" />
+					<meta property="twitter:title" content="TonyHe" />
+					<meta
+						property="twitter:image"
+						content="https://static.ouorz.com/ouorz-og-image.jpg"
+					/>
+					<meta
+						property="twitter:description"
+						content="Living an absolutely not meaningless life with totally not unachievable goals."
+					/>
 					<meta property="og:url" content="https://www.ouorz.com" />
 					<meta property="og:type" content="website" />
 					<meta property="og:title" content="TonyHe" />
