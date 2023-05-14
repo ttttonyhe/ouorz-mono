@@ -5,11 +5,7 @@ export default function Top() {
 	return (
 		<div className="mt-4 grid lg:grid-cols-5 lg:gap-3">
 			<div className="grid-cols-3 gap-3 col-start-1 col-span-3 hidden lg:grid">
-				<a
-					target="_blank"
-					href="https://github.com/ttttonyhe"
-					rel="noreferrer"
-				>
+				<a target="_blank" href="https://github.com/ttttonyhe" rel="noreferrer">
 					<Button
 						type="default"
 						icon="github"
