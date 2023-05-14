@@ -9,8 +9,8 @@ export const ANALYTICS_API = {
 }
 
 export const GITHUB_API = {
-	USER: "https://api.github.com/users/HelipengTony",
-	REPOS: "https://api.github.com/users/HelipengTony/repos",
+	USER: "https://api.github.com/users/ttttonyhe",
+	REPOS: "https://api.github.com/users/ttttonyhe/repos",
 }
 
 export const GOODREADS_API = {

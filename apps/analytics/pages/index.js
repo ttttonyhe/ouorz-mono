@@ -79,7 +79,7 @@ export default function DefaultPage() {
 						</li>
 						<li>
 							<a
-								href="https://github.com/HelipengTony/ouorz-mono/tree/main/apps/analytics"
+								href="https://github.com/ttttonyhe/ouorz-mono/tree/main/apps/analytics"
 								target="_blank"
 								rel="noopener noreferrer"
 							>

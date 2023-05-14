@@ -103,7 +103,7 @@ export default function Footer() {
 				</a>{" "}
 				<span>·</span>{" "}
 				<a
-					href="https://github.com/HelipengTony/ouorz-mono"
+					href="https://github.com/ttttonyhe/ouorz-mono"
 					target="_blank"
 					rel="noreferrer"
 				>

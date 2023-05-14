@@ -2,13 +2,13 @@
   <h1>OUORZ-MONO</h1>
   <p>Front-end code & Docker image that power <a href="https://www.ouorz.com" target="_blank">www.ouorz.com</a> and other related projects</p>
 
-  <a href="https://github.com/HelipengTony/ouorz-mono">
-    <img src="https://github.com/HelipengTony/ouorz-mono/workflows/Tests/badge.svg?branch=main" alt="build status">
+  <a href="https://github.com/ttttonyhe/ouorz-mono">
+    <img src="https://github.com/ttttonyhe/ouorz-mono/workflows/Tests/badge.svg?branch=main" alt="build status">
   </a>
 
 
-  <a href="https://github.com/HelipengTony/ouorz-mono">
-    <img src="https://img.shields.io/github/license/HelipengTony/ouorz-mono.svg" alt="license">
+  <a href="https://github.com/ttttonyhe/ouorz-mono">
+    <img src="https://img.shields.io/github/license/ttttonyhe/ouorz-mono.svg" alt="license">
   </a>
 </div>
 
@@ -23,9 +23,9 @@
 
 ### Past Iterations
 
-- Antony-Nuxt (Nuxt.js / Vue.js v2) [https://github.com/HelipengTony/antony-nuxt →](https://github.com/HelipengTony/antony-nuxt)
-- Antony (Vue.js v2) [https://github.com/HelipengTony/antony →](https://github.com/HelipengTony/antony)
-- Tony (Vue.js v2 / PHP) [https://github.com/HelipengTony/tony →](https://github.com/HelipengTony/tony)
+- Antony-Nuxt (Nuxt.js / Vue.js v2) [https://github.com/ttttonyhe/antony-nuxt →](https://github.com/ttttonyhe/antony-nuxt)
+- Antony (Vue.js v2) [https://github.com/ttttonyhe/antony →](https://github.com/ttttonyhe/antony)
+- Tony (Vue.js v2 / PHP) [https://github.com/ttttonyhe/tony →](https://github.com/ttttonyhe/tony)
 
 <br/>
 
@@ -34,7 +34,7 @@
 - SSR/SSG/On-demand ISR
 - Command palette
 - Redux + Redux Saga state management
-- [Nexment](https://github.com/HelipengTony/nexment) comment system
+- [Nexment](https://github.com/ttttonyhe/nexment) comment system
 - Dynamic table of contents sidebar
 - Personal dashboard
 - Dark mode
@@ -67,7 +67,7 @@ Super opinionated, completely overkill.
   - WordPress (Qiniu - Static file storage)
   - WP REST API (GraphQL implementation coming soon)
   - Tencent Cloud CVM (CentOS/Nginx/MySQL/PHP)
-  - [Nexment](https://github.com/HelipengTony/nexment) (LeanCloud)
+  - [Nexment](https://github.com/ttttonyhe/nexment) (LeanCloud)
   - Newsletter (Buttondown)
 - Error Logging & Web Vitals Metric
   - Sentry
@@ -84,7 +84,7 @@ Super opinionated, completely overkill.
 ### Project Setup
 
 ```bash
-git clone git@github.com:HelipengTony/ouorz-mono.git
+git clone git@github.com:ttttonyhe/ouorz-mono.git
 pnpm install
 cd apps/main
 ```
@@ -195,7 +195,7 @@ Follow the instructions [here →](https://dev.maxmind.com/geoip/geolite2-free-g
 ### Project Setup
 
 ```bash
-git clone git@github.com:HelipengTony/ouorz-mono.git
+git clone git@github.com:ttttonyhe/ouorz-mono.git
 pnpm install
 cd apps/analytics
 ```
@@ -396,9 +396,9 @@ Make sure to set root directory path to `apps/<project-name>`, then update build
 cd ../.. && pnpm run build:<project-name>
 ```
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/HelipengTony/ouorz-mono)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ttttonyhe/ouorz-mono)
 
-[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/HelipengTony/ouorz-mono)
+[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ttttonyhe/ouorz-mono)
 
 <br/>
 
@@ -411,6 +411,6 @@ git diff --quiet HEAD^ HEAD ./
 <br/>
 
 ## License
-[GPL-3.0](https://github.com/HelipengTony/ouorz-mono/blob/main/LICENSE)
+[GPL-3.0](https://github.com/ttttonyhe/ouorz-mono/blob/main/LICENSE)
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FHelipengTony%2Fouorz-mono.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FHelipengTony%2Fouorz-mono?ref=badge_large)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fttttonyhe%2Fouorz-mono.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fttttonyhe%2Fouorz-mono?ref=badge_large)

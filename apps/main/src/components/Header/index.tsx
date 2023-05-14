@@ -417,7 +417,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			description: "Link",
 			icon: "github",
 			link: {
-				external: "https://github.com/HelipengTony",
+				external: "https://github.com/ttttonyhe",
 			},
 		},
 		{

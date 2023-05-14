@@ -192,10 +192,10 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						<div className="mb-10 grid grid-cols-2 gap-4">
 							<PageCard
 								title="Github"
-								des="HelipengTony"
+								des="ttttonyhe"
 								icon="githubLine"
 								className="text-black dark:text-white"
-								href="https://github.com/HelipengTony"
+								href="https://github.com/ttttonyhe"
 							/>
 							<PageCard
 								title="Podcast"
@@ -216,10 +216,10 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						<div className="mb-4">
 							<PageCard
 								title="Github Sponsors"
-								des="HelipengTony"
+								des="ttttonyhe"
 								icon="love"
 								className="text-pink-600"
-								href="https://github.com/sponsors/HelipengTony"
+								href="https://github.com/sponsors/ttttonyhe"
 							/>
 						</div>
 						<div className="grid grid-cols-2 gap-4">

@@ -54,10 +54,10 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 				<div className="mt-5 mb-10 grid grid-cols-2 gap-4">
 					<PageCard
 						title="Github"
-						des="HelipengTony"
+						des="ttttonyhe"
 						icon="githubLine"
 						className="text-black dark:text-white"
-						href="https://github.com/HelipengTony"
+						href="https://github.com/ttttonyhe"
 					/>
 					<PageCard
 						title="Podcast"
@@ -91,10 +91,10 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					<div className="mt-4 grid grid-cols-2 gap-4">
 						<PageCard
 							title="Github Sponsors"
-							des="HelipengTony"
+							des="ttttonyhe"
 							icon="love"
 							className="text-pink-600"
-							href="https://github.com/sponsors/HelipengTony"
+							href="https://github.com/sponsors/ttttonyhe"
 						/>
 						<PageCard
 							title="Bitcoin"

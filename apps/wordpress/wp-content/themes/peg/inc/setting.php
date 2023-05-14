@@ -193,7 +193,7 @@ if(is_admin()){
      
     <div class="wrap" style="width: 47%;margin: 10vh auto;">
         <h1 style="font-weight: 600;font-size: 2.5rem;">主题设置</h1>
-        <p style="margin: 4px 0;color: #777;letter-spacing: .4px;">本主题基于免费主题 King 修改,前端使用了 Vue.js,请务必开启Wordpress Rest Api功能<br/>本主题已开源,尊重作者版权:<a target="_blank" href="https://github.com/HelipengTony/ouorz" style="color: #555;text-decoration: none;margin-left: 5px;">https://github.com/HelipengTony/ouorz_theme</a></p>
+        <p style="margin: 4px 0;color: #777;letter-spacing: .4px;">本主题基于免费主题 King 修改,前端使用了 Vue.js,请务必开启Wordpress Rest Api功能<br/>本主题已开源,尊重作者版权:<a target="_blank" href="https://github.com/ttttonyhe/ouorz" style="color: #555;text-decoration: none;margin-left: 5px;">https://github.com/ttttonyhe/ouorz_theme</a></p>
         <div style="background: #f7f8f9;padding: 5px 20px;box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 2px !important;border-radius: 4px;margin: 20px 0;">
             <?php admin_show_category(); ?>
         </div>
@@ -493,7 +493,7 @@ if(is_admin()){
             var show = function(new_v,d_url){
             var $menuAppearance = $("#menu-appearance");
             $menuAppearance.pointer({
-                content: '<h3>更新提示</h3><p>Tony 主题现已更新至 V'+ new_v +'，包含重要更新<br/>请前往 <a href="https://github.com/HelipengTony/tony">Github</a> / <a href="'+d_url+'">直接下载</a></p>',
+                content: '<h3>更新提示</h3><p>Tony 主题现已更新至 V'+ new_v +'，包含重要更新<br/>请前往 <a href="https://github.com/ttttonyhe/tony">Github</a> / <a href="'+d_url+'">直接下载</a></p>',
                 position: {
                     edge: "left",
                     align: "center"
