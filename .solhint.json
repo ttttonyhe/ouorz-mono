@@ -1,0 +1,72 @@
+{
+  "extends": "solhint:recommended",
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "avoid-tx-origin": "warn",
+    "check-send-result": "error",
+    "code-complexity": [
+      "error",
+      5
+    ],
+    "compiler-version": [
+      "error",
+      ">=0.8.0"
+    ],
+    "comprehensive-interface": "error",
+    "const-name-snakecase": "off",
+    "constructor-syntax": "error",
+    "contract-name-camelcase": "error",
+    "event-name-camelcase": "error",
+    "function-max-lines": [
+      "warn",
+      50
+    ],
+    "func-name-mixedcase": "error",
+    "func-visibility": [
+      "error",
+      {
+        "ignoreConstructors": true
+      }
+    ],
+    "imports-on-top": "error",
+    "max-line-length": [
+      "error",
+      120
+    ],
+    "max-states-count": [
+      "warn",
+      20
+    ],
+    "modifier-name-mixedcase": "error",
+    "no-console": "error",
+    "no-empty-blocks": "error",
+    "no-unused-vars": "error",
+    "not-rely-on-time": "off",
+    "ordering": "warn",
+    "private-vars-leading-underscore": [
+      "error",
+      {
+        "strict": true
+      }
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "reason-string": [
+      "error",
+      {
+        "maxLength": 64
+      }
+    ],
+    "reentrancy": "error",
+    "state-visibility": "error",
+    "use-forbidden-name": "error",
+    "var-name-mixedcase": "error",
+    "visibility-modifier-order": "error",
+    "no-global-import": "off"
+  }
+}

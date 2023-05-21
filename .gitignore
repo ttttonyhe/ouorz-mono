@@ -171,3 +171,7 @@ apps/wordpress/wp-content/uploads/
 apps/wordpress/.htaccess
 
 dev.sh
+
+# zksync
+artifacts-zk
+cache-zk
