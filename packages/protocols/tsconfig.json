@@ -13,7 +13,7 @@
 		"isolatedModules": true,
 		"incremental": true
 	},
-	"include": ["**/*.ts"],
+	"include": ["./scripts", "./deploy"],
 	"files": ["./hardhat.config.ts"],
 	"exclude": ["node_modules"]
 }

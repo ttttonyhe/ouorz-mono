@@ -1,10 +1,12 @@
 {
-	"name": "@ouorz/blockchain",
+	"name": "@ouorz/protocols",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
 		"compile": "hardhat compile",
-		"deploy:blog": "hardhat deploy-zksync --script Blog.ts",
+		"deploy:blog": "hardhat run ./scripts/deployBlogProxy.ts",
+		"upgrade:blog": "hardhat run ./scripts/upgradeBlogImpl.ts",
+		"verify:blog": "hardhat run ./scripts/verifyBlogImpl.ts",
 		"lint": "solhint -f table 'contracts/**/*.sol'",
 		"clean": "rm -rf node_modules && rm -rf .turbo && rm -rf artifacts-zk && rm -rf cache-zk"
 	},
@@ -13,12 +15,11 @@
 		"@matterlabs/hardhat-zksync-solc": "^0.3.17",
 		"@matterlabs/hardhat-zksync-upgradable": "0.0.1-alpha.2",
 		"@matterlabs/hardhat-zksync-verify": "^0.1.7",
+		"@nomiclabs/hardhat-ethers": "^2.2.3",
 		"@nomiclabs/hardhat-etherscan": "^3.1.7",
 		"@openzeppelin/contracts": "^4.8.3",
 		"@openzeppelin/contracts-upgradeable": "^4.8.3",
 		"@openzeppelin/hardhat-upgrades": "^1.26.0",
-		"solhint": "^3.4.1",
-		"solhint-plugin-prettier": "^0.0.5",
 		"dotenv": "^16.0.1",
 		"ethers": "^5.7.2",
 		"hardhat": "^2.14.0",

@@ -1,0 +1,26 @@
+{
+  "name": "@ouorz/interface",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 5555",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint --fix",
+    "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo && rm -rf .next"
+  },
+  "dependencies": {
+    "@ouorz/protocols": "workspace:*",
+    "ethers": "^5.7.2",
+    "next": "^13.4.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "zksync-web3": "^0.14.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.2",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "typescript": "^5.0.4"
+  }
+}

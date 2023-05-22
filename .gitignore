@@ -175,3 +175,4 @@ dev.sh
 # zksync
 artifacts-zk
 cache-zk
+.upgradable
