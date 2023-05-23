@@ -1,5 +1,5 @@
 {
-	"name": "@ouorz/protocols",
+	"name": "@ouorz/twilight-protocol",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {

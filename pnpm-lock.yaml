@@ -233,9 +233,9 @@ importers:
 
   apps/interface:
     dependencies:
-      '@ouorz/protocols':
+      '@ouorz/twilight-protocol':
         specifier: workspace:*
-        version: link:../../packages/protocols
+        version: link:../../packages/twilight-protocol
       ethers:
         specifier: ^5.7.2
         version: 5.7.2
@@ -521,7 +521,7 @@ importers:
 
   packages/prettier-config: {}
 
-  packages/protocols:
+  packages/twilight-protocol:
     devDependencies:
       '@matterlabs/hardhat-zksync-deploy':
         specifier: ^0.6.3

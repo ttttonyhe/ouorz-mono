@@ -4,8 +4,8 @@ import { useState, useEffect } from "react"
 import { Contract, Web3Provider, Provider, Signer } from "zksync-web3"
 import { ethers } from "ethers"
 
-import Address from "@ouorz/protocols/deployments/address.json"
-import Artifact from "@ouorz/protocols/artifacts-zk/contracts/Blog.sol/Blog.json"
+import Address from "@ouorz/twilight-protocol/deployment/address.json"
+import Artifact from "@ouorz/twilight-protocol/artifacts-zk/contracts/TwilightBlog.sol/TwilightBlog.json"
 
 class BlogContractInterface {
 	provider: Provider
@@ -18,7 +18,11 @@ class BlogContractInterface {
 		this.signer = new Web3Provider((window as any).ethereum).getSigner(
 			selectedAddress
 		)
-		this.contract = new Contract(Address.BlogProxy, Artifact.abi, this.signer)
+		this.contract = new Contract(
+			Address.TwilightBlogProxy,
+			Artifact.abi,
+			this.signer
+		)
 	}
 
 	async getAuthor() {

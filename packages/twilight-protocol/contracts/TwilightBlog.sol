@@ -5,14 +5,14 @@ import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
-import { IBlog } from "./interfaces/IBlog.sol";
+import { ITwilightBlog } from "./interfaces/ITwilightBlog.sol";
 import { Events } from "./libraries/Events.sol";
 import { DataTypes } from "./libraries/DataTypes.sol";
 import { Constants } from "./libraries/Constants.sol";
 import { CategoryAlreadyExists, CategoryDoesNotExist } from "./libraries/Errors.sol";
 
 // Keep track of blog info, and blog entry categories
-contract Blog is IBlog, Initializable, OwnableUpgradeable {
+contract TwilightBlog is ITwilightBlog, Initializable, OwnableUpgradeable {
 	using EnumerableSet for EnumerableSet.UintSet;
 
 	uint256 internal constant _VERSION = 1;
@@ -44,7 +44,7 @@ contract Blog is IBlog, Initializable, OwnableUpgradeable {
 		string memory description_
 	) external override onlyOwner categoryDoesNotExist(id_) {
 		_catgeoryIds.add(id_);
-		_categoryIdToDetail[id_] = DataTypes.CategoryMetadata({
+		_categoryIdToMetadata[id_] = DataTypes.CategoryMetadata({
 			id: id_,
 			name: name_,
 			description: description_
@@ -69,7 +69,7 @@ contract Blog is IBlog, Initializable, OwnableUpgradeable {
 		uint256 categoryId,
 		string memory name_
 	) external override onlyOwner categoryExists(categoryId) {
-		_categoryIdToDetail[categoryId].name = name_;
+		_categoryIdToMetadata[categoryId].name = name_;
 
 		emit Events.CategoryUpdated(categoryId);
 	}
@@ -79,7 +79,7 @@ contract Blog is IBlog, Initializable, OwnableUpgradeable {
 		uint256 categoryId
 	) external override onlyOwner categoryExists(categoryId) {
 		_catgeoryIds.remove(categoryId);
-		delete _categoryIdToDetail[categoryId];
+		delete _categoryIdToMetadata[categoryId];
 		delete _categoryIdToEntryIds[categoryId];
 
 		emit Events.CategoryDeleted(categoryId);
@@ -114,7 +114,7 @@ contract Blog is IBlog, Initializable, OwnableUpgradeable {
 
 		blogUri = uri_;
 		_catgeoryIds.add(Constants.DEFAULT_CATEGORY_ID);
-		_categoryIdToDetail[Constants.DEFAULT_CATEGORY_ID] = DataTypes.CategoryMetadata({
+		_categoryIdToMetadata[Constants.DEFAULT_CATEGORY_ID] = DataTypes.CategoryMetadata({
 			id: Constants.DEFAULT_CATEGORY_ID,
 			name: Constants.DEFAULT_CATEGORY_NAME,
 			description: Constants.DEFAULT_CATEGORY_DESCRIPTION
@@ -128,7 +128,7 @@ contract Blog is IBlog, Initializable, OwnableUpgradeable {
 	function getCategoryDetail(
 		uint256 categoryId
 	) public view override categoryExists(categoryId) returns (DataTypes.CategoryMetadata memory) {
-		return _categoryIdToDetail[categoryId];
+		return _categoryIdToMetadata[categoryId];
 	}
 
 	function getCategoryEntryIds(

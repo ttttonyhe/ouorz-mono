@@ -10,7 +10,7 @@
     "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo && rm -rf .next"
   },
   "dependencies": {
-    "@ouorz/protocols": "workspace:*",
+    "@ouorz/twilight-protocol": "workspace:*",
     "ethers": "^5.7.2",
     "next": "^13.4.3",
     "react": "^18.2.0",

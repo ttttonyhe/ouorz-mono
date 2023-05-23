@@ -10,6 +10,9 @@ import "@matterlabs/hardhat-zksync-upgradable"
 dotenv.config()
 
 const config: HardhatUserConfig = {
+	solidity: {
+		version: "0.8.18",
+	},
 	zksolc: {
 		version: "1.3.10",
 		compilerSource: "binary",
@@ -29,9 +32,6 @@ const config: HardhatUserConfig = {
 			ethNetwork: "goerli",
 			zksync: true,
 		},
-	},
-	solidity: {
-		version: "0.8.18",
 	},
 }
 
