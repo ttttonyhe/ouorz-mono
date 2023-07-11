@@ -46,7 +46,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "gh-pages": "^2.0.1",
     "hanabi": "^0.4.0",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.5.3",
     "marked": "^0.5.1",
     "mini-css-extract-plugin": "^0.4.3",
     "node-sass": "^4.9.3",
