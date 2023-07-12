@@ -32,7 +32,7 @@ const borderRadius = (props: GlowingDivBackgroundProps) => {
 	}
 }
 
-const GlowingDivBackground = styled.div`
+const GlowingDivBackground = styled.div<GlowingDivBackgroundProps>`
 	border-radius: ${borderRadius};
 	pointer-events: none;
 	user-select: none;
