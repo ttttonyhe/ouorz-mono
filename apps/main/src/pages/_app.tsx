@@ -46,7 +46,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
 				{/* Redux Store Provider */}
 				<ReduxProvider store={store}>
 					<div className="bg-gbg dark:bg-neutral-900 dark:text-white min-h-screen">
-						{getLayout(<Component {...pageProps} />)}
+						<>{getLayout(<Component {...pageProps} />)}</>
 					</div>
 				</ReduxProvider>
 			</ThemeProvider>
