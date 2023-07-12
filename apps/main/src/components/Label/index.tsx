@@ -27,7 +27,7 @@ export default function Label({ type, icon, children, preview }: LabelProps) {
 							<Icon name={icon} />
 						</span>
 					)}
-					{children}
+					<>{children}</>
 				</label>
 			)
 		case "secondary":
@@ -38,7 +38,7 @@ export default function Label({ type, icon, children, preview }: LabelProps) {
 							<Icon name={icon} />
 						</span>
 					)}
-					{children}
+					<>{children}</>
 				</label>
 			)
 		case "green":
@@ -48,7 +48,7 @@ export default function Label({ type, icon, children, preview }: LabelProps) {
 						preview ? "px-3 py-0.5" : "px-4 py-1.5"
 					} bg-green-100 dark:bg-green-800 hover:bg-green-200 dark:hover:bg-green-700 text-center rounded-md text-xl tracking-wide text-green-500 dark:text-green-400 align-middle active:scale-[0.985] active:translate-y-[0.5px] transition-transform duration-[50ms] ease-linear`}
 				>
-					{children}
+					<>{children}</>
 					{icon && (
 						<span className="w-5 h-5 ml-1 group-hover:animate-pointer">
 							<Icon name={icon} />

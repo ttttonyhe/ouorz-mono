@@ -129,7 +129,7 @@ const Hover = ({
 			onMouseMove={handleOnMouseMove}
 			onMouseLeave={handleOnMouseLeave}
 		>
-			{children}
+			<>{children}</>
 		</div>
 	)
 }

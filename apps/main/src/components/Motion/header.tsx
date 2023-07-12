@@ -32,7 +32,7 @@ const BoxShadowTransition = (props: Props) => {
 
 	return (
 		<ScrollWrapper handler={handler} endPosition={40}>
-			{children}
+			<>{children}</>
 		</ScrollWrapper>
 	)
 }

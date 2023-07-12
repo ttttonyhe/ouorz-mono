@@ -12,7 +12,7 @@ export default function Page(props: Props) {
 		<div>
 			<Header />
 			<main className="w-full min-h-main lg:w-content h-auto mx-auto pt-0 lg:pt-20 px-5 lg:px-10">
-				{children}
+				<>{children}</>
 			</main>
 			<Footer />
 		</div>

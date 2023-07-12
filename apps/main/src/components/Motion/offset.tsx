@@ -23,7 +23,7 @@ const OffsetTransition = (props: Props) => {
 
 	return (
 		<ScrollWrapper handler={handler} startPosition={50} endPosition={125}>
-			{children}
+			<>{children}</>
 		</ScrollWrapper>
 	)
 }
