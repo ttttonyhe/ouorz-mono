@@ -65,7 +65,7 @@ const Pages: NextPageWithLayout = () => {
 				/>
 				<PageCard
 					title="Links"
-					des="Some of my friends"
+					des="Friends from the Internet"
 					icon="people"
 					className="text-pink-400"
 					href="/friends"
