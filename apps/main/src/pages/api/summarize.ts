@@ -13,7 +13,7 @@ type ResDataType =
 			choices: [
 				{
 					text: string
-				}
+				},
 			]
 	  }
 	| {

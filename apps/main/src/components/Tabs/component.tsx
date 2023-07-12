@@ -314,9 +314,11 @@ const Tabs = (props: TabsProps) => {
 							}}
 							onClick={onClick}
 						>
-							{item.component || (
-								<TabItemComponent {...item} key={item.label} index={index} />
-							)}
+							<>
+								{item.component || (
+									<TabItemComponent {...item} key={item.label} index={index} />
+								)}
+							</>
 						</li>
 					)
 				})}

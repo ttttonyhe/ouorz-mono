@@ -26,7 +26,7 @@ const useBodyScroll = (): [boolean, Dispatch<SetStateAction<boolean>>] => {
  */
 const useBodyPointerEvents = (): [
 	boolean,
-	Dispatch<SetStateAction<boolean>>
+	Dispatch<SetStateAction<boolean>>,
 ] => {
 	if (typeof document === "undefined") return [false, (t: boolean) => t]
 

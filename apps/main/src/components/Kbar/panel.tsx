@@ -222,14 +222,12 @@ const KbarPanel = () => {
 			data-cy="kbar-panel"
 			className="w-screen -ml-10 h-screen flex justify-center pointer-events-auto absolute"
 		>
-			{
-				// register shortcuts of list items
-				list?.map((item, index) => {
-					if (item.shortcut?.length) {
-						return <HotkeyHelper key={index} item={item} />
-					}
-				})
-			}
+			{// register shortcuts of list items
+			list?.map((item, index) => {
+				if (item.shortcut?.length) {
+					return <HotkeyHelper key={index} item={item} />
+				}
+			})}
 			<div
 				className={`z-50 ml-[16px] w-[620px] border dark:border-gray-700 rounded-xl shadow-2xl overflow-hidden backdrop-blur-lg bg-white/70 dark:bg-black/70 mt-[8%] h-fit max-h-[420px] ${
 					animation === "transition"
