@@ -22,7 +22,7 @@ export default function Top() {
 					<Button
 						type="default"
 						icon="linkedIn"
-						className="!w-full text-blue-400 text-3 leading-14"
+						className="!w-full text-blue-600 text-3 leading-14"
 					>
 						<span className="tracking-normal">LinkedIn</span>
 					</Button>
