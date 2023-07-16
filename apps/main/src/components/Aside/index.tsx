@@ -200,9 +200,11 @@ export default function Aside({ preNext }: { preNext: any }) {
 
 	const Tour = () => {
 		const b =
-			preNext["next"][0] && [58, 5, 2, 74].indexOf(preNext["next"][2]) === -1
+			preNext["next"][0] &&
+			[58, 5, 2, 3, 335, 74].indexOf(preNext["next"][2]) === -1
 		const a =
-			preNext["prev"][0] && [58, 5, 2, 74].indexOf(preNext["prev"][2]) === -1
+			preNext["prev"][0] &&
+			[58, 5, 2, 3, 335, 74].indexOf(preNext["prev"][2]) === -1
 		if (a || b) {
 			return (
 				<div
