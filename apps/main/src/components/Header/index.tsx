@@ -426,7 +426,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			description: "Link",
 			icon: "briefCase",
 			link: {
-				external: "https://www.linkedin.com/in/lipenghe",
+				external: "https://www.linkedin.com/in/~lhe",
 			},
 		},
 		{

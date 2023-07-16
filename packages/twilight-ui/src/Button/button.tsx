@@ -1,6 +1,6 @@
-import React from 'react'
-import Icon from '../Icon'
-import type { ButtonTypes, IconNames } from '../utils/propTypes'
+import React from "react"
+import Icon from "../Icon"
+import type { ButtonTypes, IconNames } from "../utils/propTypes"
 
 interface Props {
 	/**
@@ -43,12 +43,12 @@ const Template = ({
 		<button
 			type="button"
 			className={`${
-				className ? `${className} ` : ''
+				className ? `${className} ` : ""
 			}${defaultClassName} effect-pressing`}
 			{...args}
 		>
 			{icon && (
-				<span className={children ? 'w-6 h-6 mr-1' : 'w-6 h-6'}>
+				<span className={`w-6 h-6 flex-shrink-0 ${children ? "mr-1" : ""}`}>
 					<Icon name={icon} />
 				</span>
 			)}
@@ -58,14 +58,14 @@ const Template = ({
 }
 
 const Button: React.FC<ButtonProps> = ({
-	type = 'default',
+	type = "default",
 	icon,
 	className,
-	children = 'Button',
+	children = "Button",
 	...rest
 }) => {
 	switch (type) {
-		case 'menu-default':
+		case "menu-default":
 			return (
 				<Template
 					aria-label="menu-default"
@@ -77,7 +77,7 @@ const Button: React.FC<ButtonProps> = ({
 					{children}
 				</Template>
 			)
-		case 'primary':
+		case "primary":
 			return (
 				<Template
 					aria-label="primary"
@@ -89,7 +89,7 @@ const Button: React.FC<ButtonProps> = ({
 					{children}
 				</Template>
 			)
-		case 'menu-primary':
+		case "menu-primary":
 			return (
 				<Template
 					aria-label="menu-primary"
@@ -117,11 +117,11 @@ const Button: React.FC<ButtonProps> = ({
 }
 
 Button.defaultProps = {
-	type: 'default',
-	icon: '',
-	className: '',
-	children: 'Button',
+	type: "default",
+	icon: "",
+	className: "",
+	children: "Button",
 }
-Button.displayName = 'Button'
+Button.displayName = "Button"
 
 export default Button

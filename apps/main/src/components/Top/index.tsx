@@ -16,15 +16,15 @@ export default function Top() {
 				</a>
 				<a
 					target="_blank"
-					href="https://twitter.com/ttttonyhe"
+					href="https://www.linkedin.com/in/~lhe"
 					rel="noreferrer"
 				>
 					<Button
 						type="default"
-						icon="twitter"
+						icon="linkedIn"
 						className="!w-full text-blue-400 text-3 leading-14"
 					>
-						<span className="tracking-normal">Twitter</span>
+						<span className="tracking-normal">LinkedIn</span>
 					</Button>
 				</a>
 				<a target="_blank" href="mailto:tony.hlp@hotmail.com" rel="noreferrer">
