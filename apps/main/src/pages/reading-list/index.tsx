@@ -45,8 +45,8 @@ const ReadingList: NextPageWithLayout = () => {
 								</span>
 							</h2>
 							<p className="text-sm text-neutral-500 dark:text-gray-400 -mt-1">
-								I{"'"}m reading or re-reading (on average) one book every two
-								weeks in 2023
+								I{"'"}m reading or re-reading (on average) one book every month
+								in 2023
 							</p>
 						</div>
 					</div>

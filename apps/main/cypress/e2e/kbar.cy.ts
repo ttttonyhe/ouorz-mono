@@ -5,7 +5,7 @@ describe("Kbar", function () {
 		cy.viewport("macbook-13")
 		cy.visit("/")
 		// FIXME: this is a workaround for cypress to wait for the kbar component to load
-		cy.wait(1000)
+		cy.wait(1500)
 	})
 
 	context("enter key combination cmd + k", () => {
