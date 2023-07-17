@@ -28,7 +28,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 	const [summarizing, setSummarizing] = useState<boolean>(false)
 	const [summary, setSummary] = useState<string>("")
 	const [outputText, setOutputText] = useState<string>("")
-	const [outputing, setOutputing] = useState<boolean>(false)
+	const [outputting, setOutputting] = useState<boolean>(false)
 	const [showThumbnail, setShowThumbnail] = useState<boolean>(true)
 
 	const handleSummarize = useCallback(async () => {
@@ -55,7 +55,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 				setTimeout(() => {
 					setShowThumbnail(false)
 				}, 500)
-				setOutputing(true)
+				setOutputting(true)
 			}, 1000)
 		} catch (e) {
 			setSummarizing(false)
@@ -65,7 +65,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 	useInterval(
 		() => {
 			if (outputText.length === 0) {
-				setOutputing(false)
+				setOutputting(false)
 				return
 			}
 
@@ -78,7 +78,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 				return prev.slice(increment)
 			})
 		},
-		outputing ? 200 : null
+		outputting ? 200 : null
 	)
 
 	const summarized = !summarizing && summary
