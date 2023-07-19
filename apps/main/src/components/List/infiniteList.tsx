@@ -87,7 +87,7 @@ const InfiniteList = (props: InfiniteListProps) => {
 					<CardEmpty />
 				)
 			}
-			scrollThreshold="50px"
+			scrollThreshold="100px"
 			scrollableTarget={type === "search" ? "searchResultsDiv" : ""}
 		>
 			<StaticList posts={postData} />
