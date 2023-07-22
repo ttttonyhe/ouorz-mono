@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server"
 
-type EthNFT = {
+export type EthNFT = {
 	contract: {
 		address: string
 	}
@@ -18,7 +18,7 @@ type EthNFT = {
 	}
 }
 
-type SolNFT = {
+export type SolNFT = {
 	name: string
 	description: string
 	imageUrl: string
