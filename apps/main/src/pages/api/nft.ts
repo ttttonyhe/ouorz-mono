@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from "next"
+import type { NextRequest } from "next/server"
 
 type EthNFT = {
 	contract: {
@@ -25,15 +25,15 @@ type SolNFT = {
 	tokenAddress: string
 }
 
-export type ResDataType = {
-	eth: EthNFT[]
-	sol: SolNFT[]
-}
+const ETH_WALLET = "0x2650f08Da54F7019f9a3306bad0dfc8474644eAD"
+const SOL_WALLET = "G9T9yXeWLyspA9xLSLwZYvAPbSNV9E2NU7jWLpQDW6Re"
 
-const nft = async (_req: NextApiRequest, res: NextApiResponse<ResDataType>) => {
+const nft = async (_req: NextRequest) => {
 	// Fetch ETH NFTs
-	const ethData = await fetch(
-		`${process.env.ALCHEMY_API_PATH}/getNFTs?owner=0x2650f08Da54F7019f9a3306bad0dfc8474644eAD`,
+	const ethData: {
+		ownedNfts: EthNFT[]
+	} = await fetch(
+		`${process.env.ALCHEMY_API_PATH}/getNFTs?owner=${ETH_WALLET}`,
 		{
 			method: "GET",
 			headers: { "content-type": "application/json" },
@@ -50,11 +50,15 @@ const nft = async (_req: NextApiRequest, res: NextApiResponse<ResDataType>) => {
 
 	// Only return NFTs with media content
 	ethData["ownedNfts"] = ethData["ownedNfts"]
-		? ethData["ownedNfts"].filter((nft: EthNFT) => nft.media[0].raw !== "")
+		? ethData["ownedNfts"].filter((nft) => nft.media[0].raw !== "")
 		: []
 
 	// Fetch SOL NFTs
-	const solData = await fetch(process.env.QUICK_NODE_API_PATH, {
+	const solData: {
+		result: {
+			assets?: SolNFT[]
+		}
+	} = await fetch(process.env.QUICK_NODE_API_PATH, {
 		method: "POST",
 		headers: { "content-type": "application/json" },
 		body: JSON.stringify({
@@ -62,7 +66,7 @@ const nft = async (_req: NextApiRequest, res: NextApiResponse<ResDataType>) => {
 			jsonrpc: "2.0",
 			method: "qn_fetchNFTs",
 			params: {
-				wallet: "G9T9yXeWLyspA9xLSLwZYvAPbSNV9E2NU7jWLpQDW6Re",
+				wallet: SOL_WALLET,
 				omitFields: ["provenance", "traits"],
 				page: 1,
 				perPage: 40,
@@ -84,14 +88,23 @@ const nft = async (_req: NextApiRequest, res: NextApiResponse<ResDataType>) => {
 		}
 	}
 
-	res.setHeader(
-		"Cache-Control",
-		"public, s-maxage=1200, stale-while-revalidate=600"
+	return new Response(
+		JSON.stringify({
+			eth: ethData["ownedNfts"],
+			sol: solData["result"]["assets"],
+		}),
+		{
+			status: 200,
+			headers: {
+				"content-type": "application/json",
+				"cache-control": "public, s-maxage=1200, stale-while-revalidate=600",
+			},
+		}
 	)
-	return res.status(200).json({
-		eth: ethData["ownedNfts"],
-		sol: solData["result"]["assets"],
-	})
+}
+
+export const config = {
+	runtime: "edge",
 }
 
 export default nft

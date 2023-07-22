@@ -3,6 +3,7 @@
 const { withSentryConfig } = require("@sentry/nextjs")
 
 const NextConfigs = {
+	assetPrefix: "/assets",
 	poweredByHeader: false,
 	productionBrowserSourceMaps: false,
 	compress: true,
@@ -11,6 +12,7 @@ const NextConfigs = {
 		minimumCacheTTL: 3600,
 		formats: ["image/avif", "image/webp"],
 		domains: ["static.ouorz.com", "storage.snapaper.com", "i.gr-assets.com"],
+		path: "/assets/_next/image",
 	},
 	compiler: {
 		styledComponents: true,
@@ -18,8 +20,6 @@ const NextConfigs = {
 			exclude: ["log", "error"],
 		},
 	},
-	// FIXME: https://github.com/getsentry/sentry-javascript/issues/4103
-	outputFileTracing: false,
 	sentry: {
 		hideSourceMaps: true,
 	},

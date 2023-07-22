@@ -1,14 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from "next"
+import type { NextRequest } from "next/server"
 import { LEANCLOUD_API } from "~/constants/apiURLs"
 
-type ResDataType = {
-	count: number
-}
-
-const nexment = async (
-	_req: NextApiRequest,
-	res: NextApiResponse<ResDataType>
-) => {
+const nexment = async (_req: NextRequest) => {
 	const response = await fetch(`${LEANCLOUD_API.NEXMENT}?count=1&limit=0`, {
 		headers: {
 			"X-LC-Id": process.env.NEXT_PUBLIC_LC_ID,
@@ -18,14 +11,22 @@ const nexment = async (
 
 	const data = await response.json()
 
-	res.setHeader(
-		"Cache-Control",
-		"public, s-maxage=1200, stale-while-revalidate=600"
+	return new Response(
+		JSON.stringify({
+			count: data.count,
+		}),
+		{
+			status: 200,
+			headers: {
+				"content-type": "application/json",
+				"cache-control": "public, s-maxage=1200, stale-while-revalidate=600",
+			},
+		}
 	)
+}
 
-	return res.status(200).json({
-		count: data.count,
-	})
+export const config = {
+	runtime: "edge",
 }
 
 export default nexment
