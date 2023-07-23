@@ -25,16 +25,7 @@ const Home: NextPageWithLayout = ({ stickyNotFound, stickyPosts }: Props) => {
 	}, [])
 
 	return (
-		<div>
-			<Head>
-				<title>TonyHe</title>
-				<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-				<meta name="description" content="A developer, blogger, podcaster" />
-				<meta
-					name="keywords"
-					content="TonyHe, Lipeng He, Tony, Developer, Blogger, Podcaster, Blog, Personal Site, WordPress, Next.js, React.js, TypeScript, JavaScript"
-				/>
-			</Head>
+		<>
 			<div className="lg:mt-20 mt-0 lg:pt-0 pt-24">
 				<div>
 					<h1 className="flex items-center font-medium text-3xl leading-14 lg:text-1 text-black dark:text-white tracking-wide mb-0.5 whitespace-nowrap">
@@ -72,7 +63,7 @@ const Home: NextPageWithLayout = ({ stickyNotFound, stickyPosts }: Props) => {
 			<div className="mt-5">
 				<List type="index" />
 			</div>
-		</div>
+		</>
 	)
 }
 
