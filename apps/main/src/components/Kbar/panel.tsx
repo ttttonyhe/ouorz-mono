@@ -7,6 +7,28 @@ import Tabs, { TabItemProps } from "../Tabs"
 import HotkeyHelper from "../Helpers/hotkey"
 import { Icon } from "@twilight-toolkit/ui"
 import { deactivateKbar, updateKbar } from "~/store/kbar/actions"
+import { useTheme } from "next-themes"
+import ContentLoader from "react-content-loader"
+
+const ListComponentLoading = ({ resolvedTheme }: { resolvedTheme: string }) => {
+	if (resolvedTheme === "dark") {
+		return <div data-cy="kbar-list-loading" className="h-full" />
+	}
+
+	return (
+		<ContentLoader
+			uniqueKey="kbar-loading-list-item"
+			speed={2}
+			width={100}
+			style={{ width: "100%" }}
+			height={44}
+			backgroundColor="#f3f3f3"
+			foregroundColor="#ecebeb"
+		>
+			<rect x="0" y="0" rx="5" ry="5" width="100%" height="44" />
+		</ContentLoader>
+	)
+}
 
 // Kbar list helper component
 const ListComponent = ({
@@ -16,6 +38,7 @@ const ListComponent = ({
 	tabsListItems: TabItemProps[]
 	verticalListWrapper: React.MutableRefObject<HTMLDivElement>
 }) => {
+	const { resolvedTheme } = useTheme()
 	const { loading } = useSelector(selectKbar)
 
 	// update vertical list wrapper height
@@ -24,7 +47,9 @@ const ListComponent = ({
 		if (!verticalListWrapper.current) return
 		let wrapperHeight = 0
 
-		if (loading || !tabsListItems) {
+		if (loading) {
+			wrapperHeight = resolvedTheme === "dark" ? 360 : 66.39
+		} else if (!tabsListItems) {
 			wrapperHeight = 360
 		} else if (tabsListItems.length === 0) {
 			wrapperHeight = 66.39
@@ -36,7 +61,7 @@ const ListComponent = ({
 	}, [verticalListWrapper, tabsListItems])
 
 	if (loading || tabsListItems == null) {
-		return <div data-cy="kbar-list-loading" className="h-full" />
+		return <ListComponentLoading resolvedTheme={resolvedTheme} />
 	}
 
 	if (tabsListItems.length === 0) {
@@ -63,6 +88,7 @@ const ListComponent = ({
 const KbarPanel = () => {
 	const router = useRouter()
 	const dispatch = useDispatch()
+	const { resolvedTheme } = useTheme()
 	const {
 		inputValue,
 		setInputValue,
@@ -117,7 +143,7 @@ const KbarPanel = () => {
 				if (item.link) {
 					setTimeout(() => {
 						actionFunc()
-					}, 200)
+					}, 250)
 				} else {
 					actionFunc()
 				}
@@ -285,7 +311,7 @@ const KbarPanel = () => {
 							))}
 						</ul>
 					</div>
-					{loading && (
+					{loading && resolvedTheme === "dark" && (
 						<div className="animate-kbarLoadingBar kbar-loading-bar h-[1.5px] absolute bottom-[-1.25px] w-full z-50" />
 					)}
 				</div>
