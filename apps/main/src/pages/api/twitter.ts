@@ -5,6 +5,9 @@ type ResDataType = {
 	followers: number
 }
 
+/**
+ * @deprecated Twitter v2 API free tier does not support this request any more
+ */
 const twitter = async (
 	_req: NextApiRequest,
 	res: NextApiResponse<ResDataType>

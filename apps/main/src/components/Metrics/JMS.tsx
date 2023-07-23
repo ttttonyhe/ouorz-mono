@@ -7,7 +7,7 @@ export default function JMSMetric() {
 
 	const used = parseInt(data?.used).toString()
 	const total = parseInt(data?.total).toString()
-	const link = "https://justmysocks2.net/members/clientarea.php"
+	const link = "https://justmysocks5.net/members/clientarea.php"
 
 	return (
 		<MetricCard
@@ -16,7 +16,7 @@ export default function JMSMetric() {
 			denominator={total}
 			description="Just My Socks"
 			link={link}
-			colorHex="#9CA3AF"
+			colorHex="#3ba2f2"
 		/>
 	)
 }

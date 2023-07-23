@@ -9,8 +9,8 @@ import GithubFollowerMetric from "~/components/Metrics/GithubFollowers"
 import PostsMetric from "~/components/Metrics/Posts"
 import NexmentMetric from "~/components/Metrics/Nexment"
 import SspaiMetric from "~/components/Metrics/Sspai"
-import TwitterMetric from "~/components/Metrics/Twitter"
 import PageViewsMetric from "~/components/Metrics/PageViews"
+import JMSMetric from "~/components/Metrics/JMS"
 // import ZhihuMetric from '~/components/Metrics/Zhihu'
 
 const Dashboard: NextPageWithLayout = () => {
@@ -51,16 +51,7 @@ const Dashboard: NextPageWithLayout = () => {
 				<div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
 					<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
 						Personal dashboard tracking various metrics of this website, and
-						across platforms like Twitter, GitHub, and more. Inspired by{" "}
-						<a
-							className="text-gray-700 dark:text-gray-200 font-medium"
-							href="https://leerob.io/dashboard"
-							target="_blank"
-							rel="noreferrer"
-						>
-							Lee Robinson →
-						</a>
-						.
+						across platforms like Twitter, GitHub, and more.
 					</p>
 				</div>
 			</div>
@@ -68,7 +59,7 @@ const Dashboard: NextPageWithLayout = () => {
 				className="glowing-area mt-5 mb-10 grid lg:grid-cols-2 gap-4"
 				data-cy="metricCards"
 			>
-				<TwitterMetric />
+				<JMSMetric />
 				<SspaiMetric />
 				<GithubStarMetric />
 				<GithubFollowerMetric />

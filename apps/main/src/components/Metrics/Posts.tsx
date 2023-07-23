@@ -15,14 +15,14 @@ export default function PostsMetric() {
 			<MetricCard
 				icon="eye"
 				value={views}
-				description="All-Time Views"
+				description="Total Views"
 				link={link}
 				colorHex="#F59E0B"
 			/>
 			<MetricCard
 				icon="count"
 				value={count}
-				description="All-Time Posts"
+				description="Total Posts"
 				link={link}
 				colorHex="#9CA3AF"
 			/>

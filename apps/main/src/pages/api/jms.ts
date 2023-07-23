@@ -5,9 +5,6 @@ type ResDataType = {
 	used: number
 }
 
-/**
- *  @deprecated Not in use anymore
- */
 const jms = async (_req: NextApiRequest, res: NextApiResponse<ResDataType>) => {
 	const response = await fetch(process.env.JMS_API_PATH)
 
