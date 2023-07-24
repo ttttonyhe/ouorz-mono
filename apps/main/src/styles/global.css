@@ -736,3 +736,8 @@ abbr[title] {
 		@apply bg-gray-800;
 	}
 }
+
+svg {
+	height: 100%;
+	width: 100%;
+}
