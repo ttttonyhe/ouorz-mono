@@ -1,4 +1,4 @@
-import { put } from "redux-saga/effects"
+import { put, delay } from "redux-saga/effects"
 import {
 	setKbarLoading,
 	setKbarPlaceholder,
@@ -17,6 +17,8 @@ export default function* updateKbarToSearchSaga() {
 
 		// set kbar placeholder
 		yield put(setKbarPlaceholder("Search articles..."))
+
+		yield delay(500)
 
 		// stop loading
 		yield put(setKbarLoading(false))

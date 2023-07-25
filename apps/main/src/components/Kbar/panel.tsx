@@ -58,7 +58,7 @@ const ListComponent = ({
 		if (wrapperHeight) {
 			verticalListWrapper.current.style.height = `${wrapperHeight}px`
 		}
-	}, [verticalListWrapper, tabsListItems])
+	}, [loading, verticalListWrapper, tabsListItems])
 
 	if (loading || tabsListItems == null) {
 		return <ListComponentLoading resolvedTheme={resolvedTheme} />
