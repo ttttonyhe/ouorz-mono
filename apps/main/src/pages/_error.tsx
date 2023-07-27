@@ -13,7 +13,7 @@ const ErrorPage: NextPageWithLayout = ({ statusCode }: Props) => {
 	return (
 		<div>
 			<Head>
-				<title>Error - TonyHe</title>
+				<title>Error - Tony He</title>
 				<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 			</Head>
 			<div className="lg:mt-20 mt-0 lg:pt-0 pt-24 justify-center">

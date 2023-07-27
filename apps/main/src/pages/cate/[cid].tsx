@@ -17,7 +17,7 @@ interface CateProps {
 const Redirect = redirect("/404")
 
 const Cate: NextPageWithLayout = ({ info }: CateProps) => {
-	const title = `${info.name} - TonyHe`
+	const title = `${info.name} - Tony He`
 
 	if (info.status) {
 		return (

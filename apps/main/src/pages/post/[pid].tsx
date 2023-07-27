@@ -34,7 +34,7 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 	const dispatch = useDispatch()
 
 	const { pid } = router.query
-	const title = `${post.title.rendered} - TonyHe`
+	const title = `${post.title.rendered} - Tony He`
 
 	if (!status) {
 		return (

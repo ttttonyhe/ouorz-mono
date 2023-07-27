@@ -11,19 +11,26 @@ import NexmentMetric from "~/components/Metrics/Nexment"
 import SspaiMetric from "~/components/Metrics/Sspai"
 import PageViewsMetric from "~/components/Metrics/PageViews"
 import JMSMetric from "~/components/Metrics/JMS"
-// import ZhihuMetric from '~/components/Metrics/Zhihu'
 
 const Dashboard: NextPageWithLayout = () => {
 	return (
-		<div>
+		<>
 			<Head>
-				<title>Dashboard - TonyHe</title>
+				<title>Dashboard - Tony He</title>
 				<link
 					rel="icon"
 					href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>"
 				/>
 				<meta name="description" content="TonyHe's personal dashboard" />
 				<meta name="robots" content="noindex" />
+				<style>
+					{`.bg-gbg {
+						background-image: url("https://static.ouorz.com/ouorz-dashboard-bg.png");
+						background-repeat: no-repeat;
+						background-size: cover;
+						background-position: 50% 50%;
+						`}
+				</style>
 			</Head>
 			<div className="lg:mt-20 mt-0 lg:pt-0 pt-24">
 				<div className="mb-4 flex items-center">
@@ -84,9 +91,8 @@ const Dashboard: NextPageWithLayout = () => {
 				<NexmentMetric />
 				<PostsMetric />
 				<PageViewsMetric />
-				{/* <ZhihuMetric /> */}
 			</div>
-		</div>
+		</>
 	)
 }
 

@@ -11,7 +11,7 @@ const PageNotFound: NextPageWithLayout = () => {
 	return (
 		<div>
 			<Head>
-				<title>404 - TonyHe</title>
+				<title>404 - Tony He</title>
 				<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 			</Head>
 			<div className="lg:mt-20 mt-0 lg:pt-0 pt-24 justify-center">
