@@ -1,3 +1,2 @@
-# Smart contracts for the on-chain blog
-
-<br/>
+> [!WARNING] 
+> This project is work in progress.
