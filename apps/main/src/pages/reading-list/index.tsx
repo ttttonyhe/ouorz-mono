@@ -69,8 +69,8 @@ const ReadingList: NextPageWithLayout = () => {
 			</div>
 			<section className="mb-10">
 				<label className="rounded-full bg-white dark:bg-gray-700 dark:border-gray-600 shadow-sm border border-gray-300 tracking-wider font-medium pb-1 pt-[4px] px-4 inline-flex items-center">
-					<span className="w-5 h-5 flex mr-1.5 text-green-500">
-						<Icon name="bookmarkSquare" />
+					<span className="w-[22px] h-[22px] flex mr-1.5 text-green-500">
+						<Icon name="eye" />
 					</span>
 					<span className="uppercase">Currently Reading</span>
 				</label>

@@ -75,7 +75,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			label: "Avatar",
 			hoverable: false,
 			component: (
-				<div className="px-5 cursor-pointer mx-auto hidden lg:flex space-x-3 items-center justify-center group">
+				<div className="px-5 cursor-pointer mx-auto flex space-x-3 items-center justify-center group">
 					<div className="flex items-center flex-shrink-0 h-[18px] w-[18px] border rounded-full border-gray-300 dark:border-gray-500">
 						<a
 							href="https://opensea.io/assets/ethereum/0x13bd2ac3779cbbcb2ac874c33f1145dd71ce41ee/3690"
@@ -105,6 +105,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 		},
 		{
 			label: "Newsletter",
+			className: "hidden lg:block",
 			icon: "subscribe",
 			link: {
 				external: "https://buttondown.email/helipeng",
@@ -479,7 +480,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			id="header"
 			className="leading-14 lg:border-0 border-b dark:border-b-transparent border-gray-200 lg:bg-transparent dark:backdrop-blur-lg duration-300 grid grid-cols-8 fixed top-0 h-auto w-full lg:py-4 lg:px-5 py-2 px-1 z-50"
 		>
-			<div className="col-start-1 col-end-3 flex lg:space-x-2">
+			<div className="col-start-1 col-end-3 flex lg:space-x-2 items-center lg:items-baseline">
 				<Tabs items={leftTabItems} />
 			</div>
 			<OffsetTransition disabled={!nonHomePage} componentRef={titleRef}>

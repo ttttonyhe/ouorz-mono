@@ -4,6 +4,7 @@ describe("Kbar", function () {
 	this.beforeEach(() => {
 		cy.viewport("macbook-13")
 		cy.visit("/")
+		cy.get("body").type("{esc}{esc}")
 		// FIXME: this is a workaround for cypress to wait for the kbar component to load
 		cy.wait(1500)
 	})
@@ -11,6 +12,7 @@ describe("Kbar", function () {
 	context("enter key combination cmd + k", () => {
 		it("should display kbar background and panel", function () {
 			cy.get("body").type("{ctrl}k", { release: false })
+			cy.wait(500)
 			cy.get('[data-cy="kbar-bg"]').should("exist")
 			cy.get('[data-cy="kbar-panel"]').should("exist")
 		})
@@ -18,6 +20,7 @@ describe("Kbar", function () {
 		context("search kbar list items", () => {
 			it("should display only list items match input value", function () {
 				cy.get("body").type("{ctrl}k", { release: false })
+				cy.wait(500)
 				cy.get('[data-cy="kbar-input"]').type("search blog posts")
 				cy.get('[data-cy="tabs-list"]')
 					.last()
@@ -29,6 +32,7 @@ describe("Kbar", function () {
 		context("use kbar to search articles", () => {
 			it("should list all articles", function () {
 				cy.get("body").type("{ctrl}k", { release: false })
+				cy.wait(500)
 				// use kbar to search articles
 				cy.get('[data-cy="kbar-input"]').type("search blog posts")
 				// start intercepting the request to get search results
@@ -53,6 +57,7 @@ describe("Kbar", function () {
 	context("click on cmd + k button", () => {
 		it("should display kbar background and panel", function () {
 			cy.get('[data-cy="cmdkbutton"]').focus()
+			cy.wait(500)
 			cy.get('[data-cy="kbar-bg"]').should("exist")
 			cy.get('[data-cy="kbar-panel"]').should("exist")
 		})

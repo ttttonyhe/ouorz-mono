@@ -11,7 +11,7 @@ const BookCard = (props: Book) => {
 	return (
 		<div
 			onClick={() => openLink(link)}
-			className="group flex flex-col dark:bg-gray-800 dark:border-none border rounded-md shadow-sm hover:shadow-md transition-shadow bg-white cursor-pointer w-50 z-40"
+			className="group flex flex-col dark:bg-gray-800 dark:border-none border rounded-md shadow-sm hover:shadow-gray-200 hover:-translate-y-0.5 hover:border-gray-300 transition-all duration-300 bg-white cursor-pointer w-50 z-40"
 		>
 			<div className="flex flex-1 items-center lg:justify-center">
 				<div className="px-4.5 py-4 flex-shrink-0">
@@ -20,21 +20,21 @@ const BookCard = (props: Book) => {
 						height={52}
 						src={imageURL}
 						alt={title}
-						className="rounded-md"
+						className="rounded-sm shadow-sm shadow-gray-200 border"
 						placeholder="blur"
 						blurDataURL={blurDataURL}
 						loading="lazy"
 					/>
 				</div>
-				<div className="lg:group-hover:hidden lg:group-hover:w-0 py-2 lg:px-0 pr-4.5 overflow-hidden">
+				<div className="lg:group-hover:hidden lg:group-hover:delay-75 lg:group-hover:w-0 py-2 lg:px-0 pr-4.5 overflow-hidden">
 					<p className="dark:text-white text-sm lg:text-normal font-medium tracking-wider leading-tight whitespace-nowrap overflow-hidden overflow-ellipsis">
 						{title}
 					</p>
-					<p className="text-gray-500 dark:text-gray-400 lg:text-sm text-xs font-light tracking-wide mt-1 whitespace-nowrap">
-						{author}
+					<p className="text-gray-500 dark:text-gray-400 lg:text-sm text-xs font-light tracking-wide mt-1 whitespace-nowrap text-ellipsis overflow-hidden">
+						by {author}
 					</p>
 				</div>
-				<div className="pr-4.5 hidden lg:flex-grow lg:block lg:group-hover:opacity-100 opacity-0 lg:group-hover:flex-1 transition-opacity ease-in-out duration-300 !line-clamp-3">
+				<div className="pr-4.5 hidden lg:flex-grow lg:block lg:group-hover:opacity-100 lg:group-hover:delay-75 opacity-0 lg:group-hover:flex-1 transition-opacity ease-in-out duration-300 !line-clamp-3">
 					<p className="lg:group-hover:block hidden text-xs font-medium dark:text-white">
 						{title}
 					</p>
