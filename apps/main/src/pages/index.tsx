@@ -26,6 +26,9 @@ const Home: NextPageWithLayout = ({ stickyNotFound, stickyPosts }: Props) => {
 
 	return (
 		<>
+			<Head>
+				<title>Tony He</title>
+			</Head>
 			<div className="lg:mt-20 mt-0 lg:pt-0 pt-24">
 				<div>
 					<h1 className="flex items-center font-medium text-3xl leading-14 lg:text-1 text-black dark:text-white tracking-wide mb-0.5 whitespace-nowrap">

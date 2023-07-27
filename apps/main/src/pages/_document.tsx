@@ -19,7 +19,6 @@ class AppDocument extends Document {
 		return (
 			<Html lang="zh-cn" prefix="og: http://ogp.me/ns#">
 				<Head>
-					<title>Tony He</title>
 					<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 					<link
 						type="image/vnd.microsoft.icon"

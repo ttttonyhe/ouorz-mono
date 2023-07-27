@@ -96,7 +96,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 					<div className="text-3 font-medium text-black">
 						<Link href="/" passHref>
 							<h3 className="text-gray-700 dark:group-hover:text-gray-300 dark:text-gray-400">
-								TonyHe
+								Tony He
 							</h3>
 						</Link>
 					</div>
