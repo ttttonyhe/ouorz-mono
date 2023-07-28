@@ -23,14 +23,6 @@ const Dashboard: NextPageWithLayout = () => {
 				/>
 				<meta name="description" content="TonyHe's personal dashboard" />
 				<meta name="robots" content="noindex" />
-				<style>
-					{`.bg-gbg {
-						background-image: url("https://static.ouorz.com/ouorz-dashboard-bg.png");
-						background-repeat: no-repeat;
-						background-size: cover;
-						background-position: 50% 50%;
-						`}
-				</style>
 			</Head>
 			<div className="lg:mt-20 mt-0 lg:pt-0 pt-24">
 				<div className="mb-4 flex items-center">

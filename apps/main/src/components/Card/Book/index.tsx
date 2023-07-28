@@ -11,7 +11,7 @@ const BookCard = (props: Book) => {
 	return (
 		<div
 			onClick={() => openLink(link)}
-			className="group flex flex-col dark:bg-gray-800 dark:border-none border rounded-md shadow-sm hover:shadow-gray-200 hover:-translate-y-0.5 hover:border-gray-300 transition-all duration-300 bg-white cursor-pointer w-50 z-40"
+			className="group flex flex-col dark:bg-gray-800 dark:border-none border rounded-md shadow-sm hover:shadow-gray-200 hover:-translate-y-0.5 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 bg-white cursor-pointer w-50 z-40"
 		>
 			<div className="flex flex-1 items-center lg:justify-center">
 				<div className="px-4.5 py-4 flex-shrink-0">
