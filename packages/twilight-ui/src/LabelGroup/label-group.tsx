@@ -1,5 +1,5 @@
-import React from 'react'
-import Label from '../Label/label'
+import React from "react"
+import Label from "../Label/label"
 
 interface Props {
 	/**
@@ -11,18 +11,22 @@ interface Props {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type LabelGroupProps = Props & NativeAttrs
 
-const LabelGroup: React.FC<LabelGroupProps> = ({ children, className }) => {
-	return <div className={`label-group ${className ?? ''}`}>{children}</div>
-}
-
-LabelGroup.defaultProps = {
-	children: (
+const LabelGroup = ({
+	children = (
 		<>
 			<Label type="primary" icon="sticky" />
 			<Label type="gray-icon" icon="preview" />
 		</>
 	),
+	className,
+}: LabelGroupProps) => {
+	return (
+		<div className={`label-group ${className ?? ""}`}>
+			<>{children}</>
+		</div>
+	)
 }
-LabelGroup.displayName = 'LabelGroup'
+
+LabelGroup.displayName = "LabelGroup"
 
 export default LabelGroup

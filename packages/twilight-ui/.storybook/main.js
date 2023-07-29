@@ -1,12 +1,12 @@
-import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
+import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin"
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
-	staticDirs: ['./public'],
-	stories: ['../stories/**/*.stories.ts', '../src/**/*.stories.@(mdx|tsx)'],
+	staticDirs: ["./public"],
+	stories: ["../stories/**/*.stories.ts", "../src/**/*.stories.@(mdx|tsx)"],
 	addons: [
 		{
-			name: '@storybook/addon-essentials',
+			name: "@storybook/addon-essentials",
 			options: {
 				actions: false,
 				backgrounds: false,
@@ -20,21 +20,21 @@ const config = {
 		},
 		// Support Tailwind CSS
 		{
-			name: '@storybook/addon-styling',
+			name: "@storybook/addon-styling",
 			options: {
 				postCss: true,
 			},
 		},
-		'@storybook/addon-links',
-		'@storybook/addon-storysource',
-		'storybook-dark-mode',
-		'storybook-addon-turbo-build',
+		"@storybook/addon-links",
+		"@storybook/addon-storysource",
+		"storybook-dark-mode",
+		"storybook-addon-turbo-build",
 	],
 	// Automatically generate docs for controls
 	typescript: {
 		check: false,
 		checkOptions: {},
-		reactDocgen: 'react-docgen-typescript',
+		reactDocgen: "react-docgen-typescript",
 		reactDocgenTypescriptOptions: {
 			shouldExtractLiteralValuesFromEnum: true,
 			propFilter: (prop) =>
@@ -45,7 +45,7 @@ const config = {
 		storyStoreV7: false,
 	},
 	framework: {
-		name: '@storybook/react-webpack5',
+		name: "@storybook/react-webpack5",
 		options: {
 			builder: {
 				lazyCompilation: false,
@@ -64,8 +64,8 @@ const config = {
 		return config
 	},
 	docs: {
-		autodocs: 'tag',
-		defaultName: 'Documentation',
+		autodocs: "tag",
+		defaultName: "Documentation",
 	},
 }
 

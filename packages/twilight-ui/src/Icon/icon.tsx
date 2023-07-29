@@ -1,6 +1,6 @@
-import React from 'react'
-import icons from './icons'
-import { IconNames } from '../utils/propTypes'
+import React from "react"
+import icons from "./icons"
+import { IconNames } from "../utils/propTypes"
 
 export interface IconProps {
 	/**
@@ -9,9 +9,7 @@ export interface IconProps {
 	name: IconNames
 }
 
-export const Icon: React.FC<React.PropsWithChildren<IconProps>> = ({
-	name = 'empty',
-}: IconProps) => {
+export const Icon = ({ name = "empty" }: IconProps) => {
 	return icons[name]
 }
 

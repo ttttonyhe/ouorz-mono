@@ -52,18 +52,18 @@ const Template = ({
 					<Icon name={icon} />
 				</span>
 			)}
-			{children}
+			<>{children}</>
 		</button>
 	)
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
 	type = "default",
 	icon,
 	className,
 	children = "Button",
 	...rest
-}) => {
+}: ButtonProps) => {
 	switch (type) {
 		case "menu-default":
 			return (
@@ -116,12 +116,6 @@ const Button: React.FC<ButtonProps> = ({
 	}
 }
 
-Button.defaultProps = {
-	type: "default",
-	icon: "",
-	className: "",
-	children: "Button",
-}
 Button.displayName = "Button"
 
 export default Button

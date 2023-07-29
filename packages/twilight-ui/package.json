@@ -1,7 +1,7 @@
 {
   "name": "@twilight-toolkit/ui",
   "version": "0.0.1",
-  "description": "Twilight Toolkit UI for React",
+  "description": "A super opinionated UI library for React & Tailwind CSS",
   "license": "SEE LICENSE IN LICENSE",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -13,49 +13,60 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "files": [
+    "/dist",
+    "LICENSE",
+    "README.md"
+  ],
   "resolutions": {
     "webpack": "^5"
   },
   "scripts": {
-    "dev": "pnpm run build --watch",
-    "storybook": "storybook dev -p 6006 --quiet",
-    "build": "tsup src/index.ts --format cjs,esm --dts --clean --external react --silent",
+    "dev": "storybook dev -p 6006 --quiet",
+    "build": "tsx ./scripts/build.ts",
     "build:storybook": "storybook build",
+    "start:storybook": "http-server -s -p 5555 ./storybook-static",
     "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo",
     "upgrade": "ncu --upgrade",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "turbo run build"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.21.4",
-    "@storybook/addon-essentials": "^7.0.4",
-    "@storybook/addon-links": "^7.0.4",
-    "@storybook/addon-storysource": "^7.0.4",
-    "@storybook/addon-styling": "^1.0.0",
-    "@storybook/addons": "^7.0.4",
-    "@storybook/cli": "^7.0.4",
-    "@storybook/react-webpack5": "^7.0.4",
-    "@storybook/testing-library": "^0.1.0",
-    "@storybook/theming": "^7.0.4",
+    "@storybook/addon-essentials": "^7.1.1",
+    "@storybook/addon-links": "^7.1.1",
+    "@storybook/addon-storysource": "^7.1.1",
+    "@storybook/addon-styling": "^1.3.5",
+    "@storybook/addons": "^7.1.1",
+    "@storybook/cli": "^7.1.1",
+    "@storybook/react": "^7.1.1",
+    "@storybook/react-webpack5": "^7.1.1",
+    "@storybook/testing-library": "^0.2.0",
+    "@storybook/theming": "^7.1.1",
     "@tailwindcss/typography": "^0.5.9",
     "@types/react": "^18.0.35",
     "autoprefixer": "^10.4.14",
     "babel-loader": "^9.1.2",
+    "esbuild": "^0.18.17",
+    "esbuild-plugin-d.ts": "^1.1.0",
+    "esbuild-sass-plugin": "^2.10.0",
+    "eslint-plugin-storybook": "^0.6.13",
+    "http-server": "^14.1.1",
+    "postcss": "^8.4.27",
     "react": "^18.2.0",
     "react-docgen-typescript-plugin": "^1.0.5",
     "react-dom": "^18.2.0",
-    "storybook": "^7.0.4",
-    "storybook-addon-turbo-build": "^1.1.0",
-    "storybook-dark-mode": "^3.0.0",
+    "storybook": "^7.1.1",
+    "storybook-addon-turbo-build": "^2.0.1",
+    "storybook-dark-mode": "^3.0.1",
     "tailwindcss": "^3.3.1",
     "tsconfig-paths-webpack-plugin": "^4.0.1",
     "tsup": "^6.7.0",
+    "tsx": "^3.12.7",
+    "@twilight-toolkit/utils": "workspace:*",
     "typescript": "^5.0.4",
     "util": "^0.12.5"
-  },
-  "dependencies": {
-    "@twilight-toolkit/utils": "workspace:*"
   }
 }

@@ -1,6 +1,6 @@
-import React from 'react'
-import Icon from '../Icon'
-import type { LabelTypes, IconNames } from '../utils/propTypes'
+import React from "react"
+import Icon from "../Icon"
+import type { LabelTypes, IconNames } from "../utils/propTypes"
 
 interface Props {
 	/**
@@ -28,17 +28,17 @@ interface Props {
 type NativeAttrs = Omit<React.LabelHTMLAttributes<any>, keyof Props>
 export type LabelProps = Props & NativeAttrs
 
-const Label: React.FC<LabelProps> = ({
-	type,
+const Label = ({
+	type = "primary",
 	icon,
-	children,
-	preview,
+	children = "Label",
+	preview = false,
 	className,
 	iconClassName,
 	...props
-}) => {
+}: LabelProps) => {
 	switch (type) {
-		case 'primary':
+		case "primary":
 			return (
 				<label
 					{...props}
@@ -49,10 +49,10 @@ const Label: React.FC<LabelProps> = ({
 							<Icon name={icon} />
 						</span>
 					)}
-					{children}
+					<>{children}</>
 				</label>
 			)
-		case 'secondary':
+		case "secondary":
 			return (
 				<label
 					{...props}
@@ -63,17 +63,17 @@ const Label: React.FC<LabelProps> = ({
 							<Icon name={icon} />
 						</span>
 					)}
-					{children}
+					<>{children}</>
 				</label>
 			)
-		case 'green':
+		case "green":
 			return (
 				<label
 					className={`group cursor-pointer justify-center font-medium items-center h-full flex gap-x-1 w-min ${
-						preview ? 'px-3 py-0.5' : 'px-4 py-1.5'
+						preview ? "px-3 py-0.5" : "px-4 py-1.5"
 					} bg-green-100 dark:bg-green-800 hover:bg-green-200 dark:hover:bg-green-700 text-center rounded-md text-xl tracking-wide text-green-500 dark:text-green-400 align-middle effect-pressing`}
 				>
-					{children}
+					<>{children}</>
 					{icon && (
 						<span className="lg:w-[19px] lg:h-[19px] w-4 h-4 opacity-0 transition-all ease-in-out -ml-5 group-hover:ml-0 group-hover:mr-0 -mr-1 group-hover:opacity-100">
 							<Icon name={icon} />
@@ -81,7 +81,7 @@ const Label: React.FC<LabelProps> = ({
 					)}
 				</label>
 			)
-		case 'sticky-icon':
+		case "sticky-icon":
 			return (
 				<label
 					{...props}
@@ -92,7 +92,7 @@ const Label: React.FC<LabelProps> = ({
 					</span>
 				</label>
 			)
-		case 'gray-icon':
+		case "gray-icon":
 			return (
 				<label
 					{...props}
@@ -105,12 +105,12 @@ const Label: React.FC<LabelProps> = ({
 					)}
 				</label>
 			)
-		case 'green-icon':
+		case "green-icon":
 			return (
 				<label
 					{...props}
 					className={`cursor-pointer justify-center font-medium items-center h-full flex w-min px-2 py-2 bg-green-100 dark:bg-green-700 hover:bg-green-200 dark:hover:bg-green-600 text-center rounded-md text-xl tracking-wide text-green-500 dark:text-green-300 align-middle effect-pressing ${
-						className ?? ''
+						className ?? ""
 					}`}
 				>
 					{icon && (
@@ -120,7 +120,7 @@ const Label: React.FC<LabelProps> = ({
 					)}
 				</label>
 			)
-		case 'orange-icon':
+		case "orange-icon":
 			return (
 				<label
 					{...props}
@@ -138,13 +138,6 @@ const Label: React.FC<LabelProps> = ({
 	}
 }
 
-Label.defaultProps = {
-	type: 'primary',
-	icon: '',
-	preview: false,
-	children: 'Label',
-	iconClassName: '',
-}
-Label.displayName = 'Label'
+Label.displayName = "Label"
 
 export default Label

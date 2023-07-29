@@ -13,6 +13,9 @@
     "@twilight-toolkit/ui#build": {
       "outputs": [
         "dist/**"
+      ],
+      "dependsOn": [
+        "@twilight-toolkit/utils#build"
       ]
     },
     "@twilight-toolkit/utils#build": {
@@ -23,6 +26,9 @@
     "@twilight-toolkit/ui#build:storybook": {
       "outputs": [
         "storybook-static/**"
+      ],
+      "dependsOn": [
+        "@twilight-toolkit/utils#build"
       ]
     },
     "@ouorz/main#build": {
@@ -68,19 +74,25 @@
       "dependsOn": [
         "^build"
       ],
-      "outputs": []
+      "outputs": [],
+      "persistent": true
+    },
+    "@twilight-toolkit/ui#start:storybook": {
+      "dependsOn": [
+        "^build"
+      ],
+      "persistent": true
     },
     "lint": {
       "outputs": []
     },
     "dev": {
-      "cache": false
+      "cache": false,
+      "persistent": true
     },
     "dev:test": {
-      "cache": false
-    },
-    "storybook": {
-      "outputs": []
+      "cache": false,
+      "persistent": true
     },
     "clean": {
       "cache": false

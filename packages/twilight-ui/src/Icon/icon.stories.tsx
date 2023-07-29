@@ -1,21 +1,23 @@
-import React from 'react'
-import { StoryFn, Meta } from '@storybook/react'
+import React from "react"
+import { StoryFn, StoryObj, Meta } from "@storybook/react"
 
-import Icon from '.'
-import icons from './icons'
+import Icon from "."
+import icons from "./icons"
 
 const meta: Meta<typeof Icon> = {
-	title: 'Components/ Icon',
+	title: "Components/ Icon",
 	component: Icon,
 	argTypes: {
 		name: {
 			options: Object.keys(icons),
-			control: { type: 'select' },
+			control: { type: "select" },
 		},
 	},
 }
 
 export default meta
+
+type Story = StoryObj<typeof Icon>
 
 const Template: StoryFn<typeof Icon> = (args) => {
 	return (
@@ -25,6 +27,6 @@ const Template: StoryFn<typeof Icon> = (args) => {
 	)
 }
 
-export const Default = {
+export const Default: Story = {
 	render: Template,
 }
