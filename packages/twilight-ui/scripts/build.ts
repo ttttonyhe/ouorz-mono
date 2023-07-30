@@ -5,6 +5,7 @@ import { sassPlugin } from "esbuild-sass-plugin"
 import postcss from "postcss"
 import autoprefixer from "autoprefixer"
 import tailwind from "tailwindcss"
+import { dependencies } from "../package.json"
 
 const isDevelopment = process.env.NODE_ENV === "development"
 
@@ -25,6 +26,7 @@ const ESBUILD_CONFIG: BuildOptions = {
 	platform: "browser",
 	metafile: true,
 	format: "esm",
+	external: Object.keys(dependencies),
 	plugins: [
 		sassPlugin({
 			// TailwindCSS
