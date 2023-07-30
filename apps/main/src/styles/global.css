@@ -300,10 +300,6 @@ h5 {
 	font-size: 14px !important;
 }
 
-.nexment-comments-div .nexment-comments-title {
-	width: 85% !important;
-}
-
 .toc-sub {
 	border-left: 1px solid rgba(229, 231, 235, 1);
 	@apply rounded-tl-none;
@@ -735,4 +731,8 @@ abbr[title] {
 	.aside-mask::-webkit-scrollbar {
 		@apply bg-gray-800;
 	}
+}
+
+.nexment-comments-div .nexment-comments-title .nexment-comments-content {
+	@apply dark:border-gray-600 dark:bg-gray-700;
 }
