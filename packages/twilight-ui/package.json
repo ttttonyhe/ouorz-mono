@@ -1,6 +1,6 @@
 {
   "name": "@twilight-toolkit/ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A super opinionated UI library for React & Tailwind CSS",
   "license": "SEE LICENSE IN LICENSE",
   "main": "./dist/index.js",
