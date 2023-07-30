@@ -422,7 +422,7 @@ h5 {
 }
 
 .nexment-comments-reply-list .nexment-comments-div:hover {
-	@apply dark:bg-gray-700;
+	@apply dark:!border-gray-700;
 }
 
 .react-tiny-popover-container {
@@ -488,7 +488,7 @@ h5 {
 }
 
 .nexment-comments-div .nexment-comments-replyto svg {
-	@apply !translate-y-[1px];
+	@apply !translate-y-[-1px];
 }
 
 .nexment-comments-list-item-div .rodal .rodal-dialog {
@@ -735,4 +735,23 @@ abbr[title] {
 
 .nexment-comments-div .nexment-comments-title .nexment-comments-content {
 	@apply dark:border-gray-600 dark:bg-gray-700;
+}
+
+.nexment-reply-container
+	.nexment-comments-div
+	.nexment-comments-title
+	.nexment-comments-content {
+	@apply dark:border-none dark:bg-transparent;
+}
+
+.nexment-comments-div .nexment-comments-title .margin-top-reply {
+	@apply dark:!bg-transparent;
+}
+
+.nexment-reply-container .nexment-comments-div:hover {
+	@apply dark:bg-gray-700;
+}
+
+.nexment-comments-div .nexment-comments-title h5 {
+	@apply dark:text-white;
 }
