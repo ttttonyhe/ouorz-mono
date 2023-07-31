@@ -9,7 +9,7 @@
 
 <br/>
 
-### Use them in internal Apps
+### Use them in internal apps
 
 To use Twilight Toolkit inside ouorz monorepo Next.js apps, follow these steps:
 
@@ -58,6 +58,6 @@ The following steps are now optional as Next.js introduced [built-in support](ht
 
 <br/>
 
-### Use them as a standalone libraries
+### Use them as standalone libraries
 
-Twilight Toolkit will be published as a standalone library on NPM, ETA to be determined.
+Twilight Toolkit UI has been published as a standalone NPM library: https://www.npmjs.com/package/@twilight-toolkit/ui
