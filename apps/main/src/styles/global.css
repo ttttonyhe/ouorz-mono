@@ -514,6 +514,22 @@ h5 {
 	}
 }
 
+@keyframes slideFromRight {
+	from {
+		opacity: 0;
+		transform: translateX(10%);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0%);
+	}
+}
+
+.aside {
+	animation: slideFromRight 0.25s ease-in-out;
+}
+
 .aside::-webkit-scrollbar {
 	width: 0 !important;
 }
