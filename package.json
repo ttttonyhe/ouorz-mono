@@ -42,8 +42,8 @@
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.6.6",
-    "@commitlint/config-conventional": "^17.6.6",
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
     "@ouorz/eslint-config-root": "workspace:*",
     "@ouorz/prettier-config": "workspace:*",
     "husky": "^8.0.3",
@@ -52,7 +52,7 @@
     "prettier-plugin-solidity": "^1.1.3",
     "solhint": "^3.4.1",
     "solhint-plugin-prettier": "^0.0.5",
-    "turbo": "^1.10.7"
+    "turbo": "^1.10.12"
   },
   "husky": {
     "hooks": {
