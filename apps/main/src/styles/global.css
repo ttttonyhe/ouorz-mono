@@ -771,3 +771,35 @@ abbr[title] {
 .nexment-comments-div .nexment-comments-title h5 {
 	@apply dark:text-white;
 }
+
+.nexment-comment-area
+	.nexment-comment-area-bottom
+	.nexment-comment-area-toolbar
+	button {
+	padding-top: 6px !important;
+	padding-bottom: 6px !important;
+}
+
+.nexment-comment-area
+	.nexment-comment-area-bottom
+	.nexment-comment-area-submit
+	button
+	svg {
+	margin-top: 1.5px !important;
+}
+
+.nexment-comment-area
+	.nexment-comment-area-bottom
+	div:nth-child(1)
+	.nexment-replying {
+	padding: 3px 4px 0px 4px !important;
+	transform: none !important;
+}
+
+.nexment-comment-area
+	.nexment-comment-area-bottom
+	div:nth-child(1)
+	.nexment-replying
+	b {
+	margin-top: 1px !important;
+}

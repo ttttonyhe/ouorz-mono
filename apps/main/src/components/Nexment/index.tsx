@@ -9,6 +9,7 @@ const NexmentComponent = () => {
 		pageKey: pageKey as string,
 		enableLinkInput: true,
 		enableReplyListModal: true,
+		enableReplyEmail: true,
 		descriptionTag: false,
 		leancloud: {
 			appId: process.env.NEXT_PUBLIC_LC_ID,
