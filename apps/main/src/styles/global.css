@@ -443,7 +443,7 @@ h5 {
 	div:nth-child(1)
 	.nexment-replying
 	em {
-	@apply dark:text-gray-400;
+	@apply dark:text-gray-300;
 }
 
 .nexment-popover-text b {
@@ -794,6 +794,7 @@ abbr[title] {
 	.nexment-replying {
 	padding: 3px 4px 0px 4px !important;
 	transform: none !important;
+	@apply dark:!border-gray-500;
 }
 
 .nexment-comment-area
@@ -802,4 +803,16 @@ abbr[title] {
 	.nexment-replying
 	b {
 	margin-top: 1px !important;
+}
+
+.nexment-comment-area
+	.nexment-comment-area-top
+	.nexment-comment-area-name
+	.nexment-comment-area-name-avatar {
+	flex-shrink: 0;
+}
+
+.nexment-comment-area .nexment-comment-area-top .nexment-comment-area-name {
+	@apply dark:bg-gray-700;
+	@apply dark:border-gray-500;
 }
