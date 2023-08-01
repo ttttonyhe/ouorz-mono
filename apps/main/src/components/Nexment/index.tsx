@@ -7,10 +7,12 @@ const NexmentComponent = () => {
 
 	const config = {
 		pageKey: pageKey as string,
-		enableLinkInput: true,
-		enableReplyListModal: true,
-		enableReplyEmail: true,
-		descriptionTag: false,
+		features: {
+			linkInput: true,
+			replyListModal: true,
+			replyEmailNotifications: true,
+			descriptionTag: true,
+		},
 		leancloud: {
 			appId: process.env.NEXT_PUBLIC_LC_ID,
 			appKey: process.env.NEXT_PUBLIC_LC_KEY,

@@ -368,12 +368,12 @@ h5 {
 
 .nexment-comment-area .nexment-comment-area-top input {
 	@apply dark:bg-gray-700;
-	@apply dark:border-gray-500;
+	@apply dark:!border-gray-500;
 }
 
 .nexment-comment-area .nexment-comment-area-middle textarea {
 	@apply dark:bg-gray-700;
-	@apply dark:border-gray-500;
+	@apply dark:!border-gray-500;
 }
 
 .nexment-comment-area .nexment-comment-area-bottom div:nth-child(2) button {
@@ -389,7 +389,7 @@ h5 {
 
 .nexment-comment-area {
 	@apply dark:bg-gray-600;
-	@apply dark:border-gray-600;
+	@apply dark:!border-gray-600;
 }
 
 .nexment-header h1 {
@@ -398,7 +398,7 @@ h5 {
 
 .nexment-header {
 	@apply items-center;
-	@apply dark:border-gray-700;
+	@apply dark:!border-gray-700;
 }
 
 .nexment-comments-div .nexment-comments-title h5 {
@@ -410,11 +410,11 @@ h5 {
 }
 
 .nexment-comments-list-item {
-	@apply dark:border-gray-700;
+	@apply dark:!border-gray-700;
 }
 
 .nexment-comments-reply-list {
-	@apply dark:border-gray-700;
+	@apply dark:!border-gray-700;
 }
 
 .dark .nexment-inner-reply-list {
@@ -814,5 +814,59 @@ abbr[title] {
 
 .nexment-comment-area .nexment-comment-area-top .nexment-comment-area-name {
 	@apply dark:bg-gray-700;
-	@apply dark:border-gray-500;
+	@apply dark:!border-gray-500;
+}
+
+.nexment-popover .nexment-popover-title {
+	@apply dark:!border-gray-500;
+}
+
+.nexment-popover .nexment-popover-title b {
+	@apply dark:!text-white;
+}
+
+.nexment-popover .nexment-popover-content p {
+	@apply dark:!text-white;
+}
+
+.nexment-popover .nexment-popover-content input {
+	@apply dark:!border-gray-500;
+}
+
+.nexment-popover .nexment-popover-content .nexment-popover-input {
+	@apply !text-xs;
+}
+
+.nexment-popover .nexment-popover-content .nexment-popover-input input {
+	@apply dark:!text-white;
+}
+
+.nexment-comment-area-container .nexment-comment-area-replying-to {
+	@apply dark:!border-gray-500;
+}
+
+.nexment-comment-area-container .nexment-comment-area-replying-to-header {
+	@apply dark:!text-white dark:!border-gray-500;
+}
+
+.nexment-comment-area-container
+	.nexment-comment-area-replying-to-header
+	svg
+	path:nth-child(2) {
+	@apply dark:!fill-white;
+}
+
+.nexment-comment-area-container .nexment-comment-area-replying-to-cta {
+	@apply !px-3 dark:hover:!bg-gray-700 dark:!border-gray-500;
+}
+
+.nexment-comment-area-container .nexment-comment-area-replying-to-content p {
+	@apply dark:!text-gray-300;
+}
+
+.nexment-comment-area-container
+	.nexment-comment-area-replying-to-cta
+	svg
+	path:nth-child(2) {
+	@apply dark:!fill-white;
 }
