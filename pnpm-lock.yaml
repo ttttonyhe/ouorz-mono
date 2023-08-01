@@ -536,8 +536,8 @@ importers:
         specifier: ^3.1.7
         version: 3.1.7(hardhat@2.14.0)
       '@openzeppelin/contracts':
-        specifier: ^4.8.3
-        version: 4.8.3
+        specifier: ^4.9.2
+        version: 4.9.2
       '@openzeppelin/contracts-upgradeable':
         specifier: ^4.9.2
         version: 4.9.2
@@ -6109,8 +6109,8 @@ packages:
     resolution: {integrity: sha512-siviV3PZV/fHfPaoIC51rf1Jb6iElkYWnNYZ0leO23/ukXuvOyoC/ahy8jqiV7g+++9Nuo3n/rk5ajSN/+d/Sg==}
     dev: true
 
-  /@openzeppelin/contracts@4.8.3:
-    resolution: {integrity: sha512-bQHV8R9Me8IaJoJ2vPG4rXcL7seB7YVuskr4f+f5RyOStSZetwzkWtoqDMl5erkBJy0lDRUnIR2WIkPiC0GJlg==}
+  /@openzeppelin/contracts@4.9.2:
+    resolution: {integrity: sha512-mO+y6JaqXjWeMh9glYVzVu8HYPGknAAnWyxTRhGeckOruyXQMNnlcW6w/Dx9ftLeIQk6N+ZJFuVmTwF7lEIFrg==}
     dev: true
 
   /@openzeppelin/hardhat-upgrades@1.26.0(@nomiclabs/hardhat-ethers@2.2.3)(@nomiclabs/hardhat-etherscan@3.1.7)(ethers@5.7.2)(hardhat@2.14.0):

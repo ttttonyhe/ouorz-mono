@@ -17,7 +17,7 @@
 		"@matterlabs/hardhat-zksync-verify": "^0.1.7",
 		"@nomiclabs/hardhat-ethers": "^2.2.3",
 		"@nomiclabs/hardhat-etherscan": "^3.1.7",
-		"@openzeppelin/contracts": "^4.8.3",
+		"@openzeppelin/contracts": "^4.9.2",
 		"@openzeppelin/contracts-upgradeable": "^4.9.2",
 		"@openzeppelin/hardhat-upgrades": "^1.26.0",
 		"dotenv": "^16.0.1",
