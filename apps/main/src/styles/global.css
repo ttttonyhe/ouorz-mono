@@ -377,14 +377,14 @@ h5 {
 }
 
 .nexment-comment-area .nexment-comment-area-bottom div:nth-child(2) button {
-	@apply dark:bg-blue-800;
+	@apply dark:bg-[#115ea3];
 }
 
 .nexment-comment-area
 	.nexment-comment-area-bottom
 	div:nth-child(2)
 	button:hover {
-	@apply dark:bg-blue-700;
+	@apply dark:bg-[#0f6cbd];
 }
 
 .nexment-comment-area {
@@ -462,6 +462,11 @@ h5 {
 .nexment-popover p {
 	@apply dark:text-white;
 	@apply mt-4;
+}
+
+.nexment-popover,
+.nexment-emoji-container {
+	@apply dark:bg-gray-800 rounded-md;
 }
 
 .nexment-emoji-container .nexment-emoji-section .nexment-emoji-section-header {
@@ -805,16 +810,10 @@ abbr[title] {
 	margin-top: 1px !important;
 }
 
-.nexment-comment-area
-	.nexment-comment-area-top
-	.nexment-comment-area-name
-	.nexment-comment-area-name-avatar {
-	flex-shrink: 0;
-}
-
-.nexment-comment-area .nexment-comment-area-top .nexment-comment-area-name {
-	@apply dark:bg-gray-700;
-	@apply dark:!border-gray-500;
+.nexment-comment-area-container
+	.nexment-comment-area
+	.nexment-comment-area-top-name-avatar {
+	@apply dark:!border-gray-500 dark:bg-gray-700 flex-shrink-0;
 }
 
 .nexment-popover .nexment-popover-title {
@@ -841,8 +840,24 @@ abbr[title] {
 	@apply dark:!text-white;
 }
 
+.nexment-comment-area-container {
+	@apply dark:!text-white;
+}
+
+.nexment-comment-area-toolbar button {
+	@apply dark:!text-gray-300;
+}
+
+.nexment-emoji-container
+	.nexment-emoji-section
+	.nexment-emoji-section-box
+	.nexment-emoji-section-container
+	span {
+	@apply dark:!text-white dark:!bg-gray-700;
+}
+
 .nexment-comment-area-container .nexment-comment-area-replying-to {
-	@apply dark:!border-gray-500;
+	@apply dark:!border-gray-500 dark:!border;
 }
 
 .nexment-comment-area-container .nexment-comment-area-replying-to-header {
@@ -869,4 +884,12 @@ abbr[title] {
 	svg
 	path:nth-child(2) {
 	@apply dark:!fill-white;
+}
+
+.nexment-header-logo a img {
+	@apply dark:bg-gray-200 dark:p-1 dark:rounded-sm;
+}
+
+.nexment-comments-div .nexment-comments-title h5 a {
+	@apply dark:!text-gray-200;
 }
