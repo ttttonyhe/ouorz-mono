@@ -813,7 +813,7 @@ abbr[title] {
 .nexment-comment-area-container
 	.nexment-comment-area
 	.nexment-comment-area-top-name-avatar {
-	@apply dark:!border-gray-500 dark:bg-gray-700 flex-shrink-0;
+	@apply dark:!border-gray-500 dark:bg-gray-700 flex-shrink-0 dark:hover:!bg-gray-600;
 }
 
 .nexment-popover .nexment-popover-title {
@@ -845,7 +845,7 @@ abbr[title] {
 }
 
 .nexment-comment-area-toolbar button {
-	@apply dark:!text-gray-300;
+	@apply dark:!text-gray-300 dark:hover:!bg-gray-500;
 }
 
 .nexment-emoji-container
