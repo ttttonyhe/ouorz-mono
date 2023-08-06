@@ -39,16 +39,29 @@
         ".next/**"
       ],
       "env": [
-        "GITHUB_TOKEN",
+        "REVALIDATION_REQUEST_TOKEN",
+        "SENTRY_ORG",
+        "SENTRY_PROJECT",
+        "SENTRY_AUTH_TOKEN",
+        "SENTRY_IGNORE_API_RESOLUTION_ERROR",
+        "NEXT_PUBLIC_SENTRY_DSN",
+        "NEXT_PUBLIC_BUTTONDOWN_TOKEN",
         "NEXT_PUBLIC_LC_KEY",
         "NEXT_PUBLIC_LC_ID",
-        "NEXT_PUBLIC_BUTTONDOWN_TOKEN",
-        "NEXT_PUBLIC_SENTRY_DSN",
-        "SENTRY_IGNORE_API_RESOLUTION_ERROR",
-        "SENTRY_AUTH_TOKEN",
-        "SENTRY_PROJECT",
-        "SENTRY_ORG",
-        "REVALIDATION_REQUEST_TOKEN"
+        "JMS_API_PATH",
+        "GITHUB_TOKEN",
+        "ALCHEMY_API_PATH",
+        "QUICK_NODE_API_PATH",
+        "NEXT_PUBLIC_HOST_URL",
+        "ANALYTICS_START_TIME",
+        "ANALYTICS_TOKEN",
+        "SPOTIFY_REFRESH_TOKEN",
+        "TWITTER_ACCESS_TOKEN",
+        "TWITTER_ACCESS_TOKEN_SECRET",
+        "OPENAI_API_KEY",
+        "ALGOLIA_APP_ID",
+        "ALGOLIA_API_KEY",
+        "ALGOLIA_INDEX_NAME"
       ]
     },
     "@ouorz/analytics#build": {
