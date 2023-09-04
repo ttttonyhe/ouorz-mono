@@ -893,3 +893,7 @@ abbr[title] {
 .nexment-comments-div .nexment-comments-title h5 a {
 	@apply dark:!text-gray-200;
 }
+
+.header {
+	transform: translateY(15%);
+}

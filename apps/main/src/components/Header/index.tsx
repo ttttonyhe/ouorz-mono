@@ -486,7 +486,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			<header
 				ref={headerRef}
 				id="header"
-				className="leading-14 lg:border-0 border-b dark:border-b-transparent border-gray-200 lg:bg-transparent dark:backdrop-blur-lg duration-300 grid grid-cols-8 fixed top-0 h-auto w-full lg:py-4 lg:px-5 py-2 px-1 z-50"
+				className="header leading-14 lg:border-0 border-b dark:border-b-transparent border-gray-200 lg:bg-transparent dark:backdrop-blur-lg duration-300 grid grid-cols-8 fixed top-0 h-auto w-full lg:py-4 lg:px-5 py-2 px-1 z-50"
 			>
 				<div className="col-start-1 col-end-3 flex lg:space-x-2 items-center lg:items-baseline">
 					<Tabs items={leftTabItems} />
