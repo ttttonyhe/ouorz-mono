@@ -14,6 +14,7 @@ import Tabs from "../Tabs"
 import Kbar, { KbarListItem } from "../Kbar"
 import useAnalytics from "~/hooks/analytics"
 import { selectGeneral } from "~/store/general/selectors"
+import ScrollWrapper from "../Motion/scroll"
 
 interface HeaderSearchBarComponentProps {
 	activateKbar: () => void
@@ -474,34 +475,42 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 		},
 	]
 
+	const scrollHandler = (position: number) => {
+		if (!headerRef?.current) return
+
+		headerRef.current.style.transform = `translateY(${15 - position || 0}%)`
+	}
+
 	return (
-		<header
-			ref={headerRef}
-			id="header"
-			className="leading-14 lg:border-0 border-b dark:border-b-transparent border-gray-200 lg:bg-transparent dark:backdrop-blur-lg duration-300 grid grid-cols-8 fixed top-0 h-auto w-full lg:py-4 lg:px-5 py-2 px-1 z-50"
-		>
-			<div className="col-start-1 col-end-3 flex lg:space-x-2 items-center lg:items-baseline">
-				<Tabs items={leftTabItems} />
-			</div>
-			<OffsetTransition disabled={!nonHomePage} componentRef={titleRef}>
-				<div
-					ref={titleRef}
-					className="col-start-3 col-end-7 justify-center flex items-center"
-				>
-					{nonHomePage ? (
-						<HeaderTitleComponent />
-					) : (
-						<HeaderSearchBarComponent
-							activateKbar={() => dispatch(activateKbar(kbarItems))}
-						/>
-					)}
+		<ScrollWrapper handler={scrollHandler} startPosition={0} endPosition={15}>
+			<header
+				ref={headerRef}
+				id="header"
+				className="leading-14 lg:border-0 border-b dark:border-b-transparent border-gray-200 lg:bg-transparent dark:backdrop-blur-lg duration-300 grid grid-cols-8 fixed top-0 h-auto w-full lg:py-4 lg:px-5 py-2 px-1 z-50"
+			>
+				<div className="col-start-1 col-end-3 flex lg:space-x-2 items-center lg:items-baseline">
+					<Tabs items={leftTabItems} />
 				</div>
-			</OffsetTransition>
-			<div className="col-start-7 col-end-9 flex space-x-2 justify-end">
-				<Tabs items={rightTabItems} />
-			</div>
-			<Kbar list={kbarItems} />
-		</header>
+				<OffsetTransition disabled={!nonHomePage} componentRef={titleRef}>
+					<div
+						ref={titleRef}
+						className="col-start-3 col-end-7 justify-center flex items-center"
+					>
+						{nonHomePage ? (
+							<HeaderTitleComponent />
+						) : (
+							<HeaderSearchBarComponent
+								activateKbar={() => dispatch(activateKbar(kbarItems))}
+							/>
+						)}
+					</div>
+				</OffsetTransition>
+				<div className="col-start-7 col-end-9 flex space-x-2 justify-end">
+					<Tabs items={rightTabItems} />
+				</div>
+				<Kbar list={kbarItems} />
+			</header>
+		</ScrollWrapper>
 	)
 }
 
