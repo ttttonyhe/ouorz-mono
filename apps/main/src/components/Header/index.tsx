@@ -78,12 +78,12 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			component: (
 				<div className="px-5 cursor-pointer mx-auto flex space-x-3 items-center justify-center group">
 					<div className="flex items-center flex-shrink-0 h-[18px] w-[18px] border rounded-full border-gray-300 dark:border-gray-500">
-						<a
+						{/* <a
 							href="https://opensea.io/assets/ethereum/0x13bd2ac3779cbbcb2ac874c33f1145dd71ce41ee/3690"
 							target="_blank"
 							rel="noreferrer"
 							className="flex"
-						>
+						> */}
 							<Image
 								className="rounded-full"
 								src="/tony.png"
@@ -92,7 +92,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 								width={18}
 								loading="lazy"
 							/>
-						</a>
+						{/* </a> */}
 					</div>
 					<div className="text-3 font-medium text-black">
 						<Link href="/" passHref>
