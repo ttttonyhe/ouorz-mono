@@ -40,7 +40,7 @@ const NFTs = () => {
 			{data.eth.map((item, index: React.Key) => {
 				return (
 					<NFTCard
-						key={index}
+						key={item.contract.address}
 						image={item.media[0].raw}
 						title={item.title}
 						description={item.description}
@@ -54,7 +54,7 @@ const NFTs = () => {
 			{data.sol.map((item, index: React.Key) => {
 				return (
 					<NFTCard
-						key={index}
+						key={item.tokenAddress}
 						image={item.imageUrl}
 						title={item.name}
 						description={item.description}
