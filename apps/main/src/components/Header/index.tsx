@@ -84,14 +84,14 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 							rel="noreferrer"
 							className="flex"
 						> */}
-							<Image
-								className="rounded-full"
-								src="/tony.png"
-								alt="Tony's NFT avatar"
-								height={18}
-								width={18}
-								loading="lazy"
-							/>
+						<Image
+							className="rounded-full"
+							src="/tony.png"
+							alt="Tony's NFT avatar"
+							height={18}
+							width={18}
+							loading="lazy"
+						/>
 						{/* </a> */}
 					</div>
 					<div className="text-3 font-medium text-black">
