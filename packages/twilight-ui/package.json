@@ -50,7 +50,7 @@
     "esbuild-sass-plugin": "^2.10.0",
     "eslint-plugin-storybook": "^0.6.13",
     "http-server": "^14.1.1",
-    "postcss": "^8.4.27",
+    "postcss": "^8.4.31",
     "react-docgen-typescript-plugin": "^1.0.5",
     "storybook": "^7.1.1",
     "storybook-addon-turbo-build": "^2.0.1",
