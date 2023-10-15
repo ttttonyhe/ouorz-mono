@@ -16,6 +16,7 @@
 		"baseUrl": ".",
 		"paths": {
 			"~/*": ["src/*"],
+			"react": ["./node_modules/@types/react"],
 			"@twilight-toolkit/ui": ["../../packages/twilight-ui/src/index"],
 			"@twilight-toolkit/utils": ["../../packages/twilight-utils/src/index"]
 		},
