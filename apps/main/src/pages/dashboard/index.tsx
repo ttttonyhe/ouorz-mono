@@ -10,7 +10,7 @@ import PostsMetric from "~/components/Metrics/Posts"
 import NexmentMetric from "~/components/Metrics/Nexment"
 import SspaiMetric from "~/components/Metrics/Sspai"
 import PageViewsMetric from "~/components/Metrics/PageViews"
-import JMSMetric from "~/components/Metrics/JMS"
+import ZhihuMetric from "~/components/Metrics/Zhihu"
 
 const Dashboard: NextPageWithLayout = () => {
 	return (
@@ -58,7 +58,7 @@ const Dashboard: NextPageWithLayout = () => {
 				className="glowing-area mt-5 mb-10 grid lg:grid-cols-2 gap-4"
 				data-cy="metricCards"
 			>
-				<JMSMetric />
+				<ZhihuMetric />
 				<SspaiMetric />
 				<GithubStarMetric />
 				<GithubFollowerMetric />
