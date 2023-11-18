@@ -29,7 +29,7 @@ async function main() {
 
 	console.log(
 		`${artifact.contractName} has been deployed, ` +
-			"run verify:blog to verify the latest implemenation contract"
+			"run verify:blog to verify the latest implementation contract"
 	)
 }
 

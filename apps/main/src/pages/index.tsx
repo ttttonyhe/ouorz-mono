@@ -57,9 +57,9 @@ const Home: NextPageWithLayout = ({ stickyNotFound, stickyPosts }: Props) => {
 			<div className="mt-10">
 				{!stickyNotFound && <List.Static posts={stickyPosts} sticky={true} />}
 			</div>
-			<div className="mt-5">
+			{/* <div className="mt-5">
 				<NextJS13Preview />
-			</div>
+			</div> */}
 			<div className="mt-5">
 				<YearOfReformation />
 			</div>
