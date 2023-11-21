@@ -33,10 +33,7 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 	const router = useRouter()
 	const dispatch = useDispatch()
 
-	const { pid } = router.query
-	const title = `${post.title.rendered} - Tony He`
-
-	if (!status) {
+	if (!status || !post) {
 		return (
 			<Redirect>
 				<div className="text-center shadow-sm border rounded-md rounded-tl-none rounded-tr-none border-t-0 w-1/3 mx-auto bg-white py-3 animate-pulse">
@@ -48,6 +45,9 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 			</Redirect>
 		)
 	}
+
+	const { pid } = router.query
+	const title = `${post.title.rendered} - Tony He`
 
 	useEffect(() => {
 		dispatch(setHeaderTitle(post.title.rendered))

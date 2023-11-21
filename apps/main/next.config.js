@@ -11,7 +11,20 @@ const NextConfigs = {
 	images: {
 		minimumCacheTTL: 3600,
 		formats: ["image/avif", "image/webp"],
-		domains: ["static.ouorz.com", "storage.snapaper.com", "i.gr-assets.com"],
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "static.ouorz.com",
+			},
+			{
+				protocol: "https",
+				hostname: "storage.snapaper.com",
+			},
+			{
+				protocol: "https",
+				hostname: "i.gr-assets.com",
+			},
+		],
 		path: "/assets/_next/image",
 	},
 	compiler: {
