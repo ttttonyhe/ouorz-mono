@@ -69,7 +69,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 	const { setTheme, resolvedTheme } = useTheme()
 	const titleRef = useRef<HTMLDivElement>(null)
 
-	const nonHomePage = router.asPath.split("/").length > 2
+	const nonHomePage = router.pathname.split("/").length > 2
 
 	const leftTabItems = [
 		{

@@ -134,7 +134,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 		return () => {
 			window.removeEventListener("scroll", scrollHandler)
 		}
-	}, [router.asPath])
+	}, [router.query])
 
 	const SubItem = ({
 		item,
