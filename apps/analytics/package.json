@@ -35,7 +35,7 @@
 		"change-password": "node scripts/change-password.js",
 		"lint": "next lint --quiet --fix",
 		"clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo && rm -rf .next",
-		"upgrade": "ncu --upgrade -x rollup react-tooltip"
+		"upgrade": "ncu --upgrade -x rollup react-tooltip chart.js immer"
 	},
 	"dependencies": {
 		"@fontsource/inter": "5.0.15",
@@ -43,7 +43,7 @@
 		"@prisma/extension-accelerate": "^0.6.2",
 		"bcryptjs": "^2.4.3",
 		"chalk": "^5.3.0",
-		"chart.js": "^4.4.0",
+		"chart.js": "^2.9.4",
 		"classnames": "^2.3.2",
 		"colord": "^2.9.3",
 		"cors": "^2.8.5",
@@ -55,7 +55,7 @@
 		"dotenv-cli": "^7.3.0",
 		"formik": "^2.4.5",
 		"fs-extra": "^11.2.0",
-		"immer": "^10.0.3",
+		"immer": "^9.0.14",
 		"ipaddr.js": "^2.1.0",
 		"is-ci": "^3.0.1",
 		"is-docker": "^3.0.0",

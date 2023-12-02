@@ -56,8 +56,8 @@ importers:
         specifier: ^5.3.0
         version: 5.3.0
       chart.js:
-        specifier: ^4.4.0
-        version: 4.4.0
+        specifier: ^2.9.4
+        version: 2.9.4
       classnames:
         specifier: ^2.3.2
         version: 2.3.2
@@ -92,8 +92,8 @@ importers:
         specifier: ^11.2.0
         version: 11.2.0
       immer:
-        specifier: ^10.0.3
-        version: 10.0.3
+        specifier: ^9.0.14
+        version: 9.0.21
       ipaddr.js:
         specifier: ^2.1.0
         version: 2.1.0
@@ -171,7 +171,7 @@ importers:
         version: 9.0.1
       zustand:
         specifier: ^4.4.7
-        version: 4.4.7(immer@10.0.3)(react@18.2.0)
+        version: 4.4.7(immer@9.0.21)(react@18.2.0)
     devDependencies:
       '@formatjs/cli':
         specifier: ^6.2.4
@@ -5355,10 +5355,6 @@ packages:
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
     dev: true
 
-  /@kurkle/color@0.3.2:
-    resolution: {integrity: sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==}
-    dev: false
-
   /@leancloud/adapter-types@3.0.0:
     resolution: {integrity: sha512-/1l2PWJ6pXizHphBorMN7B0d2YjmxZJf1s+bitvLALt7wBid5qbGpHqGGKE/yRdNlCKwl9FbXG1x5wUFZfQwHQ==}
     dev: true
@@ -10400,7 +10396,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.10
-      caniuse-lite: 1.0.30001565
+      caniuse-lite: 1.0.30001539
       fraction.js: 4.3.6
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -11301,11 +11297,24 @@ packages:
     resolution: {integrity: sha512-yrLQ/yVUFXkzg7EDQsPieE/53+0RlaWTs+wBrvW36cyilJ2SaDWfl4Yj7MtLTXleV9uEKefbAGUPv2/iWSooRA==}
     dev: true
 
-  /chart.js@4.4.0:
-    resolution: {integrity: sha512-vQEj6d+z0dcsKLlQvbKIMYFHd3t8W/7L2vfJIbYcfyPcRx92CsHqECpueN8qVGNlKyDcr5wBrYAYKnfu/9Q1hQ==}
-    engines: {pnpm: '>=7'}
+  /chart.js@2.9.4:
+    resolution: {integrity: sha512-B07aAzxcrikjAPyV+01j7BmOpxtQETxTSlQ26BEYJ+3iUkbNKaOJ/nDbT6JjyqYxseM0ON12COHYdU2cTIjC7A==}
     dependencies:
-      '@kurkle/color': 0.3.2
+      chartjs-color: 2.4.1
+      moment: 2.29.4
+    dev: false
+
+  /chartjs-color-string@0.6.0:
+    resolution: {integrity: sha512-TIB5OKn1hPJvO7JcteW4WY/63v6KwEdt6udfnDE9iCAZgy+V4SrbSxoIbTw/xkUIapjEI4ExGtD0+6D3KyFd7A==}
+    dependencies:
+      color-name: 1.1.4
+    dev: false
+
+  /chartjs-color@2.4.1:
+    resolution: {integrity: sha512-haqOg1+Yebys/Ts/9bLo/BqUcONQOdr/hoEr2LLTRl6C5LXctUdHxsCYfvQVg5JIxITrfCNUDr4ntqmQk9+/0w==}
+    dependencies:
+      chartjs-color-string: 0.6.0
+      color-convert: 1.9.3
     dev: false
 
   /check-more-types@2.24.0:
@@ -16172,10 +16181,6 @@ packages:
 
   /immediate@3.0.6:
     resolution: {integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==}
-    dev: false
-
-  /immer@10.0.3:
-    resolution: {integrity: sha512-pwupu3eWfouuaowscykeckFmVTpqbzW+rXFCX8rQLkZzM9ftBmU/++Ra+o+L27mz03zJTlyV4UUr+fdKNffo4A==}
     dev: false
 
   /immer@9.0.21:
@@ -25115,7 +25120,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /zustand@4.4.7(immer@10.0.3)(react@18.2.0):
+  /zustand@4.4.7(immer@9.0.21)(react@18.2.0):
     resolution: {integrity: sha512-QFJWJMdlETcI69paJwhSMJz7PPWjVP8Sjhclxmxmxv/RYI7ZOvR5BHX+ktH0we9gTWQMxcne8q1OY8xxz604gw==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -25130,7 +25135,7 @@ packages:
       react:
         optional: true
     dependencies:
-      immer: 10.0.3
+      immer: 9.0.21
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false

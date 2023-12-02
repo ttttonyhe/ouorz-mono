@@ -15,21 +15,21 @@ function Link({
 	...props
 }) {
 	return (
-		<NextLink {...props}>
-			<a
-				className={classNames(styles.link, className, {
-					[styles.large]: size === "large",
-					[styles.small]: size === "small",
-					[styles.xsmall]: size === "xsmall",
-					[styles.iconRight]: iconRight,
-				})}
-				onClick={onClick}
-			>
-				{icon && <Icon className={styles.icon} icon={icon} size={size} />}
-				{children}
-			</a>
-		</NextLink>
-	)
+        (<NextLink
+            {...props}
+            className={classNames(styles.link, className, {
+                [styles.large]: size === "large",
+                [styles.small]: size === "small",
+                [styles.xsmall]: size === "xsmall",
+                [styles.iconRight]: iconRight,
+            })}
+            onClick={onClick}>
+
+            {icon && <Icon className={styles.icon} icon={icon} size={size} />}
+            {children}
+
+        </NextLink>)
+    );
 }
 
 Link.propTypes = {

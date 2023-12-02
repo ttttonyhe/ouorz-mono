@@ -12,17 +12,18 @@ export default function FilterLink({ id, value, label, externalUrl }) {
 	const selected = query[id] === value
 
 	return (
-		<div className={styles.row}>
-			<Link href={resolve({ [id]: value })} replace>
-				<a
-					className={classNames(styles.label, {
-						[styles.inactive]: active && !selected,
-						[styles.active]: active && selected,
-					})}
-				>
-					{label || value}
-				</a>
-			</Link>
+        <div className={styles.row}>
+			<Link
+                href={resolve({ [id]: value })}
+                replace
+                className={classNames(styles.label, {
+                    [styles.inactive]: active && !selected,
+                    [styles.active]: active && selected,
+                })}>
+
+                {label || value}
+
+            </Link>
 			{externalUrl && (
 				<a
 					href={externalUrl}
@@ -34,5 +35,5 @@ export default function FilterLink({ id, value, label, externalUrl }) {
 				</a>
 			)}
 		</div>
-	)
+    );
 }

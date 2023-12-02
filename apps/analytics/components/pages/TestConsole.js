@@ -48,7 +48,7 @@ export default function TestConsole() {
 	}
 
 	return (
-		<Page>
+        <Page>
 			<Head>
 				{typeof window !== "undefined" && website && (
 					<script
@@ -84,17 +84,17 @@ export default function TestConsole() {
 								<PageHeader>Page links</PageHeader>
 								<div>
 									<Link href={`?testPage=1`}>
-										<a>Test Page One</a>
+										Test Page One
 									</Link>
 								</div>
 								<div>
 									<Link href={`?testPage=2`}>
-										<a>Test Page Two</a>
+										Test Page Two
 									</Link>
 								</div>
 								<div>
-									<Link href={`https://www.google.com`}>
-										<a data-oa="test-externalLink">Test External link</a>
+									<Link href={`https://www.google.com`} data-oa="test-externalLink">
+										Test External link
 									</Link>
 								</div>
 							</div>
@@ -135,5 +135,5 @@ export default function TestConsole() {
 				</>
 			)}
 		</Page>
-	)
+    );
 }
