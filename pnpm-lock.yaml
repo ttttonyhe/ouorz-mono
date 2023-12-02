@@ -46,12 +46,12 @@ importers:
       '@prisma/client':
         specifier: 5.6.0
         version: 5.6.0(prisma@5.6.0)
+      '@prisma/extension-accelerate':
+        specifier: ^0.6.2
+        version: 0.6.2(@prisma/client@5.6.0)
       bcryptjs:
         specifier: ^2.4.3
         version: 2.4.3
-      chalk:
-        specifier: ^5.3.0
-        version: 5.3.0
       chart.js:
         specifier: ^2.9.4
         version: 2.9.4
@@ -180,11 +180,11 @@ importers:
         specifier: workspace:*
         version: link:../../packages/prettier-config
       '@rollup/plugin-buble':
-        specifier: ^0.21.3
-        version: 0.21.3(rollup@2.78.0)
+        specifier: ^1.0.3
+        version: 1.0.3(rollup@2.78.0)
       '@svgr/webpack':
-        specifier: ^6.2.1
-        version: 6.2.1
+        specifier: ^8.1.0
+        version: 8.1.0(typescript@5.3.2)
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -1131,7 +1131,6 @@ packages:
   /@babel/helper-plugin-utils@7.20.2:
     resolution: {integrity: sha512-8RvlJG2mj4huQ4pZ+rU9lqKi9ZKiRmuvGuM2HlWmkmgOhbs6zEAw6IEiJ5cQqGbDzGZOhwuOQNtZMi/ENLjZoQ==}
     engines: {node: '>=6.9.0'}
-    dev: true
 
   /@babel/helper-plugin-utils@7.22.5:
     resolution: {integrity: sha512-uLls06UVKgFG9QD4OeFYLEGteMIAa5kpTPcFL28yuCIIzsf6ZyKZMllKVOCZFhiZ5ptnwX4mtKdWCBE/uT4amg==}
@@ -1212,7 +1211,6 @@ packages:
   /@babel/helper-validator-option@7.21.0:
     resolution: {integrity: sha512-rmL/B8/f0mKS2baE9ZpyTcTavvEuWhTTW8amjzXNvYG4AwBsqTLikfXsEofsJEfKHf+HQVQbFOHy6o+4cnC/fQ==}
     engines: {node: '>=6.9.0'}
-    dev: true
 
   /@babel/helper-validator-option@7.22.5:
     resolution: {integrity: sha512-R3oB6xlIVKUnxNUxbmgq7pKjxpru24zlimpE8WK47fACIlM0II/Hm1RS8IaOI7NgCr6LNS+jl5l75m20npAziw==}
@@ -1786,6 +1784,15 @@ packages:
       '@babel/core': 7.21.4
       '@babel/helper-plugin-utils': 7.22.5
     dev: true
+
+  /@babel/plugin-syntax-jsx@7.21.4(@babel/core@7.22.9):
+    resolution: {integrity: sha512-5hewiLct5OKyh6PLKEYaFclcqtIgCb6bmELouxjF6up5q3Sov7rOayW4RwhbaBL0dit8rA80GNfY+UuDp2mBbQ==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.22.9
+      '@babel/helper-plugin-utils': 7.22.5
 
   /@babel/plugin-syntax-jsx@7.22.5(@babel/core@7.21.4):
     resolution: {integrity: sha512-gvyP4hZrgrs/wWMaocvxZ44Hw0b3W8Pe+cMxc8V1ULQ07oh8VNbIRaoD1LRZVTvD+0nieDKjfgKg89sD7rrKrg==}
@@ -2420,6 +2427,17 @@ packages:
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/helper-simple-access': 7.22.5
     dev: true
+
+  /@babel/plugin-transform-modules-commonjs@7.21.2(@babel/core@7.22.9):
+    resolution: {integrity: sha512-Cln+Yy04Gxua7iPdj6nOV96smLGjpElir5YwzF0LBPKoPlLDNJePNlrGGaybAJkd0zKRnOVXOgizSqPYMNYkzA==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.22.9
+      '@babel/helper-module-transforms': 7.22.9(@babel/core@7.22.9)
+      '@babel/helper-plugin-utils': 7.22.5
+      '@babel/helper-simple-access': 7.22.5
 
   /@babel/plugin-transform-modules-commonjs@7.22.5(@babel/core@7.22.9):
     resolution: {integrity: sha512-B4pzOXj+ONRmuaQTg05b3y/4DuFz3WcCNAXPLb2Q0GT0TrGKGxNKV4jwsXts+StaM0LQczZbOpj8o1DLPDJIiA==}
@@ -3368,10 +3386,10 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.9
-      '@babel/helper-plugin-utils': 7.22.5
-      '@babel/helper-validator-option': 7.22.5
-      '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.22.9)
-      '@babel/plugin-transform-modules-commonjs': 7.22.5(@babel/core@7.22.9)
+      '@babel/helper-plugin-utils': 7.20.2
+      '@babel/helper-validator-option': 7.21.0
+      '@babel/plugin-syntax-jsx': 7.21.4(@babel/core@7.22.9)
+      '@babel/plugin-transform-modules-commonjs': 7.21.2(@babel/core@7.22.9)
       '@babel/plugin-transform-typescript': 7.21.3(@babel/core@7.22.9)
 
   /@babel/register@7.21.0(@babel/core@7.22.9):
@@ -6469,6 +6487,15 @@ packages:
     resolution: {integrity: sha512-Mt2q+GNJpU2vFn6kif24oRSBQv1KOkYaterQsi0k2/lA+dLvhRX6Lm26gon6PYHwUM8/h8KRgXIUMU0PCLB6bw==}
     requiresBuild: true
 
+  /@prisma/extension-accelerate@0.6.2(@prisma/client@5.6.0):
+    resolution: {integrity: sha512-KIBVPeWt8qaSg7wQ+TXmCVeUDoW75whtXcdS9dbHxRoO2OWFH5I9+qbkHBhx5Wj/h1wQpS8usuxGnsZqiBjUpQ==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@prisma/client': '>=4.16.1'
+    dependencies:
+      '@prisma/client': 5.6.0(prisma@5.6.0)
+    dev: false
+
   /@react-native-community/cli-clean@10.1.1:
     resolution: {integrity: sha512-iNsrjzjIRv9yb5y309SWJ8NDHdwYtnCpmxZouQDyOljUdC9MwdZ4ChbtA4rwQyAwgOVfS9F/j56ML3Cslmvrxg==}
     dependencies:
@@ -6871,13 +6898,16 @@ packages:
       reselect: 4.1.8
     dev: false
 
-  /@rollup/plugin-buble@0.21.3(rollup@2.78.0):
-    resolution: {integrity: sha512-Iv8cCuFPnMdqV4pcyU+OrfjOfagPArRQ1PyQjx5KgHk3dARedI+8PNTLSMpJts0lQJr8yF2pAU4GxpxCBJ9HYw==}
-    engines: {node: '>= 8.0.0'}
+  /@rollup/plugin-buble@1.0.3(rollup@2.78.0):
+    resolution: {integrity: sha512-QYD9BKkJoof0FdCFeSYYhF6/Y8e0Mnf+098xGgmWOFJ4UPHlWujjqOYeVwEm2hJPOmlR5k7HPUdAjqtOWhN64Q==}
+    engines: {node: '>=14.0.0'}
     peerDependencies:
-      rollup: ^1.20.0||^2.0.0
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
     dependencies:
-      '@rollup/pluginutils': 3.1.0(rollup@2.78.0)
+      '@rollup/pluginutils': 5.0.2(rollup@2.78.0)
       '@types/buble': 0.19.2
       buble: 0.20.0
       rollup: 2.78.0
@@ -6901,18 +6931,6 @@ packages:
       rollup: 2.78.0
     dev: false
 
-  /@rollup/pluginutils@3.1.0(rollup@2.78.0):
-    resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
-    engines: {node: '>= 8.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0
-    dependencies:
-      '@types/estree': 0.0.39
-      estree-walker: 1.0.1
-      picomatch: 2.3.1
-      rollup: 2.78.0
-    dev: true
-
   /@rollup/pluginutils@5.0.2(rollup@2.78.0):
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
     engines: {node: '>=14.0.0'}
@@ -6926,7 +6944,6 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 2.78.0
-    dev: false
 
   /@rushstack/eslint-patch@1.2.0:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
@@ -8430,9 +8447,9 @@ packages:
       file-system-cache: 2.3.0
     dev: true
 
-  /@svgr/babel-plugin-add-jsx-attribute@6.5.1(@babel/core@7.22.9):
-    resolution: {integrity: sha512-9PYGcXrAxitycIjRmZB+Q0JaN07GZIWaTBIGQzfaZv+qr1n8X1XUEJ5rZ/vx6OVD9RRYlrNnXWExQXcmZeD/BQ==}
-    engines: {node: '>=10'}
+  /@svgr/babel-plugin-add-jsx-attribute@8.0.0(@babel/core@7.22.9):
+    resolution: {integrity: sha512-b9MIk7yhdS1pMCZM8VeNfUlSKVRhsHZNMl5O9SfaX0l0t5wjdgu4IDzGB8bpnGBBOjGST3rRFVsaaEtI4W6f7g==}
+    engines: {node: '>=14'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
@@ -8457,44 +8474,44 @@ packages:
       '@babel/core': 7.22.9
     dev: true
 
-  /@svgr/babel-plugin-replace-jsx-attribute-value@6.5.1(@babel/core@7.22.9):
-    resolution: {integrity: sha512-8DPaVVE3fd5JKuIC29dqyMB54sA6mfgki2H2+swh+zNJoynC8pMPzOkidqHOSc6Wj032fhl8Z0TVn1GiPpAiJg==}
-    engines: {node: '>=10'}
+  /@svgr/babel-plugin-replace-jsx-attribute-value@8.0.0(@babel/core@7.22.9):
+    resolution: {integrity: sha512-KVQ+PtIjb1BuYT3ht8M5KbzWBhdAjjUPdlMtpuw/VjT8coTrItWX6Qafl9+ji831JaJcu6PJNKCV0bp01lBNzQ==}
+    engines: {node: '>=14'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.9
     dev: true
 
-  /@svgr/babel-plugin-svg-dynamic-title@6.5.1(@babel/core@7.22.9):
-    resolution: {integrity: sha512-FwOEi0Il72iAzlkaHrlemVurgSQRDFbk0OC8dSvD5fSBPHltNh7JtLsxmZUhjYBZo2PpcU/RJvvi6Q0l7O7ogw==}
-    engines: {node: '>=10'}
+  /@svgr/babel-plugin-svg-dynamic-title@8.0.0(@babel/core@7.22.9):
+    resolution: {integrity: sha512-omNiKqwjNmOQJ2v6ge4SErBbkooV2aAWwaPFs2vUY7p7GhVkzRkJ00kILXQvRhA6miHnNpXv7MRnnSjdRjK8og==}
+    engines: {node: '>=14'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.9
     dev: true
 
-  /@svgr/babel-plugin-svg-em-dimensions@6.5.1(@babel/core@7.22.9):
-    resolution: {integrity: sha512-gWGsiwjb4tw+ITOJ86ndY/DZZ6cuXMNE/SjcDRg+HLuCmwpcjOktwRF9WgAiycTqJD/QXqL2f8IzE2Rzh7aVXA==}
-    engines: {node: '>=10'}
+  /@svgr/babel-plugin-svg-em-dimensions@8.0.0(@babel/core@7.22.9):
+    resolution: {integrity: sha512-mURHYnu6Iw3UBTbhGwE/vsngtCIbHE43xCRK7kCw4t01xyGqb2Pd+WXekRRoFOBIY29ZoOhUCTEweDMdrjfi9g==}
+    engines: {node: '>=14'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.9
     dev: true
 
-  /@svgr/babel-plugin-transform-react-native-svg@6.5.1(@babel/core@7.22.9):
-    resolution: {integrity: sha512-2jT3nTayyYP7kI6aGutkyfJ7UMGtuguD72OjeGLwVNyfPRBD8zQthlvL+fAbAKk5n9ZNcvFkp/b1lZ7VsYqVJg==}
-    engines: {node: '>=10'}
+  /@svgr/babel-plugin-transform-react-native-svg@8.1.0(@babel/core@7.22.9):
+    resolution: {integrity: sha512-Tx8T58CHo+7nwJ+EhUwx3LfdNSG9R2OKfaIXXs5soiy5HtgoAEkDay9LIimLOcG8dJQH1wPZp/cnAv6S9CrR1Q==}
+    engines: {node: '>=14'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.9
     dev: true
 
-  /@svgr/babel-plugin-transform-svg-component@6.5.1(@babel/core@7.22.9):
-    resolution: {integrity: sha512-a1p6LF5Jt33O3rZoVRBqdxL350oge54iZWHNI6LJB5tQ7EelvD/Mb1mfBiZNAan0dt4i3VArkFRjA4iObuNykQ==}
+  /@svgr/babel-plugin-transform-svg-component@8.0.0(@babel/core@7.22.9):
+    resolution: {integrity: sha512-DFx8xa3cZXTdb/k3kfPeaixecQLgKh5NVBMwD0AQxOzcZawK4oo1Jh9LbrcACUivsCA7TLG8eeWgrDXjTMhRmw==}
     engines: {node: '>=12'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -8502,85 +8519,89 @@ packages:
       '@babel/core': 7.22.9
     dev: true
 
-  /@svgr/babel-preset@6.5.1(@babel/core@7.22.9):
-    resolution: {integrity: sha512-6127fvO/FF2oi5EzSQOAjo1LE3OtNVh11R+/8FXa+mHx1ptAaS4cknIjnUA7e6j6fwGGJ17NzaTJFUwOV2zwCw==}
-    engines: {node: '>=10'}
+  /@svgr/babel-preset@8.1.0(@babel/core@7.22.9):
+    resolution: {integrity: sha512-7EYDbHE7MxHpv4sxvnVPngw5fuR6pw79SkcrILHJ/iMpuKySNCl5W1qcwPEpU+LgyRXOaAFgH0KhwD18wwg6ug==}
+    engines: {node: '>=14'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.9
-      '@svgr/babel-plugin-add-jsx-attribute': 6.5.1(@babel/core@7.22.9)
+      '@svgr/babel-plugin-add-jsx-attribute': 8.0.0(@babel/core@7.22.9)
       '@svgr/babel-plugin-remove-jsx-attribute': 8.0.0(@babel/core@7.22.9)
       '@svgr/babel-plugin-remove-jsx-empty-expression': 8.0.0(@babel/core@7.22.9)
-      '@svgr/babel-plugin-replace-jsx-attribute-value': 6.5.1(@babel/core@7.22.9)
-      '@svgr/babel-plugin-svg-dynamic-title': 6.5.1(@babel/core@7.22.9)
-      '@svgr/babel-plugin-svg-em-dimensions': 6.5.1(@babel/core@7.22.9)
-      '@svgr/babel-plugin-transform-react-native-svg': 6.5.1(@babel/core@7.22.9)
-      '@svgr/babel-plugin-transform-svg-component': 6.5.1(@babel/core@7.22.9)
+      '@svgr/babel-plugin-replace-jsx-attribute-value': 8.0.0(@babel/core@7.22.9)
+      '@svgr/babel-plugin-svg-dynamic-title': 8.0.0(@babel/core@7.22.9)
+      '@svgr/babel-plugin-svg-em-dimensions': 8.0.0(@babel/core@7.22.9)
+      '@svgr/babel-plugin-transform-react-native-svg': 8.1.0(@babel/core@7.22.9)
+      '@svgr/babel-plugin-transform-svg-component': 8.0.0(@babel/core@7.22.9)
     dev: true
 
-  /@svgr/core@6.5.1:
-    resolution: {integrity: sha512-/xdLSWxK5QkqG524ONSjvg3V/FkNyCv538OIBdQqPNaAta3AsXj/Bd2FbvR87yMbXO2hFSWiAe/Q6IkVPDw+mw==}
-    engines: {node: '>=10'}
+  /@svgr/core@8.1.0(typescript@5.3.2):
+    resolution: {integrity: sha512-8QqtOQT5ACVlmsvKOJNEaWmRPmcojMOzCz4Hs2BGG/toAp/K38LcsMRyLp349glq5AzJbCEeimEoxaX6v/fLrA==}
+    engines: {node: '>=14'}
     dependencies:
       '@babel/core': 7.22.9
-      '@svgr/babel-preset': 6.5.1(@babel/core@7.22.9)
-      '@svgr/plugin-jsx': 6.5.1(@svgr/core@6.5.1)
+      '@svgr/babel-preset': 8.1.0(@babel/core@7.22.9)
       camelcase: 6.3.0
-      cosmiconfig: 7.0.1
+      cosmiconfig: 8.3.6(typescript@5.3.2)
+      snake-case: 3.0.4
     transitivePeerDependencies:
       - supports-color
+      - typescript
     dev: true
 
-  /@svgr/hast-util-to-babel-ast@6.5.1:
-    resolution: {integrity: sha512-1hnUxxjd83EAxbL4a0JDJoD3Dao3hmjvyvyEV8PzWmLK3B9m9NPlW7GKjFyoWE8nM7HnXzPcmmSyOW8yOddSXw==}
-    engines: {node: '>=10'}
+  /@svgr/hast-util-to-babel-ast@8.0.0:
+    resolution: {integrity: sha512-EbDKwO9GpfWP4jN9sGdYwPBU0kdomaPIL2Eu4YwmgP+sJeXT+L7bMwJUBnhzfH8Q2qMBqZ4fJwpCyYsAN3mt2Q==}
+    engines: {node: '>=14'}
     dependencies:
       '@babel/types': 7.22.5
       entities: 4.4.0
     dev: true
 
-  /@svgr/plugin-jsx@6.5.1(@svgr/core@6.5.1):
-    resolution: {integrity: sha512-+UdQxI3jgtSjCykNSlEMuy1jSRQlGC7pqBCPvkG/2dATdWo082zHTTK3uhnAju2/6XpE6B5mZ3z4Z8Ns01S8Gw==}
-    engines: {node: '>=10'}
+  /@svgr/plugin-jsx@8.1.0(@svgr/core@8.1.0):
+    resolution: {integrity: sha512-0xiIyBsLlr8quN+WyuxooNW9RJ0Dpr8uOnH/xrCVO8GLUcwHISwj1AG0k+LFzteTkAA0GbX0kj9q6Dk70PTiPA==}
+    engines: {node: '>=14'}
     peerDependencies:
-      '@svgr/core': ^6.0.0
+      '@svgr/core': '*'
     dependencies:
       '@babel/core': 7.22.9
-      '@svgr/babel-preset': 6.5.1(@babel/core@7.22.9)
-      '@svgr/core': 6.5.1
-      '@svgr/hast-util-to-babel-ast': 6.5.1
+      '@svgr/babel-preset': 8.1.0(@babel/core@7.22.9)
+      '@svgr/core': 8.1.0(typescript@5.3.2)
+      '@svgr/hast-util-to-babel-ast': 8.0.0
       svg-parser: 2.0.4
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@svgr/plugin-svgo@6.5.1(@svgr/core@6.5.1):
-    resolution: {integrity: sha512-omvZKf8ixP9z6GWgwbtmP9qQMPX4ODXi+wzbVZgomNFsUIlHA1sf4fThdwTWSsZGgvGAG6yE+b/F5gWUkcZ/iQ==}
-    engines: {node: '>=10'}
+  /@svgr/plugin-svgo@8.1.0(@svgr/core@8.1.0)(typescript@5.3.2):
+    resolution: {integrity: sha512-Ywtl837OGO9pTLIN/onoWLmDQ4zFUycI1g76vuKGEz6evR/ZTJlJuz3G/fIkb6OVBJ2g0o6CGJzaEjfmEo3AHA==}
+    engines: {node: '>=14'}
     peerDependencies:
       '@svgr/core': '*'
     dependencies:
-      '@svgr/core': 6.5.1
-      cosmiconfig: 7.0.1
+      '@svgr/core': 8.1.0(typescript@5.3.2)
+      cosmiconfig: 8.3.6(typescript@5.3.2)
       deepmerge: 4.3.1
-      svgo: 2.8.0
+      svgo: 3.0.2
+    transitivePeerDependencies:
+      - typescript
     dev: true
 
-  /@svgr/webpack@6.2.1:
-    resolution: {integrity: sha512-h09ngMNd13hnePwgXa+Y5CgOjzlCvfWLHg+MBnydEedAnuLRzUHUJmGS3o2OsrhxTOOqEsPOFt5v/f6C5Qulcw==}
-    engines: {node: '>=10'}
+  /@svgr/webpack@8.1.0(typescript@5.3.2):
+    resolution: {integrity: sha512-LnhVjMWyMQV9ZmeEy26maJk+8HTIbd59cH4F2MJ439k9DqejRisfFNGAPvRYlKETuh9LrImlS8aKsBgKjMA8WA==}
+    engines: {node: '>=14'}
     dependencies:
       '@babel/core': 7.22.9
       '@babel/plugin-transform-react-constant-elements': 7.21.3(@babel/core@7.22.9)
       '@babel/preset-env': 7.22.9(@babel/core@7.22.9)
       '@babel/preset-react': 7.22.5(@babel/core@7.22.9)
       '@babel/preset-typescript': 7.21.4(@babel/core@7.22.9)
-      '@svgr/core': 6.5.1
-      '@svgr/plugin-jsx': 6.5.1(@svgr/core@6.5.1)
-      '@svgr/plugin-svgo': 6.5.1(@svgr/core@6.5.1)
+      '@svgr/core': 8.1.0(typescript@5.3.2)
+      '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0)
+      '@svgr/plugin-svgo': 8.1.0(@svgr/core@8.1.0)(typescript@5.3.2)
     transitivePeerDependencies:
       - supports-color
+      - typescript
     dev: true
 
   /@swc/core-darwin-arm64@1.3.72:
@@ -8916,10 +8937,6 @@ packages:
     dependencies:
       '@types/estree': 1.0.0
       '@types/json-schema': 7.0.11
-
-  /@types/estree@0.0.39:
-    resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
-    dev: true
 
   /@types/estree@0.0.51:
     resolution: {integrity: sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==}
@@ -11352,6 +11369,7 @@ packages:
   /chalk@5.3.0:
     resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+    dev: true
 
   /character-entities-legacy@1.1.4:
     resolution: {integrity: sha512-3Xnr+7ZFS1uxeiUDvV02wQ+QDbc55o97tIV5zHScSPJpcLm/r0DFPcoY3tYRp+VZukxuMeKgXYmsXQHO05zQeA==}
@@ -12151,14 +12169,6 @@ packages:
       postcss-value-parser: 4.2.0
     dev: false
 
-  /css-tree@1.1.3:
-    resolution: {integrity: sha512-tRpdppF7TRazZrjJ6v3stzv93qxRcSsFmW6cX0Zm2NVKpxE1WV1HblnghVv9TreireHkqI/VDEsfolRF1p6y7Q==}
-    engines: {node: '>=8.0.0'}
-    dependencies:
-      mdn-data: 2.0.14
-      source-map: 0.6.1
-    dev: true
-
   /css-tree@2.2.1:
     resolution: {integrity: sha512-OA0mILzGc1kCOCSJerOeqDxDQ4HOh+G8NbOJFOTgOCzpw7fCBubk0fEyxp8AgOL/jvLgYA/uV0cMbe43ElF1JA==}
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0, npm: '>=7.0.0'}
@@ -12245,13 +12255,6 @@ packages:
       cssnano-preset-default: 6.0.1(postcss@8.4.32)
       lilconfig: 2.1.0
       postcss: 8.4.32
-    dev: true
-
-  /csso@4.2.0:
-    resolution: {integrity: sha512-wvlcdIbf6pwKEk7vHj8/Bkc0B4ylXZruLvOgs9doS5eOsOpuodOV2zJChSpkp+pRpYQLQMeF04nr3Z68Sta9jA==}
-    engines: {node: '>=8.0.0'}
-    dependencies:
-      css-tree: 1.1.3
     dev: true
 
   /csso@5.0.5:
@@ -14466,13 +14469,8 @@ packages:
       - supports-color
     dev: true
 
-  /estree-walker@1.0.1:
-    resolution: {integrity: sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==}
-    dev: true
-
   /estree-walker@2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
-    dev: false
 
   /esutils@2.0.3:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
@@ -17976,10 +17974,6 @@ packages:
     resolution: {integrity: sha512-jVU0Nr2B9X3MU4tSK7JP1CMkSvOj7X5l/GboG1tKRw52lLF1x2Ju92Ms9tNetCcbfX3hzlM73zYo2NKkWSfF/A==}
     dev: true
 
-  /mdn-data@2.0.14:
-    resolution: {integrity: sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==}
-    dev: true
-
   /mdn-data@2.0.28:
     resolution: {integrity: sha512-aylIc7Z9y4yzHYAJNuESG3hfhC+0Ibp/MAMiaOZgNv4pmEdFyfZhhhny4MNiAfWdBQ1RQ2mfDWmM1x8SvGyp8g==}
     dev: true
@@ -19727,7 +19721,7 @@ packages:
     peerDependencies:
       postcss: ^8.2.15
     dependencies:
-      browserslist: 4.21.10
+      browserslist: 4.22.1
       caniuse-api: 3.0.0
       colord: 2.9.3
       postcss: 8.4.32
@@ -19740,7 +19734,7 @@ packages:
     peerDependencies:
       postcss: ^8.2.15
     dependencies:
-      browserslist: 4.21.10
+      browserslist: 4.22.1
       postcss: 8.4.32
       postcss-value-parser: 4.2.0
     dev: true
@@ -20041,7 +20035,7 @@ packages:
     peerDependencies:
       postcss: ^8.2.15
     dependencies:
-      browserslist: 4.21.10
+      browserslist: 4.22.1
       caniuse-api: 3.0.0
       cssnano-utils: 4.0.0(postcss@8.4.32)
       postcss: 8.4.32
@@ -20076,7 +20070,7 @@ packages:
     peerDependencies:
       postcss: ^8.2.15
     dependencies:
-      browserslist: 4.21.10
+      browserslist: 4.22.1
       cssnano-utils: 4.0.0(postcss@8.4.32)
       postcss: 8.4.32
       postcss-value-parser: 4.2.0
@@ -20229,7 +20223,7 @@ packages:
     peerDependencies:
       postcss: ^8.2.15
     dependencies:
-      browserslist: 4.21.10
+      browserslist: 4.22.1
       postcss: 8.4.32
       postcss-value-parser: 4.2.0
     dev: true
@@ -20387,7 +20381,7 @@ packages:
     peerDependencies:
       postcss: ^8.2.15
     dependencies:
-      browserslist: 4.21.10
+      browserslist: 4.22.1
       caniuse-api: 3.0.0
       postcss: 8.4.32
     dev: true
@@ -22411,6 +22405,13 @@ packages:
     resolution: {integrity: sha512-TK5ZA9U5RqCwMpfoMq/l1mrH0JAR7y7KRvOBx0n2869aLxch+gT9GhN3yUfjiw+d/DiF1mKo14+hd62JyMmoBg==}
     dev: true
 
+  /snake-case@3.0.4:
+    resolution: {integrity: sha512-LAOh4z89bGQvl9pFfNF8V146i7o7/CqFPbqzYgP+yYzDIDeS9HaNFtXABamRW+AQzEVODcvE79ljJ+8a9YSdMg==}
+    dependencies:
+      dot-case: 3.0.4
+      tslib: 2.6.0
+    dev: true
+
   /snapdragon-node@2.1.1:
     resolution: {integrity: sha512-O27l4xaMYt/RSQ5TR3vpWCAB5Kb/czIcqUFOM/C4fYcLnbZUc1PkjTAMjof2pBWaSTwOUd6qUHcFGVGj7aIwnw==}
     engines: {node: '>=0.10.0'}
@@ -22647,11 +22648,6 @@ packages:
       tweetnacl: 0.14.5
     dev: false
     optional: true
-
-  /stable@0.1.8:
-    resolution: {integrity: sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==}
-    deprecated: 'Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility'
-    dev: true
 
   /stack-utils@2.0.5:
     resolution: {integrity: sha512-xrQcmYhOsn/1kX+Vraq+7j4oE2j/6BFscZ0etmYg81xuM8Gq0022Pxb8+IqgOFUIaxHs0KaSb7T1+OegiNrNFA==}
@@ -23105,20 +23101,6 @@ packages:
 
   /svg-parser@2.0.4:
     resolution: {integrity: sha512-e4hG1hRwoOdRb37cIMSgzNsxyzKfayW6VOflrwvR+/bzrkyxY/31WkbgnQpgtrNp1SdpJvpUAGTa/ZoiPNDuRQ==}
-    dev: true
-
-  /svgo@2.8.0:
-    resolution: {integrity: sha512-+N/Q9kV1+F+UeWYoSiULYo4xYSDQlTgb+ayMobAXPwMnLvop7oxKMo9OzIrX5x3eS4L4f2UHhc9axXwY8DpChg==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
-    dependencies:
-      '@trysound/sax': 0.2.0
-      commander: 7.2.0
-      css-select: 4.3.0
-      css-tree: 1.1.3
-      csso: 4.2.0
-      picocolors: 1.0.0
-      stable: 0.1.8
     dev: true
 
   /svgo@3.0.2:
