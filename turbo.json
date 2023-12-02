@@ -77,10 +77,7 @@
         "MAXMIND_LICENSE_KEY"
       ]
     },
-    "@ouorz/analytics#build:edge": {
-      "dependsOn": [
-        "^build-edge"
-      ],
+    "@ouorz/analytics#build-edge": {
       "outputs": [
         ".next/**"
       ],
