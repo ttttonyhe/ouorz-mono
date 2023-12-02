@@ -93,6 +93,4 @@ const getUsernameAndPassword = async () => {
 			throw error
 		}
 	}
-
-	prisma.$disconnect()
 })()

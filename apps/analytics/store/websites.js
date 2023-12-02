@@ -1,4 +1,4 @@
-import create from "zustand"
+import { create } from "zustand"
 import produce from "immer"
 import app from "./app"
 import { getDateRange } from "../lib/date"

@@ -1,5 +1,6 @@
-import { PrismaClient } from "@prisma/client"
 import chalk from "chalk"
+import { PrismaClient } from "@prisma/client/edge"
+import { withAccelerate } from '@prisma/extension-accelerate'
 
 BigInt.prototype.toJSON = function () {
 	const int = Number.parseInt(this.toString())
@@ -29,12 +30,10 @@ function logQuery(e) {
 let prisma
 
 if (process.env.NODE_ENV === "production") {
-	prisma = new PrismaClient(options)
-	prisma.$on("query", logQuery)
+	prisma = new PrismaClient(options).$extends(withAccelerate())
 } else {
 	if (!global.prisma) {
-		global.prisma = new PrismaClient(options)
-		global.prisma.$on("query", logQuery)
+		global.prisma = new PrismaClient(options).$extends(withAccelerate())
 	}
 
 	prisma = global.prisma

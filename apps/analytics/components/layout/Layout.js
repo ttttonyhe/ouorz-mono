@@ -12,10 +12,12 @@ export default function Layout({
 }) {
 	const { dir } = useLocale()
 
+	const pageTitle = `ouorz-analytics${title && ` - ${title}`}`
+
 	return (
 		<>
 			<Head>
-				<title>ouorz-analytics{title && ` - ${title}`}</title>
+				<title>{pageTitle}</title>
 			</Head>
 
 			{header && <Header />}

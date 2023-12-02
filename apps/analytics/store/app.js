@@ -1,4 +1,4 @@
-import create from "zustand"
+import { create } from "zustand"
 import {
 	DASHBOARD_CONFIG,
 	DEFAULT_LOCALE,
