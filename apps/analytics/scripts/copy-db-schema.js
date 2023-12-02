@@ -7,7 +7,7 @@ function getDatabase() {
 		process.env.DATABASE_TYPE ||
 		(process.env.DATABASE_URL && process.env.DATABASE_URL.split(":")[0])
 
-	if (["postgres", "prisma"].includes(type)) {
+	if (type === "postgres") {
 		return "postgresql"
 	}
 

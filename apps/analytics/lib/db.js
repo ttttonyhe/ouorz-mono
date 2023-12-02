@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client/edge"
+import { PrismaClient } from "@prisma/client"
 // import chalk from "chalk"
 
 BigInt.prototype.toJSON = function () {
