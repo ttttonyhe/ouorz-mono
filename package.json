@@ -25,6 +25,7 @@
     "build": "turbo run build --parallel",
     "build:main": "turbo run @ouorz/main#build",
     "build:analytics": "turbo run @ouorz/analytics#build",
+    "build:analytics:edge": "turbo run @ouorz/analytics#build:edge",
     "build:twilight": "turbo run build --filter=./packages/twilight-*",
     "build:twilight:ui": "turbo run @twilight-toolkit/ui#build",
     "build:twilight:ui:storybook": "turbo run @twilight-toolkit/ui#build:storybook",

@@ -77,6 +77,19 @@
         "MAXMIND_LICENSE_KEY"
       ]
     },
+    "@ouorz/analytics#build:edge": {
+      "dependsOn": [
+        "^build-edge"
+      ],
+      "outputs": [
+        ".next/**"
+      ],
+      "env": [
+        "DATABASE_URL",
+        "HASH_SALT",
+        "MAXMIND_LICENSE_KEY"
+      ]
+    },
     "test": {
       "dependsOn": [
         "^build"

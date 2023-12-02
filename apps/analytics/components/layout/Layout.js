@@ -12,7 +12,7 @@ export default function Layout({
 }) {
 	const { dir } = useLocale()
 
-	const pageTitle = `ouorz-analytics${title && ` - ${title}`}`
+	const pageTitle = `ouorz-analytics${title ? ` - ${title}` : ""}`
 
 	return (
 		<>
