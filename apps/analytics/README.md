@@ -15,7 +15,6 @@ Personal Analytics Service Powered by [Umami](https://umami.is)
 + [Supabase](https://supabase.com)
 + Type: PostgreSQL
 + Location: Germany (Frankurt)
-+ [Prisma Accelerate](https://www.prisma.io/data-platform/accelerate)
 
 <br/>
 

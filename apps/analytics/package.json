@@ -40,7 +40,6 @@
 	"dependencies": {
 		"@fontsource/inter": "5.0.15",
 		"@prisma/client": "5.6.0",
-		"@prisma/extension-accelerate": "^0.6.2",
 		"bcryptjs": "^2.4.3",
 		"chalk": "^5.3.0",
 		"chart.js": "^2.9.4",
