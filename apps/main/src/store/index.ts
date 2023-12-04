@@ -13,7 +13,11 @@ const sagaMiddleware = createSagaMiddleware({
 // mount it on the Store
 const store = configureStore({
 	reducer,
-	middleware: () => [sagaMiddleware],
+	middleware: (getDefaultMiddleware) => {
+		return getDefaultMiddleware({
+			immutableCheck: false,
+		}).concat(sagaMiddleware)
+	},
 })
 
 // then run the saga
