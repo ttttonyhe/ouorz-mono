@@ -11,7 +11,10 @@ const sagaMiddleware = createSagaMiddleware({
 })
 
 // mount it on the Store
-const store = configureStore({ reducer, middleware: [sagaMiddleware] })
+const store = configureStore({
+	reducer,
+	middleware: () => [sagaMiddleware],
+})
 
 // then run the saga
 sagaMiddleware.run(saga)
