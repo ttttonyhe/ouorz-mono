@@ -51,7 +51,7 @@
 		"cssnano": "^6.0.1",
 		"eslint": "^8.55.0",
 		"highlight.js": "^11.9.0",
-		"nexment": "^0.0.688",
+		"nexment": "^0.0.689",
 		"next-themes": "^0.2.1",
 		"nextjs-progressbar": "^0.0.16",
 		"nextjs-redirect": "^6.0.1",
