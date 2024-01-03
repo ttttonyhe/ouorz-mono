@@ -100,7 +100,7 @@ h3,
 h4,
 h5 {
 	@apply tracking-wide;
-	@apply dark:text-white;
+	@apply dark:!text-white;
 }
 .prose .warp-post-embed {
 	position: relative;

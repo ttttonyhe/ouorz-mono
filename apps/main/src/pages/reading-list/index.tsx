@@ -41,12 +41,12 @@ const ReadingList: NextPageWithLayout = () => {
 							<h2 className="font-medium text-[28px] text-black dark:text-white tracking-wide flex items-center gap-x-1.5 whitespace-nowrap">
 								Reading List{" "}
 								<span className="text-xs py-0.5 px-2 text-yellow-500 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-800 rounded-full border border-yellow-300 dark:border-yellow-700">
-									2023
+									2024
 								</span>
 							</h2>
 							<p className="text-sm text-neutral-500 dark:text-gray-400 -mt-1">
 								I{"'"}m reading or re-reading (on average) one book every month
-								in 2023
+								in 2024
 							</p>
 						</div>
 					</div>
