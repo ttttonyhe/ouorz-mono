@@ -53,7 +53,7 @@
     "prettier-plugin-solidity": "^1.2.0",
     "solhint": "^4.0.0",
     "solhint-plugin-prettier": "^0.1.0",
-    "turbo": "^1.10.16"
+    "turbo": "^1.11.2"
   },
   "husky": {
     "hooks": {

@@ -13,7 +13,7 @@ const YearOfReformation = () => {
 				</div>
 				<div className="-translate-y-[1.5px]">
 					<label className="pl-[7px] pr-[6.5px] pt-[1.5px] pb-[2.5px] font-medium border-[1.5px] border-gray-700 dark:border-gray-600 text-[0.675rem] leading-[0.675rem] rounded-full text-gray-700 dark:text-gray-400">
-						2023
+						2024
 					</label>
 				</div>
 			</div>
