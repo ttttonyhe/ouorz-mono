@@ -34,9 +34,9 @@ const Podcasts: NextPageWithLayout = () => {
 				<div className="mb-4 flex items-center">
 					<div className="flex-1 flex items-center">
 						<div className="flex items-center cursor-pointer mt-1 mr-4.5 -rotate-6">
-							<i className="text-[35px] hover:animate-spin drop-shadow-lg">
+							<span className="text-[35px] hover:animate-spin drop-shadow-lg">
 								🎙️
-							</i>
+							</span>
 						</div>
 						<div>
 							<h2 className="font-medium text-[28px] text-black dark:text-white tracking-wide flex items-center gap-x-1.5">
@@ -48,7 +48,7 @@ const Podcasts: NextPageWithLayout = () => {
 						</div>
 					</div>
 					<div className="h-full flex justify-end whitespace-nowrap items-center mt-2">
-						<div className="flex-1 px-5">
+						<div className="flex-1 pl-5 pr-3">
 							<p className="text-xl text-gray-500 dark:text-gray-400">
 								<Link href="/" className="flex items-center">
 									<span className="w-6 h-6 mr-2">
