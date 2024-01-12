@@ -393,7 +393,7 @@ h5 {
 }
 
 .nexment-header h1 {
-	@apply dark:text-white;
+	@apply dark:!text-white;
 }
 
 .nexment-header {
