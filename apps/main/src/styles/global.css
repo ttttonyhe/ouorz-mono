@@ -557,7 +557,7 @@ abbr[title] {
 	height: 160px !important;
 }
 
-.aside-mask {
+.mask-y {
 	-webkit-mask-image: linear-gradient(
 		to bottom,
 		transparent 0,
@@ -567,6 +567,23 @@ abbr[title] {
 	);
 	mask-image: linear-gradient(
 		to bottom,
+		transparent 0,
+		#000 24px,
+		#000 95%,
+		transparent 100%
+	);
+}
+
+.mask-x {
+	-webkit-mask-image: linear-gradient(
+		to left,
+		transparent 0,
+		#000 24px,
+		#000 95%,
+		transparent 100%
+	);
+	mask-image: linear-gradient(
+		to left,
 		transparent 0,
 		#000 24px,
 		#000 95%,
@@ -732,7 +749,8 @@ abbr[title] {
 	@apply bg-transparent;
 }
 
-.aside-mask::-webkit-scrollbar {
+.mask-x::-webkit-scrollbar,
+.mask-y::-webkit-scrollbar {
 	@apply bg-transparent;
 }
 
@@ -749,7 +767,8 @@ abbr[title] {
 		@apply bg-gray-800;
 	}
 
-	.aside-mask::-webkit-scrollbar {
+	.mask-x::-webkit-scrollbar,
+	.mask-y::-webkit-scrollbar {
 		@apply bg-gray-800;
 	}
 }

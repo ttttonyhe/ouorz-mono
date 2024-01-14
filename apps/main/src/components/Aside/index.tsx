@@ -259,7 +259,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 							On This Page
 						</h1>
 						<ul
-							className="max-h-[70vh] aside-mask overflow-hidden overflow-y-auto overscroll-contain text-xl px-3 py-3 transition-colors duration-300 text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300"
+							className="max-h-[70vh] mask-y overflow-hidden overflow-y-auto overscroll-contain text-xl px-3 py-3 transition-colors duration-300 text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300"
 							id="toc"
 						>
 							{headersResult &&

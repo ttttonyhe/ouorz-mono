@@ -17,7 +17,7 @@ const YearOfReformation = () => {
 					</label>
 				</div>
 			</div>
-			<div className="flex items-center justify-between gap-x-2.5 mt-4 px-4.5 pb-4 text-sm text-gray-600 dark:text-gray-300 whitespace-nowrap">
+			<div className="flex items-center justify-between gap-x-2.5 mt-4 px-4.5 pb-4 text-sm text-gray-600 dark:text-gray-300 whitespace-nowrap overflow-x-auto mask-x">
 				<div className="flex gap-x-2.5 items-center">
 					<Link
 						href="/reading-list"
@@ -36,6 +36,17 @@ const YearOfReformation = () => {
 							<Icon name="microphone" />
 						</span>
 						<span>Podcasts</span>
+					</Link>
+					<Link
+						href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
+						target="_blank"
+						rel="noreferrer"
+						className="effect-pressing flex items-center gap-x-[4px] rounded-md shadow-sm border dark:border-gray-700 dark:bg-gray-700 py-1 px-3 font-serif hover:bg-gray-50 dark:hover:bg-gray-600 dark:hover:border-gray-600"
+					>
+						<span className="lg:w-[16px] lg:h-[16px] h-4.5 w-4.5">
+							<Icon name="graduationCapOutline" />
+						</span>
+						<span>Google Scholar</span>
 					</Link>
 				</div>
 				<div>
