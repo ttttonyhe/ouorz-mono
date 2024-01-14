@@ -6,7 +6,7 @@ import { pageLayout } from "~/components/Page"
 import List from "~/components/List"
 import Top from "~/components/Top"
 import getApi from "~/utilities/api"
-import NextJS13Preview from "~/components/Banners/NextJS13Preview"
+// import NextJS13Preview from "~/components/Banners/NextJS13Preview"
 import YearOfReformation from "~/components/Banners/YearOfReformation"
 
 const GREETINGS = [" there, it's Tony", ", Tony here", ", I'm Tony"]

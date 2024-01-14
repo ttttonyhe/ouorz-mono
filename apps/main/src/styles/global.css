@@ -481,7 +481,7 @@ h5 {
 	.nexment-emoji-section
 	.nexment-emoji-section-header
 	b {
-	@apply dark:text-white;
+	@apply dark:!text-white;
 }
 
 .nexment-comments-div .nexment-comments-title h5 {
