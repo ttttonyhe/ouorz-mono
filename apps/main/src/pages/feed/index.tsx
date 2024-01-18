@@ -20,8 +20,8 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 		const feed = new RSS({
 			title: "Tony He",
 			language: "zh-cn",
-			webMaster: "tony.hlp@hotmail.com",
-			managingEditor: "tony.hlp@hotmail.com",
+			webMaster: "tony.hlp@hotmail.com (Tony He)",
+			managingEditor: "tony.hlp@hotmail.com (Tony He)",
 			generator: "Next.js / WordPress",
 			site_url: "https://www.ouorz.com",
 			feed_url: "https://www.ouorz.com/feed",
