@@ -1,7 +1,7 @@
 import { Icon, Label, LabelGroup } from "@twilight-toolkit/ui"
 import CardFooter from "~/components/Card/Footer"
 import CardWithImageTool from "~/components/Card/WithImage/tool"
-import trimStr from "~/utilities/trimString"
+import { trimStr } from "~/utilities/string"
 import Link from "next/link"
 import Image from "next/image"
 import CardWithImagePodcast from "~/components/Card/WithImage/podcast"

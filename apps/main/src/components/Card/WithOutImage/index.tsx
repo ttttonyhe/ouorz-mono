@@ -1,6 +1,6 @@
 import { Label } from "@twilight-toolkit/ui"
 import CardFooter from "~/components/Card/Footer"
-import trimStr from "~/utilities/trimString"
+import { trimStr } from "~/utilities/string"
 import Link from "next/link"
 import { useDispatch } from "~/hooks"
 import { setReaderRequest } from "~/store/reader/actions"

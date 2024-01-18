@@ -1,5 +1,5 @@
 import { Label } from "@twilight-toolkit/ui"
-import trimStr from "~/utilities/trimString"
+import { trimStr } from "~/utilities/string"
 import Link from "next/link"
 import Image from "next/image"
 import AudioPlayer from "react-h5-audio-player"

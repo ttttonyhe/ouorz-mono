@@ -1,31 +1,28 @@
+import { FC } from "react"
 import getApi from "~/utilities/api"
 
-function generateSiteMap(postIDs: number[]) {
-	return `<?xml version="1.0" encoding="UTF-8"?>
-   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-     ${postIDs
-				.map((id) => {
-					return `
-       <url>
-           <loc>${`https://www.ouorz.com/${id}`}</loc>
-           <changefreq>monthly</changefreq>
-           <priority>0.6</priority>
-       </url>
-     `
-				})
-				.join("")}
-   </urlset>
- `
-}
+const SiteMap: FC = () => null
 
-function SiteMap() {}
-
-export async function getServerSideProps({ res }) {
+export const getServerSideProps = async ({ res }) => {
 	const request = await fetch(getApi({ searchIndexes: true }))
 	const indexes = await request.json()
 
 	const postIDs: number[] = indexes["ids"]
-	const sitemap = generateSiteMap(postIDs)
+	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+	<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+		${postIDs
+			.map((id) => {
+				return `
+			<url>
+					<loc>${`https://www.ouorz.com/${id}`}</loc>
+					<changefreq>monthly</changefreq>
+					<priority>0.6</priority>
+			</url>
+		`
+			})
+			.join("")}
+	</urlset>
+`
 
 	res.setHeader("Content-Type", "text/xml")
 	res.write(sitemap)

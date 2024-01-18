@@ -14,7 +14,7 @@ import { Label } from "@twilight-toolkit/ui"
 import { CardTool } from "~/components/Card/WithImage/tool"
 
 // Utilities
-import trimStr from "~/utilities/trimString"
+import { trimStr } from "~/utilities/string"
 import getApi from "~/utilities/api"
 import redirect from "nextjs-redirect"
 import { useRouter } from "next/router"

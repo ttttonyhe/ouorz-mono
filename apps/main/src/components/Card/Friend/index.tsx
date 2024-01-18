@@ -1,5 +1,5 @@
 import Link from "next/link"
-import trimStr from "~/utilities/trimString"
+import { trimStr } from "~/utilities/string"
 import Image from "next/image"
 import { WPPost } from "~/constants/propTypes"
 
