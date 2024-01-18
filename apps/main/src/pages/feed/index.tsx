@@ -52,7 +52,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 					custom_elements: [
 						{
 							"content:encoded": {
-								_cdata: post_content,
+								_cdata: sanitizeStr(post_content),
 							},
 						},
 					],
