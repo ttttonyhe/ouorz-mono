@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Head from "next/head"
 import React from "react"
 import Link from "next/link"
@@ -46,7 +47,8 @@ const Friends: NextPageWithLayout = ({ friends }: { friends: any }) => {
 				</div>
 				<div className="border shadow-sm w-full py-3 px-5 flex rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2">
 					<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 items-center">
-						Email me at tony.hlp#hotmail.com for link exchange
+						To join this webring, email me at ABC_tony.hlp@hotmail.com (with the
+						leading "ABC_" removed).
 					</p>
 				</div>
 			</div>

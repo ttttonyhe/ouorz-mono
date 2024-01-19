@@ -27,9 +27,9 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					<div className="mb-4 flex items-center">
 						<div className="flex-1 flex items-center">
 							<div className="flex items-center cursor-pointer mt-1 mr-4.5 -rotate-6">
-								<i className="text-[35px] hover:animate-spin drop-shadow-lg">
+								<span className="text-[35px] hover:animate-spin drop-shadow-lg">
 									🌈
-								</i>
+								</span>
 							</div>
 							<div>
 								<h2 className="font-medium text-[28px] text-black dark:text-white tracking-wide flex items-center gap-x-1.5">
