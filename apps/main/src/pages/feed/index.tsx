@@ -11,24 +11,27 @@ type RSSDataResponse = {
 	post_title: string
 	post_excerpt: string
 	post_content: string
+	post_img: string | null
 }[]
 
 const RSSFeed: FC = () => null
+
+const Categories = ["personal", "technology", "life", "blogs"]
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 	if (res) {
 		const feed = new RSS({
 			title: "Tony He",
 			language: "zh-cn",
-			webMaster: "tony.hlp@hotmail.com (Tony He)",
-			managingEditor: "tony.hlp@hotmail.com (Tony He)",
+			categories: Categories,
 			generator: "Next.js / WordPress",
 			site_url: "https://www.ouorz.com",
 			feed_url: "https://www.ouorz.com/feed",
 			image_url: "https://www.ouorz.com/tony.png",
+			webMaster: "tony.hlp@hotmail.com (Tony He)",
+			managingEditor: "tony.hlp@hotmail.com (Tony He)",
 			docs: "https://www.rssboard.org/rss-specification",
 			copyright: `© ${new Date().getFullYear()} Tony He`,
-			categories: ["personal", "technology", "life", "blogs"],
 			description:
 				"Living an absolutely not meaningless life with totally not unachievable goals.",
 		})
@@ -42,22 +45,46 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 		const data: RSSDataResponse = await response.json()
 
 		data.map(
-			({ post_id, post_date_gmt, post_title, post_excerpt, post_content }) => {
+			({
+				post_id,
+				post_date_gmt,
+				post_title,
+				post_excerpt,
+				post_content,
+				post_img,
+			}) => {
 				const postURL = `https://www.ouorz.com/post/${post_id}`
 
+				let postImgType = null
+				if ((post_img || "").endsWith(".png")) {
+					postImgType = "image/png"
+				} else if ((post_img || "").endsWith(".jpg")) {
+					postImgType = "image/jpeg"
+				}
+
 				feed.item({
-					title: post_title,
 					url: postURL,
+					author: "Tony He",
+					title: post_title,
+					categories: Categories,
+					date: new Date(post_date_gmt),
 					description: sanitizeStr(post_excerpt.replace("&hellip;", "...")),
 					custom_elements: [
 						{
+							"dc:creator": "Tony He",
 							"content:encoded": {
 								_cdata: sanitizeStr(post_content),
 							},
 						},
 					],
-					date: new Date(post_date_gmt),
-					author: "Tony He",
+					...(post_img &&
+						postImgType && {
+							enclosure: {
+								url: post_img,
+								type: postImgType,
+								size: 512,
+							},
+						}),
 				})
 			}
 		)
