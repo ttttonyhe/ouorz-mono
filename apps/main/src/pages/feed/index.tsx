@@ -71,10 +71,10 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 					description: sanitizeStr(post_excerpt.replace("&hellip;", "...")),
 					custom_elements: [
 						{
-							"dc:creator": "Tony He",
 							"content:encoded": {
 								_cdata: sanitizeStr(post_content),
 							},
+							"dc:creator": "Tony He",
 						},
 					],
 					...(post_img &&

@@ -14,7 +14,7 @@ export default function CommentBox() {
 					</span>
 					Comments
 				</h1>
-				<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 mt-2 mb-5">
+				<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 mt-1 mb-5 pl-1">
 					Leave a comment to join the discussion
 				</p>
 			</div>

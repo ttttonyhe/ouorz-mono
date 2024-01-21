@@ -1,5 +1,5 @@
 import React from "react"
-import { Icon } from "@twilight-toolkit/ui"
+import { Button, Icon } from "@twilight-toolkit/ui"
 import getApi from "~/utilities/api"
 
 const SubscriptionBox = ({ type }: { type: string }) => {
@@ -36,13 +36,13 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 						<span className="w-7 h-7 mr-2">
 							<Icon name="subscribe" />
 						</span>
-						New Article Everytime I Publish
+						New Article Everytime I Publish :)
 					</p>
 				</div>
 				<div className="flex justify-end w-full">
 					{subscribed ? (
 						<div className="bg-green-500 w-10/12 py-1.5 text-4 rounded-md text-center text-white">
-							Succeed
+							Done!
 						</div>
 					) : (
 						<input
@@ -69,16 +69,28 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 
 	return (
 		<div className="border shadow-sm w-full p-10 lg:py-11 lg:px-20 rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 items-center my-2 lg:block hidden">
-			<div>
-				<h1 className="flex text-3xl font-medium text-gray-700 dark:text-white tracking-wide items-center">
-					<span className="w-9 h-9 mr-2">
-						<Icon name="subscribe" />
-					</span>
-					Subscribe
-				</h1>
-				<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 mt-2 mb-5">
-					New Article Everytime I Publish
-				</p>
+			<div className="flex justify-between">
+				<div>
+					<h1 className="flex text-3xl font-medium text-gray-700 dark:text-white tracking-wide items-center">
+						<span className="w-9 h-9 mr-2">
+							<Icon name="subscribe" />
+						</span>
+						Subscribe
+					</h1>
+					<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 pl-1 mt-1 mb-5">
+						New Article Everytime I Publish :)
+					</p>
+				</div>
+				<div className="flex items-center">
+					<a href="https://www.ouorz.com/feed" target="_blank" rel="noreferrer">
+						<button className="-mt-4.5 text-gray-500 effect-pressing w-full py-1 px-2.5 shadow-sm border border-gray-300 dark:border-gray-700 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex gap-x-1">
+							<span className="h-6 w-6">
+								<Icon name="rss" />
+							</span>
+							RSS
+						</button>
+					</a>
+				</div>
 			</div>
 			<div className="w-full grid grid-cols-3 gap-5">
 				<div className="col-start-1 col-end-3 w-full grid grid-cols-3 rounded-md bg-white dark:bg-gray-800 dark:border-gray-800 text-gray-600 dark:text-gray-400 tracking-wide">
@@ -104,7 +116,7 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 						<button
 							className="bg-blue-50 border border-blue-200 dark:border-blue-400 dark:bg-blue-500 hover:bg-blue-100 dark:hover:bg-blue-600 hover:border-blue-300 dark:hover:border-blue-400 cursor-pointer shadow-sm col-start-3 col-end-4 rounded-tr-md rounded-br-md text-center text-blue-500 dark:text-white flex items-center"
 							onClick={() => {
-								doSubscribe()
+								email && doSubscribe()
 							}}
 						>
 							<span className="mx-auto">
