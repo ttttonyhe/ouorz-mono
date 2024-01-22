@@ -21,6 +21,7 @@ type ResDataType = {
 const parser = new Parser()
 const feedShelfNames = {
 	currentlyReading: "currently-reading",
+	read: "read",
 	all: "#ALL#",
 }
 

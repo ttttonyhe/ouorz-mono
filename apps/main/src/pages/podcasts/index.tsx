@@ -43,7 +43,8 @@ const Podcasts: NextPageWithLayout = () => {
 								Podcasts
 							</h2>
 							<p className="text-sm text-neutral-500 dark:text-gray-400 -mt-1">
-								Conversations spark creativity and insight
+								I have listened to a wide variety of audio podcasts over the
+								years. Here are some of the ones that I really enjoyed.
 							</p>
 						</div>
 					</div>

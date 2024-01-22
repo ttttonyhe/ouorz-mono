@@ -18,6 +18,10 @@ const ReadingList: NextPageWithLayout = () => {
 		"api/goodreads?shelf=all",
 		fetcher
 	)
+	const { data: read, error: readError } = useSWR(
+		"api/goodreads?shelf=read",
+		fetcher
+	)
 
 	return (
 		<div>
@@ -78,6 +82,31 @@ const ReadingList: NextPageWithLayout = () => {
 					<div className="grid grid-cols-2 gap-4">
 						{currentlyReading && !currentlyReadingError ? (
 							currentlyReading.books.map((book: Book) => (
+								<BookCard key={book.title} {...book} />
+							))
+						) : (
+							<>
+								<BookCardLoading uniqueKey="cr-1" />
+								<BookCardLoading uniqueKey="cr-2" />
+							</>
+						)}
+					</div>
+				</div>
+			</section>
+			<div className="mb-10">
+				<hr className="dark:border-gray-600" />
+			</div>
+			<section className="mb-10">
+				<label className="rounded-full bg-white dark:bg-gray-700 dark:border-gray-600 shadow-sm border border-gray-300 tracking-wider font-medium pb-1 pt-[4px] px-4 inline-flex items-center">
+					<span className="w-[22px] h-[22px] flex mr-1.5 text-yellow-500">
+						<Icon name="checkDouble" />
+					</span>
+					<span className="uppercase">Read</span>
+				</label>
+				<div className="mt-4">
+					<div className="grid grid-cols-2 gap-4">
+						{read && !readError ? (
+							read.books.map((book: Book) => (
 								<BookCard key={book.title} {...book} />
 							))
 						) : (
