@@ -258,6 +258,18 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			},
 		},
 		{
+			label: "Subscribe to RSS Feed",
+			id: "rss",
+			description: "Link",
+			icon: "rss",
+			color: "text-yellow-500",
+			bgColor: "bg-yellow-100",
+			bgDark: "dark:bg-yellow-900",
+			link: {
+				external: "https://www.ouorz.com/feed",
+			},
+		},
+		{
 			label: "Join Discord Server",
 			id: "discord",
 			description: "Link",
