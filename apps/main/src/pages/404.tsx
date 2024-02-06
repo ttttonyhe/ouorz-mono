@@ -14,7 +14,7 @@ const PageNotFound: NextPageWithLayout = () => {
 				<title>404 - Tony He</title>
 				<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 			</Head>
-			<div className="lg:mt-20 mt-0 lg:pt-0 pt-24 justify-center">
+			<div className="lg:mt-20 mt-0 lg:pt-0 pt-24 justify-center flex items-center h-[65vh]">
 				<div className="text-center">
 					<h1 className="font-medium text-3xl leading-14 lg:text-1 text-black dark:text-white tracking-wide mb-0.5">
 						Oops
