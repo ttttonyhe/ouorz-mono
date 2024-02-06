@@ -123,7 +123,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 					link: {
 						internal: "/",
 					},
-			  }
+				}
 			: {
 					label: "Web 3",
 					className: "hidden lg:block",
@@ -134,7 +134,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 					link: {
 						internal: "/web3",
 					},
-			  },
+				},
 		{
 			label: "Pages",
 			className: "hidden lg:block",
@@ -199,7 +199,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 								description: "Command",
 								icon: "moon",
 								action: () => setTheme("dark"),
-						  }
+							}
 						: {
 								label: "Light",
 								id: "lighttheme",
@@ -207,7 +207,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 								description: "Command",
 								icon: "sun",
 								action: () => setTheme("light"),
-						  },
+							},
 					{
 						label: "Same as system",
 						id: "systemtheme",

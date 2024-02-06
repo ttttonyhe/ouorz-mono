@@ -259,10 +259,10 @@ const KbarPanel = () => {
 					animation === "transition"
 						? "animate-kbarTransition"
 						: animation === "out"
-						  ? "animate-kbarOut"
-						  : animation === "in"
-						    ? "animate-kbar opacity-0"
-						    : ""
+							? "animate-kbarOut"
+							: animation === "in"
+								? "animate-kbar opacity-0"
+								: ""
 				}`}
 			>
 				<div

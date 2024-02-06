@@ -65,8 +65,8 @@ const getApi = (props: Parameters) => {
 	const s = props.sticky
 		? "sticky=1"
 		: props.sticky === undefined
-		  ? ""
-		  : "sticky=0"
+			? ""
+			: "sticky=0"
 	const ce = props.cateExclude ? `&categories_exclude=${props.cateExclude}` : ""
 	const c = props.cate ? `&categories=${props.cate}` : ""
 	const p = props.perPage !== undefined ? `&per_page=${props.perPage}` : ""

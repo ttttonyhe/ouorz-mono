@@ -7,12 +7,8 @@ export default function NiceHashMetric() {
 
 	const profitability = data?.profitability.toFixed(4).toString()
 	const unpaidAmount = data?.unpaidAmount.toFixed(2).toString()
-	const temperature = parseInt(data?.temperature)
-		.toFixed(1)
-		.toString()
-	const load = parseInt(data?.load)
-		.toFixed(1)
-		.toString()
+	const temperature = parseInt(data?.temperature).toFixed(1).toString()
+	const load = parseInt(data?.load).toFixed(1).toString()
 	const status = data?.status
 	const link = "https://www.nicehash.com/my/dashboard"
 
