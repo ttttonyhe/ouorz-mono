@@ -280,8 +280,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/twilight-utils
       algoliasearch:
-        specifier: 5.0.0-alpha.59
-        version: 5.0.0-alpha.59
+        specifier: 5.0.0-alpha.100
+        version: 5.0.0-alpha.100
       cors:
         specifier: ^2.8.5
         version: 2.8.5
@@ -707,59 +707,59 @@ packages:
     resolution: {integrity: sha512-nA9XHtlAkYfJxY7bce8DcN7eKxWWCWkU+1GR9d+U6MbNpfwQp8TI7vqOsBsMcHoT4mBu2kypKoSKnghEzOOq5Q==}
     dev: true
 
-  /@algolia/client-abtesting@5.0.0-alpha.59:
-    resolution: {integrity: sha512-JoTfPmKXDjdfvDiWhEui4AMlGC5iqx7GJ0VRImwmE5y8h7W58d7F5MJd5ynOgbp4gawHR14cJUvOfP1tPq4l5Q==}
+  /@algolia/client-abtesting@5.0.0-alpha.100:
+    resolution: {integrity: sha512-hAwzvbASarlTFVfHl6CKCOJd4DRNHVZQDuJVHs5WdeEGuvPNGJ+bAlqwd/7Vf0l8ooU7BVqX1RWr9Ts21An/wQ==}
     engines: {node: '>= 14.0.0'}
     dependencies:
-      '@algolia/client-common': 5.0.0-alpha.59
-      '@algolia/requester-browser-xhr': 5.0.0-alpha.59
-      '@algolia/requester-node-http': 5.0.0-alpha.59
+      '@algolia/client-common': 5.0.0-alpha.101
+      '@algolia/requester-browser-xhr': 5.0.0-alpha.101
+      '@algolia/requester-node-http': 5.0.0-alpha.101
     dev: false
 
-  /@algolia/client-analytics@5.0.0-alpha.59:
-    resolution: {integrity: sha512-TBufz5zCgXDymIXbcLi+tza4fKGUwQ/V89nbjuSHfJ6Tcm/277WPmEbUnbAFRZdSsJo+KirszNJCvGFhEtId0Q==}
+  /@algolia/client-analytics@5.0.0-alpha.100:
+    resolution: {integrity: sha512-ej0tkzKA0V0BBSsBTftippqaiekDW5TiaySxhOU0yIzz/9POYi+UtLWnyrrapGE0/1roFrp0g/mxcY9CNNz0xw==}
     engines: {node: '>= 14.0.0'}
     dependencies:
-      '@algolia/client-common': 5.0.0-alpha.59
-      '@algolia/requester-browser-xhr': 5.0.0-alpha.59
-      '@algolia/requester-node-http': 5.0.0-alpha.59
+      '@algolia/client-common': 5.0.0-alpha.101
+      '@algolia/requester-browser-xhr': 5.0.0-alpha.101
+      '@algolia/requester-node-http': 5.0.0-alpha.101
     dev: false
 
-  /@algolia/client-common@5.0.0-alpha.59:
-    resolution: {integrity: sha512-9Kdn2OX1wYxATUa+fRWvaZv8/7n7NPyTJomoX1O5EZLdIQs1TtQPAyn3VPbyCllZ0m9asXCtaVnZyYUbnQYH6w==}
+  /@algolia/client-common@5.0.0-alpha.101:
+    resolution: {integrity: sha512-lzbIj3W3xM7D6nznZmsCnsBARBLiMCuz0nN+WCYfWAxrHiZ9eeg2VGwgcswv4z94gikkbOR/kIYmmOWGjqbKlA==}
     engines: {node: '>= 14.0.0'}
     dev: false
 
-  /@algolia/client-personalization@5.0.0-alpha.59:
-    resolution: {integrity: sha512-0l2ZkpS6MqsjytCihCQNlYuwkS7K84xqpUuXxNx3D5q70jDgFq+JgLdeFXJiX7Ceq+KZTuKm9MtfLinLkvVJSA==}
-    engines: {node: '>= 14.0.0'}
-    dependencies:
-      '@algolia/client-common': 5.0.0-alpha.59
-      '@algolia/requester-browser-xhr': 5.0.0-alpha.59
-      '@algolia/requester-node-http': 5.0.0-alpha.59
-    dev: false
-
-  /@algolia/client-search@5.0.0-alpha.59:
-    resolution: {integrity: sha512-IwNwgYSU4+huV52A+Xb0PSWdH42RGnVxdOiZFWep9n4C02Hpkv7VObIsgsWOiQjejDFdL5c313g2DozAtdviVw==}
+  /@algolia/client-personalization@5.0.0-alpha.100:
+    resolution: {integrity: sha512-gx7M60LuyxAAD1ih0vvghg/igDk73c7hRzvZjBvO1D1y79cJOcGLJpUnFWtBLnW/HYMyHPhEeJ62tIDSFL1UXg==}
     engines: {node: '>= 14.0.0'}
     dependencies:
-      '@algolia/client-common': 5.0.0-alpha.59
-      '@algolia/requester-browser-xhr': 5.0.0-alpha.59
-      '@algolia/requester-node-http': 5.0.0-alpha.59
+      '@algolia/client-common': 5.0.0-alpha.101
+      '@algolia/requester-browser-xhr': 5.0.0-alpha.101
+      '@algolia/requester-node-http': 5.0.0-alpha.101
     dev: false
 
-  /@algolia/requester-browser-xhr@5.0.0-alpha.59:
-    resolution: {integrity: sha512-d0aoMWevUWTjm74mlwokOyShP4ljOrcF1uDt6dr7vZJRQ7Dc6GsuS8ckyWxZuEJkfa/U1kLNOXW8iBpQ4jyvsA==}
+  /@algolia/client-search@5.0.0-alpha.100:
+    resolution: {integrity: sha512-xBslCG/HFBUPRVG5LSk5VWujADb8qjVO3d/AmGad1eNx96QqbxycQ0yhOyhZBObNAXmXKHuvSuHbks2i07SFgw==}
     engines: {node: '>= 14.0.0'}
     dependencies:
-      '@algolia/client-common': 5.0.0-alpha.59
+      '@algolia/client-common': 5.0.0-alpha.101
+      '@algolia/requester-browser-xhr': 5.0.0-alpha.101
+      '@algolia/requester-node-http': 5.0.0-alpha.101
     dev: false
 
-  /@algolia/requester-node-http@5.0.0-alpha.59:
-    resolution: {integrity: sha512-ADHjRNc9En3rbKs2BZJPp639ug3qZE5jm60nHSJIBsL7vGDobp6+VDFyqQSOCp2jfdkD1iWLP1MaYVUuB+NulA==}
+  /@algolia/requester-browser-xhr@5.0.0-alpha.101:
+    resolution: {integrity: sha512-GRipVVPSuVhKi3hi8YxnY2KKbamQRcf4Q5JW4CMvhd3LL2X/ZXaIe141tbSBubWm9kPW/CMe9AzD+FM+OO93bg==}
     engines: {node: '>= 14.0.0'}
     dependencies:
-      '@algolia/client-common': 5.0.0-alpha.59
+      '@algolia/client-common': 5.0.0-alpha.101
+    dev: false
+
+  /@algolia/requester-node-http@5.0.0-alpha.101:
+    resolution: {integrity: sha512-T7PTmlPycm/hkIuQhRO0uIdYgWODqFI1DRXiLY40wxFNv/p3+UYi7jbkL2VKQYXJAvQIl66ASRs8tSKZr/0tCg==}
+    engines: {node: '>= 14.0.0'}
+    dependencies:
+      '@algolia/client-common': 5.0.0-alpha.101
     dev: false
 
   /@alloc/quick-lru@5.2.0:
@@ -1275,11 +1275,6 @@ packages:
   /@babel/helper-validator-identifier@7.22.20:
     resolution: {integrity: sha512-Y4OZ+ytlatR8AI+8KZfKuL5urKp7qey08ha31L8b3BwewJAoJamTzyvxPR/5D+KkdJCGPq/+8TukHBlY10FX9A==}
     engines: {node: '>=6.9.0'}
-
-  /@babel/helper-validator-option@7.21.0:
-    resolution: {integrity: sha512-rmL/B8/f0mKS2baE9ZpyTcTavvEuWhTTW8amjzXNvYG4AwBsqTLikfXsEofsJEfKHf+HQVQbFOHy6o+4cnC/fQ==}
-    engines: {node: '>=6.9.0'}
-    dev: true
 
   /@babel/helper-validator-option@7.22.5:
     resolution: {integrity: sha512-R3oB6xlIVKUnxNUxbmgq7pKjxpru24zlimpE8WK47fACIlM0II/Hm1RS8IaOI7NgCr6LNS+jl5l75m20npAziw==}
@@ -1816,16 +1811,6 @@ packages:
     dependencies:
       '@babel/core': 7.23.9
       '@babel/helper-plugin-utils': 7.22.5
-
-  /@babel/plugin-syntax-jsx@7.21.4(@babel/core@7.22.9):
-    resolution: {integrity: sha512-5hewiLct5OKyh6PLKEYaFclcqtIgCb6bmELouxjF6up5q3Sov7rOayW4RwhbaBL0dit8rA80GNfY+UuDp2mBbQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.22.9
-      '@babel/helper-plugin-utils': 7.22.5
-    dev: true
 
   /@babel/plugin-syntax-jsx@7.23.3(@babel/core@7.21.4):
     resolution: {integrity: sha512-EB2MELswq55OHUoRZLGg/zC7QWUKfNLpE57m/S2yr1uEneIgsTgrSzXP3NXEsMkVn76OlaVVnzN+ugObuYGwhg==}
@@ -2879,18 +2864,6 @@ packages:
       '@babel/helper-module-transforms': 7.23.3(@babel/core@7.23.9)
       '@babel/helper-plugin-utils': 7.22.5
 
-  /@babel/plugin-transform-modules-commonjs@7.21.2(@babel/core@7.22.9):
-    resolution: {integrity: sha512-Cln+Yy04Gxua7iPdj6nOV96smLGjpElir5YwzF0LBPKoPlLDNJePNlrGGaybAJkd0zKRnOVXOgizSqPYMNYkzA==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.22.9
-      '@babel/helper-module-transforms': 7.23.3(@babel/core@7.22.9)
-      '@babel/helper-plugin-utils': 7.22.5
-      '@babel/helper-simple-access': 7.22.5
-    dev: true
-
   /@babel/plugin-transform-modules-commonjs@7.22.5(@babel/core@7.22.9):
     resolution: {integrity: sha512-B4pzOXj+ONRmuaQTg05b3y/4DuFz3WcCNAXPLb2Q0GT0TrGKGxNKV4jwsXts+StaM0LQczZbOpj8o1DLPDJIiA==}
     engines: {node: '>=6.9.0'}
@@ -2911,6 +2884,18 @@ packages:
     dependencies:
       '@babel/core': 7.21.4
       '@babel/helper-module-transforms': 7.23.3(@babel/core@7.21.4)
+      '@babel/helper-plugin-utils': 7.22.5
+      '@babel/helper-simple-access': 7.22.5
+    dev: true
+
+  /@babel/plugin-transform-modules-commonjs@7.23.3(@babel/core@7.22.9):
+    resolution: {integrity: sha512-aVS0F65LKsdNOtcz6FRCpE4OgsP2OFnW46qNxNIX9h3wuzaNcSQsJysuMwqSibC98HPrf2vCgtxKNwS0DAlgcA==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.22.9
+      '@babel/helper-module-transforms': 7.23.3(@babel/core@7.22.9)
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/helper-simple-access': 7.22.5
     dev: true
@@ -3795,19 +3780,6 @@ packages:
       '@babel/core': 7.23.9
       '@babel/helper-plugin-utils': 7.22.5
 
-  /@babel/plugin-transform-typescript@7.21.3(@babel/core@7.22.9):
-    resolution: {integrity: sha512-RQxPz6Iqt8T0uw/WsJNReuBpWpBqs/n7mNo18sKLoTbMp+UrEekhH+pKSVC7gWz+DNjo9gryfV8YzCiT45RgMw==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.22.9
-      '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-create-class-features-plugin': 7.23.10(@babel/core@7.22.9)
-      '@babel/helper-plugin-utils': 7.22.5
-      '@babel/plugin-syntax-typescript': 7.23.3(@babel/core@7.22.9)
-    dev: true
-
   /@babel/plugin-transform-typescript@7.23.6(@babel/core@7.21.4):
     resolution: {integrity: sha512-6cBG5mBvUu4VUD04OHKnYzbuHNP8huDsD3EDqqpIpsswTDoqHCjLoHb6+QgsV1WsT2nipRqCPgxD3LXnEO7XfA==}
     engines: {node: '>=6.9.0'}
@@ -3819,6 +3791,19 @@ packages:
       '@babel/helper-create-class-features-plugin': 7.23.10(@babel/core@7.21.4)
       '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-typescript': 7.23.3(@babel/core@7.21.4)
+    dev: true
+
+  /@babel/plugin-transform-typescript@7.23.6(@babel/core@7.22.9):
+    resolution: {integrity: sha512-6cBG5mBvUu4VUD04OHKnYzbuHNP8huDsD3EDqqpIpsswTDoqHCjLoHb6+QgsV1WsT2nipRqCPgxD3LXnEO7XfA==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.22.9
+      '@babel/helper-annotate-as-pure': 7.22.5
+      '@babel/helper-create-class-features-plugin': 7.23.10(@babel/core@7.22.9)
+      '@babel/helper-plugin-utils': 7.22.5
+      '@babel/plugin-syntax-typescript': 7.23.3(@babel/core@7.22.9)
     dev: true
 
   /@babel/plugin-transform-typescript@7.23.6(@babel/core@7.23.9):
@@ -4355,11 +4340,11 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.22.9
-      '@babel/helper-plugin-utils': 7.20.2
-      '@babel/helper-validator-option': 7.21.0
-      '@babel/plugin-syntax-jsx': 7.21.4(@babel/core@7.22.9)
-      '@babel/plugin-transform-modules-commonjs': 7.21.2(@babel/core@7.22.9)
-      '@babel/plugin-transform-typescript': 7.21.3(@babel/core@7.22.9)
+      '@babel/helper-plugin-utils': 7.22.5
+      '@babel/helper-validator-option': 7.23.5
+      '@babel/plugin-syntax-jsx': 7.23.3(@babel/core@7.22.9)
+      '@babel/plugin-transform-modules-commonjs': 7.23.3(@babel/core@7.22.9)
+      '@babel/plugin-transform-typescript': 7.23.6(@babel/core@7.22.9)
     dev: true
 
   /@babel/preset-typescript@7.23.3(@babel/core@7.23.9):
@@ -11595,17 +11580,17 @@ packages:
       uri-js: 4.4.1
     dev: true
 
-  /algoliasearch@5.0.0-alpha.59:
-    resolution: {integrity: sha512-qpv2Wd54ImPPchWblPrEgHTGq6I0ZXHduql/E+8VC/GwFfjGsUC+kQy2kFIIQD//aXbifCdTm4xikXAOPnOReg==}
+  /algoliasearch@5.0.0-alpha.100:
+    resolution: {integrity: sha512-cQ2XmNcKo1bsXYsDVdP33Vo+cz3/av/B8XaQqm0H63TZwRT+9uOskcrDPHNWWg7gZyEfbEXfc3jZi3wqlJeToQ==}
     engines: {node: '>= 14.0.0'}
     dependencies:
-      '@algolia/client-abtesting': 5.0.0-alpha.59
-      '@algolia/client-analytics': 5.0.0-alpha.59
-      '@algolia/client-common': 5.0.0-alpha.59
-      '@algolia/client-personalization': 5.0.0-alpha.59
-      '@algolia/client-search': 5.0.0-alpha.59
-      '@algolia/requester-browser-xhr': 5.0.0-alpha.59
-      '@algolia/requester-node-http': 5.0.0-alpha.59
+      '@algolia/client-abtesting': 5.0.0-alpha.100
+      '@algolia/client-analytics': 5.0.0-alpha.100
+      '@algolia/client-common': 5.0.0-alpha.101
+      '@algolia/client-personalization': 5.0.0-alpha.100
+      '@algolia/client-search': 5.0.0-alpha.100
+      '@algolia/requester-browser-xhr': 5.0.0-alpha.101
+      '@algolia/requester-node-http': 5.0.0-alpha.101
     dev: false
 
   /amazon-cognito-identity-js@6.2.0:
