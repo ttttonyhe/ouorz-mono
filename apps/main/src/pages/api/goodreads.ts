@@ -21,6 +21,7 @@ type ResDataType = {
 const parser = new Parser()
 const feedShelfNames = {
 	currentlyReading: "currently-reading",
+	toRead: "to-read",
 	read: "read",
 	all: "#ALL#",
 }
@@ -31,9 +32,7 @@ const goodreads = async (
 ) => {
 	const { shelf } = req.query as ReqQueryType
 	const feed = await parser.parseURL(
-		`${GOODREADS_API.RSS}&shelf=${
-			feedShelfNames[shelf] || feedShelfNames["currentlyReading"]
-		}`
+		`${GOODREADS_API.RSS}&shelf=${feedShelfNames[shelf] || feedShelfNames.all}`
 	)
 
 	const books = feed.items.map((item) => {
@@ -45,8 +44,8 @@ const goodreads = async (
 
 		return {
 			title: item.title,
-			link: item.link.split("?")[0],
 			imageURL: imageURL,
+			link: item.link.split("?")[0],
 			author: item.content.match(/author: (.*)<br\/>/)[1],
 			dateAdded: item.content.match(/date added: (.*)<br\/>/)[1],
 		}

@@ -11,11 +11,11 @@ import type { Book } from "~/pages/api/goodreads"
 
 const ReadingList: NextPageWithLayout = () => {
 	const { data: currentlyReading, error: currentlyReadingError } = useSWR(
-		"api/goodreads",
+		"api/goodreads?shelf=currentlyReading",
 		fetcher
 	)
-	const { data: all, error: allError } = useSWR(
-		"api/goodreads?shelf=all",
+	const { data: toRead, error: allError } = useSWR(
+		"api/goodreads?shelf=toRead",
 		fetcher
 	)
 	const { data: read, error: readError } = useSWR(
@@ -130,8 +130,8 @@ const ReadingList: NextPageWithLayout = () => {
 				</label>
 				<div className="mt-4">
 					<div className="grid grid-cols-2 gap-4">
-						{all && !allError ? (
-							all.books.map((book: Book) => (
+						{toRead && !allError ? (
+							toRead.books.map((book: Book) => (
 								<BookCard key={book.title} {...book} />
 							))
 						) : (
