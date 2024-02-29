@@ -531,7 +531,7 @@ importers:
         version: 1.0.0(hardhat@2.19.1)
       '@matterlabs/hardhat-zksync-upgradable':
         specifier: 1.0.0
-        version: 1.0.0(@openzeppelin/contracts-upgradeable@5.0.0)(ethers@6.8.1)(hardhat@2.19.1)(zksync2-js@0.2.2)
+        version: 1.0.0(@openzeppelin/contracts-upgradeable@5.0.2)(ethers@6.8.1)(hardhat@2.19.1)(zksync2-js@0.2.2)
       '@matterlabs/hardhat-zksync-verify':
         specifier: ^1.0.0
         version: 1.0.0(@nomicfoundation/hardhat-verify@1.1.1)(hardhat@2.19.1)
@@ -545,8 +545,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       '@openzeppelin/contracts-upgradeable':
-        specifier: ^5.0.0
-        version: 5.0.0(@openzeppelin/contracts@5.0.0)
+        specifier: ^5.0.2
+        version: 5.0.2(@openzeppelin/contracts@5.0.0)
       '@openzeppelin/hardhat-upgrades':
         specifier: ^2.4.1
         version: 2.4.1(@nomicfoundation/hardhat-ethers@3.0.5)(@nomicfoundation/hardhat-verify@1.1.1)(ethers@6.8.1)(hardhat@2.19.1)
@@ -6818,14 +6818,14 @@ packages:
       - supports-color
     dev: true
 
-  /@matterlabs/hardhat-zksync-upgradable@1.0.0(@openzeppelin/contracts-upgradeable@5.0.0)(ethers@6.8.1)(hardhat@2.19.1)(zksync2-js@0.2.2):
+  /@matterlabs/hardhat-zksync-upgradable@1.0.0(@openzeppelin/contracts-upgradeable@5.0.2)(ethers@6.8.1)(hardhat@2.19.1)(zksync2-js@0.2.2):
     resolution: {integrity: sha512-/hSTc1CQfr1PawRVFsHaZp95sCqsKI88IV2sCDKF5ee7v+tnFCrXufeWppWZVg1yOn+YfaIuQ9DCVd8FhJ7R4g==}
     peerDependencies:
       '@openzeppelin/contracts-upgradeable': ^4.9.2
     dependencies:
       '@matterlabs/hardhat-zksync-deploy': 1.0.0(ethers@6.8.1)(hardhat@2.19.1)(zksync2-js@0.2.2)
       '@matterlabs/hardhat-zksync-solc': 1.0.0(hardhat@2.19.1)
-      '@openzeppelin/contracts-upgradeable': 5.0.0(@openzeppelin/contracts@5.0.0)
+      '@openzeppelin/contracts-upgradeable': 5.0.2(@openzeppelin/contracts@5.0.0)
       '@openzeppelin/upgrades-core': 1.31.1
       dockerode: 3.3.5
     transitivePeerDependencies:
@@ -7508,10 +7508,10 @@ packages:
       - supports-color
     dev: true
 
-  /@openzeppelin/contracts-upgradeable@5.0.0(@openzeppelin/contracts@5.0.0):
-    resolution: {integrity: sha512-D54RHzkOKHQ8xUssPgQe2d/U92mwaiBDY7qCCVGq6VqwQjsT3KekEQ3bonev+BLP30oZ0R1U6YC8/oLpizgC5Q==}
+  /@openzeppelin/contracts-upgradeable@5.0.2(@openzeppelin/contracts@5.0.0):
+    resolution: {integrity: sha512-0MmkHSHiW2NRFiT9/r5Lu4eJq5UJ4/tzlOgYXNAIj/ONkQTVnz22pLxDvp4C4uZ9he7ZFvGn3Driptn1/iU7tQ==}
     peerDependencies:
-      '@openzeppelin/contracts': 5.0.0
+      '@openzeppelin/contracts': 5.0.2
     dependencies:
       '@openzeppelin/contracts': 5.0.0
     dev: true
