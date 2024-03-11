@@ -57,7 +57,7 @@
 		"nextjs-progressbar": "^0.0.16",
 		"nextjs-redirect": "^6.0.1",
 		"postcss": "^8.4.35",
-		"react-content-loader": "^6.2.1",
+		"react-content-loader": "^7.0.0",
 		"react-h5-audio-player": "^3.9.1",
 		"react-highlight": "^0.15.0",
 		"react-infinite-scroll-component": "^6.1.0",
