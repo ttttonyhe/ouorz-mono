@@ -107,8 +107,8 @@ importers:
         specifier: ^3.7.1
         version: 3.7.1
       jose:
-        specifier: 2.0.6
-        version: 2.0.6
+        specifier: 2.0.7
+        version: 2.0.7
       maxmind:
         specifier: ^4.3.17
         version: 4.3.17
@@ -517,7 +517,7 @@ importers:
         version: 8.6.0(eslint@8.38.0)
       eslint-config-turbo:
         specifier: latest
-        version: 1.10.16(eslint@8.38.0)
+        version: 1.12.5(eslint@8.38.0)
 
   packages/prettier-config: {}
 
@@ -15237,13 +15237,13 @@ packages:
       eslint: 8.38.0
     dev: false
 
-  /eslint-config-turbo@1.10.16(eslint@8.38.0):
-    resolution: {integrity: sha512-O3NQI72bQHV7FvSC6lWj66EGx8drJJjuT1kuInn6nbMLOHdMBhSUX/8uhTAlHRQdlxZk2j9HtgFCIzSc93w42g==}
+  /eslint-config-turbo@1.12.5(eslint@8.38.0):
+    resolution: {integrity: sha512-wXytbX+vTzQ6rwgM6sIr447tjYJBlRj5V/eBFNGNXw5Xs1R715ppPYhbmxaFbkrWNQSGJsWRrYGAlyq0sT/OsQ==}
     peerDependencies:
       eslint: '>6.6.0'
     dependencies:
       eslint: 8.38.0
-      eslint-plugin-turbo: 1.10.16(eslint@8.38.0)
+      eslint-plugin-turbo: 1.12.5(eslint@8.38.0)
     dev: false
 
   /eslint-import-resolver-node@0.3.6:
@@ -15587,8 +15587,8 @@ packages:
       - typescript
     dev: true
 
-  /eslint-plugin-turbo@1.10.16(eslint@8.38.0):
-    resolution: {integrity: sha512-ZjrR88MTN64PNGufSEcM0tf+V1xFYVbeiMeuIqr0aiABGomxFLo4DBkQ7WI4WzkZtWQSIA2sP+yxqSboEfL9MQ==}
+  /eslint-plugin-turbo@1.12.5(eslint@8.38.0):
+    resolution: {integrity: sha512-cXy7mCzAdngBTJIWH4DASXHy0vQpujWDBqRTu0YYqCN/QEGsi3HWM+STZEbPYELdjtm5EsN2HshOSSqWnjdRHg==}
     peerDependencies:
       eslint: '>6.6.0'
     dependencies:
@@ -18512,8 +18512,8 @@ packages:
       '@sideway/pinpoint': 2.0.0
     dev: false
 
-  /jose@2.0.6:
-    resolution: {integrity: sha512-FVoPY7SflDodE4lknJmbAHSUjLCzE2H1F6MS0RYKMQ8SR+lNccpMf8R4eqkNYyyUjR5qZReOzZo5C5YiHOCjjg==}
+  /jose@2.0.7:
+    resolution: {integrity: sha512-5hFWIigKqC+e/lRyQhfnirrAqUdIPMB7SJRqflJaO29dW7q5DFvH1XCSTmv6PQ6pb++0k6MJlLRoS0Wv4s38Wg==}
     engines: {node: '>=10.13.0 < 13 || >=13.7.0'}
     dependencies:
       '@panva/asn1.js': 1.0.0
