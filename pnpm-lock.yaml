@@ -517,7 +517,7 @@ importers:
         version: 8.6.0(eslint@8.38.0)
       eslint-config-turbo:
         specifier: latest
-        version: 1.10.16(eslint@8.38.0)
+        version: 1.12.5(eslint@8.38.0)
 
   packages/prettier-config: {}
 
@@ -542,11 +542,11 @@ importers:
         specifier: ^3.1.7
         version: 3.1.7(hardhat@2.19.1)
       '@openzeppelin/contracts':
-        specifier: ^5.0.0
-        version: 5.0.0
+        specifier: ^5.0.2
+        version: 5.0.2
       '@openzeppelin/contracts-upgradeable':
         specifier: ^5.0.2
-        version: 5.0.2(@openzeppelin/contracts@5.0.0)
+        version: 5.0.2(@openzeppelin/contracts@5.0.2)
       '@openzeppelin/hardhat-upgrades':
         specifier: ^2.4.1
         version: 2.4.1(@nomicfoundation/hardhat-ethers@3.0.5)(@nomicfoundation/hardhat-verify@1.1.1)(ethers@6.8.1)(hardhat@2.19.1)
@@ -6840,7 +6840,7 @@ packages:
     dependencies:
       '@matterlabs/hardhat-zksync-deploy': 1.0.0(ethers@6.8.1)(hardhat@2.19.1)(zksync2-js@0.2.2)
       '@matterlabs/hardhat-zksync-solc': 1.0.0(hardhat@2.19.1)
-      '@openzeppelin/contracts-upgradeable': 5.0.2(@openzeppelin/contracts@5.0.0)
+      '@openzeppelin/contracts-upgradeable': 5.0.2(@openzeppelin/contracts@5.0.2)
       '@openzeppelin/upgrades-core': 1.31.1
       dockerode: 3.3.5
     transitivePeerDependencies:
@@ -7523,16 +7523,16 @@ packages:
       - supports-color
     dev: true
 
-  /@openzeppelin/contracts-upgradeable@5.0.2(@openzeppelin/contracts@5.0.0):
+  /@openzeppelin/contracts-upgradeable@5.0.2(@openzeppelin/contracts@5.0.2):
     resolution: {integrity: sha512-0MmkHSHiW2NRFiT9/r5Lu4eJq5UJ4/tzlOgYXNAIj/ONkQTVnz22pLxDvp4C4uZ9he7ZFvGn3Driptn1/iU7tQ==}
     peerDependencies:
       '@openzeppelin/contracts': 5.0.2
     dependencies:
-      '@openzeppelin/contracts': 5.0.0
+      '@openzeppelin/contracts': 5.0.2
     dev: true
 
-  /@openzeppelin/contracts@5.0.0:
-    resolution: {integrity: sha512-bv2sdS6LKqVVMLI5+zqnNrNU/CA+6z6CmwFXm/MzmOPBRSO5reEJN7z0Gbzvs0/bv/MZZXNklubpwy3v2+azsw==}
+  /@openzeppelin/contracts@5.0.2:
+    resolution: {integrity: sha512-ytPc6eLGcHHnapAZ9S+5qsdomhjo6QBHTDRRBFfTxXIpsicMhVPouPgmUPebZZZGX7vt9USA+Z+0M0dSVtSUEA==}
     dev: true
 
   /@openzeppelin/defender-admin-client@1.52.0(debug@4.3.4):
@@ -15237,13 +15237,13 @@ packages:
       eslint: 8.38.0
     dev: false
 
-  /eslint-config-turbo@1.10.16(eslint@8.38.0):
-    resolution: {integrity: sha512-O3NQI72bQHV7FvSC6lWj66EGx8drJJjuT1kuInn6nbMLOHdMBhSUX/8uhTAlHRQdlxZk2j9HtgFCIzSc93w42g==}
+  /eslint-config-turbo@1.12.5(eslint@8.38.0):
+    resolution: {integrity: sha512-wXytbX+vTzQ6rwgM6sIr447tjYJBlRj5V/eBFNGNXw5Xs1R715ppPYhbmxaFbkrWNQSGJsWRrYGAlyq0sT/OsQ==}
     peerDependencies:
       eslint: '>6.6.0'
     dependencies:
       eslint: 8.38.0
-      eslint-plugin-turbo: 1.10.16(eslint@8.38.0)
+      eslint-plugin-turbo: 1.12.5(eslint@8.38.0)
     dev: false
 
   /eslint-import-resolver-node@0.3.6:
@@ -15587,8 +15587,8 @@ packages:
       - typescript
     dev: true
 
-  /eslint-plugin-turbo@1.10.16(eslint@8.38.0):
-    resolution: {integrity: sha512-ZjrR88MTN64PNGufSEcM0tf+V1xFYVbeiMeuIqr0aiABGomxFLo4DBkQ7WI4WzkZtWQSIA2sP+yxqSboEfL9MQ==}
+  /eslint-plugin-turbo@1.12.5(eslint@8.38.0):
+    resolution: {integrity: sha512-cXy7mCzAdngBTJIWH4DASXHy0vQpujWDBqRTu0YYqCN/QEGsi3HWM+STZEbPYELdjtm5EsN2HshOSSqWnjdRHg==}
     peerDependencies:
       eslint: '>6.6.0'
     dependencies:
