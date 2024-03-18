@@ -1,7 +1,7 @@
 import React from "react"
 import TimeAgo from "react-timeago"
 import { Icon } from "@twilight-toolkit/ui"
-import getApi from "~/utilities/api"
+import getAPI from "~/utilities/api"
 import { useDebouncedFunction } from "~/hooks"
 import { WPPost } from "~/constants/propTypes"
 
@@ -23,7 +23,7 @@ export default function CardPlainText({ item }: Props) {
 	 */
 	const upvote = async (id: number) => {
 		setUpvoting(true)
-		await fetch(getApi({ mark: id }))
+		await fetch(getAPI("internal", "like", { id }))
 			.then(() => {
 				setTimeout(() => {
 					setUpvoting(false)

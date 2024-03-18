@@ -1,6 +1,6 @@
 import React from "react"
 import { Button, Icon } from "@twilight-toolkit/ui"
-import getApi from "~/utilities/api"
+import getAPI from "~/utilities/api"
 
 const SubscriptionBox = ({ type }: { type: string }) => {
 	const [email, setEmail] = React.useState<string>("")
@@ -10,7 +10,7 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 	const doSubscribe = async () => {
 		setProcessing(true)
 
-		const data = await fetch(getApi({ subs: true }), {
+		const data = await fetch(getAPI("external", "subscribeToButtondown"), {
 			method: "post",
 			headers: {
 				"Content-Type": "application/json",

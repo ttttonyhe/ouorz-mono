@@ -5,7 +5,7 @@ import { NextPageWithLayout } from "~/pages/_app"
 import { pageLayout } from "~/components/Page"
 import List from "~/components/List"
 import Top from "~/components/Top"
-import getApi from "~/utilities/api"
+import getAPI from "~/utilities/api"
 // import NextJS13Preview from "~/components/Banners/NextJS13Preview"
 import YearOfReformation from "~/components/Banners/YearOfReformation"
 
@@ -74,7 +74,7 @@ Home.layout = pageLayout
 
 export const getStaticProps: GetStaticProps = async () => {
 	const getStickyPostsResponse = await fetch(
-		getApi({
+		getAPI("internal", "posts", {
 			sticky: true,
 			perPage: 10,
 			cateExclude: "5,2,74,335",

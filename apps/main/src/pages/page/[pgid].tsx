@@ -4,7 +4,7 @@ import TimeAgo from "react-timeago"
 import redirect from "nextjs-redirect"
 import { NextPageWithLayout } from "~/pages/_app"
 import { contentLayout } from "~/components/Content"
-import getApi from "~/utilities/api"
+import getAPI from "~/utilities/api"
 import SubscriptionBox from "~/components/SubscriptionBox"
 import CommentBox from "~/components/CommentBox"
 import PostContent from "~/components/PostContent"
@@ -90,17 +90,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	try {
 		// Increase page views
 		fetch(
-			getApi({
-				// @ts-ignore
-				visit: pgid,
+			getAPI("internal", "visit", {
+				id: parseInt(pgid as string),
 			})
 		)
 
 		// Fetch page data
 		const resData = await fetch(
-			getApi({
-				// @ts-ignore
-				page: pgid,
+			getAPI("internal", "page", {
+				id: parseInt(pgid as string),
 			})
 		)
 

@@ -1,10 +1,10 @@
 import { FC } from "react"
-import getApi from "~/utilities/api"
+import getAPI from "~/utilities/api"
 
 const SiteMap: FC = () => null
 
 export const getServerSideProps = async ({ res }) => {
-	const request = await fetch(getApi({ searchIndexes: true }))
+	const request = await fetch(getAPI("internal", "searchIndices"))
 	const indexes = await request.json()
 
 	const postIDs: number[] = indexes["ids"]

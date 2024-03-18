@@ -4,7 +4,7 @@ import useSWRInfinite from "swr/infinite"
 import CardEmpty from "~/components/Card/Empty"
 import CardSkeleton from "~/components/Card/Skeleton"
 import CardClickable from "~/components/Card/Clickable"
-import getApi from "~/utilities/api"
+import getAPI from "~/utilities/api"
 import StaticList from "./staticList"
 import { ListTypes } from "~/constants/propTypes"
 
@@ -20,19 +20,19 @@ export interface InfiniteListProps {
 const getApiUrl = ({ type, cate, target }: InfiniteListProps) => {
 	switch (type) {
 		case "index":
-			return getApi({
+			return getAPI("internal", "posts", {
 				sticky: false,
 				perPage: 10,
 				cateExclude: "5,2,74,334,335",
 			})
 		case "cate":
-			return getApi({
+			return getAPI("internal", "posts", {
 				perPage: 10,
-				cate: `${cate}`,
+				cate,
 				cateExclude: "5,2,74,334,335",
 			})
 		case "search":
-			return getApi({
+			return getAPI("internal", "posts", {
 				cateExclude: "5,2,74,334,335",
 				search: target,
 			})

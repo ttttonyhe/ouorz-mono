@@ -15,7 +15,7 @@ import { CardTool } from "~/components/Card/WithImage/tool"
 
 // Utilities
 import { trimStr } from "~/utilities/string"
-import getApi from "~/utilities/api"
+import getAPI from "~/utilities/api"
 import redirect from "nextjs-redirect"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
@@ -51,17 +51,12 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 
 	useEffect(() => {
 		dispatch(setHeaderTitle(post.title.rendered))
-		fetch(
-			getApi({
-				visit: true,
+		fetch(getAPI("internal", "visit"), {
+			method: "POST",
+			body: JSON.stringify({
+				id: pid,
 			}),
-			{
-				method: "POST",
-				body: JSON.stringify({
-					id: pid,
-				}),
-			}
-		).catch((err) => {
+		}).catch((err) => {
 			console.error(err)
 		})
 		return () => {
@@ -141,9 +136,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	try {
 		// Fetch page data
 		const resData = await fetch(
-			getApi({
-				// @ts-ignore
-				post: pid,
+			getAPI("internal", "post", {
+				id: parseInt(pid as string),
 			})
 		)
 
@@ -171,11 +165,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	// get all post ids for SSG
-	const res = await fetch(
-		getApi({
-			postIDs: true,
-		})
-	)
+	const res = await fetch(getAPI("internal", "allPostIDs"))
 	const postIDs: number[] = await res.json()
 	const paths = postIDs.map((id) => ({
 		params: { pid: id.toString() },

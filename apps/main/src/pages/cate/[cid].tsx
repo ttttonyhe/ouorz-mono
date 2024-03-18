@@ -4,7 +4,7 @@ import { GetServerSideProps } from "next"
 import { NextPageWithLayout } from "~/pages/_app"
 import { pageLayout } from "~/components/Page"
 import List from "~/components/List"
-import getApi from "~/utilities/api"
+import getAPI from "~/utilities/api"
 import SubscriptionBox from "~/components/SubscriptionBox"
 import { Icon } from "@twilight-toolkit/ui"
 import Link from "next/link"
@@ -91,9 +91,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	const cid = context.params.cid
 
 	const resInfo = await fetch(
-		getApi({
-			cate: `${cid}`,
-			getCate: true,
+		getAPI("internal", "category", {
+			id: parseInt(cid as string),
 		})
 	)
 

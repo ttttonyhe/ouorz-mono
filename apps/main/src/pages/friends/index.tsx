@@ -7,7 +7,7 @@ import { GetStaticProps } from "next"
 import { NextPageWithLayout } from "~/pages/_app"
 import { pageLayout } from "~/components/Page"
 import { trimStr } from "~/utilities/string"
-import getApi from "~/utilities/api"
+import getAPI from "~/utilities/api"
 import { Icon } from "@twilight-toolkit/ui"
 import { GlowingBackground } from "~/components/Visual"
 
@@ -95,17 +95,13 @@ const Friends: NextPageWithLayout = ({ friends }: { friends: any }) => {
 Friends.layout = pageLayout
 
 export const getStaticProps: GetStaticProps = async () => {
-	const resCount = await fetch(
-		getApi({
-			count: true,
-		})
-	)
+	const resCount = await fetch(getAPI("internal", "postStats"))
 	const dataCount = await resCount.json()
 	const count: number = dataCount.count
 
 	const res = await fetch(
-		getApi({
-			cate: "2",
+		getAPI("internal", "posts", {
+			cate: 2,
 			perPage: count,
 		})
 	)

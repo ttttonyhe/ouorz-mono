@@ -2,7 +2,7 @@
 import { GetServerSideProps } from "next"
 import { FC } from "react"
 import RSS from "rss"
-import getApi from "~/utilities/api"
+import getAPI from "~/utilities/api"
 import { sanitizeStr } from "~/utilities/string"
 
 type RSSDataResponse = {
@@ -36,11 +36,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 				"Living an absolutely not meaningless life with totally not unachievable goals.",
 		})
 
-		const response = await fetch(
-			getApi({
-				rssData: true,
-			})
-		)
+		const response = await fetch(getAPI("internal", "rssData"))
 
 		const data: RSSDataResponse = await response.json()
 

@@ -6,7 +6,7 @@ import { Icon } from "@twilight-toolkit/ui"
 import { NextPageWithLayout } from "~/pages/_app"
 import { pageLayout } from "~/components/Page"
 import PageCard from "~/components/Card/Page"
-import getApi from "~/utilities/api"
+import getAPI from "~/utilities/api"
 import { GlowingBackground } from "~/components/Visual"
 
 const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
@@ -157,11 +157,7 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 Sponsor.layout = pageLayout
 
 export const getStaticProps: GetStaticProps = async () => {
-	const res = await fetch(
-		getApi({
-			sponsor: true,
-		})
-	)
+	const res = await fetch(getAPI("internal", "sponsors"))
 	const data = await res.json()
 
 	if (!data) {
