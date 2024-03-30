@@ -60,18 +60,32 @@ const PodcastCard = (props: PodcastCardProps) => {
 }
 
 const PodcastCardLoading = (props: { uniqueKey: string }) => {
-	const { resolvedTheme } = useTheme()
 	return (
 		<div className="flex items-center dark:bg-gray-800 dark:border dark:border-gray-700 rounded-md border shadow-sm hover:shadow-md transition-shadow bg-white w-50 z-40">
 			<ContentLoader
-				className={resolvedTheme === undefined ? "opacity-50" : ""}
-				uniqueKey={props.uniqueKey}
+				className="dark:hidden block"
+				uniqueKey={`${props.uniqueKey}-light`}
 				speed={2}
 				width={100}
 				style={{ width: "100%" }}
 				height={305}
-				backgroundColor={resolvedTheme === "dark" ? "#525252" : "#f3f3f3"}
-				foregroundColor={resolvedTheme === "dark" ? "#373737" : "#ecebeb"}
+				backgroundColor="#f3f3f3"
+				foregroundColor="#ecebeb"
+			>
+				<rect x="0" y="0" rx="5" ry="5" width="99.7%" height="195" />
+				<rect x="15" y="222" rx="5" ry="5" width="50%" height="20" />
+				<rect x="15" y="247" rx="5" ry="5" width="80%" height="15" />
+				<rect x="15" y="267" rx="5" ry="5" width="70%" height="15" />
+			</ContentLoader>
+			<ContentLoader
+				className="dark:block hidden"
+				uniqueKey={`${props.uniqueKey}-dark`}
+				speed={2}
+				width={100}
+				style={{ width: "100%" }}
+				height={305}
+				backgroundColor="#525252"
+				foregroundColor="#737373"
 			>
 				<rect x="0" y="0" rx="5" ry="5" width="99.7%" height="195" />
 				<rect x="15" y="222" rx="5" ry="5" width="50%" height="20" />
