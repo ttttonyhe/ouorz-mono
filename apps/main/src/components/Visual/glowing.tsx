@@ -6,19 +6,19 @@ interface GlowingBackgroundProps {
 }
 
 interface GlowingDivBackgroundProps extends GlowingBackgroundProps {
-	resolvedTheme: string
+	$resolvedTheme: string
 }
 
 // styled component props resolvers
 const background = (props: GlowingDivBackgroundProps) => {
 	return (
-		props.resolvedTheme === "dark" &&
+		props.$resolvedTheme === "dark" &&
 		`radial-gradient(200px circle at var(--x-px) var(--y-px), rgba(255, 255, 255, 0.1), transparent)`
 	)
 }
 
 const backgroundColor = (props: GlowingDivBackgroundProps) => {
-	return props.resolvedTheme === "dark" && "rgb(38,38,38)"
+	return props.$resolvedTheme === "dark" && "rgb(38,38,38)"
 }
 
 const borderRadius = (props: GlowingDivBackgroundProps) => {
@@ -56,7 +56,7 @@ const GlowingBackground = ({ rounded }: GlowingBackgroundProps) => {
 	return (
 		<GlowingDivBackground
 			rounded={rounded || "md"}
-			resolvedTheme={resolvedTheme || "dark"}
+			$resolvedTheme={resolvedTheme || "dark"}
 		/>
 	)
 }
