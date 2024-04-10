@@ -30,6 +30,6 @@ export const SUBSTATS_API = {
 }
 
 export const OPENAI_API = {
-	CACHING_PROXY: "https://proxy.lune.one",
+	CACHING_PROXY: "https://proxy.ouorz.com",
 	COMPLETIONS: "https://api.openai.com/v1/completions",
 }
