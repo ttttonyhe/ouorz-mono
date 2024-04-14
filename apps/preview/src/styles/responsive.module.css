@@ -1,0 +1,3 @@
+.sidebar-width {
+	@apply -ml-sidebar-offset h-full w-sidebar-lg transition-all lg:ml-0 xl:w-sidebar;
+}

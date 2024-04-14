@@ -1,0 +1,4 @@
+node_modules
+.next
+src/content/**/*.md
+src/content/**/*.mdx

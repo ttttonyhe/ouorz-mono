@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
+import React, { useState, useEffect } from "react"
 
 interface Props {
-	handler: (postition: number) => void
+	handler: (position: number) => void
 	startPosition?: number
 	endPosition: number
 	children: React.ReactNode
@@ -14,7 +14,7 @@ const ScrollWrapper = (props: Props) => {
 	const [yOffset, setYOffset] = useState(0)
 
 	const handler = () => {
-		let position = window.pageYOffset
+		let position = window.scrollY
 
 		if (position < startPosition) {
 			position = 0

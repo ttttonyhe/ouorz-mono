@@ -64,6 +64,14 @@
         "ALGOLIA_INDEX_NAME"
       ]
     },
+    "@ouorz/preview#build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**"
+      ]
+    },
     "@ouorz/analytics#build": {
       "dependsOn": [
         "^build"

@@ -1,12 +1,12 @@
-import { useTheme } from "next-themes"
-import { useEffect, useState, useRef } from "react"
-import { useRouter } from "next/router"
+import { OffsetTransition } from "../Motion"
 import { Icon } from "@twilight-toolkit/ui"
+import { useTheme } from "next-themes"
+import { useRouter } from "next/router"
+import { useEffect, useState, useRef } from "react"
+import smoothScroll from "smoothscroll-polyfill"
 import { useDispatch, useSelector } from "~/hooks"
 import { deactivateKbar } from "~/store/kbar/actions"
 import { selectKbar } from "~/store/kbar/selectors"
-import smoothScroll from "smoothscroll-polyfill"
-import { OffsetTransition } from "../Motion"
 
 const themes = ["system", "dark", "light"]
 const icons = [
@@ -57,16 +57,15 @@ export default function Footer() {
 	if (!mounted) return null
 
 	return (
-		<footer className="mt-20 border-gray-200 dark:border-gray-700 dark:bg-gray-800 border-t border-b text-center py-4 bg-white">
+		<footer className="mt-20 border-b border-t border-gray-200 bg-white py-4 text-center dark:border-gray-700 dark:bg-gray-800">
 			<div className="fixed bottom-8 left-8 text-gray-500 dark:text-gray-300">
 				<button
 					aria-label="change theme"
 					onClick={() => {
 						setTheme(targetThemes[themes.indexOf(theme)])
 					}}
-					className="effect-pressing w-full !p-3 shadow-sm border border-gray-300 dark:border-gray-700 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
-				>
-					<span className="w-7 h-7">{icons[themes.indexOf(theme)]}</span>
+					className="effect-pressing flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white !p-3 text-xl tracking-wider shadow-sm hover:shadow-inner focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+					<span className="h-7 w-7">{icons[themes.indexOf(theme)]}</span>
 				</button>
 			</div>
 			<div className="fixed bottom-8 right-8 text-gray-500 dark:text-gray-300">
@@ -77,36 +76,32 @@ export default function Footer() {
 						onClick={() => {
 							window.scrollTo({ top: 0, behavior: "smooth" })
 						}}
-						className="effect-pressing w-full p-3 shadow-sm border border-gray-300 dark:border-gray-700 hover:shadow-inner dark:hover:bg-gray-700 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white dark:bg-gray-800 flex"
-					>
-						<span className="w-7 h-7">
+						className="effect-pressing flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white p-3 text-xl tracking-wider opacity-0 shadow-sm hover:shadow-inner focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+						<span className="h-7 w-7">
 							<Icon name="arrowUp" />
 						</span>
 					</button>
 				</OffsetTransition>
 			</div>
-			<p className="text-gray-500 text-4 tracking-wide dark:text-gray-400">
+			<p className="text-4 tracking-wide text-gray-500 dark:text-gray-400">
 				<a
 					href="https://twitter.com/ttttonyhe"
 					target="_blank"
-					rel="noreferrer"
-				>
+					rel="noreferrer">
 					@ttttonyhe
 				</a>{" "}
 				<span>·</span>{" "}
 				<a
 					href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
 					target="_blank"
-					rel="noreferrer"
-				>
+					rel="noreferrer">
 					CC BY-NC-SA 4.0
 				</a>{" "}
 				<span>·</span>{" "}
 				<a
 					href="https://github.com/ttttonyhe/ouorz-mono"
 					target="_blank"
-					rel="noreferrer"
-				>
+					rel="noreferrer">
 					OSS
 				</a>
 			</p>
