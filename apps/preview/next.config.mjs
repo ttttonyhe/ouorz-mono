@@ -1,8 +1,5 @@
-import withMDX from "@next/mdx"
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	pageExtensions: ["ts", "tsx", "mdx", "md"],
 	reactStrictMode: true,
 	poweredByHeader: false,
 	productionBrowserSourceMaps: false,
@@ -28,12 +25,11 @@ const nextConfig = {
 	},
 	compiler: {
 		styledComponents: true,
-		// removeConsole: {
-		// 	exclude: ["log", "error"],
-		// },
+		removeConsole: {
+			exclude: ["log", "error"],
+		},
 	},
 	experimental: {
-		mdxRs: true,
 		turbo: {
 			resolveExtensions: [
 				".md",
@@ -50,4 +46,4 @@ const nextConfig = {
 	},
 }
 
-export default withMDX()(nextConfig)
+export default nextConfig

@@ -7,18 +7,27 @@ import responsive from "@/styles/responsive.module.css"
 import cn from "clsx"
 import { usePathname } from "next/navigation"
 import { FC } from "react"
+import { useUpdateEffect } from "react-use"
 
 interface SidebarProps {
-	shrink?: boolean
+	horizontalShrink?: boolean
+	navigationCallback?: () => void
 }
 
-const Sidebar: FC<SidebarProps> = ({ shrink = true }) => {
+const Sidebar: FC<SidebarProps> = ({
+	horizontalShrink = true,
+	navigationCallback,
+}) => {
 	const pathname = usePathname()
+
+	useUpdateEffect(() => {
+		navigationCallback && navigationCallback()
+	}, [pathname])
 
 	return (
 		<nav
 			className={cn(
-				shrink && responsive["sidebar-width"],
+				horizontalShrink && responsive["sidebar-width"],
 				"relative z-sidebar flex h-full flex-shrink-0 flex-col gap-y-2 bg-purple-500"
 			)}>
 			<SidebarProvider value={{ activePathname: pathname }}>
@@ -27,14 +36,10 @@ const Sidebar: FC<SidebarProps> = ({ shrink = true }) => {
 					<SidebarItem pathname="/research">Research</SidebarItem>
 					<SidebarItem pathname="/work">Work</SidebarItem>
 				</SidebarSection>
-				<section>
-					<h1>Outputs</h1>
-					<ul>
-						<li>Blog Posts</li>
-						<li>Projects</li>
-						<li>Newsletter</li>
-					</ul>
-				</section>
+				<SidebarSection title="Outputs">
+					<SidebarItem pathname="/posts">Posts</SidebarItem>
+					<SidebarItem pathname="/projects">Projects</SidebarItem>
+				</SidebarSection>
 				<section>
 					<h1>Inputs</h1>
 					<ul>

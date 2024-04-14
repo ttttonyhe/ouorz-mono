@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"dev": "next dev --turbo -p 5555",
+		"dev": "next dev -p 5555",
 		"dev:test": "next dev",
 		"build": "next build",
 		"start": "next start",
@@ -12,17 +12,19 @@
 		"clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo && rm -rf .next"
 	},
 	"dependencies": {
-		"@mdx-js/loader": "^3.0.1",
-		"@mdx-js/react": "^3.0.1",
-		"@next/mdx": "^14.2.1",
-		"@types/mdx": "^2.0.13",
 		"clsx": "^2.1.0",
+		"gray-matter": "^4.0.3",
 		"next": "14.2.1",
+		"next-mdx-remote": "^4.4.1",
 		"next-themes": "^0.3.0",
 		"react": "^18",
 		"react-dom": "^18",
 		"react-use": "^17.5.0",
-		"vaul": "^0.9.0"
+		"rehype-mathjax": "^6.0.0",
+		"remark-gfm": "^4.0.0",
+		"remark-math": "^6.0.0",
+		"vaul": "^0.9.0",
+		"zod": "^3.22.4"
 	},
 	"devDependencies": {
 		"@ouorz/eslint-config-next": "workspace:*",
