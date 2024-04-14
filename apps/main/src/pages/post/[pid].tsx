@@ -1,26 +1,24 @@
+import { Label } from "@twilight-toolkit/ui"
 import { GetStaticPaths, GetStaticProps } from "next"
-import { NextPageWithLayout } from "~/pages/_app"
-import { contentLayout } from "~/components/Content"
-import Aside from "~/components/Aside"
-
 // Components
 import Head from "next/head"
-import SubscriptionBox from "~/components/SubscriptionBox"
-import TimeAgo from "react-timeago"
-import CommentBox from "~/components/CommentBox"
-import PostContent from "~/components/PostContent"
 import Link from "next/link"
-import { Label } from "@twilight-toolkit/ui"
+import { useRouter } from "next/router"
+import redirect from "nextjs-redirect"
+import { useEffect } from "react"
+import TimeAgo from "react-timeago"
+import Aside from "~/components/Aside"
 import { CardTool } from "~/components/Card/WithImage/tool"
-
+import CommentBox from "~/components/CommentBox"
+import { contentLayout } from "~/components/Content"
+import PostContent from "~/components/PostContent"
+import SubscriptionBox from "~/components/SubscriptionBox"
+import { useDispatch } from "~/hooks"
+import { NextPageWithLayout } from "~/pages/_app"
+import { setHeaderTitle } from "~/store/general/actions"
+import getAPI from "~/utilities/api"
 // Utilities
 import { trimStr } from "~/utilities/string"
-import getAPI from "~/utilities/api"
-import redirect from "nextjs-redirect"
-import { useRouter } from "next/router"
-import { useEffect } from "react"
-import { useDispatch } from "~/hooks"
-import { setHeaderTitle } from "~/store/general/actions"
 
 const Redirect = redirect("/404")
 
@@ -36,9 +34,9 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 	if (!status || !post) {
 		return (
 			<Redirect>
-				<div className="text-center shadow-sm border rounded-md rounded-tl-none rounded-tr-none border-t-0 w-1/3 mx-auto bg-white py-3 animate-pulse">
+				<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-sm">
 					<h1 className="text-lg font-medium">404 Not Found</h1>
-					<p className="text-gray-500 font-light tracking-wide text-sm">
+					<p className="text-sm font-light tracking-wide text-gray-500">
 						redirecting...
 					</p>
 				</div>
@@ -82,20 +80,19 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 			</Head>
 			<article
 				data-cy="postContent"
-				className="lg:shadow-sm lg:border lg:rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800 p-5 lg:p-20 lg:pt-20 pt-24"
-			>
+				className="bg-white p-5 pt-24 dark:border-gray-800 dark:bg-gray-800 lg:rounded-xl lg:border lg:p-20 lg:pt-20 lg:shadow-sm">
 				<div className="mb-20">
-					<div className="flex mb-3">
+					<div className="mb-3 flex">
 						<Link href={`/cate/${post.post_categories[0].term_id}`}>
 							<Label type="primary" icon="cate">
 								{post.post_categories[0].name}
 							</Label>
 						</Link>
 					</div>
-					<h1 className="text-1.5 lg:text-postTitle font-medium tracking-wider leading-snug">
+					<h1 className="text-1.5 font-medium leading-snug tracking-wider lg:text-postTitle">
 						{post.title.rendered}
 					</h1>
-					<p className="flex text-5 lg:text-xl text-gray-500 space-x-2 mt-2 tracking-wide whitespace-nowrap">
+					<p className="mt-2 flex space-x-2 whitespace-nowrap text-5 tracking-wide text-gray-500 lg:text-xl">
 						<span>
 							Posted <TimeAgo date={post.date} />
 						</span>
@@ -122,7 +119,7 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 				)}
 			</article>
 			<Aside preNext={post.post_prenext} />
-			<div className="lg:mt-5 border-t border-gray-200 lg:border-none">
+			<div className="border-t border-gray-200 lg:mt-5 lg:border-none">
 				<SubscriptionBox type="lg" />
 			</div>
 			<CommentBox />

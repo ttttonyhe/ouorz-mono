@@ -1,20 +1,20 @@
-import React, { MutableRefObject, useRef } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { useRouter } from "next/router"
+import Kbar, { KbarListItem } from "../Kbar"
+import { HeaderTransition, OffsetTransition } from "../Motion"
+import ScrollWrapper from "../Motion/scroll"
+import Tabs from "../Tabs"
 import { useTheme } from "next-themes"
-import { useDebounce, useDispatch, useSelector } from "~/hooks"
+import Image from "next/image"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import React, { MutableRefObject, useRef } from "react"
+import { useDispatch, useSelector } from "~/hooks"
+import useAnalytics from "~/hooks/analytics"
+import { selectGeneral } from "~/store/general/selectors"
 import {
 	updateKbarToSearch,
 	activateKbar,
 	updateKbarSearchQuery,
 } from "~/store/kbar/actions"
-import { HeaderTransition, OffsetTransition } from "../Motion"
-import Tabs from "../Tabs"
-import Kbar, { KbarListItem } from "../Kbar"
-import useAnalytics from "~/hooks/analytics"
-import { selectGeneral } from "~/store/general/selectors"
-import ScrollWrapper from "../Motion/scroll"
 
 interface HeaderSearchBarComponentProps {
 	activateKbar: () => void
@@ -24,16 +24,15 @@ const HeaderSearchBarComponent = ({
 	activateKbar,
 }: HeaderSearchBarComponentProps) => {
 	return (
-		<div className="effect-pressing lg:flex hidden lg:w-[65%] xl:w-[620px]">
+		<div className="effect-pressing hidden lg:flex lg:w-[65%] xl:w-[620px]">
 			<div
 				aria-label="Command + K to open the command palette"
-				className="top-[6px] left-3 z-10 bg-gray-50 text-gray-400 dark:bg-transparent dark:border-gray-600 px-1.5 py-0.5 text-xs border rounded-md absolute cursor-not-allowed"
-			>
+				className="absolute left-3 top-[6px] z-10 cursor-not-allowed rounded-md border bg-gray-50 px-1.5 py-0.5 text-xs text-gray-400 dark:border-gray-600 dark:bg-transparent">
 				⌘+K
 			</div>
 			<input
 				type="text"
-				className="rounded-md px-3 py-2 pl-[54px] text-sm w-full bg-white text-gray-500 dark:bg-gray-800 bg-opacity-90 hover:bg-neutral-50 dark:bg-opacity-50 dark:hover:bg-gray-800 dark:hover:bg-opacity-100 dark:shadow-sm border border-gray-200 dark:border-gray-700 dark:hover:border-gray-700 transition-shadow outline-none"
+				className="w-full rounded-md border border-gray-200 bg-white bg-opacity-90 px-3 py-2 pl-[54px] text-sm text-gray-500 outline-none transition-shadow hover:bg-neutral-50 dark:border-gray-700 dark:bg-gray-800 dark:bg-opacity-50 dark:shadow-sm dark:hover:border-gray-700 dark:hover:bg-gray-800 dark:hover:bg-opacity-100"
 				placeholder="Type your command or search..."
 				onFocus={activateKbar}
 				data-oa="click-activateKbar"
@@ -49,8 +48,8 @@ const HeaderTitleComponent = () => {
 	if (!headerTitle) return null
 
 	return (
-		<div className="mx-auto hidden lg:flex space-x-3 items-center justify-center overflow-hidden">
-			<h3 className="whitespace-nowrap overflow-hidden text-ellipsis font-medium">
+		<div className="mx-auto hidden items-center justify-center space-x-3 overflow-hidden lg:flex">
+			<h3 className="overflow-hidden text-ellipsis whitespace-nowrap font-medium">
 				{headerTitle}
 			</h3>
 		</div>
@@ -76,8 +75,8 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			label: "Avatar",
 			hoverable: false,
 			component: (
-				<div className="px-5 cursor-pointer mx-auto flex space-x-3 items-center justify-center group">
-					<div className="flex items-center flex-shrink-0 h-[18px] w-[18px] border rounded-full border-gray-300 dark:border-gray-500">
+				<div className="group mx-auto flex cursor-pointer items-center justify-center space-x-3 px-5">
+					<div className="flex h-[18px] w-[18px] flex-shrink-0 items-center rounded-full border border-gray-300 dark:border-gray-500">
 						{/* <a
 							href="https://opensea.io/assets/ethereum/0x13bd2ac3779cbbcb2ac874c33f1145dd71ce41ee/3690"
 							target="_blank"
@@ -96,7 +95,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 					</div>
 					<div className="text-3 font-medium text-black">
 						<Link href="/" passHref>
-							<h3 className="text-gray-700 dark:group-hover:text-gray-300 dark:text-gray-400">
+							<h3 className="text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300">
 								Tony He
 							</h3>
 						</Link>
@@ -498,16 +497,14 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			<header
 				ref={headerRef}
 				id="header"
-				className="header leading-14 lg:border-0 border-b dark:border-b-transparent border-gray-200 lg:bg-transparent dark:backdrop-blur-lg duration-300 grid grid-cols-8 fixed top-0 h-auto w-full lg:py-4 lg:px-5 py-2 px-1 z-50"
-			>
-				<div className="col-start-1 col-end-3 flex lg:space-x-2 items-center lg:items-baseline">
+				className="header fixed top-0 z-50 grid h-auto w-full grid-cols-8 border-b border-gray-200 px-1 py-2 leading-14 duration-300 dark:border-b-transparent dark:backdrop-blur-lg lg:border-0 lg:bg-transparent lg:px-5 lg:py-4">
+				<div className="col-start-1 col-end-3 flex items-center lg:items-baseline lg:space-x-2">
 					<Tabs items={leftTabItems} />
 				</div>
 				<OffsetTransition disabled={!nonHomePage} componentRef={titleRef}>
 					<div
 						ref={titleRef}
-						className="col-start-3 col-end-7 justify-center flex items-center"
-					>
+						className="col-start-3 col-end-7 flex items-center justify-center">
 						{nonHomePage ? (
 							<HeaderTitleComponent />
 						) : (
@@ -517,7 +514,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 						)}
 					</div>
 				</OffsetTransition>
-				<div className="col-start-7 col-end-9 flex space-x-2 justify-end">
+				<div className="col-start-7 col-end-9 flex justify-end space-x-2">
 					<Tabs items={rightTabItems} />
 				</div>
 				<Kbar list={kbarItems} />

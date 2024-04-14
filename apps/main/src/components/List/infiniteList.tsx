@@ -1,12 +1,12 @@
+import StaticList from "./staticList"
 import React from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 import useSWRInfinite from "swr/infinite"
+import CardClickable from "~/components/Card/Clickable"
 import CardEmpty from "~/components/Card/Empty"
 import CardSkeleton from "~/components/Card/Skeleton"
-import CardClickable from "~/components/Card/Clickable"
-import getAPI from "~/utilities/api"
-import StaticList from "./staticList"
 import { ListTypes } from "~/constants/propTypes"
+import getAPI from "~/utilities/api"
 
 export interface InfiniteListProps {
 	type: ListTypes
@@ -88,8 +88,7 @@ const InfiniteList = (props: InfiniteListProps) => {
 				)
 			}
 			scrollThreshold="100px"
-			scrollableTarget={type === "search" ? "searchResultsDiv" : ""}
-		>
+			scrollableTarget={type === "search" ? "searchResultsDiv" : ""}>
 			<StaticList posts={postData} />
 		</InfiniteScroll>
 	)

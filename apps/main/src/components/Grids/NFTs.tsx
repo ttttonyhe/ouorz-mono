@@ -1,10 +1,10 @@
 import React from "react"
 import useSWR from "swr"
+import CardEmpty from "~/components/Card/Empty"
+import { NFTCard } from "~/components/Card/NFT"
+import { NFTCardLoading } from "~/components/Card/NFT"
 import fetcher from "~/lib/fetcher"
 import { EthNFT, SolNFT } from "~/pages/api/nft"
-import { NFTCard } from "~/components/Card/NFT"
-import CardEmpty from "~/components/Card/Empty"
-import { NFTCardLoading } from "~/components/Card/NFT"
 
 type NFTApiResData = {
 	eth: EthNFT[]
@@ -20,7 +20,7 @@ const NFTs = () => {
 
 	if (!data) {
 		return (
-			<div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
+			<div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
 				<NFTCardLoading uniqueKey="nft-card-skeleton-1" />
 				<NFTCardLoading uniqueKey="nft-card-skeleton-2" />
 				<NFTCardLoading uniqueKey="nft-card-skeleton-3" />
@@ -36,8 +36,8 @@ const NFTs = () => {
 	}
 
 	return (
-		<div className="grid lg:grid-cols-3 grid-cols-2 gap-4">
-			{data.eth.map((item, index: React.Key) => {
+		<div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+			{data.eth.map((item) => {
 				return (
 					<NFTCard
 						key={item.contract.address}
@@ -51,7 +51,7 @@ const NFTs = () => {
 					/>
 				)
 			})}
-			{data.sol.map((item, index: React.Key) => {
+			{data.sol.map((item) => {
 				return (
 					<NFTCard
 						key={item.tokenAddress}

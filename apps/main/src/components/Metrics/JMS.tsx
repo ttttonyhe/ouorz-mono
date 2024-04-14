@@ -1,6 +1,6 @@
+import MetricCard from "./Card"
 import useSWR from "swr"
 import fetcher from "~/lib/fetcher"
-import MetricCard from "./Card"
 
 export default function JMSMetric() {
 	const { data } = useSWR("api/jms", fetcher)

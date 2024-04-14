@@ -1,9 +1,8 @@
 import Image from "next/image"
-import { useTheme } from "next-themes"
 import ContentLoader from "react-content-loader"
-import openLink from "~/utilities/externalLink"
-import { Book } from "~/pages/api/goodreads"
 import blurDataURL from "~/constants/blurDataURL"
+import { Book } from "~/pages/api/goodreads"
+import openLink from "~/utilities/externalLink"
 
 const BookCard = (props: Book) => {
 	const { title, author, imageURL, link, dateAdded } = props
@@ -11,36 +10,35 @@ const BookCard = (props: Book) => {
 	return (
 		<div
 			onClick={() => openLink(link)}
-			className="group flex flex-col dark:bg-gray-800 dark:border-gray-700 border rounded-md shadow-sm dark:hover:shadow-none hover:shadow-gray-200 hover:-translate-y-0.5 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 bg-white cursor-pointer w-50 z-40"
-		>
+			className="w-50 group z-40 flex cursor-pointer flex-col rounded-md border bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none">
 			<div className="flex flex-1 items-center lg:justify-center">
-				<div className="px-4.5 py-4 flex-shrink-0">
+				<div className="flex-shrink-0 px-4.5 py-4">
 					<Image
 						width={35}
 						height={52}
 						src={imageURL}
 						alt={title}
-						className="rounded-sm shadow-sm shadow-gray-200 dark:shadow-none border"
+						className="rounded-sm border shadow-sm shadow-gray-200 dark:shadow-none"
 						placeholder="blur"
 						blurDataURL={blurDataURL}
 						loading="lazy"
 					/>
 				</div>
-				<div className="lg:group-hover:hidden lg:group-hover:delay-75 lg:group-hover:w-0 py-2 lg:px-0 pr-4.5 overflow-hidden">
-					<p className="dark:text-white text-sm lg:text-normal font-medium tracking-wider leading-tight whitespace-nowrap overflow-hidden overflow-ellipsis">
+				<div className="overflow-hidden py-2 pr-4.5 lg:px-0 lg:group-hover:hidden lg:group-hover:w-0 lg:group-hover:delay-75">
+					<p className="lg:text-normal overflow-hidden overflow-ellipsis whitespace-nowrap text-sm font-medium leading-tight tracking-wider dark:text-white">
 						{title}
 					</p>
-					<p className="text-gray-500 dark:text-gray-400 lg:text-sm text-xs font-light tracking-wide mt-1 whitespace-nowrap text-ellipsis overflow-hidden">
+					<p className="mt-1 overflow-hidden text-ellipsis whitespace-nowrap text-xs font-light tracking-wide text-gray-500 dark:text-gray-400 lg:text-sm">
 						by {author}
 					</p>
 				</div>
-				<div className="pr-4.5 hidden lg:flex-grow lg:block lg:group-hover:opacity-100 lg:group-hover:delay-75 opacity-0 lg:group-hover:flex-1 transition-opacity ease-in-out duration-200 !line-clamp-3">
-					<p className="lg:group-hover:block hidden text-xs font-medium dark:text-white">
+				<div className="!line-clamp-3 hidden pr-4.5 opacity-0 transition-opacity duration-200 ease-in-out lg:block lg:flex-grow lg:group-hover:flex-1 lg:group-hover:opacity-100 lg:group-hover:delay-75">
+					<p className="hidden text-xs font-medium dark:text-white lg:group-hover:block">
 						{title}
 					</p>
 				</div>
 			</div>
-			<div className="flex justify-between items-center w-full px-4.5 py-2 text-xs text-gray-500 dark:text-gray-400 font-light border-t border-gray-100 dark:border-gray-700">
+			<div className="flex w-full items-center justify-between border-t border-gray-100 px-4.5 py-2 text-xs font-light text-gray-500 dark:border-gray-700 dark:text-gray-400">
 				<span>Date Added</span>
 				<span>{dateAdded}</span>
 			</div>
@@ -50,17 +48,16 @@ const BookCard = (props: Book) => {
 
 const BookCardLoading = (props: { uniqueKey: string }) => {
 	return (
-		<div className="flex items-center dark:bg-gray-800 dark:border dark:border-gray-700 rounded-md border shadow-sm bg-white w-50 z-40 p-[1px]">
+		<div className="w-50 z-40 flex items-center rounded-md border bg-white p-[1px] shadow-sm dark:border dark:border-gray-700 dark:bg-gray-800">
 			<ContentLoader
-				className="dark:hidden block"
+				className="block dark:hidden"
 				uniqueKey={`${props.uniqueKey}-light`}
 				speed={2}
 				width={100}
 				style={{ width: "100%" }}
 				height={107}
 				backgroundColor="#f3f3f3"
-				foregroundColor="#ecebeb"
-			>
+				foregroundColor="#ecebeb">
 				<rect x="15" y="13" rx="5" ry="5" width="35" height="52" />
 				<rect x="65" y="18" rx="5" ry="5" width="65%" height="20" />
 				<rect x="65" y="43" rx="5" ry="5" width="50%" height="15" />
@@ -69,15 +66,14 @@ const BookCardLoading = (props: { uniqueKey: string }) => {
 				<rect x="76%" y="87" rx="5" ry="5" width="19%" height="15" />
 			</ContentLoader>
 			<ContentLoader
-				className="dark:block hidden"
+				className="hidden dark:block"
 				uniqueKey={`${props.uniqueKey}-dark`}
 				speed={2}
 				width={100}
 				style={{ width: "100%" }}
 				height={107}
 				backgroundColor="#525252"
-				foregroundColor="#737373"
-			>
+				foregroundColor="#737373">
 				<rect x="15" y="13" rx="5" ry="5" width="35" height="52" />
 				<rect x="65" y="18" rx="5" ry="5" width="65%" height="20" />
 				<rect x="65" y="43" rx="5" ry="5" width="50%" height="15" />

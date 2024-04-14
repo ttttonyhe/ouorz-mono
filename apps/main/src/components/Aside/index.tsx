@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react"
 import { Icon } from "@twilight-toolkit/ui"
-import { useRouter } from "next/router"
-import Link from "next/link"
-import scrollToItemWithinDiv from "~/utilities/scrollTo"
 import { debounce } from "lodash"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import { useState, useEffect } from "react"
+import scrollToItemWithinDiv from "~/utilities/scrollTo"
 
 export default function Aside({ preNext }: { preNext: any }) {
 	const router = useRouter()
@@ -150,12 +150,11 @@ export default function Aside({ preNext }: { preNext: any }) {
 				<div
 					className={`${
 						recursionTimes == 0 ? "border-l-0" : ""
-					}toc-sub py-2 -my-2 whitespace-nowrap text-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700`}
+					}toc-sub -my-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap border-gray-100 py-2 hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-700`}
 					style={{
 						paddingLeft: recursionTimes == 0 ? "0px" : "10px",
 						marginLeft: recursionTimes == 0 ? "0px" : "10px",
-					}}
-				>
+					}}>
 					{recursionTimes > 0 ? (
 						<SubItem
 							item={item}
@@ -172,9 +171,9 @@ export default function Aside({ preNext }: { preNext: any }) {
 				<li
 					className={`${
 						item[1] !== 0
-							? "toc-sub hover:rounded-tl-none hover:rounded-bl-none"
+							? "toc-sub hover:rounded-bl-none hover:rounded-tl-none"
 							: ""
-					} py-2 pr-[10px] whitespace-nowrap text-ellipsis overflow-hidden cursor-pointer border-gray-100 dark:border-gray-600 hover:bg-gray-50 hover:rounded-md dark:hover:bg-gray-700`}
+					} cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap border-gray-100 py-2 pr-[10px] hover:rounded-md hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-700`}
 					id={`header${item[0]}`}
 					style={{
 						paddingLeft: "10px",
@@ -182,8 +181,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 					}}
 					key={item[0]}
 					onClick={() => scrollToHeading(headersEl[item[0]])}
-					data-oa="click-tocItem"
-				>
+					data-oa="click-tocItem">
 					{recursionTimes > 0 ? (
 						<SubItem
 							item={item}
@@ -208,18 +206,16 @@ export default function Aside({ preNext }: { preNext: any }) {
 		if (a || b) {
 			return (
 				<div
-					className={`bg-white text-gray-700 dark:bg-gray-800 dark:border-gray-800 dark:text-gray-400 shadow-sm border rounded-xl mt-5 text-xl grid ${
+					className={`mt-5 grid rounded-xl border bg-white text-xl text-gray-700 shadow-sm dark:border-gray-800 dark:bg-gray-800 dark:text-gray-400 ${
 						a && b ? "grid-cols-2" : "grid-cols-1"
-					} tour`}
-				>
+					} tour`}>
 					{a && (
 						<Link href={`/post/${preNext.prev[0]}`} passHref>
 							<div
-								className={`px-6 py-3 flex items-center justify-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 ${
-									b ? "rounded-tl-xl rounded-bl-xl" : "rounded-xl"
-								}`}
-							>
-								<span className="w-6 h-6 mr-2">
+								className={`flex cursor-pointer items-center justify-center px-6 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 ${
+									b ? "rounded-bl-xl rounded-tl-xl" : "rounded-xl"
+								}`}>
+								<span className="mr-2 h-6 w-6">
 									<Icon name="leftPlain" />
 								</span>
 								Prev
@@ -229,12 +225,11 @@ export default function Aside({ preNext }: { preNext: any }) {
 					{b && (
 						<Link href={`/post/${preNext.next[0]}`} passHref>
 							<div
-								className={`px-6 py-3 flex items-center justify-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 ${
-									a ? "rounded-tr-xl rounded-br-xl" : "rounded-xl"
-								}`}
-							>
+								className={`flex cursor-pointer items-center justify-center px-6 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 ${
+									a ? "rounded-br-xl rounded-tr-xl" : "rounded-xl"
+								}`}>
 								Next
-								<span className="w-6 h-6 ml-2">
+								<span className="ml-2 h-6 w-6">
 									<Icon name="right" />
 								</span>
 							</div>
@@ -248,20 +243,19 @@ export default function Aside({ preNext }: { preNext: any }) {
 	}
 
 	return (
-		<aside className="group w-toc fixed top-24 -ml-82 hidden xl:block aside">
+		<aside className="aside group fixed top-24 -ml-82 hidden w-toc xl:block">
 			{headersEl.length ? (
 				<div>
-					<div className="shadow-sm border rounded-xl bg-white dark:bg-gray-800 dark:border-gray-800">
-						<h1 className="flex text-2xl font-medium text-gray-700 dark:text-white tracking-wide items-center px-6 py-3 border-b border-gray-200 dark:border-gray-700">
-							<span className="w-[19px] h-[19px] mr-2 -mt-[1.5px]">
+					<div className="rounded-xl border bg-white shadow-sm dark:border-gray-800 dark:bg-gray-800">
+						<h1 className="flex items-center border-b border-gray-200 px-6 py-3 text-2xl font-medium tracking-wide text-gray-700 dark:border-gray-700 dark:text-white">
+							<span className="-mt-[1.5px] mr-2 h-[19px] w-[19px]">
 								<Icon name="toc" />
 							</span>
 							On This Page
 						</h1>
 						<ul
-							className="max-h-[70vh] mask-y overflow-hidden overflow-y-auto overscroll-contain text-xl px-3 py-3 transition-colors duration-300 text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300"
-							id="toc"
-						>
+							className="mask-y max-h-[70vh] overflow-hidden overflow-y-auto overscroll-contain px-3 py-3 text-xl text-gray-500 transition-colors duration-300 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300"
+							id="toc">
 							{headersResult &&
 								headersResult.map((item, index) => {
 									return (

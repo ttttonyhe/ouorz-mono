@@ -1,9 +1,9 @@
+import { TabsProps } from "."
+import TabItemComponent from "./item"
 import React, { useEffect, useRef, useState } from "react"
 import { useHotkeys } from "react-hotkeys-hook"
 import { useMouseLeaveListener } from "~/hooks"
 import scrollToItemWithinDiv from "~/utilities/scrollTo"
-import { TabsProps } from "."
-import TabItemComponent from "./item"
 
 const Tabs = (props: TabsProps) => {
 	const { items, direction, defaultHighlighted, verticalListWrapper } = props
@@ -282,18 +282,16 @@ const Tabs = (props: TabsProps) => {
 			className={`relative ${direction !== "vertical" && "tabs-wrapper"}`}
 			onMouseLeave={() => {
 				reset(true)
-			}}
-		>
+			}}>
 			<div ref={highlighterRef} className="tabs-highlighter z-0" />
 			<ul
 				data-cy="tabs-list"
-				className={`items-center list-none ${
+				className={`list-none items-center ${
 					direction === "vertical"
 						? "grid grid-flow-row"
 						: "flex flex-row gap-x-2"
 				}`}
-				ref={listRef}
-			>
+				ref={listRef}>
 				{items.map((item, index) => {
 					const { className, bgColor, bgDark, color, onClick } = item
 					return (
@@ -302,7 +300,7 @@ const Tabs = (props: TabsProps) => {
 							aria-label="tab"
 							className={`${direction !== "vertical" && "whitespace-nowrap"} ${
 								color ||
-								"text-gray-500 dark:text-gray-400 dark:hover:text-gray-300 dark:transition-colors"
+								"text-gray-500 dark:text-gray-400 dark:transition-colors dark:hover:text-gray-300"
 							} ${className || ""} z-10 cursor-pointer rounded-md`}
 							onMouseOver={(e) => {
 								if (item.hoverable !== false) {
@@ -312,8 +310,7 @@ const Tabs = (props: TabsProps) => {
 									reset()
 								}
 							}}
-							onClick={onClick}
-						>
+							onClick={onClick}>
 							<>
 								{item.component || (
 									<TabItemComponent {...item} key={item.label} index={index} />

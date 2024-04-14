@@ -1,7 +1,7 @@
-import useSWR from "swr"
-import format from "comma-number"
-import fetcher from "~/lib/fetcher"
 import MetricCard from "./Card"
+import format from "comma-number"
+import useSWR from "swr"
+import fetcher from "~/lib/fetcher"
 
 export default function NexmentMetric() {
 	const { data } = useSWR("api/nexment", fetcher)

@@ -1,6 +1,6 @@
+import InfiniteList from "./infiniteList"
 import List from "./list"
 import StaticList from "./staticList"
-import InfiniteList from "./infiniteList"
 
 export type { ListProps } from "./list"
 export type { ListTypes } from "~/constants/propTypes"

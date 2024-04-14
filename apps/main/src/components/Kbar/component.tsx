@@ -1,8 +1,8 @@
+import { KbarProps } from "."
+import { KbarContextProvider } from "./context"
+import KbarPanel from "./panel"
 import React, { useEffect, useState } from "react"
 import { useHotkeys } from "react-hotkeys-hook"
-import { KbarContextProvider } from "./context"
-import { KbarProps } from "."
-import KbarPanel from "./panel"
 import {
 	useSelector,
 	useDispatch,
@@ -10,10 +10,10 @@ import {
 	useBodyScroll,
 	useDebounce,
 } from "~/hooks"
-import { selectKbar } from "~/store/kbar/selectors"
-import { activateKbar, deactivateKbar, updateKbar } from "~/store/kbar/actions"
 import useAnalytics from "~/hooks/analytics"
+import { activateKbar, deactivateKbar, updateKbar } from "~/store/kbar/actions"
 import { searchLocation } from "~/store/kbar/sagas/updateKbarToSearch"
+import { selectKbar } from "~/store/kbar/selectors"
 
 const Kbar = (props: KbarProps) => {
 	const dispatch = useDispatch()
@@ -88,11 +88,10 @@ const Kbar = (props: KbarProps) => {
 					setInputValue,
 					inputValueChangeHandler: kbarInputValueChangeHandler,
 					setInputValueChangeHandler: setKbarInputValueChangeHandler,
-				}}
-			>
+				}}>
 				<div
 					data-cy="kbar-bg"
-					className={`absolute bg-gray-50/90 dark:bg-black/70 h-screen w-full z-40 pointer-events-auto ${
+					className={`pointer-events-auto absolute z-40 h-screen w-full bg-gray-50/90 dark:bg-black/70 ${
 						animation === "out" ? "animate-kbarBgOut" : "animate-kbarBg"
 					}`}
 					onClick={() => dispatch(deactivateKbar())}

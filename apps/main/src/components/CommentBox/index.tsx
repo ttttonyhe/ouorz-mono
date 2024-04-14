@@ -1,20 +1,21 @@
-import dynamic from "next/dynamic"
 import { Icon } from "@twilight-toolkit/ui"
+import dynamic from "next/dynamic"
+
 const NexmentDiv = dynamic(() => import("~/components/Nexment"), {
 	ssr: false,
 })
 
 export default function CommentBox() {
 	return (
-		<div className="lg:mt-5 bg-white dark:bg-gray-800 dark:border-gray-800 p-5 lg:py-11 lg:px-20 lg:shadow-sm lg:border lg:rounded-xl">
+		<div className="bg-white p-5 dark:border-gray-800 dark:bg-gray-800 lg:mt-5 lg:rounded-xl lg:border lg:px-20 lg:py-11 lg:shadow-sm">
 			<div className="mb-8">
-				<h1 className="flex text-3xl font-medium text-gray-700 dark:!text-white tracking-wide items-center">
-					<span className="w-9 h-9 mr-2">
+				<h1 className="flex items-center text-3xl font-medium tracking-wide text-gray-700 dark:!text-white">
+					<span className="mr-2 h-9 w-9">
 						<Icon name="comments" />
 					</span>
 					Comments
 				</h1>
-				<p className="text-xl tracking-wide text-gray-500 dark:text-gray-400 mt-1 mb-5 pl-1">
+				<p className="mb-5 mt-1 pl-1 text-xl tracking-wide text-gray-500 dark:text-gray-400">
 					Leave a comment to join the discussion
 				</p>
 			</div>

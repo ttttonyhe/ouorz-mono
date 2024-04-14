@@ -3,18 +3,18 @@ import Image from "next/image"
 
 const NextJS13Preview = () => {
 	return (
-		<div className="bg-white px-4 pl-4.5 py-2.5 rounded-md w-full flex gap-x-4 shadow-sm  dark:bg-gray-800 dark:border-gray-800 border">
+		<div className="flex w-full gap-x-4 rounded-md border bg-white px-4 py-2.5 pl-4.5  shadow-sm dark:border-gray-800 dark:bg-gray-800">
 			<div className="flex items-center">
 				<Image
 					src="https://static.ouorz.com/nextjs-icon-light-background.svg"
 					width={30}
 					height={30}
 					alt="NextJS"
-					className="dark:border dark:rounded-full"
+					className="dark:rounded-full dark:border"
 					loading="eager"
 				/>
 			</div>
-			<div className="flex flex-1 justify-between items-center">
+			<div className="flex flex-1 items-center justify-between">
 				<div className="leading-5">
 					<div className="flex gap-x-1 font-medium">
 						<div>
@@ -23,12 +23,12 @@ const NextJS13Preview = () => {
 							</p>
 						</div>
 						<div className="-translate-y-[1.5px]">
-							<label className="px-2 pt-[1px] pb-[2px] bg-green-100 dark:bg-green-800 text-[0.65rem] leading-[0.65rem] rounded-full text-green-500 dark:text-green-300">
+							<label className="rounded-full bg-green-100 px-2 pb-[2px] pt-[1px] text-[0.65rem] leading-[0.65rem] text-green-500 dark:bg-green-800 dark:text-green-300">
 								Alpha
 							</label>
 						</div>
 					</div>
-					<p className="text-gray-400 text-xs">
+					<p className="text-xs text-gray-400">
 						Powered by nested layouts, React server components, streaming SSR
 						and more...
 					</p>
@@ -39,9 +39,8 @@ const NextJS13Preview = () => {
 						href="https://preview.ouorz.com"
 						target="_blank"
 						rel="noreferrer"
-						data-oa="click-nextjs13Ppreview"
-					>
-						<button className="effect-pressing w-[1.8rem] h-[1.8rem] hover:bg-gray-200 dark:hover:bg-gray-600 rounded-md p-2">
+						data-oa="click-nextjs13Ppreview">
+						<button className="effect-pressing h-[1.8rem] w-[1.8rem] rounded-md p-2 hover:bg-gray-200 dark:hover:bg-gray-600">
 							<Icon name="right" />
 						</button>
 					</a>

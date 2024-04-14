@@ -1,5 +1,5 @@
-import { put, delay } from "redux-saga/effects"
 import { setKbarAnimation, hideKbar } from "../actions"
+import { put, delay } from "redux-saga/effects"
 
 export default function* deactivateKbarSaga() {
 	try {

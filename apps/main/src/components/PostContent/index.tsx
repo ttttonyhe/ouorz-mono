@@ -1,11 +1,11 @@
-import Highlight from "react-highlight"
 import "highlight.js/styles/atom-one-dark.css"
+import Highlight from "react-highlight"
 
 const HighlightComponent = Highlight as any
 
 export default function PostContent({ content }: { content: string }) {
 	return (
-		<div className="prose lg:prose-xl tracking-wide dark:prose-dark">
+		<div className="prose tracking-wide dark:prose-dark lg:prose-xl">
 			<HighlightComponent innerHTML={true}>{content}</HighlightComponent>
 		</div>
 	)

@@ -9,21 +9,20 @@ export default function CardClickable({ stopLoading, setStopLoading }: Props) {
 	return (
 		<div
 			data-oa="click-loadingSwitch"
-			className="hover:shadow-inner cursor-pointer w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6 text-center"
+			className="mb-6 w-full cursor-pointer rounded-md border bg-white text-center shadow-sm hover:shadow-inner dark:border-gray-800 dark:bg-gray-800"
 			onClick={() => {
 				setStopLoading(!stopLoading)
-			}}
-		>
+			}}>
 			{stopLoading ? (
-				<p className="text-xl tracking-wide text-gray-600 dark:text-gray-400 font-light p-3.5 flex justify-center">
-					<span className="w-6 h-6 mr-3 mt-0.5">
+				<p className="flex justify-center p-3.5 text-xl font-light tracking-wide text-gray-600 dark:text-gray-400">
+					<span className="mr-3 mt-0.5 h-6 w-6">
 						<Icon name="play" />
 					</span>
 					Resume Loading
 				</p>
 			) : (
-				<p className="text-xl tracking-wide text-gray-600 dark:text-gray-400 font-light p-3.5 flex justify-center">
-					<span className="w-6 h-6 mr-3 mt-0.5">
+				<p className="flex justify-center p-3.5 text-xl font-light tracking-wide text-gray-600 dark:text-gray-400">
+					<span className="mr-3 mt-0.5 h-6 w-6">
 						<Icon name="pause" />
 					</span>
 					Terminate Loading

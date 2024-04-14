@@ -127,8 +127,7 @@ const Hover = ({
 			ref={element}
 			onMouseEnter={handleOnMouseEnter}
 			onMouseMove={handleOnMouseMove}
-			onMouseLeave={handleOnMouseLeave}
-		>
+			onMouseLeave={handleOnMouseLeave}>
 			<>{children}</>
 		</div>
 	)

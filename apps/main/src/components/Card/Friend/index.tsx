@@ -1,7 +1,7 @@
-import Link from "next/link"
-import { trimStr } from "~/utilities/string"
 import Image from "next/image"
+import Link from "next/link"
 import { WPPost } from "~/constants/propTypes"
+import { trimStr } from "~/utilities/string"
 
 interface Props {
 	item: WPPost
@@ -9,7 +9,7 @@ interface Props {
 
 export default function CardFriend({ item }: Props) {
 	return (
-		<div className="w-full shadow-sm bg-white rounded-md border mb-6">
+		<div className="mb-6 w-full rounded-md border bg-white shadow-sm">
 			<div className="flex">
 				<Image
 					src={item.post_img.url}
@@ -21,12 +21,12 @@ export default function CardFriend({ item }: Props) {
 				/>
 				<div>
 					<Link href={`/post/${item.id}`}>
-						<h1 className="font-medium text-2 text-gray-700 tracking-wider mb-1">
+						<h1 className="mb-1 text-2 font-medium tracking-wider text-gray-700">
 							{item.post_title}
 						</h1>
 					</Link>
 					<p
-						className="text-gray-500 text-3 tracking-wide leading-8"
+						className="text-3 leading-8 tracking-wide text-gray-500"
 						dangerouslySetInnerHTML={{
 							__html: trimStr(item.post_excerpt.four, 150),
 						}}

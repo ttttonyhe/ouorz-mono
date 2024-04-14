@@ -1,13 +1,13 @@
 import { GetStaticProps } from "next"
 import Head from "next/head"
 import React, { useEffect, useState } from "react"
-import { NextPageWithLayout } from "~/pages/_app"
-import { pageLayout } from "~/components/Page"
-import List from "~/components/List"
-import Top from "~/components/Top"
-import getAPI from "~/utilities/api"
 // import NextJS13Preview from "~/components/Banners/NextJS13Preview"
 import YearOfReformation from "~/components/Banners/YearOfReformation"
+import List from "~/components/List"
+import { pageLayout } from "~/components/Page"
+import Top from "~/components/Top"
+import { NextPageWithLayout } from "~/pages/_app"
+import getAPI from "~/utilities/api"
 
 const GREETINGS = [" there, it's Tony", ", Tony here", ", I'm Tony"]
 
@@ -29,10 +29,10 @@ const Home: NextPageWithLayout = ({ stickyNotFound, stickyPosts }: Props) => {
 			<Head>
 				<title>Tony He</title>
 			</Head>
-			<div className="lg:mt-20 mt-0 lg:pt-0 pt-24">
+			<div className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div>
-					<h1 className="flex items-center font-medium text-3xl leading-14 lg:text-1 text-black dark:text-white tracking-wide mb-0.5 whitespace-nowrap">
-						<span className="animate-waveHand hover:animate-waveHandAgain inline-block cursor-pointer mr-2.5">
+					<h1 className="mb-0.5 flex items-center whitespace-nowrap text-3xl font-medium leading-14 tracking-wide text-black dark:text-white lg:text-1">
+						<span className="mr-2.5 inline-block animate-waveHand cursor-pointer hover:animate-waveHandAgain">
 							👋
 						</span>{" "}
 						Hey{greeting}
@@ -40,14 +40,13 @@ const Home: NextPageWithLayout = ({ stickyNotFound, stickyPosts }: Props) => {
 							href="https://cal.com/tonyhe/15min"
 							className="effect-pressing ml-2 mt-0.5 hidden lg:block"
 							target="_blank"
-							rel="noreferrer"
-						>
-							<span className="text-sm flex items-center ml-2 py-1 px-2.5 border border-gray-400 hover:shadow-sm hover:border-gray-500 hover:text-gray-600 text-gray-500 dark:text-white dark:hover:text-gray-100 dark:!border-white dark:hover:opacity-80 rounded-md tracking-normal">
+							rel="noreferrer">
+							<span className="ml-2 flex items-center rounded-md border border-gray-400 px-2.5 py-1 text-sm tracking-normal text-gray-500 hover:border-gray-500 hover:text-gray-600 hover:shadow-sm dark:!border-white dark:text-white dark:hover:text-gray-100 dark:hover:opacity-80">
 								Let&apos;s chat →
 							</span>
 						</a>
 					</h1>
-					<p className="text-3 lg:text-2 text-gray-500 dark:text-gray-200 leading-14 tracking-wider font-light pl-1.5 pb-1.5 pt-1">
+					<p className="pb-1.5 pl-1.5 pt-1 text-3 font-light leading-14 tracking-wider text-gray-500 dark:text-gray-200 lg:text-2">
 						I&apos;m currently living a<del>n absolutely not</del> meaningless
 						life with <del>totally not</del> unachievable goals.
 					</p>

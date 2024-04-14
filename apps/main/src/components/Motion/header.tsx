@@ -1,6 +1,6 @@
-import React from "react"
-import { useTheme } from "next-themes"
 import ScrollWrapper from "./scroll"
+import { useTheme } from "next-themes"
+import React from "react"
 
 interface Props {
 	componentRef: React.MutableRefObject<HTMLDivElement>

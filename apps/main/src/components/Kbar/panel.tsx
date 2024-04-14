@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState, useRef } from "react"
-import { useRouter } from "next/router"
-import { useDispatch, useSelector } from "~/hooks"
-import { selectKbar } from "~/store/kbar/selectors"
-import { kbarContext } from "./context"
-import Tabs, { TabItemProps } from "../Tabs"
 import HotkeyHelper from "../Helpers/hotKey"
+import Tabs, { TabItemProps } from "../Tabs"
+import { kbarContext } from "./context"
 import { Icon } from "@twilight-toolkit/ui"
-import { deactivateKbar, updateKbar } from "~/store/kbar/actions"
 import { useTheme } from "next-themes"
+import { useRouter } from "next/router"
+import React, { useContext, useEffect, useState, useRef } from "react"
 import ContentLoader from "react-content-loader"
+import { useDispatch, useSelector } from "~/hooks"
+import { deactivateKbar, updateKbar } from "~/store/kbar/actions"
+import { selectKbar } from "~/store/kbar/selectors"
 
 const ListComponentLoading = ({ resolvedTheme }: { resolvedTheme: string }) => {
 	if (resolvedTheme === "dark") {
@@ -23,8 +23,7 @@ const ListComponentLoading = ({ resolvedTheme }: { resolvedTheme: string }) => {
 			style={{ width: "100%" }}
 			height={44}
 			backgroundColor="#f3f3f3"
-			foregroundColor="#ecebeb"
-		>
+			foregroundColor="#ecebeb">
 			<rect x="0" y="0" rx="5" ry="5" width="100%" height="44" />
 		</ContentLoader>
 	)
@@ -66,8 +65,8 @@ const ListComponent = ({
 
 	if (tabsListItems.length === 0) {
 		return (
-			<div className="flex gap-x-3 text-gray-500 dark:text-gray-400 p-4">
-				<span className="w-5 h-5">
+			<div className="flex gap-x-3 p-4 text-gray-500 dark:text-gray-400">
+				<span className="h-5 w-5">
 					<Icon name="empty" />
 				</span>
 				<span>No results found</span>
@@ -176,20 +175,19 @@ const KbarPanel = () => {
 							{item.label}
 						</p>
 					) : (
-						<div className="flex justify-between w-full items-center">
+						<div className="flex w-full items-center justify-between">
 							<div
-								className={`flex gap-x-3 items-center w-4/5 ${
+								className={`flex w-4/5 items-center gap-x-3 ${
 									item.color || ""
-								}`}
-							>
+								}`}>
 								{item.icon && (
-									<span className="h-5 w-5 flex items-center">
+									<span className="flex h-5 w-5 items-center">
 										<Icon name={item.icon} />
 									</span>
 								)}
 								<span>{item.label}</span>
 							</div>
-							<div className="flex gap-x-2.5 items-center">
+							<div className="flex items-center gap-x-2.5">
 								{item.description && (
 									<div className="text-sm text-gray-400">
 										{item.description}
@@ -197,14 +195,13 @@ const KbarPanel = () => {
 								)}
 								{item.shortcut?.length && (
 									<ul className="flex list-none gap-x-2 text-gray-500">
-										<li className="capitalize bg-gray-100 dark:bg-transparent dark:border-gray-600 rounded-md border py-0.5 text-xs px-2">
+										<li className="rounded-md border bg-gray-100 px-2 py-0.5 text-xs capitalize dark:border-gray-600 dark:bg-transparent">
 											Shift
 										</li>
 										{item.shortcut.map((shortcut) => (
 											<li
 												key={shortcut}
-												className="capitalize bg-gray-100 dark:bg-transparent dark:border-gray-600 rounded-md border py-0.5 text-xs px-2"
-											>
+												className="rounded-md border bg-gray-100 px-2 py-0.5 text-xs capitalize dark:border-gray-600 dark:bg-transparent">
 												{shortcut}
 											</li>
 										))}
@@ -246,8 +243,7 @@ const KbarPanel = () => {
 	return (
 		<div
 			data-cy="kbar-panel"
-			className="w-screen -ml-10 h-screen flex justify-center pointer-events-auto absolute"
-		>
+			className="pointer-events-auto absolute -ml-10 flex h-screen w-screen justify-center">
 			{// register shortcuts of list items
 			list?.map((item, index) => {
 				if (item.shortcut?.length) {
@@ -255,7 +251,7 @@ const KbarPanel = () => {
 				}
 			})}
 			<div
-				className={`z-50 ml-[16px] w-[620px] border dark:border-gray-700 rounded-xl shadow-2xl overflow-hidden backdrop-blur-lg bg-white/70 dark:bg-black/70 mt-[8%] h-fit max-h-[420px] ${
+				className={`z-50 ml-[16px] mt-[8%] h-fit max-h-[420px] w-[620px] overflow-hidden rounded-xl border bg-white/70 shadow-2xl backdrop-blur-lg dark:border-gray-700 dark:bg-black/70 ${
 					animation === "transition"
 						? "animate-kbarTransition"
 						: animation === "out"
@@ -263,22 +259,20 @@ const KbarPanel = () => {
 							: animation === "in"
 								? "animate-kbar opacity-0"
 								: ""
-				}`}
-			>
+				}`}>
 				<div
 					className={`h-[60px] border-b ${
 						loading ? "dark:border-gray-800" : "dark:border-gray-700"
-					} flex`}
-				>
+					} flex`}>
 					<input
 						data-cy="kbar-input"
 						placeholder={placeholder}
 						onChange={(e) => setInputValue(e.target.value)}
 						value={inputValue}
 						autoFocus
-						className="flex-1 w-full bg-transparent rounded-tl-lg rounded-tr-lg text-lg py-4.5 px-5 outline-none text-gray-600 dark:text-gray-300"
+						className="w-full flex-1 rounded-tl-lg rounded-tr-lg bg-transparent px-5 py-4.5 text-lg text-gray-600 outline-none dark:text-gray-300"
 					/>
-					<div className="flex items-center mr-5">
+					<div className="mr-5 flex items-center">
 						<ul className="flex list-none gap-x-2 text-gray-400 dark:text-gray-500">
 							{location.map((key) => (
 								<li
@@ -304,24 +298,22 @@ const KbarPanel = () => {
 										setInputValue("")
 										setInputValueChangeHandler(undefined)
 									}}
-									className="cursor-pointer capitalize hover:bg-gray-100 dark:hover:bg-gray-800 dark:border-gray-600 border rounded-md py-1 text-xs px-2"
-								>
+									className="cursor-pointer rounded-md border px-2 py-1 text-xs capitalize hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-800">
 									{key}
 								</li>
 							))}
 						</ul>
 					</div>
 					{loading && resolvedTheme === "dark" && (
-						<div className="animate-kbarLoadingBar kbar-loading-bar h-[1.5px] absolute bottom-[-1.25px] w-full z-50" />
+						<div className="kbar-loading-bar absolute bottom-[-1.25px] z-50 h-[1.5px] w-full animate-kbarLoadingBar" />
 					)}
 				</div>
 				<div
 					data-cy="kbar-list"
 					ref={verticalListWrapper}
-					className={`px-2.5 py-2.5 overflow-hidden ${
+					className={`overflow-hidden px-2.5 py-2.5 ${
 						!loading && "overflow-y-auto"
-					} max-h-[360px] kbar-mask kbar-list`}
-				>
+					} kbar-mask kbar-list max-h-[360px]`}>
 					<ListComponent
 						tabsListItems={tabsListItems}
 						verticalListWrapper={verticalListWrapper}

@@ -1,9 +1,9 @@
-import Head from "next/head"
-import React from "react"
-import { useRouter } from "next/router"
 import { Button } from "@twilight-toolkit/ui"
-import { NextPageWithLayout } from "~/pages/_app"
+import Head from "next/head"
+import { useRouter } from "next/router"
+import React from "react"
 import { pageLayout } from "~/components/Page"
+import { NextPageWithLayout } from "~/pages/_app"
 
 const PageNotFound: NextPageWithLayout = () => {
 	const router = useRouter()
@@ -14,22 +14,21 @@ const PageNotFound: NextPageWithLayout = () => {
 				<title>404 - Tony He</title>
 				<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 			</Head>
-			<div className="lg:mt-20 mt-0 lg:pt-0 pt-24 justify-center flex items-center h-[65vh]">
+			<div className="mt-0 flex h-[65vh] items-center justify-center pt-24 lg:mt-20 lg:pt-0">
 				<div className="text-center">
-					<h1 className="font-medium text-3xl leading-14 lg:text-1 text-black dark:text-white tracking-wide mb-0.5">
+					<h1 className="mb-0.5 text-3xl font-medium leading-14 tracking-wide text-black dark:text-white lg:text-1">
 						Oops
 					</h1>
-					<p className="text-3 lg:text-2 text-gray-500 leading-14 tracking-wide font-light">
+					<p className="text-3 font-light leading-14 tracking-wide text-gray-500 lg:text-2">
 						404 Not Found
 					</p>
-					<div className="inline-block justify-center mt-4">
+					<div className="mt-4 inline-block justify-center">
 						<Button
 							type="primary"
 							onClick={() => {
 								router.push("/")
 							}}
-							className="mx-auto"
-						>
+							className="mx-auto">
 							Back to Home
 						</Button>
 					</div>

@@ -1,5 +1,5 @@
-import { useRouter } from "next/router"
 import Nexment from "nexment"
+import { useRouter } from "next/router"
 
 const NexmentComponent = () => {
 	const { query } = useRouter()

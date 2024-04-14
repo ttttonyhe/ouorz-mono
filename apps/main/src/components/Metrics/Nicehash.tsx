@@ -1,6 +1,6 @@
+import { Icon } from "@twilight-toolkit/ui"
 import useSWR from "swr"
 import fetcher from "~/lib/fetcher"
-import { Icon } from "@twilight-toolkit/ui"
 
 export default function NiceHashMetric() {
 	const { data } = useSWR("api/nicehash", fetcher)
@@ -15,14 +15,12 @@ export default function NiceHashMetric() {
 	return (
 		<div
 			onClick={() => navigateTo(link)}
-			className="dark:bg-gray-800 dark:border-gray-800 rounded-md border shadow-sm hover:shadow-md py-4 px-5 bg-white cursor-pointer"
-			style={{ borderBottom: "5px solid #F59E0B" }}
-		>
+			className="cursor-pointer rounded-md border bg-white px-5 py-4 shadow-sm hover:shadow-md dark:border-gray-800 dark:bg-gray-800"
+			style={{ borderBottom: "5px solid #F59E0B" }}>
 			<h1
-				className={`font-bold text-stats tracking-wide flex items-center -mb-0.5 ${
+				className={`-mb-0.5 flex items-center text-stats font-bold tracking-wide ${
 					!data && "animate-pulse"
-				}`}
-			>
+				}`}>
 				<span className="flex items-center">
 					{data ? (
 						status ? (
@@ -39,9 +37,9 @@ export default function NiceHashMetric() {
 						"- - -"
 					)}{" "}
 					{data && (
-						<em className="flex items-center text-sm font-medium not-italic text-gray-500 rounded-md px-2 mt-0.5 py-0.5 ml-2 bg-gray-100 border">
+						<em className="ml-2 mt-0.5 flex items-center rounded-md border bg-gray-100 px-2 py-0.5 text-sm font-medium not-italic text-gray-500">
 							{data && (
-								<span className="w-4.5 h-4.5 mr-1">
+								<span className="mr-1 h-4.5 w-4.5">
 									<Icon name="money" />
 								</span>
 							)}{" "}
@@ -54,24 +52,23 @@ export default function NiceHashMetric() {
 				</span>
 			</h1>
 			{data && (
-				<p className="flex items-center mb-2 text-base">
+				<p className="mb-2 flex items-center text-base">
 					<span
-						className={`border-r pr-3 mr-3 flex items-center font-medium ${
+						className={`mr-3 flex items-center border-r pr-3 font-medium ${
 							status ? "text-green-700" : "text-red-700"
-						} `}
-					>
-						<span className="w-4.5 h-4.5 mr-1 animate-pulse">
+						} `}>
+						<span className="mr-1 h-4.5 w-4.5 animate-pulse">
 							<Icon name={status ? "checkCircle" : "warningCircle"} />
 						</span>
 						{status ? "Online" : "Offline"}
 					</span>
-					<span className="border-r pr-3 mr-3">
+					<span className="mr-3 border-r pr-3">
 						{temperature ? temperature : 0} °C
 					</span>
 					<span className="mr-3">{load ? load : 0} %</span>
 				</p>
 			)}
-			<p className="flex items-center text-gray-500 dark:text-gray-400 tracking-wide overflow-hidden text-ellipsis whitespace-nowrap">
+			<p className="flex items-center overflow-hidden text-ellipsis whitespace-nowrap tracking-wide text-gray-500 dark:text-gray-400">
 				Bitcoin Mining →
 			</p>
 		</div>

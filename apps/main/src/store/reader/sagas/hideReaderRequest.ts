@@ -1,5 +1,5 @@
-import { put, delay } from "redux-saga/effects"
 import { setReaderAnimation, hideReader } from "../actions"
+import { put, delay } from "redux-saga/effects"
 
 export default function* hideReaderRequstSaga() {
 	try {

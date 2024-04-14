@@ -1,19 +1,19 @@
 import { Icon, Label, LabelGroup } from "@twilight-toolkit/ui"
-import CardFooter from "~/components/Card/Footer"
-import CardWithImageTool from "~/components/Card/WithImage/tool"
-import { trimStr } from "~/utilities/string"
-import Link from "next/link"
 import Image from "next/image"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import { useCallback, useState } from "react"
+import CardFooter from "~/components/Card/Footer"
 import CardWithImagePodcast from "~/components/Card/WithImage/podcast"
-import { useDispatch } from "~/hooks"
-import { setReaderRequest } from "~/store/reader/actions"
-import { WPPost } from "~/constants/propTypes"
+import CardWithImageTool from "~/components/Card/WithImage/tool"
 import { Hover } from "~/components/Visual"
 import blurDataURL from "~/constants/blurDataURL"
-import { useCallback, useState } from "react"
-import { useRouter } from "next/router"
-import useInterval from "~/hooks/useInterval"
+import { WPPost } from "~/constants/propTypes"
+import { useDispatch } from "~/hooks"
 import useAnalytics from "~/hooks/analytics"
+import useInterval from "~/hooks/useInterval"
+import { setReaderRequest } from "~/store/reader/actions"
+import { trimStr } from "~/utilities/string"
 
 interface Props {
 	item: WPPost
@@ -89,16 +89,15 @@ export default function CardWithImage({ item, sticky }: Props) {
 		}
 
 		return (
-			<div className="w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6">
-				<div className="p-5 lg:p-10 lg:grid lg:grid-flow-col lg:grid-cols-3 lg:gap-9">
+			<div className="mb-6 w-full rounded-md border bg-white shadow-sm dark:border-gray-800 dark:bg-gray-800">
+				<div className="p-5 lg:grid lg:grid-flow-col lg:grid-cols-3 lg:gap-9 lg:p-10">
 					<Hover
 						perspective={1000}
 						max={25}
 						scale={1.01}
-						className={`dark:opacity-90 relative overflow-hidden hidden rounded-md shadow-sm hover:shadow-md h-img min-h-full w-full col-span-1 col-end-2 border border-gray-200 transition-all ${
+						className={`relative col-span-1 col-end-2 hidden h-img min-h-full w-full overflow-hidden rounded-md border border-gray-200 shadow-sm transition-all hover:shadow-md dark:opacity-90 ${
 							showThumbnail ? "lg:block" : "lg:hidden"
-						} ${summarized ? "animate-shrinkDisappear" : ""}`}
-					>
+						} ${summarized ? "animate-shrinkDisappear" : ""}`}>
 						<Image
 							fill
 							src={item.post_img.url}
@@ -113,11 +112,10 @@ export default function CardWithImage({ item, sticky }: Props) {
 						className={`col-end-4 ${
 							showThumbnail
 								? "col-span-2"
-								: "col-span-3 animate-expandImageCardInfo ml-auto"
-						}`}
-					>
-						<div className="flex space-x-3 items-center">
-							<div className="flex space-x-2 col-start-1 col-end-3">
+								: "col-span-3 ml-auto animate-expandImageCardInfo"
+						}`}>
+						<div className="flex items-center space-x-3">
+							<div className="col-start-1 col-end-3 flex space-x-2">
 								{sticky && <Label type="sticky-icon" />}
 								<Link href={`/cate/${item.post_categories[0].term_id}`}>
 									<Label type="primary" icon="cate">
@@ -125,7 +123,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 									</Label>
 								</Link>
 							</div>
-							<div className="justify-end hidden lg:flex lg:w-auto w-full">
+							<div className="hidden w-full justify-end lg:flex lg:w-auto">
 								<LabelGroup className="h-[33px]">
 									<Label
 										type="secondary"
@@ -133,8 +131,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 										onClick={() => {
 											trackEvent("previewPost", "click")
 											dispatch(setReaderRequest(item))
-										}}
-									>
+										}}>
 										Preview
 									</Label>
 									{!summarizing && summary ? (
@@ -162,27 +159,27 @@ export default function CardWithImage({ item, sticky }: Props) {
 							</div>
 						</div>
 						{summary && !showThumbnail ? (
-							<div className="lg:mt-4 mt-6 animate-appear">
+							<div className="mt-6 animate-appear lg:mt-4">
 								<Link href={`/post/${item.id}`}>
-									<div className="group flex mb-4 gap-x-2 flex-col border dark:border-gray-600 dark:hover:border-gray-500 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm">
-										<h2 className="flex items-center gap-x-1 justify-between text-sm font-semibold dark:border-gray-600 dark:group-hover:border-gray-500 dark:text-gray-300 text-gray-500 px-3.5 uppercase tracking-wide py-2 w-full border-b">
+									<div className="group mb-4 flex flex-col gap-x-2 rounded-md border shadow-sm transition-colors hover:bg-gray-50 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-700">
+										<h2 className="flex w-full items-center justify-between gap-x-1 border-b px-3.5 py-2 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:border-gray-600 dark:text-gray-300 dark:group-hover:border-gray-500">
 											TITLE
-											<span className="opacity-0 group-hover:opacity-100 -mr-2 group-hover:mr-0 transition-all w-4 h-4">
+											<span className="-mr-2 h-4 w-4 opacity-0 transition-all group-hover:mr-0 group-hover:opacity-100">
 												<Icon name="right" />
 											</span>
 										</h2>
 										<h1
-											className="text-gray-500 dark:text-gray-400 text-4 px-3.5 py-1.5 lg:text-3 tracking-wide leading-2 lg:leading-7 overflow-hidden text-ellipsis"
+											className="leading-2 overflow-hidden text-ellipsis px-3.5 py-1.5 text-4 tracking-wide text-gray-500 dark:text-gray-400 lg:text-3 lg:leading-7"
 											dangerouslySetInnerHTML={{ __html: item.post_title }}
 										/>
 									</div>
 								</Link>
-								<div className="flex mb-4 gap-x-2 flex-col border dark:border-gray-600 rounded-md shadow-sm">
-									<h2 className="text-sm font-semibold dark:border-gray-600 dark:text-gray-300 text-gray-500 px-3.5 uppercase tracking-wide py-2 w-full border-b">
+								<div className="mb-4 flex flex-col gap-x-2 rounded-md border shadow-sm dark:border-gray-600">
+									<h2 className="w-full border-b px-3.5 py-2 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:border-gray-600 dark:text-gray-300">
 										TL;DR
 									</h2>
 									<p
-										className="text-gray-500 dark:text-gray-400 text-4 px-3.5 py-1.5 lg:text-3 tracking-wide leading-2 lg:leading-7 overflow-hidden text-ellipsis"
+										className="leading-2 overflow-hidden text-ellipsis px-3.5 py-1.5 text-4 tracking-wide text-gray-500 dark:text-gray-400 lg:text-3 lg:leading-7"
 										dangerouslySetInnerHTML={{
 											__html: summary,
 										}}
@@ -193,8 +190,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 										href="https://openai.com"
 										target="_blank"
 										rel="noopener noreferrer"
-										className="flex items-center gap-x-2 text-sm text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 transition-colors"
-									>
+										className="flex items-center gap-x-2 text-sm text-gray-400 transition-colors hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400">
 										<span className="ml-[3px] tracking-wide">Powered by</span>
 										<span className="w-16">
 											<Icon name="openaiText" />
@@ -203,15 +199,15 @@ export default function CardWithImage({ item, sticky }: Props) {
 								</div>
 							</div>
 						) : (
-							<div className="lg:mt-4 mt-6">
+							<div className="mt-6 lg:mt-4">
 								<Link href={`/post/${item.id}`}>
 									<h1
-										className="font-medium text-2 lg:text-listTitle text-gray-700 dark:text-white tracking-wider mb-5"
+										className="mb-5 text-2 font-medium tracking-wider text-gray-700 dark:text-white lg:text-listTitle"
 										dangerouslySetInnerHTML={{ __html: item.post_title }}
 									/>
 								</Link>
 								<p
-									className="text-gray-500 dark:text-gray-400 text-4 lg:text-3 tracking-wide leading-2 lg:leading-8 overflow-hidden text-ellipsis"
+									className="leading-2 overflow-hidden text-ellipsis text-4 tracking-wide text-gray-500 dark:text-gray-400 lg:text-3 lg:leading-8"
 									dangerouslySetInnerHTML={{
 										__html: trimStr(item.post_excerpt.four, 150),
 									}}

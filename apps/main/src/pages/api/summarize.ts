@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
-import type { NextApiRequest, NextApiResponse } from "next"
 import html2plaintext from "html2plaintext"
+import type { NextApiRequest, NextApiResponse } from "next"
 import { OPENAI_API } from "~/constants/apiURLs"
 
 type ReqBodyType = {

@@ -1,5 +1,5 @@
-import styled from "styled-components"
 import { useTheme } from "next-themes"
+import styled from "styled-components"
 
 interface GlowingBackgroundProps {
 	rounded?: "sm" | "md" | "xl"

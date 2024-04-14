@@ -1,9 +1,9 @@
+import { Icon } from "@twilight-toolkit/ui"
 import React from "react"
 import TimeAgo from "react-timeago"
-import { Icon } from "@twilight-toolkit/ui"
-import getAPI from "~/utilities/api"
-import { useDebouncedFunction } from "~/hooks"
 import { WPPost } from "~/constants/propTypes"
+import { useDebouncedFunction } from "~/hooks"
+import getAPI from "~/utilities/api"
 
 interface Props {
 	item: WPPost
@@ -38,29 +38,28 @@ export default function CardPlainText({ item }: Props) {
 	const doUpvote = useDebouncedFunction(upvote, 2000)
 
 	return (
-		<div className="w-full shadow-sm bg-white dark:bg-gray-800 dark:border-gray-800 rounded-md border mb-6">
+		<div className="mb-6 w-full rounded-md border bg-white shadow-sm dark:border-gray-800 dark:bg-gray-800">
 			<div className="px-5 py-5 lg:px-10 lg:py-9">
 				<h1
-					className="font-normal text-2 lg:text-3xl text-gray-600 dark:text-white tracking-wider leading-2 lg:leading-10"
+					className="leading-2 text-2 font-normal tracking-wider text-gray-600 dark:text-white lg:text-3xl lg:leading-10"
 					dangerouslySetInnerHTML={{ __html: item.post_title }}
 				/>
 			</div>
-			<div className="pt-3 pb-3 px-5 lg:pt-2 lg:pb-2 lg:px-10 items-center w-full h-auto border-t rounded-br-md rounded-bl-md border-gray-100 dark:border-gray-700">
-				<p className="flex space-x-2 text-5 lg:text-4 tracking-wide leading-2 lg:leading-8 text-gray-500 dark:text-gray-400 items-center">
+			<div className="h-auto w-full items-center rounded-bl-md rounded-br-md border-t border-gray-100 px-5 pb-3 pt-3 dark:border-gray-700 lg:px-10 lg:pb-2 lg:pt-2">
+				<p className="leading-2 flex items-center space-x-2 text-5 tracking-wide text-gray-500 dark:text-gray-400 lg:text-4 lg:leading-8">
 					<button
-						className="flex items-center space-x-1 text-red-400 hover:text-red-500 cursor-pointer rounded-md"
+						className="flex cursor-pointer items-center space-x-1 rounded-md text-red-400 hover:text-red-500"
 						onClick={() => {
 							if (!upvoting) {
 								doUpvote(item.id)
 							}
-						}}
-					>
+						}}>
 						{upvoting ? (
-							<i className="w-6 h-6 mt-1 animate-bounce">
+							<i className="mt-1 h-6 w-6 animate-bounce">
 								<Icon name="loveFill" />
 							</i>
 						) : (
-							<i className="w-6 h-6 -mt-1">
+							<i className="-mt-1 h-6 w-6">
 								<Icon name="love" />
 							</i>
 						)}
@@ -68,8 +67,8 @@ export default function CardPlainText({ item }: Props) {
 							{upvotes}
 						</em>
 					</button>
-					<span className="lg:block hidden">·</span>
-					<span className="lg:block hidden">
+					<span className="hidden lg:block">·</span>
+					<span className="hidden lg:block">
 						Posted <TimeAgo date={item.date} />
 					</span>
 					<span>·</span>
