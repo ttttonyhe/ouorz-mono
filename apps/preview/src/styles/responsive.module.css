@@ -1,7 +1,7 @@
 .sidebar-width {
-	@apply -ml-sidebar-offset h-full w-sidebar-lg transition-all lg:ml-0 xl:w-sidebar;
+	@apply -ml-sidebar-offset h-full w-sidebar-lg transition-[width,margin] lg:ml-0 xl:w-sidebar;
 }
 
 .aside-width {
-	@apply -ml-sidebar-offset h-full w-sidebar-lg transition-all md:ml-0 xl:w-sidebar;
+	@apply -ml-sidebar-offset h-full w-sidebar-lg transition-[width,margin] md:ml-0 xl:w-sidebar;
 }

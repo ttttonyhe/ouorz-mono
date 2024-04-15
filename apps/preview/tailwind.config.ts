@@ -10,9 +10,9 @@ const config: Config = {
 	theme: {
 		extend: {
 			height: {
-				header: "2.875rem",
-				footer: "2.875rem",
-				main: "calc(100vh - 2.875rem)",
+				header: "4rem",
+				footer: "3rem",
+				main: "calc(100vh - 4rem)",
 			},
 			width: {
 				sidebar: "17.5rem",
@@ -20,13 +20,14 @@ const config: Config = {
 				article: "100%",
 				"article-md": "calc(100% - 12.5rem)",
 				"article-xl": "calc(100% - 17.5rem)",
+				"article-content": "40rem",
 			},
 			padding: {
-				header: "2.875rem",
+				header: "4rem",
 			},
 			margin: {
-				header: "2.875rem",
-				footer: "2.875rem",
+				header: "4rem",
+				footer: "3rem",
 				"sidebar-offset": "12.5rem",
 			},
 			colors: {

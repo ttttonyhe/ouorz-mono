@@ -28,7 +28,7 @@ const Sidebar: FC<SidebarProps> = ({
 		<nav
 			className={cn(
 				horizontalShrink && responsive["sidebar-width"],
-				"relative z-sidebar flex h-full flex-shrink-0 flex-col gap-y-2 bg-purple-500"
+				"relative z-sidebar flex h-full flex-shrink-0 flex-col gap-y-2 border-r dark:border-neutral-800 dark:bg-neutral-900"
 			)}>
 			<SidebarProvider value={{ activePathname: pathname }}>
 				<SidebarSection title="View">

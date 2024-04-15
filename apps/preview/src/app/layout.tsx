@@ -88,7 +88,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 				/>
 				<link rel="mask-icon" href="https://static.ouorz.com/ouorz-mask.ico" />
 			</head>
-			<body className="h-screen">
+			<body className="h-screen bg-white dark:bg-black">
 				<ThemeProvider>
 					<Header />
 					<main className="flex h-main">

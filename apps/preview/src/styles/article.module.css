@@ -11,6 +11,11 @@
 	content: "#";
 }
 
+.renderer mjx-container[jax="SVG"] {
+	display: inline-block;
+	vertical-align: middle;
+}
+
 .code {
 	--sh-class: #2d5e9d;
 	--sh-identifier: #354150;

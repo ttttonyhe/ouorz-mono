@@ -1,6 +1,7 @@
 import PostRenderer from "@/components/MDX/Renderers"
 import { getPosts, getPostBySlug } from "@/database/getContent"
 import article from "@/styles/article.module.css"
+import cn from "clsx"
 import { FC } from "react"
 
 export interface PostProps {
@@ -11,11 +12,12 @@ export interface PostProps {
 
 const Post: FC<PostProps> = ({ params: { slug } }) => {
 	const {
-		data: { source },
+		data: { meta, source },
 	} = getPostBySlug(slug)
 
 	return (
-		<article className={article.renderer}>
+		<article className={cn(article.renderer, "w-article-content h-fit")}>
+			<h1>{meta.title}</h1>
 			<PostRenderer content={source} />
 		</article>
 	)

@@ -10,7 +10,7 @@ const Footer = () => {
 			<div
 				className={cn(
 					responsive["sidebar-width"],
-					"flex-shrink-0 bg-yellow-500"
+					"flex-shrink-0 border-r border-t dark:border-neutral-800 dark:bg-neutral-900"
 				)}>
 				<p>
 					&copy; {EST_SINCE} - {currentYear} Tony He
