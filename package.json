@@ -46,8 +46,8 @@
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.2.1",
-    "@commitlint/config-conventional": "^19.1.0",
+    "@commitlint/cli": "^19.2.2",
+    "@commitlint/config-conventional": "^19.2.2",
     "@ouorz/eslint-config-root": "workspace:*",
     "@ouorz/prettier-config": "workspace:*",
     "husky": "^9.0.11",

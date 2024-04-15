@@ -19,7 +19,7 @@ const Post: FC<PostProps> = ({ params: { slug } }) => {
 		<article
 			className={cn(
 				article.renderer,
-				"w-article-content mx-5 h-fit min-w-0 pb-24 pt-14"
+				"mx-5 h-fit w-article-content min-w-0 pb-24 pt-14"
 			)}>
 			<h1>{meta.title}</h1>
 			<PostRenderer content={source} />

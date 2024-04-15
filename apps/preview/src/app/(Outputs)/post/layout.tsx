@@ -1,7 +1,13 @@
 "use client"
 
 import cn from "clsx"
-import { useEffect, useState, type FC, type PropsWithChildren } from "react"
+import {
+	useEffect,
+	useState,
+	type FC,
+	type PropsWithChildren,
+	type ReactNode,
+} from "react"
 
 const ArticleLayout: FC<PropsWithChildren> = ({ children }) => {
 	// Enable overflow-y-auto after Aside slide-in animation has completed (300ms)
@@ -22,7 +28,7 @@ const ArticleLayout: FC<PropsWithChildren> = ({ children }) => {
 				[
 					"dark:prose-dark prose",
 					"flex justify-center",
-					"w-article md:w-article-md xl:w-article-xl max-w-full shrink-0 grow-0 overflow-hidden tracking-wide",
+					"w-article max-w-full shrink-0 grow-0 overflow-hidden tracking-wide md:w-article-md xl:w-article-xl",
 				],
 				// Links
 				"prose-a:text-blue-600",
@@ -43,8 +49,8 @@ const ArticleLayout: FC<PropsWithChildren> = ({ children }) => {
 }
 
 interface PostLayoutProps {
-	article: React.ReactNode
-	aside: React.ReactNode
+	article: ReactNode
+	aside: ReactNode
 }
 
 const PostLayout: FC<PostLayoutProps> = ({ article, aside }) => {

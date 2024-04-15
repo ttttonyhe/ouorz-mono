@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
-		<html lang="zh-cn" prefix="og: http://ogp.me/ns#" suppressHydrationWarning>
+		<html lang="zh-cn" suppressHydrationWarning>
 			<head>
 				<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 				<link
