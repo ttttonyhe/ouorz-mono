@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 :root {
-	@apply bg-white-tinted dark:bg-neutral-900 dark:text-white;
+	@apply bg-white-tinted transition-all dark:bg-neutral-900 dark:text-white;
 }

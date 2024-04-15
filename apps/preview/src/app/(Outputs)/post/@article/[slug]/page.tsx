@@ -1,8 +1,9 @@
-import PostRenderer from "@/components/MDX/Renderers/post"
+import PostRenderer from "@/components/MDX/Renderers"
 import { getPosts, getPostBySlug } from "@/database/getContent"
+import article from "@/styles/article.module.css"
 import { FC } from "react"
 
-interface PostProps {
+export interface PostProps {
 	params: {
 		slug: string
 	}
@@ -12,7 +13,12 @@ const Post: FC<PostProps> = ({ params: { slug } }) => {
 	const {
 		data: { source },
 	} = getPostBySlug(slug)
-	return <PostRenderer content={source} />
+
+	return (
+		<article className={article.renderer}>
+			<PostRenderer content={source} />
+		</article>
+	)
 }
 
 export const generateStaticParams = () => {

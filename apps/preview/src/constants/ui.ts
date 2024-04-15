@@ -7,7 +7,7 @@ export const BREAKPOINTS = {
 } as const
 
 export const DRAWER_SNAP_POINTS = {
-	SM: "148px",
-	MD: "355px",
+	SM: "70px",
+	MD: "350px",
 	LG: 1,
 } as const

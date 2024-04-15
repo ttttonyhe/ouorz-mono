@@ -1,28 +1,32 @@
 import components from "@/components/MDX"
 import { MDXRemote } from "next-mdx-remote/rsc"
-import type { FC } from "react"
+import { Suspense, type FC } from "react"
+// import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeMathjax from "rehype-mathjax"
-import remarkGfm from "remark-gfm"
+// import rehypeSlug from "rehype-slug"
 import remarkMath from "remark-math"
 
-interface PostRendererProps {
+interface PostServerRendererProps {
 	content: string
 }
 
-const PostRenderer: FC<PostRendererProps> = ({ content }) => {
+const PostServerRenderer: FC<PostServerRendererProps> = ({ content }) => {
 	return (
-		<MDXRemote
-			source={content}
-			components={components}
-			options={{
-				mdxOptions: {
-					remarkPlugins: [remarkGfm, remarkMath],
-					rehypePlugins: [rehypeMathjax],
-				},
-				parseFrontmatter: false,
-			}}
-		/>
+		<Suspense fallback={<>Suspense Loading...</>}>
+			<MDXRemote
+				source={content}
+				components={components}
+				options={{
+					mdxOptions: {
+						format: "mdx",
+						remarkPlugins: [remarkMath],
+						rehypePlugins: [rehypeMathjax],
+					},
+					parseFrontmatter: false,
+				}}
+			/>
+		</Suspense>
 	)
 }
 
-export default PostRenderer
+export default PostServerRenderer

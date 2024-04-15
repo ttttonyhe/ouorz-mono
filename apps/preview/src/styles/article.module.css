@@ -1,0 +1,36 @@
+.renderer {
+	@apply animate-article-appear opacity-0;
+	animation-delay: 0.3s;
+}
+
+.renderer h2:hover a:first-child::after,
+.renderer h3:hover a:first-child::after,
+.renderer h4:hover a:first-child::after,
+.renderer h5:hover a:first-child::after,
+.renderer h6:hover a:first-child::after {
+	content: "#";
+}
+
+.code {
+	--sh-class: #2d5e9d;
+	--sh-identifier: #354150;
+	--sh-sign: #8996a3;
+	--sh-property: #0550ae;
+	--sh-entity: #249a97;
+	--sh-jsxliterals: #6266d1;
+	--sh-keyword: #f47067;
+	--sh-string: #00a99a;
+	--sh-comment: #a19595;
+}
+
+.code_dark {
+	--sh-class: #4c97f8;
+	--sh-identifier: white;
+	--sh-sign: #8996a3;
+	--sh-property: #0550ae;
+	--sh-entity: #249a97;
+	--sh-jsxliterals: #6266d1;
+	--sh-keyword: #f47067;
+	--sh-string: #0fa295;
+	--sh-comment: #a19595;
+}

@@ -2,9 +2,9 @@ import type { FC, PropsWithChildren } from "react"
 
 const BaseLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
-		<article className="relative z-main h-full w-full p-4">
+		<div className="-mt-header pt-header relative z-main h-screen w-full overflow-hidden overflow-y-auto">
 			{children}
-		</article>
+		</div>
 	)
 }
 

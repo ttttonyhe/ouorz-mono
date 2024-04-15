@@ -1,0 +1,22 @@
+"use client"
+
+import responsive from "@/styles/responsive.module.css"
+import cn from "clsx"
+import { useState } from "react"
+
+const PostAside = () => {
+	const [count, setCount] = useState(0)
+
+	return (
+		<section
+			className={cn(
+				responsive["aside-width"],
+				"animate-aside-slide-in shrink-0 grow-0 overflow-hidden overflow-y-auto bg-gray-500"
+			)}>
+			<p>Aside {count}</p>
+			<button onClick={() => setCount(count + 1)}>Increment</button>
+		</section>
+	)
+}
+
+export default PostAside
