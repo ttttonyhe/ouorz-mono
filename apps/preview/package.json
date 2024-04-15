@@ -6,6 +6,7 @@
 		"dev": "next dev -p 5555",
 		"dev:test": "next dev",
 		"build": "next build",
+		"build:pages": "pnpx @cloudflare/next-on-pages@1",
 		"start": "next start",
 		"lint": "next lint --fix",
 		"upgrade": "ncu --upgrade",

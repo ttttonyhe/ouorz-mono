@@ -72,6 +72,14 @@
         ".next/**"
       ]
     },
+    "@ouorz/preview#build:pages": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**"
+      ]
+    },
     "@ouorz/analytics#build": {
       "dependsOn": [
         "^build"
