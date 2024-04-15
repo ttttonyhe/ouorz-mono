@@ -1,21 +1,15 @@
 "use client"
 
-import responsive from "@/styles/responsive.module.css"
-import cn from "clsx"
 import { useState } from "react"
 
 const PostAside = () => {
 	const [count, setCount] = useState(0)
 
 	return (
-		<section
-			className={cn(
-				responsive["aside-width"],
-				"shrink-0 grow-0 animate-aside-slide-in overflow-hidden overflow-y-auto border-r dark:border-neutral-800 dark:bg-neutral-900"
-			)}>
-			<p>Aside {count}</p>
+		<nav className="z-aside h-full overflow-hidden overflow-y-auto border-r bg-white-tinted dark:border-neutral-800 dark:bg-neutral-900">
+			<p>{count}</p>
 			<button onClick={() => setCount(count + 1)}>Increment</button>
-		</section>
+		</nav>
 	)
 }
 

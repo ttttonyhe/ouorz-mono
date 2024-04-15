@@ -10,7 +10,7 @@ const config: Config = {
 	theme: {
 		extend: {
 			height: {
-				header: "3.125rem",
+				header: "50px",
 				footer: "3rem",
 				main: "calc(100vh - 3.125rem)",
 			},
@@ -36,9 +36,10 @@ const config: Config = {
 			zIndex: {
 				overlay: "28",
 				header: "24",
-				sidebar: "12",
-				main: "20",
-				footer: "16",
+				sidebar: "16",
+				aside: "12",
+				article: "20",
+				footer: "24",
 			},
 			animation: {
 				"aside-slide-in":
@@ -57,7 +58,7 @@ const config: Config = {
 				"fade-in": {
 					"0%": {
 						opacity: "0.5",
-						transform: "translateY(0.1rem)",
+						transform: "translateY(0.2rem)",
 					},
 					"100%": {
 						opacity: "1",

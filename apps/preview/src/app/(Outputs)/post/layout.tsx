@@ -1,15 +1,15 @@
 "use client"
 
+import responsive from "@/styles/responsive.module.css"
 import cn from "clsx"
-import {
-	useEffect,
-	useState,
-	type FC,
-	type PropsWithChildren,
-	type ReactNode,
-} from "react"
+import { useEffect, useState, type FC, type ReactNode } from "react"
 
-const ArticleLayout: FC<PropsWithChildren> = ({ children }) => {
+interface PostLayoutProps {
+	article: ReactNode
+	aside: ReactNode
+}
+
+const PostLayout: FC<PostLayoutProps> = ({ article, aside }) => {
 	// Enable overflow-y-auto after Aside slide-in animation has completed (300ms)
 	const [ready, setReady] = useState(false)
 
@@ -20,45 +20,26 @@ const ArticleLayout: FC<PropsWithChildren> = ({ children }) => {
 	}, [])
 
 	return (
-		<section
-			className={cn(
-				// Animation
-				ready && "overflow-y-auto",
-				// Prose
-				[
-					"dark:prose-dark prose",
-					"flex justify-center",
-					"w-article max-w-full shrink-0 grow-0 overflow-hidden tracking-wide md:w-article-md xl:w-article-xl",
-				],
-				// Links
-				"prose-a:text-blue-600",
-				// h1
-				"prose-h1:text-3xl",
-				// Code blocks
-				[
-					"prose-pre:rounded-lg",
-					"prose-pre:border prose-pre:border-gray-200 prose-pre:bg-gray-100",
-					"prose-pre:dark:border-neutral-700 prose-pre:dark:bg-neutral-800",
-				],
-				// Images
-				"prose-img:rounded-lg"
-			)}>
-			{children}
+		<section className="flex h-full w-full">
+			<section
+				className={cn(
+					responsive["aside-width"],
+					"flex h-full animate-aside-slide-in flex-col bg-white-tinted"
+				)}>
+				<header className="sticky top-0 flex h-header w-full shrink-0 items-center border-b border-r dark:border-neutral-800 dark:bg-neutral-900">
+					<h1>Aside</h1>
+				</header>
+				{aside}
+			</section>
+			<section
+				className={cn(
+					ready && "overflow-y-auto",
+					"flex w-article flex-col overflow-hidden md:w-article-md xl:w-article-xl"
+				)}>
+				<header className="sticky top-0 z-header flex h-header w-full shrink-0 items-center justify-center" />
+				{article}
+			</section>
 		</section>
-	)
-}
-
-interface PostLayoutProps {
-	article: ReactNode
-	aside: ReactNode
-}
-
-const PostLayout: FC<PostLayoutProps> = ({ article, aside }) => {
-	return (
-		<div className="flex h-main overflow-hidden">
-			{aside}
-			<ArticleLayout>{article}</ArticleLayout>
-		</div>
 	)
 }
 

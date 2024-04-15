@@ -1,8 +1,5 @@
 import Drawer from "@/components/Containers/Drawer"
-import Footer from "@/components/Containers/Footer"
-import Header from "@/components/Containers/Header"
 import Sidebar from "@/components/Containers/Sidebar"
-import BaseLayout from "@/components/Layouts/base"
 import ThemeProvider from "@/providers/themeProvider"
 import "@/styles/globals.css"
 import type { Metadata } from "next"
@@ -90,17 +87,20 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 			</head>
 			<body className="h-screen bg-white dark:bg-black">
 				<ThemeProvider>
-					<Header />
-					<main className="flex h-main">
+					<main className="flex h-screen">
 						<Sidebar />
-						<BaseLayout>{children}</BaseLayout>
-						<Drawer />
+						<section className="relative h-screen w-full">{children}</section>
 					</main>
-					<Footer />
+					<Drawer />
 				</ThemeProvider>
 			</body>
 		</html>
 	)
 }
+
+// Next.js defaults to SSR and Streaming, we should force static generation
+// since this is a blog for god's sake
+export const runtime = "nodejs"
+export const dynamic = "force-static"
 
 export default RootLayout

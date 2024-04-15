@@ -25,6 +25,7 @@
     "test:main": "turbo run test --filter=@ouorz/main",
     "build": "turbo run build --parallel",
     "build:main": "turbo run @ouorz/main#build",
+    "build:preview": "turbo run @ouorz/preview#build",
     "build:analytics": "turbo run @ouorz/analytics#build",
     "build:analytics:edge": "turbo run @ouorz/analytics#build-edge",
     "build:twilight": "turbo run build --filter=./packages/twilight-*",

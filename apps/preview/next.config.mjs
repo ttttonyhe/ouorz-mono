@@ -24,7 +24,7 @@ const nextConfig = {
 		path: "/_next/image",
 	},
 	compiler: {
-		styledComponents: true,
+		// styledComponents: true,
 		removeConsole: {
 			exclude: ["log", "error"],
 		},
