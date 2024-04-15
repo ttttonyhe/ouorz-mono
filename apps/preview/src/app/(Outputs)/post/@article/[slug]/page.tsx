@@ -34,6 +34,4 @@ export const generateStaticParams = () => {
 	}))
 }
 
-export const runtime = 'edge'
-
 export default Post
