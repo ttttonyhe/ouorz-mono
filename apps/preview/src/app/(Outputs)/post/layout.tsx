@@ -20,11 +20,14 @@ const ArticleLayout: FC<PropsWithChildren> = ({ children }) => {
 				ready && "overflow-y-auto",
 				// Prose
 				[
-					"flex justify-center pb-24 pt-16",
-					"w-article md:w-article-md xl:w-article-xl dark:prose-dark prose max-w-full shrink-0 grow-0 overflow-hidden tracking-wide dark:prose-invert",
+					"dark:prose-dark prose",
+					"flex justify-center",
+					"w-article md:w-article-md xl:w-article-xl max-w-full shrink-0 grow-0 overflow-hidden tracking-wide",
 				],
 				// Links
 				"prose-a:text-blue-600",
+				// h1
+				"prose-h1:text-3xl",
 				// Code blocks
 				[
 					"prose-pre:rounded-lg",

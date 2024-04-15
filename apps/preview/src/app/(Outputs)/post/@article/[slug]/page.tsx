@@ -16,7 +16,11 @@ const Post: FC<PostProps> = ({ params: { slug } }) => {
 	} = getPostBySlug(slug)
 
 	return (
-		<article className={cn(article.renderer, "w-article-content h-fit")}>
+		<article
+			className={cn(
+				article.renderer,
+				"w-article-content mx-5 h-fit min-w-0 pb-24 pt-14"
+			)}>
 			<h1>{meta.title}</h1>
 			<PostRenderer content={source} />
 		</article>
