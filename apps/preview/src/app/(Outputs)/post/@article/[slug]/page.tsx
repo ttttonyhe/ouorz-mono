@@ -50,8 +50,6 @@ export const generateStaticParams = () => {
 	}))
 }
 
-// Let Next.js know that these pages needs to be statically generated, hence
-// we don't need a SSR and Streaming fallback route
 export const dynamicParams = false
 
 export default Post

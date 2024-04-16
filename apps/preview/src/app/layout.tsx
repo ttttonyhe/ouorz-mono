@@ -98,9 +98,4 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	)
 }
 
-// Next.js defaults to SSR and Streaming, we should force static generation
-// since this is a blog for god's sake
-export const runtime = "nodejs"
-export const dynamic = "force-static"
-
 export default RootLayout
