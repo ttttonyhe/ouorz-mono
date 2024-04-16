@@ -12,6 +12,10 @@
 		"clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo && rm -rf .next"
 	},
 	"dependencies": {
+		"@mdx-js/loader": "^3.0.1",
+		"@mdx-js/react": "^3.0.1",
+		"@next/mdx": "^14.2.1",
+		"@types/mdx": "^2.0.13",
 		"clsx": "^2.1.0",
 		"gray-matter": "^4.0.3",
 		"next": "14.2.1",
@@ -20,7 +24,9 @@
 		"react": "^18",
 		"react-dom": "^18",
 		"react-use": "^17.5.0",
+		"rehype-autolink-headings": "^7.1.0",
 		"rehype-mathjax": "^6.0.0",
+		"rehype-slug": "^6.0.0",
 		"remark-math": "^6.0.0",
 		"sugar-high": "^0.6.0",
 		"vaul": "^0.9.0",

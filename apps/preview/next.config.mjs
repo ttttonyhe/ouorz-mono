@@ -1,6 +1,11 @@
+import createMDX from "@next/mdx"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypeMathjax from "rehype-mathjax"
+import rehypeSlug from "rehype-slug"
+import remarkMath from "remark-math"
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	output: "export",
 	reactStrictMode: true,
 	poweredByHeader: false,
 	productionBrowserSourceMaps: false,
@@ -31,6 +36,7 @@ const nextConfig = {
 		},
 	},
 	experimental: {
+		// mdxRs: true,
 		turbo: {
 			resolveExtensions: [
 				".md",
@@ -47,4 +53,11 @@ const nextConfig = {
 	},
 }
 
-export default nextConfig
+const withMDX = createMDX({
+	options: {
+		remarkPlugins: [remarkMath],
+		rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypeMathjax],
+	},
+})
+
+export default withMDX(nextConfig)
