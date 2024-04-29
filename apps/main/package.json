@@ -49,7 +49,7 @@
 		"@types/smoothscroll-polyfill": "^0.3.4",
 		"autoprefixer": "^10.4.19",
 		"comma-number": "^2.1.0",
-		"cssnano": "^6.1.2",
+		"cssnano": "^7.0.1",
 		"eslint": "^8",
 		"highlight.js": "^11.9.0",
 		"nexment": "^0.0.688",
