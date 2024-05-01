@@ -4,6 +4,7 @@ import Link from "next/link"
 import React from "react"
 import GithubFollowerMetric from "~/components/Metrics/GithubFollowers"
 import GithubStarMetric from "~/components/Metrics/GithubStars"
+import JMSMetric from "~/components/Metrics/JMS"
 import NexmentMetric from "~/components/Metrics/Nexment"
 import PageViewsMetric from "~/components/Metrics/PageViews"
 import PostsMetric from "~/components/Metrics/Posts"
@@ -74,6 +75,7 @@ const Dashboard: NextPageWithLayout = () => {
 				className="glowing-area mb-28 mt-5 grid gap-4 lg:grid-cols-2"
 				data-cy="metricCards">
 				<NexmentMetric />
+				<JMSMetric />
 				<PostsMetric />
 				<PageViewsMetric />
 			</div>
