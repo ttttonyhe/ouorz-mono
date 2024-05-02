@@ -14,7 +14,7 @@ export default function JMSMetric() {
 			icon="plane"
 			value={used}
 			denominator={total}
-			description="Just My Socks"
+			description="JustMySocks Network"
 			link={link}
 			colorHex="#3ba2f2"
 		/>
