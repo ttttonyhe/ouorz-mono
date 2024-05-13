@@ -42,6 +42,7 @@
     "@storybook/testing-library": "^0.2.0",
     "@storybook/theming": "^7.1.1",
     "@tailwindcss/typography": "^0.5.9",
+    "@twilight-toolkit/utils": "workspace:*",
     "@types/react": "^18.0.35",
     "autoprefixer": "^10.4.14",
     "babel-loader": "^9.1.2",
@@ -58,8 +59,7 @@
     "tailwindcss": "^3.3.1",
     "tsconfig-paths-webpack-plugin": "^4.0.1",
     "tsup": "^6.7.0",
-    "tsx": "^3.12.7",
-    "@twilight-toolkit/utils": "workspace:*",
+    "tsx": "^3.14.0",
     "typescript": "^5.0.4",
     "util": "^0.12.5"
   }
