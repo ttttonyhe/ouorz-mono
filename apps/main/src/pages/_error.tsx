@@ -1,15 +1,13 @@
-import { captureException, flush } from "@sentry/nextjs"
+import { captureUnderscoreErrorException } from "@sentry/nextjs"
 import { Button } from "@twilight-toolkit/ui"
+import type { ErrorProps } from "next/error"
+import Error from "next/error"
 import Head from "next/head"
 import React from "react"
 import { pageLayout } from "~/components/Page"
 import { NextPageWithLayout } from "~/pages/_app"
 
-interface Props {
-	statusCode: number
-}
-
-const ErrorPage: NextPageWithLayout = ({ statusCode }: Props) => {
+const ErrorPage: NextPageWithLayout = ({ statusCode }: ErrorProps) => {
 	return (
 		<div>
 			<Head>
@@ -44,15 +42,9 @@ const ErrorPage: NextPageWithLayout = ({ statusCode }: Props) => {
 
 ErrorPage.layout = pageLayout
 
-ErrorPage.getInitialProps = async ({ res, err }) => {
-	const statusCode = res ? res.statusCode : err ? err.statusCode : 404
-
-	if (err) {
-		captureException(err)
-		await flush(2000)
-	}
-
-	return { statusCode }
+ErrorPage.getInitialProps = async (contextData) => {
+	await captureUnderscoreErrorException(contextData)
+	return Error.getInitialProps(contextData)
 }
 
 export default ErrorPage

@@ -1,7 +1,6 @@
-/** @type {import('next').NextConfig} */
-
 const { withSentryConfig } = require("@sentry/nextjs")
 
+/** @type {import('next').NextConfig} */
 const NextConfigs = {
 	assetPrefix: "/assets",
 	poweredByHeader: false,
@@ -33,13 +32,14 @@ const NextConfigs = {
 			exclude: ["log", "error"],
 		},
 	},
-	sentry: {
-		hideSourceMaps: true,
-	},
 }
 
 const SentryWebpackPluginOptions = {
 	silent: true,
+	sourcemaps: {
+		disable: true,
+	},
+	hideSourceMaps: true,
 }
 
 module.exports = withSentryConfig(NextConfigs, SentryWebpackPluginOptions)
