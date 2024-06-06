@@ -2,7 +2,7 @@
   "name": "ouorz-mono",
   "description": "Monorepo for Tony's Personal Website and Related Projects",
   "version": "0.0.2",
-  "packageManager": "pnpm@9.1.0",
+  "packageManager": "pnpm@8.15.8",
   "license": "GPL-3.0-or-later",
   "private": true,
   "engines": {
@@ -47,17 +47,17 @@
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.2.2",
+    "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@ouorz/eslint-config-root": "workspace:*",
     "@ouorz/prettier-config": "workspace:*",
     "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5",
+    "lint-staged": "^15.2.5",
+    "prettier": "^3.3.0",
     "prettier-plugin-solidity": "^1.3.1",
-    "solhint": "^4.5.4",
+    "solhint": "^5.0.1",
     "solhint-plugin-prettier": "^0.1.0",
-    "turbo": "^1.13.2"
+    "turbo": "^2.0.1"
   },
   "husky": {
     "hooks": {

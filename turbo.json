@@ -1,6 +1,14 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "pipeline": {
+  "ui": "stream",
+  "globalDependencies": [
+    "tsconfig.json",
+    ".env.*"
+  ],
+  "remoteCache": {
+    "signature": true
+  },
+  "tasks": {
     "build": {
       "outputs": [
         "dist/**",
@@ -133,12 +141,5 @@
         "package.json"
       ]
     }
-  },
-  "globalDependencies": [
-    "tsconfig.json",
-    ".env.*"
-  ],
-  "remoteCache": {
-    "signature": true
   }
 }
