@@ -36,7 +36,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 				"Living an absolutely not meaningless life with totally not unachievable goals.",
 		})
 
-		const response = await fetch(getAPI("internal", "rssData"))
+		const response = await fetch(getAPI("internal", "rssData"), {
+			next: {
+				revalidate: 24 * 3600,
+			},
+		})
 
 		const data: RSSDataResponse = await response.json()
 
