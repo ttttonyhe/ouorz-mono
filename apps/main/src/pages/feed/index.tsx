@@ -89,6 +89,9 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 			}
 		)
 
+		res.setHeader("Vercel-CDN-Cache-Control", `max-age=${3600 * 24 * 7}`)
+		res.setHeader("CDN-Cache-Control", `max-age=${3600 * 24}`)
+		res.setHeader("Cache-Control", "max-age=3600")
 		res.setHeader("Content-Type", "application/rss+xml; charset=utf-8")
 		res.write(feed.xml({ indent: true }))
 		res.end()
