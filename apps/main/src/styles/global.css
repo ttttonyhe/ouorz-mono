@@ -67,7 +67,7 @@ body {
 .prose blockquote {
 	background-repeat: no-repeat;
 	background-size: 8%;
-	background-position: 10px 8px;
+	background-position: 12px 6px;
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0H24V24H0z'/%3E%3Cpath d='M21 3c.552 0 1 .448 1 1v14c0 .552-.448 1-1 1H6.455L2 22.5V4c0-.552.448-1 1-1h18zm-1 2H4v13.385L5.763 17H20V5zm-9.485 2.412l.447.688c-1.668.903-1.639 2.352-1.639 2.664.155-.02.318-.024.48-.009.902.084 1.613.825 1.613 1.745 0 .966-.784 1.75-1.75 1.75-.537 0-1.05-.245-1.374-.59-.515-.546-.792-1.16-.792-2.155 0-1.75 1.228-3.318 3.015-4.093zm5 0l.447.688c-1.668.903-1.639 2.352-1.639 2.664.155-.02.318-.024.48-.009.902.084 1.613.825 1.613 1.745 0 .966-.784 1.75-1.75 1.75-.537 0-1.05-.245-1.374-.59-.515-.546-.792-1.16-.792-2.155 0-1.75 1.228-3.318 3.015-4.093z' fill='rgba(119,119,119,0.34)'/%3E%3C/svg%3E");
 	display: block;
 	margin: 20px 0px;
@@ -75,19 +75,20 @@ body {
 	height: auto;
 	font-size: 16px;
 	font-style: normal;
-	padding: 20px 25px 16px 75px;
+	padding: 15px 20px 15px 80px;
 	color: #777;
-	@apply rounded-md dark:bg-gray-700 dark:border-gray-500;
+	@apply rounded-r-md bg-gray-50 dark:border-gray-500 dark:bg-gray-700;
 }
 
 .prose blockquote p {
 	margin: 0px;
 	color: #777 !important;
+	@apply before:content-none after:content-none;
 }
 
 .dark .prose blockquote p {
 	margin: 0px;
-	color: #f1f2f3 !important;
+	@apply !text-gray-300;
 }
 
 .prose img {
@@ -113,7 +114,7 @@ h5 {
 	box-sizing: border-box;
 	color: rgba(0, 0, 0, 0.6);
 	margin: 15px 0;
-	@apply shadow-sm border rounded-md dark:bg-gray-700 dark:border-gray-500 dark:bg-none;
+	@apply rounded-md border shadow-sm dark:border-gray-500 dark:bg-gray-700 dark:bg-none;
 }
 
 .prose .warp-post-embed:hover {
@@ -260,7 +261,7 @@ h5 {
 	position: fixed;
 	top: 0px;
 	left: 0px;
-	@apply dark:bg-gray-900 bg-gray-100;
+	@apply bg-gray-100 dark:bg-gray-900;
 }
 
 .no-scrolling {
@@ -466,7 +467,7 @@ h5 {
 
 .nexment-popover,
 .nexment-emoji-container {
-	@apply dark:bg-gray-800 rounded-md;
+	@apply rounded-md dark:bg-gray-800;
 }
 
 .nexment-emoji-container .nexment-emoji-section .nexment-emoji-section-header {
@@ -685,11 +686,11 @@ abbr[title] {
 }
 
 .kbar-list li .kbar-list-heading {
-	@apply mt-0.5 -mb-2;
+	@apply -mb-2 mt-0.5;
 }
 
 .kbar-list li:first-child .kbar-list-heading {
-	@apply mt-0 -mb-1;
+	@apply -mb-1 mt-0;
 }
 
 /* Workaround for React onMouseLeave not triggering when user's cursor is moving fast*/
@@ -832,7 +833,7 @@ abbr[title] {
 .nexment-comment-area-container
 	.nexment-comment-area
 	.nexment-comment-area-top-name-avatar {
-	@apply dark:!border-gray-500 dark:bg-gray-700 flex-shrink-0 dark:hover:!bg-gray-600;
+	@apply flex-shrink-0 dark:!border-gray-500 dark:bg-gray-700 dark:hover:!bg-gray-600;
 }
 
 .nexment-popover .nexment-popover-title {
@@ -872,15 +873,15 @@ abbr[title] {
 	.nexment-emoji-section-box
 	.nexment-emoji-section-container
 	span {
-	@apply dark:!text-white dark:!bg-gray-700;
+	@apply dark:!bg-gray-700 dark:!text-white;
 }
 
 .nexment-comment-area-container .nexment-comment-area-replying-to {
-	@apply dark:!border-gray-500 dark:!border;
+	@apply dark:!border dark:!border-gray-500;
 }
 
 .nexment-comment-area-container .nexment-comment-area-replying-to-header {
-	@apply dark:!text-white dark:!border-gray-500;
+	@apply dark:!border-gray-500 dark:!text-white;
 }
 
 .nexment-comment-area-container
@@ -891,7 +892,7 @@ abbr[title] {
 }
 
 .nexment-comment-area-container .nexment-comment-area-replying-to-cta {
-	@apply !px-3 dark:hover:!bg-gray-700 dark:!border-gray-500;
+	@apply !px-3 dark:!border-gray-500 dark:hover:!bg-gray-700;
 }
 
 .nexment-comment-area-container .nexment-comment-area-replying-to-content p {
@@ -906,7 +907,7 @@ abbr[title] {
 }
 
 .nexment-header-logo a img {
-	@apply dark:bg-gray-200 dark:p-1 dark:rounded-sm;
+	@apply dark:rounded-sm dark:bg-gray-200 dark:p-1;
 }
 
 .nexment-comments-div .nexment-comments-title h5 a {
