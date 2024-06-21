@@ -15,7 +15,7 @@
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^2.2.5",
-		"@sentry/nextjs": "^8.9.2",
+		"@sentry/nextjs": "^8.10.0",
 		"@twilight-toolkit/ui": "workspace:*",
 		"@twilight-toolkit/utils": "workspace:*",
 		"algoliasearch": "5.0.0-alpha.100",
@@ -41,7 +41,7 @@
 		"@tailwindcss/typography": "^0.5.13",
 		"@types/cors": "^2.8.17",
 		"@types/lodash": "^4.17.5",
-		"@types/node": "^20.14.2",
+		"@types/node": "^20.14.6",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"@types/react-highlight": "^0.12.8",
@@ -49,7 +49,7 @@
 		"@types/smoothscroll-polyfill": "^0.3.4",
 		"autoprefixer": "^10.4.19",
 		"comma-number": "^2.1.0",
-		"cssnano": "^7.0.2",
+		"cssnano": "^7.0.3",
 		"eslint": "^9",
 		"highlight.js": "^11.9.0",
 		"nexment": "^0.0.688",
@@ -67,7 +67,7 @@
 		"tailwindcss": "^3.4.4",
 		"ts-loader": "^9.5.1",
 		"typescript": "^5.4.5",
-		"webpack": "^5.92.0"
+		"webpack": "^5.92.1"
 	},
 	"optionalDependencies": {
 		"@testing-library/cypress": "^10.0.2",
@@ -75,6 +75,6 @@
 		"@types/cypress": "^1.1.3",
 		"@types/jest": "^29.5.12",
 		"@types/mocha": "^10.0.6",
-		"cypress": "^13.11.0"
+		"cypress": "^13.12.0"
 	}
 }
