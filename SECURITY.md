@@ -11,4 +11,4 @@
 
 ## Reporting a Vulnerability
 
-Email: [tony@hotmail.com](mailto:tony.hlp@hotmail.com)
+Email: [tony.hlp@hotmail.com](mailto:tony.hlp@hotmail.com)
