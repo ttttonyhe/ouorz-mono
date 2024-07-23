@@ -146,7 +146,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 				revalidate: 10,
 			}
 		} else {
-			let postData = ""
+			let postData = {}
 			try {
 				postData = await resData.json()
 			} catch (e) {
@@ -170,7 +170,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export const getStaticPaths: GetStaticPaths = async () => {
 	// get all post ids for SSG
 	const res = await fetch(getAPI("internal", "allPostIDs"))
-	const postIDs: number[] = await res.json()
+	let postIDs: number[] = []
+
+	try {
+		postIDs = await res.json()
+	} catch (e) {
+		console.error(e)
+		console.log(res)
+	}
+
 	const paths = postIDs.map((id) => ({
 		params: { pid: id.toString() },
 	}))
