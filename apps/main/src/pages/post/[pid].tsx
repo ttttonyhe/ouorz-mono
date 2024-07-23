@@ -163,7 +163,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export const getStaticPaths: GetStaticPaths = async () => {
 	// get all post ids for SSG
 	const res = await fetch(getAPI("internal", "allPostIDs"))
-	const postIDs: number[] = await res.json()
+
+	let postIDs: number[]
+	await res
+		.json()
+		.then((data) => {
+			postIDs = data
+		})
+		.catch((err) => {
+			console.error(err)
+			console.log(res.body)
+		})
+
 	const paths = postIDs.map((id) => ({
 		params: { pid: id.toString() },
 	}))
