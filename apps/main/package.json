@@ -41,7 +41,7 @@
 		"@tailwindcss/typography": "^0.5.13",
 		"@types/cors": "^2.8.17",
 		"@types/lodash": "^4.17.7",
-		"@types/node": "^20.14.11",
+		"@types/node": "^22.1.0",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"@types/react-highlight": "^0.12.8",
