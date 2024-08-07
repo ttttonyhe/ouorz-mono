@@ -62,11 +62,9 @@ const Home: NextPageWithLayout = ({ stickyNotFound, stickyPosts }: Props) => {
 					<NextJS13Preview />
 				</div>
 			*/}
-			{/*
-				<div className="-mt-3 pb-8 border-b dark:border-gray-700">
-					<NexusPaper />
-				</div>
-			*/}
+			<div className="-mt-3 border-b pb-8 dark:border-gray-700">
+				<NexusPaper />
+			</div>
 			<div className="mt-5">
 				<YearOfReformation />
 			</div>
