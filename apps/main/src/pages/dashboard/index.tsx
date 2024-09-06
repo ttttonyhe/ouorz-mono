@@ -8,6 +8,7 @@ import JMSMetric from "~/components/Metrics/JMS"
 import NexmentMetric from "~/components/Metrics/Nexment"
 import PageViewsMetric from "~/components/Metrics/PageViews"
 import PostsMetric from "~/components/Metrics/Posts"
+import SspaiMetric from "~/components/Metrics/Sspai"
 import { pageLayout } from "~/components/Page"
 import { NextPageWithLayout } from "~/pages/_app"
 
@@ -75,7 +76,7 @@ const Dashboard: NextPageWithLayout = () => {
 				className="glowing-area mb-28 mt-5 grid gap-4 lg:grid-cols-2"
 				data-cy="metricCards">
 				<NexmentMetric />
-				<JMSMetric />
+				<SspaiMetric />
 				<PostsMetric />
 				<PageViewsMetric />
 			</div>

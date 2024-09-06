@@ -29,10 +29,7 @@ const NexusPaper = () => {
 						<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
 							<Icon name="paper" />
 						</span>
-						<span>
-							Our Paper{" "}
-							<span className="text-xs text-gray-400">(under submission)</span>
-						</span>
+						<span>Our Paper</span>
 					</a>
 					<a
 						href="https://github.com/Kevin-Zh-CS/NEXUS"
