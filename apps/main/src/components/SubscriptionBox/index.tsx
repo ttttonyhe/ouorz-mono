@@ -36,7 +36,7 @@ const SubscriptionBox = ({
 
 	if (type === "sm") {
 		return (
-			<div className="my-2 hidden w-full items-center space-x-4 rounded-md border bg-white px-4.5 py-3 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:flex">
+			<div className="my-2 hidden w-full items-center space-x-4 rounded-md border bg-white px-4.5 pr-3 py-3 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:flex">
 				<div>
 					<p className="flex items-center whitespace-nowrap text-xl tracking-wide text-gray-600 dark:text-gray-400">
 						<span className="mr-2 h-7 w-7">
