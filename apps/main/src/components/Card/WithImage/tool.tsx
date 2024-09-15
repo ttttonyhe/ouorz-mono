@@ -72,7 +72,7 @@ export const CardTool = ({
 export default function CardWithImageTool({ item, sticky }: Props) {
 	return (
 		<div
-			className={`w-full rounded-md border bg-white shadow-sm dark:border-gray-800 dark:bg-gray-800 ${
+			className={`w-full rounded-md border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800 ${
 				sticky ? "mb-6 border-t-4 border-t-yellow-200" : "mb-6"
 			}`}>
 			<div className="p-5 lg:p-10">

@@ -2,7 +2,13 @@ import { Icon } from "@twilight-toolkit/ui"
 import React from "react"
 import getAPI from "~/utilities/api"
 
-const SubscriptionBox = ({ type }: { type: string }) => {
+const SubscriptionBox = ({
+	type,
+	className,
+}: {
+	type: string
+	className?: string
+}) => {
 	const [email, setEmail] = React.useState<string>("")
 	const [subscribed, setSubscribed] = React.useState<boolean>(false)
 	const [processing, setProcessing] = React.useState<boolean>(false)
@@ -30,9 +36,9 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 
 	if (type === "sm") {
 		return (
-			<div className="my-2 hidden w-full items-center space-x-4 rounded-md border bg-white px-5 py-3 shadow-sm dark:border-gray-800 dark:bg-gray-800 lg:flex">
+			<div className="my-2 hidden w-full items-center space-x-4 rounded-md border bg-white px-4.5 py-3 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:flex">
 				<div>
-					<p className="flex items-center whitespace-nowrap text-xl tracking-wide text-gray-500 dark:text-gray-400">
+					<p className="flex items-center whitespace-nowrap text-xl tracking-wide text-gray-600 dark:text-gray-400">
 						<span className="mr-2 h-7 w-7">
 							<Icon name="subscribe" />
 						</span>
@@ -49,9 +55,9 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 							type="email"
 							value={email}
 							className={`${
-								processing ? "animate-pulse" : ""
+								processing ? "animate-pulse border-gray-400" : ""
 							} flex h-8 w-10/12 justify-items-center rounded-md border bg-white px-4 text-4 tracking-wide text-gray-500 shadow-sm focus:outline-none dark:border-gray-700 dark:bg-gray-700 dark:text-gray-400`}
-							placeholder="Email address"
+							placeholder="Email address (then enter)"
 							onChange={(e) => {
 								setEmail(e.target.value)
 							}}
@@ -68,7 +74,8 @@ const SubscriptionBox = ({ type }: { type: string }) => {
 	}
 
 	return (
-		<div className="my-2 hidden w-full items-center rounded-xl border bg-white p-10 shadow-sm dark:border-gray-800 dark:bg-gray-800 lg:block lg:px-20 lg:py-11">
+		<div
+			className={`my-2 hidden w-full items-center rounded-xl border bg-white p-10 shadow-sm dark:border-gray-800 dark:bg-gray-800 lg:block lg:px-20 lg:py-11 ${className || ""}`}>
 			<div className="flex justify-between">
 				<div>
 					<h1 className="flex items-center text-3xl font-medium tracking-wide text-gray-700 dark:text-white">

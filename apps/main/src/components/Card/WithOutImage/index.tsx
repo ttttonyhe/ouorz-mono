@@ -14,7 +14,7 @@ interface Props {
 export default function CardWithOutImage({ item, sticky }: Props) {
 	const dispatch = useDispatch()
 	return (
-		<div className="mb-6 w-full rounded-md border bg-white shadow-sm dark:border-gray-800 dark:bg-gray-800">
+		<div className="mb-6 w-full rounded-md border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
 			<div className="p-5 lg:p-10">
 				<div className="col-span-2 col-end-4">
 					<div className="grid grid-cols-4 items-center">

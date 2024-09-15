@@ -89,7 +89,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 		}
 
 		return (
-			<div className="mb-6 w-full rounded-md border bg-white shadow-sm dark:border-gray-800 dark:bg-gray-800">
+			<div className="mb-6 w-full rounded-md border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
 				<div className="p-5 lg:grid lg:grid-flow-col lg:grid-cols-3 lg:gap-9 lg:p-10">
 					<Hover
 						perspective={1000}

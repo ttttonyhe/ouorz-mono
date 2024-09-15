@@ -15,7 +15,7 @@ interface Props {
 
 const CardWithImagePodcast = ({ item, sticky }: Props) => {
 	return (
-		<div className="mb-6 w-full rounded-md border bg-white shadow-sm dark:border-gray-800 dark:bg-gray-800">
+		<div className="mb-6 w-full rounded-md border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
 			<div className="pl-5 pr-5 pt-5 lg:grid lg:grid-flow-col lg:grid-cols-3 lg:gap-9 lg:pl-10 lg:pr-10 lg:pt-10">
 				<Hover
 					perspective={1000}

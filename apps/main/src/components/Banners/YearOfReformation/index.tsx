@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const YearOfReformation = () => {
 	return (
-		<div className="w-full rounded-md border bg-white shadow-sm dark:border-gray-800 dark:bg-gray-800">
+		<div className="w-full rounded-md border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
 			<div className="flex w-full items-center justify-between gap-x-2.5 border-b border-gray-100 px-4.5 py-2.5 dark:border-gray-700">
 				<div className="flex items-center gap-x-[7px] text-[15px] font-medium tracking-wide text-gray-700 dark:text-white">
 					<span className="h-4.5 w-4.5 lg:h-7 lg:w-7">
