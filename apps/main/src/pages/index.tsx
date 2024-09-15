@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next"
 import Head from "next/head"
 import React, { useEffect, useState } from "react"
-import NexusPaper from "~/components/Banners/NexusPaper"
+import ResearchPapers from "~/components/Banners/Research"
 // import NextJS13Preview from "~/components/Banners/NextJS13Preview"
 import YearOfReformation from "~/components/Banners/YearOfReformation"
 import List from "~/components/List"
@@ -63,7 +63,7 @@ const Home: NextPageWithLayout = ({ stickyNotFound, stickyPosts }: Props) => {
 				</div>
 			*/}
 			<div className="-mt-3 border-b pb-8 dark:border-gray-700">
-				<NexusPaper />
+				<ResearchPapers />
 			</div>
 			<div className="mt-5">
 				<YearOfReformation />
