@@ -3,7 +3,7 @@
   <p>Source code & Docker image that power <a href="https://lipeng.ac" target="_blank">lipeng.ac</a> and other related projects</p>
 
   <a href="https://github.com/ttttonyhe/ouorz-mono">
-    <img src="https://github.com/ttttonyhe/ouorz-mono/workflows/Tests/badge.svg?branch=main" alt="build status">
+    <img src="https://github.com/ttttonyhe/ouorz-mono/actions/workflows/main-app-testing.yml/badge.svg" alt="build status">
   </a>
 
   <a href="https://github.com/ttttonyhe/ouorz-mono">
