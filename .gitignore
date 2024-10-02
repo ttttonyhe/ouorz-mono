@@ -176,3 +176,6 @@ dev.sh
 artifacts-zk
 cache-zk
 .upgradable
+
+# Cypress error screenshots
+apps/main/cypress/screenshots

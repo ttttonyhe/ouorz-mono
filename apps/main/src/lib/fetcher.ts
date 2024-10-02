@@ -1,10 +1,13 @@
 const Fetcher = async (route: string) => {
-	const res = await fetch(route, {
+	return fetch(route, {
 		next: {
 			revalidate: 24 * 3600
 		}
 	})
-	return res.json()
+	.then((res) => res.json())
+	.catch((err) => {
+		console.error(err)
+	})
 }
 
 export default Fetcher

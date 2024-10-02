@@ -31,7 +31,7 @@ const Home: NextPageWithLayout = ({ stickyNotFound, stickyPosts }: Props) => {
 	return (
 		<>
 			<Head>
-				<title>Tony He</title>
+				<title>Tony (Lipeng) He</title>
 			</Head>
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div>
@@ -90,6 +90,7 @@ const Home: NextPageWithLayout = ({ stickyNotFound, stickyPosts }: Props) => {
 						<span className="uppercase">Blog Posts</span>
 					</label>
 					<button
+						data-cy="showIndexPosts"
 						onClick={() => setShowPosts(!showPosts)}
 						className="effect-pressing inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-sm hover:shadow-inner dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600">
 						<span
