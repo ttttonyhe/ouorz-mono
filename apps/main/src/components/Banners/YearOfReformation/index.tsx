@@ -9,11 +9,11 @@ const YearOfReformation = () => {
 					<span className="h-4.5 w-4.5 lg:h-7 lg:w-7">
 						<Icon name="cube" />
 					</span>
-					<span>My Year of Reformation</span>
+					<span>Pages & Links</span>
 				</div>
 				<div className="-translate-y-[1.5px]">
 					<label className="rounded-full border-[1.5px] border-gray-700 pb-[2.5px] pl-[7px] pr-[6.5px] pt-[1.5px] text-[0.675rem] font-medium leading-[0.675rem] text-gray-700 dark:border-gray-600 dark:text-gray-400">
-						2024
+						Pinned
 					</label>
 				</div>
 			</div>
@@ -48,11 +48,11 @@ const YearOfReformation = () => {
 				</div>
 				<div>
 					<Link
-						href="/post/978"
-						className="group flex h-[25px] w-[25px] items-center justify-center overflow-hidden rounded-full bg-gray-100 text-gray-500 transition-all ease-in-out hover:w-[120px] dark:border dark:border-gray-600 dark:bg-transparent dark:text-gray-500">
+						href="/pages"
+						className="group flex h-[25px] w-[25px] items-center justify-center overflow-hidden rounded-full bg-gray-100 text-gray-500 transition-all ease-in-out hover:w-[78.5px] dark:border dark:border-gray-600 dark:bg-transparent dark:text-gray-500">
 						<span className="effect-pressing more-to-come absolute right-0 flex w-[115px] justify-end gap-x-[4px] pr-[4px] leading-none transition-all ease-in-out dark:pr-1">
 							<span className="-mt-[0.5px] hidden text-xs opacity-0 transition-all delay-100 ease-in-out group-hover:block group-hover:opacity-100">
-								More to Come
+								See all
 							</span>
 							<span className="h-[16px] w-[16px] transition-all ease-in-out">
 								<Icon name="chevronRight" />
