@@ -47,7 +47,7 @@ export default function* updateKbarSearchQuerySaga(
 							internal: `/post/${id}`,
 						},
 						onClick: () => {
-							window.location.href = `https://www.ouorz.com/post/${id}`
+							window.location.href = `https://lipeng.ac/post/${id}`
 						},
 						className: "w-full !justify-start !p-4",
 						description: `${index + 1} / ${totalResultLength}`,

@@ -39,7 +39,7 @@ const Home: NextPageWithLayout = ({ stickyNotFound, stickyPosts }: Props) => {
 						<span className="mr-2.5 inline-block animate-waveHand cursor-pointer hover:animate-waveHandAgain">
 							👋
 						</span>{" "}
-						Hey{greeting}
+						Hi{greeting}
 						<a
 							href="https://cal.com/tonyhe/15min"
 							className="effect-pressing ml-2 mt-0.5 hidden lg:block"

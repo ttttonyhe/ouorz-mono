@@ -35,7 +35,7 @@ class AppDocument extends Document {
 					/>
 					<meta name="robots" content="index,follow" />
 					<meta name="googlebot" content="index,follow" />
-					<meta property="og:url" content="https://www.ouorz.com" />
+					<meta property="og:url" content="https://lipeng.ac" />
 					<meta property="og:type" content="website" />
 					<meta property="og:title" content="Tony He" />
 					<meta
@@ -62,7 +62,7 @@ class AppDocument extends Document {
 						content="Living an absolutely not meaningless life with totally not unachievable goals."
 					/>
 					<meta name="theme-color" content="#f7f8f9" />
-					<link rel="canonical" href="https://www.ouorz.com" />
+					<link rel="canonical" href="https://lipeng.ac" />
 					<link
 						rel="apple-touch-icon"
 						href="https://static.ouorz.com/tonyhe_rounded_apple_touch.png"

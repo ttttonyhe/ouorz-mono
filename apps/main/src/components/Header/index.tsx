@@ -108,7 +108,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			className: "hidden lg:block",
 			icon: "subscribe",
 			link: {
-				external: "https://buttondown.email/helipeng",
+				external: "https://lists.lipeng.ac/subscription/form",
 			},
 		},
 	]
@@ -253,7 +253,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			bgColor: "bg-blue-100",
 			bgDark: "dark:bg-blue-900",
 			link: {
-				external: "https://buttondown.email/helipeng",
+				external: "https://lists.lipeng.ac/subscription/form",
 			},
 		},
 		{
@@ -265,7 +265,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			bgColor: "bg-yellow-100",
 			bgDark: "dark:bg-yellow-900",
 			link: {
-				external: "https://www.ouorz.com/feed",
+				external: "https://lipeng.ac/feed",
 			},
 		},
 		{

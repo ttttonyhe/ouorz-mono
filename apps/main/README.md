@@ -1,6 +1,6 @@
 # ouorz-main
 
-Front-end code that powers [www.ouorz.com](https://www.ouorz.com)
+Front-end code that powers [lipeng.ac](https://lipeng.ac)
 
 ![screenshot](https://static.ouorz.com/screen-shot-ouorz-next.png)
 
@@ -8,7 +8,7 @@ Front-end code that powers [www.ouorz.com](https://www.ouorz.com)
 
 ## Website
 
-[https://www.ouorz.com →](https://www.ouorz.com)
+[https://lipeng.ac →](https://lipeng.ac)
 
 <br/>
 

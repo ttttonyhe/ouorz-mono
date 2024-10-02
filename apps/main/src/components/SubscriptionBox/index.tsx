@@ -1,5 +1,6 @@
 import { Icon } from "@twilight-toolkit/ui"
 import React from "react"
+import { LISTMONK_LIST_UUID } from "~/constants/ids"
 import getAPI from "~/utilities/api"
 
 const SubscriptionBox = ({
@@ -16,18 +17,21 @@ const SubscriptionBox = ({
 	const doSubscribe = async () => {
 		setProcessing(true)
 
-		const data = await fetch(getAPI("external", "subscribeToButtondown"), {
+		const data = await fetch(getAPI("external", "subscribeToListmonk"), {
 			method: "post",
 			headers: {
 				"Content-Type": "application/json",
-				Authorization: process.env.NEXT_PUBLIC_BUTTONDOWN_TOKEN,
 			},
-			body: JSON.stringify({ email: email, tags: ["Blog Newsletter"] }),
+			body: JSON.stringify({
+				email: email,
+				name: email.split("@")[0],
+				list_uuids: [LISTMONK_LIST_UUID],
+			}),
 		})
 			.then((res) => res.json())
 			.finally(() => setProcessing(false))
 
-		if (data.creation_date) {
+		if (data.data) {
 			setSubscribed(true)
 		} else {
 			alert("An error has occurred, please try again.")
@@ -36,7 +40,7 @@ const SubscriptionBox = ({
 
 	if (type === "sm") {
 		return (
-			<div className="my-2 hidden w-full items-center space-x-4 rounded-md border bg-white px-4.5 pr-3 py-3 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:flex">
+			<div className="my-2 hidden w-full items-center space-x-4 rounded-md border bg-white px-4.5 py-3 pr-3 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:flex">
 				<div>
 					<p className="flex items-center whitespace-nowrap text-xl tracking-wide text-gray-600 dark:text-gray-400">
 						<span className="mr-2 h-7 w-7">
@@ -89,7 +93,7 @@ const SubscriptionBox = ({
 					</p>
 				</div>
 				<div className="flex items-center">
-					<a href="https://www.ouorz.com/feed" target="_blank" rel="noreferrer">
+					<a href="https://lipeng.ac/feed" target="_blank" rel="noreferrer">
 						<button className="effect-pressing -mt-4.5 flex w-full cursor-pointer items-center justify-center gap-x-1 rounded-md border border-gray-300 bg-white px-2.5 py-1 text-xl tracking-wider text-gray-500 shadow-sm hover:shadow-inner focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
 							<span className="h-6 w-6">
 								<Icon name="rss" />

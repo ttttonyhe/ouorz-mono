@@ -25,9 +25,9 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 			language: "zh-cn",
 			categories: Categories,
 			generator: "Next.js / WordPress",
-			site_url: "https://www.ouorz.com",
-			feed_url: "https://www.ouorz.com/feed",
-			image_url: "https://www.ouorz.com/tony.png",
+			site_url: "https://lipeng.ac",
+			feed_url: "https://lipeng.ac/feed",
+			image_url: "https://lipeng.ac/tony.png",
 			webMaster: "tony.hlp@hotmail.com (Tony He)",
 			managingEditor: "tony.hlp@hotmail.com (Tony He)",
 			docs: "https://www.rssboard.org/rss-specification",
@@ -53,7 +53,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 				post_content,
 				post_img,
 			}) => {
-				const postURL = `https://www.ouorz.com/post/${post_id}`
+				const postURL = `https://lipeng.ac/post/${post_id}`
 
 				let postImgType = null
 				if ((post_img || "").endsWith(".png")) {

@@ -51,7 +51,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 				/>
 				<meta name="robots" content="index,follow" />
 				<meta name="googlebot" content="index,follow" />
-				<meta property="og:url" content="https://www.ouorz.com" />
+				<meta property="og:url" content="https://preview.ouorz.com" />
 				<meta property="og:type" content="website" />
 				<meta property="og:title" content="Tony He" />
 				<meta

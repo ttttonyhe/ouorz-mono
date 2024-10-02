@@ -1,6 +1,6 @@
 <div align="center">
   <h1>OUORZ-MONO</h1>
-  <p>Front-end code & Docker image that power <a href="https://www.ouorz.com" target="_blank">www.ouorz.com</a> and other related projects</p>
+  <p>Front-end code & Docker image that power <a href="https://lipeng.ac" target="_blank">www.ouorz.com</a> and other related projects</p>
 
   <a href="https://github.com/ttttonyhe/ouorz-mono">
     <img src="https://github.com/ttttonyhe/ouorz-mono/workflows/Tests/badge.svg?branch=main" alt="build status">
@@ -68,7 +68,7 @@ Super opinionated, completely overkill.
   - WP REST API (GraphQL implementation coming soon)
   - Tencent Cloud CVM (CentOS/Nginx/MySQL/PHP)
   - [Nexment](https://github.com/ttttonyhe/nexment) (LeanCloud)
-  - Newsletter (Buttondown)
+  - Newsletter (Listmonk)
 - Error Logging & Web Vitals Metric
   - Sentry
 - Linters
@@ -94,8 +94,6 @@ Create a `.env` file with your configuration, see below for a list of environmen
 - LeanCloud:
   - NEXT_PUBLIC_LC_KEY
   - NEXT_PUBLIC_LC_ID
-- Buttondown:
-  - NEXT_PUBLIC_BUTTONDOWN_TOKEN
 - Sentry:
   - NEXT_PUBLIC_SENTRY_DSN
   - SENTRY_AUTH_TOKEN

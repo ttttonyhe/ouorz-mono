@@ -14,7 +14,7 @@ export const getServerSideProps = async ({ res }) => {
 			.map((id) => {
 				return `
 			<url>
-					<loc>${`https://www.ouorz.com/${id}`}</loc>
+					<loc>${`https://lipeng.ac/${id}`}</loc>
 					<changefreq>monthly</changefreq>
 					<priority>0.6</priority>
 			</url>

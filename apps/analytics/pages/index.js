@@ -9,7 +9,7 @@ export default function DefaultPage() {
 				<h3 style={{ textAlign: "center", margin: "0 0 20px" }}>
 					<b>
 						Privacy-preserving website analytics service for&nbsp;
-						<a href="https://www.ouorz.com">Tony</a>&apos;s projects.
+						<a href="https://lipeng.ac">Tony</a>&apos;s projects.
 					</b>
 				</h3>
 				<br />

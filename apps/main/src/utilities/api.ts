@@ -18,9 +18,9 @@ const postIDsAPI = () => {
 	return `${TONY_WP_API_ROOT}/posts_ids`
 }
 
-// Subscribe to Buttondown newletter
-const subscribeToButtondownAPI = () => {
-	return "https://api.buttondown.email/v1/subscribers"
+// Subscribe to Listmonk newletter
+const subscribeToListmonkAPI = () => {
+	return "https://lists.lipeng.ac/api/public/subscription"
 }
 
 // Get search indices
@@ -124,7 +124,7 @@ const API_COLLECTION = {
 		posts: postsAPI,
 	},
 	external: {
-		subscribeToButtondown: subscribeToButtondownAPI,
+		subscribeToListmonk: subscribeToListmonkAPI,
 	},
 }
 

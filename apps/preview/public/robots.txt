@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.ouorz.com/sitemap.xml
+Sitemap: https://preview.ouorz.com/sitemap.xml
