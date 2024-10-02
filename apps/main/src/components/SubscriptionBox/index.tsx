@@ -52,7 +52,7 @@ const SubscriptionBox = ({
 				<div className="flex w-full justify-end">
 					{subscribed ? (
 						<div className="w-10/12 rounded-md bg-green-500 py-1.5 text-center text-4 text-white">
-							Done!
+							Success!
 						</div>
 					) : (
 						<input
@@ -121,7 +121,7 @@ const SubscriptionBox = ({
 					/>
 					{subscribed ? (
 						<div className="col-start-3 col-end-4 flex cursor-pointer items-center rounded-br-md rounded-tr-md border border-green-600 bg-green-500 text-center text-green-50 shadow-sm">
-							<span className="mx-auto">Succeed</span>
+							<span className="mx-auto">Success!</span>
 						</div>
 					) : (
 						<button
@@ -136,7 +136,7 @@ const SubscriptionBox = ({
 					)}
 				</div>
 				<a
-					href="https://discord.gg/TTwGnMgcxr"
+					href="https://discord.gg/JE8bcYezfY"
 					target="_blank"
 					rel="noreferrer"
 					className="col-start-3 col-end-4 flex items-center justify-center rounded-md border border-indigo-200 bg-indigo-50 text-center text-indigo-700 shadow-sm hover:border-indigo-300 hover:bg-indigo-100 dark:border-indigo-400 dark:bg-indigo-500 dark:text-indigo-50 dark:hover:border-indigo-400 dark:hover:bg-indigo-600">
