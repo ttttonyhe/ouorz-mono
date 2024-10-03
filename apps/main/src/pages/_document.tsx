@@ -71,6 +71,7 @@ class AppDocument extends Document {
 						rel="mask-icon"
 						href="https://static.ouorz.com/ouorz-mask.ico"
 					/>
+					<meta name="baidu-site-verification" content="codeva-4VKhm5g62Z" />
 				</Head>
 				<body>
 					<Main />
