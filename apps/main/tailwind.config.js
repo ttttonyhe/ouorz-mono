@@ -6,7 +6,7 @@ var flattenColorPalette =
 const colors = require("tailwindcss/colors")
 
 module.exports = {
-	content: ["./src/**/*.tsx", "../../packages/twilight-ui/**/*.tsx"],
+	content: ["./src/**/*.tsx", "../../packages/twilight-ui/src/**/*.tsx"],
 	darkMode: "class",
 	theme: {
 		extend: {

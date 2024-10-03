@@ -92,9 +92,9 @@ const Home: NextPageWithLayout = ({ stickyNotFound, stickyPosts }: Props) => {
 					<button
 						data-cy="showIndexPosts"
 						onClick={() => setShowPosts(!showPosts)}
-						className="effect-pressing inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-sm hover:shadow-inner dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600">
+						className="effect-pressing inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-sm hover:shadow-inner dark:border-gray-600 dark:bg-transparent dark:text-gray-500 dark:hover:bg-gray-800">
 						<span
-							className={`flex h-5 w-5 text-gray-400 duration-200 ${showPosts ? "rotate-180" : "rotate-0"}`}>
+							className={`flex h-5 w-5 duration-200 ${showPosts ? "rotate-180" : "rotate-0"}`}>
 							<Icon name="arrowUp" />
 						</span>
 					</button>
