@@ -27,7 +27,7 @@ class AppDocument extends Document {
 					/>
 					<meta
 						name="description"
-						content="living an absolutely not meaningless life with totally not unachievable goals."
+						content="Lipeng He, Student Researcher and Full Stack Software Engineer."
 					/>
 					<meta
 						name="keywords"
@@ -40,7 +40,7 @@ class AppDocument extends Document {
 					<meta property="og:title" content="Tony He" />
 					<meta
 						property="og:description"
-						content="Living an absolutely not meaningless life with totally not unachievable goals."
+						content="Lipeng He, Student Researcher and Full Stack Software Engineer."
 					/>
 					<meta
 						property="og:image"
@@ -59,7 +59,7 @@ class AppDocument extends Document {
 					/>
 					<meta
 						property="twitter:description"
-						content="Living an absolutely not meaningless life with totally not unachievable goals."
+						content="Lipeng He, Student Researcher and Full Stack Software Engineer."
 					/>
 					<meta name="theme-color" content="#f7f8f9" />
 					<link rel="canonical" href="https://lipeng.ac" />

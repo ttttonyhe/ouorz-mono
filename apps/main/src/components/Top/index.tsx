@@ -5,12 +5,12 @@ export default function Top() {
 	return (
 		<div className="mt-4 grid lg:grid-cols-5 lg:gap-3">
 			<div className="col-span-3 col-start-1 hidden grid-cols-3 gap-3 lg:grid">
-				<a target="_blank" href="https://github.com/ttttonyhe" rel="noreferrer">
+				<a target="_blank" href="https://x.com/lipeng_he" rel="noreferrer">
 					<Button
 						type="default"
-						icon="github"
-						className="!w-full text-3 leading-14 text-gray-700">
-						<span className="tracking-normal">Github</span>
+						icon="twitterX"
+						className="!w-full text-3 leading-14 text-gray-500">
+						Twitter
 					</Button>
 				</a>
 				<a
@@ -20,11 +20,11 @@ export default function Top() {
 					<Button
 						type="default"
 						icon="linkedIn"
-						className="!w-full text-3 leading-14 text-blue-600">
+						className="!w-full text-3 leading-14 text-gray-500">
 						<span className="tracking-normal">LinkedIn</span>
 					</Button>
 				</a>
-				<a target="_blank" href="mailto:tony.hlp@hotmail.com" rel="noreferrer">
+				<a target="_blank" href="mailto:he@lipeng.ac" rel="noreferrer">
 					<Button
 						type="default"
 						icon="email"
@@ -33,11 +33,20 @@ export default function Top() {
 					</Button>
 				</a>
 			</div>
-			<div className="lg:col-start-4 lg:col-end-6">
-				<Link href="/post/126">
-					<Button type="primary" icon="right" className="!w-full">
-						<span className="text-4 leading-14 tracking-normal lg:text-3">
-							More about me
+			<div className="lg:col-start-4 lg:col-end-6 lg:block flex whitespace-nowrap gap-x-2">
+				<Button
+					type="default"
+					icon="email"
+					className="!w-full lg:hidden text-3 leading-14 text-gray-500">
+					<span className="tracking-normal">Email</span>
+				</Button>
+				<Link href="https://cal.com/tonyhe/15min" target="_blank">
+					<Button
+						type="default"
+						icon="calendarSchedule"
+						className="!w-full text-green-600">
+						<span className="pl-0.5 text-4 leading-14 tracking-normal lg:text-3">
+							Schedule a Meeting
 						</span>
 					</Button>
 				</Link>

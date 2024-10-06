@@ -85,13 +85,6 @@ export default function Footer() {
 			</div>
 			<p className="text-4 tracking-wide text-gray-500 dark:text-gray-400">
 				<a
-					href="https://twitter.com/ttttonyhe"
-					target="_blank"
-					rel="noreferrer">
-					@ttttonyhe
-				</a>{" "}
-				<span>·</span>{" "}
-				<a
 					href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
 					target="_blank"
 					rel="noreferrer">
@@ -102,7 +95,7 @@ export default function Footer() {
 					href="https://github.com/ttttonyhe/ouorz-mono"
 					target="_blank"
 					rel="noreferrer">
-					OSS
+					Open Source Software (OSS)
 				</a>
 			</p>
 		</footer>
