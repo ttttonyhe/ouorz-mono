@@ -15,6 +15,8 @@ const SubscriptionBox = ({
 	const [processing, setProcessing] = React.useState<boolean>(false)
 
 	const doSubscribe = async () => {
+		if (processing) return
+
 		setProcessing(true)
 
 		const data = await fetch(getAPI("external", "subscribeToListmonk"), {
@@ -40,7 +42,7 @@ const SubscriptionBox = ({
 
 	if (type === "sm") {
 		return (
-			<div className="my-2 hidden w-full items-center space-x-4 rounded-md border bg-white px-4.5 py-3 pr-3 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:flex">
+			<div className="my-2 flex w-full flex-col gap-y-3 rounded-md border bg-white px-4.5 py-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:flex-row lg:items-center lg:gap-x-10 lg:gap-y-0 lg:space-x-4 lg:py-3">
 				<div>
 					<p className="flex items-center whitespace-nowrap text-xl tracking-wide text-gray-600 dark:text-gray-400">
 						<span className="mr-2 h-7 w-7">
@@ -51,26 +53,46 @@ const SubscriptionBox = ({
 				</div>
 				<div className="flex w-full justify-end">
 					{subscribed ? (
-						<div className="w-10/12 rounded-md bg-green-500 py-1.5 text-center text-4 text-white">
+						<div className="w-full rounded-md bg-green-500 py-1.5 text-center text-4 text-white">
 							Success!
 						</div>
 					) : (
-						<input
-							type="email"
-							value={email}
-							className={`${
-								processing ? "animate-pulse border-gray-400" : ""
-							} flex h-8 w-10/12 justify-items-center rounded-md border bg-white px-4 text-4 tracking-wide text-gray-500 shadow-sm focus:outline-none dark:border-gray-700 dark:bg-gray-700 dark:text-gray-400`}
-							placeholder="Email address (then enter)"
-							onChange={(e) => {
-								setEmail(e.target.value)
+						<form
+							onSubmit={(e) => {
+								e.preventDefault()
+								doSubscribe()
 							}}
-							onKeyDown={(e) => {
-								if (e.key === "Enter") {
-									doSubscribe()
-								}
-							}}
-						/>
+							className="flex w-full">
+							<input
+								type="email"
+								value={email}
+								className={`${
+									processing ? "animate-pulse border-gray-400 duration-75" : ""
+								} flex h-8 w-full justify-items-center rounded-md border bg-white px-4 text-4 tracking-wide text-gray-500 shadow-sm focus:outline-none dark:border-gray-700 dark:bg-gray-700 dark:text-gray-400`}
+								placeholder="your.email@address.com"
+								onChange={(e) => {
+									setEmail(e.target.value)
+								}}
+								onKeyDown={(e) => {
+									if (e.key === "Enter") {
+										doSubscribe()
+									}
+								}}
+								required
+							/>
+							{email && email.length <= 23 && (
+								<button
+									type="submit"
+									className="effect-pressing absolute right-1.5 top-[6.5px] hidden animate-appear rounded-full bg-slate-500 px-[8px] py-[2px] text-xs text-white shadow-sm hover:bg-neutral-600 hover:shadow-inner dark:bg-neutral-800 dark:text-gray-300 lg:block">
+									Subscribe
+								</button>
+							)}
+							<button
+								type="submit"
+								className="effect-pressing absolute right-1.5 top-[6.5px] animate-appear rounded-full bg-slate-500 px-[8px] py-[2px] text-xs text-white shadow-sm hover:bg-neutral-600 hover:shadow-inner dark:bg-neutral-800 dark:text-gray-300 lg:hidden">
+								Subscribe
+							</button>
+						</form>
 					)}
 				</div>
 			</div>
@@ -104,7 +126,12 @@ const SubscriptionBox = ({
 				</div>
 			</div>
 			<div className="grid w-full grid-cols-3 gap-5">
-				<div className="col-start-1 col-end-3 grid w-full grid-cols-3 rounded-md bg-white tracking-wide text-gray-600 dark:border-gray-800 dark:bg-gray-800 dark:text-gray-400">
+				<form
+					onSubmit={(e) => {
+						e.preventDefault()
+						doSubscribe()
+					}}
+					className="col-start-1 col-end-3 grid w-full grid-cols-3 rounded-md bg-white tracking-wide text-gray-600 dark:border-gray-800 dark:bg-gray-800 dark:text-gray-400">
 					<input
 						type="email"
 						value={email}
@@ -118,6 +145,7 @@ const SubscriptionBox = ({
 								doSubscribe()
 							}
 						}}
+						required
 					/>
 					{subscribed ? (
 						<div className="col-start-3 col-end-4 flex cursor-pointer items-center rounded-br-md rounded-tr-md border border-green-600 bg-green-500 text-center text-green-50 shadow-sm">
@@ -125,6 +153,7 @@ const SubscriptionBox = ({
 						</div>
 					) : (
 						<button
+							type="submit"
 							className="col-start-3 col-end-4 flex cursor-pointer items-center rounded-br-md rounded-tr-md border border-blue-200 bg-blue-50 text-center text-blue-500 shadow-sm hover:border-blue-300 hover:bg-blue-100 dark:border-blue-400 dark:bg-blue-500 dark:text-white dark:hover:border-blue-400 dark:hover:bg-blue-600"
 							onClick={() => {
 								email && doSubscribe()
@@ -134,7 +163,7 @@ const SubscriptionBox = ({
 							</span>
 						</button>
 					)}
-				</div>
+				</form>
 				<a
 					href="https://discord.gg/JE8bcYezfY"
 					target="_blank"
