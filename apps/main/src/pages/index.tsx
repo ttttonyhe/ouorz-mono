@@ -115,7 +115,7 @@ const Home: NextPageWithLayout = () =>
 						</span>
 						<span className="uppercase">Featured Content</span>
 					</label>
-					<div className="mt-4.5">
+					<div className="mt-5">
 						{/* <div className="-mt-3 border-b pb-8 dark:border-gray-700"> */}
 						<ResearchPapers />
 						{/* </div> */}
@@ -131,12 +131,12 @@ const Home: NextPageWithLayout = () =>
 				</section>
 				<section className="mt-14">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5 text-blue-500">
+						<span className="mr-1.5 flex h-5 w-5 text-purple-500">
 							<Icon name="microscope" />
 						</span>
 						<span className="uppercase">Research Interests</span>
 					</label>
-					<div className="mt-4.5 flex flex-col gap-y-2 break-words text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
+					<div className="mt-3.5 flex flex-col gap-y-2 break-words text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 						<p>
 							<span>
 								I am interested in both the{" "}
@@ -160,14 +160,14 @@ const Home: NextPageWithLayout = () =>
 						</p>
 						<div className="flex flex-col items-center justify-between gap-y-2 pb-[12px] pr-1 pt-4.5 text-sm lg:flex-row">
 							<div className="text-normal flex w-full items-center gap-x-2 rounded-md border bg-white px-4 py-[7px] font-medium shadow-sm dark:border-gray-600 dark:bg-gray-800 lg:w-auto">
-								<div className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-500 text-white dark:bg-blue-700">
+								<div className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-400 text-white dark:bg-purple-700">
 									1
 								</div>
 								<div className="font-bold">Privacy-preserving computing</div>
 							</div>
 							<div className="hidden text-3 lg:block">and</div>
 							<div className="text-normal flex w-full items-center gap-x-2 rounded-md border bg-white px-4 py-[7px] font-medium shadow-sm dark:border-gray-600 dark:bg-gray-800 lg:w-auto">
-								<div className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-500 text-white dark:bg-blue-700">
+								<div className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-400 text-white dark:bg-purple-700">
 									2
 								</div>
 								<div>Software security and usability</div>
@@ -198,7 +198,7 @@ const Home: NextPageWithLayout = () =>
 							</span>
 						</Link>
 					</div>
-					<div className="mt-4.5 flex flex-col gap-y-4">
+					<div className="mt-5 flex flex-col gap-y-4">
 						<PaperCard
 							title="LookAhead: Preventing DeFi Attacks via Unveiling Adversarial Contracts"
 							authors="Shoupeng Ren, Lipeng He, Tianyu Tu, Di Wu, Jian Liu, Kui Ren, and Chun Chen"
@@ -278,12 +278,12 @@ const Home: NextPageWithLayout = () =>
 				</section>
 				<section className="mt-14">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5">
+						<span className="mr-1.5 flex h-5 w-5 text-blue-500">
 							<Icon name="plane" />
 						</span>
 						<span className="uppercase">How to Reach Me</span>
 					</label>
-					<div className="mt-4.5">
+					<div className="mt-5">
 						<Top />
 					</div>
 				</section>
@@ -309,11 +309,11 @@ const Home: NextPageWithLayout = () =>
 						</button>
 					</div>
 					{showPosts ? (
-						<div className="mt-4.5 animate-appear">
+						<div className="mt-5 animate-appear">
 							<List type="index" />
 						</div>
 					) : (
-						<div className="mt-4.5">
+						<div className="mt-5">
 							<SubscriptionBox type="sm" />
 						</div>
 					)}
