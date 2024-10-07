@@ -21,7 +21,7 @@ const EmploymentCard = (props: EmploymentCardProps) => {
 
 	return (
 		<div className="flex w-full flex-col gap-y-2 rounded-md border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
-			<div className="text-normal flex w-full items-center justify-between whitespace-nowrap border-b border-gray-200 px-4.5 py-2.5 font-medium tracking-wide text-gray-700 dark:border-gray-700 dark:text-white">
+			<div className="text-normal flex w-full items-center justify-between gap-x-2.5 overflow-hidden overflow-x-auto whitespace-nowrap border-b border-gray-200 px-4.5 py-2.5 font-medium tracking-wide text-gray-700 dark:border-gray-700 dark:text-white">
 				<div className="flex items-center gap-x-2">
 					{orgLogoSrc && (
 						<Image
@@ -38,7 +38,7 @@ const EmploymentCard = (props: EmploymentCardProps) => {
 					{jobType}
 				</label>
 			</div>
-			<div className="flex items-center justify-between gap-y-2.5 whitespace-nowrap px-4.5 pb-2.5 pt-1">
+			<div className="flex items-center justify-between gap-x-2.5 overflow-hidden overflow-x-auto whitespace-nowrap px-4.5 pb-2.5 pt-1">
 				<div className="text-sm tracking-wide text-gray-600 dark:text-gray-300">
 					<p>{jobTitle}</p>
 				</div>

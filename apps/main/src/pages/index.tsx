@@ -76,15 +76,18 @@ const Home: NextPageWithLayout = () =>
 						</h1>
 						<div className="flex flex-col gap-y-1.5 break-words pb-1.5 pl-1 pt-1 text-3 font-light leading-relaxed tracking-wide text-gray-500 dark:text-gray-300 lg:text-2">
 							<p>
-								My name is Lipeng He{" "}
-								<Emphasis name="Preferred First Name">
+								My name is Lipeng He
+								<span className="hidden lg:inline"> </span>
+								<Emphasis
+									name="Preferred First Name"
+									className="hidden lg:inline-flex">
 									<b>Tony</b>
 								</Emphasis>
 								, and I am currently an 👨‍🎓 undergraduate student and researcher
 								with the{" "}
 								<Emphasis
 									name="University of Waterloo"
-									className="border-l-4 !border-l-yellow-300">
+									className="hidden border-l-4 !border-l-yellow-300 lg:inline-flex">
 									<Link
 										href="https://uwaterloo.ca"
 										target="_blank"
@@ -93,7 +96,8 @@ const Home: NextPageWithLayout = () =>
 											<Icon name="externalLink" />
 										</span>
 									</Link>
-								</Emphasis>{" "}
+								</Emphasis>
+								<span className="inline lg:hidden">University of Waterloo</span>{" "}
 								.
 							</p>
 							<p>
