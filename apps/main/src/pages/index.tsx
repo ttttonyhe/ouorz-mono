@@ -74,20 +74,19 @@ const Home: NextPageWithLayout = () =>
 							</span>
 							Hello, and welcome!
 						</h1>
-						<div className="flex flex-col gap-y-1.5 break-words pb-1.5 pl-1 pt-1 text-3 font-light leading-relaxed tracking-wide text-gray-500 dark:text-gray-300 lg:text-2">
+						<div className="flex flex-col gap-y-1.5 break-words pb-1.5 pl-1 pt-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 dark:text-gray-300 lg:text-left lg:text-2">
 							<p>
 								My name is Lipeng He
 								<span className="hidden lg:inline"> </span>
 								<Emphasis
 									name="Preferred First Name"
-									className="hidden lg:inline-flex">
+									className="hidden -translate-y-0.5 lg:inline-flex">
 									<b>Tony</b>
 								</Emphasis>
-								, and I am currently an 👨‍🎓 undergraduate student and researcher
-								with the{" "}
+								, and I am currently a student 👨‍🎓 and researcher 🔬 with the{" "}
 								<Emphasis
 									name="University of Waterloo"
-									className="hidden border-l-4 !border-l-yellow-300 lg:inline-flex">
+									className="hidden translate-y-[1px] border-l-4 !border-l-yellow-300 lg:inline-flex">
 									<Link
 										href="https://uwaterloo.ca"
 										target="_blank"
@@ -196,7 +195,7 @@ const Home: NextPageWithLayout = () =>
 						<Link
 							href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
 							target="_blank"
-							className="mt-0.5 flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
+							className="flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
 							Google Scholar
 							<span className="h-5 w-5 underline">
 								<Icon name="externalLink" />
@@ -292,7 +291,7 @@ const Home: NextPageWithLayout = () =>
 						<Link
 							href="https://www.linkedin.com/in/~lhe/"
 							target="_blank"
-							className="mt-0.5 flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
+							className="flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
 							LinkedIn
 							<span className="h-5 w-5 underline">
 								<Icon name="externalLink" />
