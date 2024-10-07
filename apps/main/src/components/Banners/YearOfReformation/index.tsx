@@ -12,7 +12,7 @@ const YearOfReformation = () => {
 					<span>Pages & Links</span>
 				</div>
 				<div className="-translate-y-[1.5px]">
-					<label className="rounded-full border-[1.5px] border-gray-700 pb-[2.5px] pl-[7px] pr-[6.5px] pt-[1.5px] text-[0.675rem] font-medium leading-[0.675rem] text-gray-700 dark:border-gray-600 dark:text-gray-400">
+					<label className="rounded-full border-[1.5px] bg-gray-100 pb-[2.5px] pl-[7px] pr-[6.5px] pt-[1.5px] text-[0.675rem] font-medium leading-[0.675rem] text-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400">
 						Pinned
 					</label>
 				</div>

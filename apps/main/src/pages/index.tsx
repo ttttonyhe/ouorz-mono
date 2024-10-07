@@ -67,13 +67,13 @@ const Home: NextPageWithLayout = () =>
 				</Head>
 				<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 					<div>
-						<h1 className="mb-3 flex items-center whitespace-nowrap text-3xl font-medium leading-14 tracking-wide text-black dark:text-white lg:text-1">
+						<h1 className="mb-3 flex items-center whitespace-nowrap break-words text-3xl font-medium leading-relaxed tracking-wide text-black dark:text-white lg:text-1">
 							<span className="mr-2.5 inline-block animate-waveHand cursor-pointer hover:animate-waveHandAgain">
 								👋
 							</span>
 							Hello, and welcome!
 						</h1>
-						<div className="flex flex-col gap-y-1.5 pb-1.5 pl-1 pt-1 text-3 font-light leading-14 tracking-wide text-gray-500 dark:text-gray-300 lg:text-2">
+						<div className="flex flex-col gap-y-1.5 break-words pb-1.5 pl-1 pt-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 dark:text-gray-300 lg:text-2">
 							<p>
 								My name is Lipeng He{" "}
 								<Emphasis name="Preferred First Name">
@@ -136,7 +136,7 @@ const Home: NextPageWithLayout = () =>
 						</span>
 						<span className="uppercase">Research Interests</span>
 					</label>
-					<div className="mt-4.5 flex flex-col gap-y-2 text-3 font-light leading-14 tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
+					<div className="mt-4.5 flex flex-col gap-y-2 break-words text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 						<p>
 							<span>
 								I am interested in both the theoretical and applied aspects of{" "}
