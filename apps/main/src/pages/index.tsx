@@ -161,7 +161,10 @@ const Home: NextPageWithLayout = () => {
 						<span className="mr-1.5 flex h-5 w-5 text-blue-500">
 							<Icon name="article" />
 						</span>
-						<span className="uppercase">Selected Publications</span>
+						<span className="hidden uppercase lg:block">
+							Selected Publications
+						</span>
+						<span className="block uppercase lg:hidden">Publications</span>
 					</label>
 					<Link
 						href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
