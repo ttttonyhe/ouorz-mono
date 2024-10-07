@@ -124,14 +124,14 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 					},
 				}
 			: {
-					label: "Web 3",
+					label: "AMA",
 					className: "hidden lg:block",
 					color: "text-pink-500",
 					bgColor: "bg-pink-100",
 					bgDark: "dark:bg-pink-900",
-					icon: "rainbow",
+					icon: "chat",
 					link: {
-						internal: "/web3",
+						internal: "/page/765",
 					},
 				},
 		{

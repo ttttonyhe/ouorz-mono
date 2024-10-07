@@ -33,11 +33,11 @@ export default function Top() {
 					</Button>
 				</a>
 			</div>
-			<div className="lg:col-start-4 lg:col-end-6 lg:block flex whitespace-nowrap gap-x-2">
+			<div className="flex gap-x-2 whitespace-nowrap lg:col-start-4 lg:col-end-6 lg:block">
 				<Button
 					type="default"
 					icon="email"
-					className="!w-full lg:hidden text-3 leading-14 text-gray-500">
+					className="!w-full text-3 leading-14 text-gray-500 lg:hidden">
 					<span className="tracking-normal">Email</span>
 				</Button>
 				<Link href="https://cal.com/tonyhe/15min" target="_blank">

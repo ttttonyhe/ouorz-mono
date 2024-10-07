@@ -102,7 +102,7 @@ const Button = ({
 				<Template
 					aria-label="default"
 					className={className}
-					defaultClassName="w-max py-2 px-7 shadow-sm border border-gray-300 dark:border-gray-800 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:border-gray-500 hover:shadow-inner rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white flex"
+					defaultClassName="w-max py-2 px-7 shadow-sm border border-gray-300 dark:border-gray-800 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 hover:shadow-inner rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white flex"
 					icon={icon}
 					{...rest}>
 					{children}

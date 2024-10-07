@@ -2,15 +2,15 @@ import { Icon } from "@twilight-toolkit/ui"
 
 const NexusPaper = () => {
 	return (
-		<div className="flex flex-col gap-3 lg:flex-row">
+		<div className="flex flex-col gap-4 lg:flex-row">
 			<div className="flex-1 rounded-lg border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
-				<div className="flex w-full items-center justify-between gap-x-2.5 border-b border-gray-100 px-4.5 py-2.5 dark:border-gray-700">
+				<div className="flex w-full items-center justify-between gap-x-2.5 border-b border-gray-200 px-4.5 py-2.5 dark:border-gray-700">
 					<div className="flex items-center gap-x-[7px] text-[15px] font-medium tracking-wide text-gray-700 dark:text-white">
 						<span className="h-4.5 w-4.5 lg:h-7 lg:w-7">🧬</span>
 						<span>NEXUS</span>
 					</div>
 					<div className="-translate-y-[1.5px]">
-						<label className="rounded-full border-[1.5px] border-gray-700 pb-[2.5px] pl-[7px] pr-[6.5px] pt-[1.5px] text-[0.675rem] font-medium leading-[0.675rem] text-gray-700 dark:border-gray-600 dark:text-gray-400">
+						<label className="rounded-full border-[1.5px] bg-gray-100 py-[2.5px] pl-[7px] pr-[6.5px] text-[0.675rem] font-medium leading-[0.675rem] text-gray-500 dark:border-gray-600 dark:text-gray-400 dark:bg-gray-700">
 							NDSS 2025
 						</label>
 					</div>
@@ -48,10 +48,10 @@ const NexusPaper = () => {
 							href="https://github.com/Kevin-Zh-CS/NEXUS"
 							rel="noreferrer noopener"
 							target="_blank"
-							className="group flex h-[25px] w-[25px] items-center justify-center overflow-hidden rounded-full bg-gray-100 text-gray-500 transition-all ease-in-out hover:w-[105px] dark:border dark:border-gray-600 dark:bg-transparent dark:text-gray-500">
-							<span className="effect-pressing more-to-come absolute right-0 flex w-[115px] justify-end gap-x-[4px] pr-[4px] leading-none transition-all ease-in-out dark:pr-1">
+							className="group flex h-[25px] w-[25px] items-center justify-center overflow-hidden rounded-full bg-gray-100 text-gray-500 transition-all ease-in-out hover:w-[62px] dark:border dark:border-gray-600 dark:bg-transparent dark:text-gray-500">
+							<span className="effect-pressing more-to-come absolute right-0 flex w-[62px] justify-end gap-x-[2px] pr-[4px] leading-none transition-all ease-in-out dark:pr-1">
 								<span className="-mt-[0.5px] hidden text-xs opacity-0 transition-all delay-100 ease-in-out group-hover:block group-hover:opacity-100">
-									Open source
+									Code
 								</span>
 								<span className="h-[16px] w-[16px] transition-all ease-in-out">
 									<Icon name="chevronRight" />
@@ -62,13 +62,13 @@ const NexusPaper = () => {
 				</div>
 			</div>
 			<div className="flex-1 rounded-lg border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
-				<div className="flex w-full items-center justify-between gap-x-2.5 border-b border-gray-100 px-4.5 py-2.5 dark:border-gray-700">
+				<div className="flex w-full items-center justify-between gap-x-2.5 border-b border-gray-200 px-4.5 py-2.5 dark:border-gray-700">
 					<div className="flex items-center gap-x-[7px] text-[15px] font-medium tracking-wide text-gray-700 dark:text-white">
 						<span className="h-4.5 w-4.5 lg:h-7 lg:w-7">👀</span>
 						<span>LookAhead</span>
 					</div>
 					<div className="-translate-y-[1.5px]">
-						<label className="rounded-full border-[1.5px] border-gray-700 pb-[2.5px] pl-[7px] pr-[6.5px] pt-[1.5px] text-[0.675rem] font-medium leading-[0.675rem] text-gray-700 dark:border-gray-600 dark:text-gray-400">
+						<label className="rounded-full border-[1.5px] bg-gray-100 py-[2.5px] pl-[7px] pr-[6.5px] text-[0.675rem] font-medium leading-[0.675rem] text-gray-500 dark:border-gray-600 dark:text-gray-400 dark:bg-gray-700">
 							Under Submission
 						</label>
 					</div>
