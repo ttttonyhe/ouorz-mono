@@ -108,9 +108,9 @@ const Home: NextPageWithLayout = () =>
 						</div>
 					</div>
 				</section>
-				<section className="mt-11">
+				<section className="mt-14">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5 text-orange-500">
+						<span className="mr-1.5 flex h-5 w-5 text-yellow-400">
 							<Icon name="flag" />
 						</span>
 						<span className="uppercase">Featured Content</span>
@@ -129,9 +129,9 @@ const Home: NextPageWithLayout = () =>
 				*/}
 					</div>
 				</section>
-				<section className="mt-12">
+				<section className="mt-14">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5 text-purple-500">
+						<span className="mr-1.5 flex h-5 w-5 text-blue-500">
 							<Icon name="microscope" />
 						</span>
 						<span className="uppercase">Research Interests</span>
@@ -139,8 +139,10 @@ const Home: NextPageWithLayout = () =>
 					<div className="mt-4.5 flex flex-col gap-y-2 break-words text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 						<p>
 							<span>
-								I am interested in both the theoretical and applied aspects of{" "}
-								<u className="decoration-gray-300">Cryptography</u>
+								I am interested in both the{" "}
+								<u className="decoration-gray-300">
+									Theoretical & Applied Aspects of Cryptography
+								</u>
 							</span>
 							<span>
 								{" "}
@@ -156,16 +158,16 @@ const Home: NextPageWithLayout = () =>
 							</u>{" "}
 							that address issues related to:
 						</p>
-						<div className="flex flex-col items-center justify-between gap-y-2 pb-4.5 pr-1 pt-5 text-sm lg:flex-row">
+						<div className="flex flex-col items-center justify-between gap-y-2 pb-[12px] pr-1 pt-4.5 text-sm lg:flex-row">
 							<div className="text-normal flex w-full items-center gap-x-2 rounded-md border bg-white px-4 py-[7px] font-medium shadow-sm dark:border-gray-600 dark:bg-gray-800 lg:w-auto">
-								<div className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-400 text-white dark:bg-purple-700">
+								<div className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-500 text-white dark:bg-blue-700">
 									1
 								</div>
 								<div className="font-bold">Privacy-preserving computing</div>
 							</div>
 							<div className="hidden text-3 lg:block">and</div>
 							<div className="text-normal flex w-full items-center gap-x-2 rounded-md border bg-white px-4 py-[7px] font-medium shadow-sm dark:border-gray-600 dark:bg-gray-800 lg:w-auto">
-								<div className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-400 text-white dark:bg-purple-700">
+								<div className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-500 text-white dark:bg-blue-700">
 									2
 								</div>
 								<div>Software security and usability</div>
@@ -178,10 +180,10 @@ const Home: NextPageWithLayout = () =>
 						</p>
 					</div>
 				</section>
-				<section className="mt-12">
+				<section className="mt-14">
 					<div className="flex items-center justify-between">
 						<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-							<span className="mr-1.5 flex h-5 w-5 text-blue-500">
+							<span className="mr-1.5 flex h-5 w-5 text-green-500">
 								<Icon name="article" />
 							</span>
 							<span className="uppercase">Publications</span>
@@ -189,7 +191,7 @@ const Home: NextPageWithLayout = () =>
 						<Link
 							href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
 							target="_blank"
-							className="mt-0.5 flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
+							className="mt-0.5 flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-green-600 dark:text-gray-400 dark:hover:text-blue-500">
 							Google Scholar
 							<span className="h-5 w-5 underline">
 								<Icon name="externalLink" />
@@ -240,7 +242,7 @@ const Home: NextPageWithLayout = () =>
 							venue={{
 								name: "Multimedia Systems",
 								href: "https://link.springer.com/journal/530",
-								color: "!border-l-green-500 border-l-4",
+								color: "!border-l-green-600 border-l-4",
 							}}
 							accepted={true}
 							links={[
@@ -274,9 +276,9 @@ const Home: NextPageWithLayout = () =>
 						/>
 					</div>
 				</section>
-				<section className="mt-12">
+				<section className="mt-14">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5 text-green-500">
+						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="plane" />
 						</span>
 						<span className="uppercase">How to Reach Me</span>
@@ -288,11 +290,11 @@ const Home: NextPageWithLayout = () =>
 				{/* <section className="mt-11">
 				{!stickyNotFound && <List.Static posts={stickyPosts} sticky={true} />}
 			</section> */}
-				<section className="mt-12">
+				<section className="mb-24 mt-14">
 					<div className="flex justify-between">
 						<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-							<span className="mr-1.5 flex h-5 w-5 text-pink-500">
-								<Icon name="article" />
+							<span className="mr-1.5 flex h-5 w-5">
+								<Icon name="edit" />
 							</span>
 							<span className="uppercase">Blog Posts</span>
 						</label>

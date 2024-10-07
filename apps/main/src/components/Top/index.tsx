@@ -9,7 +9,7 @@ export default function Top() {
 					<Button
 						type="default"
 						icon="twitterX"
-						className="!w-full text-3 leading-14 text-gray-500">
+						className="!w-full text-3 leading-14 text-gray-700">
 						Twitter
 					</Button>
 				</a>
@@ -20,7 +20,7 @@ export default function Top() {
 					<Button
 						type="default"
 						icon="linkedIn"
-						className="!w-full text-3 leading-14 text-gray-500">
+						className="!w-full text-3 leading-14 text-blue-600">
 						<span className="tracking-normal">LinkedIn</span>
 					</Button>
 				</a>
@@ -44,7 +44,7 @@ export default function Top() {
 					<Button
 						type="default"
 						icon="calendarSchedule"
-						className="!w-full text-green-600">
+						className="!w-full text-gray-500">
 						<span className="pl-0.5 text-4 leading-14 tracking-normal lg:text-3">
 							Schedule a Meeting
 						</span>
