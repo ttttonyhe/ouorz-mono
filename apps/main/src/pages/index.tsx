@@ -74,7 +74,7 @@ const Home: NextPageWithLayout = () =>
 							</span>
 							Hello, and welcome!
 						</h1>
-						<div className="flex flex-col gap-y-1.5 break-words pb-1.5 pl-1 pt-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 dark:text-gray-300 lg:text-left lg:text-2">
+						<div className="flex flex-col gap-y-1.5 break-words px-1 pb-1.5 pt-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 dark:text-gray-300 lg:text-left lg:text-2">
 							<p>
 								My name is Lipeng He
 								<span className="hidden lg:inline"> </span>
@@ -140,7 +140,7 @@ const Home: NextPageWithLayout = () =>
 						</span>
 						<span className="uppercase">Research Interests</span>
 					</label>
-					<div className="mt-3.5 flex flex-col gap-y-2 break-words text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
+					<div className="mt-[15px] flex flex-col gap-y-2 break-words px-0.5 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 						<p>
 							<span>
 								I am interested in both the{" "}
@@ -164,14 +164,14 @@ const Home: NextPageWithLayout = () =>
 						</p>
 						<div className="flex flex-col items-center justify-between gap-y-2 pb-[12px] pr-1 pt-4.5 text-sm lg:flex-row">
 							<div className="text-normal flex w-full items-center gap-x-2 rounded-md border bg-white px-4 py-[7px] font-medium shadow-sm dark:border-gray-600 dark:bg-gray-800 lg:w-auto">
-								<div className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-400 text-white dark:bg-purple-700">
+								<div className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-500 text-white dark:bg-purple-700">
 									1
 								</div>
 								<div className="font-bold">Privacy-preserving computing</div>
 							</div>
 							<div className="hidden text-3 lg:block">and</div>
 							<div className="text-normal flex w-full items-center gap-x-2 rounded-md border bg-white px-4 py-[7px] font-medium shadow-sm dark:border-gray-600 dark:bg-gray-800 lg:w-auto">
-								<div className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-400 text-white dark:bg-purple-700">
+								<div className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-500 text-white dark:bg-purple-700">
 									2
 								</div>
 								<div>Software security and usability</div>
