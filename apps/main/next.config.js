@@ -4,7 +4,7 @@ const { withSentryConfig } = require("@sentry/nextjs")
 const NextConfigs = {
 	assetPrefix: "/assets",
 	poweredByHeader: false,
-	productionBrowserSourceMaps: false,
+	productionBrowserSourceMaps: true,
 	compress: true,
 	transpilePackages: ["@twilight-toolkit/ui", "@twilight-toolkit/utils"],
 	images: {

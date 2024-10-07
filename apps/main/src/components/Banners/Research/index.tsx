@@ -10,7 +10,7 @@ const NexusPaper = () => {
 						<span>NEXUS</span>
 					</div>
 					<div className="-translate-y-[1.5px]">
-						<label className="rounded-full border-[1.5px] bg-gray-100 py-[2.5px] pl-[7px] pr-[6.5px] text-[0.675rem] font-medium leading-[0.675rem] text-gray-500 dark:border-gray-600 dark:text-gray-400 dark:bg-gray-700">
+						<label className="rounded-full border-[1.5px] bg-gray-100 py-[2.5px] pl-[7px] pr-[6.5px] text-[0.675rem] font-medium leading-[0.675rem] text-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400">
 							NDSS 2025
 						</label>
 					</div>
@@ -45,9 +45,10 @@ const NexusPaper = () => {
 					</div>
 					<div>
 						<a
-							href="https://github.com/Kevin-Zh-CS/NEXUS"
+							href="https://github.com/zju-abclab/NEXUS"
 							rel="noreferrer noopener"
 							target="_blank"
+							aria-label="Visit this paper's GitHub repository"
 							className="group flex h-[25px] w-[25px] items-center justify-center overflow-hidden rounded-full bg-gray-100 text-gray-500 transition-all ease-in-out hover:w-[62px] dark:border dark:border-gray-600 dark:bg-transparent dark:text-gray-500">
 							<span className="effect-pressing more-to-come absolute right-0 flex w-[62px] justify-end gap-x-[2px] pr-[4px] leading-none transition-all ease-in-out dark:pr-1">
 								<span className="-mt-[0.5px] hidden text-xs opacity-0 transition-all delay-100 ease-in-out group-hover:block group-hover:opacity-100">
@@ -68,7 +69,7 @@ const NexusPaper = () => {
 						<span>LookAhead</span>
 					</div>
 					<div className="-translate-y-[1.5px]">
-						<label className="rounded-full border-[1.5px] bg-gray-100 py-[2.5px] pl-[7px] pr-[6.5px] text-[0.675rem] font-medium leading-[0.675rem] text-gray-500 dark:border-gray-600 dark:text-gray-400 dark:bg-gray-700">
+						<label className="rounded-full border-[1.5px] bg-gray-100 py-[2.5px] pl-[7px] pr-[6.5px] text-[0.675rem] font-medium leading-[0.675rem] text-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400">
 							Under Submission
 						</label>
 					</div>
