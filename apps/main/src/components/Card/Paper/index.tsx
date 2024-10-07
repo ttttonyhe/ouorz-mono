@@ -39,9 +39,9 @@ const PaperCard = (props: PaperCardProps) => {
 				<div className="text-sm tracking-wide text-gray-600 dark:text-gray-300">
 					<p>{authors}</p>
 				</div>
-				<div className="flex flex-col items-start gap-x-2.5 gap-y-2 text-xs font-medium text-gray-500 lg:-ml-1 lg:flex-row lg:items-center">
+				<div className="flex flex-col items-start gap-x-2.5 gap-y-2 text-xs text-gray-500 lg:-ml-1 lg:flex-row lg:items-center">
 					<div
-						className={`rounded-full border bg-gray-100 px-2.5 py-0.5 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 ${venue.color || ""}`}>
+						className={`rounded-full border bg-gray-100 px-2.5 py-0.5 font-medium dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 ${venue.color || ""}`}>
 						<Link href={venue.href}>
 							{!accepted && "Under Submission to "}
 							{venue.name}

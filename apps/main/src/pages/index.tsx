@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react"
 import ResearchPapers from "~/components/Banners/Research"
 // import NextJS13Preview from "~/components/Banners/NextJS13Preview"
 import YearOfReformation from "~/components/Banners/YearOfReformation"
+import EmploymentCard from "~/components/Card/Employment"
 import PaperCard from "~/components/Card/Paper"
 import List from "~/components/List"
 import { pageLayout } from "~/components/Page"
@@ -67,13 +68,13 @@ const Home: NextPageWithLayout = () =>
 				</Head>
 				<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 					<div>
-						<h1 className="mb-3 flex items-center whitespace-nowrap break-words text-3xl font-medium leading-relaxed tracking-wide text-black dark:text-white lg:text-1">
+						<h1 className="mb-1.5 flex items-center whitespace-nowrap break-words text-3xl font-medium leading-relaxed tracking-wide text-black dark:text-white lg:text-1">
 							<span className="mr-2.5 inline-block animate-waveHand cursor-pointer hover:animate-waveHandAgain">
 								👋
 							</span>
 							Hello, and welcome!
 						</h1>
-						<div className="flex flex-col gap-y-1.5 break-words pb-1.5 pl-1 pt-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 dark:text-gray-300 lg:text-2">
+						<div className="flex flex-col gap-y-1.5 break-words pb-1.5 pl-1 pt-1 text-3 font-light leading-relaxed tracking-wide text-gray-500 dark:text-gray-300 lg:text-2">
 							<p>
 								My name is Lipeng He{" "}
 								<Emphasis name="Preferred First Name">
@@ -108,7 +109,7 @@ const Home: NextPageWithLayout = () =>
 						</div>
 					</div>
 				</section>
-				<section className="mt-14">
+				<section className="mt-12">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5 text-yellow-400">
 							<Icon name="flag" />
@@ -273,6 +274,85 @@ const Home: NextPageWithLayout = () =>
 									default: true,
 								},
 							]}
+						/>
+					</div>
+				</section>
+				<section className="mt-14">
+					<div className="flex items-center justify-between">
+						<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+							<span className="mr-1.5 flex h-5 w-5 text-teal-500">
+								<Icon name="suitcase" />
+							</span>
+							<span className="uppercase">Employment</span>
+						</label>
+						<Link
+							href="https://www.linkedin.com/in/~lhe/"
+							target="_blank"
+							className="mt-0.5 flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
+							LinkedIn
+							<span className="h-5 w-5 underline">
+								<Icon name="externalLink" />
+							</span>
+						</Link>
+					</div>
+					<div className="mt-5 flex flex-col gap-y-4">
+						<EmploymentCard
+							orgLogoSrc="https://static.ouorz.com/zju_logo.png"
+							organization="Zhejiang University"
+							organizationFullName="ABC Lab, Institute of Cyberspace Research"
+							jobTitle="Research Assistant"
+							jobType="Full-time Internship"
+							dateString="May - August 2024"
+						/>
+						<EmploymentCard
+							orgLogoSrc="https://static.ouorz.com/biorender_logo.png"
+							organization="BioRender"
+							organizationFullName="Science Suite Inc."
+							jobTitle="Full Stack Software Engineer"
+							jobType="Full-time Internship"
+							dateString="Jan - Apr 2023"
+						/>
+						<EmploymentCard
+							organization="Safyre Labs Inc."
+							jobTitle="Full Stack Software Engineer"
+							jobType="Full-time Internship"
+							dateString="May -  Aug 2022"
+						/>
+						<EmploymentCard
+							orgLogoSrc="https://static.ouorz.com/bitbuy_logo.png"
+							organization="Bitbuy"
+							organizationFullName="Bitbuy Technologies Inc."
+							jobTitle="Front End Software Engineer"
+							jobType="Full-time Internship"
+							dateString="Sep -  Dec 2021"
+						/>
+					</div>
+				</section>
+				<section className="mt-14">
+					<div className="flex items-center justify-between">
+						<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+							<span className="mr-1.5 flex h-5 w-5 text-rose-500">
+								<Icon name="suitcase" />
+							</span>
+							<span className="uppercase">Education</span>
+						</label>
+					</div>
+					<div className="mt-5 flex flex-col gap-y-4">
+						<EmploymentCard
+							orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
+							organization="University of Waterloo"
+							organizationFullName="Bachelor of Mathematics, Honours, Co-operative Program (Minor in Computing)"
+							jobTitle="Mathematics, Combinatorics & Optimization"
+							jobType="Undergraduate"
+							dateString="Sep 2020 - Apr 2025"
+						/>
+						<EmploymentCard
+							orgLogoSrc="https://static.ouorz.com/ntu_logo.webp"
+							organization="Nanyang Technological University"
+							organizationFullName="GEM Trailblazer Exchange Program"
+							jobTitle="Mathematical Sciences"
+							jobType="Exchange"
+							dateString="Aug - Dec 2023"
 						/>
 					</div>
 				</section>
