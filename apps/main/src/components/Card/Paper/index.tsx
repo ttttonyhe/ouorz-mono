@@ -53,7 +53,7 @@ const PaperCard = (props: PaperCardProps) => {
 								key={link.href}
 								href={link.href}
 								onClick={(e) => e.stopPropagation()}
-								className="underline underline-offset-4 transition-colors hover:text-green-600">
+								className="underline underline-offset-4 transition-colors hover:text-blue-500">
 								<span>{link.label} →</span>
 							</Link>
 						))}

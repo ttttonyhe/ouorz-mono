@@ -183,7 +183,7 @@ const Home: NextPageWithLayout = () =>
 				<section className="mt-14">
 					<div className="flex items-center justify-between">
 						<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-							<span className="mr-1.5 flex h-5 w-5 text-green-500">
+							<span className="mr-1.5 flex h-5 w-5 text-blue-500">
 								<Icon name="article" />
 							</span>
 							<span className="uppercase">Publications</span>
@@ -191,7 +191,7 @@ const Home: NextPageWithLayout = () =>
 						<Link
 							href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
 							target="_blank"
-							className="mt-0.5 flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-green-600 dark:text-gray-400 dark:hover:text-blue-500">
+							className="mt-0.5 flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
 							Google Scholar
 							<span className="h-5 w-5 underline">
 								<Icon name="externalLink" />
@@ -278,7 +278,7 @@ const Home: NextPageWithLayout = () =>
 				</section>
 				<section className="mt-14">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5 text-blue-500">
+						<span className="mr-1.5 flex h-5 w-5 text-green-500">
 							<Icon name="plane" />
 						</span>
 						<span className="uppercase">How to Reach Me</span>
