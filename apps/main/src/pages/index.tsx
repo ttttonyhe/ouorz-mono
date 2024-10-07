@@ -3,9 +3,9 @@ import { Icon } from "@twilight-toolkit/ui"
 import Head from "next/head"
 import Link from "next/link"
 import React, { useEffect, useState } from "react"
-import ResearchPapers from "~/components/Banners/Research"
 // import NextJS13Preview from "~/components/Banners/NextJS13Preview"
-import YearOfReformation from "~/components/Banners/YearOfReformation"
+import PagesAndLinks from "~/components/Banners/PagesAndLinks"
+import ResearchPapers from "~/components/Banners/Research"
 import EmploymentCard from "~/components/Card/Employment"
 import PaperCard from "~/components/Card/Paper"
 import List from "~/components/List"
@@ -124,7 +124,7 @@ const Home: NextPageWithLayout = () =>
 						<ResearchPapers />
 						{/* </div> */}
 						<div className="mt-4">
-							<YearOfReformation />
+							<PagesAndLinks />
 						</div>
 						{/*
 				<div className="mt-5">
@@ -190,7 +190,7 @@ const Home: NextPageWithLayout = () =>
 							<span className="mr-1.5 flex h-5 w-5 text-blue-500">
 								<Icon name="article" />
 							</span>
-							<span className="uppercase">Publications</span>
+							<span className="uppercase">Selected Publications</span>
 						</label>
 						<Link
 							href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
@@ -300,12 +300,20 @@ const Home: NextPageWithLayout = () =>
 					</div>
 					<div className="mt-5 flex flex-col gap-y-4">
 						<EmploymentCard
+							orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
+							organization="University of Waterloo"
+							organizationFullName="CS 135 Designing Functional Programs"
+							jobTitle="Instructional Support Assistant (ISA)"
+							jobType="Full-time Internship"
+							dateString="Aug 2024 - Present"
+						/>
+						<EmploymentCard
 							orgLogoSrc="https://static.ouorz.com/zju_logo.png"
 							organization="Zhejiang University"
 							organizationFullName="ABC Lab, Institute of Cyberspace Research"
 							jobTitle="Research Assistant"
 							jobType="Full-time Internship"
-							dateString="May - August 2024"
+							dateString="May - Aug 2024"
 						/>
 						<EmploymentCard
 							orgLogoSrc="https://static.ouorz.com/biorender_logo.png"

@@ -1,7 +1,7 @@
 import { Icon } from "@twilight-toolkit/ui"
 import Link from "next/link"
 
-const YearOfReformation = () => {
+const PagesAndLinks = () => {
 	return (
 		<div className="w-full rounded-md border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
 			<div className="flex w-full items-center justify-between gap-x-2.5 border-b border-gray-200 px-4.5 py-2.5 dark:border-gray-700">
@@ -21,35 +21,26 @@ const YearOfReformation = () => {
 				<div className="flex items-center gap-x-2.5">
 					<Link
 						href="https://static.ouorz.com/tonyhe_cv_v2.pdf"
+						target="_blank"
 						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
 						<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
 							<Icon name="paperList" />
 						</span>
-						<span>Curriculum Vitae</span>
+						<span className="flex items-center gap-x-2">
+							<span>Curriculum Vitae</span>
+							<span className="text-xs tracking-tight text-gray-400">
+								(May not be up-to-date)
+							</span>
+						</span>
 					</Link>
 					<Link
-						href="/reading-list"
+						href="https://github.com/ttttonyhe"
+						target="_blank"
 						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
 						<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
-							<Icon name="bookOpen" />
+							<Icon name="github" />
 						</span>
-						<span>Reading List</span>
-					</Link>
-					<Link
-						href="/podcasts"
-						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
-						<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
-							<Icon name="microphone" />
-						</span>
-						<span>Podcasts</span>
-					</Link>
-					<Link
-						href="/web3"
-						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
-						<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
-							<Icon name="rainbow" />
-						</span>
-						<span>Web 3.0</span>
+						<span>Github</span>
 					</Link>
 				</div>
 				<div>
@@ -71,4 +62,4 @@ const YearOfReformation = () => {
 	)
 }
 
-export default YearOfReformation
+export default PagesAndLinks

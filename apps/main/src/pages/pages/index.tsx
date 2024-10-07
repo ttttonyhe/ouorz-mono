@@ -50,53 +50,53 @@ const Pages: NextPageWithLayout = () => {
 					href="/dashboard"
 				/>
 				<PageCard
-					title="Guestbook"
-					des="Leave your comments"
-					icon="chat"
-					className="text-green-400"
-					href="/page/249"
-				/>
-				<PageCard
-					title="AMA"
-					des="Ask me anything"
-					icon="question"
-					className="text-yellow-400"
-					href="/page/765"
-				/>
-				<PageCard
-					title="Links"
-					des="Friends from the Internet"
-					icon="people"
-					className="text-pink-400"
-					href="/friends"
+					title="Web 3.0"
+					des="Wallets, identities and assets"
+					icon="rainbow"
+					className="text-pink-500"
+					href="/web3"
 				/>
 				<PageCard
 					title="Reading List"
 					des="My book shelf"
 					icon="bookmark"
-					className="text-red-400"
+					className="text-green-500"
 					href="/reading-list"
 				/>
 				<PageCard
+					title="Podcasts"
+					des="My recommendations"
+					icon="mic"
+					className="text-yellow-500"
+					href="/podcasts"
+				/>
+				<PageCard
+					title="Guestbook"
+					des="Leave your comments"
+					icon="question"
+					className="text-gray-400"
+					href="/page/249"
+				/>
+				<PageCard
+					title="Links"
+					des="Friends from the Internet"
+					icon="people"
+					className="text-gray-400"
+					href="/friends"
+				/>
+				<PageCard
 					title="Analytics"
-					des="Visitor statistics"
+					des="Website statistics"
 					icon="growth"
-					className="text-blue-400"
+					className="text-gray-400"
 					href="https://analytics.ouorz.com/share/E4O9QpCn/ouorz-next"
 				/>
 				<PageCard
-					title="Podcast"
-					des="Known Unknowns"
-					icon="mic"
-					className="text-gray-600"
-					href="https://kukfm.com"
-				/>
-				<PageCard
-					title="Snapod"
-					des="Podcast hosting platform"
+					title="Known Unknowns"
+					des="Podcast"
 					icon="microphone"
-					className="text-gray-500"
-					href="https://www.snapodcast.com"
+					className="text-gray-400"
+					href="https://kukfm.com"
 				/>
 			</div>
 		</div>
