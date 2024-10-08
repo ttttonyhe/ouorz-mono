@@ -269,7 +269,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			},
 		},
 		{
-			label: "Join Discord Server",
+			label: "Join our Discord Server",
 			id: "discord",
 			description: "Link",
 			icon: "chatRounded",
@@ -281,7 +281,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			},
 		},
 		{
-			label: "Sponsor Me",
+			label: "Sponsor My Work",
 			id: "sponsor",
 			description: "Page",
 			icon: "love",
@@ -416,12 +416,12 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			hoverable: false,
 		},
 		{
-			label: "Twitter",
+			label: "X",
 			id: "twitter",
 			description: "Link",
-			icon: "twitter",
+			icon: "twitterX",
 			link: {
-				external: "https://twitter.com/ttttonyhe",
+				external: "https://x.com/ttttonyhe",
 			},
 		},
 		{

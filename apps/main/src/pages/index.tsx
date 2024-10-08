@@ -121,7 +121,7 @@ const Home: NextPageWithLayout = () => {
 						</span>
 						<span>
 							{" "}
-							and its applications throughout and beyond computing & data
+							and their applications throughout and beyond computing & data
 							sciences.
 						</span>
 					</p>
