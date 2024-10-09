@@ -185,7 +185,7 @@ importers:
         version: link:../../packages/prettier-config
       '@rollup/plugin-buble':
         specifier: ^1.0.3
-        version: 1.0.3(rollup@2.79.1)
+        version: 1.0.3(rollup@2.79.2)
       '@svgr/webpack':
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.6.2)
@@ -226,11 +226,11 @@ importers:
         specifier: 2.4.2
         version: 2.4.2
       rollup:
-        specifier: ^2.74.1
-        version: 2.79.1
+        specifier: ^2.79.2
+        version: 2.79.2
       rollup-plugin-terser:
         specifier: ^7.0.2
-        version: 7.0.2(rollup@2.79.1)
+        version: 7.0.2(rollup@2.79.2)
       tar:
         specifier: ^6.1.11
         version: 6.2.1
@@ -2607,10 +2607,12 @@ packages:
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
+    deprecated: Use @eslint/config-array instead
 
   '@humanwhocodes/config-array@0.13.0':
     resolution: {integrity: sha512-DZLEEqFWQFiyK6h5YIeynKx7JlvCYWL0cImfSRXZ9l4Sg2efkFGTuFf6vzXjK1cq6IYkU+Eg/JizXw+TD2vRNw==}
     engines: {node: '>=10.10.0'}
+    deprecated: Use @eslint/config-array instead
 
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
@@ -2618,6 +2620,7 @@ packages:
 
   '@humanwhocodes/object-schema@2.0.3':
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
+    deprecated: Use @eslint/object-schema instead
 
   '@humanwhocodes/retry@0.2.4':
     resolution: {integrity: sha512-Ttl/jHpxfS3st5sxwICYfk4pOH0WrLI1SpW283GgQL7sCWU7EHIOhX4b4fkIxr3tkfzwg8+FNojtzsIEE7Ecgg==}
@@ -3530,9 +3533,11 @@ packages:
 
   '@openzeppelin/defender-admin-client@1.54.1':
     resolution: {integrity: sha512-kRpSUdTsnSqntp4FOXIm95t+6VKHc8CUY2Si71VDuxs0q7HSPZkdpRPSntcolwEzWy9L4a8NS/QMwDF5NJ4X1g==}
+    deprecated: This package has been deprecated and will no longer be maintained, please use @openzeppelin/defender-sdk package instead.
 
   '@openzeppelin/defender-base-client@1.54.1':
     resolution: {integrity: sha512-DRGz/7KN3ZQwu28YWMOaojrC7jjPkz/uCwkC8/C8B11qwZhA5qIVvyhYHhhFOCl0J84+E3TNdvkPD2q3p2WaJw==}
+    deprecated: This package has been deprecated and will no longer be maintained, please use @openzeppelin/defender-sdk package instead.
 
   '@openzeppelin/defender-sdk-base-client@1.13.0':
     resolution: {integrity: sha512-XyCHF4Q//rInmJG6XM9x4JDiERJTCjmGX7FOmtbXYAKTTE5ygUvFU7gXJ5oxtbB2anPU3OJIPM25Shkd3+7dKw==}
@@ -4698,6 +4703,7 @@ packages:
 
   '@storybook/testing-library@0.2.2':
     resolution: {integrity: sha512-L8sXFJUHmrlyU2BsWWZGuAjv39Jl1uAqUHdxmN42JY15M4+XCMjGlArdCCjDe1wpTSW6USYISA9axjZojgtvnw==}
+    deprecated: In Storybook 8, this package functionality has been integrated to a new package called @storybook/test, which uses Vitest APIs for an improved experience. When upgrading to Storybook 8 with 'npx storybook@latest upgrade', you will get prompted and will get an automigration for the new package. Please migrate when you can.
 
   '@storybook/theming@7.6.17':
     resolution: {integrity: sha512-ZbaBt3KAbmBtfjNqgMY7wPMBshhSJlhodyMNQypv+95xLD/R+Az6aBYbpVAOygLaUQaQk4ar7H/Ww6lFIoiFbA==}
@@ -7469,6 +7475,7 @@ packages:
   eslint@8.57.0:
     resolution: {integrity: sha512-dZ6+mexnaTIbSBZWgou51U6OmzIhYM2VcNdtiTtI7qPNZm35Akpr0f6vtw3w1Kmn5PYo+tZVfh13WrhpS6oLqQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   eslint@9.2.0:
@@ -11785,14 +11792,9 @@ packages:
     peerDependencies:
       rollup: ^2.0.0
 
-  rollup@2.79.1:
-    resolution: {integrity: sha512-uKxbd0IhMZOhjAiD5oAFp7BqvkA4Dv47qpOCtaNvng4HBwdbWtdOh8f5nZNuk2rp51PMGk3bzfWu5oayNEuYnw==}
+  rollup@2.79.2:
+    resolution: {integrity: sha512-fS6iqSPZDs3dr/y7Od6y5nha8dW1YnbgtsyotCVvoFGKbERG++CVRFv1meyGDE1SNItQA8BrnCw7ScdAhRJ3XQ==}
     engines: {node: '>=10.0.0'}
-    hasBin: true
-
-  rollup@3.29.4:
-    resolution: {integrity: sha512-oWzmBZwvYrU0iJHtDmhsm662rC15FRXmcjCk1xD771dFDx5jJ02ufAQQTn0etB2emNk4J9EZg/yWKpsn9BWGRw==}
-    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
 
   rollup@3.29.5:
@@ -12041,6 +12043,7 @@ packages:
 
   sinon@17.0.2:
     resolution: {integrity: sha512-uihLiaB9FhzesElPDFZA7hDcNABzsVHwr3YfmM9sBllVwab3l0ltGlRV1XhpNfIacNDLGD1QRZNLs5nU5+hTuA==}
+    deprecated: There
 
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
@@ -17558,13 +17561,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@rollup/plugin-buble@1.0.3(rollup@2.79.1)':
+  '@rollup/plugin-buble@1.0.3(rollup@2.79.2)':
     dependencies:
-      '@rollup/pluginutils': 5.1.0(rollup@2.79.1)
+      '@rollup/pluginutils': 5.1.0(rollup@2.79.2)
       '@types/buble': 0.19.2
       buble: 0.20.0
     optionalDependencies:
-      rollup: 2.79.1
+      rollup: 2.79.2
 
   '@rollup/plugin-commonjs@26.0.1(rollup@3.29.5)':
     dependencies:
@@ -17577,13 +17580,13 @@ snapshots:
     optionalDependencies:
       rollup: 3.29.5
 
-  '@rollup/pluginutils@5.1.0(rollup@2.79.1)':
+  '@rollup/pluginutils@5.1.0(rollup@2.79.2)':
     dependencies:
       '@types/estree': 1.0.5
       estree-walker: 2.0.2
       picomatch: 2.3.1
     optionalDependencies:
-      rollup: 2.79.1
+      rollup: 2.79.2
 
   '@rollup/pluginutils@5.1.0(rollup@3.29.5)':
     dependencies:
@@ -27825,19 +27828,15 @@ snapshots:
       prop-types: 15.8.1
       react: 18.3.1
 
-  rollup-plugin-terser@7.0.2(rollup@2.79.1):
+  rollup-plugin-terser@7.0.2(rollup@2.79.2):
     dependencies:
       '@babel/code-frame': 7.24.2
       jest-worker: 26.6.2
-      rollup: 2.79.1
+      rollup: 2.79.2
       serialize-javascript: 4.0.0
       terser: 5.31.0
 
-  rollup@2.79.1:
-    optionalDependencies:
-      fsevents: 2.3.3
-
-  rollup@3.29.4:
+  rollup@2.79.2:
     optionalDependencies:
       fsevents: 2.3.3
 
@@ -29079,7 +29078,7 @@ snapshots:
       joycon: 3.1.1
       postcss-load-config: 3.1.4(postcss@8.4.38)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.5))(@types/node@22.7.4)(typescript@5.4.5))
       resolve-from: 5.0.0
-      rollup: 3.29.4
+      rollup: 3.29.5
       source-map: 0.8.0-beta.0
       sucrase: 3.35.0
       tree-kill: 1.2.2
@@ -29103,7 +29102,7 @@ snapshots:
       joycon: 3.1.1
       postcss-load-config: 3.1.4(postcss@8.4.47)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.5))(@types/node@18.19.33)(typescript@5.6.2))
       resolve-from: 5.0.0
-      rollup: 3.29.4
+      rollup: 3.29.5
       source-map: 0.8.0-beta.0
       sucrase: 3.35.0
       tree-kill: 1.2.2
