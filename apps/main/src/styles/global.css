@@ -510,6 +510,10 @@ h5 {
 		@apply rounded-xl;
 		width: 720px !important;
 	}
+
+	.mask-x {
+		mask-image: none !important;
+	}
 }
 
 @media screen and (max-width: 1280px) {

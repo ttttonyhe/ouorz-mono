@@ -34,6 +34,17 @@ const PagesAndLinks = () => {
 						</span>
 					</Link>
 					<Link
+						href="https://forms.gle/iXg7X7nS1Z8PvWPFA"
+						target="_blank"
+						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
+						<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
+							<Icon name="comments" />
+						</span>
+						<span className="flex items-center gap-x-2">
+							<span>Feedback</span>
+						</span>
+					</Link>
+					<Link
 						href="https://github.com/ttttonyhe"
 						target="_blank"
 						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
