@@ -138,7 +138,7 @@ const Home: NextPageWithLayout = () => {
 							<div className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-500 text-white dark:bg-purple-700">
 								1
 							</div>
-							<div className="font-bold">Privacy-preserving computing</div>
+							<div className="font-bold">Privacy-preserving computation</div>
 						</div>
 						<div className="hidden text-3 lg:block">and</div>
 						<div className="text-normal flex w-full items-center gap-x-2 rounded-md border bg-white px-4 py-[7px] font-medium shadow-sm dark:border-gray-600 dark:bg-gray-800 lg:w-auto">
