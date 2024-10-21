@@ -90,7 +90,7 @@ const Home: NextPageWithLayout = () => {
 					</div>
 				</div>
 			</section>
-			<section className="mt-12">
+			<section className="mt-10">
 				{/* <label className="border-gray-301 inline-flex items-center rounded-full border bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-2.5 flex h-5 w-5 text-green-500">
 						<Icon name="plane" />
@@ -115,7 +115,7 @@ const Home: NextPageWithLayout = () => {
 					</div>
 				</div>
 			</section>
-			<section className="mt-14">
+			<section className="mt-16">
 				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5 text-purple-500">
 						<Icon name="microscope" />
@@ -268,7 +268,7 @@ const Home: NextPageWithLayout = () => {
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5 text-teal-500">
+						<span className="mr-1.5 flex h-5 w-5 text-yellow-500">
 							<Icon name="suitcase" />
 						</span>
 						<span className="uppercase">Employment</span>
@@ -355,7 +355,7 @@ const Home: NextPageWithLayout = () => {
 			<section className="mb-24 mt-14">
 				<div className="flex justify-between">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5">
+						<span className="mr-1.5 flex h-5 w-5 text-green-500">
 							<Icon name="edit" />
 						</span>
 						<span className="uppercase">Blog Posts</span>
