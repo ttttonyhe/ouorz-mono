@@ -38,10 +38,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
 				options={{ showSpinner: false }}
 			/>
 			{/* Next-Themes Theme Provider */}
-			<ThemeProvider
-				attribute="class"
-				defaultTheme="system"
-				enableSystem={true}>
+			<ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
 				{/* Redux Store Provider */}
 				<ReduxProvider store={store}>
 					<div className="min-h-screen bg-gbg dark:bg-neutral-900 dark:text-white">

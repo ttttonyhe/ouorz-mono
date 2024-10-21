@@ -91,14 +91,25 @@ const Home: NextPageWithLayout = () => {
 				</div>
 			</section>
 			<section className="mt-12">
-				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+				{/* <label className="border-gray-301 inline-flex items-center rounded-full border bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<span className="mr-2.5 flex h-5 w-5 text-green-500">
+						<Icon name="plane" />
+					</span>
+					<span className="uppercase">How to Reach Me</span>
+				</label> */}
+				<div className="mt-6">
+					<Top />
+				</div>
+			</section>
+			<section className="mt-6">
+				{/* <label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5 text-yellow-400">
 						<Icon name="flag" />
 					</span>
 					<span className="uppercase">Featured Content</span>
-				</label>
+				</label> */}
 				<div className="mt-5">
-					<ResearchPapers />
+					{/* <ResearchPapers /> */}
 					<div className="mt-4">
 						<PagesAndLinks />
 					</div>
@@ -313,7 +324,7 @@ const Home: NextPageWithLayout = () => {
 					/>
 				</div>
 			</section>
-			<section className="mt-14">
+			{/* <section className="mt-14">
 				<div className="flex items-center justify-between">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5 text-rose-500">
@@ -340,18 +351,7 @@ const Home: NextPageWithLayout = () => {
 						dateString="Aug - Dec 2023"
 					/>
 				</div>
-			</section>
-			<section className="mt-14">
-				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-					<span className="mr-1.5 flex h-5 w-5 text-green-500">
-						<Icon name="plane" />
-					</span>
-					<span className="uppercase">How to Reach Me</span>
-				</label>
-				<div className="mt-5">
-					<Top />
-				</div>
-			</section>
+			</section> */}
 			<section className="mb-24 mt-14">
 				<div className="flex justify-between">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
