@@ -2,7 +2,7 @@ import { useTheme } from "next-themes"
 import styled from "styled-components"
 
 interface GlowingBackgroundProps {
-	rounded?: "sm" | "md" | "xl"
+	$rounded?: "sm" | "md" | "xl"
 }
 
 interface GlowingDivBackgroundProps extends GlowingBackgroundProps {
@@ -22,7 +22,7 @@ const backgroundColor = (props: GlowingDivBackgroundProps) => {
 }
 
 const borderRadius = (props: GlowingDivBackgroundProps) => {
-	switch (props.rounded) {
+	switch (props.$rounded) {
 		case "sm":
 			return "0.125rem"
 		case "md":
@@ -49,13 +49,17 @@ const GlowingDivBackground = styled.div<GlowingDivBackgroundProps>`
 	transition: opacity 400ms ease 0s;
 `
 
-const GlowingBackground = ({ rounded }: GlowingBackgroundProps) => {
+const GlowingBackground = <K extends keyof GlowingBackgroundProps>({
+	rounded,
+}: {
+	rounded: GlowingBackgroundProps[K]
+}) => {
 	// FIXME: useTheme is not working with styled-components in SSR mode
 	const { resolvedTheme } = useTheme()
 
 	return (
 		<GlowingDivBackground
-			rounded={rounded || "md"}
+			$rounded={rounded || "md"}
 			$resolvedTheme={resolvedTheme || "dark"}
 		/>
 	)
