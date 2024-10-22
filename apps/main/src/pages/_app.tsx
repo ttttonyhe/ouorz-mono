@@ -41,7 +41,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
 			<ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
 				{/* Redux Store Provider */}
 				<ReduxProvider store={store}>
-					<div className="min-h-screen bg-gbg dark:bg-neutral-900 dark:text-white">
+					<div className="min-h-screen animate-appear bg-gbg dark:bg-neutral-900 dark:text-white">
 						<>{getLayout(<Component {...pageProps} />)}</>
 					</div>
 				</ReduxProvider>

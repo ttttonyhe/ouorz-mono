@@ -68,7 +68,7 @@ const SubscriptionBox = ({
 								value={email}
 								className={`${
 									processing ? "animate-pulse border-gray-400 duration-75" : ""
-								} flex h-8 w-full justify-items-center rounded-md border bg-white px-4 text-4 tracking-wide text-gray-500 shadow-sm focus:outline-none dark:border-gray-700 dark:bg-gray-700 dark:text-gray-400`}
+								} flex h-8 w-full rounded-md border bg-white px-4 text-4 tracking-wide text-gray-500 shadow-sm focus:outline-none dark:border-gray-700 dark:bg-gray-700 dark:text-gray-400`}
 								placeholder="your.email@address.com"
 								onChange={(e) => {
 									setEmail(e.target.value)
