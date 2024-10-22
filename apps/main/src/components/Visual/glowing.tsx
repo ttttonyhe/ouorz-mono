@@ -52,7 +52,7 @@ const GlowingDivBackground = styled.div<GlowingDivBackgroundProps>`
 const GlowingBackground = <K extends keyof GlowingBackgroundProps>({
 	rounded,
 }: {
-	rounded: GlowingBackgroundProps[K]
+	rounded?: GlowingBackgroundProps[K]
 }) => {
 	// FIXME: useTheme is not working with styled-components in SSR mode
 	const { resolvedTheme } = useTheme()
