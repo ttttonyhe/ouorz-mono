@@ -1,9 +1,9 @@
 import { Icon } from "@twilight-toolkit/ui"
 import Head from "next/head"
+import Image from "next/image"
 import Link from "next/link"
 import React, { useState } from "react"
 import PagesAndLinks from "~/components/Banners/PagesAndLinks"
-import ResearchPapers from "~/components/Banners/Research"
 import EmploymentCard from "~/components/Card/Employment"
 import PaperCard from "~/components/Card/Paper"
 import List from "~/components/List"
@@ -45,48 +45,49 @@ const Home: NextPageWithLayout = () => {
 				<title>Tony (Lipeng) He</title>
 			</Head>
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
-				<div>
-					<h1 className="mb-1.5 flex items-center whitespace-nowrap break-words text-3xl font-medium leading-relaxed tracking-wide text-black dark:text-white lg:text-1">
-						<span className="mr-2.5 inline-block animate-waveHand cursor-pointer hover:animate-waveHandAgain">
-							👋
-						</span>
-						Hello, and welcome!
-					</h1>
-					<div className="flex flex-col gap-y-1.5 break-words px-1 pb-1.5 pt-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 dark:text-gray-300 lg:text-left lg:text-2">
-						<p>
-							My name is Lipeng He
-							<span className="hidden lg:inline"> </span>
-							<Emphasis
-								name="Preferred First Name"
-								className="hidden -translate-y-0.5 lg:inline-flex">
-								<b>Tony</b>
-							</Emphasis>
-							, and I am currently a student 👨‍🎓 and researcher 🔬 with the{" "}
-							<Emphasis
-								name="University of Waterloo"
-								className="hidden translate-y-[1px] border-l-4 !border-l-yellow-300 lg:inline-flex">
-								<Link
+				<div className="flex items-center justify-between gap-x-10 gap-y-8">
+					<div className="hidden flex-shrink-0 pt-1 lg:block">
+						<Image
+							src="https://static.ouorz.com/avatar_real_small.jpg"
+							height={131}
+							width={131}
+							alt="Tony He"
+							className="rounded-md bg-gray-200 shadow-sm dark:border dark:border-gray-600 dark:opacity-90"
+						/>
+					</div>
+					<div className="flex flex-col gap-y-1">
+						<h1 className="flex items-center whitespace-nowrap break-words text-3xl font-medium tracking-wide text-black dark:text-white lg:text-[1.8rem]">
+							<span className="mr-2.5 inline-block animate-waveHand cursor-pointer hover:animate-waveHandAgain">
+								👋
+							</span>
+							Hello, and welcome!
+						</h1>
+						<div className="flex flex-col gap-y-1.5 break-words px-1 text-justify text-4 font-light leading-relaxed tracking-wide text-gray-500 dark:text-gray-300 lg:text-2">
+							<p>
+								My name is Lipeng (Tony) He, and I am a student 👨‍🎓, software
+								engineer 🧑‍💻, and researcher 🔬 with the{" "}
+								<a
 									href="https://uwaterloo.ca"
 									target="_blank"
-									aria-label="Visit University of Waterloo's website"
-									className="transition-colors hover:text-blue-500">
-									<span className="flex h-4.5 w-4.5">
+									className="inline-flex items-center gap-x-1 transition-colors hover:text-blue-500 dark:hover:text-blue-500">
+									University of Waterloo
+									<span className="flex h-5 w-5">
 										<Icon name="externalLink" />
 									</span>
-								</Link>
-							</Emphasis>
-							<span className="inline lg:hidden">University of Waterloo</span> .
-						</p>
-						<p>
-							I was previously a{" "}
-							<Emphasis
-								name="Full Stack Software Engineer"
-								className="hidden border-l-4 !border-l-blue-400 lg:inline-flex">
-								Intern
-							</Emphasis>
-							<span className="lg:hidden">Full Stack Software Engineer</span> at
-							various technology startups based in Toronto, Canada 🇨🇦.
-						</p>
+								</a>
+								.
+							</p>
+							{/* <p>
+								I was previously a{" "}
+								<Emphasis
+									name="Full Stack Software Engineer"
+									className="hidden border-l-4 !border-l-blue-400 lg:inline-flex">
+									Intern
+								</Emphasis>
+								<span className="lg:hidden">Full Stack Software Engineer</span>{" "}
+								at various technology startups based in Toronto, Canada 🇨🇦.
+							</p> */}
+						</div>
 					</div>
 				</div>
 			</section>
@@ -117,7 +118,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-16">
 				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-					<span className="mr-1.5 flex h-5 w-5 text-purple-500">
+					<span className="mr-1.5 flex h-5 w-5">
 						<Icon name="microscope" />
 					</span>
 					<span className="uppercase">Research Interests</span>
@@ -146,14 +147,14 @@ const Home: NextPageWithLayout = () => {
 					</p>
 					<div className="flex flex-col items-center justify-between gap-y-2 pb-[12px] pr-1 pt-4.5 text-sm lg:flex-row">
 						<div className="text-normal flex w-full items-center gap-x-2 rounded-md border bg-white px-4 py-[7px] font-medium shadow-sm dark:border-gray-600 dark:bg-gray-800 lg:w-auto">
-							<div className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-500 text-white dark:bg-purple-700">
+							<div className="flex h-5 w-5 items-center justify-center rounded-full bg-indigo-500 text-white dark:bg-indigo-700">
 								1
 							</div>
 							<div className="font-bold">Privacy-preserving computation</div>
 						</div>
 						<div className="hidden text-3 lg:block">and</div>
 						<div className="text-normal flex w-full items-center gap-x-2 rounded-md border bg-white px-4 py-[7px] font-medium shadow-sm dark:border-gray-600 dark:bg-gray-800 lg:w-auto">
-							<div className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-500 text-white dark:bg-purple-700">
+							<div className="flex h-5 w-5 items-center justify-center rounded-full bg-teal-500 text-white dark:bg-teal-700">
 								2
 							</div>
 							<div>Software security and usability</div>
@@ -169,7 +170,7 @@ const Home: NextPageWithLayout = () => {
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5 text-blue-500">
+						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="article" />
 						</span>
 						<span className="hidden uppercase lg:block">
@@ -268,7 +269,7 @@ const Home: NextPageWithLayout = () => {
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5 text-yellow-500">
+						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="suitcase" />
 						</span>
 						<span className="uppercase">Employment</span>
@@ -355,7 +356,7 @@ const Home: NextPageWithLayout = () => {
 			<section className="mb-24 mt-14">
 				<div className="flex justify-between">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5 text-green-500">
+						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="edit" />
 						</span>
 						<span className="uppercase">Blog Posts</span>
