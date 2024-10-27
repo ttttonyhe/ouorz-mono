@@ -39,7 +39,7 @@ export default function CardWithOutImage({ item, sticky }: Props) {
 					</div>
 					<div className="mt-6">
 						<Link href={`/post/${item.id}`}>
-							<h1 className="mb-5 text-2 font-medium tracking-wider text-gray-700 dark:text-white lg:text-listTitle">
+							<h1 className="mb-5 text-2 font-bold tracking-wider text-gray-700 dark:text-white lg:text-listTitle">
 								{item.post_title}
 							</h1>
 						</Link>

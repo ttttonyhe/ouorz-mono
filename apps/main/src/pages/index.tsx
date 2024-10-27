@@ -46,13 +46,13 @@ const Home: NextPageWithLayout = () => {
 			</Head>
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div>
-					<h1 className="mb-1.5 flex items-center whitespace-nowrap break-words text-3xl font-medium leading-relaxed tracking-wide text-black dark:text-white lg:text-1">
+					<h1 className="mb-1.5 flex items-center whitespace-nowrap break-words text-3xl font-bold tracking-wide text-black dark:text-white lg:text-1">
 						<span className="mr-2.5 inline-block animate-waveHand cursor-pointer hover:animate-waveHandAgain">
 							👋
 						</span>
 						Hello, and welcome!
 					</h1>
-					<div className="flex flex-col gap-y-1.5 break-words px-1 pb-1.5 pt-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 dark:text-gray-300 lg:text-left lg:text-2">
+					<div className="flex flex-col gap-y-1.5 break-words px-1 pb-1.5 pt-1 text-justify text-3 font-light tracking-wide text-gray-500 dark:text-gray-300 lg:text-left lg:text-2">
 						<p>
 							My name is Lipeng He
 							<span className="hidden lg:inline"> </span>
@@ -116,13 +116,13 @@ const Home: NextPageWithLayout = () => {
 				</div>
 			</section>
 			<section className="mt-16">
-				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-bold tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5 text-purple-500">
 						<Icon name="microscope" />
 					</span>
 					<span className="uppercase">Research Interests</span>
 				</label>
-				<div className="mt-[15px] flex flex-col gap-y-2 break-words px-0.5 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
+				<div className="mt-[15px] flex flex-col gap-y-2 break-words px-0.5 text-justify text-3 font-light tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p>
 						<span>
 							I am interested in both the{" "}
@@ -168,7 +168,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-bold tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5 text-blue-500">
 							<Icon name="article" />
 						</span>
@@ -267,7 +267,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-bold tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5 text-yellow-500">
 							<Icon name="suitcase" />
 						</span>
@@ -354,7 +354,7 @@ const Home: NextPageWithLayout = () => {
 			</section> */}
 			<section className="mb-24 mt-14">
 				<div className="flex justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-bold tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5 text-green-500">
 							<Icon name="edit" />
 						</span>

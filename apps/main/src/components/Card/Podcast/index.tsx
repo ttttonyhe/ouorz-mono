@@ -24,7 +24,7 @@ const PodcastCard = (props: PodcastCardProps) => {
 					/>
 				</div>
 				<div className="px-3.5 pb-5 pt-4.5">
-					<h2 className="text-normal mb-0.5 overflow-hidden text-ellipsis whitespace-nowrap font-medium tracking-wider">
+					<h2 className="text-normal mb-0.5 overflow-hidden text-ellipsis whitespace-nowrap font-bold tracking-wider">
 						{title}
 					</h2>
 					<p

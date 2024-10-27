@@ -36,7 +36,7 @@ export const CardTool = ({
 			/>
 			<div className="col-start-2 col-end-9 grid grid-cols-2 items-center py-2 pl-3 pr-3 lg:pl-0">
 				<div className="items-center justify-center">
-					<h2 className="text-xl font-medium text-gray-600 dark:text-gray-200">
+					<h2 className="text-xl font-bold text-gray-600 dark:text-gray-200">
 						{item.post_metas.fineTool.itemName}
 					</h2>
 					<p className="text-ellipsis text-5 text-gray-500 dark:text-gray-400">
@@ -80,7 +80,7 @@ export default function CardWithImageTool({ item, sticky }: Props) {
 				<div className="mt-6">
 					<Link href={`/post/${item.id}`}>
 						<h1
-							className="mb-5 text-2 font-medium tracking-wider text-gray-700 dark:text-white lg:text-listTitle"
+							className="mb-5 text-2 font-bold tracking-wider text-gray-700 dark:text-white lg:text-listTitle"
 							dangerouslySetInnerHTML={{ __html: item.post_title }}
 						/>
 					</Link>

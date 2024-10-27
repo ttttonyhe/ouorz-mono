@@ -17,6 +17,10 @@ body {
 	margin-bottom: 5px !important;
 }
 
+.prose {
+	max-width: 100% !important;
+}
+
 .prose ol {
 	padding-left: 35px;
 	display: block;
@@ -102,7 +106,9 @@ h4,
 h5 {
 	@apply tracking-wide;
 	@apply dark:!text-white;
+	@apply !font-bold;
 }
+
 .prose .warp-post-embed {
 	position: relative;
 	overflow: hidden;

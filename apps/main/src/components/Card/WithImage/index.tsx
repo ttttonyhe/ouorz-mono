@@ -202,7 +202,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 							<div className="mt-6 lg:mt-4">
 								<Link href={`/post/${item.id}`}>
 									<h1
-										className="mb-5 text-2 font-medium tracking-wider text-gray-700 dark:text-white lg:text-listTitle"
+										className="mb-5 text-2 font-bold tracking-wider text-gray-700 dark:text-white lg:text-listTitle"
 										dangerouslySetInnerHTML={{ __html: item.post_title }}
 									/>
 								</Link>

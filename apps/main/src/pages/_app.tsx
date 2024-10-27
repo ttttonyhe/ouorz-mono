@@ -1,6 +1,8 @@
 import type { NextPage } from "next"
 import { ThemeProvider } from "next-themes"
 import type { AppProps } from "next/app"
+import { Noto_Serif_SC } from "next/font/google"
+import localFont from "next/font/local"
 import Script from "next/script"
 import NextNprogress from "nextjs-progressbar"
 import type { ReactElement, ReactNode } from "react"
@@ -16,6 +18,56 @@ export type NextPageWithLayout = NextPage & {
 type AppPropsWithLayout = AppProps & {
 	Component: NextPageWithLayout
 }
+
+const notoSerifSCFont = Noto_Serif_SC({
+	subsets: ["latin"],
+})
+
+const minion3Font = localFont({
+	src: [
+		{
+			path: "./fonts/Minion3-Regular.woff2",
+			weight: "normal",
+			style: "normal",
+		},
+		{
+			path: "./fonts/Minion3-Italic.woff2",
+			weight: "normal",
+			style: "italic",
+		},
+		{
+			path: "./fonts/Minion3-Medium.woff2",
+			weight: "500",
+			style: "normal",
+		},
+		{
+			path: "./fonts/Minion3-MediumItalic.woff2",
+			weight: "500",
+			style: "italic",
+		},
+		{
+			path: "./fonts/Minion3-Semibold.woff2",
+			weight: "600",
+			style: "normal",
+		},
+		{
+			path: "./fonts/Minion3-SemiboldItalic.woff2",
+			weight: "600",
+			style: "italic",
+		},
+		{
+			path: "./fonts/Minion3-Bold.woff2",
+			weight: "bold",
+			style: "normal",
+		},
+		{
+			path: "./fonts/Minion3-BoldItalic.woff2",
+			weight: "bold",
+			style: "italic",
+		},
+	],
+	adjustFontFallback: false,
+})
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
 	const getLayout = Component.layout ?? ((page) => page)
@@ -41,7 +93,11 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
 			<ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
 				{/* Redux Store Provider */}
 				<ReduxProvider store={store}>
-					<div className="min-h-screen animate-appear bg-gbg dark:bg-neutral-900 dark:text-white">
+					<div
+						className="min-h-screen animate-appear bg-gbg dark:bg-neutral-900 dark:text-white"
+						style={{
+							fontFamily: `${minion3Font.style.fontFamily}, ${notoSerifSCFont.style.fontFamily}`,
+						}}>
 						<>{getLayout(<Component {...pageProps} />)}</>
 					</div>
 				</ReduxProvider>

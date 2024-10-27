@@ -45,7 +45,7 @@ const CardWithImagePodcast = ({ item, sticky }: Props) => {
 						</div>
 					</div>
 					<a href={item.post_metas.podcast.episodeUrl}>
-						<h1 className="mb-4 overflow-hidden text-ellipsis whitespace-nowrap text-2 font-medium tracking-wider text-gray-700 dark:text-white lg:text-listTitle">
+						<h1 className="mb-4 overflow-hidden text-ellipsis whitespace-nowrap text-2 font-bold tracking-wider text-gray-700 dark:text-white lg:text-listTitle">
 							{item.post_title}
 						</h1>
 					</a>
