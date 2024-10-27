@@ -38,6 +38,7 @@ const Emphasis = ({
 
 const Home: NextPageWithLayout = () => {
 	const [showPosts, setShowPosts] = useState(false)
+	const [maskClass, setMaskClass] = useState("mask-x-r")
 
 	return (
 		<>
@@ -285,34 +286,54 @@ const Home: NextPageWithLayout = () => {
 					</Link>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
-					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
-						organization="University of Waterloo"
-						organizationFullName="CS 135 Designing Functional Programs"
-						jobTitle="Instructional Support Assistant (ISA)"
-						jobType="Full-time Internship"
-						dateString="Aug 2024 - Present"
-					/>
-					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/zju_logo.png"
-						organization="Zhejiang University"
-						organizationFullName="ABC Lab, Institute of Cyberspace Research"
-						jobTitle="Research Assistant"
-						jobType="Full-time Internship"
-						dateString="May - Aug 2024"
-					/>
+					<div
+						onScroll={(e) => {
+							const target = e.target as HTMLDivElement
+
+							let maskClass = ""
+							if (
+								target.scrollLeft > 0 &&
+								target.scrollLeft < target.scrollWidth - target.clientWidth
+							) {
+								maskClass = "mask-x-full"
+							} else if (target.scrollLeft === 0) {
+								maskClass = "mask-x-r"
+							} else {
+								maskClass = "mask-x-l"
+							}
+
+							setMaskClass(maskClass)
+						}}
+						className={`flex gap-x-4 overflow-x-auto whitespace-nowrap ${maskClass}`}>
+						<EmploymentCard
+							orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
+							organization="University of Waterloo"
+							organizationFullName="CS 135 Designing Functional Programs"
+							jobTitle="Instructional Support Assistant (ISA)"
+							jobType="Teaching, Co-op"
+							dateString="Aug 2024 - Present"
+						/>
+						<EmploymentCard
+							orgLogoSrc="https://static.ouorz.com/zju_logo.png"
+							organization="Zhejiang University"
+							organizationFullName="ABC Lab, Institute of Cyberspace Research"
+							jobTitle="Research Assistant"
+							jobType="Research, Co-op"
+							dateString="May - Aug 2024"
+						/>
+					</div>
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/biorender_logo.png"
 						organization="BioRender"
 						organizationFullName="Science Suite Inc."
 						jobTitle="Full Stack Software Engineer"
-						jobType="Full-time Internship"
+						jobType="SWE, Co-op"
 						dateString="Jan - Apr 2023"
 					/>
 					<EmploymentCard
 						organization="Safyre Labs Inc."
 						jobTitle="Full Stack Software Engineer"
-						jobType="Full-time Internship"
+						jobType="SWE, Co-op"
 						dateString="May -  Aug 2022"
 					/>
 					<EmploymentCard
@@ -320,7 +341,7 @@ const Home: NextPageWithLayout = () => {
 						organization="Bitbuy"
 						organizationFullName="Bitbuy Technologies Inc."
 						jobTitle="Front End Software Engineer"
-						jobType="Full-time Internship"
+						jobType="SWE, Co-op"
 						dateString="Sep -  Dec 2021"
 					/>
 				</div>

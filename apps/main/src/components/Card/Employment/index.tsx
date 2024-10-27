@@ -20,7 +20,7 @@ const EmploymentCard = (props: EmploymentCardProps) => {
 	} = props
 
 	return (
-		<div className="flex w-full flex-col gap-y-2 rounded-md border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+		<div className="flex min-w-[26rem] w-full flex-col gap-y-2 rounded-md border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
 			<div className="text-normal flex w-full items-center justify-between gap-x-2.5 overflow-hidden overflow-x-auto whitespace-nowrap border-b border-gray-200 px-4.5 py-2.5 font-medium tracking-wide text-gray-700 dark:border-gray-700 dark:text-white">
 				<div className="flex items-center gap-x-2">
 					{orgLogoSrc && (
