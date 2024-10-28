@@ -53,7 +53,7 @@ const Home: NextPageWithLayout = () => {
 							height={131}
 							width={131}
 							alt="Tony He"
-							className="rounded-md bg-gray-200 shadow-sm dark:border dark:border-gray-600 dark:opacity-90"
+							className="rounded-md bg-gray-200 shadow-sm dark:border dark:border-gray-600"
 						/>
 					</div>
 					<div className="flex flex-col gap-y-1">
@@ -129,7 +129,7 @@ const Home: NextPageWithLayout = () => {
 						<span>
 							I am interested in both the{" "}
 							<u className="decoration-gray-300">
-								Theoretical & Applied Aspects of Cryptography
+								theoretical & applied aspects of cryptography
 							</u>
 						</span>
 						<span>
@@ -142,7 +142,7 @@ const Home: NextPageWithLayout = () => {
 						In my previous research experience, I worked on developing and
 						analyzing{" "}
 						<u className="decoration-gray-300">
-							Cryptographic Systems and Protocols
+							cryptographic systems and protocols
 						</u>{" "}
 						that address issues related to:
 					</p>
@@ -166,6 +166,22 @@ const Home: NextPageWithLayout = () => {
 						Homomorphic Encryption (FHE) and Privacy-preserving Machine Learning
 						(PPML).
 					</p>
+					<p className="mt-5">My current focus is to:</p>
+					<ul className="mt-2 list-disc pl-5">
+						<li className="pl-3">
+							Design and develop systems and protocols that are provably secure,
+							inexpensive and easy-to-use;
+						</li>
+						<li className="pl-3">
+							Support the deployment of privacy-enhanced technology solutions in
+							the real-world for individuals and organizations to improve
+							fairness and safety in the usage of data at scale;
+						</li>
+						<li className="pl-3">
+							Find new and innovative ways to apply cryptographic tools in
+							society.
+						</li>
+					</ul>
 				</div>
 			</section>
 			<section className="mt-14">
