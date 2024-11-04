@@ -207,6 +207,16 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
+						title="FedGLP: A Federated Prompt Learning Framework for Next-Generation Intelligent Manufacturing Systems"
+						authors="Hao Pan, Xiaoli Zhao, Yuchen Jiang, Lipeng He, Bingquan Wang, and Yincan Shu"
+						venue={{
+							name: "IEEE Transactions on Industrial Informatics",
+							href: "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=9424",
+						}}
+						accepted={false}
+						links={[]}
+					/>
+					<PaperCard
 						title="LookAhead: Preventing DeFi Attacks via Unveiling Adversarial Contracts"
 						authors="Shoupeng Ren, Lipeng He, Tianyu Tu, Di Wu, Jian Liu, Kui Ren, and Chun Chen"
 						venue={{
