@@ -12,30 +12,6 @@ import SubscriptionBox from "~/components/SubscriptionBox"
 import Top from "~/components/Top"
 import { NextPageWithLayout } from "~/pages/_app"
 
-const Emphasis = ({
-	name,
-	className,
-	children,
-}: {
-	name: string
-	className?: string
-	children?: React.ReactNode
-}) => (
-	<span
-		className={`${className || ""} inline-flex items-center gap-x-2 rounded-md border border-gray-300 bg-white px-[8px] py-0.5 text-sm font-normal tracking-normal dark:border-gray-600 dark:bg-gray-700 lg:py-1`}>
-		{children ? (
-			<>
-				<span className="border-r border-gray-300 pr-2 dark:border-gray-600">
-					{name}
-				</span>
-				<span>{children}</span>
-			</>
-		) : (
-			<span>{name}</span>
-		)}
-	</span>
-)
-
 const Home: NextPageWithLayout = () => {
 	const [showPosts, setShowPosts] = useState(false)
 	const [maskClass, setMaskClass] = useState("mask-x-r")
@@ -78,40 +54,17 @@ const Home: NextPageWithLayout = () => {
 								</a>
 								.
 							</p>
-							{/* <p>
-								I was previously a{" "}
-								<Emphasis
-									name="Full Stack Software Engineer"
-									className="hidden border-l-4 !border-l-blue-400 lg:inline-flex">
-									Intern
-								</Emphasis>
-								<span className="lg:hidden">Full Stack Software Engineer</span>{" "}
-								at various technology startups based in Toronto, Canada 🇨🇦.
-							</p> */}
 						</div>
 					</div>
 				</div>
 			</section>
 			<section className="mt-10">
-				{/* <label className="border-gray-301 inline-flex items-center rounded-full border bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-					<span className="mr-2.5 flex h-5 w-5 text-green-500">
-						<Icon name="plane" />
-					</span>
-					<span className="uppercase">How to Reach Me</span>
-				</label> */}
 				<div className="mt-6">
 					<Top />
 				</div>
 			</section>
 			<section className="mt-6">
-				{/* <label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-					<span className="mr-1.5 flex h-5 w-5 text-yellow-400">
-						<Icon name="flag" />
-					</span>
-					<span className="uppercase">Featured Content</span>
-				</label> */}
 				<div className="mt-5">
-					{/* <ResearchPapers /> */}
 					<div className="mt-4">
 						<PagesAndLinks />
 					</div>
@@ -127,24 +80,24 @@ const Home: NextPageWithLayout = () => {
 				<div className="mt-[15px] flex flex-col gap-y-2 break-words px-0.5 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p>
 						<span>
-							I am interested in both the{" "}
-							<u className="decoration-gray-300">
-								theoretical & applied aspects of cryptography
-							</u>
+							I am interested in both the theoretical & applied aspects of
+							cryptography
 						</span>
 						<span>
-							{" "}
-							and their applications throughout and beyond computing & data
-							sciences.
-						</span>
+							, especially its role across computing and data sciences.
+						</span>{" "}
+						My goal is{" "}
+						<u className="decoration-gray-300">
+							to enable society to gain the benefits of emerging technologies
+							without sacrificing security & privacy
+						</u>
+						. And in the process, I hope to also unlock new application
+						scenarios through a combination of systems design and cryptography.
 					</p>
 					<p>
 						In my previous research experience, I worked on developing and
-						analyzing{" "}
-						<u className="decoration-gray-300">
-							cryptographic systems and protocols
-						</u>{" "}
-						that address issues related to:
+						analyzing secure systems and protocols that address issues related
+						to:
 					</p>
 					<div className="flex flex-col items-center justify-between gap-y-2 pb-[12px] pr-1 pt-4.5 text-sm lg:flex-row">
 						<div className="text-normal flex w-full items-center gap-x-2 rounded-md border bg-white px-4 py-[7px] font-medium shadow-sm dark:border-gray-600 dark:bg-gray-800 lg:w-auto">
@@ -158,7 +111,7 @@ const Home: NextPageWithLayout = () => {
 							<div className="flex h-5 w-5 items-center justify-center rounded-full bg-teal-500 text-white dark:bg-teal-700">
 								2
 							</div>
-							<div>Software security and usability</div>
+							<div>Software security and scalability</div>
 						</div>
 					</div>
 					<p>
@@ -166,7 +119,7 @@ const Home: NextPageWithLayout = () => {
 						Homomorphic Encryption (FHE) and Privacy-preserving Machine Learning
 						(PPML).
 					</p>
-					<p className="mt-5">My current focus is to:</p>
+					<p className="mt-5">My general objectives are to:</p>
 					<ul className="mt-2 list-disc pl-5">
 						<li className="pl-3">
 							Design and develop systems and protocols that are provably secure,
@@ -174,8 +127,8 @@ const Home: NextPageWithLayout = () => {
 						</li>
 						<li className="pl-3">
 							Support the deployment of privacy-enhanced technology solutions in
-							the real-world for individuals and organizations to improve
-							fairness and safety in the usage of data at scale;
+							the real world for individuals and organizations to improve
+							fairness and safety in the usage of data;
 						</li>
 						<li className="pl-3">
 							Find new and innovative ways to apply cryptographic tools in
@@ -372,34 +325,6 @@ const Home: NextPageWithLayout = () => {
 					/>
 				</div>
 			</section>
-			{/* <section className="mt-14">
-				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5 text-rose-500">
-							<Icon name="suitcase" />
-						</span>
-						<span className="uppercase">Education</span>
-					</label>
-				</div>
-				<div className="mt-5 flex flex-col gap-y-4">
-					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
-						organization="University of Waterloo"
-						organizationFullName="Bachelor of Mathematics, Honours, Co-operative Program (Minor in Computing)"
-						jobTitle="Mathematics, Combinatorics & Optimization"
-						jobType="Undergraduate"
-						dateString="Sep 2020 - Apr 2025"
-					/>
-					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/ntu_logo.webp"
-						organization="Nanyang Technological University"
-						organizationFullName="GEM Trailblazer Exchange Program"
-						jobTitle="Mathematical Sciences"
-						jobType="Exchange"
-						dateString="Aug - Dec 2023"
-					/>
-				</div>
-			</section> */}
 			<section className="mb-24 mt-14">
 				<div className="flex justify-between">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
