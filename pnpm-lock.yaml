@@ -39,8 +39,8 @@ importers:
         specifier: ^0.1.0
         version: 0.1.0(prettier-plugin-solidity@1.4.1(prettier@3.3.3))(prettier@3.3.3)
       turbo:
-        specifier: ^2.2.3
-        version: 2.2.3
+        specifier: ^2.3.0
+        version: 2.3.0
 
   apps/analytics:
     dependencies:
@@ -275,8 +275,8 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0(react-redux@9.1.2(@types/react@18.3.12)(react@18.3.1)(redux@5.0.1))(react@18.3.1)
       '@sentry/nextjs':
-        specifier: ^8.37.1
-        version: 8.37.1(@opentelemetry/core@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.54.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.26.0(@opentelemetry/api@1.9.0))(next@15.0.2(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1))(react@18.3.1)(webpack@5.96.1(@swc/core@1.5.5(@swc/helpers@0.5.13)))
+        specifier: ^8.38.0
+        version: 8.38.0(@opentelemetry/core@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.54.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.26.0(@opentelemetry/api@1.9.0))(next@15.0.3(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1))(react@18.3.1)(webpack@5.96.1(@swc/core@1.5.5(@swc/helpers@0.5.13)))
       '@twilight-toolkit/ui':
         specifier: workspace:*
         version: link:../../packages/twilight-ui
@@ -284,8 +284,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/twilight-utils
       algoliasearch:
-        specifier: 5.13.0
-        version: 5.13.0
+        specifier: 5.14.2
+        version: 5.14.2
       cors:
         specifier: ^2.8.5
         version: 2.8.5
@@ -296,8 +296,8 @@ importers:
         specifier: ^2.1.4
         version: 2.1.4
       next:
-        specifier: ^15.0.2
-        version: 15.0.2(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1)
+        specifier: ^15.0.3
+        version: 15.0.3(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -356,7 +356,7 @@ importers:
         version: link:../../packages/prettier-config
       '@tailwindcss/typography':
         specifier: ^0.5.15
-        version: 0.5.15(tailwindcss@3.4.14(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.6.3)))
+        version: 0.5.15(tailwindcss@3.4.15(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.6.3)))
       '@types/cors':
         specifier: ^2.8.17
         version: 2.8.17
@@ -383,13 +383,13 @@ importers:
         version: 0.3.4
       autoprefixer:
         specifier: ^10.4.20
-        version: 10.4.20(postcss@8.4.47)
+        version: 10.4.20(postcss@8.4.49)
       comma-number:
         specifier: ^2.1.0
         version: 2.1.0
       cssnano:
         specifier: ^7.0.6
-        version: 7.0.6(postcss@8.4.47)
+        version: 7.0.6(postcss@8.4.49)
       eslint:
         specifier: ^9
         version: 9.2.0
@@ -404,13 +404,13 @@ importers:
         version: 0.4.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       nextjs-progressbar:
         specifier: ^0.0.16
-        version: 0.0.16(next@15.0.2(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1))(react@18.3.1)
+        version: 0.0.16(next@15.0.3(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1))(react@18.3.1)
       nextjs-redirect:
         specifier: ^6.0.1
-        version: 6.0.1(next@15.0.2(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1))(react@18.3.1)
+        version: 6.0.1(next@15.0.3(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1))(react@18.3.1)
       postcss:
-        specifier: ^8.4.47
-        version: 8.4.47
+        specifier: ^8.4.49
+        version: 8.4.49
       react-content-loader:
         specifier: ^7.0.2
         version: 7.0.2(react@18.3.1)
@@ -433,8 +433,8 @@ importers:
         specifier: ^2.2.5
         version: 2.2.5(react@18.3.1)
       tailwindcss:
-        specifier: ^3.4.14
-        version: 3.4.14(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.6.3))
+        specifier: ^3.4.15
+        version: 3.4.15(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.6.3))
       ts-loader:
         specifier: ^9.5.1
         version: 9.5.1(typescript@5.6.3)(webpack@5.96.1(@swc/core@1.5.5(@swc/helpers@0.5.13)))
@@ -797,63 +797,63 @@ importers:
         version: 18.19.33
       tsup:
         specifier: ^6.0.1
-        version: 6.7.0(@swc/core@1.5.5(@swc/helpers@0.5.13))(postcss@8.4.47)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@18.19.33)(typescript@5.6.3))(typescript@5.6.3)
+        version: 6.7.0(@swc/core@1.5.5(@swc/helpers@0.5.13))(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@18.19.33)(typescript@5.6.3))(typescript@5.6.3)
 
 packages:
 
   '@adraffy/ens-normalize@1.10.1':
     resolution: {integrity: sha512-96Z2IP3mYmF1Xg2cDm8f1gWGf/HUVedQ3FMifV4kG/PQ4yEP51xDtRAEfhVNt5f/uzpNkZHwWQuUcu6D6K+Ekw==}
 
-  '@algolia/client-abtesting@5.13.0':
-    resolution: {integrity: sha512-6CoQjlMi1pmQYMQO8tXfuGxSPf6iKX5FP9MuMe6IWmvC81wwTvOehnwchyBl2wuPVhcw2Ar53K53mQ60DAC64g==}
+  '@algolia/client-abtesting@5.14.2':
+    resolution: {integrity: sha512-7fq1tWIy1aNJEaNHxWy3EwDkuo4k22+NBnxq9QlYVSLLXtr6HqmAm6bQgNNzGT3vm21iKqWO9efk+HIhEM1SzQ==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/client-analytics@5.13.0':
-    resolution: {integrity: sha512-pS3qyXiWTwKnrt/jE79fqkNqZp7kjsFNlJDcBGkSWid74DNc6DmArlkvPqyLxnoaYGjUGACT6g56n7E3mVV2TA==}
+  '@algolia/client-analytics@5.14.2':
+    resolution: {integrity: sha512-5Nm5cOOyAGcY+hKNJVmR2jgoGn1nvoANS8W5EfB8yAaUqUxL3lFNUHSkFafAMTCOcVKNDkZQYjUDbOOfdYJLqw==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/client-common@5.13.0':
-    resolution: {integrity: sha512-2SP6bGGWOTN920MLZv8s7yIR3OqY03vEe4U+vb2MGdL8a/8EQznF3L/nTC/rGf/hvEfZlX2tGFxPJaF2waravg==}
+  '@algolia/client-common@5.14.2':
+    resolution: {integrity: sha512-BW1Qzhh9tMKEsWSQQsiOEcHAd6g7zxq9RpPVmyxbDO/O4eA4vyN+Qz5Jzo686kuYdIQKqIPCEtob/JM89tk57g==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/client-insights@5.13.0':
-    resolution: {integrity: sha512-ldHTe+LVgC6L4Wr6doAQQ7Ku0jAdhaaPg1T+IHzmmiRZb2Uq5OsjW2yC65JifOmzPCiMkIZE2mGRpWgkn5ktlw==}
+  '@algolia/client-insights@5.14.2':
+    resolution: {integrity: sha512-17zg6pqifKORvvrMIqW6HhwUry9RKRXLgADrgFjZ6PZvGB4oVs12dwRG2/HMrIlpxd9cjeQfdlEgHj6lbAf6QA==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/client-personalization@5.13.0':
-    resolution: {integrity: sha512-RnCfOSN4OUJDuMNHFca2M8lY64Tmw0kQOZikge4TknTqHmlbKJb8IbJE7Rol79Z80W2Y+B1ydcjV7DPje4GMRA==}
+  '@algolia/client-personalization@5.14.2':
+    resolution: {integrity: sha512-5IYt8vbmTA52xyuaZKFwiRoDPeh7hiOC9aBZqqp9fVs6BU01djI/T8pGJXawvwczltCPYzNsdbllV3rqiDbxmQ==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/client-query-suggestions@5.13.0':
-    resolution: {integrity: sha512-pYo0jbLUtPDN1r341UHTaF2fgN5rbaZfDZqjPRKPM+FRlRmxFxqFQm1UUfpkSUWYGn7lECwDpbKYiKUf81MTwA==}
+  '@algolia/client-query-suggestions@5.14.2':
+    resolution: {integrity: sha512-gvCX/cczU76Bu1sGcxxTdoIwxe+FnuC1IlW9SF/gzxd3ZzsgzBpzD2puIJqt9fHQsjLxVGkJqKev2FtExnJYZg==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/client-search@5.13.0':
-    resolution: {integrity: sha512-s2ge3uZ6Zg2sPSFibqijgEYsuorxcc8KVHg3I95nOPHvFHdnBtSHymhZvq4sp/fu8ijt/Y8jLwkuqm5myn+2Sg==}
+  '@algolia/client-search@5.14.2':
+    resolution: {integrity: sha512-0imdBZDjqxrshw0+eyJUgnkRAbS2W93UQ3BVj8VjN4xQylIMf0fWs72W7MZFdHlH78JJYydevgzqvGMcV0Z1CA==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/ingestion@1.13.0':
-    resolution: {integrity: sha512-fm5LEOe4FPDOc1D+M9stEs8hfcdmbdD+pt9og5shql6ueTZJANDbFoQhDOpiPJizR/ps1GwmjkWfUEywx3sV+Q==}
+  '@algolia/ingestion@1.14.2':
+    resolution: {integrity: sha512-/p4rBNkW0fgCpCwrwre+jHfzlFQsLemgaAQqyui8NPxw95Wgf3p+DKxYzcmh8dygT7ub7FwztTW+uURLX1uqIQ==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/monitoring@1.13.0':
-    resolution: {integrity: sha512-e8Hshlnm2G5fapyUgWTBwhJ22yXcnLtPC4LWZKx7KOvv35GcdoHtlUBX94I/sWCJLraUr65JvR8qOo3LXC43dg==}
+  '@algolia/monitoring@1.14.2':
+    resolution: {integrity: sha512-81R57Y/mS0uNhWpu6cNEfkbkADLW4bP0BNjuPpxAypobv7WzYycUnbMvv1YkN6OsociB4+3M7HfsVzj4Nc09vA==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/recommend@5.13.0':
-    resolution: {integrity: sha512-53/wW96oaj1FKMzGdFcZ/epygfTppLDUvgI1thLkd475EtVZCH3ZZVUNCEvf1AtnNyH1RnItkFzX8ayWCpx2PQ==}
+  '@algolia/recommend@5.14.2':
+    resolution: {integrity: sha512-OwELnAZxCUyfjYjqsrFmC7Vfa12kqwbDdLUV0oi4j+4pxDsfPgkiZ6iCH2uPw6X8VK88Hl3InPt+RPaZvcrCWg==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/requester-browser-xhr@5.13.0':
-    resolution: {integrity: sha512-NV6oSCt5lFuzfsVQoSBpewEWf/h4ySr7pv2bfwu9yF/jc/g39pig8+YpuqsxlRWBm/lTGVA2V0Ai9ySwrNumIA==}
+  '@algolia/requester-browser-xhr@5.14.2':
+    resolution: {integrity: sha512-irUvkK+TGBhyivtNCIIbVgNUgbUoHOSk8m/kFX4ddto/PUPmLFRRNNnMHtJ1+OzrJ/uD3Am4FUK2Yt+xgQr05w==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/requester-fetch@5.13.0':
-    resolution: {integrity: sha512-094bK4rumf+rXJazxv3mq6eKRM0ep5AxIo8T0YmOdldswQt79apeufFiPLN19nHEWH22xR2FelimD+T/wRSP+Q==}
+  '@algolia/requester-fetch@5.14.2':
+    resolution: {integrity: sha512-UNBg5mM4MIYdxPuVjyDL22BC6P87g7WuM91Z1Ky0J19aEGvCSF+oR+9autthROFXdRnAa1rACOjuqn95iBbKpw==}
     engines: {node: '>= 14.0.0'}
 
-  '@algolia/requester-node-http@5.13.0':
-    resolution: {integrity: sha512-JY5xhEYMgki53Wm+A6R2jUpOUdD0zZnBq+PC5R1TGMNOYL1s6JjDrJeMsvaI2YWxYMUSoCnRoltN/yf9RI8n3A==}
+  '@algolia/requester-node-http@5.14.2':
+    resolution: {integrity: sha512-CTFA03YiLcnpP+JoLRqjHt5pqDHuKWJpLsIBY/60Gmw8pjALZ3TwvbAquRX4Vy+yrin178NxMuU+ilZ54f2IrQ==}
     engines: {node: '>= 14.0.0'}
 
   '@alloc/quick-lru@5.2.0':
@@ -2908,8 +2908,8 @@ packages:
   '@next/env@14.2.1':
     resolution: {integrity: sha512-qsHJle3GU3CmVx7pUoXcghX4sRN+vINkbLdH611T8ZlsP//grzqVW87BSUgOZeSAD4q7ZdZicdwNe/20U2janA==}
 
-  '@next/env@15.0.2':
-    resolution: {integrity: sha512-c0Zr0ModK5OX7D4ZV8Jt/wqoXtitLNPwUfG9zElCZztdaZyNVnN40rDXVZ/+FGuR4CcNV5AEfM6N8f+Ener7Dg==}
+  '@next/env@15.0.3':
+    resolution: {integrity: sha512-t9Xy32pjNOvVn2AS+Utt6VmyrshbpfUMhIjFO60gI58deSo/KgLOp31XZ4O+kY/Is8WAGYwA5gR7kOb1eORDBA==}
 
   '@next/eslint-plugin-next@14.2.3':
     resolution: {integrity: sha512-L3oDricIIjgj1AVnRdRor21gI7mShlSwU/1ZGHmqM3LzHhXXhdkrfeNY5zif25Bi5Dd7fiJHsbhoZCHfXYvlAw==}
@@ -2943,8 +2943,8 @@ packages:
     cpu: [arm64]
     os: [darwin]
 
-  '@next/swc-darwin-arm64@15.0.2':
-    resolution: {integrity: sha512-GK+8w88z+AFlmt+ondytZo2xpwlfAR8U6CRwXancHImh6EdGfHMIrTSCcx5sOSBei00GyLVL0ioo1JLKTfprgg==}
+  '@next/swc-darwin-arm64@15.0.3':
+    resolution: {integrity: sha512-s3Q/NOorCsLYdCKvQlWU+a+GeAd3C8Rb3L1YnetsgwXzhc3UTWrtQpB/3eCjFOdGUj5QmXfRak12uocd1ZiiQw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
@@ -2967,8 +2967,8 @@ packages:
     cpu: [x64]
     os: [darwin]
 
-  '@next/swc-darwin-x64@15.0.2':
-    resolution: {integrity: sha512-KUpBVxIbjzFiUZhiLIpJiBoelqzQtVZbdNNsehhUn36e2YzKHphnK8eTUW1s/4aPy5kH/UTid8IuVbaOpedhpw==}
+  '@next/swc-darwin-x64@15.0.3':
+    resolution: {integrity: sha512-Zxl/TwyXVZPCFSf0u2BNj5sE0F2uR6iSKxWpq4Wlk/Sv9Ob6YCKByQTkV2y6BCic+fkabp9190hyrDdPA/dNrw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -2991,8 +2991,8 @@ packages:
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-arm64-gnu@15.0.2':
-    resolution: {integrity: sha512-9J7TPEcHNAZvwxXRzOtiUvwtTD+fmuY0l7RErf8Yyc7kMpE47MIQakl+3jecmkhOoIyi/Rp+ddq7j4wG6JDskQ==}
+  '@next/swc-linux-arm64-gnu@15.0.3':
+    resolution: {integrity: sha512-T5+gg2EwpsY3OoaLxUIofmMb7ohAUlcNZW0fPQ6YAutaWJaxt1Z1h+8zdl4FRIOr5ABAAhXtBcpkZNwUcKI2fw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -3015,8 +3015,8 @@ packages:
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-arm64-musl@15.0.2':
-    resolution: {integrity: sha512-BjH4ZSzJIoTTZRh6rG+a/Ry4SW0HlizcPorqNBixBWc3wtQtj4Sn9FnRZe22QqrPnzoaW0ctvSz4FaH4eGKMww==}
+  '@next/swc-linux-arm64-musl@15.0.3':
+    resolution: {integrity: sha512-WkAk6R60mwDjH4lG/JBpb2xHl2/0Vj0ZRu1TIzWuOYfQ9tt9NFsIinI1Epma77JVgy81F32X/AeD+B2cBu/YQA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -3039,8 +3039,8 @@ packages:
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-linux-x64-gnu@15.0.2':
-    resolution: {integrity: sha512-i3U2TcHgo26sIhcwX/Rshz6avM6nizrZPvrDVDY1bXcLH1ndjbO8zuC7RoHp0NSK7wjJMPYzm7NYL1ksSKFreA==}
+  '@next/swc-linux-x64-gnu@15.0.3':
+    resolution: {integrity: sha512-gWL/Cta1aPVqIGgDb6nxkqy06DkwJ9gAnKORdHWX1QBbSZZB+biFYPFti8aKIQL7otCE1pjyPaXpFzGeG2OS2w==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -3063,8 +3063,8 @@ packages:
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-linux-x64-musl@15.0.2':
-    resolution: {integrity: sha512-AMfZfSVOIR8fa+TXlAooByEF4OB00wqnms1sJ1v+iu8ivwvtPvnkwdzzFMpsK5jA2S9oNeeQ04egIWVb4QWmtQ==}
+  '@next/swc-linux-x64-musl@15.0.3':
+    resolution: {integrity: sha512-QQEMwFd8r7C0GxQS62Zcdy6GKx999I/rTO2ubdXEe+MlZk9ZiinsrjwoiBL5/57tfyjikgh6GOU2WRQVUej3UA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -3087,8 +3087,8 @@ packages:
     cpu: [arm64]
     os: [win32]
 
-  '@next/swc-win32-arm64-msvc@15.0.2':
-    resolution: {integrity: sha512-JkXysDT0/hEY47O+Hvs8PbZAeiCQVxKfGtr4GUpNAhlG2E0Mkjibuo8ryGD29Qb5a3IOnKYNoZlh/MyKd2Nbww==}
+  '@next/swc-win32-arm64-msvc@15.0.3':
+    resolution: {integrity: sha512-9TEp47AAd/ms9fPNgtgnT7F3M1Hf7koIYYWCMQ9neOwjbVWJsHZxrFbI3iEDJ8rf1TDGpmHbKxXf2IFpAvheIQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
@@ -3129,8 +3129,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@next/swc-win32-x64-msvc@15.0.2':
-    resolution: {integrity: sha512-foaUL0NqJY/dX0Pi/UcZm5zsmSk5MtP/gxx3xOPyREkMFN+CTjctPfu3QaqrQHinaKdPnMWPJDKt4VjDfTBe/Q==}
+  '@next/swc-win32-x64-msvc@15.0.3':
+    resolution: {integrity: sha512-VNAz+HN4OGgvZs6MOoVfnn41kBzT+M+tB+OK4cww6DNyWS6wKaDpaAm/qLeOUbnMh0oVx1+mg0uoYARF69dJyA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -3345,8 +3345,8 @@ packages:
     peerDependencies:
       '@opentelemetry/api': '>=1.0.0 <1.10.0'
 
-  '@opentelemetry/instrumentation-amqplib@0.42.0':
-    resolution: {integrity: sha512-fiuU6OKsqHJiydHWgTRQ7MnIrJ2lEqsdgFtNIH4LbAUJl/5XmrIeoDzDnox+hfkgWK65jsleFuQDtYb5hW1koQ==}
+  '@opentelemetry/instrumentation-amqplib@0.43.0':
+    resolution: {integrity: sha512-ALjfQC+0dnIEcvNYsbZl/VLh7D2P1HhFF4vicRKHhHFIUV3Shpg4kXgiek5PLhmeKSIPiUB25IYH5RIneclL4A==}
     engines: {node: '>=14'}
     peerDependencies:
       '@opentelemetry/api': ^1.3.0
@@ -3417,6 +3417,12 @@ packages:
     peerDependencies:
       '@opentelemetry/api': ^1.3.0
 
+  '@opentelemetry/instrumentation-knex@0.41.0':
+    resolution: {integrity: sha512-OhI1SlLv5qnsnm2dOVrian/x3431P75GngSpnR7c4fcVFv7prXGYu29Z6ILRWJf/NJt6fkbySmwdfUUnFnHCTg==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      '@opentelemetry/api': ^1.3.0
+
   '@opentelemetry/instrumentation-koa@0.43.0':
     resolution: {integrity: sha512-lDAhSnmoTIN6ELKmLJBplXzT/Jqs5jGZehuG22EdSMaTwgjMpxMDI1YtlKEhiWPWkrz5LUsd0aOO0ZRc9vn3AQ==}
     engines: {node: '>=14'}
@@ -3467,6 +3473,12 @@ packages:
 
   '@opentelemetry/instrumentation-redis-4@0.42.0':
     resolution: {integrity: sha512-NaD+t2JNcOzX/Qa7kMy68JbmoVIV37fT/fJYzLKu2Wwd+0NCxt+K2OOsOakA8GVg8lSpFdbx4V/suzZZ2Pvdjg==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      '@opentelemetry/api': ^1.3.0
+
+  '@opentelemetry/instrumentation-tedious@0.15.0':
+    resolution: {integrity: sha512-Kb7yo8Zsq2TUwBbmwYgTAMPK0VbhoS8ikJ6Bup9KrDtCx2JC01nCb+M0VJWXt7tl0+5jARUbKWh5jRSoImxdCw==}
     engines: {node: '>=14'}
     peerDependencies:
       '@opentelemetry/api': ^1.3.0
@@ -4261,28 +4273,28 @@ packages:
   '@scure/bip39@1.1.1':
     resolution: {integrity: sha512-t+wDck2rVkh65Hmv280fYdVdY25J9YeEUIgn2LG1WM6gxFkGzcksoDiUkWVpVp3Oex9xGC68JU2dSbUfwZ2jPg==}
 
-  '@sentry-internal/browser-utils@8.37.1':
-    resolution: {integrity: sha512-OSR/V5GCsSCG7iapWtXCT/y22uo3HlawdEgfM1NIKk1mkP15UyGQtGEzZDdih2H+SNuX1mp9jQLTjr5FFp1A5w==}
+  '@sentry-internal/browser-utils@8.38.0':
+    resolution: {integrity: sha512-5QMVcssrAcmjKT0NdFYcX0b0wwZovGAZ9L2GajErXtHkBenjI2sgR2+5J7n+QZGuk2SC1qhGmT1O9i3p3UEwew==}
     engines: {node: '>=14.18'}
 
-  '@sentry-internal/feedback@8.37.1':
-    resolution: {integrity: sha512-Se25NXbSapgS2S+JssR5YZ48b3OY4UGmAuBOafgnMW91LXMxRNWRbehZuNUmjjHwuywABMxjgu+Yp5uJDATX+g==}
+  '@sentry-internal/feedback@8.38.0':
+    resolution: {integrity: sha512-AW5HCCAlc3T1jcSuNhbFVNO1CHyJ5g5tsGKEP4VKgu+D1Gg2kZ5S2eFatLBUP/BD5JYb1A7p6XPuzYp1XfMq0A==}
     engines: {node: '>=14.18'}
 
-  '@sentry-internal/replay-canvas@8.37.1':
-    resolution: {integrity: sha512-1JLAaPtn1VL5vblB0BMELFV0D+KUm/iMGsrl4/JpRm0Ws5ESzQl33DhXVv1IX/ZAbx9i14EjR7MG9+Hj70tieQ==}
+  '@sentry-internal/replay-canvas@8.38.0':
+    resolution: {integrity: sha512-OxmlWzK9J8mRM+KxdSnQ5xuxq+p7TiBzTz70FT3HltxmeugvDkyp6803UcFqHOPHR35OYeVLOalym+FmvNn9kw==}
     engines: {node: '>=14.18'}
 
-  '@sentry-internal/replay@8.37.1':
-    resolution: {integrity: sha512-E/Plhisk/pXJjOdOU12sg8m/APTXTA21iEniidP6jW3/+O0tD/H/UovEqa4odNTqxPMa798xHQSQNt5loYiaLA==}
+  '@sentry-internal/replay@8.38.0':
+    resolution: {integrity: sha512-mQPShKnIab7oKwkwrRxP/D8fZYHSkDY+cvqORzgi+wAwgnunytJQjz9g6Ww2lJu98rHEkr5SH4V4rs6PZYZmnQ==}
     engines: {node: '>=14.18'}
 
   '@sentry/babel-plugin-component-annotate@2.22.6':
     resolution: {integrity: sha512-V2g1Y1I5eSe7dtUVMBvAJr8BaLRr4CLrgNgtPaZyMT4Rnps82SrZ5zqmEkLXPumlXhLUWR6qzoMNN2u+RXVXfQ==}
     engines: {node: '>= 14'}
 
-  '@sentry/browser@8.37.1':
-    resolution: {integrity: sha512-5ym+iGiIpjIKKpMWi9S3/tXh9xneS+jqxwRTJqed3cb8i4ydfMAAP8sM3U8xMCWWABpWyIUW+fpewC0tkhE1aQ==}
+  '@sentry/browser@8.38.0':
+    resolution: {integrity: sha512-AZR+b0EteNZEGv6JSdBD22S9VhQ7nrljKsSnzxobBULf3BpwmhmCzTbDrqWszKDAIDYmL+yQJIR2glxbknneWQ==}
     engines: {node: '>=14.18'}
 
   '@sentry/bundler-plugin-core@2.22.6':
@@ -4339,8 +4351,8 @@ packages:
     resolution: {integrity: sha512-TmfrII8w1PQZSZgPpUESqjB+jC6MvZJZdLtE/0hZ+SrnKhW3x5WlYLvTXZpcWePYBku7rl2wn1RZu6uT0qCTeg==}
     engines: {node: '>=6'}
 
-  '@sentry/core@8.37.1':
-    resolution: {integrity: sha512-82csXby589iDupM3VgCHJeWZagUyEEaDnbFcoZ/Z91QX2Sjq8FcF5OsforoXjw09i0XTFqlkFAnQVpDBmMXcpQ==}
+  '@sentry/core@8.38.0':
+    resolution: {integrity: sha512-sGD+5TEHU9G7X7zpyaoJxpOtwjTjvOd1f/MKBrWW2vf9UbYK+GUJrOzLhMoSWp/pHSYgvObkJkDb/HwieQjvhQ==}
     engines: {node: '>=14.18'}
 
   '@sentry/hub@5.30.0':
@@ -4351,8 +4363,8 @@ packages:
     resolution: {integrity: sha512-BwWb/owZKtkDX+Sc4zCSTNcvZUq7YcH3uAVlmh/gtR9rmUvbzAA3ewLuB3myi4wWRAMEtny6+J/FN/x+2wn9Xw==}
     engines: {node: '>=6'}
 
-  '@sentry/nextjs@8.37.1':
-    resolution: {integrity: sha512-MMe+W1Jd/liYA47RU8qCFSYATgnVEAcFoREnbK2L4ooIDB2RP7jB8AX9LWD9ZWg9MduyQdDoFsI9OPIO3WmfuQ==}
+  '@sentry/nextjs@8.38.0':
+    resolution: {integrity: sha512-axKkeAXbpiO8hQjVtDSLyXYqCN9ptnNHxNmKlYuRTJtwv4hPZ31AIhurEN2y7dUBvXv3QTBv+9kvEkdN8qHvXA==}
     engines: {node: '>=14.18'}
     peerDependencies:
       next: ^13.2.0 || ^14.0 || ^15.0.0-rc.0
@@ -4361,12 +4373,12 @@ packages:
     resolution: {integrity: sha512-Br5oyVBF0fZo6ZS9bxbJZG4ApAjRqAnqFFurMVJJdunNb80brh7a5Qva2kjhm+U6r9NJAB5OmDyPkA1Qnt+QVg==}
     engines: {node: '>=6'}
 
-  '@sentry/node@8.37.1':
-    resolution: {integrity: sha512-ACRZmqOBHRPKsyVhnDR4+RH1QQr7WMdH7RNl62VlKNZGLvraxW1CUqTSeNUFUuOwks3P6nozROSQs8VMSC/nVg==}
+  '@sentry/node@8.38.0':
+    resolution: {integrity: sha512-nwW0XqZFQseXYn0i6i6nKPkbjgHMBEFSF9TnK6mHHqJHHObHIZ6qu5CfvGKgxATia8JPIg9NN8XcyYOnQMi07w==}
     engines: {node: '>=14.18'}
 
-  '@sentry/opentelemetry@8.37.1':
-    resolution: {integrity: sha512-P/Rp7R+qNiRYz9qtVMV12YL9CIrZjzXWGVUBZjJayHu37jdvMowCol5G850QPYy0E2O0AQnFtxBno2yeURn8QQ==}
+  '@sentry/opentelemetry@8.38.0':
+    resolution: {integrity: sha512-AfjmIf/v7+x2WplhkX66LyGKvrzzPeSgff9uJ0cFCC2s0yd1qA2VPuIwEyr5i/FOJOP5bvFr8tu/hz3LA4+F5Q==}
     engines: {node: '>=14.18'}
     peerDependencies:
       '@opentelemetry/api': ^1.9.0
@@ -4375,8 +4387,8 @@ packages:
       '@opentelemetry/sdk-trace-base': ^1.26.0
       '@opentelemetry/semantic-conventions': ^1.27.0
 
-  '@sentry/react@8.37.1':
-    resolution: {integrity: sha512-HanDqBFTgIUhUsYztAHhSti+sEhQ8YopAymXgnpqkJ7j1PLHXZgQAre6M4Uvixu28WS5MDHC1onnAIBDgYRDYw==}
+  '@sentry/react@8.38.0':
+    resolution: {integrity: sha512-5396tewO00wbJFHUkmU+ikmp4A+wuBpStNc7UDyAm642jfbPajj51+GWld/ZYNFiQaZ/8I9tvvpHqVLnUh21gg==}
     engines: {node: '>=14.18'}
     peerDependencies:
       react: ^16.14.0 || 17.x || 18.x || 19.x
@@ -4389,20 +4401,20 @@ packages:
     resolution: {integrity: sha512-R8xOqlSTZ+htqrfteCWU5Nk0CDN5ApUTvrlvBuiH1DyP6czDZ4ktbZB0hAgBlVcK0U+qpD3ag3Tqqpa5Q67rPw==}
     engines: {node: '>=6'}
 
-  '@sentry/types@8.37.1':
-    resolution: {integrity: sha512-ryMOTROLSLINKFEbHWvi7GigNrsQhsaScw2NddybJGztJQ5UhxIGESnxGxWCufBmWFDwd7+5u0jDPCVUJybp7w==}
+  '@sentry/types@8.38.0':
+    resolution: {integrity: sha512-fP5H9ZX01W4Z/EYctk3mkSHi7d06cLcX2/UWqwdWbyPWI+pL2QpUPICeO/C+8SnmYx//wFj3qWDhyPCh1PdFAA==}
     engines: {node: '>=14.18'}
 
   '@sentry/utils@5.30.0':
     resolution: {integrity: sha512-zaYmoH0NWWtvnJjC9/CBseXMtKHm/tm40sz3YfJRxeQjyzRqNQPgivpd9R/oDJCYj999mzdW382p/qi2ypjLww==}
     engines: {node: '>=6'}
 
-  '@sentry/utils@8.37.1':
-    resolution: {integrity: sha512-Qtn2IfpII12K17txG/ZtTci35XYjYi4CxbQ3j7nXY7toGv/+MqPXwV5q2i9g94XaSXlE5Wy9/hoCZoZpZs/djA==}
+  '@sentry/utils@8.38.0':
+    resolution: {integrity: sha512-3X7MgIKIx+2q5Al7QkhaRB4wV6DvzYsaeIwdqKUzGLuRjXmNgJrLoU87TAwQRmZ6Wr3IoEpThZZMNrzYPXxArw==}
     engines: {node: '>=14.18'}
 
-  '@sentry/vercel-edge@8.37.1':
-    resolution: {integrity: sha512-LBf1UFNermpDtV+n5tsOJgtc6b+9/uLsffvq64ktnx9x+Pz2/3sFAHauikB/fwmo0MLxYk9AIng5b2QL5+uv4Q==}
+  '@sentry/vercel-edge@8.38.0':
+    resolution: {integrity: sha512-JckfcK/bZZj2CGOcHhgi4lcHAWpMqOnx8g9YcIWc8Bj8MfpavXciYBU+L0AnYiXwnW1v3E4M0pMrb+jccvGtEw==}
     engines: {node: '>=14.18'}
 
   '@sentry/webpack-plugin@2.22.6':
@@ -5251,6 +5263,9 @@ packages:
   '@types/superagent@4.1.24':
     resolution: {integrity: sha512-mEafCgyKiMFin24SDzWN7yAADt4gt6YawFiNMp0QS5ZPboORfyxFt0s3VzJKhTaKg9py/4FUmrHLTNfJKt9Rbw==}
 
+  '@types/tedious@4.0.14':
+    resolution: {integrity: sha512-KHPsfX/FoVbUGbyYvk1q9MMQHLPeRZhRJZdO45Q4YjvFkv4hMNghCWTvy7rdKessBsmtz4euWCWAB6/tVpI1Iw==}
+
   '@types/unist@2.0.10':
     resolution: {integrity: sha512-IfYcSBWE3hLpBg8+X2SEa8LVkJdJEkT2Ese2aaLs3ptGdVtABxndrMaxuFlQ1qdFf9Q5rDvDpxI3WwgvKFAsQA==}
 
@@ -5621,8 +5636,8 @@ packages:
   ajv@8.13.0:
     resolution: {integrity: sha512-PRA911Blj99jR5RMeTunVbNXMF6Lp4vZXnk5GQjcnUWUTsrXtekg/pnmFFI2u/I36Y/2bITGS30GZCXei6uNkA==}
 
-  algoliasearch@5.13.0:
-    resolution: {integrity: sha512-04lyQX3Ev/oLYQx+aagamQDXvkUUfX1mwrLrus15+9fNaYj28GDxxEzbwaRfvmHFcZyoxvup7mMtDTTw8SrTEQ==}
+  algoliasearch@5.14.2:
+    resolution: {integrity: sha512-aYjI4WLamMxbhdJ2QAA99VbDCJOGzMOdT2agh57bi40n86ufkhZSIAf6mkocr7NmtBLtwCnSHvD5NJ+Ky5elWw==}
     engines: {node: '>= 14.0.0'}
 
   amazon-cognito-identity-js@6.3.12:
@@ -8918,6 +8933,10 @@ packages:
     resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
     hasBin: true
 
+  jiti@1.21.6:
+    resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
+    hasBin: true
+
   joi@17.13.1:
     resolution: {integrity: sha512-vaBlIKCyo4FCUtCm7Eu4QZd/q02bWcxfUO6YSXAZOWF6gzcLBeba8kwotUdYJjDLW8Cz8RywsSOqiNJZW0mNvg==}
 
@@ -10043,16 +10062,16 @@ packages:
       sass:
         optional: true
 
-  next@15.0.2:
-    resolution: {integrity: sha512-rxIWHcAu4gGSDmwsELXacqAPUk+j8dV/A9cDF5fsiCMpkBDYkO2AEaL1dfD+nNmDiU6QMCFN8Q30VEKapT9UHQ==}
-    engines: {node: '>=18.18.0'}
+  next@15.0.3:
+    resolution: {integrity: sha512-ontCbCRKJUIoivAdGB34yCaOcPgYXr9AAkV/IwqFfWWTXEPUgLYkSkqBhIk9KK7gGmgjc64B+RdoeIDM13Irnw==}
+    engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
     hasBin: true
     peerDependencies:
       '@opentelemetry/api': ^1.1.0
       '@playwright/test': ^1.41.2
       babel-plugin-react-compiler: '*'
-      react: ^18.2.0 || 19.0.0-rc-02c0e824-20241028
-      react-dom: ^18.2.0 || 19.0.0-rc-02c0e824-20241028
+      react: ^18.2.0 || 19.0.0-rc-66855b96-20241106
+      react-dom: ^18.2.0 || 19.0.0-rc-66855b96-20241106
       sass: ^1.3.0
     peerDependenciesMeta:
       '@opentelemetry/api':
@@ -10509,6 +10528,9 @@ packages:
   picocolors@1.1.0:
     resolution: {integrity: sha512-TQ92mBOW0l3LeMeyLV6mzy/kWr8lkd/hp3mTg7wYK7zJhuBStmGMBG0BdeDZS/dZx1IukaX6Bk11zcln25o1Aw==}
 
+  picocolors@1.1.1:
+    resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
+
   picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
@@ -10835,6 +10857,12 @@ packages:
     peerDependencies:
       postcss: ^8.2.14
 
+  postcss-nested@6.2.0:
+    resolution: {integrity: sha512-HQbt28KulC5AJzG+cZtj9kvKB93CFCdLvog1WFLf1D+xmMvPGlBstkpTEZfK5+AN9hfJocyBFCNiqyS48bpgzQ==}
+    engines: {node: '>=12.0'}
+    peerDependencies:
+      postcss: ^8.2.14
+
   postcss-nesting@12.1.3:
     resolution: {integrity: sha512-8XVmgNNYlmIg1qxSP7O5n76nm0I71noCzlSCl7oqaL2opJ5nSB7r8/726yObKrUTRt6ipjiqHB1wYrMVTM66Sg==}
     engines: {node: ^14 || ^16 || >=18}
@@ -11000,8 +11028,8 @@ packages:
     resolution: {integrity: sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==}
     engines: {node: ^10 || ^12 || >=14}
 
-  postcss@8.4.47:
-    resolution: {integrity: sha512-56rxCq7G/XfB4EkXq9Egn5GCqugWvDFjafDOThIdMBsI15iqPqR5r15TfSr1YPYeEI19YeaXMCbY6u88Y76GLQ==}
+  postcss@8.4.49:
+    resolution: {integrity: sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==}
     engines: {node: ^10 || ^12 || >=14}
 
   postgres-array@2.0.0:
@@ -12536,8 +12564,8 @@ packages:
     resolution: {integrity: sha512-w2sfv80nrAh2VCbqR5AK27wswXhqcck2AhfnNW76beQXskGZ1V12GwS//yYVa3d3fcvAip2OUnbDAjW2k3v9fA==}
     engines: {node: '>=10.0.0'}
 
-  tailwindcss@3.4.14:
-    resolution: {integrity: sha512-IcSvOcTRcUtQQ7ILQL5quRDg7Xs93PdJEk1ZLbhhvJc7uj/OAhYOnruEiwnGgBvUtaUAJ8/mhSw1o8L2jCiENA==}
+  tailwindcss@3.4.15:
+    resolution: {integrity: sha512-r4MeXnfBmSOuKUWmXe6h2CcyfzJCEk4F0pptO5jlnYSIViUkVmsawj80N5h2lO3gwcmSb4n3PuN+e+GC1Guylw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -12839,38 +12867,38 @@ packages:
   tunnel-agent@0.6.0:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
 
-  turbo-darwin-64@2.2.3:
-    resolution: {integrity: sha512-Rcm10CuMKQGcdIBS3R/9PMeuYnv6beYIHqfZFeKWVYEWH69sauj4INs83zKMTUiZJ3/hWGZ4jet9AOwhsssLyg==}
+  turbo-darwin-64@2.3.0:
+    resolution: {integrity: sha512-pji+D49PhFItyQjf2QVoLZw2d3oRGo8gJgKyOiRzvip78Rzie74quA8XNwSg/DuzM7xx6gJ3p2/LylTTlgZXxQ==}
     cpu: [x64]
     os: [darwin]
 
-  turbo-darwin-arm64@2.2.3:
-    resolution: {integrity: sha512-+EIMHkuLFqUdJYsA3roj66t9+9IciCajgj+DVek+QezEdOJKcRxlvDOS2BUaeN8kEzVSsNiAGnoysFWYw4K0HA==}
+  turbo-darwin-arm64@2.3.0:
+    resolution: {integrity: sha512-AJrGIL9BO41mwDF/IBHsNGwvtdyB911vp8f5mbNo1wG66gWTvOBg7WCtYQBvCo11XTenTfXPRSsAb7w3WAZb6w==}
     cpu: [arm64]
     os: [darwin]
 
-  turbo-linux-64@2.2.3:
-    resolution: {integrity: sha512-UBhJCYnqtaeOBQLmLo8BAisWbc9v9daL9G8upLR+XGj6vuN/Nz6qUAhverN4Pyej1g4Nt1BhROnj6GLOPYyqxQ==}
+  turbo-linux-64@2.3.0:
+    resolution: {integrity: sha512-jZqW6vc2sPJT3M/3ZmV1Cg4ecQVPqsbHncG/RnogHpBu783KCSXIndgxvUQNm9qfgBYbZDBnP1md63O4UTElhw==}
     cpu: [x64]
     os: [linux]
 
-  turbo-linux-arm64@2.2.3:
-    resolution: {integrity: sha512-hJYT9dN06XCQ3jBka/EWvvAETnHRs3xuO/rb5bESmDfG+d9yQjeTMlhRXKrr4eyIMt6cLDt1LBfyi+6CQ+VAwQ==}
+  turbo-linux-arm64@2.3.0:
+    resolution: {integrity: sha512-HUbDLJlvd/hxuyCNO0BmEWYQj0TugRMvSQeG8vHJH+Lq8qOgDAe7J0K73bFNbZejZQxW3C3XEiZFB3pnpO78+A==}
     cpu: [arm64]
     os: [linux]
 
-  turbo-windows-64@2.2.3:
-    resolution: {integrity: sha512-NPrjacrZypMBF31b4HE4ROg4P3nhMBPHKS5WTpMwf7wydZ8uvdEHpESVNMOtqhlp857zbnKYgP+yJF30H3N2dQ==}
+  turbo-windows-64@2.3.0:
+    resolution: {integrity: sha512-c5rxrGNTYDWX9QeMzWLFE9frOXnKjHGEvQMp1SfldDlbZYsloX9UKs31TzUThzfTgTiz8NYuShaXJ2UvTMnV/g==}
     cpu: [x64]
     os: [win32]
 
-  turbo-windows-arm64@2.2.3:
-    resolution: {integrity: sha512-fnNrYBCqn6zgKPKLHu4sOkihBI/+0oYFr075duRxqUZ+1aLWTAGfHZLgjVeLh3zR37CVzuerGIPWAEkNhkWEIw==}
+  turbo-windows-arm64@2.3.0:
+    resolution: {integrity: sha512-7qfUuYhfIVb1AZgs89DxhXK+zZez6O2ocmixEQ4hXZK7ytnBt5vaz2zGNJJKFNYIL5HX1C3tuHolnpNgDNCUIg==}
     cpu: [arm64]
     os: [win32]
 
-  turbo@2.2.3:
-    resolution: {integrity: sha512-5lDvSqIxCYJ/BAd6rQGK/AzFRhBkbu4JHVMLmGh/hCb7U3CqSnr5Tjwfy9vc+/5wG2DJ6wttgAaA7MoCgvBKZQ==}
+  turbo@2.3.0:
+    resolution: {integrity: sha512-/uOq5o2jwRPyaUDnwBpOR5k9mQq4c3wziBgWNWttiYQPmbhDtrKYPRBxTvA2WpgQwRIbt8UM612RMN8n/TvmHA==}
     hasBin: true
 
   tweetnacl-util@0.15.1:
@@ -13719,82 +13747,82 @@ snapshots:
 
   '@adraffy/ens-normalize@1.10.1': {}
 
-  '@algolia/client-abtesting@5.13.0':
+  '@algolia/client-abtesting@5.14.2':
     dependencies:
-      '@algolia/client-common': 5.13.0
-      '@algolia/requester-browser-xhr': 5.13.0
-      '@algolia/requester-fetch': 5.13.0
-      '@algolia/requester-node-http': 5.13.0
+      '@algolia/client-common': 5.14.2
+      '@algolia/requester-browser-xhr': 5.14.2
+      '@algolia/requester-fetch': 5.14.2
+      '@algolia/requester-node-http': 5.14.2
 
-  '@algolia/client-analytics@5.13.0':
+  '@algolia/client-analytics@5.14.2':
     dependencies:
-      '@algolia/client-common': 5.13.0
-      '@algolia/requester-browser-xhr': 5.13.0
-      '@algolia/requester-fetch': 5.13.0
-      '@algolia/requester-node-http': 5.13.0
+      '@algolia/client-common': 5.14.2
+      '@algolia/requester-browser-xhr': 5.14.2
+      '@algolia/requester-fetch': 5.14.2
+      '@algolia/requester-node-http': 5.14.2
 
-  '@algolia/client-common@5.13.0': {}
+  '@algolia/client-common@5.14.2': {}
 
-  '@algolia/client-insights@5.13.0':
+  '@algolia/client-insights@5.14.2':
     dependencies:
-      '@algolia/client-common': 5.13.0
-      '@algolia/requester-browser-xhr': 5.13.0
-      '@algolia/requester-fetch': 5.13.0
-      '@algolia/requester-node-http': 5.13.0
+      '@algolia/client-common': 5.14.2
+      '@algolia/requester-browser-xhr': 5.14.2
+      '@algolia/requester-fetch': 5.14.2
+      '@algolia/requester-node-http': 5.14.2
 
-  '@algolia/client-personalization@5.13.0':
+  '@algolia/client-personalization@5.14.2':
     dependencies:
-      '@algolia/client-common': 5.13.0
-      '@algolia/requester-browser-xhr': 5.13.0
-      '@algolia/requester-fetch': 5.13.0
-      '@algolia/requester-node-http': 5.13.0
+      '@algolia/client-common': 5.14.2
+      '@algolia/requester-browser-xhr': 5.14.2
+      '@algolia/requester-fetch': 5.14.2
+      '@algolia/requester-node-http': 5.14.2
 
-  '@algolia/client-query-suggestions@5.13.0':
+  '@algolia/client-query-suggestions@5.14.2':
     dependencies:
-      '@algolia/client-common': 5.13.0
-      '@algolia/requester-browser-xhr': 5.13.0
-      '@algolia/requester-fetch': 5.13.0
-      '@algolia/requester-node-http': 5.13.0
+      '@algolia/client-common': 5.14.2
+      '@algolia/requester-browser-xhr': 5.14.2
+      '@algolia/requester-fetch': 5.14.2
+      '@algolia/requester-node-http': 5.14.2
 
-  '@algolia/client-search@5.13.0':
+  '@algolia/client-search@5.14.2':
     dependencies:
-      '@algolia/client-common': 5.13.0
-      '@algolia/requester-browser-xhr': 5.13.0
-      '@algolia/requester-fetch': 5.13.0
-      '@algolia/requester-node-http': 5.13.0
+      '@algolia/client-common': 5.14.2
+      '@algolia/requester-browser-xhr': 5.14.2
+      '@algolia/requester-fetch': 5.14.2
+      '@algolia/requester-node-http': 5.14.2
 
-  '@algolia/ingestion@1.13.0':
+  '@algolia/ingestion@1.14.2':
     dependencies:
-      '@algolia/client-common': 5.13.0
-      '@algolia/requester-browser-xhr': 5.13.0
-      '@algolia/requester-fetch': 5.13.0
-      '@algolia/requester-node-http': 5.13.0
+      '@algolia/client-common': 5.14.2
+      '@algolia/requester-browser-xhr': 5.14.2
+      '@algolia/requester-fetch': 5.14.2
+      '@algolia/requester-node-http': 5.14.2
 
-  '@algolia/monitoring@1.13.0':
+  '@algolia/monitoring@1.14.2':
     dependencies:
-      '@algolia/client-common': 5.13.0
-      '@algolia/requester-browser-xhr': 5.13.0
-      '@algolia/requester-fetch': 5.13.0
-      '@algolia/requester-node-http': 5.13.0
+      '@algolia/client-common': 5.14.2
+      '@algolia/requester-browser-xhr': 5.14.2
+      '@algolia/requester-fetch': 5.14.2
+      '@algolia/requester-node-http': 5.14.2
 
-  '@algolia/recommend@5.13.0':
+  '@algolia/recommend@5.14.2':
     dependencies:
-      '@algolia/client-common': 5.13.0
-      '@algolia/requester-browser-xhr': 5.13.0
-      '@algolia/requester-fetch': 5.13.0
-      '@algolia/requester-node-http': 5.13.0
+      '@algolia/client-common': 5.14.2
+      '@algolia/requester-browser-xhr': 5.14.2
+      '@algolia/requester-fetch': 5.14.2
+      '@algolia/requester-node-http': 5.14.2
 
-  '@algolia/requester-browser-xhr@5.13.0':
+  '@algolia/requester-browser-xhr@5.14.2':
     dependencies:
-      '@algolia/client-common': 5.13.0
+      '@algolia/client-common': 5.14.2
 
-  '@algolia/requester-fetch@5.13.0':
+  '@algolia/requester-fetch@5.14.2':
     dependencies:
-      '@algolia/client-common': 5.13.0
+      '@algolia/client-common': 5.14.2
 
-  '@algolia/requester-node-http@5.13.0':
+  '@algolia/requester-node-http@5.14.2':
     dependencies:
-      '@algolia/client-common': 5.13.0
+      '@algolia/client-common': 5.14.2
 
   '@alloc/quick-lru@5.2.0': {}
 
@@ -14006,7 +14034,7 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.5
       chalk: 2.4.2
       js-tokens: 4.0.0
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   '@babel/parser@7.24.5':
     dependencies:
@@ -16178,7 +16206,7 @@ snapshots:
 
   '@next/env@14.2.1': {}
 
-  '@next/env@15.0.2': {}
+  '@next/env@15.0.3': {}
 
   '@next/eslint-plugin-next@14.2.3':
     dependencies:
@@ -16200,7 +16228,7 @@ snapshots:
   '@next/swc-darwin-arm64@14.2.1':
     optional: true
 
-  '@next/swc-darwin-arm64@15.0.2':
+  '@next/swc-darwin-arm64@15.0.3':
     optional: true
 
   '@next/swc-darwin-x64@13.5.6':
@@ -16212,7 +16240,7 @@ snapshots:
   '@next/swc-darwin-x64@14.2.1':
     optional: true
 
-  '@next/swc-darwin-x64@15.0.2':
+  '@next/swc-darwin-x64@15.0.3':
     optional: true
 
   '@next/swc-linux-arm64-gnu@13.5.6':
@@ -16224,7 +16252,7 @@ snapshots:
   '@next/swc-linux-arm64-gnu@14.2.1':
     optional: true
 
-  '@next/swc-linux-arm64-gnu@15.0.2':
+  '@next/swc-linux-arm64-gnu@15.0.3':
     optional: true
 
   '@next/swc-linux-arm64-musl@13.5.6':
@@ -16236,7 +16264,7 @@ snapshots:
   '@next/swc-linux-arm64-musl@14.2.1':
     optional: true
 
-  '@next/swc-linux-arm64-musl@15.0.2':
+  '@next/swc-linux-arm64-musl@15.0.3':
     optional: true
 
   '@next/swc-linux-x64-gnu@13.5.6':
@@ -16248,7 +16276,7 @@ snapshots:
   '@next/swc-linux-x64-gnu@14.2.1':
     optional: true
 
-  '@next/swc-linux-x64-gnu@15.0.2':
+  '@next/swc-linux-x64-gnu@15.0.3':
     optional: true
 
   '@next/swc-linux-x64-musl@13.5.6':
@@ -16260,7 +16288,7 @@ snapshots:
   '@next/swc-linux-x64-musl@14.2.1':
     optional: true
 
-  '@next/swc-linux-x64-musl@15.0.2':
+  '@next/swc-linux-x64-musl@15.0.3':
     optional: true
 
   '@next/swc-win32-arm64-msvc@13.5.6':
@@ -16272,7 +16300,7 @@ snapshots:
   '@next/swc-win32-arm64-msvc@14.2.1':
     optional: true
 
-  '@next/swc-win32-arm64-msvc@15.0.2':
+  '@next/swc-win32-arm64-msvc@15.0.3':
     optional: true
 
   '@next/swc-win32-ia32-msvc@13.5.6':
@@ -16293,7 +16321,7 @@ snapshots:
   '@next/swc-win32-x64-msvc@14.2.1':
     optional: true
 
-  '@next/swc-win32-x64-msvc@15.0.2':
+  '@next/swc-win32-x64-msvc@15.0.3':
     optional: true
 
   '@noble/curves@1.2.0':
@@ -16474,11 +16502,11 @@ snapshots:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/semantic-conventions': 1.27.0
 
-  '@opentelemetry/instrumentation-amqplib@0.42.0(@opentelemetry/api@1.9.0)':
+  '@opentelemetry/instrumentation-amqplib@0.43.0(@opentelemetry/api@1.9.0)':
     dependencies:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/core': 1.26.0(@opentelemetry/api@1.9.0)
-      '@opentelemetry/instrumentation': 0.53.0(@opentelemetry/api@1.9.0)
+      '@opentelemetry/instrumentation': 0.54.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.27.0
     transitivePeerDependencies:
       - supports-color
@@ -16576,6 +16604,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@opentelemetry/instrumentation-knex@0.41.0(@opentelemetry/api@1.9.0)':
+    dependencies:
+      '@opentelemetry/api': 1.9.0
+      '@opentelemetry/instrumentation': 0.54.1(@opentelemetry/api@1.9.0)
+      '@opentelemetry/semantic-conventions': 1.27.0
+    transitivePeerDependencies:
+      - supports-color
+
   '@opentelemetry/instrumentation-koa@0.43.0(@opentelemetry/api@1.9.0)':
     dependencies:
       '@opentelemetry/api': 1.9.0
@@ -16652,6 +16688,15 @@ snapshots:
       '@opentelemetry/instrumentation': 0.53.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/redis-common': 0.36.2
       '@opentelemetry/semantic-conventions': 1.27.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@opentelemetry/instrumentation-tedious@0.15.0(@opentelemetry/api@1.9.0)':
+    dependencies:
+      '@opentelemetry/api': 1.9.0
+      '@opentelemetry/instrumentation': 0.54.1(@opentelemetry/api@1.9.0)
+      '@opentelemetry/semantic-conventions': 1.27.0
+      '@types/tedious': 4.0.14
     transitivePeerDependencies:
       - supports-color
 
@@ -17724,43 +17769,43 @@ snapshots:
       '@noble/hashes': 1.2.0
       '@scure/base': 1.1.6
 
-  '@sentry-internal/browser-utils@8.37.1':
+  '@sentry-internal/browser-utils@8.38.0':
     dependencies:
-      '@sentry/core': 8.37.1
-      '@sentry/types': 8.37.1
-      '@sentry/utils': 8.37.1
+      '@sentry/core': 8.38.0
+      '@sentry/types': 8.38.0
+      '@sentry/utils': 8.38.0
 
-  '@sentry-internal/feedback@8.37.1':
+  '@sentry-internal/feedback@8.38.0':
     dependencies:
-      '@sentry/core': 8.37.1
-      '@sentry/types': 8.37.1
-      '@sentry/utils': 8.37.1
+      '@sentry/core': 8.38.0
+      '@sentry/types': 8.38.0
+      '@sentry/utils': 8.38.0
 
-  '@sentry-internal/replay-canvas@8.37.1':
+  '@sentry-internal/replay-canvas@8.38.0':
     dependencies:
-      '@sentry-internal/replay': 8.37.1
-      '@sentry/core': 8.37.1
-      '@sentry/types': 8.37.1
-      '@sentry/utils': 8.37.1
+      '@sentry-internal/replay': 8.38.0
+      '@sentry/core': 8.38.0
+      '@sentry/types': 8.38.0
+      '@sentry/utils': 8.38.0
 
-  '@sentry-internal/replay@8.37.1':
+  '@sentry-internal/replay@8.38.0':
     dependencies:
-      '@sentry-internal/browser-utils': 8.37.1
-      '@sentry/core': 8.37.1
-      '@sentry/types': 8.37.1
-      '@sentry/utils': 8.37.1
+      '@sentry-internal/browser-utils': 8.38.0
+      '@sentry/core': 8.38.0
+      '@sentry/types': 8.38.0
+      '@sentry/utils': 8.38.0
 
   '@sentry/babel-plugin-component-annotate@2.22.6': {}
 
-  '@sentry/browser@8.37.1':
+  '@sentry/browser@8.38.0':
     dependencies:
-      '@sentry-internal/browser-utils': 8.37.1
-      '@sentry-internal/feedback': 8.37.1
-      '@sentry-internal/replay': 8.37.1
-      '@sentry-internal/replay-canvas': 8.37.1
-      '@sentry/core': 8.37.1
-      '@sentry/types': 8.37.1
-      '@sentry/utils': 8.37.1
+      '@sentry-internal/browser-utils': 8.38.0
+      '@sentry-internal/feedback': 8.38.0
+      '@sentry-internal/replay': 8.38.0
+      '@sentry-internal/replay-canvas': 8.38.0
+      '@sentry/core': 8.38.0
+      '@sentry/types': 8.38.0
+      '@sentry/utils': 8.38.0
 
   '@sentry/bundler-plugin-core@2.22.6':
     dependencies:
@@ -17824,10 +17869,10 @@ snapshots:
       '@sentry/utils': 5.30.0
       tslib: 1.14.1
 
-  '@sentry/core@8.37.1':
+  '@sentry/core@8.38.0':
     dependencies:
-      '@sentry/types': 8.37.1
-      '@sentry/utils': 8.37.1
+      '@sentry/types': 8.38.0
+      '@sentry/utils': 8.38.0
 
   '@sentry/hub@5.30.0':
     dependencies:
@@ -17841,23 +17886,23 @@ snapshots:
       '@sentry/types': 5.30.0
       tslib: 1.14.1
 
-  '@sentry/nextjs@8.37.1(@opentelemetry/core@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.54.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.26.0(@opentelemetry/api@1.9.0))(next@15.0.2(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1))(react@18.3.1)(webpack@5.96.1(@swc/core@1.5.5(@swc/helpers@0.5.13)))':
+  '@sentry/nextjs@8.38.0(@opentelemetry/core@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.54.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.26.0(@opentelemetry/api@1.9.0))(next@15.0.3(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1))(react@18.3.1)(webpack@5.96.1(@swc/core@1.5.5(@swc/helpers@0.5.13)))':
     dependencies:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/instrumentation-http': 0.53.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.27.0
       '@rollup/plugin-commonjs': 26.0.1(rollup@3.29.5)
-      '@sentry-internal/browser-utils': 8.37.1
-      '@sentry/core': 8.37.1
-      '@sentry/node': 8.37.1
-      '@sentry/opentelemetry': 8.37.1(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.54.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.27.0)
-      '@sentry/react': 8.37.1(react@18.3.1)
-      '@sentry/types': 8.37.1
-      '@sentry/utils': 8.37.1
-      '@sentry/vercel-edge': 8.37.1
+      '@sentry-internal/browser-utils': 8.38.0
+      '@sentry/core': 8.38.0
+      '@sentry/node': 8.38.0
+      '@sentry/opentelemetry': 8.38.0(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.54.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.27.0)
+      '@sentry/react': 8.38.0(react@18.3.1)
+      '@sentry/types': 8.38.0
+      '@sentry/utils': 8.38.0
+      '@sentry/vercel-edge': 8.38.0
       '@sentry/webpack-plugin': 2.22.6(webpack@5.96.1(@swc/core@1.5.5(@swc/helpers@0.5.13)))
       chalk: 3.0.0
-      next: 15.0.2(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1)
+      next: 15.0.3(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1)
       resolve: 1.22.8
       rollup: 3.29.5
       stacktrace-parser: 0.1.10
@@ -17884,13 +17929,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@sentry/node@8.37.1':
+  '@sentry/node@8.38.0':
     dependencies:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/context-async-hooks': 1.25.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/core': 1.26.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/instrumentation': 0.54.1(@opentelemetry/api@1.9.0)
-      '@opentelemetry/instrumentation-amqplib': 0.42.0(@opentelemetry/api@1.9.0)
+      '@opentelemetry/instrumentation-amqplib': 0.43.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/instrumentation-connect': 0.40.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/instrumentation-dataloader': 0.12.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/instrumentation-express': 0.44.0(@opentelemetry/api@1.9.0)
@@ -17902,6 +17947,7 @@ snapshots:
       '@opentelemetry/instrumentation-http': 0.53.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/instrumentation-ioredis': 0.43.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/instrumentation-kafkajs': 0.4.0(@opentelemetry/api@1.9.0)
+      '@opentelemetry/instrumentation-knex': 0.41.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/instrumentation-koa': 0.43.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/instrumentation-lru-memoizer': 0.40.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/instrumentation-mongodb': 0.48.0(@opentelemetry/api@1.9.0)
@@ -17911,36 +17957,37 @@ snapshots:
       '@opentelemetry/instrumentation-nestjs-core': 0.40.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/instrumentation-pg': 0.44.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/instrumentation-redis-4': 0.42.0(@opentelemetry/api@1.9.0)
+      '@opentelemetry/instrumentation-tedious': 0.15.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/instrumentation-undici': 0.6.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/resources': 1.26.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-base': 1.26.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.27.0
       '@prisma/instrumentation': 5.19.1
-      '@sentry/core': 8.37.1
-      '@sentry/opentelemetry': 8.37.1(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.54.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.27.0)
-      '@sentry/types': 8.37.1
-      '@sentry/utils': 8.37.1
+      '@sentry/core': 8.38.0
+      '@sentry/opentelemetry': 8.38.0(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.54.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.27.0)
+      '@sentry/types': 8.38.0
+      '@sentry/utils': 8.38.0
       import-in-the-middle: 1.11.2
     transitivePeerDependencies:
       - supports-color
 
-  '@sentry/opentelemetry@8.37.1(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.54.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.27.0)':
+  '@sentry/opentelemetry@8.38.0(@opentelemetry/api@1.9.0)(@opentelemetry/core@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/instrumentation@0.54.1(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@1.26.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.27.0)':
     dependencies:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/core': 1.26.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/instrumentation': 0.54.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-base': 1.26.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.27.0
-      '@sentry/core': 8.37.1
-      '@sentry/types': 8.37.1
-      '@sentry/utils': 8.37.1
+      '@sentry/core': 8.38.0
+      '@sentry/types': 8.38.0
+      '@sentry/utils': 8.38.0
 
-  '@sentry/react@8.37.1(react@18.3.1)':
+  '@sentry/react@8.38.0(react@18.3.1)':
     dependencies:
-      '@sentry/browser': 8.37.1
-      '@sentry/core': 8.37.1
-      '@sentry/types': 8.37.1
-      '@sentry/utils': 8.37.1
+      '@sentry/browser': 8.38.0
+      '@sentry/core': 8.38.0
+      '@sentry/types': 8.38.0
+      '@sentry/utils': 8.38.0
       hoist-non-react-statics: 3.3.2
       react: 18.3.1
 
@@ -17954,23 +18001,23 @@ snapshots:
 
   '@sentry/types@5.30.0': {}
 
-  '@sentry/types@8.37.1': {}
+  '@sentry/types@8.38.0': {}
 
   '@sentry/utils@5.30.0':
     dependencies:
       '@sentry/types': 5.30.0
       tslib: 1.14.1
 
-  '@sentry/utils@8.37.1':
+  '@sentry/utils@8.38.0':
     dependencies:
-      '@sentry/types': 8.37.1
+      '@sentry/types': 8.38.0
 
-  '@sentry/vercel-edge@8.37.1':
+  '@sentry/vercel-edge@8.38.0':
     dependencies:
       '@opentelemetry/api': 1.9.0
-      '@sentry/core': 8.37.1
-      '@sentry/types': 8.37.1
-      '@sentry/utils': 8.37.1
+      '@sentry/core': 8.38.0
+      '@sentry/types': 8.38.0
+      '@sentry/utils': 8.38.0
 
   '@sentry/webpack-plugin@2.22.6(webpack@5.96.1(@swc/core@1.5.5(@swc/helpers@0.5.13)))':
     dependencies:
@@ -19009,13 +19056,13 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 3.4.3(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.4.5))
 
-  '@tailwindcss/typography@0.5.15(tailwindcss@3.4.14(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.6.3)))':
+  '@tailwindcss/typography@0.5.15(tailwindcss@3.4.15(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.6.3)))':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 3.4.14(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.6.3))
+      tailwindcss: 3.4.15(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.6.3))
 
   '@testing-library/cypress@10.0.2(cypress@13.15.2)':
     dependencies:
@@ -19419,6 +19466,10 @@ snapshots:
   '@types/superagent@4.1.24':
     dependencies:
       '@types/cookiejar': 2.1.5
+      '@types/node': 20.14.11
+
+  '@types/tedious@4.0.14':
+    dependencies:
       '@types/node': 20.14.11
 
   '@types/unist@2.0.10': {}
@@ -19863,9 +19914,9 @@ snapshots:
     dependencies:
       acorn: 6.4.2
 
-  acorn-import-attributes@1.9.5(acorn@8.11.3):
+  acorn-import-attributes@1.9.5(acorn@8.14.0):
     dependencies:
-      acorn: 8.11.3
+      acorn: 8.14.0
 
   acorn-jsx@5.3.2(acorn@6.4.2):
     dependencies:
@@ -19955,21 +20006,21 @@ snapshots:
       require-from-string: 2.0.2
       uri-js: 4.4.1
 
-  algoliasearch@5.13.0:
+  algoliasearch@5.14.2:
     dependencies:
-      '@algolia/client-abtesting': 5.13.0
-      '@algolia/client-analytics': 5.13.0
-      '@algolia/client-common': 5.13.0
-      '@algolia/client-insights': 5.13.0
-      '@algolia/client-personalization': 5.13.0
-      '@algolia/client-query-suggestions': 5.13.0
-      '@algolia/client-search': 5.13.0
-      '@algolia/ingestion': 1.13.0
-      '@algolia/monitoring': 1.13.0
-      '@algolia/recommend': 5.13.0
-      '@algolia/requester-browser-xhr': 5.13.0
-      '@algolia/requester-fetch': 5.13.0
-      '@algolia/requester-node-http': 5.13.0
+      '@algolia/client-abtesting': 5.14.2
+      '@algolia/client-analytics': 5.14.2
+      '@algolia/client-common': 5.14.2
+      '@algolia/client-insights': 5.14.2
+      '@algolia/client-personalization': 5.14.2
+      '@algolia/client-query-suggestions': 5.14.2
+      '@algolia/client-search': 5.14.2
+      '@algolia/ingestion': 1.14.2
+      '@algolia/monitoring': 1.14.2
+      '@algolia/recommend': 5.14.2
+      '@algolia/requester-browser-xhr': 5.14.2
+      '@algolia/requester-fetch': 5.14.2
+      '@algolia/requester-node-http': 5.14.2
 
   amazon-cognito-identity-js@6.3.12:
     dependencies:
@@ -20219,14 +20270,14 @@ snapshots:
       postcss: 8.4.38
       postcss-value-parser: 4.2.0
 
-  autoprefixer@10.4.20(postcss@8.4.47):
+  autoprefixer@10.4.20(postcss@8.4.49):
     dependencies:
       browserslist: 4.23.3
       caniuse-lite: 1.0.30001650
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.1
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
   available-typed-arrays@1.0.7:
@@ -21146,9 +21197,9 @@ snapshots:
 
   css-color-keywords@1.0.0: {}
 
-  css-declaration-sorter@7.2.0(postcss@8.4.47):
+  css-declaration-sorter@7.2.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
 
   css-has-pseudo@6.0.4(postcss@8.4.38):
     dependencies:
@@ -21163,12 +21214,12 @@ snapshots:
 
   css-loader@6.11.0(webpack@5.96.1(@swc/core@1.5.5(@swc/helpers@0.5.13))(esbuild@0.18.20)):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.47)
-      postcss: 8.4.47
-      postcss-modules-extract-imports: 3.1.0(postcss@8.4.47)
-      postcss-modules-local-by-default: 4.0.5(postcss@8.4.47)
-      postcss-modules-scope: 3.2.0(postcss@8.4.47)
-      postcss-modules-values: 4.0.0(postcss@8.4.47)
+      icss-utils: 5.1.0(postcss@8.4.49)
+      postcss: 8.4.49
+      postcss-modules-extract-imports: 3.1.0(postcss@8.4.49)
+      postcss-modules-local-by-default: 4.0.5(postcss@8.4.49)
+      postcss-modules-scope: 3.2.0(postcss@8.4.49)
+      postcss-modules-values: 4.0.0(postcss@8.4.49)
       postcss-value-parser: 4.2.0
       semver: 7.6.2
     optionalDependencies:
@@ -21208,12 +21259,12 @@ snapshots:
   css-tree@2.2.1:
     dependencies:
       mdn-data: 2.0.28
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
 
   css-tree@2.3.1:
     dependencies:
       mdn-data: 2.0.30
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
 
   css-what@6.1.0: {}
 
@@ -21221,49 +21272,49 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  cssnano-preset-default@7.0.6(postcss@8.4.47):
+  cssnano-preset-default@7.0.6(postcss@8.4.49):
     dependencies:
       browserslist: 4.23.3
-      css-declaration-sorter: 7.2.0(postcss@8.4.47)
-      cssnano-utils: 5.0.0(postcss@8.4.47)
-      postcss: 8.4.47
-      postcss-calc: 10.0.2(postcss@8.4.47)
-      postcss-colormin: 7.0.2(postcss@8.4.47)
-      postcss-convert-values: 7.0.4(postcss@8.4.47)
-      postcss-discard-comments: 7.0.3(postcss@8.4.47)
-      postcss-discard-duplicates: 7.0.1(postcss@8.4.47)
-      postcss-discard-empty: 7.0.0(postcss@8.4.47)
-      postcss-discard-overridden: 7.0.0(postcss@8.4.47)
-      postcss-merge-longhand: 7.0.4(postcss@8.4.47)
-      postcss-merge-rules: 7.0.4(postcss@8.4.47)
-      postcss-minify-font-values: 7.0.0(postcss@8.4.47)
-      postcss-minify-gradients: 7.0.0(postcss@8.4.47)
-      postcss-minify-params: 7.0.2(postcss@8.4.47)
-      postcss-minify-selectors: 7.0.4(postcss@8.4.47)
-      postcss-normalize-charset: 7.0.0(postcss@8.4.47)
-      postcss-normalize-display-values: 7.0.0(postcss@8.4.47)
-      postcss-normalize-positions: 7.0.0(postcss@8.4.47)
-      postcss-normalize-repeat-style: 7.0.0(postcss@8.4.47)
-      postcss-normalize-string: 7.0.0(postcss@8.4.47)
-      postcss-normalize-timing-functions: 7.0.0(postcss@8.4.47)
-      postcss-normalize-unicode: 7.0.2(postcss@8.4.47)
-      postcss-normalize-url: 7.0.0(postcss@8.4.47)
-      postcss-normalize-whitespace: 7.0.0(postcss@8.4.47)
-      postcss-ordered-values: 7.0.1(postcss@8.4.47)
-      postcss-reduce-initial: 7.0.2(postcss@8.4.47)
-      postcss-reduce-transforms: 7.0.0(postcss@8.4.47)
-      postcss-svgo: 7.0.1(postcss@8.4.47)
-      postcss-unique-selectors: 7.0.3(postcss@8.4.47)
+      css-declaration-sorter: 7.2.0(postcss@8.4.49)
+      cssnano-utils: 5.0.0(postcss@8.4.49)
+      postcss: 8.4.49
+      postcss-calc: 10.0.2(postcss@8.4.49)
+      postcss-colormin: 7.0.2(postcss@8.4.49)
+      postcss-convert-values: 7.0.4(postcss@8.4.49)
+      postcss-discard-comments: 7.0.3(postcss@8.4.49)
+      postcss-discard-duplicates: 7.0.1(postcss@8.4.49)
+      postcss-discard-empty: 7.0.0(postcss@8.4.49)
+      postcss-discard-overridden: 7.0.0(postcss@8.4.49)
+      postcss-merge-longhand: 7.0.4(postcss@8.4.49)
+      postcss-merge-rules: 7.0.4(postcss@8.4.49)
+      postcss-minify-font-values: 7.0.0(postcss@8.4.49)
+      postcss-minify-gradients: 7.0.0(postcss@8.4.49)
+      postcss-minify-params: 7.0.2(postcss@8.4.49)
+      postcss-minify-selectors: 7.0.4(postcss@8.4.49)
+      postcss-normalize-charset: 7.0.0(postcss@8.4.49)
+      postcss-normalize-display-values: 7.0.0(postcss@8.4.49)
+      postcss-normalize-positions: 7.0.0(postcss@8.4.49)
+      postcss-normalize-repeat-style: 7.0.0(postcss@8.4.49)
+      postcss-normalize-string: 7.0.0(postcss@8.4.49)
+      postcss-normalize-timing-functions: 7.0.0(postcss@8.4.49)
+      postcss-normalize-unicode: 7.0.2(postcss@8.4.49)
+      postcss-normalize-url: 7.0.0(postcss@8.4.49)
+      postcss-normalize-whitespace: 7.0.0(postcss@8.4.49)
+      postcss-ordered-values: 7.0.1(postcss@8.4.49)
+      postcss-reduce-initial: 7.0.2(postcss@8.4.49)
+      postcss-reduce-transforms: 7.0.0(postcss@8.4.49)
+      postcss-svgo: 7.0.1(postcss@8.4.49)
+      postcss-unique-selectors: 7.0.3(postcss@8.4.49)
 
-  cssnano-utils@5.0.0(postcss@8.4.47):
+  cssnano-utils@5.0.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
 
-  cssnano@7.0.6(postcss@8.4.47):
+  cssnano@7.0.6(postcss@8.4.49):
     dependencies:
-      cssnano-preset-default: 7.0.6(postcss@8.4.47)
+      cssnano-preset-default: 7.0.6(postcss@8.4.49)
       lilconfig: 3.1.2
-      postcss: 8.4.47
+      postcss: 8.4.49
 
   csso@5.0.5:
     dependencies:
@@ -23715,9 +23766,9 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
-  icss-utils@5.1.0(postcss@8.4.47):
+  icss-utils@5.1.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
 
   ieee754@1.2.1: {}
 
@@ -23748,8 +23799,8 @@ snapshots:
 
   import-in-the-middle@1.11.2:
     dependencies:
-      acorn: 8.11.3
-      acorn-import-attributes: 1.9.5(acorn@8.11.3)
+      acorn: 8.14.0
+      acorn-import-attributes: 1.9.5(acorn@8.14.0)
       cjs-module-lexer: 1.3.1
       module-details-from-path: 1.0.3
 
@@ -23985,7 +24036,7 @@ snapshots:
 
   is-reference@1.2.1:
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
 
   is-reference@3.0.2:
     dependencies:
@@ -24216,6 +24267,8 @@ snapshots:
       supports-color: 8.1.1
 
   jiti@1.21.0: {}
+
+  jiti@1.21.6: {}
 
   joi@17.13.1:
     dependencies:
@@ -25998,26 +26051,26 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  next@15.0.2(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1):
+  next@15.0.3(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1):
     dependencies:
-      '@next/env': 15.0.2
+      '@next/env': 15.0.3
       '@swc/counter': 0.1.3
       '@swc/helpers': 0.5.13
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001650
+      caniuse-lite: 1.0.30001677
       postcss: 8.4.31
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       styled-jsx: 5.1.6(react@18.3.1)
     optionalDependencies:
-      '@next/swc-darwin-arm64': 15.0.2
-      '@next/swc-darwin-x64': 15.0.2
-      '@next/swc-linux-arm64-gnu': 15.0.2
-      '@next/swc-linux-arm64-musl': 15.0.2
-      '@next/swc-linux-x64-gnu': 15.0.2
-      '@next/swc-linux-x64-musl': 15.0.2
-      '@next/swc-win32-arm64-msvc': 15.0.2
-      '@next/swc-win32-x64-msvc': 15.0.2
+      '@next/swc-darwin-arm64': 15.0.3
+      '@next/swc-darwin-x64': 15.0.3
+      '@next/swc-linux-arm64-gnu': 15.0.3
+      '@next/swc-linux-arm64-musl': 15.0.3
+      '@next/swc-linux-x64-gnu': 15.0.3
+      '@next/swc-linux-x64-musl': 15.0.3
+      '@next/swc-win32-arm64-msvc': 15.0.3
+      '@next/swc-win32-x64-msvc': 15.0.3
       '@opentelemetry/api': 1.9.0
       sass: 1.77.1
       sharp: 0.33.5
@@ -26025,17 +26078,17 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextjs-progressbar@0.0.16(next@15.0.2(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1))(react@18.3.1):
+  nextjs-progressbar@0.0.16(next@15.0.3(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1))(react@18.3.1):
     dependencies:
       '@types/nprogress': 0.2.3
-      next: 15.0.2(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1)
+      next: 15.0.3(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1)
       nprogress: 0.2.0
       prop-types: 15.8.1
       react: 18.3.1
 
-  nextjs-redirect@6.0.1(next@15.0.2(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1))(react@18.3.1):
+  nextjs-redirect@6.0.1(next@15.0.3(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1))(react@18.3.1):
     dependencies:
-      next: 15.0.2(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1)
+      next: 15.0.3(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.1)
       react: 18.3.1
 
   nice-try@1.0.5: {}
@@ -26468,6 +26521,8 @@ snapshots:
 
   picocolors@1.1.0: {}
 
+  picocolors@1.1.1: {}
+
   picomatch@2.3.1: {}
 
   pidtree@0.3.1: {}
@@ -26523,9 +26578,9 @@ snapshots:
       postcss: 8.4.38
       postcss-selector-parser: 6.0.16
 
-  postcss-calc@10.0.2(postcss@8.4.47):
+  postcss-calc@10.0.2(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-selector-parser: 6.1.2
       postcss-value-parser: 4.2.0
 
@@ -26555,18 +26610,18 @@ snapshots:
       postcss: 8.4.38
       postcss-value-parser: 4.2.0
 
-  postcss-colormin@7.0.2(postcss@8.4.47):
+  postcss-colormin@7.0.2(postcss@8.4.49):
     dependencies:
       browserslist: 4.23.3
       caniuse-api: 3.0.0
       colord: 2.9.3
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-convert-values@7.0.4(postcss@8.4.47):
+  postcss-convert-values@7.0.4(postcss@8.4.49):
     dependencies:
       browserslist: 4.23.3
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
   postcss-custom-media@10.0.6(postcss@8.4.38):
@@ -26599,22 +26654,22 @@ snapshots:
       postcss: 8.4.38
       postcss-selector-parser: 6.0.16
 
-  postcss-discard-comments@7.0.3(postcss@8.4.47):
+  postcss-discard-comments@7.0.3(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-selector-parser: 6.1.2
 
-  postcss-discard-duplicates@7.0.1(postcss@8.4.47):
+  postcss-discard-duplicates@7.0.1(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
 
-  postcss-discard-empty@7.0.0(postcss@8.4.47):
+  postcss-discard-empty@7.0.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
 
-  postcss-discard-overridden@7.0.0(postcss@8.4.47):
+  postcss-discard-overridden@7.0.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
 
   postcss-double-position-gradients@5.0.6(postcss@8.4.38):
     dependencies:
@@ -26658,17 +26713,17 @@ snapshots:
       read-cache: 1.0.0
       resolve: 1.22.8
 
-  postcss-import@15.1.0(postcss@8.4.47):
+  postcss-import@15.1.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
       read-cache: 1.0.0
       resolve: 1.22.8
 
-  postcss-js@4.0.1(postcss@8.4.47):
+  postcss-js@4.0.1(postcss@8.4.49):
     dependencies:
       camelcase-css: 2.0.1
-      postcss: 8.4.47
+      postcss: 8.4.49
 
   postcss-lab-function@6.0.16(postcss@8.4.38):
     dependencies:
@@ -26687,36 +26742,36 @@ snapshots:
       postcss: 8.4.38
       ts-node: 10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.4.5)
 
-  postcss-load-config@3.1.4(postcss@8.4.47)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@18.19.33)(typescript@5.6.3)):
+  postcss-load-config@3.1.4(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@18.19.33)(typescript@5.6.3)):
     dependencies:
       lilconfig: 2.1.0
       yaml: 1.10.2
     optionalDependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       ts-node: 10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@18.19.33)(typescript@5.6.3)
 
-  postcss-load-config@4.0.2(postcss@8.4.47)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@20.12.11)(typescript@5.4.5)):
+  postcss-load-config@4.0.2(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@20.12.11)(typescript@5.4.5)):
     dependencies:
       lilconfig: 3.1.2
       yaml: 2.5.1
     optionalDependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       ts-node: 10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@20.12.11)(typescript@5.4.5)
 
-  postcss-load-config@4.0.2(postcss@8.4.47)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.4.5)):
+  postcss-load-config@4.0.2(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.4.5)):
     dependencies:
       lilconfig: 3.1.2
       yaml: 2.5.1
     optionalDependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       ts-node: 10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.4.5)
 
-  postcss-load-config@4.0.2(postcss@8.4.47)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.6.3)):
+  postcss-load-config@4.0.2(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.6.3)):
     dependencies:
       lilconfig: 3.1.2
       yaml: 2.5.1
     optionalDependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       ts-node: 10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.6.3)
 
   postcss-loader@7.3.4(postcss@8.4.38)(typescript@5.4.5)(webpack@5.96.1(@swc/core@1.5.5(@swc/helpers@0.5.13))(esbuild@0.18.20)):
@@ -26734,69 +26789,74 @@ snapshots:
       postcss: 8.4.38
       postcss-value-parser: 4.2.0
 
-  postcss-merge-longhand@7.0.4(postcss@8.4.47):
+  postcss-merge-longhand@7.0.4(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
-      stylehacks: 7.0.4(postcss@8.4.47)
+      stylehacks: 7.0.4(postcss@8.4.49)
 
-  postcss-merge-rules@7.0.4(postcss@8.4.47):
+  postcss-merge-rules@7.0.4(postcss@8.4.49):
     dependencies:
       browserslist: 4.23.3
       caniuse-api: 3.0.0
-      cssnano-utils: 5.0.0(postcss@8.4.47)
-      postcss: 8.4.47
+      cssnano-utils: 5.0.0(postcss@8.4.49)
+      postcss: 8.4.49
       postcss-selector-parser: 6.1.2
 
-  postcss-minify-font-values@7.0.0(postcss@8.4.47):
+  postcss-minify-font-values@7.0.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-minify-gradients@7.0.0(postcss@8.4.47):
+  postcss-minify-gradients@7.0.0(postcss@8.4.49):
     dependencies:
       colord: 2.9.3
-      cssnano-utils: 5.0.0(postcss@8.4.47)
-      postcss: 8.4.47
+      cssnano-utils: 5.0.0(postcss@8.4.49)
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-minify-params@7.0.2(postcss@8.4.47):
+  postcss-minify-params@7.0.2(postcss@8.4.49):
     dependencies:
       browserslist: 4.23.3
-      cssnano-utils: 5.0.0(postcss@8.4.47)
-      postcss: 8.4.47
+      cssnano-utils: 5.0.0(postcss@8.4.49)
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-minify-selectors@7.0.4(postcss@8.4.47):
+  postcss-minify-selectors@7.0.4(postcss@8.4.49):
     dependencies:
       cssesc: 3.0.0
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-selector-parser: 6.1.2
 
-  postcss-modules-extract-imports@3.1.0(postcss@8.4.47):
+  postcss-modules-extract-imports@3.1.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
 
-  postcss-modules-local-by-default@4.0.5(postcss@8.4.47):
+  postcss-modules-local-by-default@4.0.5(postcss@8.4.49):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.47)
-      postcss: 8.4.47
+      icss-utils: 5.1.0(postcss@8.4.49)
+      postcss: 8.4.49
       postcss-selector-parser: 6.1.2
       postcss-value-parser: 4.2.0
 
-  postcss-modules-scope@3.2.0(postcss@8.4.47):
+  postcss-modules-scope@3.2.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-selector-parser: 6.1.2
 
-  postcss-modules-values@4.0.0(postcss@8.4.47):
+  postcss-modules-values@4.0.0(postcss@8.4.49):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.47)
-      postcss: 8.4.47
+      icss-utils: 5.1.0(postcss@8.4.49)
+      postcss: 8.4.49
 
-  postcss-nested@6.0.1(postcss@8.4.47):
+  postcss-nested@6.0.1(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
+      postcss-selector-parser: 6.1.2
+
+  postcss-nested@6.2.0(postcss@8.4.49):
+    dependencies:
+      postcss: 8.4.49
       postcss-selector-parser: 6.1.2
 
   postcss-nesting@12.1.3(postcss@8.4.38):
@@ -26806,59 +26866,59 @@ snapshots:
       postcss: 8.4.38
       postcss-selector-parser: 6.0.16
 
-  postcss-normalize-charset@7.0.0(postcss@8.4.47):
+  postcss-normalize-charset@7.0.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
 
-  postcss-normalize-display-values@7.0.0(postcss@8.4.47):
+  postcss-normalize-display-values@7.0.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-normalize-positions@7.0.0(postcss@8.4.47):
+  postcss-normalize-positions@7.0.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-normalize-repeat-style@7.0.0(postcss@8.4.47):
+  postcss-normalize-repeat-style@7.0.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-normalize-string@7.0.0(postcss@8.4.47):
+  postcss-normalize-string@7.0.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-normalize-timing-functions@7.0.0(postcss@8.4.47):
+  postcss-normalize-timing-functions@7.0.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-normalize-unicode@7.0.2(postcss@8.4.47):
+  postcss-normalize-unicode@7.0.2(postcss@8.4.49):
     dependencies:
       browserslist: 4.23.3
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-normalize-url@7.0.0(postcss@8.4.47):
+  postcss-normalize-url@7.0.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  postcss-normalize-whitespace@7.0.0(postcss@8.4.47):
+  postcss-normalize-whitespace@7.0.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
   postcss-opacity-percentage@2.0.0(postcss@8.4.38):
     dependencies:
       postcss: 8.4.38
 
-  postcss-ordered-values@7.0.1(postcss@8.4.47):
+  postcss-ordered-values@7.0.1(postcss@8.4.49):
     dependencies:
-      cssnano-utils: 5.0.0(postcss@8.4.47)
-      postcss: 8.4.47
+      cssnano-utils: 5.0.0(postcss@8.4.49)
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
   postcss-overflow-shorthand@5.0.1(postcss@8.4.38):
@@ -26944,15 +27004,15 @@ snapshots:
       postcss: 8.4.38
       postcss-selector-parser: 6.0.16
 
-  postcss-reduce-initial@7.0.2(postcss@8.4.47):
+  postcss-reduce-initial@7.0.2(postcss@8.4.49):
     dependencies:
       browserslist: 4.23.3
       caniuse-api: 3.0.0
-      postcss: 8.4.47
+      postcss: 8.4.49
 
-  postcss-reduce-transforms@7.0.0(postcss@8.4.47):
+  postcss-reduce-transforms@7.0.0(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
   postcss-replace-overflow-wrap@4.0.0(postcss@8.4.38):
@@ -26984,15 +27044,15 @@ snapshots:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
 
-  postcss-svgo@7.0.1(postcss@8.4.47):
+  postcss-svgo@7.0.1(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-value-parser: 4.2.0
       svgo: 3.3.2
 
-  postcss-unique-selectors@7.0.3(postcss@8.4.47):
+  postcss-unique-selectors@7.0.3(postcss@8.4.49):
     dependencies:
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-selector-parser: 6.1.2
 
   postcss-value-parser@4.2.0: {}
@@ -27000,8 +27060,8 @@ snapshots:
   postcss@8.4.31:
     dependencies:
       nanoid: 3.3.7
-      picocolors: 1.0.0
-      source-map-js: 1.2.0
+      picocolors: 1.1.0
+      source-map-js: 1.2.1
 
   postcss@8.4.38:
     dependencies:
@@ -27009,10 +27069,10 @@ snapshots:
       picocolors: 1.0.0
       source-map-js: 1.2.0
 
-  postcss@8.4.47:
+  postcss@8.4.49:
     dependencies:
       nanoid: 3.3.7
-      picocolors: 1.1.0
+      picocolors: 1.1.1
       source-map-js: 1.2.1
 
   postgres-array@2.0.0: {}
@@ -27938,7 +27998,7 @@ snapshots:
       adjust-sourcemap-loader: 4.0.0
       convert-source-map: 1.9.0
       loader-utils: 2.0.4
-      postcss: 8.4.47
+      postcss: 8.4.49
       source-map: 0.6.1
 
   resolve@1.17.0:
@@ -28053,7 +28113,7 @@ snapshots:
     dependencies:
       escalade: 3.1.2
       picocolors: 1.0.0
-      postcss: 8.4.47
+      postcss: 8.4.49
       strip-json-comments: 3.1.1
 
   run-parallel@1.2.0:
@@ -28728,10 +28788,10 @@ snapshots:
       client-only: 0.0.1
       react: 18.3.1
 
-  stylehacks@7.0.4(postcss@8.4.47):
+  stylehacks@7.0.4(postcss@8.4.49):
     dependencies:
       browserslist: 4.23.3
-      postcss: 8.4.47
+      postcss: 8.4.49
       postcss-selector-parser: 6.1.2
 
   stylis@4.3.2: {}
@@ -28811,7 +28871,7 @@ snapshots:
       css-tree: 2.3.1
       css-what: 6.1.0
       csso: 5.0.5
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   swc-loader@0.2.6(@swc/core@1.5.5(@swc/helpers@0.5.13))(webpack@5.96.1(@swc/core@1.5.5(@swc/helpers@0.5.13))(esbuild@0.18.20)):
     dependencies:
@@ -28842,7 +28902,7 @@ snapshots:
       string-width: 4.2.3
       strip-ansi: 6.0.1
 
-  tailwindcss@3.4.14(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.6.3)):
+  tailwindcss@3.4.15(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.6.3)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -28852,17 +28912,17 @@ snapshots:
       fast-glob: 3.3.2
       glob-parent: 6.0.2
       is-glob: 4.0.3
-      jiti: 1.21.0
+      jiti: 1.21.6
       lilconfig: 2.1.0
       micromatch: 4.0.8
       normalize-path: 3.0.0
       object-hash: 3.0.0
-      picocolors: 1.1.0
-      postcss: 8.4.47
-      postcss-import: 15.1.0(postcss@8.4.47)
-      postcss-js: 4.0.1(postcss@8.4.47)
-      postcss-load-config: 4.0.2(postcss@8.4.47)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.6.3))
-      postcss-nested: 6.0.1(postcss@8.4.47)
+      picocolors: 1.1.1
+      postcss: 8.4.49
+      postcss-import: 15.1.0(postcss@8.4.49)
+      postcss-js: 4.0.1(postcss@8.4.49)
+      postcss-load-config: 4.0.2(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.6.3))
+      postcss-nested: 6.2.0(postcss@8.4.49)
       postcss-selector-parser: 6.1.2
       resolve: 1.22.8
       sucrase: 3.35.0
@@ -28885,11 +28945,11 @@ snapshots:
       normalize-path: 3.0.0
       object-hash: 3.0.0
       picocolors: 1.0.0
-      postcss: 8.4.47
-      postcss-import: 15.1.0(postcss@8.4.47)
-      postcss-js: 4.0.1(postcss@8.4.47)
-      postcss-load-config: 4.0.2(postcss@8.4.47)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@20.12.11)(typescript@5.4.5))
-      postcss-nested: 6.0.1(postcss@8.4.47)
+      postcss: 8.4.49
+      postcss-import: 15.1.0(postcss@8.4.49)
+      postcss-js: 4.0.1(postcss@8.4.49)
+      postcss-load-config: 4.0.2(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@20.12.11)(typescript@5.4.5))
+      postcss-nested: 6.0.1(postcss@8.4.49)
       postcss-selector-parser: 6.0.16
       resolve: 1.22.8
       sucrase: 3.35.0
@@ -28912,11 +28972,11 @@ snapshots:
       normalize-path: 3.0.0
       object-hash: 3.0.0
       picocolors: 1.0.0
-      postcss: 8.4.47
-      postcss-import: 15.1.0(postcss@8.4.47)
-      postcss-js: 4.0.1(postcss@8.4.47)
-      postcss-load-config: 4.0.2(postcss@8.4.47)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.4.5))
-      postcss-nested: 6.0.1(postcss@8.4.47)
+      postcss: 8.4.49
+      postcss-import: 15.1.0(postcss@8.4.49)
+      postcss-js: 4.0.1(postcss@8.4.49)
+      postcss-load-config: 4.0.2(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@22.9.0)(typescript@5.4.5))
+      postcss-nested: 6.0.1(postcss@8.4.49)
       postcss-selector-parser: 6.0.16
       resolve: 1.22.8
       sucrase: 3.35.0
@@ -29297,7 +29357,7 @@ snapshots:
       - supports-color
       - ts-node
 
-  tsup@6.7.0(@swc/core@1.5.5(@swc/helpers@0.5.13))(postcss@8.4.47)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@18.19.33)(typescript@5.6.3))(typescript@5.6.3):
+  tsup@6.7.0(@swc/core@1.5.5(@swc/helpers@0.5.13))(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@18.19.33)(typescript@5.6.3))(typescript@5.6.3):
     dependencies:
       bundle-require: 4.1.0(esbuild@0.17.19)
       cac: 6.7.14
@@ -29307,7 +29367,7 @@ snapshots:
       execa: 5.1.1
       globby: 11.1.0
       joycon: 3.1.1
-      postcss-load-config: 3.1.4(postcss@8.4.47)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@18.19.33)(typescript@5.6.3))
+      postcss-load-config: 3.1.4(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.13))(@types/node@18.19.33)(typescript@5.6.3))
       resolve-from: 5.0.0
       rollup: 3.29.4
       source-map: 0.8.0-beta.0
@@ -29315,7 +29375,7 @@ snapshots:
       tree-kill: 1.2.2
     optionalDependencies:
       '@swc/core': 1.5.5(@swc/helpers@0.5.13)
-      postcss: 8.4.47
+      postcss: 8.4.49
       typescript: 5.6.3
     transitivePeerDependencies:
       - supports-color
@@ -29354,32 +29414,32 @@ snapshots:
       safe-buffer: 5.2.1
     optional: true
 
-  turbo-darwin-64@2.2.3:
+  turbo-darwin-64@2.3.0:
     optional: true
 
-  turbo-darwin-arm64@2.2.3:
+  turbo-darwin-arm64@2.3.0:
     optional: true
 
-  turbo-linux-64@2.2.3:
+  turbo-linux-64@2.3.0:
     optional: true
 
-  turbo-linux-arm64@2.2.3:
+  turbo-linux-arm64@2.3.0:
     optional: true
 
-  turbo-windows-64@2.2.3:
+  turbo-windows-64@2.3.0:
     optional: true
 
-  turbo-windows-arm64@2.2.3:
+  turbo-windows-arm64@2.3.0:
     optional: true
 
-  turbo@2.2.3:
+  turbo@2.3.0:
     optionalDependencies:
-      turbo-darwin-64: 2.2.3
-      turbo-darwin-arm64: 2.2.3
-      turbo-linux-64: 2.2.3
-      turbo-linux-arm64: 2.2.3
-      turbo-windows-64: 2.2.3
-      turbo-windows-arm64: 2.2.3
+      turbo-darwin-64: 2.3.0
+      turbo-darwin-arm64: 2.3.0
+      turbo-linux-64: 2.3.0
+      turbo-linux-arm64: 2.3.0
+      turbo-windows-64: 2.3.0
+      turbo-windows-arm64: 2.3.0
 
   tweetnacl-util@0.15.1: {}
 
@@ -29640,7 +29700,7 @@ snapshots:
 
   unplugin@1.0.1:
     dependencies:
-      acorn: 8.11.3
+      acorn: 8.14.0
       chokidar: 3.6.0
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.5.0
@@ -29658,13 +29718,13 @@ snapshots:
     dependencies:
       browserslist: 4.23.0
       escalade: 3.1.2
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   update-browserslist-db@1.1.0(browserslist@4.23.3):
     dependencies:
       browserslist: 4.23.3
       escalade: 3.1.2
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   update-browserslist-db@1.1.1(browserslist@4.24.2):
     dependencies:
