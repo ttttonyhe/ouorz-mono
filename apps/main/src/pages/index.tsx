@@ -179,7 +179,7 @@ const Home: NextPageWithLayout = () => {
 						accepted={false}
 						links={[
 							{
-								label: "arXiv ePrint",
+								label: "Paper",
 								href: "https://arxiv.org/abs/2401.07261",
 								default: true,
 							},
@@ -196,12 +196,12 @@ const Home: NextPageWithLayout = () => {
 						accepted={true}
 						links={[
 							{
-								label: "Cryptology ePrint",
+								label: "Paper",
 								href: "https://eprint.iacr.org/2024/136",
 								default: true,
 							},
 							{
-								label: "Github",
+								label: "Code",
 								href: "https://github.com/zju-abclab/NEXUS",
 							},
 						]}
@@ -222,7 +222,7 @@ const Home: NextPageWithLayout = () => {
 								default: true,
 							},
 							{
-								label: "Github",
+								label: "Code",
 								href: "https://github.com/haopr/MMFL",
 							},
 						]}
@@ -305,15 +305,18 @@ const Home: NextPageWithLayout = () => {
 						orgLogoSrc="https://static.ouorz.com/biorender_logo.png"
 						organization="BioRender"
 						organizationFullName="Science Suite Inc."
+						organizationLocation="Toronto, ON"
 						jobTitle="Full Stack Software Engineer"
 						jobType="SWE, Co-op"
 						dateString="Jan - Apr 2023"
 					/>
 					<EmploymentCard
+						orgLogoSrc="https://static.ouorz.com/jewlr-logo.svg"
 						organization="Safyre Labs Inc."
 						jobTitle="Full Stack Software Engineer"
 						jobType="SWE, Co-op"
 						dateString="May -  Aug 2022"
+						organizationLocation="North York, ON"
 					/>
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/bitbuy_logo.png"
@@ -322,6 +325,7 @@ const Home: NextPageWithLayout = () => {
 						jobTitle="Front End Software Engineer"
 						jobType="SWE, Co-op"
 						dateString="Sep -  Dec 2021"
+						organizationLocation="Toronto, ON"
 					/>
 				</div>
 			</section>
