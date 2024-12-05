@@ -26,8 +26,8 @@ const Home: NextPageWithLayout = () => {
 					<div className="hidden flex-shrink-0 pt-1 lg:block">
 						<Image
 							src="https://static.ouorz.com/avatar_real_small.jpg"
-							height={131}
-							width={131}
+							height={105}
+							width={105}
 							alt="Tony He"
 							className="rounded-md bg-gray-200 shadow-sm dark:border dark:border-gray-600"
 						/>
@@ -37,12 +37,11 @@ const Home: NextPageWithLayout = () => {
 							<span className="mr-2.5 inline-block animate-waveHand cursor-pointer hover:animate-waveHandAgain">
 								👋
 							</span>
-							Hello, and welcome!
+							Lipeng (Tony) He
 						</h1>
-						<div className="flex flex-col gap-y-1.5 break-words px-1 text-justify text-4 font-light leading-relaxed tracking-wide text-gray-500 dark:text-gray-300 lg:text-2">
+						<div className="flex flex-col gap-y-1.5 break-words px-1 text-4 font-light leading-relaxed tracking-wider text-gray-500 dark:text-gray-300 lg:text-2">
 							<p>
-								My name is Lipeng (Tony) He, and I am a student 👨‍🎓, software
-								engineer 🧑‍💻, and researcher 🔬 with the{" "}
+								I am a student, software engineer, and researcher with the{" "}
 								<a
 									href="https://uwaterloo.ca"
 									target="_blank"
