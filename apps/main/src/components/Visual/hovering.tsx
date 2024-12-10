@@ -20,7 +20,7 @@ const Hover = ({
 	children,
 }: Props) => {
 	const [tiltStyles, setTiltStyles] = useState<CSSProperties>({})
-	const element = useRef<HTMLDivElement>()
+	const element = useRef<HTMLDivElement>(null)
 	const width = useRef(0)
 	const height = useRef(0)
 	const top = useRef(0)
