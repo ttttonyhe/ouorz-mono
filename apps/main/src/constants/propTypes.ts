@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
 import { tuple } from "~/utilities/dataTypes"
 
-const listTypes = tuple("index", "cate", "search")
-const labelTypes = tuple("sticky", "primary", "secondary", "green", "gray")
+const _ListTypes = tuple("index", "cate", "search")
+const _LabelTypes = tuple("sticky", "primary", "secondary", "green", "gray")
 
 export interface WPPost {
 	code: any
@@ -44,5 +44,5 @@ export interface WPPost {
 	}
 }
 
-export type ListTypes = (typeof listTypes)[number]
-export type LabelTypes = (typeof labelTypes)[number]
+export type ListTypes = (typeof _ListTypes)[number]
+export type LabelTypes = (typeof _LabelTypes)[number]

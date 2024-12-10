@@ -7,7 +7,7 @@ export default function useTimeoutFunction(
 	ms: number = 0
 ): UseTimeoutFnReturn {
 	const ready = useRef<boolean | null>(false)
-	const timeout = useRef<ReturnType<typeof setTimeout>>()
+	const timeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 	const callback = useRef(fn)
 
 	const isReady = useCallback(() => ready.current, [])

@@ -59,6 +59,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 			}, 1000)
 		} catch (e) {
 			setSummarizing(false)
+			console.log(e)
 		}
 	}, [])
 

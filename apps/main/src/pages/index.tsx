@@ -45,7 +45,8 @@ const Home: NextPageWithLayout = () => {
 								<a
 									href="https://uwaterloo.ca"
 									target="_blank"
-									className="inline-flex items-center gap-x-1 transition-colors hover:text-blue-500 dark:hover:text-blue-500">
+									className="inline-flex items-center gap-x-1 transition-colors hover:text-blue-500 dark:hover:text-blue-500"
+									rel="noreferrer">
 									University of Waterloo
 									<span className="flex h-5 w-5">
 										<Icon name="externalLink" />
