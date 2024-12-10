@@ -15,14 +15,14 @@
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^2.4.0",
-		"@sentry/nextjs": "^8.41.0",
+		"@sentry/nextjs": "^8.43.0",
 		"@twilight-toolkit/ui": "workspace:*",
 		"@twilight-toolkit/utils": "workspace:*",
-		"algoliasearch": "5.15.0",
+		"algoliasearch": "5.16.0",
 		"cors": "^2.8.5",
 		"dotenv-webpack": "^8.1.0",
 		"html2plaintext": "^2.1.4",
-		"next": "^15.0.3",
+		"next": "^15.1.0",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"react-hotkeys-hook": "^3.4.7",
@@ -42,8 +42,8 @@
 		"@types/cors": "^2.8.17",
 		"@types/lodash": "^4.17.13",
 		"@types/node": "^22.10.1",
-		"@types/react": "^18.3.12",
-		"@types/react-dom": "^18.3.1",
+		"@types/react": "^19.0.1",
+		"@types/react-dom": "^19.0.2",
 		"@types/react-highlight": "^0.12.8",
 		"@types/rss": "^0.0.32",
 		"@types/smoothscroll-polyfill": "^0.3.4",
@@ -53,7 +53,7 @@
 		"eslint": "^9",
 		"highlight.js": "^11.10.0",
 		"nexment": "^0.0.688",
-		"next-themes": "^0.4.3",
+		"next-themes": "^0.4.4",
 		"nextjs-progressbar": "^0.0.16",
 		"nextjs-redirect": "^6.0.1",
 		"postcss": "^8.4.49",
@@ -64,16 +64,16 @@
 		"react-timeago": "^7.2.0",
 		"smoothscroll-polyfill": "^0.4.4",
 		"swr": "^2.2.5",
-		"tailwindcss": "^3.4.15",
+		"tailwindcss": "^3.4.16",
 		"ts-loader": "^9.5.1",
 		"typescript": "^5.7.2",
-		"webpack": "^5.96.1"
+		"webpack": "^5.97.1"
 	},
 	"optionalDependencies": {
 		"@testing-library/cypress": "^10.0.2",
 		"@types/chai": "^5.0.1",
 		"@types/jest": "^29.5.14",
 		"@types/mocha": "^10.0.10",
-		"cypress": "^13.16.0"
+		"cypress": "^13.16.1"
 	}
 }
