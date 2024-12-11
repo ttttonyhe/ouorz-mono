@@ -1,7 +1,6 @@
 import { GetServerSideProps } from "next"
 import Head from "next/head"
 import { useRouter } from "next/router"
-import redirect from "nextjs-redirect"
 import { useEffect } from "react"
 import TimeAgo from "react-timeago"
 import CommentBox from "~/components/CommentBox"
@@ -13,8 +12,6 @@ import { NextPageWithLayout } from "~/pages/_app"
 import { setHeaderTitle } from "~/store/general/actions"
 import getAPI from "~/utilities/api"
 
-const Redirect = redirect("/404")
-
 interface Props {
 	status: boolean
 	page?: any
@@ -25,15 +22,17 @@ const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 	const dispatch = useDispatch()
 
 	if (!status || !page) {
+		useEffect(() => {
+			router.replace("/404")
+		}, [])
+
 		return (
-			<Redirect>
-				<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-sm">
-					<h1 className="text-lg font-medium">404 Not Found</h1>
-					<p className="text-sm font-light tracking-wide text-gray-500">
-						redirecting...
-					</p>
-				</div>
-			</Redirect>
+			<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-sm">
+				<h1 className="text-lg font-medium">404 Not Found</h1>
+				<p className="text-sm font-light tracking-wide text-gray-500">
+					redirecting...
+				</p>
+			</div>
 		)
 	}
 

@@ -1,9 +1,9 @@
 import { Icon } from "@twilight-toolkit/ui"
 import Head from "next/head"
+import Image from "next/image"
 import Link from "next/link"
 import React, { useState } from "react"
 import PagesAndLinks from "~/components/Banners/PagesAndLinks"
-import ResearchPapers from "~/components/Banners/Research"
 import EmploymentCard from "~/components/Card/Employment"
 import PaperCard from "~/components/Card/Paper"
 import List from "~/components/List"
@@ -12,32 +12,9 @@ import SubscriptionBox from "~/components/SubscriptionBox"
 import Top from "~/components/Top"
 import { NextPageWithLayout } from "~/pages/_app"
 
-const Emphasis = ({
-	name,
-	className,
-	children,
-}: {
-	name: string
-	className?: string
-	children?: React.ReactNode
-}) => (
-	<span
-		className={`${className || ""} inline-flex items-center gap-x-2 rounded-md border border-gray-300 bg-white px-[8px] py-0.5 text-sm font-normal tracking-normal dark:border-gray-600 dark:bg-gray-700 lg:py-1`}>
-		{children ? (
-			<>
-				<span className="border-r border-gray-300 pr-2 dark:border-gray-600">
-					{name}
-				</span>
-				<span>{children}</span>
-			</>
-		) : (
-			<span>{name}</span>
-		)}
-	</span>
-)
-
 const Home: NextPageWithLayout = () => {
 	const [showPosts, setShowPosts] = useState(false)
+	const [maskClass, setMaskClass] = useState("mask-x-r")
 
 	return (
 		<>
@@ -45,71 +22,49 @@ const Home: NextPageWithLayout = () => {
 				<title>Tony (Lipeng) He</title>
 			</Head>
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
-				<div>
-					<h1 className="mb-1.5 flex items-center whitespace-nowrap break-words text-3xl font-medium leading-relaxed tracking-wide text-black dark:text-white lg:text-1">
-						<span className="mr-2.5 inline-block animate-waveHand cursor-pointer hover:animate-waveHandAgain">
-							👋
-						</span>
-						Hello, and welcome!
-					</h1>
-					<div className="flex flex-col gap-y-1.5 break-words px-1 pb-1.5 pt-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 dark:text-gray-300 lg:text-left lg:text-2">
-						<p>
-							My name is Lipeng He
-							<span className="hidden lg:inline"> </span>
-							<Emphasis
-								name="Preferred First Name"
-								className="hidden -translate-y-0.5 lg:inline-flex">
-								<b>Tony</b>
-							</Emphasis>
-							, and I am currently a student 👨‍🎓 and researcher 🔬 with the{" "}
-							<Emphasis
-								name="University of Waterloo"
-								className="hidden translate-y-[1px] border-l-4 !border-l-yellow-300 lg:inline-flex">
-								<Link
+				<div className="flex items-center justify-between gap-x-10 gap-y-8">
+					<div className="hidden flex-shrink-0 pt-1 lg:block">
+						<Image
+							src="https://static.ouorz.com/avatar_real_small.jpg"
+							height={105}
+							width={105}
+							alt="Tony He"
+							className="rounded-md bg-gray-200 shadow-sm dark:border dark:border-gray-600"
+						/>
+					</div>
+					<div className="flex flex-col gap-y-1">
+						<h1 className="flex items-center whitespace-nowrap break-words text-3xl font-medium tracking-wide text-black dark:text-white lg:text-[1.8rem]">
+							<span className="mr-2.5 inline-block animate-waveHand cursor-pointer hover:animate-waveHandAgain">
+								👋
+							</span>
+							Lipeng (Tony) He
+						</h1>
+						<div className="flex flex-col gap-y-1.5 break-words px-1 text-4 font-light leading-relaxed tracking-wider text-gray-500 dark:text-gray-300 lg:text-2">
+							<p>
+								I am a student, software engineer, and researcher with the{" "}
+								<a
 									href="https://uwaterloo.ca"
 									target="_blank"
-									aria-label="Visit University of Waterloo's website"
-									className="transition-colors hover:text-blue-500">
-									<span className="flex h-4.5 w-4.5">
+									className="inline-flex items-center gap-x-1 transition-colors hover:text-blue-500 dark:hover:text-blue-500"
+									rel="noreferrer">
+									University of Waterloo
+									<span className="flex h-5 w-5">
 										<Icon name="externalLink" />
 									</span>
-								</Link>
-							</Emphasis>
-							<span className="inline lg:hidden">University of Waterloo</span> .
-						</p>
-						<p>
-							I was previously a{" "}
-							<Emphasis
-								name="Full Stack Software Engineer"
-								className="hidden border-l-4 !border-l-blue-400 lg:inline-flex">
-								Intern
-							</Emphasis>
-							<span className="lg:hidden">Full Stack Software Engineer</span> at
-							various technology startups based in Toronto, Canada 🇨🇦.
-						</p>
+								</a>
+								.
+							</p>
+						</div>
 					</div>
 				</div>
 			</section>
 			<section className="mt-10">
-				{/* <label className="border-gray-301 inline-flex items-center rounded-full border bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-					<span className="mr-2.5 flex h-5 w-5 text-green-500">
-						<Icon name="plane" />
-					</span>
-					<span className="uppercase">How to Reach Me</span>
-				</label> */}
 				<div className="mt-6">
 					<Top />
 				</div>
 			</section>
 			<section className="mt-6">
-				{/* <label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-					<span className="mr-1.5 flex h-5 w-5 text-yellow-400">
-						<Icon name="flag" />
-					</span>
-					<span className="uppercase">Featured Content</span>
-				</label> */}
 				<div className="mt-5">
-					{/* <ResearchPapers /> */}
 					<div className="mt-4">
 						<PagesAndLinks />
 					</div>
@@ -117,7 +72,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-16">
 				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-					<span className="mr-1.5 flex h-5 w-5 text-purple-500">
+					<span className="mr-1.5 flex h-5 w-5">
 						<Icon name="microscope" />
 					</span>
 					<span className="uppercase">Research Interests</span>
@@ -125,38 +80,38 @@ const Home: NextPageWithLayout = () => {
 				<div className="mt-[15px] flex flex-col gap-y-2 break-words px-0.5 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p>
 						<span>
-							I am interested in both the{" "}
-							<u className="decoration-gray-300">
-								Theoretical & Applied Aspects of Cryptography
-							</u>
+							I am interested in both the theoretical & applied aspects of
+							cryptography
 						</span>
 						<span>
-							{" "}
-							and their applications throughout and beyond computing & data
-							sciences.
-						</span>
+							, especially its role across computing and data sciences.
+						</span>{" "}
+						My goal is{" "}
+						<u className="decoration-gray-300">
+							to enable society to gain the benefits of emerging technologies
+							without sacrificing security & privacy
+						</u>
+						. And in the process, I hope to also unlock new application
+						scenarios through a combination of systems design and cryptography.
 					</p>
 					<p>
 						In my previous research experience, I worked on developing and
-						analyzing{" "}
-						<u className="decoration-gray-300">
-							Cryptographic Systems and Protocols
-						</u>{" "}
-						that address issues related to:
+						analyzing secure systems and protocols that address issues related
+						to:
 					</p>
 					<div className="flex flex-col items-center justify-between gap-y-2 pb-[12px] pr-1 pt-4.5 text-sm lg:flex-row">
 						<div className="text-normal flex w-full items-center gap-x-2 rounded-md border bg-white px-4 py-[7px] font-medium shadow-sm dark:border-gray-600 dark:bg-gray-800 lg:w-auto">
-							<div className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-500 text-white dark:bg-purple-700">
+							<div className="flex h-5 w-5 items-center justify-center rounded-full bg-indigo-500 text-white dark:bg-indigo-700">
 								1
 							</div>
-							<div className="font-bold">Privacy-preserving computation</div>
+							<div className="font-bold">Trustworthy Computing</div>
 						</div>
 						<div className="hidden text-3 lg:block">and</div>
 						<div className="text-normal flex w-full items-center gap-x-2 rounded-md border bg-white px-4 py-[7px] font-medium shadow-sm dark:border-gray-600 dark:bg-gray-800 lg:w-auto">
-							<div className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-500 text-white dark:bg-purple-700">
+							<div className="flex h-5 w-5 items-center justify-center rounded-full bg-teal-500 text-white dark:bg-teal-700">
 								2
 							</div>
-							<div>Software security and usability</div>
+							<div>Software security and scalability</div>
 						</div>
 					</div>
 					<p>
@@ -164,12 +119,28 @@ const Home: NextPageWithLayout = () => {
 						Homomorphic Encryption (FHE) and Privacy-preserving Machine Learning
 						(PPML).
 					</p>
+					<p className="mt-5">My general objectives are to:</p>
+					<ul className="mt-2 list-disc pl-5">
+						<li className="pl-3">
+							Design and develop systems and protocols that are provably secure,
+							inexpensive and easy-to-use;
+						</li>
+						<li className="pl-3">
+							Support the deployment of cryptographic solutions in the real
+							world for individuals and organizations to improve data privacy,
+							safety and robustness;
+						</li>
+						<li className="pl-3">
+							Find new and innovative ways to apply cryptographic tools in
+							society.
+						</li>
+					</ul>
 				</div>
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5 text-blue-500">
+						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="article" />
 						</span>
 						<span className="hidden uppercase lg:block">
@@ -188,6 +159,16 @@ const Home: NextPageWithLayout = () => {
 					</Link>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
+					{/* <PaperCard
+						title="FedGLP: A Federated Prompt Learning Framework for Next-Generation Intelligent Manufacturing Systems"
+						authors="Hao Pan, Xiaoli Zhao, Yuchen Jiang, Lipeng He, Bingquan Wang, and Yincan Shu"
+						venue={{
+							name: "IEEE Transactions on Industrial Informatics",
+							href: "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=9424",
+						}}
+						accepted={false}
+						links={[]}
+					/> */}
 					<PaperCard
 						title="LookAhead: Preventing DeFi Attacks via Unveiling Adversarial Contracts"
 						authors="Shoupeng Ren, Lipeng He, Tianyu Tu, Di Wu, Jian Liu, Kui Ren, and Chun Chen"
@@ -198,7 +179,7 @@ const Home: NextPageWithLayout = () => {
 						accepted={false}
 						links={[
 							{
-								label: "arXiv ePrint",
+								label: "Paper",
 								href: "https://arxiv.org/abs/2401.07261",
 								default: true,
 							},
@@ -215,12 +196,12 @@ const Home: NextPageWithLayout = () => {
 						accepted={true}
 						links={[
 							{
-								label: "Cryptology ePrint",
+								label: "Paper",
 								href: "https://eprint.iacr.org/2024/136",
 								default: true,
 							},
 							{
-								label: "Github",
+								label: "Code",
 								href: "https://github.com/zju-abclab/NEXUS",
 							},
 						]}
@@ -241,7 +222,7 @@ const Home: NextPageWithLayout = () => {
 								default: true,
 							},
 							{
-								label: "Github",
+								label: "Code",
 								href: "https://github.com/haopr/MMFL",
 							},
 						]}
@@ -268,7 +249,7 @@ const Home: NextPageWithLayout = () => {
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5 text-yellow-500">
+						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="suitcase" />
 						</span>
 						<span className="uppercase">Employment</span>
@@ -284,78 +265,74 @@ const Home: NextPageWithLayout = () => {
 					</Link>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
-					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
-						organization="University of Waterloo"
-						organizationFullName="CS 135 Designing Functional Programs"
-						jobTitle="Instructional Support Assistant (ISA)"
-						jobType="Full-time Internship"
-						dateString="Aug 2024 - Present"
-					/>
-					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/zju_logo.png"
-						organization="Zhejiang University"
-						organizationFullName="ABC Lab, Institute of Cyberspace Research"
-						jobTitle="Research Assistant"
-						jobType="Full-time Internship"
-						dateString="May - Aug 2024"
-					/>
+					<div
+						onScroll={(e) => {
+							const target = e.target as HTMLDivElement
+
+							let maskClass = ""
+							if (
+								target.scrollLeft > 0 &&
+								target.scrollLeft < target.scrollWidth - target.clientWidth
+							) {
+								maskClass = "mask-x-full"
+							} else if (target.scrollLeft === 0) {
+								maskClass = "mask-x-r"
+							} else {
+								maskClass = "mask-x-l"
+							}
+
+							setMaskClass(maskClass)
+						}}
+						className={`flex gap-x-4 overflow-x-auto whitespace-nowrap ${maskClass}`}>
+						<EmploymentCard
+							orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
+							organization="University of Waterloo"
+							organizationFullName="CS 135 Designing Functional Programs"
+							jobTitle="Instructional Support Assistant (ISA)"
+							jobType="Teaching, Co-op"
+							dateString="Aug 2024 - Present"
+						/>
+						<EmploymentCard
+							orgLogoSrc="https://static.ouorz.com/zju_logo.png"
+							organization="Zhejiang University"
+							organizationFullName="ABC Lab, Institute of Cyberspace Research"
+							jobTitle="Research Assistant"
+							jobType="Research, Co-op"
+							dateString="May - Aug 2024"
+						/>
+					</div>
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/biorender_logo.png"
 						organization="BioRender"
 						organizationFullName="Science Suite Inc."
+						organizationLocation="Toronto, ON"
 						jobTitle="Full Stack Software Engineer"
-						jobType="Full-time Internship"
+						jobType="SWE, Co-op"
 						dateString="Jan - Apr 2023"
 					/>
 					<EmploymentCard
+						orgLogoSrc="https://static.ouorz.com/jewlr-logo.svg"
 						organization="Safyre Labs Inc."
 						jobTitle="Full Stack Software Engineer"
-						jobType="Full-time Internship"
+						jobType="SWE, Co-op"
 						dateString="May -  Aug 2022"
+						organizationLocation="North York, ON"
 					/>
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/bitbuy_logo.png"
 						organization="Bitbuy"
 						organizationFullName="Bitbuy Technologies Inc."
 						jobTitle="Front End Software Engineer"
-						jobType="Full-time Internship"
+						jobType="SWE, Co-op"
 						dateString="Sep -  Dec 2021"
+						organizationLocation="Toronto, ON"
 					/>
 				</div>
 			</section>
-			{/* <section className="mt-14">
-				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5 text-rose-500">
-							<Icon name="suitcase" />
-						</span>
-						<span className="uppercase">Education</span>
-					</label>
-				</div>
-				<div className="mt-5 flex flex-col gap-y-4">
-					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
-						organization="University of Waterloo"
-						organizationFullName="Bachelor of Mathematics, Honours, Co-operative Program (Minor in Computing)"
-						jobTitle="Mathematics, Combinatorics & Optimization"
-						jobType="Undergraduate"
-						dateString="Sep 2020 - Apr 2025"
-					/>
-					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/ntu_logo.webp"
-						organization="Nanyang Technological University"
-						organizationFullName="GEM Trailblazer Exchange Program"
-						jobTitle="Mathematical Sciences"
-						jobType="Exchange"
-						dateString="Aug - Dec 2023"
-					/>
-				</div>
-			</section> */}
 			<section className="mb-24 mt-14">
 				<div className="flex justify-between">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
-						<span className="mr-1.5 flex h-5 w-5 text-green-500">
+						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="edit" />
 						</span>
 						<span className="uppercase">Blog Posts</span>

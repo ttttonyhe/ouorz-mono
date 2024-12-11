@@ -27,6 +27,7 @@ const SubscriptionBox = ({
 			body: JSON.stringify({
 				email: email,
 				name: email.split("@")[0],
+				// eslint-disable-next-line camelcase
 				list_uuids: [LISTMONK_LIST_UUID],
 			}),
 		})

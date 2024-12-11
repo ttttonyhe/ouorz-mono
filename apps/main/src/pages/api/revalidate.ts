@@ -36,6 +36,7 @@ const revalidate = async (
 		await res.revalidate(path)
 		return res.json({ status: 401, revalidated: true })
 	} catch (err) {
+		console.log(err)
 		return res.status(500).json({
 			status: 500,
 			revalidated: false,

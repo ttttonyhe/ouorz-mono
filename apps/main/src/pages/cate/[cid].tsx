@@ -2,8 +2,8 @@ import { Icon } from "@twilight-toolkit/ui"
 import { GetServerSideProps } from "next"
 import Head from "next/head"
 import Link from "next/link"
-import redirect from "nextjs-redirect"
-import React from "react"
+import { useRouter } from "next/router"
+import React, { useEffect } from "react"
 import List from "~/components/List"
 import { pageLayout } from "~/components/Page"
 import SubscriptionBox from "~/components/SubscriptionBox"
@@ -14,10 +14,9 @@ interface CateProps {
 	info: { status: boolean; name: string; count: number; id: number }
 }
 
-const Redirect = redirect("/404")
-
 const Cate: NextPageWithLayout = ({ info }: CateProps) => {
 	const title = `${info.name} - Tony He`
+	const router = useRouter()
 
 	if (info.status) {
 		return (
@@ -72,15 +71,17 @@ const Cate: NextPageWithLayout = ({ info }: CateProps) => {
 			</div>
 		)
 	} else {
+		useEffect(() => {
+			router.replace("/404")
+		}, [])
+
 		return (
-			<Redirect>
-				<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-sm">
-					<h1 className="text-lg font-medium">404 Not Found</h1>
-					<p className="text-sm font-light tracking-wide text-gray-500">
-						redirecting...
-					</p>
-				</div>
-			</Redirect>
+			<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-sm">
+				<h1 className="text-lg font-medium">404 Not Found</h1>
+				<p className="text-sm font-light tracking-wide text-gray-500">
+					redirecting...
+				</p>
+			</div>
 		)
 	}
 }
