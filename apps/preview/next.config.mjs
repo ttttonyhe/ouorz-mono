@@ -10,6 +10,7 @@ const nextConfig = {
 	poweredByHeader: false,
 	productionBrowserSourceMaps: false,
 	compress: true,
+	// transpilePackages: ["next-mdx-remote"], enable this after the next nextjs release
 	images: {
 		minimumCacheTTL: 3600,
 		formats: ["image/avif", "image/webp"],
@@ -37,18 +38,18 @@ const nextConfig = {
 	},
 	experimental: {
 		// mdxRs: true,
-		turbo: {
-			resolveExtensions: [
-				".md",
-				".mdx",
-				".tsx",
-				".ts",
-				".jsx",
-				".js",
-				".mjs",
-				".json",
-			],
-		},
+		// turbo: {
+		// 	resolveExtensions: [
+		// 		".md",
+		// 		".mdx",
+		// 		".tsx",
+		// 		".ts",
+		// 		".jsx",
+		// 		".js",
+		// 		".mjs",
+		// 		".json",
+		// 	],
+		// },
 		// optimizePackageImports: ["package-name"],
 	},
 }

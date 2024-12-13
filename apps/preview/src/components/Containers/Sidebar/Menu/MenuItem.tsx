@@ -1,17 +1,17 @@
-import SidebarContext from "./context"
+import MenuContext from "../context"
 import cn from "clsx"
 import Link from "next/link"
 import { useContext, type FC, type PropsWithChildren } from "react"
 
-interface SidebarItemProps {
+interface MenuItemProps {
 	pathname: string
 }
 
-const SidebarItem: FC<PropsWithChildren<SidebarItemProps>> = ({
+const MenuItem: FC<PropsWithChildren<MenuItemProps>> = ({
 	children,
 	pathname,
 }) => {
-	const { activePathname } = useContext(SidebarContext)
+	const { activePathname } = useContext(MenuContext)
 	return (
 		<li>
 			<Link
@@ -23,4 +23,4 @@ const SidebarItem: FC<PropsWithChildren<SidebarItemProps>> = ({
 	)
 }
 
-export default SidebarItem
+export default MenuItem

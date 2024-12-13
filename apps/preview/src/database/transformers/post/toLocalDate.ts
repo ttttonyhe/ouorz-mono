@@ -1,6 +1,6 @@
-import { PostData } from "."
+import { RawPostData } from "@/database"
 
-const toLocalDate = (data: PostData) => {
+const toLocalDate = (data: RawPostData) => {
 	const date = new Date(data.date)
 	const localDate = new Date(
 		date.getTime() + date.getTimezoneOffset() * 60 * 1000

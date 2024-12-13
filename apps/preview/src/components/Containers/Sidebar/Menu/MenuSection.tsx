@@ -1,10 +1,10 @@
 import type { FC, PropsWithChildren } from "react"
 
-interface SidebarSectionProps {
+interface MenuSectionProps {
 	title?: string
 }
 
-const SidebarSection: FC<PropsWithChildren<SidebarSectionProps>> = ({
+const MenuSection: FC<PropsWithChildren<MenuSectionProps>> = ({
 	title,
 	children,
 }) => {
@@ -16,4 +16,4 @@ const SidebarSection: FC<PropsWithChildren<SidebarSectionProps>> = ({
 	)
 }
 
-export default SidebarSection
+export default MenuSection

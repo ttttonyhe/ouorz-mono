@@ -1,17 +1,17 @@
 import Drawer from "@/components/Containers/Drawer"
-import Sidebar from "@/components/Containers/Sidebar"
 import ThemeProvider from "@/providers/themeProvider"
 import "@/styles/globals.css"
 import type { Metadata } from "next"
-import type { FC, PropsWithChildren } from "react"
+import type { FC, PropsWithChildren, ReactNode } from "react"
 
 export const metadata: Metadata = {
 	title: "Tony He (Preview)",
-	description:
-		"Living an absolutely not meaningless life with totally not unachievable goals.",
+	description: "Student Researcher / Software Engineer",
 	keywords: [
-		"Tony He",
 		"Lipeng He",
+		"Tony He",
+		"Researcher",
+		"Software Engineer",
 		"贺莉朋",
 		"博客",
 		"个人博客",
@@ -22,7 +22,6 @@ export const metadata: Metadata = {
 		"区块链",
 		"工程师",
 		"研究学者",
-		"Researcher",
 		"Crypto",
 		"Blockchain",
 		"Tony",
@@ -39,15 +38,41 @@ export const metadata: Metadata = {
 	],
 }
 
-const RootLayout: FC<PropsWithChildren> = ({ children }) => {
+interface RootLayoutProps extends PropsWithChildren {
+	sidebar: ReactNode
+	main: ReactNode
+	aside: ReactNode
+}
+
+const RootLayout: FC<RootLayoutProps> = ({ sidebar, main, aside }) => {
 	return (
 		<html lang="zh-cn" suppressHydrationWarning>
 			<head>
-				<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+				{/* Dark mode favicons */}
+				<link
+					rel="icon"
+					type="image/x-icon"
+					href="/icon-dark.png"
+					media="(prefers-color-scheme: dark)"
+				/>
 				<link
 					type="image/vnd.microsoft.icon"
-					href="/favicon.ico"
+					href="/icon-dark.png"
 					rel="shortcut icon"
+					media="(prefers-color-scheme: dark)"
+				/>
+				{/* Light mode favicons */}
+				<link
+					rel="icon"
+					type="image/x-icon"
+					href="/icon.png"
+					media="(prefers-color-scheme: light)"
+				/>
+				<link
+					type="image/vnd.microsoft.icon"
+					href="/icon.png"
+					rel="shortcut icon"
+					media="(prefers-color-scheme: light)"
 				/>
 				<meta name="robots" content="index,follow" />
 				<meta name="googlebot" content="index,follow" />
@@ -56,7 +81,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 				<meta property="og:title" content="Tony He" />
 				<meta
 					property="og:description"
-					content="Living an absolutely not meaningless life with totally not unachievable goals."
+					content="Student Researcher / Software Engineer"
 				/>
 				<meta
 					property="og:image"
@@ -75,7 +100,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 				/>
 				<meta
 					property="twitter:description"
-					content="Living an absolutely not meaningless life with totally not unachievable goals."
+					content="Student Researcher / Software Engineer"
 				/>
 				<meta name="theme-color" content="#f7f8f9" />
 				<link rel="canonical" href="https://www.ouorz.com" />
@@ -88,8 +113,9 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 			<body className="h-screen bg-white dark:bg-black">
 				<ThemeProvider>
 					<main className="flex h-screen">
-						<Sidebar />
-						<section className="relative h-screen w-full">{children}</section>
+						{sidebar}
+						<section className="relative h-screen w-full">{main}</section>
+						{aside}
 					</main>
 					<Drawer />
 				</ThemeProvider>

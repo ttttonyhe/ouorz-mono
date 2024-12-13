@@ -1,6 +1,4 @@
-import CustomALink from "./ALink"
-import Callout from "./Callout"
-import CodeBlock from "./CodeBlock"
-import CustomLink from "./Link"
+import customMDXComponents from "./components"
+import MDXPostRenderer from "./renderer"
 
-export default { Callout, code: CodeBlock, a: CustomALink, Link: CustomLink }
+export { MDXPostRenderer, customMDXComponents }

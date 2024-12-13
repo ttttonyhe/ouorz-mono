@@ -1,19 +1,23 @@
-import PostRenderer from "@/components/MDX/Renderers"
-import { getPosts, getPostBySlug } from "@/database/getContent"
+import { MDXPostRenderer } from "@/components/MDX"
+import { getPostBySlug, getPostSlugs } from "@/database/getContent"
 import article from "@/styles/article.module.css"
 import cn from "clsx"
 import { FC } from "react"
 
 export interface PostProps {
-	params: {
+	params: Promise<{
 		slug: string
-	}
+	}>
 }
 
-const Post: FC<PostProps> = ({ params: { slug } }) => {
-	const {
-		data: { meta, source },
-	} = getPostBySlug(slug)
+const getPost = (slug: string) => {
+	const { data } = getPostBySlug(slug)
+	return data
+}
+
+const PostPage: FC<PostProps> = async ({ params }) => {
+	const { slug } = await params
+	const { meta, source } = getPost(slug)
 
 	return (
 		<article className="flex shrink-0 justify-center">
@@ -37,19 +41,20 @@ const Post: FC<PostProps> = ({ params: { slug } }) => {
 					"prose-img:rounded-lg"
 				)}>
 				<h1>{meta.title}</h1>
-				<PostRenderer content={source} />
+				<MDXPostRenderer content={source} />
 			</div>
 		</article>
 	)
 }
 
+// Generate static paths for all posts (SSG)
 export const generateStaticParams = () => {
-	const posts = getPosts()
-	return posts.map((post) => ({
-		slug: post.slug,
+	return getPostSlugs().map((slug) => ({
+		slug,
 	}))
 }
 
+// Posts that are not generated at build time will return 404
 export const dynamicParams = false
 
-export default Post
+export default PostPage

@@ -1,4 +1,4 @@
-import components from "@/components/MDX"
+import components from "@/components/MDX/components"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import { Suspense, type FC } from "react"
 // import rehypeAutolinkHeadings from "rehype-autolink-headings"
@@ -6,11 +6,11 @@ import rehypeMathjax from "rehype-mathjax"
 // import rehypeSlug from "rehype-slug"
 import remarkMath from "remark-math"
 
-interface PostServerRendererProps {
+interface MDXPostRendererProps {
 	content: string
 }
 
-const PostServerRenderer: FC<PostServerRendererProps> = ({ content }) => {
+const MDXPostRenderer: FC<MDXPostRendererProps> = ({ content }) => {
 	return (
 		<Suspense fallback={<>Suspense Loading...</>}>
 			<MDXRemote
@@ -29,4 +29,4 @@ const PostServerRenderer: FC<PostServerRendererProps> = ({ content }) => {
 	)
 }
 
-export default PostServerRenderer
+export default MDXPostRenderer

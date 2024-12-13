@@ -2,10 +2,12 @@ import Typography from "@tailwindcss/typography"
 import type { Config } from "tailwindcss"
 
 const config: Config = {
+	// MDX files may contain Tailwind CSS classes
 	content: [
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
 	],
+	// Use with next-themes
 	darkMode: "class",
 	theme: {
 		extend: {
@@ -25,6 +27,9 @@ const config: Config = {
 			padding: {
 				header: "3.125rem",
 			},
+			spacing: {
+				sidebar: "17.5rem",
+			},
 			margin: {
 				header: "3.125rem",
 				footer: "3rem",
@@ -37,13 +42,15 @@ const config: Config = {
 				overlay: "28",
 				header: "24",
 				sidebar: "16",
-				aside: "12",
+				panel: "12",
 				article: "20",
 				footer: "24",
 			},
 			animation: {
-				"aside-slide-in":
+				"panel-slide-in":
 					"slide-in-from-left 0.3s cubic-bezier(0.15, 1, 0.3, 1) forwards",
+				"panel-slide-out":
+					"slide-out-from-right 0.3s cubic-bezier(0.15, 1, 0.3, 1) forwards",
 				"article-appear": "fade-in 0.3s cubic-bezier(0.15, 1, 0.3, 1) forwards",
 			},
 			keyframes: {
@@ -53,6 +60,14 @@ const config: Config = {
 					},
 					"100%": {
 						transform: "translateX(0)",
+					},
+				},
+				"slide-out-from-right": {
+					"0%": {
+						transform: "translateX(0%)",
+					},
+					"100%": {
+						transform: "translateX(-100%)",
 					},
 				},
 				"fade-in": {
