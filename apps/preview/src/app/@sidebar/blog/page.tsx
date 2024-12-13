@@ -14,7 +14,7 @@ const SidebarBlogPage = () => {
 			<section
 				className={cn(
 					responsive["panel-width"],
-					"left-sidebar z-panel animate-panel-slide-in absolute flex h-full flex-col border-r bg-white-tinted dark:border-neutral-800 dark:bg-neutral-900"
+					"absolute left-sidebar z-panel flex h-full animate-panel-slide-in flex-col border-r bg-white-tinted dark:border-neutral-800 dark:bg-neutral-900"
 				)}>
 				<h1>Panel</h1>
 				<div>
