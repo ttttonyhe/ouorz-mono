@@ -18,7 +18,7 @@
 		"@sentry/nextjs": "^8.43.0",
 		"@twilight-toolkit/ui": "workspace:*",
 		"@twilight-toolkit/utils": "workspace:*",
-		"algoliasearch": "5.16.0",
+		"algoliasearch": "5.17.1",
 		"cors": "^2.8.5",
 		"dotenv-webpack": "^8.1.0",
 		"html2plaintext": "^2.1.4",
