@@ -22,8 +22,15 @@ class AppDocument extends Document {
 					<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 					<link
 						type="image/vnd.microsoft.icon"
+						href="/favicon-dark.ico"
+						rel="shortcut icon"
+						media="(prefers-color-scheme: dark)"
+					/>
+					<link
+						type="image/vnd.microsoft.icon"
 						href="/favicon.ico"
 						rel="shortcut icon"
+						media="(prefers-color-scheme: light)"
 					/>
 					<meta
 						name="description"

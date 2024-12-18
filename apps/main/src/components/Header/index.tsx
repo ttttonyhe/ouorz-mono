@@ -85,7 +85,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 						> */}
 						<Image
 							className="rounded-full"
-							src="/tony.png"
+							src={resolvedTheme === "dark" ? "/icon-dark.png" : "/icon.png"}
 							alt="Tony's NFT avatar"
 							height={18}
 							width={18}
@@ -96,7 +96,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 					<div className="text-3 font-medium text-black">
 						<Link href="/" passHref>
 							<h3 className="text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300">
-								Tony (Lipeng) He
+								Tony He
 							</h3>
 						</Link>
 					</div>

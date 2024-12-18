@@ -5,6 +5,14 @@ export default function Top() {
 	return (
 		<div className="mt-4 grid lg:grid-cols-5 lg:gap-3">
 			<div className="col-span-3 col-start-1 hidden grid-cols-3 gap-3 lg:grid">
+				<a target="_blank" href="mailto:he@lipeng.ac" rel="noreferrer">
+					<Button
+						type="default"
+						icon="email"
+						className="!w-full text-3 leading-14 text-gray-500">
+						<span className="tracking-normal">Email</span>
+					</Button>
+				</a>
 				<a target="_blank" href="https://x.com/lipeng_he" rel="noreferrer">
 					<Button
 						type="default"
@@ -22,14 +30,6 @@ export default function Top() {
 						icon="linkedIn"
 						className="!w-full text-3 leading-14 text-blue-600">
 						<span className="tracking-normal">LinkedIn</span>
-					</Button>
-				</a>
-				<a target="_blank" href="mailto:he@lipeng.ac" rel="noreferrer">
-					<Button
-						type="default"
-						icon="email"
-						className="!w-full text-3 leading-14 text-gray-500">
-						<span className="tracking-normal">Email</span>
 					</Button>
 				</a>
 			</div>

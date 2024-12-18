@@ -23,16 +23,7 @@ const Home: NextPageWithLayout = () => {
 			</Head>
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="flex items-center justify-between gap-x-10 gap-y-8">
-					<div className="hidden flex-shrink-0 pt-1 lg:block">
-						<Image
-							src="https://static.ouorz.com/avatar_real_small.jpg"
-							height={105}
-							width={105}
-							alt="Tony He"
-							className="rounded-md bg-gray-200 shadow-sm dark:border dark:border-gray-600"
-						/>
-					</div>
-					<div className="flex flex-col gap-y-1">
+					<div className="-ml-1 flex flex-col gap-y-1">
 						<h1 className="flex items-center whitespace-nowrap break-words text-3xl font-medium tracking-wide text-black dark:text-white lg:text-[1.8rem]">
 							<span className="mr-2.5 inline-block animate-waveHand cursor-pointer hover:animate-waveHandAgain">
 								👋
@@ -55,6 +46,15 @@ const Home: NextPageWithLayout = () => {
 								.
 							</p>
 						</div>
+					</div>
+					<div className="hidden flex-shrink-0 pt-1 lg:block">
+						<Image
+							src="https://static.ouorz.com/avatar_real_small.jpg"
+							height={105}
+							width={105}
+							alt="Tony He"
+							className="rounded-xl bg-gray-200 shadow-sm dark:border dark:border-gray-600"
+						/>
 					</div>
 				</div>
 			</section>
@@ -91,10 +91,9 @@ const Home: NextPageWithLayout = () => {
 							to enable society to gain the benefits of emerging technologies
 							without sacrificing security & privacy
 						</u>
-						. And in the process, I hope to also unlock new application
-						scenarios through a combination of systems design and cryptography.
+						.
 					</p>
-					<p>
+					<p className="mt-5">
 						In my previous research experience, I worked on developing and
 						analyzing secure systems and protocols that address issues related
 						to:
@@ -135,6 +134,10 @@ const Home: NextPageWithLayout = () => {
 							society.
 						</li>
 					</ul>
+					<p className="mt-5">
+						In achieving these objectives, I hope to also unlock new application
+						scenarios through a combination of systems design and cryptography.
+					</p>
 				</div>
 			</section>
 			<section className="mt-14">
