@@ -135,8 +135,9 @@ const Home: NextPageWithLayout = () => {
 						</li>
 					</ul>
 					<p className="mt-5">
-						In achieving these objectives, I hope to also unlock new application
-						scenarios through a combination of systems design and cryptography.
+						In the process of achieving these objectives, I hope to also unlock
+						new application scenarios through a combination of systems design
+						and cryptography.
 					</p>
 				</div>
 			</section>
