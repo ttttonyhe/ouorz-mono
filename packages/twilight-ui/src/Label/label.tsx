@@ -1,6 +1,6 @@
+import React from "react"
 import Icon from "../Icon"
 import type { LabelTypes, IconNames } from "../utils/propTypes"
-import React from "react"
 
 interface Props {
 	/**
@@ -42,9 +42,10 @@ const Label = ({
 			return (
 				<label
 					{...props}
-					className="effect-pressing flex w-auto cursor-pointer items-center justify-center rounded-md bg-blue-100 px-2 py-1 text-center align-middle text-4 font-medium tracking-wide text-blue-500 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:hover:bg-blue-800 lg:px-4 lg:py-1 lg:text-label">
+					className="cursor-pointer justify-center font-medium items-center flex w-auto lg:px-4 lg:py-1 px-2 py-1 bg-blue-100 dark:bg-blue-900 hover:bg-blue-200 dark:hover:bg-blue-800 text-center rounded-md text-4 lg:text-label tracking-wide text-blue-500 dark:text-blue-300 align-middle effect-pressing"
+				>
 					{icon && (
-						<span className="mr-1 h-4 w-4 lg:mr-2 lg:h-7 lg:w-7">
+						<span className="lg:w-7 lg:h-7 h-4 w-4 lg:mr-2 mr-1">
 							<Icon name={icon} />
 						</span>
 					)}
@@ -55,9 +56,10 @@ const Label = ({
 			return (
 				<label
 					{...props}
-					className="effect-pressing flex w-auto cursor-pointer items-center justify-center rounded-md bg-gray-100 px-2 py-1 text-center align-middle text-4 font-medium tracking-wide text-gray-500 hover:bg-gray-200 focus:animate-pulse dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 lg:px-4 lg:py-1 lg:text-label">
+					className="cursor-pointer focus:animate-pulse justify-center font-medium items-center flex w-auto lg:px-4 px-2 py-1 lg:py-1 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-center rounded-md text-4 lg:text-label tracking-wide text-gray-500 dark:text-gray-300 align-middle effect-pressing"
+				>
 					{icon && (
-						<span className="mr-1 h-4 w-4 lg:mr-2 lg:h-7 lg:w-7">
+						<span className="lg:w-7 lg:h-7 h-4 w-4 lg:mr-2 mr-1">
 							<Icon name={icon} />
 						</span>
 					)}
@@ -67,12 +69,13 @@ const Label = ({
 		case "green":
 			return (
 				<label
-					className={`group flex h-full w-min cursor-pointer items-center justify-center gap-x-1 font-medium ${
+					className={`group cursor-pointer justify-center font-medium items-center h-full flex gap-x-1 w-min ${
 						preview ? "px-3 py-0.5" : "px-4 py-1.5"
-					} effect-pressing rounded-md bg-green-100 text-center align-middle text-xl tracking-wide text-green-500 hover:bg-green-200 dark:bg-green-800 dark:text-green-400 dark:hover:bg-green-700`}>
+					} bg-green-100 dark:bg-green-800 hover:bg-green-200 dark:hover:bg-green-700 text-center rounded-md text-xl tracking-wide text-green-500 dark:text-green-400 align-middle effect-pressing`}
+				>
 					<>{children}</>
 					{icon && (
-						<span className="-ml-5 -mr-1 h-4 w-4 opacity-0 transition-all ease-in-out group-hover:ml-0 group-hover:mr-0 group-hover:opacity-100 lg:h-[19px] lg:w-[19px]">
+						<span className="lg:w-[19px] lg:h-[19px] w-4 h-4 opacity-0 transition-all ease-in-out -ml-5 group-hover:ml-0 group-hover:mr-0 -mr-1 group-hover:opacity-100">
 							<Icon name={icon} />
 						</span>
 					)}
@@ -82,8 +85,9 @@ const Label = ({
 			return (
 				<label
 					{...props}
-					className="flex h-auto w-auto items-center justify-center rounded-md bg-yellow-200 px-2 py-0 text-center align-middle text-4 tracking-wide text-yellow-500 hover:bg-yellow-300 dark:bg-yellow-800 dark:hover:bg-yellow-700 lg:px-3 lg:py-1 lg:text-label">
-					<span className="h-4 w-4 lg:h-7 lg:w-7">
+					className="justify-center items-center flex w-auto h-auto lg:py-1 lg:px-3 py-0 px-2 bg-yellow-200 dark:bg-yellow-800 hover:bg-yellow-300 dark:hover:bg-yellow-700 text-center rounded-md text-4 lg:text-label tracking-wide text-yellow-500 align-middle"
+				>
+					<span className="lg:w-7 lg:h-7 h-4 w-4">
 						<Icon name="sticky" />
 					</span>
 				</label>
@@ -92,9 +96,10 @@ const Label = ({
 			return (
 				<label
 					{...props}
-					className="effect-pressing flex h-full w-min cursor-pointer items-center justify-center rounded-md bg-gray-100 px-2 py-2 text-center align-middle text-xl font-medium tracking-wide text-gray-500 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-500">
+					className="cursor-pointer justify-center font-medium items-center h-full flex w-min px-2 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-500 text-center rounded-md text-xl tracking-wide text-gray-500 dark:text-gray-300 align-middle effect-pressing"
+				>
 					{icon && (
-						<span className="h-4 w-4 lg:h-[19px] lg:w-[19px]">
+						<span className="lg:w-[19px] lg:h-[19px] h-4 w-4">
 							<Icon name={icon} />
 						</span>
 					)}
@@ -104,11 +109,12 @@ const Label = ({
 			return (
 				<label
 					{...props}
-					className={`effect-pressing flex h-full w-min cursor-pointer items-center justify-center rounded-md bg-green-100 px-2 py-2 text-center align-middle text-xl font-medium tracking-wide text-green-500 hover:bg-green-200 dark:bg-green-700 dark:text-green-300 dark:hover:bg-green-600 ${
+					className={`cursor-pointer justify-center font-medium items-center h-full flex w-min px-2 py-2 bg-green-100 dark:bg-green-700 hover:bg-green-200 dark:hover:bg-green-600 text-center rounded-md text-xl tracking-wide text-green-500 dark:text-green-300 align-middle effect-pressing ${
 						className ?? ""
-					}`}>
+					}`}
+				>
 					{icon && (
-						<span className="h-4 w-4 lg:h-[19px] lg:w-[19px]">
+						<span className="lg:w-[19px] lg:h-[19px] h-4 w-4">
 							<Icon name={icon} />
 						</span>
 					)}
@@ -118,10 +124,12 @@ const Label = ({
 			return (
 				<label
 					{...props}
-					className="effect-pressing flex h-full w-min cursor-pointer items-center justify-center rounded-md bg-orange-100 px-2 py-2 text-center align-middle text-xl font-medium tracking-wide text-orange-500 hover:bg-orange-200 dark:bg-orange-700 dark:text-orange-300 dark:hover:bg-orange-600">
+					className="cursor-pointer justify-center font-medium items-center h-full flex w-min px-2 py-2 bg-orange-100 dark:bg-orange-700 hover:bg-orange-200 dark:hover:bg-orange-600 text-center rounded-md text-xl tracking-wide text-orange-500 dark:text-orange-300 align-middle effect-pressing"
+				>
 					{icon && (
 						<span
-							className={`h-4 w-4 lg:h-[19px] lg:w-[19px] ${iconClassName}`}>
+							className={`lg:w-[19px] lg:h-[19px] h-4 w-4 ${iconClassName}`}
+						>
 							<Icon name={icon} />
 						</span>
 					)}

@@ -7,7 +7,7 @@ const colors = require("tailwindcss/colors")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ["./src/**/*.tsx", "./stories/**/*.tsx"],
+	content: ["**/*.tsx"],
 	darkMode: "class",
 	important: false,
 	theme: {

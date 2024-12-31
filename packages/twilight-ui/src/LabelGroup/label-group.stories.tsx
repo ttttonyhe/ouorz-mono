@@ -1,7 +1,8 @@
-import Label from "../Label/label"
-import LabelGroup from "./label-group"
-import { StoryFn, Meta, StoryObj } from "@storybook/react"
 import React from "react"
+import { StoryFn, Meta, StoryObj } from "@storybook/react"
+
+import LabelGroup from "./label-group"
+import Label from "../Label/label"
 
 const meta: Meta<typeof LabelGroup> = {
 	title: "Components/ Label Group",

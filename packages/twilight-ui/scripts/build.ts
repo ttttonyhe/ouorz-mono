@@ -1,11 +1,11 @@
-import { dependencies } from "../package.json"
-import autoprefixer from "autoprefixer"
 import type { BuildOptions } from "esbuild"
 import { build } from "esbuild"
 import { dtsPlugin } from "esbuild-plugin-d.ts"
 import { sassPlugin } from "esbuild-sass-plugin"
 import postcss from "postcss"
+import autoprefixer from "autoprefixer"
 import tailwind from "tailwindcss"
+import { dependencies } from "../package.json"
 
 const isDevelopment = process.env.NODE_ENV === "development"
 
@@ -31,7 +31,7 @@ const ESBUILD_CONFIG: BuildOptions = {
 		sassPlugin({
 			// TailwindCSS
 			transform: async (source, _resolveDir) => {
-				const postcssPlugins = [autoprefixer, tailwind as any]
+				const postcssPlugins = [autoprefixer, tailwind]
 				const { css } = await postcss(postcssPlugins).process(source, {
 					from: undefined,
 				})

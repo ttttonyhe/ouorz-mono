@@ -13,6 +13,7 @@ const theme = {
 /** @type { import('@storybook/react-webpack5').Preview } */
 const preview = {
 	parameters: {
+		actions: { argTypesRegex: '^on[A-Z].*' },
 		controls: {
 			// Show full documentation for the controls
 			expanded: true,
