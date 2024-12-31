@@ -6,14 +6,14 @@ import React, { useState } from "react"
 import PagesAndLinks from "~/components/Banners/PagesAndLinks"
 import EmploymentCard from "~/components/Card/Employment"
 import PaperCard from "~/components/Card/Paper"
-import List from "~/components/List"
+// import List from "~/components/List"
 import { pageLayout } from "~/components/Page"
 import SubscriptionBox from "~/components/SubscriptionBox"
 import Top from "~/components/Top"
 import { NextPageWithLayout } from "~/pages/_app"
 
 const Home: NextPageWithLayout = () => {
-	const [showPosts, setShowPosts] = useState(false)
+	// const [showPosts, setShowPosts] = useState(false)
 	const [maskClass, setMaskClass] = useState("mask-x-r")
 
 	return (
@@ -118,7 +118,7 @@ const Home: NextPageWithLayout = () => {
 						Homomorphic Encryption (FHE) and Privacy-preserving Machine Learning
 						(PPML).
 					</p>
-					<p className="mt-5">My general objectives are to:</p>
+					<p className="mt-5">My current focus is to:</p>
 					<ul className="mt-2 list-disc pl-5">
 						<li className="pl-3">
 							Design and develop systems and protocols that are provably secure,
@@ -341,7 +341,7 @@ const Home: NextPageWithLayout = () => {
 						</span>
 						<span className="uppercase">Blog Posts</span>
 					</label>
-					<button
+					{/* <button
 						data-cy="showIndexPosts"
 						onClick={() => setShowPosts(!showPosts)}
 						aria-label="Toggle between posts and subscription box"
@@ -350,17 +350,17 @@ const Home: NextPageWithLayout = () => {
 							className={`flex h-5 w-5 duration-200 ${showPosts ? "rotate-180" : "rotate-0"}`}>
 							<Icon name="arrowUp" />
 						</span>
-					</button>
+					</button> */}
 				</div>
-				{showPosts ? (
+				{/* {showPosts ? (
 					<div className="mt-5 animate-appear">
 						<List type="index" />
 					</div>
-				) : (
-					<div className="mt-5">
-						<SubscriptionBox type="sm" />
-					</div>
-				)}
+				) : ( */}
+				<div className="mt-5">
+					<SubscriptionBox type="sm" />
+				</div>
+				{/* )} */}
 			</section>
 		</>
 	)
