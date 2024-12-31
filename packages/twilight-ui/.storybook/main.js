@@ -1,3 +1,4 @@
+import { dirname, join } from "path"
 import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin"
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
@@ -5,6 +6,7 @@ const config = {
 	staticDirs: ["./public"],
 	stories: ["../stories/**/*.stories.ts", "../src/**/*.stories.@(mdx|tsx)"],
 	addons: [
+		// Support Tailwind CSS
 		{
 			name: "@storybook/addon-essentials",
 			options: {
@@ -18,17 +20,17 @@ const config = {
 				measure: false,
 			},
 		},
-		// Support Tailwind CSS
 		{
 			name: "@storybook/addon-styling",
 			options: {
 				postCss: true,
 			},
 		},
-		"@storybook/addon-links",
-		"@storybook/addon-storysource",
-		"storybook-dark-mode",
-		"storybook-addon-turbo-build",
+		getAbsolutePath("@storybook/addon-links"),
+		getAbsolutePath("@storybook/addon-storysource"),
+		getAbsolutePath("storybook-dark-mode"),
+		getAbsolutePath("storybook-addon-turbo-build"),
+		getAbsolutePath("@storybook/addon-webpack5-compiler-babel"),
 	],
 	// Automatically generate docs for controls
 	typescript: {
@@ -41,11 +43,8 @@ const config = {
 				prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
 		},
 	},
-	features: {
-		storyStoreV7: false,
-	},
 	framework: {
-		name: "@storybook/react-webpack5",
+		name: getAbsolutePath("@storybook/react-webpack5"),
 		options: {
 			builder: {
 				lazyCompilation: false,
@@ -64,9 +63,12 @@ const config = {
 		return config
 	},
 	docs: {
-		autodocs: "tag",
 		defaultName: "Documentation",
 	},
 }
 
 export default config
+
+function getAbsolutePath(value) {
+	return dirname(require.resolve(join(value, "package.json")))
+}

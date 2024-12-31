@@ -1,5 +1,5 @@
-import React from "react"
 import Label from "../Label/label"
+import React from "react"
 
 interface Props {
 	/**

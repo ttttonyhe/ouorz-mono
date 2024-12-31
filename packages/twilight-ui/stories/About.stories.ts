@@ -1,17 +1,17 @@
-import About from './About'
-import mdx from './About.mdx'
+import About from "./About"
+import { Meta, StoryObj } from "@storybook/react"
 
-export default {
-	title: 'Introduction/ About',
+const meta: Meta<typeof About> = {
+	title: "Introduction/ About",
 	component: About,
 	parameters: {
-		docs: {
-			page: mdx,
-		},
 		controls: {
 			hideNoControlsWarning: true,
 		},
 	},
 }
 
-export { About }
+export default meta
+type Story = StoryObj<typeof About>
+
+export const AboutPage: Story = {}

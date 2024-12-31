@@ -118,7 +118,7 @@ const Home: NextPageWithLayout = () => {
 						Homomorphic Encryption (FHE) and Privacy-preserving Machine Learning
 						(PPML).
 					</p>
-					<p className="mt-5">My general objectives are to:</p>
+					<p className="mt-5">My current focus is to:</p>
 					<ul className="mt-2 list-disc pl-5">
 						<li className="pl-3">
 							Design and develop systems and protocols that are provably secure,
@@ -341,7 +341,7 @@ const Home: NextPageWithLayout = () => {
 						</span>
 						<span className="uppercase">Blog Posts</span>
 					</label>
-					<button
+					{/* <button
 						data-cy="showIndexPosts"
 						onClick={() => setShowPosts(!showPosts)}
 						aria-label="Toggle between posts and subscription box"
@@ -350,7 +350,7 @@ const Home: NextPageWithLayout = () => {
 							className={`flex h-5 w-5 duration-200 ${showPosts ? "rotate-180" : "rotate-0"}`}>
 							<Icon name="arrowUp" />
 						</span>
-					</button>
+					</button> */}
 				</div>
 				{showPosts ? (
 					<div className="mt-5 animate-appear">
