@@ -79,14 +79,9 @@ const Home: NextPageWithLayout = () => {
 				</label>
 				<div className="mt-[15px] flex flex-col gap-y-2 break-words px-0.5 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p>
-						<span>
-							I am interested in both the theoretical & applied aspects of
-							cryptography
-						</span>
-						<span>
-							, especially its role across computing and data sciences.
-						</span>{" "}
-						My goal is{" "}
+						My research interests span Computer Security and the Theory &
+						Applications of Cryptography (especially across computing and data
+						sciences). My goal is{" "}
 						<u className="decoration-gray-300">
 							to enable society to gain the benefits of emerging technologies
 							without sacrificing security & privacy
@@ -114,20 +109,19 @@ const Home: NextPageWithLayout = () => {
 						</div>
 					</div>
 					<p>
-						My most recent research work has put an emphasis on Fully
-						Homomorphic Encryption (FHE) and Privacy-preserving Machine Learning
-						(PPML).
+						More recently, I have been focusing on the research area of
+						Trustworthy Machine Learning (Trustworthy ML).
 					</p>
-					<p className="mt-5">My current focus is to:</p>
+					<p className="mt-5">My general objectives are to:</p>
 					<ul className="mt-2 list-disc pl-5">
 						<li className="pl-3">
 							Design and develop systems and protocols that are provably secure,
 							inexpensive and easy-to-use;
 						</li>
 						<li className="pl-3">
-							Support the deployment of cryptographic solutions in the real
-							world for individuals and organizations to improve data privacy,
-							safety and robustness;
+							Support the deployment of security and/or cryptographic solutions
+							in the real world to improve the safety, privacy and robustness of
+							computing systems;
 						</li>
 						<li className="pl-3">
 							Find new and innovative ways to apply cryptographic tools in
