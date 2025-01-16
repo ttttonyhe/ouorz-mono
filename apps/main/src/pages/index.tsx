@@ -283,22 +283,30 @@ const Home: NextPageWithLayout = () => {
 						}}
 						className={`flex gap-x-4 overflow-x-auto whitespace-nowrap ${maskClass}`}>
 						<EmploymentCard
+							orgLogoSrc="https://static.ouorz.com/crysp_logo.png"
+							organization="University of Waterloo"
+							organizationFullName="Cryptography, Security, and Privacy (CrySP) Lab"
+							jobTitle="Undergraduate Research Assistant (URA)"
+							jobType="Research, Part-time"
+							dateString="Jan 2025 - Present"
+						/>
+						<EmploymentCard
 							orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
 							organization="University of Waterloo"
 							organizationFullName="CS 135 Designing Functional Programs"
 							jobTitle="Instructional Support Assistant (ISA)"
 							jobType="Teaching, Co-op"
-							dateString="Aug 2024 - Present"
-						/>
-						<EmploymentCard
-							orgLogoSrc="https://static.ouorz.com/zju_logo.png"
-							organization="Zhejiang University"
-							organizationFullName="ABC Lab, Institute of Cyberspace Research"
-							jobTitle="Research Assistant"
-							jobType="Research, Co-op"
-							dateString="May - Aug 2024"
+							dateString="Aug 2024 - Dec 2024"
 						/>
 					</div>
+					<EmploymentCard
+						orgLogoSrc="https://static.ouorz.com/zju_logo.png"
+						organization="Zhejiang University"
+						organizationFullName="ABC Lab, Institute of Cyberspace Research"
+						jobTitle="Research Assistant"
+						jobType="Research, Co-op"
+						dateString="May - Aug 2024"
+					/>
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/biorender_logo.png"
 						organization="BioRender"
@@ -310,7 +318,8 @@ const Home: NextPageWithLayout = () => {
 					/>
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/jewlr-logo.svg"
-						organization="Safyre Labs Inc."
+						organization="Safyre Labs"
+						organizationFullName="Safyre Labs Inc."
 						jobTitle="Full Stack Software Engineer"
 						jobType="SWE, Co-op"
 						dateString="May -  Aug 2022"
