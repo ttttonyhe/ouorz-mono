@@ -43,7 +43,9 @@ const SubscriptionBox = ({
 
 	if (type === "sm") {
 		return (
-			<div className="my-2 flex w-full flex-col gap-y-3 rounded-md border bg-white px-4.5 py-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:flex-row lg:items-center lg:gap-x-10 lg:gap-y-0 lg:space-x-4 lg:py-3">
+			<div
+				data-cy="indexNewsletter"
+				className="my-2 flex w-full flex-col gap-y-3 rounded-md border bg-white px-4.5 py-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:flex-row lg:items-center lg:gap-x-10 lg:gap-y-0 lg:space-x-4 lg:py-3">
 				<div>
 					<p className="flex items-center whitespace-nowrap text-xl tracking-wide text-gray-600 dark:text-gray-300">
 						<span className="mr-2 h-7 w-7">
@@ -102,7 +104,6 @@ const SubscriptionBox = ({
 
 	return (
 		<div
-			data-cy="indexNewsletter"
 			className={`my-2 hidden w-full items-center rounded-xl border bg-white p-10 shadow-sm dark:border-gray-800 dark:bg-gray-800 lg:block lg:px-20 lg:py-11 ${className || ""}`}>
 			<div className="flex justify-between">
 				<div>
