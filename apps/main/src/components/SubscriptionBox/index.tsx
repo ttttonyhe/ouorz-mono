@@ -102,6 +102,7 @@ const SubscriptionBox = ({
 
 	return (
 		<div
+			data-cy="indexNewsletter"
 			className={`my-2 hidden w-full items-center rounded-xl border bg-white p-10 shadow-sm dark:border-gray-800 dark:bg-gray-800 lg:block lg:px-20 lg:py-11 ${className || ""}`}>
 			<div className="flex justify-between">
 				<div>
