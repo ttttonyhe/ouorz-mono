@@ -32,7 +32,7 @@ const Home: NextPageWithLayout = () => {
 						</h1>
 						<div className="flex flex-col gap-y-1.5 break-words px-1 text-4 font-light leading-relaxed tracking-wider text-gray-500 dark:text-gray-300 lg:text-2">
 							<p>
-								I am a student, software engineer, and researcher with the{" "}
+								I am a student, software engineer, and researcher at the{" "}
 								<a
 									href="https://uwaterloo.ca"
 									target="_blank"
@@ -105,7 +105,7 @@ const Home: NextPageWithLayout = () => {
 							<div className="flex h-5 w-5 items-center justify-center rounded-full bg-teal-500 text-white dark:bg-teal-700">
 								2
 							</div>
-							<div>Software security and scalability</div>
+							<div>Blockchain security and scalability</div>
 						</div>
 					</div>
 					<p>
