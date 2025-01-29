@@ -110,18 +110,17 @@ const Home: NextPageWithLayout = () => {
 					</div>
 					<p>
 						More recently, I have been focusing on the research area of
-						Trustworthy Machine Learning (Trustworthy ML).
+						Trustworthy Machine Learning, specifically AI safety and alignment.
 					</p>
 					<p className="mt-5">My general objectives are to:</p>
 					<ul className="mt-2 list-disc pl-5">
 						<li className="pl-3">
-							Design and develop systems and protocols that are provably secure,
+							Design and develop systems and protocols that are provably robust,
 							inexpensive and easy-to-use;
 						</li>
 						<li className="pl-3">
-							Support the deployment of security and/or cryptographic solutions
-							in the real world to improve the safety, privacy and robustness of
-							computing systems;
+							Support the deployment of scientific solutions in the real world
+							to improve the safety, privacy and security of computing systems;
 						</li>
 						<li className="pl-3">
 							Find new and innovative ways to apply cryptographic tools in
@@ -139,7 +138,7 @@ const Home: NextPageWithLayout = () => {
 				<div className="flex items-center justify-between">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
-							<Icon name="article" />
+							<Icon name="newspaper" />
 						</span>
 						<span className="hidden uppercase lg:block">
 							Selected Publications
@@ -157,32 +156,6 @@ const Home: NextPageWithLayout = () => {
 					</Link>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
-					{/* <PaperCard
-						title="FedGLP: A Federated Prompt Learning Framework for Next-Generation Intelligent Manufacturing Systems"
-						authors="Hao Pan, Xiaoli Zhao, Yuchen Jiang, Lipeng He, Bingquan Wang, and Yincan Shu"
-						venue={{
-							name: "IEEE Transactions on Industrial Informatics",
-							href: "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=9424",
-						}}
-						accepted={false}
-						links={[]}
-					/> */}
-					<PaperCard
-						title="LookAhead: Preventing DeFi Attacks via Unveiling Adversarial Contracts"
-						authors="Shoupeng Ren, Lipeng He, Tianyu Tu, Di Wu, Jian Liu, Kui Ren, and Chun Chen"
-						venue={{
-							name: "FSE 2025",
-							href: "https://conf.researchr.org/home/fse-2025",
-						}}
-						accepted={false}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2401.07261",
-								default: true,
-							},
-						]}
-					/>
 					<PaperCard
 						title="Secure Transformer Inference Made Non-interactive"
 						authors="Jiawen Zhang, Xinpeng Yang, Lipeng He, Kejia Chen, Wen-jie Lu, Yinghao Wang, Xiaoyang Hou, Jian Liu, Kui Ren and Xiaohu Yang"
@@ -215,7 +188,7 @@ const Home: NextPageWithLayout = () => {
 						accepted={true}
 						links={[
 							{
-								label: "Volume 30, Article 222",
+								label: "Paper",
 								href: "https://link.springer.com/article/10.1007/s00530-024-01422-9",
 								default: true,
 							},
@@ -236,8 +209,47 @@ const Home: NextPageWithLayout = () => {
 						accepted={true}
 						links={[
 							{
-								label: "Atlantis Highlights in Computer Sciences",
+								label: "Paper",
 								href: "https://www.atlantis-press.com/proceedings/deca-23/125994999",
+								default: true,
+							},
+						]}
+					/>
+				</div>
+			</section>
+			<section className="mt-14">
+				<div className="flex items-center justify-between">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+						<span className="mr-1.5 flex h-5 w-5">
+							<Icon name="article" />
+						</span>
+						<span className="block uppercase">Preprints</span>
+					</label>
+					<span className="flex items-center gap-x-1 text-gray-500 underline-offset-4 dark:text-gray-400">
+						* indicates equal contribution
+					</span>
+				</div>
+				<div className="mt-5 flex flex-col gap-y-4">
+					<PaperCard
+						title="Activation Approximations Can Incur Safety Vulnerabilities Even in Aligned LLMs: Comprehensive Analysis and Defense"
+						authors="Jiawen Zhang*, Kejia Chen*, Lipeng He*, Jian Lou, Dan Li, Zunlei Feng, Mingli Song, Jian Liu, Kui Ren, and Xiaohu Yang"
+						accepted={false}
+						links={[]}
+					/>
+					<PaperCard
+						title="FedVLP: Visual-aware Latent Prompt Generation for Multimodal Federated Learning"
+						authors="Hao Pan, Xiaoli Zhao, Yuchen Jiang, Lipeng He, Bingquan Wang, and Yincan Shu"
+						accepted={false}
+						links={[]}
+					/>
+					<PaperCard
+						title="LookAhead: Preventing DeFi Attacks via Unveiling Adversarial Contracts"
+						authors="Shoupeng Ren, Lipeng He, Tianyu Tu, Di Wu, Jian Liu, Kui Ren, and Chun Chen"
+						accepted={false}
+						links={[
+							{
+								label: "Paper",
+								href: "https://arxiv.org/abs/2401.07261",
 								default: true,
 							},
 						]}
