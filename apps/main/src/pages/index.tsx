@@ -237,6 +237,12 @@ const Home: NextPageWithLayout = () => {
 						links={[]}
 					/>
 					<PaperCard
+						title="On the Atomicity and Efficiency of Blockchain Payment Channels"
+						authors="Di Wu, Shoupeng Ren, Yuman Bai, Lipeng He, Jian Liu, Wu Wen, Kui Ren, and Chun Chen"
+						accepted={false}
+						links={[]}
+					/>
+					<PaperCard
 						title="FedVLP: Visual-aware Latent Prompt Generation for Multimodal Federated Learning"
 						authors="Hao Pan, Xiaoli Zhao, Yuchen Jiang, Lipeng He, Bingquan Wang, and Yincan Shu"
 						accepted={false}
