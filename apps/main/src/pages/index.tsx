@@ -234,7 +234,11 @@ const Home: NextPageWithLayout = () => {
 						title="Activation Approximations Can Incur Safety Vulnerabilities Even in Aligned LLMs: Comprehensive Analysis and Defense"
 						authors="Jiawen Zhang*, Kejia Chen*, Lipeng He*, Jian Lou, Dan Li, Zunlei Feng, Mingli Song, Jian Liu, Kui Ren, and Xiaohu Yang"
 						accepted={false}
-						links={[]}
+						links={[{
+							label: "Paper",
+							href: "https://arxiv.org/abs/2502.00840",
+							default: true,
+						}]}
 					/>
 					<PaperCard
 						title="On the Atomicity and Efficiency of Blockchain Payment Channels"
