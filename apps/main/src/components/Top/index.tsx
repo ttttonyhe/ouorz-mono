@@ -3,40 +3,58 @@ import Link from "next/link"
 
 export default function Top() {
 	return (
-		<div className="mt-4 grid lg:grid-cols-5 lg:gap-3">
-			<div className="col-span-3 col-start-1 hidden grid-cols-3 gap-3 lg:grid">
+		<div className="mt-4 flex gap-3">
+			<div className="hidden grid-cols-10 gap-3 lg:grid">
 				<a
 					target="_blank"
 					href="mailto:lipeng.he@uwaterloo.ca"
-					rel="noreferrer">
+					rel="noreferrer"
+					className="col-span-3">
 					<Button
 						type="default"
-						icon="email"
-						className="!w-full text-3 leading-14 text-gray-500">
-						<span className="tracking-normal">Email</span>
+						icon="mailFilled"
+						className="!w-full text-3 leading-14 text-teal-600">
+						<span className="pl-1 tracking-normal">Email</span>
 					</Button>
 				</a>
-				<a target="_blank" href="https://x.com/lipeng_he" rel="noreferrer">
+				<a
+					target="_blank"
+					href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
+					rel="noreferrer"
+					className="col-span-3">
 					<Button
 						type="default"
-						icon="twitterX"
-						className="!w-full text-3 leading-14 text-gray-700">
-						Twitter
+						icon="googleScholar"
+						className="!w-full !px-1 text-3 leading-14 text-blue-500">
+						<span className="tracking-normal">Google Scholar</span>
 					</Button>
 				</a>
 				<a
 					target="_blank"
 					href="https://www.linkedin.com/in/~lhe"
-					rel="noreferrer">
+					rel="noreferrer"
+					className="col-span-2">
 					<Button
 						type="default"
 						icon="linkedIn"
-						className="!w-full text-3 leading-14 text-blue-600">
-						<span className="tracking-normal">LinkedIn</span>
+						className="!w-full text-3 leading-14 text-blue-700">
+						<span className="pl-1 tracking-normal">LinkedIn</span>
+					</Button>
+				</a>
+				<a
+					target="_blank"
+					href="https://github.com/ttttonyhe"
+					rel="noreferrer"
+					className="col-span-2">
+					<Button
+						type="default"
+						icon="github"
+						className="!w-full text-3 leading-14 text-gray-800">
+						<span className="pl-1 tracking-normal">Github</span>
 					</Button>
 				</a>
 			</div>
-			<div className="flex gap-x-2 whitespace-nowrap lg:col-start-4 lg:col-end-6 lg:block">
+			<div className="flex w-full gap-x-2 whitespace-nowrap lg:hidden">
 				<Button
 					type="default"
 					icon="email"

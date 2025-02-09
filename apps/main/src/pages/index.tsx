@@ -77,50 +77,41 @@ const Home: NextPageWithLayout = () => {
 					</span>
 					<span className="uppercase">Research Interests</span>
 				</label>
-				<div className="mt-[15px] flex flex-col gap-y-2 break-words px-0.5 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
-					<p>
+				<div className="mt-[15px] flex flex-col gap-y-2 break-words px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
+					<p className="mb-5">
 						My research interests span Computer Security and the Theory &
 						Applications of Cryptography (especially across computing and data
-						sciences). My goal is{" "}
-						<u className="decoration-gray-300">
+						sciences). My general goal is{" "}
+						<i className="decoration-gray-300">
 							to enable society to gain the benefits of emerging technologies
 							without sacrificing security & privacy
-						</u>
+						</i>
 						.
 					</p>
-					<p className="mt-5">
-						In my previous research experience, I worked on developing and
-						analyzing secure systems and protocols that address issues related
-						to:
+					<hr className="dark:border-gray-700" />
+					<p className="mt-3.5">
+						In my previous experience, I worked on developing and analyzing
+						secure systems and protocols that address issues related to:
 					</p>
-					<div className="flex flex-col items-center justify-between gap-y-2 pb-[12px] pr-1 pt-4.5 text-sm lg:flex-row">
-						<div className="text-normal flex w-full items-center gap-x-2 rounded-md border bg-white px-4 py-[7px] font-medium shadow-sm dark:border-gray-600 dark:bg-gray-800 lg:w-auto">
-							<div className="flex h-5 w-5 items-center justify-center rounded-full bg-indigo-500 text-white dark:bg-indigo-700">
-								1
-							</div>
-							<div className="font-bold">Trustworthy Computing</div>
-						</div>
-						<div className="hidden text-3 lg:block">and</div>
-						<div className="text-normal flex w-full items-center gap-x-2 rounded-md border bg-white px-4 py-[7px] font-medium shadow-sm dark:border-gray-600 dark:bg-gray-800 lg:w-auto">
-							<div className="flex h-5 w-5 items-center justify-center rounded-full bg-teal-500 text-white dark:bg-teal-700">
-								2
-							</div>
-							<div>Blockchain security and scalability</div>
-						</div>
-					</div>
-					<p>
-						More recently, I have been focusing on the research area of
-						Trustworthy Machine Learning, specifically AI safety and alignment.
+					<ul className="my-2 list-disc pl-5">
+						<li className="pl-3 font-medium">Trustworthy Machine Learning</li>
+						<li className="pl-3">Blockchain security and scalability</li>
+					</ul>
+					<p className="mb-3.5">
+						More recently, I have been focusing on the research area of AI
+						safety & alignment.
 					</p>
-					<p className="mt-5">My general objectives are to:</p>
+					<hr className="dark:border-gray-700" />
+					<p className="mt-3.5">My general objectives are to:</p>
 					<ul className="mt-2 list-disc pl-5">
 						<li className="pl-3">
-							Design and develop systems and protocols that are provably robust,
+							Design and develop systems and protocols that are provably secure,
 							inexpensive and easy-to-use;
 						</li>
 						<li className="pl-3">
-							Support the deployment of scientific solutions in the real world
-							to improve the safety, privacy and security of computing systems;
+							Support the deployment of security and/or cryptographic solutions
+							in the real world to improve the safety, privacy and robustness of
+							computing systems;
 						</li>
 						<li className="pl-3">
 							Find new and innovative ways to apply cryptographic tools in
@@ -149,7 +140,7 @@ const Home: NextPageWithLayout = () => {
 						href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
 						target="_blank"
 						className="flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
-						Google Scholar
+						Citations
 						<span className="h-5 w-5 underline">
 							<Icon name="externalLink" />
 						</span>
@@ -225,7 +216,7 @@ const Home: NextPageWithLayout = () => {
 						</span>
 						<span className="block uppercase">Preprints</span>
 					</label>
-					<span className="flex items-center gap-x-1 text-gray-500 underline-offset-4 dark:text-gray-400">
+					<span className="flex items-center gap-x-1 text-right text-gray-500 underline-offset-4 dark:text-gray-400">
 						* indicates equal contribution
 					</span>
 				</div>
