@@ -8,7 +8,6 @@ export default function Top() {
 				<a
 					target="_blank"
 					href="mailto:lipeng.he@uwaterloo.ca"
-					rel="noreferrer"
 					className="col-span-3">
 					<Button
 						type="default"
@@ -61,13 +60,16 @@ export default function Top() {
 					className="!w-full text-3 leading-14 text-gray-500 lg:hidden">
 					<span className="tracking-normal">Email</span>
 				</Button>
-				<Link href="https://cal.com/tonyhe/15min" target="_blank">
+				<Link
+					target="_blank"
+					href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
+					rel="noreferrer">
 					<Button
 						type="default"
-						icon="calendarSchedule"
-						className="!w-full text-gray-500">
+						icon="googleScholar"
+						className="!w-full text-blue-500">
 						<span className="pl-0.5 text-4 leading-14 tracking-normal lg:text-3">
-							Schedule a Meeting
+							Google Scholar
 						</span>
 					</Button>
 				</Link>

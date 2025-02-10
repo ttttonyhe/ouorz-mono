@@ -22,7 +22,7 @@ const PagesAndLinks = () => {
 					<Link
 						href="https://cal.com/tonyhe/15min"
 						target="_blank"
-						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3.5 py-1 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
+						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
 						<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
 							<Icon name="calendarSchedule" />
 						</span>
