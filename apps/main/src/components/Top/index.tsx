@@ -8,7 +8,8 @@ export default function Top() {
 				<a
 					target="_blank"
 					href="mailto:lipeng.he@uwaterloo.ca"
-					className="col-span-3">
+					className="col-span-3"
+					rel="noreferrer">
 					<Button
 						type="default"
 						icon="mailFilled"
