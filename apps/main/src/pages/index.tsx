@@ -237,7 +237,13 @@ const Home: NextPageWithLayout = () => {
 						title="On the Atomicity and Efficiency of Blockchain Payment Channels"
 						authors="Di Wu, Shoupeng Ren, Yuman Bai, Lipeng He, Jian Liu, Wu Wen, Kui Ren, and Chun Chen"
 						accepted={false}
-						links={[]}
+						links={[
+							{
+								label: "Paper",
+								href: "https://eprint.iacr.org/2025/180",
+								default: true,
+							},
+						]}
 					/>
 					<PaperCard
 						title="FedVLP: Visual-aware Latent Prompt Generation for Multimodal Federated Learning"
