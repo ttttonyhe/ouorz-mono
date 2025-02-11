@@ -15,7 +15,7 @@
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^2.4.0",
-		"@sentry/nextjs": "^8.43.0",
+		"@sentry/nextjs": "^8.49.0",
 		"@twilight-toolkit/ui": "workspace:*",
 		"@twilight-toolkit/utils": "workspace:*",
 		"algoliasearch": "5.16.0",
