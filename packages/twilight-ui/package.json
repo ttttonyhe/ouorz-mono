@@ -46,7 +46,7 @@
     "@types/react": "^18.0.35",
     "autoprefixer": "^10.4.14",
     "babel-loader": "^9.1.2",
-    "esbuild": "^0.18.17",
+    "esbuild": "^0.25.0",
     "esbuild-plugin-d.ts": "^1.1.0",
     "esbuild-sass-plugin": "^2.10.0",
     "eslint-plugin-storybook": "^0.6.13",
