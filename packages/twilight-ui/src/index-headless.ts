@@ -1,6 +1,3 @@
-// Custom CSS (exclude Tailwind)
-import "../styles/base.css"
-
 // Button
 export { default as Button } from "./Button"
 export type { ButtonProps } from "./Button"

@@ -47,7 +47,7 @@ const Template = ({
 			}${defaultClassName} effect-pressing`}
 			{...args}>
 			{icon && (
-				<span className={`h-6 w-6 flex-shrink-0 ${children ? "mr-1" : ""}`}>
+				<span className={`h-6 w-6 shrink-0 ${children ? "mr-1" : ""}`}>
 					<Icon name={icon} />
 				</span>
 			)}
@@ -69,7 +69,7 @@ const Button = ({
 				<Template
 					aria-label="menu-default"
 					className={className}
-					defaultClassName="w-max py-2 px-5 hover:bg-menu dark:hover:bg-gray-800 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex text-gray-500 dark:text-gray-400"
+					defaultClassName="w-max py-2 px-5 hover:bg-menu dark:hover:bg-gray-800 rounded-md cursor-pointer focus:outline-hidden justify-center items-center text-xl tracking-wider flex text-gray-500 dark:text-gray-400"
 					icon={icon}
 					{...rest}>
 					{children}
@@ -80,7 +80,7 @@ const Button = ({
 				<Template
 					aria-label="primary"
 					className={className}
-					defaultClassName="w-max py-2 px-7 shadow-sm border border-blue-500 dark:border-blue-900 dark:bg-blue-900 dark:text-gray-300 bg-blue-500 hover:bg-blue-600 hover:border-blue-600 dark:hover:bg-blue-800 dark:hover:border-blue-800 hover:shadow-inner text-white rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex"
+					defaultClassName="w-max py-2 px-7 shadow-xs border border-blue-500 dark:border-blue-900 dark:bg-blue-900 dark:text-gray-300 bg-blue-500 hover:bg-blue-600 hover:border-blue-600 dark:hover:bg-blue-800 dark:hover:border-blue-800 hover:shadow-inner text-white rounded-md cursor-pointer focus:outline-hidden justify-center items-center text-xl tracking-wider flex"
 					icon={icon}
 					{...rest}>
 					{children}
@@ -91,7 +91,7 @@ const Button = ({
 				<Template
 					aria-label="menu-primary"
 					className={className}
-					defaultClassName="w-max py-2 px-5 hover:bg-pink-100 dark:hover:bg-pink-900 rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider flex text-pink-500 dark:text-pink-400"
+					defaultClassName="w-max py-2 px-5 hover:bg-pink-100 dark:hover:bg-pink-900 rounded-md cursor-pointer focus:outline-hidden justify-center items-center text-xl tracking-wider flex text-pink-500 dark:text-pink-400"
 					icon={icon}
 					{...rest}>
 					{children}
@@ -102,7 +102,7 @@ const Button = ({
 				<Template
 					aria-label="default"
 					className={className}
-					defaultClassName="w-max py-2 px-7 shadow-sm border border-gray-300 dark:border-gray-800 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 hover:shadow-inner rounded-md cursor-pointer focus:outline-none justify-center items-center text-xl tracking-wider bg-white flex"
+					defaultClassName="w-max py-2 px-7 shadow-xs border border-gray-300 dark:border-gray-800 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 hover:shadow-inner rounded-md cursor-pointer focus:outline-hidden justify-center items-center text-xl tracking-wider bg-white flex"
 					icon={icon}
 					{...rest}>
 					{children}

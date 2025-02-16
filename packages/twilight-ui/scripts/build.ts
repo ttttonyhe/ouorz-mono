@@ -1,11 +1,8 @@
+import { dependencies } from "../package.json"
 import type { BuildOptions } from "esbuild"
 import { build } from "esbuild"
 import { dtsPlugin } from "esbuild-plugin-d.ts"
-import { sassPlugin } from "esbuild-sass-plugin"
-import postcss from "postcss"
-import autoprefixer from "autoprefixer"
-import tailwind from "tailwindcss"
-import { dependencies } from "../package.json"
+import tailwindPlugin from "esbuild-plugin-tailwindcss"
 
 const isDevelopment = process.env.NODE_ENV === "development"
 
@@ -28,16 +25,7 @@ const ESBUILD_CONFIG: BuildOptions = {
 	format: "esm",
 	external: Object.keys(dependencies),
 	plugins: [
-		sassPlugin({
-			// TailwindCSS
-			transform: async (source, _resolveDir) => {
-				const postcssPlugins = [autoprefixer, tailwind]
-				const { css } = await postcss(postcssPlugins).process(source, {
-					from: undefined,
-				})
-				return css
-			},
-		}),
+		tailwindPlugin(),
 		// Generate declaration files
 		dtsPlugin(),
 	],

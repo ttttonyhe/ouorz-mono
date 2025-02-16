@@ -1,8 +1,8 @@
-import About from './About'
-import mdx from './About.mdx'
+import About from "./About"
+import mdx from "./About.mdx"
 
 export default {
-	title: 'Introduction/ About',
+	title: "Introduction/ About",
 	component: About,
 	parameters: {
 		docs: {

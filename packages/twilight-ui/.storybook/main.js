@@ -17,8 +17,7 @@ const config = {
 				outline: false,
 				measure: false,
 			},
-		},
-		// Support Tailwind CSS
+		}, // Support Tailwind CSS
 		{
 			name: "@storybook/addon-styling",
 			options: {
@@ -29,6 +28,8 @@ const config = {
 		"@storybook/addon-storysource",
 		"storybook-dark-mode",
 		"storybook-addon-turbo-build",
+		"@storybook/addon-themes",
+		"@storybook/addon-webpack5-compiler-swc",
 	],
 	// Automatically generate docs for controls
 	typescript: {
@@ -40,9 +41,6 @@ const config = {
 			propFilter: (prop) =>
 				prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
 		},
-	},
-	features: {
-		storyStoreV7: false,
 	},
 	framework: {
 		name: "@storybook/react-webpack5",
@@ -64,7 +62,6 @@ const config = {
 		return config
 	},
 	docs: {
-		autodocs: "tag",
 		defaultName: "Documentation",
 	},
 }
