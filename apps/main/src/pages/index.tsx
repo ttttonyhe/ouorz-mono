@@ -81,17 +81,17 @@ const Home: NextPageWithLayout = () => {
 					<p className="mb-5">
 						My research interests span Computer Security and the Theory &
 						Applications of Cryptography (especially across computing and data
-						sciences). My general goal is{" "}
+						sciences). My research aims to{" "}
 						<i className="decoration-gray-300">
-							to enable society to gain the benefits of emerging technologies
+							enable society to gain the benefits of emerging technologies
 							without sacrificing security & privacy
 						</i>
 						.
 					</p>
 					<hr className="dark:border-gray-700" />
 					<p className="mt-3.5">
-						In my previous experience, I worked on developing and analyzing
-						secure systems and protocols that address issues related to:
+						Previously, I worked on developing and analyzing secure systems and
+						protocols that address issues related to:
 					</p>
 					<ul className="my-2 list-disc pl-5">
 						<li className="pl-3 font-medium">Trustworthy Machine Learning</li>
@@ -119,9 +119,9 @@ const Home: NextPageWithLayout = () => {
 						</li>
 					</ul>
 					<p className="mt-5">
-						In the process of achieving these objectives, I hope to also unlock
-						new application scenarios through a combination of systems design
-						and cryptography.
+						In the process of achieving these goals, I hope to also unlock new
+						application scenarios through a combination of systems design and
+						cryptography.
 					</p>
 				</div>
 			</section>
