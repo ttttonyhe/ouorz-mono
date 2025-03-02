@@ -6,6 +6,7 @@ import React, { useState } from "react"
 import PagesAndLinks from "~/components/Banners/PagesAndLinks"
 import EmploymentCard from "~/components/Card/Employment"
 import PaperCard from "~/components/Card/Paper"
+import ServiceCard from "~/components/Card/Service"
 // import List from "~/components/List"
 import { pageLayout } from "~/components/Page"
 import SubscriptionBox from "~/components/SubscriptionBox"
@@ -81,25 +82,27 @@ const Home: NextPageWithLayout = () => {
 					<p className="mb-5">
 						My research interests span Computer Security and the Theory &
 						Applications of Cryptography (especially across computing and data
-						sciences). My research aims to{" "}
+						sciences).
+					</p>
+					<hr className="dark:border-gray-700" />
+					<p className="mt-3.5">
+						I think broadly about the privacy, security and trustworthiness of
+						modern computing systems; this intersects with areas such as:
+					</p>
+					<ul className="my-2 list-disc pl-5">
+						<li className="pl-3 font-medium">
+							Trustworthy Machine Learning (ML Security & Privacy)
+						</li>
+						<li className="pl-3">Blockchain security and scalability</li>
+						<li className="pl-3">Secure Computation</li>
+					</ul>
+					<p className="mb-3.5">
+						My research aims to{" "}
 						<i className="decoration-gray-300">
 							enable society to gain the benefits of emerging technologies
 							without sacrificing security & privacy
 						</i>
-						.
-					</p>
-					<hr className="dark:border-gray-700" />
-					<p className="mt-3.5">
-						Previously, I worked on developing and analyzing secure systems and
-						protocols that address issues related to:
-					</p>
-					<ul className="my-2 list-disc pl-5">
-						<li className="pl-3 font-medium">Trustworthy Machine Learning</li>
-						<li className="pl-3">Blockchain security and scalability</li>
-					</ul>
-					<p className="mb-3.5">
-						More recently, I have been focusing on the research area of AI
-						safety & alignment.
+						. More recently, I have been focusing on AI safety & alignment.
 					</p>
 					<hr className="dark:border-gray-700" />
 					<p className="mt-3.5">My general objectives are to:</p>
@@ -269,9 +272,32 @@ const Home: NextPageWithLayout = () => {
 				<div className="flex items-center justify-between">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
+							<Icon name="service" />
+						</span>
+						<span className="uppercase">Professional Service</span>
+					</label>
+				</div>
+				<div className="mt-5 flex flex-col gap-y-4">
+					<ServiceCard
+						serviceRole="Reviewer"
+						serviceType="Journal"
+						serviceTitle="IEEE Transactions on Dependable and Secure Computing (TDSC)"
+					/>
+					<ServiceCard
+						serviceRole="Student Member"
+						serviceType="Membership"
+						serviceTitle="The Cybersecurity and Privacy Institute (CPI)"
+						serviceOrganization="University of Waterloo"
+					/>
+				</div>
+			</section>
+			<section className="mt-14">
+				<div className="flex items-center justify-between">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="suitcase" />
 						</span>
-						<span className="uppercase">Employment</span>
+						<span className="uppercase">Experience</span>
 					</label>
 					<Link
 						href="https://www.linkedin.com/in/~lhe/"
