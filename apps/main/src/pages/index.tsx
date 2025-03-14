@@ -29,7 +29,7 @@ const Home: NextPageWithLayout = () => {
 							<span className="mr-2.5 inline-block animate-waveHand cursor-pointer hover:animate-waveHandAgain">
 								👋
 							</span>
-							Lipeng (Tony) He
+							Tony (Lipeng) He
 						</h1>
 						<div className="flex flex-col gap-y-1.5 break-words px-1 text-4 font-light leading-relaxed tracking-wider text-gray-500 dark:text-gray-300 lg:text-2">
 							<p>
@@ -53,7 +53,7 @@ const Home: NextPageWithLayout = () => {
 							src="https://static.ouorz.com/avatar_real_small.jpg"
 							height={105}
 							width={105}
-							alt="Tony He"
+							alt="Tony teaching an undergraduate CS course"
 							className="rounded-xl bg-gray-200 shadow-sm dark:border dark:border-gray-600"
 						/>
 					</div>
@@ -250,7 +250,7 @@ const Home: NextPageWithLayout = () => {
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="service" />
 						</span>
-						<span className="uppercase">Professional Service</span>
+						<span className="uppercase">Academic Services</span>
 					</label>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
@@ -365,7 +365,7 @@ const Home: NextPageWithLayout = () => {
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="edit" />
 						</span>
-						<span className="uppercase">Blog Posts</span>
+						<span className="uppercase">Newsletter</span>
 					</label>
 					{/* <button
 						data-cy="showIndexPosts"

@@ -27,6 +27,12 @@ const PaperCard = (props: PaperCardProps) => {
 	// Find the default link
 	const defaultLink = (links.find((link) => link.default) ?? venue)?.href
 
+	// Ensure authors is an array
+	let authorList = authors as string[]
+	if (typeof authors === "string") {
+		authorList = authors.split(",")
+	}
+
 	return (
 		<div
 			onClick={() => {
@@ -38,7 +44,18 @@ const PaperCard = (props: PaperCardProps) => {
 			</div>
 			<div className="flex flex-col gap-y-2.5 px-4.5 pb-3.5 pt-1">
 				<div className="text-sm tracking-wide text-gray-600 dark:text-gray-300">
-					<p>{authors}</p>
+					{
+						// Make my name (Lipeng He) bold, also split authors by comma
+						authorList.map((author, idx) => {
+							const isMyName = author.includes("Lipeng He")
+							return (
+								<span key={author} className={isMyName ? "font-semibold" : ""}>
+									{author}
+									{idx === authorList.length - 1 ? "" : ","}
+								</span>
+							)
+						})
+					}
 				</div>
 				<div className="flex flex-col items-start gap-x-2.5 gap-y-2 text-xs text-gray-500 lg:-ml-1 lg:flex-row lg:items-center">
 					<div
