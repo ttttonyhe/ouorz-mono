@@ -99,8 +99,8 @@ const Home: NextPageWithLayout = () => {
 					<hr className="dark:border-gray-700" />
 					<p className="mt-3.5">
 						Through a combination of systems design and cryptography, I hope to
-						make existing systems more secure, while also unlocking new
-						application scenarios.
+						make existing systems more useful and secure, while also unlocking
+						new application scenarios.
 					</p>
 				</div>
 			</section>
