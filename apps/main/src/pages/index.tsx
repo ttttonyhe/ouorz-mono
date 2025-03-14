@@ -80,51 +80,27 @@ const Home: NextPageWithLayout = () => {
 				</label>
 				<div className="mt-[15px] flex flex-col gap-y-2 break-words px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p className="mb-5">
-						My research interests span Computer Security and the Theory &
-						Applications of Cryptography (especially across computing and data
-						sciences).
+						My research interests span <strong>computer security</strong> and
+						the <strong>theory & applications of cryptography</strong>{" "}
+						(especially across computing and data sciences).
 					</p>
 					<hr className="dark:border-gray-700" />
 					<p className="mt-3.5">
 						I think broadly about the privacy, security and trustworthiness of
 						modern computing systems; this intersects with areas such as:
 					</p>
-					<ul className="my-2 list-disc pl-5">
-						<li className="pl-3 font-medium">
+					<ul className="my-2 mb-3.5 list-disc pl-5">
+						<li className="pl-3">
 							Trustworthy Machine Learning (ML Security & Privacy)
 						</li>
-						<li className="pl-3">Blockchain security and scalability</li>
+						<li className="pl-3">Blockchain Security and Scalability, and</li>
 						<li className="pl-3">Secure Computation</li>
 					</ul>
-					<p className="mb-3.5">
-						My research aims to{" "}
-						<i className="decoration-gray-300">
-							enable society to gain the benefits of emerging technologies
-							without sacrificing security & privacy
-						</i>
-						. More recently, I have been focusing on AI safety & alignment.
-					</p>
 					<hr className="dark:border-gray-700" />
-					<p className="mt-3.5">My general objectives are to:</p>
-					<ul className="mt-2 list-disc pl-5">
-						<li className="pl-3">
-							Design and develop systems and protocols that are provably secure,
-							inexpensive and easy-to-use;
-						</li>
-						<li className="pl-3">
-							Support the deployment of security and/or cryptographic solutions
-							in the real world to improve the safety, privacy and robustness of
-							computing systems;
-						</li>
-						<li className="pl-3">
-							Find new and innovative ways to apply cryptographic tools in
-							society.
-						</li>
-					</ul>
-					<p className="mt-5">
-						In the process of achieving these goals, I hope to also unlock new
-						application scenarios through a combination of systems design and
-						cryptography.
+					<p className="mt-3.5">
+						Through a combination of systems design and cryptography, I hope to
+						make existing systems more secure, while also unlocking new
+						application scenarios.
 					</p>
 				</div>
 			</section>
