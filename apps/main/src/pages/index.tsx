@@ -127,6 +127,24 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
+						title="LookAhead: Preventing DeFi Attacks via Unveiling Adversarial Contracts"
+						authors="Shoupeng Ren, Lipeng He, Tianyu Tu, Di Wu, Jian Liu, Kui Ren, and Chun Chen"
+						venue={{
+							name: "FSE 2025",
+							href: "https://conf.researchr.org/home/fse-2025",
+							color: "!border-l-red-500 border-l-4",
+						}}
+						accepted={true}
+						links={[
+							{
+								label: "Paper",
+								href: "https://arxiv.org/abs/2401.07261",
+								default: true,
+							},
+							{ label: "Code", href: "https://zenodo.org/records/14929316" },
+						]}
+					/>
+					<PaperCard
 						title="Secure Transformer Inference Made Non-interactive"
 						authors="Jiawen Zhang, Xinpeng Yang, Lipeng He, Kejia Chen, Wen-jie Lu, Yinghao Wang, Xiaoyang Hou, Jian Liu, Kui Ren and Xiaohu Yang"
 						venue={{
@@ -229,18 +247,6 @@ const Home: NextPageWithLayout = () => {
 						authors="Hao Pan, Xiaoli Zhao, Yuchen Jiang, Lipeng He, Bingquan Wang, and Yincan Shu"
 						accepted={false}
 						links={[]}
-					/>
-					<PaperCard
-						title="LookAhead: Preventing DeFi Attacks via Unveiling Adversarial Contracts"
-						authors="Shoupeng Ren, Lipeng He, Tianyu Tu, Di Wu, Jian Liu, Kui Ren, and Chun Chen"
-						accepted={false}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2401.07261",
-								default: true,
-							},
-						]}
 					/>
 				</div>
 			</section>
