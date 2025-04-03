@@ -365,6 +365,26 @@ const Home: NextPageWithLayout = () => {
 					/>
 				</div>
 			</section>
+			<section className="mt-14">
+				<div className="flex items-center justify-between">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+						<span className="mr-1.5 flex h-5 w-5">
+							<Icon name="graduationCapOutline" />
+						</span>
+						<span className="uppercase">Education</span>
+					</label>
+				</div>
+				<div className="mt-5 flex flex-col gap-y-4">
+					<EmploymentCard
+						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
+						organization="University of Waterloo"
+						organizationFullName="Mathematics (Combinatorics and Optimization), Minor in Computing"
+						jobTitle="Honours Bachelor's Degree (Co-op)"
+						jobType="Undergraduate"
+						dateString="Sep 2020 - Apr 2025"
+					/>
+				</div>
+			</section>
 			<section className="mb-24 mt-14">
 				<div className="flex justify-between">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
