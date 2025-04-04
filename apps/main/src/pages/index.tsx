@@ -260,7 +260,7 @@ const Home: NextPageWithLayout = () => {
 					</label>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
-				<PaperCard
+					<PaperCard
 						title="UWaterloo Cybersecurity and Privacy Institute (CPI) Graduate Student Conference (GradConf 2025)"
 						authors="Activation Approximations Can Incur Safety Vulnerabilities Even in Aligned LLMs: Comprehensive Analysis and Defense"
 						accepted={true}
