@@ -254,6 +254,35 @@ const Home: NextPageWithLayout = () => {
 				<div className="flex items-center justify-between">
 					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
+							<Icon name="personSpeaks" />
+						</span>
+						<span className="uppercase">Talks</span>
+					</label>
+				</div>
+				<div className="mt-5 flex flex-col gap-y-4">
+				<PaperCard
+						title="UWaterloo Cybersecurity and Privacy Institute (CPI) Graduate Student Conference (GradConf 2025)"
+						authors="Activation Approximations Can Incur Safety Vulnerabilities Even in Aligned LLMs: Comprehensive Analysis and Defense"
+						accepted={true}
+						venue={{
+							name: "Spotlight Talk",
+							href: "https://uwaterloo.ca/cybersecurity-privacy-institute/gradstudentconference",
+							color: "!border-l-gray-500 border-l-4",
+						}}
+						links={[
+							{
+								label: "Poster",
+								href: "https://uwaterloo.ca/cybersecurity-privacy-institute/sites/default/files/uploads/documents/poster-84.pdf",
+								default: true,
+							},
+						]}
+					/>
+				</div>
+			</section>
+			<section className="mt-14">
+				<div className="flex items-center justify-between">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="service" />
 						</span>
 						<span className="uppercase">Academic Services</span>
