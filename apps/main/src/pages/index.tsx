@@ -275,6 +275,10 @@ const Home: NextPageWithLayout = () => {
 								href: "https://uwaterloo.ca/cybersecurity-privacy-institute/sites/default/files/uploads/documents/poster-84.pdf",
 								default: true,
 							},
+							{
+								label: "Slides",
+								href: "https://static.ouorz.com/quada_gradconf_slides.pdf",
+							},
 						]}
 					/>
 				</div>
@@ -301,7 +305,7 @@ const Home: NextPageWithLayout = () => {
 						serviceOrganization="University of Waterloo"
 					/>
 					<ServiceCard
-						serviceRole="Member"
+						serviceRole="Student Member"
 						serviceType="Membership"
 						serviceTitle="Association for Computing Machinery (ACM)"
 						serviceOrganization="lipenghe@acm.org"
