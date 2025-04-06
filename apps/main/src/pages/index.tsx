@@ -300,6 +300,12 @@ const Home: NextPageWithLayout = () => {
 						serviceTitle="The Cybersecurity and Privacy Institute (CPI)"
 						serviceOrganization="University of Waterloo"
 					/>
+					<ServiceCard
+						serviceRole="Member"
+						serviceType="Membership"
+						serviceTitle="Association for Computing Machinery (ACM)"
+						serviceOrganization="lipenghe@acm.org"
+					/>
 				</div>
 			</section>
 			<section className="mt-14">
