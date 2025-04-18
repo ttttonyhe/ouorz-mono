@@ -64,7 +64,7 @@ export default function Footer() {
 					onClick={() => {
 						setTheme(targetThemes[themes.indexOf(theme)])
 					}}
-					className="effect-pressing flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white !p-3 text-xl tracking-wider shadow-sm hover:shadow-inner focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+					className="effect-pressing flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white p-3! text-xl tracking-wider shadow-xs hover:shadow-inner focus:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
 					<span className="h-7 w-7">{icons[themes.indexOf(theme)]}</span>
 				</button>
 			</div>
@@ -76,7 +76,7 @@ export default function Footer() {
 						onClick={() => {
 							window.scrollTo({ top: 0, behavior: "smooth" })
 						}}
-						className="effect-pressing flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white p-3 text-xl tracking-wider opacity-0 shadow-sm hover:shadow-inner focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+						className="effect-pressing flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white p-3 text-xl tracking-wider opacity-0 shadow-xs hover:shadow-inner focus:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
 						<span className="h-7 w-7">
 							<Icon name="arrowUp" />
 						</span>

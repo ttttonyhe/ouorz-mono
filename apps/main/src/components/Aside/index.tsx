@@ -246,7 +246,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 		<aside className="aside group fixed top-24 -ml-82 hidden w-toc xl:block">
 			{headersEl.length ? (
 				<div>
-					<div className="rounded-xl border bg-white shadow-sm dark:border-gray-800 dark:bg-gray-800">
+					<div className="rounded-xl border bg-white shadow-xs dark:border-gray-800 dark:bg-gray-800">
 						<h1 className="flex items-center border-b border-gray-200 px-6 py-3 text-2xl font-medium tracking-wide text-gray-700 dark:border-gray-700 dark:text-white">
 							<span className="-mt-[1.5px] mr-2 h-[19px] w-[19px]">
 								<Icon name="toc" />

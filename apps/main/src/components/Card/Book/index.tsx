@@ -10,29 +10,29 @@ const BookCard = (props: Book) => {
 	return (
 		<div
 			onClick={() => openLink(link)}
-			className="w-50 group z-40 flex cursor-pointer flex-col rounded-md border bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none">
+			className="w-50 group z-40 flex cursor-pointer flex-col rounded-md border bg-white shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none">
 			<div className="flex flex-1 items-center lg:justify-center">
-				<div className="flex-shrink-0 px-4.5 py-4">
+				<div className="shrink-0 px-4.5 py-4">
 					<Image
 						width={35}
 						height={52}
 						src={imageURL}
 						alt={title}
-						className="rounded-sm border shadow-sm shadow-gray-200 dark:shadow-none"
+						className="rounded-xs border shadow-xs shadow-gray-200 dark:shadow-none"
 						placeholder="blur"
 						blurDataURL={blurDataURL}
 						loading="lazy"
 					/>
 				</div>
 				<div className="overflow-hidden py-2 pr-4.5 lg:px-0 lg:group-hover:hidden lg:group-hover:w-0 lg:group-hover:delay-75">
-					<p className="lg:text-normal overflow-hidden overflow-ellipsis whitespace-nowrap text-sm font-medium leading-tight tracking-wider dark:text-white">
+					<p className="lg:text-normal overflow-hidden text-ellipsis whitespace-nowrap text-sm font-medium leading-tight tracking-wider dark:text-white">
 						{title}
 					</p>
 					<p className="mt-1 overflow-hidden text-ellipsis whitespace-nowrap text-xs font-light tracking-wide text-gray-500 dark:text-gray-400 lg:text-sm">
 						by {author}
 					</p>
 				</div>
-				<div className="!line-clamp-3 hidden pr-4.5 opacity-0 transition-opacity duration-200 ease-in-out lg:block lg:flex-grow lg:group-hover:flex-1 lg:group-hover:opacity-100 lg:group-hover:delay-75">
+				<div className="line-clamp-3! hidden pr-4.5 opacity-0 transition-opacity duration-200 ease-in-out lg:block lg:grow lg:group-hover:flex-1 lg:group-hover:opacity-100 lg:group-hover:delay-75">
 					<p className="hidden text-xs font-medium dark:text-white lg:group-hover:block">
 						{title}
 					</p>
@@ -48,7 +48,7 @@ const BookCard = (props: Book) => {
 
 const BookCardLoading = (props: { uniqueKey: string }) => {
 	return (
-		<div className="w-50 z-40 flex items-center rounded-md border bg-white p-[1px] shadow-sm dark:border dark:border-gray-700 dark:bg-gray-800">
+		<div className="w-50 z-40 flex items-center rounded-md border bg-white p-[1px] shadow-xs dark:border dark:border-gray-700 dark:bg-gray-800">
 			<ContentLoader
 				className="block dark:hidden"
 				uniqueKey={`${props.uniqueKey}-light`}

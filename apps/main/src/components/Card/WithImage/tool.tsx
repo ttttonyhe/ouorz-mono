@@ -20,7 +20,7 @@ export const CardTool = ({
 }) => {
 	const dispatch = useDispatch()
 	return (
-		<div className="w-full overflow-hidden whitespace-nowrap rounded-md border border-gray-200 shadow-sm dark:border-gray-600 dark:bg-gray-600 lg:grid lg:grid-cols-8 lg:gap-3">
+		<div className="w-full overflow-hidden whitespace-nowrap rounded-md border border-gray-200 shadow-xs dark:border-gray-600 dark:bg-gray-600 lg:grid lg:grid-cols-8 lg:gap-3">
 			<div
 				className={`col-start-1 col-end-2 rounded-bl-md rounded-tl-md ${
 					item.post_metas.fineTool.itemImgBorder

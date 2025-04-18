@@ -27,7 +27,7 @@ export default function Reader() {
 					}}
 				/>
 				<div
-					className={`reader fixed top-0 z-[60] mx-auto ml-readerOffset mt-20 w-page overflow-hidden overflow-y-auto rounded-tl-xl rounded-tr-xl bg-white px-20 py-16 shadow-md dark:border-gray-800 dark:bg-gray-800 ${
+					className={`reader fixed top-0 z-60 mx-auto ml-readerOffset mt-20 w-page overflow-hidden overflow-y-auto rounded-tl-xl rounded-tr-xl bg-white px-20 py-16 shadow-md dark:border-gray-800 dark:bg-gray-800 ${
 						animation === "in" ? "animate-reader" : "animate-readerOut"
 					}`}>
 					<h1 className="text-postTitle font-medium leading-snug tracking-wider">

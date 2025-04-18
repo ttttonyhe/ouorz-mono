@@ -72,7 +72,7 @@ const ReadingList: NextPageWithLayout = () => {
 				<hr className="dark:border-gray-600" />
 			</div>
 			<section className="mb-10">
-				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-[22px] w-[22px] text-green-500">
 						<Icon name="eye" />
 					</span>
@@ -97,7 +97,7 @@ const ReadingList: NextPageWithLayout = () => {
 				<hr className="dark:border-gray-600" />
 			</div>
 			<section className="mb-10">
-				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-[22px] w-[22px] text-yellow-500">
 						<Icon name="checkDouble" />
 					</span>
@@ -122,7 +122,7 @@ const ReadingList: NextPageWithLayout = () => {
 				<hr className="dark:border-gray-600" />
 			</div>
 			<section className="mb-28">
-				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5 text-blue-500">
 						<Icon name="bookmark" />
 					</span>

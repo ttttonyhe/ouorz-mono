@@ -38,7 +38,7 @@ const PaperCard = (props: PaperCardProps) => {
 			onClick={() => {
 				defaultLink && window?.open(defaultLink, "_blank")
 			}}
-			className="group flex w-full cursor-pointer flex-col gap-y-2 rounded-md border bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600">
+			className="group flex w-full cursor-pointer flex-col gap-y-2 rounded-md border bg-white shadow-xs transition-all hover:-translate-y-1 hover:border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600">
 			<div className="text-normal flex w-full items-center border-b border-gray-200 px-4.5 py-2.5 font-serif font-medium tracking-wide text-gray-700 dark:border-gray-700 dark:text-white dark:group-hover:border-gray-600">
 				<p>{title}</p>
 			</div>

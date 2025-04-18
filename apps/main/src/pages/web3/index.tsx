@@ -61,7 +61,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					<hr className="dark:border-gray-600" />
 				</div>
 				<div className="mb-10">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5 text-yellow-500">
 							<Icon name="bitcoin" />
 						</span>
@@ -95,7 +95,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					</div>
 				</div>
 				<div className="mb-10">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pl-3 pt-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pl-3 pt-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-[4px] flex h-5 w-5 text-blue-500">
 							<Icon name="eth" />
 						</span>
@@ -127,7 +127,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					</div>
 				</div>
 				<div className="mb-10">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5 text-purple-500">
 							<Icon name="solana" />
 						</span>
@@ -162,7 +162,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					<hr className="dark:border-gray-600" />
 				</div>
 				<div className="mb-10">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="collection" />
 						</span>
@@ -176,13 +176,13 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					<hr className="dark:border-gray-600" />
 				</div>
 				<div className="mb-28">
-					<label className="inline-flex items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<label className="inline-flex items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5 text-pink-500">
 							<Icon name="love" />
 						</span>
 						<span className="uppercase">Sponsor Me</span>
 					</label>
-					<div className="my-2 mb-4 flex w-full items-center rounded-bl-xl rounded-br-xl border border-gray-300 bg-white px-4 py-3 shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<div className="my-2 mb-4 flex w-full items-center rounded-bl-xl rounded-br-xl border border-gray-300 bg-white px-4 py-3 shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<p className="items-center text-xl tracking-wide">
 							I am developing and maintaining various open source projects and
 							hosting a podcast about tech, life and career:
@@ -206,7 +206,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 							/>
 						</div>
 					</div>
-					<div className="my-2 mb-4 flex w-full items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 py-3 shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<div className="my-2 mb-4 flex w-full items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 py-3 shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<p className="items-center text-xl tracking-wide">
 							If you found my projects interesting or helpful, please consider
 							supporting me through the following ways:
@@ -239,7 +239,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 							/>
 						</div>
 					</div>
-					<div className="my-2 mb-4 flex w-full items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 py-3 shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<div className="my-2 mb-4 flex w-full items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 py-3 shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<p className="items-center text-xl tracking-wide">
 							Contact me after finishing your payment, and I{"'"}ll put your
 							name on the list below:
@@ -250,7 +250,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 							return (
 								<div
 									key={index}
-									className="glowing-div flex cursor-pointer items-center rounded-md border bg-white px-5 py-4 shadow-sm transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800">
+									className="glowing-div flex cursor-pointer items-center rounded-md border bg-white px-5 py-4 shadow-xs transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800">
 									<GlowingBackground />
 									<div className="glowing-div-content flex w-full items-center overflow-hidden text-ellipsis whitespace-nowrap">
 										<h1 className="flex-1 items-center text-xl font-medium tracking-wide">

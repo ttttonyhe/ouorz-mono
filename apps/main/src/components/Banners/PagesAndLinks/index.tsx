@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const PagesAndLinks = () => {
 	return (
-		<div className="w-full rounded-md border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+		<div className="w-full rounded-md border bg-white shadow-xs dark:border-gray-700 dark:bg-gray-800">
 			<div className="flex w-full items-center justify-between gap-x-2.5 border-b border-gray-200 px-4.5 py-2.5 dark:border-gray-700">
 				<div className="flex items-center gap-x-[7px] text-[15px] font-medium tracking-wide text-gray-700 dark:text-white">
 					<span className="h-4.5 w-4.5 lg:h-7 lg:w-7">
@@ -22,7 +22,7 @@ const PagesAndLinks = () => {
 					<Link
 						href="https://cal.com/tonyhe/15min"
 						target="_blank"
-						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
+						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
 						<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
 							<Icon name="calendarSchedule" />
 						</span>
@@ -31,7 +31,7 @@ const PagesAndLinks = () => {
 					<Link
 						href="https://static.ouorz.com/tonyhe_cv_v2.pdf"
 						target="_blank"
-						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
+						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
 						<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
 							<Icon name="profile" />
 						</span>
@@ -45,7 +45,7 @@ const PagesAndLinks = () => {
 					<Link
 						href="https://forms.gle/iXg7X7nS1Z8PvWPFA"
 						target="_blank"
-						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
+						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
 						<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
 							<Icon name="comments" />
 						</span>
@@ -56,7 +56,7 @@ const PagesAndLinks = () => {
 					{/* <Link
 						href="https://github.com/ttttonyhe"
 						target="_blank"
-						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
+						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
 						<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
 							<Icon name="twitterX" />
 						</span>

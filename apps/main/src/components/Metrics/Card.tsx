@@ -19,7 +19,7 @@ export default function MetricCard(props: MetricCardProps) {
 	return (
 		<div
 			onClick={() => openLink(link)}
-			className="glowing-div group flex cursor-pointer items-center overflow-hidden rounded-xl border bg-white px-7 py-5 shadow-sm dark:border-gray-800 dark:bg-gray-800">
+			className="glowing-div group flex cursor-pointer items-center overflow-hidden rounded-xl border bg-white px-7 py-5 shadow-xs dark:border-gray-800 dark:bg-gray-800">
 			<div className="absolute left-0 top-0 flex h-full w-full items-start justify-end blur-3xl">
 				<div
 					className="-mt-8 h-1/6 w-full rounded-full transition-all duration-300 group-hover:h-2/6 group-hover:w-5/6"

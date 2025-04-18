@@ -48,13 +48,13 @@ const Home: NextPageWithLayout = () => {
 							</p>
 						</div>
 					</div>
-					<div className="hidden flex-shrink-0 pt-1 lg:block">
+					<div className="hidden shrink-0 pt-1 lg:block">
 						<Image
 							src="https://static.ouorz.com/avatar_real_small.jpg"
 							height={105}
 							width={105}
 							alt="Tony teaching an undergraduate CS course"
-							className="rounded-xl bg-gray-200 shadow-sm dark:border dark:border-gray-600"
+							className="rounded-xl bg-gray-200 shadow-xs dark:border dark:border-gray-600"
 						/>
 					</div>
 				</div>
@@ -72,7 +72,7 @@ const Home: NextPageWithLayout = () => {
 				</div>
 			</section>
 			<section className="mt-16">
-				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5">
 						<Icon name="microscope" />
 					</span>
@@ -106,7 +106,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="newspaper" />
 						</span>
@@ -132,7 +132,7 @@ const Home: NextPageWithLayout = () => {
 						venue={{
 							name: "FSE 2025",
 							href: "https://conf.researchr.org/home/fse-2025",
-							color: "!border-l-red-500 border-l-4",
+							color: "border-l-red-500! border-l-4",
 						}}
 						accepted={true}
 						links={[
@@ -150,7 +150,7 @@ const Home: NextPageWithLayout = () => {
 						venue={{
 							name: "NDSS 2025",
 							href: "https://www.ndss-symposium.org/ndss2025/",
-							color: "!border-l-red-500 border-l-4",
+							color: "border-l-red-500! border-l-4",
 						}}
 						accepted={true}
 						links={[
@@ -171,7 +171,7 @@ const Home: NextPageWithLayout = () => {
 						venue={{
 							name: "Multimedia Systems",
 							href: "https://link.springer.com/journal/530",
-							color: "!border-l-green-600 border-l-4",
+							color: "border-l-green-600! border-l-4",
 						}}
 						accepted={true}
 						links={[
@@ -192,7 +192,7 @@ const Home: NextPageWithLayout = () => {
 						venue={{
 							name: "DECA 2023",
 							href: "https://www.atlantis-press.com/proceedings/deca-23",
-							color: "!border-l-gray-500 border-l-4",
+							color: "border-l-gray-500! border-l-4",
 						}}
 						accepted={true}
 						links={[
@@ -207,7 +207,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="article" />
 						</span>
@@ -252,7 +252,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="personSpeaks" />
 						</span>
@@ -267,7 +267,7 @@ const Home: NextPageWithLayout = () => {
 						venue={{
 							name: "Spotlight Talk",
 							href: "https://uwaterloo.ca/cybersecurity-privacy-institute/gradstudentconference",
-							color: "!border-l-gray-500 border-l-4",
+							color: "border-l-gray-500! border-l-4",
 						}}
 						links={[
 							{
@@ -285,7 +285,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="service" />
 						</span>
@@ -314,7 +314,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="suitcase" />
 						</span>
@@ -406,7 +406,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="graduationCapOutline" />
 						</span>
@@ -426,7 +426,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mb-24 mt-14">
 				<div className="flex justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm dark:border-gray-600 dark:bg-gray-700">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="edit" />
 						</span>
@@ -436,7 +436,7 @@ const Home: NextPageWithLayout = () => {
 						data-cy="showIndexPosts"
 						onClick={() => setShowPosts(!showPosts)}
 						aria-label="Toggle between posts and subscription box"
-						className="effect-pressing inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-sm hover:shadow-inner dark:border-gray-600 dark:bg-transparent dark:text-gray-500 dark:hover:bg-gray-800">
+						className="effect-pressing inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs hover:shadow-inner dark:border-gray-600 dark:bg-transparent dark:text-gray-500 dark:hover:bg-gray-800">
 						<span
 							className={`flex h-5 w-5 duration-200 ${showPosts ? "rotate-180" : "rotate-0"}`}>
 							<Icon name="arrowUp" />

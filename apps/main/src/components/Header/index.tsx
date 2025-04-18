@@ -32,7 +32,7 @@ const HeaderSearchBarComponent = ({
 			</div>
 			<input
 				type="text"
-				className="w-full rounded-md border border-gray-200 bg-white bg-opacity-90 px-3 py-2 pl-[54px] text-sm text-gray-500 outline-none transition-shadow hover:bg-neutral-50 dark:border-gray-700 dark:bg-gray-800 dark:bg-opacity-50 dark:shadow-sm dark:hover:border-gray-700 dark:hover:bg-gray-800 dark:hover:bg-opacity-100"
+				className="w-full rounded-md border border-gray-200 bg-white bg-opacity-90 px-3 py-2 pl-[54px] text-sm text-gray-500 outline-hidden transition-shadow hover:bg-neutral-50 dark:border-gray-700 dark:bg-gray-800 dark:bg-opacity-50 dark:shadow-xs dark:hover:border-gray-700 dark:hover:bg-gray-800 dark:hover:bg-opacity-100"
 				placeholder="Type your command or search..."
 				onFocus={activateKbar}
 				data-oa="click-activateKbar"
@@ -76,7 +76,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			hoverable: false,
 			component: (
 				<div className="group mx-auto flex cursor-pointer items-center justify-center space-x-3 px-5">
-					<div className="flex h-[18px] w-[18px] flex-shrink-0 items-center rounded-full border border-gray-300 dark:border-gray-500">
+					<div className="flex h-[18px] w-[18px] shrink-0 items-center rounded-full border border-gray-300 dark:border-gray-500">
 						{/* <a
 							href="https://opensea.io/assets/ethereum/0x13bd2ac3779cbbcb2ac874c33f1145dd71ce41ee/3690"
 							target="_blank"

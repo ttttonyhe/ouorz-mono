@@ -15,13 +15,13 @@ interface Props {
 
 const CardWithImagePodcast = ({ item, sticky }: Props) => {
 	return (
-		<div className="mb-6 w-full rounded-md border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+		<div className="mb-6 w-full rounded-md border bg-white shadow-xs dark:border-gray-700 dark:bg-gray-800">
 			<div className="pl-5 pr-5 pt-5 lg:grid lg:grid-flow-col lg:grid-cols-3 lg:gap-9 lg:pl-10 lg:pr-10 lg:pt-10">
 				<Hover
 					perspective={1000}
 					max={25}
 					scale={1.01}
-					className="podcast-image-placeholder hidden rounded-md border border-gray-200 bg-gray-50 shadow-sm hover:shadow-md dark:opacity-90 lg:block">
+					className="podcast-image-placeholder hidden rounded-md border border-gray-200 bg-gray-50 shadow-xs hover:shadow-md dark:opacity-90 lg:block">
 					<Image
 						src={item.post_img.url}
 						width={160}
@@ -59,7 +59,7 @@ const CardWithImagePodcast = ({ item, sticky }: Props) => {
 			</div>
 			<div className="px-2 pb-4 pt-4 lg:px-5">
 				<AudioPlayer
-					className="podcast-player focus:outline-none"
+					className="podcast-player focus:outline-hidden"
 					autoPlayAfterSrcChange={false}
 					src={item.post_metas.podcast.audioUrl}
 					preload="metadata"

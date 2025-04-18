@@ -1,6 +1,5 @@
 // Tailwind and custom CSS
 import '../styles/vendor.css'
-import '../styles/base.css'
 
 import { themes } from '@storybook/theming'
 import { withThemeByClassName } from '@storybook/addon-styling'

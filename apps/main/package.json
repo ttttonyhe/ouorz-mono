@@ -38,6 +38,7 @@
 	"devDependencies": {
 		"@ouorz/eslint-config-next": "workspace:*",
 		"@ouorz/prettier-config": "workspace:*",
+		"@tailwindcss/postcss": "^4.1.4",
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/cors": "^2.8.17",
 		"@types/lodash": "^4.17.13",
@@ -47,7 +48,6 @@
 		"@types/react-highlight": "^0.12.8",
 		"@types/rss": "^0.0.32",
 		"@types/smoothscroll-polyfill": "^0.3.4",
-		"autoprefixer": "^10.4.20",
 		"comma-number": "^2.1.0",
 		"cssnano": "^7.0.6",
 		"eslint": "^9",
@@ -63,7 +63,7 @@
 		"react-timeago": "^7.2.0",
 		"smoothscroll-polyfill": "^0.4.4",
 		"swr": "^2.2.5",
-		"tailwindcss": "^3.4.16",
+		"tailwindcss": "^4.1.4",
 		"ts-loader": "^9.5.1",
 		"typescript": "^5.7.2",
 		"webpack": "^5.97.1"

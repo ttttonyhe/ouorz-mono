@@ -76,7 +76,7 @@ const Cate: NextPageWithLayout = ({ info }: CateProps) => {
 		}, [])
 
 		return (
-			<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-sm">
+			<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-xs">
 				<h1 className="text-lg font-medium">404 Not Found</h1>
 				<p className="text-sm font-light tracking-wide text-gray-500">
 					redirecting...

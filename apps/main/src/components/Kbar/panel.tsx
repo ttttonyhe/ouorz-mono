@@ -168,7 +168,7 @@ const KbarPanel = () => {
 				link: item.link,
 				onClick: item.action,
 				hoverable: item.hoverable,
-				className: "w-full !justify-start !p-4",
+				className: "w-full justify-start! p-4!",
 				component:
 					item.hoverable === false ? (
 						<p className="kbar-list-heading text-sm text-gray-400">
@@ -270,7 +270,7 @@ const KbarPanel = () => {
 						onChange={(e) => setInputValue(e.target.value)}
 						value={inputValue}
 						autoFocus
-						className="w-full flex-1 rounded-tl-lg rounded-tr-lg bg-transparent px-5 py-4.5 text-lg text-gray-600 outline-none dark:text-gray-300"
+						className="w-full flex-1 rounded-tl-lg rounded-tr-lg bg-transparent px-5 py-4.5 text-lg text-gray-600 outline-hidden dark:text-gray-300"
 					/>
 					<div className="mr-5 flex items-center">
 						<ul className="flex list-none gap-x-2 text-gray-400 dark:text-gray-500">

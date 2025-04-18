@@ -9,7 +9,7 @@ export default function CardClickable({ stopLoading, setStopLoading }: Props) {
 	return (
 		<div
 			data-oa="click-loadingSwitch"
-			className="mb-6 w-full cursor-pointer rounded-md border bg-white text-center shadow-sm hover:shadow-inner dark:border-gray-800 dark:bg-gray-800"
+			className="mb-6 w-full cursor-pointer rounded-md border bg-white text-center shadow-xs hover:shadow-inner dark:border-gray-800 dark:bg-gray-800"
 			onClick={() => {
 				setStopLoading(!stopLoading)
 			}}>

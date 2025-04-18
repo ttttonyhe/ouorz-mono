@@ -14,7 +14,7 @@ const PodcastCard = (props: PodcastCardProps) => {
 	return (
 		<div
 			onClick={() => openLink(link)}
-			className="w-50 group z-40 flex cursor-pointer items-center rounded-md border bg-white shadow-sm transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-700">
+			className="w-50 group z-40 flex cursor-pointer items-center rounded-md border bg-white shadow-xs transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-700">
 			<div className="h-full overflow-hidden rounded-[5px] opacity-100 lg:group-hover:opacity-0">
 				<div className="h-auto w-full border-b bg-gray-200 dark:border-gray-700 dark:bg-gray-800 lg:h-[196px]">
 					<img
@@ -59,7 +59,7 @@ const PodcastCard = (props: PodcastCardProps) => {
 
 const PodcastCardLoading = (props: { uniqueKey: string }) => {
 	return (
-		<div className="w-50 z-40 flex items-center rounded-md border bg-white shadow-sm transition-shadow hover:shadow-md dark:border dark:border-gray-700 dark:bg-gray-800">
+		<div className="w-50 z-40 flex items-center rounded-md border bg-white shadow-xs transition-shadow hover:shadow-md dark:border dark:border-gray-700 dark:bg-gray-800">
 			<ContentLoader
 				className="block dark:hidden"
 				uniqueKey={`${props.uniqueKey}-light`}

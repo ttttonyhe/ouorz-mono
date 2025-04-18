@@ -90,7 +90,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 		}
 
 		return (
-			<div className="mb-6 w-full rounded-md border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+			<div className="mb-6 w-full rounded-md border bg-white shadow-xs dark:border-gray-700 dark:bg-gray-800">
 				<div className="p-5 lg:grid lg:grid-flow-col lg:grid-cols-3 lg:gap-9 lg:p-10">
 					<Hover
 						perspective={1000}
@@ -162,7 +162,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 						{summary && !showThumbnail ? (
 							<div className="mt-6 animate-appear lg:mt-4">
 								<Link href={`/post/${item.id}`}>
-									<div className="group mb-4 flex flex-col gap-x-2 rounded-md border shadow-sm transition-colors hover:bg-gray-50 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-700">
+									<div className="group mb-4 flex flex-col gap-x-2 rounded-md border shadow-xs transition-colors hover:bg-gray-50 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-700">
 										<h2 className="flex w-full items-center justify-between gap-x-1 border-b px-3.5 py-2 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:border-gray-600 dark:text-gray-300 dark:group-hover:border-gray-500">
 											TITLE
 											<span className="-mr-2 h-4 w-4 opacity-0 transition-all group-hover:mr-0 group-hover:opacity-100">
@@ -175,7 +175,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 										/>
 									</div>
 								</Link>
-								<div className="mb-4 flex flex-col gap-x-2 rounded-md border shadow-sm dark:border-gray-600">
+								<div className="mb-4 flex flex-col gap-x-2 rounded-md border shadow-xs dark:border-gray-600">
 									<h2 className="w-full border-b px-3.5 py-2 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:border-gray-600 dark:text-gray-300">
 										TL;DR
 									</h2>

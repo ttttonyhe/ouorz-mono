@@ -92,7 +92,7 @@ const Tabs = (props: TabsProps) => {
 				"tabs-highlighter z-0",
 				className || "",
 				bgColor || "bg-menu",
-				bgDark || "dark:bg-gray-700/40 backdrop-blur-sm",
+				bgDark || "dark:bg-gray-700/40 backdrop-blur-xs",
 			].join(" ")
 		} else {
 			highlighterRef.current.className = ""

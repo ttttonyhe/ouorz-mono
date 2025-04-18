@@ -35,7 +35,7 @@ export default function PageCard({
 	}
 	return (
 		<div
-			className="glowing-div flex cursor-pointer items-center rounded-md border bg-white px-4 pb-4 pt-3 shadow-sm transition-shadow hover:shadow-md dark:border-0 dark:bg-gray-700"
+			className="glowing-div flex cursor-pointer items-center rounded-md border bg-white px-4 pb-4 pt-3 shadow-xs transition-shadow hover:shadow-md dark:border-0 dark:bg-gray-700"
 			onClick={handleClick}>
 			<GlowingBackground />
 			<div className="glowing-div-content flex items-center overflow-hidden">

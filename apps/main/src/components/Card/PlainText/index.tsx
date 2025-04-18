@@ -38,7 +38,7 @@ export default function CardPlainText({ item }: Props) {
 	const doUpvote = useDebouncedFunction(upvote, 2000)
 
 	return (
-		<div className="mb-6 w-full rounded-md border bg-white shadow-sm dark:border-gray-800 dark:bg-gray-800">
+		<div className="mb-6 w-full rounded-md border bg-white shadow-xs dark:border-gray-800 dark:bg-gray-800">
 			<div className="px-5 py-5 lg:px-10 lg:py-9">
 				<h1
 					className="leading-2 text-2 font-normal tracking-wider text-gray-600 dark:text-white lg:text-3xl lg:leading-10"

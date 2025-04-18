@@ -15,7 +15,7 @@ export default function NiceHashMetric() {
 	return (
 		<div
 			onClick={() => navigateTo(link)}
-			className="cursor-pointer rounded-md border bg-white px-5 py-4 shadow-sm hover:shadow-md dark:border-gray-800 dark:bg-gray-800"
+			className="cursor-pointer rounded-md border bg-white px-5 py-4 shadow-xs hover:shadow-md dark:border-gray-800 dark:bg-gray-800"
 			style={{ borderBottom: "5px solid #F59E0B" }}>
 			<h1
 				className={`-mb-0.5 flex items-center text-stats font-bold tracking-wide ${
