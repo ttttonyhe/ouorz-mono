@@ -253,15 +253,15 @@ const KbarPanel = () => {
 			<div
 				className={`z-50 ml-[16px] mt-[8%] h-fit max-h-[420px] w-[620px] overflow-hidden rounded-xl border bg-white/70 shadow-2xl backdrop-blur-lg dark:border-gray-700 dark:bg-black/70 ${
 					animation === "transition"
-						? "animate-kbarTransition"
+						? "animate-kbar-transition"
 						: animation === "out"
-							? "animate-kbarOut"
+							? "animate-kbar-out"
 							: animation === "in"
 								? "animate-kbar opacity-0"
 								: ""
 				}`}>
 				<div
-					className={`h-[60px] border-b ${
+					className={`h-[60px] border-b border-gray-200 ${
 						loading ? "dark:border-gray-800" : "dark:border-gray-700"
 					} flex`}>
 					<input
@@ -305,7 +305,7 @@ const KbarPanel = () => {
 						</ul>
 					</div>
 					{loading && resolvedTheme === "dark" && (
-						<div className="kbar-loading-bar absolute bottom-[-1.25px] z-50 h-[1.5px] w-full animate-kbarLoadingBar" />
+						<div className="kbar-loading-bar absolute bottom-[-1.25px] z-50 h-[1.5px] w-full animate-kbar-loading-bar" />
 					)}
 				</div>
 				<div

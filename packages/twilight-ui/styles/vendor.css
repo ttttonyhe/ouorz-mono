@@ -11,12 +11,8 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-	*,
-	::after,
-	::before,
-	::backdrop,
-	::file-selector-button {
-		border-color: var(--color-gray-200, currentcolor);
+	.border {
+		@apply border-gray-200;
 	}
 
 	.effect-pressing {

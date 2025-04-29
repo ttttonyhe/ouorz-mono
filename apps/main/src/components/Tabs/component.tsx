@@ -177,7 +177,7 @@ const Tabs = (props: TabsProps) => {
 					listRef.current.children[0],
 					items[0].bgColor,
 					items[0].bgDark,
-					delay === 0 ? "" : "animate-kbarHighlighter",
+					delay === 0 ? "" : "animate-kbar-highlighter",
 					0,
 					"above"
 				)

@@ -98,7 +98,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 						scale={1.01}
 						className={`relative col-span-1 col-end-2 hidden h-img min-h-full w-full overflow-hidden rounded-md border border-gray-200 shadow-sm transition-all hover:shadow-md dark:opacity-90 ${
 							showThumbnail ? "lg:block" : "lg:hidden"
-						} ${summarized ? "animate-shrinkDisappear" : ""}`}>
+						} ${summarized ? "animate-shrink-disappear" : ""}`}>
 						<Image
 							fill
 							src={item.post_img.url}
@@ -113,7 +113,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 						className={`col-end-4 ${
 							showThumbnail
 								? "col-span-2"
-								: "col-span-3 ml-auto animate-expandImageCardInfo"
+								: "col-span-3 ml-auto animate-expand-image-card-info"
 						}`}>
 						<div className="flex items-center space-x-3">
 							<div className="col-start-1 col-end-3 flex space-x-2">

@@ -34,7 +34,7 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 		}, [])
 
 		return (
-			<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-xs">
+			<div className="shadow-xs mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center">
 				<h1 className="text-lg font-medium">404 Not Found</h1>
 				<p className="text-sm font-light tracking-wide text-gray-500">
 					redirecting...
@@ -79,7 +79,7 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 			</Head>
 			<article
 				data-cy="postContent"
-				className="bg-white p-5 pt-24 dark:border-gray-800 dark:bg-gray-800 lg:rounded-xl lg:border lg:p-20 lg:pt-20 lg:shadow-xs">
+				className="lg:shadow-xs bg-white p-5 pt-24 dark:border-gray-800 dark:bg-gray-800 lg:rounded-xl lg:border lg:border-gray-200 lg:p-20 lg:pt-20">
 				<div className="mb-20">
 					<div className="mb-3 flex">
 						<Link href={`/cate/${post.post_categories[0].term_id}`}>

@@ -26,7 +26,7 @@ const Home: NextPageWithLayout = () => {
 				<div className="flex items-center justify-between gap-x-10 gap-y-8">
 					<div className="-ml-1 flex flex-col gap-y-1">
 						<h1 className="flex items-center whitespace-nowrap break-words text-3xl font-medium tracking-wide text-black dark:text-white lg:text-[1.8rem]">
-							<span className="mr-2.5 inline-block animate-waveHand cursor-pointer hover:animate-waveHandAgain">
+							<span className="mr-2.5 inline-block animate-wave-hand cursor-pointer hover:animate-wave-hand-again">
 								👋
 							</span>
 							Tony (Lipeng) He

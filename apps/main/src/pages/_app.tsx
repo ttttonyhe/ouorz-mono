@@ -5,7 +5,6 @@ import Script from "next/script"
 import NextNprogress from "nextjs-progressbar"
 import type { ReactElement, ReactNode } from "react"
 import { Provider as ReduxProvider } from "react-redux"
-import "~/assets/styles/vendors/tailwind.css"
 import store from "~/store"
 import "~/styles/global.css"
 
