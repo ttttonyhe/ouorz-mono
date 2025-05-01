@@ -141,7 +141,10 @@ const Home: NextPageWithLayout = () => {
 								href: "https://arxiv.org/abs/2401.07261",
 								default: true,
 							},
-							// { label: "Code", href: "https://zenodo.org/records/14929316" },
+							{
+								label: "Code",
+								href: "https://github.com/zju-abclab/LookAhead",
+							},
 						]}
 					/>
 					<PaperCard
