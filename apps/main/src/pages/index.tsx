@@ -340,6 +340,14 @@ const Home: NextPageWithLayout = () => {
 					</Link>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
+					<EmploymentCard
+						orgLogoSrc="https://static.ouorz.com/startup_stealth_mode_on_logo.jpeg"
+						organization="Stealth Startup"
+						organizationFullName="Building AI agents for intelligent HRBP and better candidate-opportunity match."
+						jobTitle="Co-founder, CTO"
+						jobType="Leadership"
+						dateString="May 2025 - Present"
+					/>
 					<div
 						onScroll={(e) => {
 							const target = e.target as HTMLDivElement
