@@ -223,7 +223,7 @@ const Home: NextPageWithLayout = () => {
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
 						title="StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs"
-						authors="Jialin Yang, Dongfu Jiang, Lipeng He, Sherman Siu, Yuxuan Zhang, Disen Liao, Zhuofeng Li, Huaye Zeng, Yiming Jia, Haozhe Wang, Benjamin Schneider, Chi Ruan, Wentao Ma, Zhiheng Lyu, Yifei Wang, Yi Lu, Quy Duc Do, Ziyan Jiang, Ping Nie, and Wenhu Chen"
+						authors="Jialin Yang, Dongfu Jiang, Lipeng He, Sherman Siu, Yuxuan Zhang, Disen Liao, Benjamin Schneider, Ping Nie, Wenhu Chen, et al."
 						accepted={false}
 						links={[]}
 					/>
@@ -309,6 +309,12 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<ServiceCard
+						serviceRole="Program Committee Member"
+						serviceType="Conference"
+						serviceTitle="ACM Conference on Computer and Communications Security (CCS) 2025"
+						serviceOrganization="Artifact Evaluation"
+					/>
+					<ServiceCard
 						serviceRole="Reviewer"
 						serviceType="Journal"
 						serviceTitle="IEEE Transactions on Dependable and Secure Computing (TDSC)"
@@ -347,9 +353,9 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/startup_stealth_mode_on_logo.jpeg"
-						organization="Stealth Startup"
-						organizationFullName="Building AI agents for intelligent HRBP and better candidate-opportunity match."
+						orgLogoSrc="https://static.ouorz.com/ezra_logo.jpg"
+						organization="Ezra AI"
+						organizationFullName="Agentic AI and data platform solutions for talent acquisition and matching"
 						jobTitle="Co-founder, CTO"
 						jobType="Leadership"
 						dateString="May 2025 - Present"
