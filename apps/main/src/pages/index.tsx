@@ -225,7 +225,17 @@ const Home: NextPageWithLayout = () => {
 						title="StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs"
 						authors="Jialin Yang, Dongfu Jiang, Lipeng He, Sherman Siu, Yuxuan Zhang, Disen Liao, Benjamin Schneider, Ping Nie, Wenhu Chen, et al."
 						accepted={false}
-						links={[]}
+						links={[
+							{
+								label: "Website",
+								href: "https://structeval.github.io",
+								default: true,
+							},
+							{
+								label: "Code",
+								href: "https://github.com/TIGER-AI-Lab/StructEval",
+							},
+						]}
 					/>
 					{/* <PaperCard
 						title="Token-by-Token Manipulation: Inference-Time Jailbreaking on Production LLMs via Autoregressive Harmful Guidance"
