@@ -228,7 +228,7 @@ const Home: NextPageWithLayout = () => {
 						links={[
 							{
 								label: "Website",
-								href: "https://structeval.github.io",
+								href: "https://tiger-ai-lab.github.io/StructEval",
 								default: true,
 							},
 							{
@@ -237,12 +237,12 @@ const Home: NextPageWithLayout = () => {
 							},
 						]}
 					/>
-					{/* <PaperCard
+					<PaperCard
 						title="Token-by-Token Manipulation: Inference-Time Jailbreaking on Production LLMs via Autoregressive Harmful Guidance"
-						authors="Jiawen Zhang*, Kejia Chen*, Lipeng He*, Jian Liu, Zunlei Feng, Mingli Song, Jian Lou, Dan Li, and Xiaohu Yang"
+						authors="Jiawen Zhang*, Lipeng He*, Kejia Chen*, Jian Liu, Zunlei Feng, Mingli Song, Jian Lou, Dan Li, and Xiaohu Yang"
 						accepted={false}
 						links={[]}
-					/> */}
+					/>
 					<PaperCard
 						title="Activation Approximations Can Incur Safety Vulnerabilities Even in Aligned LLMs: Comprehensive Analysis and Defense"
 						authors="Jiawen Zhang*, Kejia Chen*, Lipeng He*, Jian Lou, Dan Li, Zunlei Feng, Mingli Song, Jian Liu, Kui Ren, and Xiaohu Yang"
