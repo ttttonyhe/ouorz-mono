@@ -227,13 +227,18 @@ const Home: NextPageWithLayout = () => {
 						accepted={false}
 						links={[
 							{
-								label: "Website",
-								href: "https://tiger-ai-lab.github.io/StructEval",
+								label: "Paper",
+								href: "https://arxiv.org/abs/2505.20139",
 								default: true,
 							},
 							{
 								label: "Code",
 								href: "https://github.com/TIGER-AI-Lab/StructEval",
+							},
+							{
+								label: "Website",
+								href: "https://tiger-ai-lab.github.io/StructEval",
+								default: true,
 							},
 						]}
 					/>
