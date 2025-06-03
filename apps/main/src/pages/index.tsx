@@ -115,17 +115,28 @@ const Home: NextPageWithLayout = () => {
 						</span>
 						<span className="block uppercase lg:hidden">Publications</span>
 					</label>
-					<Link
-						href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
-						target="_blank"
-						className="flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
-						Citations
-						<span className="h-5 w-5 underline">
-							<Icon name="externalLink" />
-						</span>
-					</Link>
+					<span className="flex items-center gap-x-1 text-right text-gray-500 underline-offset-4 dark:text-gray-400">
+						* indicates equal contribution
+					</span>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
+					<PaperCard
+						title="Activation Approximations Can Incur Safety Vulnerabilities Even in Aligned LLMs: Comprehensive Analysis and Defense"
+						authors="Jiawen Zhang*, Kejia Chen*, Lipeng He*, Jian Lou, Dan Li, Zunlei Feng, Mingli Song, Jian Liu, Kui Ren, and Xiaohu Yang"
+						accepted={true}
+						venue={{
+							name: "USENIX Security 2025",
+							href: "https://www.usenix.org/conference/usenixsecurity25",
+							color: "!border-l-red-500 border-l-4",
+						}}
+						links={[
+							{
+								label: "Paper",
+								href: "https://arxiv.org/abs/2502.00840",
+								default: true,
+							},
+						]}
+					/>
 					<PaperCard
 						title="On the Atomicity and Efficiency of Blockchain Payment Channels"
 						authors="Di Wu, Shoupeng Ren, Yuman Bai, Lipeng He, Jian Liu, Wu Wen, Kui Ren, and Chun Chen"
@@ -233,9 +244,15 @@ const Home: NextPageWithLayout = () => {
 						</span>
 						<span className="block uppercase">Preprints</span>
 					</label>
-					<span className="flex items-center gap-x-1 text-right text-gray-500 underline-offset-4 dark:text-gray-400">
-						* indicates equal contribution
-					</span>
+					<Link
+						href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
+						target="_blank"
+						className="flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
+						Citations
+						<span className="h-5 w-5 underline">
+							<Icon name="externalLink" />
+						</span>
+					</Link>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
@@ -264,18 +281,6 @@ const Home: NextPageWithLayout = () => {
 						authors="Jiawen Zhang*, Lipeng He*, Kejia Chen*, Jian Liu, Zunlei Feng, Mingli Song, Jian Lou, Dan Li, and Xiaohu Yang"
 						accepted={false}
 						links={[]}
-					/>
-					<PaperCard
-						title="Activation Approximations Can Incur Safety Vulnerabilities Even in Aligned LLMs: Comprehensive Analysis and Defense"
-						authors="Jiawen Zhang*, Kejia Chen*, Lipeng He*, Jian Lou, Dan Li, Zunlei Feng, Mingli Song, Jian Liu, Kui Ren, and Xiaohu Yang"
-						accepted={false}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2502.00840",
-								default: true,
-							},
-						]}
 					/>
 					<PaperCard
 						title="FedVLP: Visual-aware Latent Prompt Generation for Multimodal Federated Learning"
@@ -378,7 +383,7 @@ const Home: NextPageWithLayout = () => {
 						organizationFullName="Agentic AI and data platform solutions for talent acquisition and matching"
 						jobTitle="Founding Engineer"
 						jobType="Leadership"
-						dateString="May 2025 - Present"
+						dateString="May 2025 - June 2025"
 					/>
 					<div
 						onScroll={(e) => {
