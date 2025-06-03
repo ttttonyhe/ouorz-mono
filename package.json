@@ -2,7 +2,7 @@
   "name": "ouorz-mono",
   "description": "Monorepo for Tony's Personal Website and Related Projects",
   "version": "0.0.2",
-  "packageManager": "pnpm@9.13.2",
+  "packageManager": "pnpm@10.11.1+sha512.e519b9f7639869dc8d5c3c5dfef73b3f091094b0a006d7317353c72b124e80e1afd429732e28705ad6bfa1ee879c1fce46c128ccebd3192101f43dd67c667912",
   "license": "GPL-3.0-or-later",
   "private": true,
   "engines": {
@@ -57,7 +57,7 @@
     "prettier-plugin-solidity": "^1.4.1",
     "solhint": "^5.0.3",
     "solhint-plugin-prettier": "^0.1.0",
-    "turbo": "^2.3.3"
+    "turbo": "^2.5.4"
   },
   "husky": {
     "hooks": {

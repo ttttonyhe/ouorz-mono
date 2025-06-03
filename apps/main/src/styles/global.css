@@ -77,7 +77,7 @@ body {
 	font-style: normal;
 	padding: 15px 20px 15px 80px;
 	color: #777;
-	@apply rounded-r-md bg-gray-50 dark:border-gray-500 dark:bg-gray-700;
+	@apply !justify-items-start rounded-r-md bg-gray-50 dark:border-gray-500 dark:bg-gray-700;
 }
 
 .prose blockquote p {

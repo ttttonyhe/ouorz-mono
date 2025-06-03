@@ -3,7 +3,7 @@ import Image from "next/image"
 
 const NextJS13Preview = () => {
 	return (
-		<div className="flex w-full gap-x-4 rounded-md border bg-white px-4 py-2.5 pl-4.5  shadow-sm dark:border-gray-800 dark:bg-gray-800">
+		<div className="flex w-full gap-x-4 rounded-md border bg-white px-4 py-2.5 pl-4.5 shadow-sm dark:border-gray-800 dark:bg-gray-800">
 			<div className="flex items-center">
 				<Image
 					src="https://static.ouorz.com/nextjs-icon-light-background.svg"
