@@ -379,7 +379,7 @@ const Home: NextPageWithLayout = () => {
 				<div className="mt-5 flex flex-col gap-y-4">
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/ezra_logo.jpg"
-						organization="Ezra AI"
+						organization="Bluelet AI"
 						organizationFullName="Agentic AI and data platform solutions for talent acquisition and matching"
 						jobTitle="Founding Engineer"
 						jobType="Leadership"
