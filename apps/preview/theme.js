@@ -1,7 +1,7 @@
-import Typography from "@tailwindcss/typography"
-import type { Config } from "tailwindcss"
+const Typography = require("@tailwindcss/typography")
+/** @type {import('tailwindcss').Config} */
 
-const config: Config = {
+const config = {
 	// MDX files may contain Tailwind CSS classes
 	content: [
 		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -86,4 +86,4 @@ const config: Config = {
 	plugins: [Typography],
 }
 
-export default config
+module.exports = config
