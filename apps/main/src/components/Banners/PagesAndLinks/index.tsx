@@ -20,13 +20,13 @@ const PagesAndLinks = () => {
 			<div className="mask-x mt-4 flex items-center justify-between gap-x-2.5 overflow-x-auto whitespace-nowrap px-4.5 pb-4 text-sm text-gray-600 dark:text-gray-300">
 				<div className="flex items-center gap-x-2.5">
 					<Link
-						href="https://cal.com/tonyhe/15min"
+						href="https://bit.ly/tonyhe-calendar"
 						target="_blank"
 						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
 						<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
 							<Icon name="calendarSchedule" />
 						</span>
-						<span>Schedule a Meeting</span>
+						<span>Calendar</span>
 					</Link>
 					<Link
 						href="https://static.ouorz.com/tonyhe_cv_v2.pdf"

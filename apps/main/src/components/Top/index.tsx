@@ -68,7 +68,7 @@ export default function Top() {
 					<Button
 						type="default"
 						icon="googleScholar"
-						className="!w-full text-blue-500">
+						className="h-full !w-full text-blue-500">
 						<span className="pl-0.5 text-4 leading-14 tracking-normal lg:text-3">
 							Google Scholar
 						</span>
