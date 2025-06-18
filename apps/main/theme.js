@@ -238,6 +238,7 @@ module.exports = {
 						transform: "rotate3d(1, 1, 1, -15deg)",
 						transformOrigin: "70% 70%",
 					},
+					},
 					"50%": {
 						transform: "rotate3d(1, 1, 1, 15deg)",
 						transformOrigin: "70% 70%",

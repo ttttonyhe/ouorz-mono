@@ -39,7 +39,6 @@
 	"devDependencies": {
 		"@ouorz/eslint-config-next": "workspace:*",
 		"@ouorz/prettier-config": "workspace:*",
-		"@tailwindcss/typography": "^0.5.16",
 		"@trivago/prettier-plugin-sort-imports": "^5.2.2",
 		"@types/cors": "^2.8.18",
 		"@types/lodash": "^4.17.17",
@@ -66,7 +65,8 @@
 		"react-timeago": "^8.2.0",
 		"smoothscroll-polyfill": "^0.4.4",
 		"swr": "^2.3.3",
-		"tailwindcss": "^3.4.16",
+                "@tailwindcss/typography": "^0.5.16",
+                "tailwindcss": "^4.1.8",
 		"ts-loader": "^9.5.2",
 		"typescript": "^5.8.3",
 		"webpack": "^5.99.9"
