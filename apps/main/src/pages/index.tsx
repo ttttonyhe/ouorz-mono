@@ -432,7 +432,7 @@ const Home: NextPageWithLayout = () => {
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/biorender_logo.png"
 						organization="BioRender"
-						organizationFullName="Science Suite Inc."
+						organizationFullName="SaaS, Y Combinator W18"
 						organizationLocation="Toronto, ON"
 						jobTitle="Full Stack Software Engineer"
 						jobType="SWE, Co-op"
@@ -441,7 +441,7 @@ const Home: NextPageWithLayout = () => {
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/jewlr-logo.svg"
 						organization="Safyre Labs"
-						organizationFullName="Safyre Labs Inc."
+						organizationFullName="E-Commerce Platform, Supply Chain"
 						jobTitle="Full Stack Software Engineer"
 						jobType="SWE, Co-op"
 						dateString="May -  Aug 2022"
@@ -450,7 +450,7 @@ const Home: NextPageWithLayout = () => {
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/bitbuy_logo.png"
 						organization="Bitbuy"
-						organizationFullName="Bitbuy Technologies Inc."
+						organizationFullName="Cryptocurrency Exchange, Publicly Traded on TSX: WNDR"
 						jobTitle="Front End Software Engineer"
 						jobType="SWE, Co-op"
 						dateString="Sep -  Dec 2021"
