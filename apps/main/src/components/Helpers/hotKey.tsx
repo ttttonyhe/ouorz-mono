@@ -12,11 +12,15 @@ const HotkeyHelper = ({ item }: { item: KbarListItem }) => {
 	useHotkeys(
 		`shift+${item.shortcut.join("+")}`,
 		(e) => {
-			e.preventDefault()
-			item.action()
+			// Only trigger if shift key is actually pressed
+			if (e.shiftKey) {
+				e.preventDefault()
+				item.action()
+			}
 		},
 		{
-			enableOnTags: ["INPUT"],
+			enableOnFormTags: ["INPUT"],
+			useKey: true,
 		}
 	)
 	// render nothing

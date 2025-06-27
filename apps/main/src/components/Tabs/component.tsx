@@ -210,7 +210,7 @@ const Tabs = (props: TabsProps) => {
 				)
 			},
 			{
-				enableOnTags: ["INPUT"],
+				enableOnFormTags: ["INPUT"],
 			},
 			[highlightedIndex]
 		)
@@ -230,7 +230,7 @@ const Tabs = (props: TabsProps) => {
 				)
 			},
 			{
-				enableOnTags: ["INPUT"],
+				enableOnFormTags: ["INPUT"],
 			},
 			[highlightedIndex]
 		)
@@ -243,7 +243,7 @@ const Tabs = (props: TabsProps) => {
 					items[highlightedIndex].onClick()
 			},
 			{
-				enableOnTags: ["INPUT"],
+				enableOnFormTags: ["INPUT"],
 			},
 			[highlightedIndex]
 		)

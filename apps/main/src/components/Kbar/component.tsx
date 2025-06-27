@@ -26,7 +26,7 @@ const Kbar = (props: KbarProps) => {
 	const { trackEvent } = useAnalytics()
 
 	// Register keybinding that triggers/hides the kbar
-	useHotkeys("ctrl+k, command+k", (e) => {
+	useHotkeys("ctrl+k, meta+k", (e) => {
 		e.preventDefault()
 		dispatch(activateKbar(props.list))
 		trackEvent("activateKbar", "hotkey")
@@ -50,7 +50,7 @@ const Kbar = (props: KbarProps) => {
 			}
 		},
 		{
-			enableOnTags: ["INPUT"],
+			enableOnFormTags: ["INPUT"],
 		}
 	)
 

@@ -1,12 +1,12 @@
 import { Label } from "@twilight-toolkit/ui"
 import { GetStaticPaths, GetStaticProps } from "next"
+import dynamic from "next/dynamic"
 // Components
 import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import TimeAgo from "react-timeago"
-import Aside from "~/components/Aside"
 import { CardTool } from "~/components/Card/WithImage/tool"
 import CommentBox from "~/components/CommentBox"
 import { contentLayout } from "~/components/Content"
@@ -19,6 +19,8 @@ import getAPI from "~/utilities/api"
 // Utilities
 import { trimStr } from "~/utilities/string"
 
+const Aside = dynamic(() => import("~/components/Aside"), { ssr: false })
+
 interface Props {
 	status: boolean
 	post?: any
@@ -27,6 +29,7 @@ interface Props {
 const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 	const router = useRouter()
 	const dispatch = useDispatch()
+	const [isPostContentRendered, setIsPostContentRendered] = useState(false)
 
 	if (!status || !post) {
 		useEffect(() => {
@@ -110,14 +113,17 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 						</span>
 					</p>
 				</div>
-				<PostContent content={post.content.rendered} />
+				<PostContent
+					content={post.content.rendered}
+					onRendered={() => setIsPostContentRendered(true)}
+				/>
 				{post.post_categories[0].term_id === 4 && (
 					<div className="mt-12">
 						<CardTool item={post} preview={false} />
 					</div>
 				)}
 			</article>
-			<Aside preNext={post.post_prenext} />
+			{isPostContentRendered && <Aside preNext={post.post_prenext} />}
 			<div className="border-t border-gray-200 lg:mt-5 lg:border-none">
 				<SubscriptionBox type="lg" />
 			</div>

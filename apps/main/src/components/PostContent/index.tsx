@@ -1,12 +1,29 @@
 import "highlight.js/styles/atom-one-dark.css"
-import Highlight from "react-highlight"
+import dynamic from "next/dynamic"
+import { useEffect } from "react"
 
-const HighlightComponent = Highlight as any
+const Highlight = dynamic(() => import("react-highlight"), { ssr: false })
 
-export default function PostContent({ content }: { content: string }) {
+interface PostContentProps {
+	content: string
+	onRendered?: () => void
+}
+
+export default function PostContent({ content, onRendered }: PostContentProps) {
+	useEffect(() => {
+		// Call onRendered after the component mounts and Highlight is ready
+		if (onRendered) {
+			const timer = setTimeout(() => {
+				onRendered()
+			}, 100) // Small delay to ensure Highlight has rendered
+
+			return () => clearTimeout(timer)
+		}
+	}, [onRendered])
+
 	return (
 		<div className="prose tracking-wide dark:prose-dark lg:prose-xl prose-ul:m-2 prose-ul:ps-5 prose-hr:border-gray-200 prose-hr:dark:border-gray-700">
-			<HighlightComponent innerHTML={true}>{content}</HighlightComponent>
+			<Highlight innerHTML={true}>{content}</Highlight>
 		</div>
 	)
 }
