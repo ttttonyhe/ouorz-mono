@@ -92,7 +92,7 @@ const Kbar = (props: KbarProps) => {
 				<div
 					data-cy="kbar-bg"
 					className={`pointer-events-auto absolute z-40 h-screen w-full bg-gray-50/90 dark:bg-black/70 ${
-						animation === "out" ? "animate-kbarBgOut" : "animate-kbarBg"
+						animation === "out" ? "animate-kbar-bg-out" : "animate-kbar-bg"
 					}`}
 					onClick={() => dispatch(deactivateKbar())}
 				/>

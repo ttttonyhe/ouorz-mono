@@ -44,14 +44,14 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 							</div>
 						</div>
 					</div>
-					<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-sm dark:border-gray-800 dark:bg-gray-800">
+					<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-xs dark:border-gray-800 dark:bg-gray-800">
 						<p className="items-center text-xl tracking-wide text-gray-500 dark:text-gray-400">
 							I am developing and maintaining various open source projects and
 							hosting a podcast about tech, life and career 🤓
 						</p>
 					</div>
 				</div>
-				<div className="mb-10 mt-5 grid grid-cols-2 gap-4">
+				<div className="mt-5 mb-10 grid grid-cols-2 gap-4">
 					<PageCard
 						title="Github"
 						des="ttttonyhe"
@@ -67,7 +67,7 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						href="https://kukfm.com"
 					/>
 				</div>
-				<div className="my-2 mb-10 w-full items-center rounded-md border bg-white p-7 shadow-sm dark:border-gray-800 dark:bg-gray-800">
+				<div className="my-2 mb-10 w-full items-center rounded-md border bg-white p-7 shadow-xs dark:border-gray-800 dark:bg-gray-800">
 					<p className="items-center text-xl tracking-wide text-gray-500 dark:text-gray-300">
 						If you found my projects or podcast useful or interesting, please
 						consider supporting me through the following ways:
@@ -117,7 +117,7 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						/>
 					</div>
 				</div>
-				<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-sm dark:border-gray-800 dark:bg-gray-800">
+				<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-xs dark:border-gray-800 dark:bg-gray-800">
 					<p className="items-center text-xl tracking-wide text-gray-500 dark:text-gray-400">
 						Contact me after finishing your payment, and I{"'"}ll put your name
 						on the list below
@@ -128,13 +128,13 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						return (
 							<div
 								key={index}
-								className="glowing-div flex cursor-pointer items-center rounded-md border bg-white px-5 py-4 shadow-sm transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800">
+								className="glowing-div flex cursor-pointer items-center rounded-md border bg-white px-5 py-4 shadow-xs transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800">
 								<GlowingBackground />
 								<div className="glowing-div-content flex w-full items-center overflow-hidden text-ellipsis whitespace-nowrap">
 									<h1 className="flex-1 items-center text-xl font-medium tracking-wide">
 										{item.name}
 									</h1>
-									<p className="flex items-center justify-end text-4 tracking-wide text-gray-400">
+									<p className="text-4 flex items-center justify-end tracking-wide text-gray-400">
 										<span className="hidden lg:flex">
 											{item.date}&nbsp;|&nbsp;
 										</span>

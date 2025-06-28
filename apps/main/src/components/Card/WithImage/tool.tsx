@@ -20,9 +20,9 @@ export const CardTool = ({
 }) => {
 	const dispatch = useDispatch()
 	return (
-		<div className="w-full overflow-hidden whitespace-nowrap rounded-md border border-gray-200 shadow-sm dark:border-gray-600 dark:bg-gray-600 lg:grid lg:grid-cols-8 lg:gap-3">
+		<div className="w-full overflow-hidden rounded-md border border-gray-200 whitespace-nowrap shadow-xs lg:grid lg:grid-cols-8 lg:gap-3 dark:border-gray-600 dark:bg-gray-600">
 			<div
-				className={`col-start-1 col-end-2 rounded-bl-md rounded-tl-md ${
+				className={`col-start-1 col-end-2 rounded-tl-md rounded-bl-md ${
 					item.post_metas.fineTool.itemImgBorder
 						? "border-r border-gray-200 dark:border-gray-600"
 						: ""
@@ -34,12 +34,12 @@ export const CardTool = ({
 					backgroundPosition: "center",
 				}}
 			/>
-			<div className="col-start-2 col-end-9 grid grid-cols-2 items-center py-2 pl-3 pr-3 lg:pl-0">
+			<div className="col-start-2 col-end-9 grid grid-cols-2 items-center py-2 pr-3 pl-3 lg:pl-0">
 				<div className="items-center justify-center">
 					<h2 className="text-xl font-medium text-gray-600 dark:text-gray-200">
 						{item.post_metas.fineTool.itemName}
 					</h2>
-					<p className="text-ellipsis text-5 text-gray-500 dark:text-gray-400">
+					<p className="text-5 text-ellipsis text-gray-500 dark:text-gray-400">
 						{item.post_metas.fineTool.itemDes}
 					</p>
 				</div>
@@ -72,7 +72,7 @@ export const CardTool = ({
 export default function CardWithImageTool({ item, sticky }: Props) {
 	return (
 		<div
-			className={`w-full rounded-md border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800 ${
+			className={`w-full rounded-md border bg-white shadow-xs dark:border-gray-700 dark:bg-gray-800 ${
 				sticky ? "mb-6 border-t-4 border-t-yellow-200" : "mb-6"
 			}`}>
 			<div className="p-5 lg:p-10">
@@ -80,12 +80,12 @@ export default function CardWithImageTool({ item, sticky }: Props) {
 				<div className="mt-6">
 					<Link href={`/post/${item.id}`}>
 						<h1
-							className="mb-5 text-2 font-medium tracking-wider text-gray-700 dark:text-white lg:text-listTitle"
+							className="text-2 lg:text-list-title mb-5 font-medium tracking-wider text-gray-700 dark:text-white"
 							dangerouslySetInnerHTML={{ __html: item.post_title }}
 						/>
 					</Link>
 					<p
-						className="leading-2 overflow-hidden text-ellipsis text-4 tracking-wide text-gray-500 dark:text-gray-400 lg:text-3 lg:leading-8"
+						className="text-4 lg:text-3 overflow-hidden leading-2 tracking-wide text-ellipsis text-gray-500 lg:leading-8 dark:text-gray-400"
 						dangerouslySetInnerHTML={{
 							__html: trimStr(item.post_excerpt.four, 150),
 						}}

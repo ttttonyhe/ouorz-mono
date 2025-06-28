@@ -45,7 +45,7 @@ const Friends: NextPageWithLayout = ({ friends }: { friends: any }) => {
 						</div>
 					</div>
 				</div>
-				<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-sm dark:border-gray-800 dark:bg-gray-800">
+				<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-xs dark:border-gray-800 dark:bg-gray-800">
 					<p className="items-center text-xl tracking-wide text-gray-500 dark:text-gray-400">
 						To join this webring, email me at ABC_tony.hlp@hotmail.com (with the
 						leading "ABC_" removed).
@@ -58,7 +58,7 @@ const Friends: NextPageWithLayout = ({ friends }: { friends: any }) => {
 				{friends.map((item, index) => {
 					return (
 						<div
-							className="glowing-div cursor-pointer items-center rounded-md border bg-white shadow-sm transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800"
+							className="glowing-div cursor-pointer items-center rounded-md border bg-white shadow-xs transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800"
 							key={index}>
 							<GlowingBackground />
 							<div className="glowing-div-content w-fullitems-center flex-1 px-6 py-4">
@@ -75,7 +75,7 @@ const Friends: NextPageWithLayout = ({ friends }: { friends: any }) => {
 										<span className="ml-2">{item.post_title}</span>
 									</h1>
 									<p
-										className="overflow-hidden text-ellipsis whitespace-nowrap text-4 tracking-wide text-gray-500 dark:text-gray-400"
+										className="text-4 overflow-hidden tracking-wide text-ellipsis whitespace-nowrap text-gray-500 dark:text-gray-400"
 										dangerouslySetInnerHTML={{
 											__html: trimStr(item.post_excerpt.four, 150),
 										}}

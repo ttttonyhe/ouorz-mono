@@ -5,7 +5,6 @@ import Script from "next/script"
 import NextNprogress from "nextjs-progressbar"
 import type { ReactElement, ReactNode } from "react"
 import { Provider as ReduxProvider } from "react-redux"
-import "~/assets/styles/vendors/tailwind.css"
 import store from "~/store"
 import "~/styles/global.css"
 
@@ -44,7 +43,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
 				enableSystem={true}>
 				{/* Redux Store Provider */}
 				<ReduxProvider store={store}>
-					<div className="min-h-screen animate-appear bg-gbg dark:bg-neutral-900 dark:text-white">
+					<div className="animate-appear bg-gbg min-h-screen dark:bg-neutral-900 dark:text-white">
 						<>{getLayout(<Component {...pageProps} />)}</>
 					</div>
 				</ReduxProvider>

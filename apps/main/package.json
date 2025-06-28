@@ -10,12 +10,13 @@
 		"lint": "next lint --fix",
 		"test:open": "cypress open",
 		"test": "cypress run",
-		"upgrade": "ncu --upgrade -x tailwindcss",
+		"upgrade": "ncu --upgrade",
 		"clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo && rm -rf .next"
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^2.8.2",
 		"@sentry/nextjs": "^9.33.0",
+		"@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
 		"@twilight-toolkit/ui": "workspace:*",
 		"@twilight-toolkit/utils": "workspace:*",
 		"algoliasearch": "5.29.0",
@@ -25,6 +26,7 @@
 		"html2plaintext": "^2.1.4",
 		"lodash": "^4.17.21",
 		"next": "^15.3.4",
+		"postcss-nesting": "^13.0.2",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
 		"react-hotkeys-hook": "^5.0.0",
@@ -40,6 +42,7 @@
 	"devDependencies": {
 		"@ouorz/eslint-config-next": "workspace:*",
 		"@ouorz/prettier-config": "workspace:*",
+		"@tailwindcss/postcss": "^4.1.11",
 		"@tailwindcss/typography": "^0.5.16",
 		"@trivago/prettier-plugin-sort-imports": "^5.2.2",
 		"@types/cors": "^2.8.19",
@@ -50,7 +53,6 @@
 		"@types/react-highlight": "^0.12.8",
 		"@types/rss": "^0.0.32",
 		"@types/smoothscroll-polyfill": "^0.3.4",
-		"autoprefixer": "^10.4.21",
 		"comma-number": "^2.1.0",
 		"cssnano": "^7.0.7",
 		"eslint": "^9",
@@ -66,7 +68,7 @@
 		"react-timeago": "^8.2.0",
 		"smoothscroll-polyfill": "^0.4.4",
 		"swr": "^2.3.3",
-		"tailwindcss": "^3.4.16",
+		"tailwindcss": "^4.1.11",
 		"ts-loader": "^9.5.2",
 		"typescript": "^5.8.3",
 		"webpack": "^5.99.9"

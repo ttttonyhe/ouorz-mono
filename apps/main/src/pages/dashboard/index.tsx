@@ -47,7 +47,7 @@ const Dashboard: NextPageWithLayout = () => {
 						</div>
 					</div>
 				</div>
-				<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-sm dark:border-gray-800 dark:bg-gray-800">
+				<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-xs dark:border-gray-800 dark:bg-gray-800">
 					<p className="items-center text-xl tracking-wide text-gray-500 dark:text-gray-400">
 						Personal dashboard tracking various metrics of this website, and
 						across platforms like Twitter, GitHub, and more.
@@ -55,12 +55,12 @@ const Dashboard: NextPageWithLayout = () => {
 				</div>
 			</div>
 			<div
-				className="glowing-area mb-10 mt-5 grid gap-4 lg:grid-cols-2"
+				className="glowing-area mt-5 mb-10 grid gap-4 lg:grid-cols-2"
 				data-cy="metricCards">
 				<GithubStarMetric />
 				<GithubFollowerMetric />
 			</div>
-			<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-sm dark:border-gray-800 dark:bg-gray-800">
+			<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-xs dark:border-gray-800 dark:bg-gray-800">
 				<p className="items-center text-xl tracking-wide text-gray-500 dark:text-gray-400">
 					For detailed data analytics, see:{" "}
 					<a
@@ -73,7 +73,7 @@ const Dashboard: NextPageWithLayout = () => {
 				</p>
 			</div>
 			<div
-				className="glowing-area mb-28 mt-5 grid gap-4 lg:grid-cols-2"
+				className="glowing-area mt-5 mb-28 grid gap-4 lg:grid-cols-2"
 				data-cy="metricCards">
 				<NexmentMetric />
 				<SspaiMetric />

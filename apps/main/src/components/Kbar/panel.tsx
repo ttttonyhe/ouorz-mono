@@ -168,7 +168,7 @@ const KbarPanel = () => {
 				link: item.link,
 				onClick: item.action,
 				hoverable: item.hoverable,
-				className: "w-full !justify-start !p-4",
+				className: "w-full justify-start! p-4!",
 				component:
 					item.hoverable === false ? (
 						<p className="kbar-list-heading text-sm text-gray-400">
@@ -251,13 +251,13 @@ const KbarPanel = () => {
 				}
 			})}
 			<div
-				className={`z-50 ml-[16px] mt-[8%] h-fit max-h-[420px] w-[620px] overflow-hidden rounded-xl border bg-white/70 shadow-2xl backdrop-blur-lg dark:border-gray-700 dark:bg-black/70 ${
+				className={`z-50 mt-[8%] ml-15 h-fit max-h-[420px] w-[620px] overflow-hidden rounded-xl border bg-white/70 shadow-2xl backdrop-blur-lg dark:border-gray-700 dark:bg-black/70 ${
 					animation === "transition"
-						? "animate-kbarTransition"
+						? "animate-kbar-transition"
 						: animation === "out"
-							? "animate-kbarOut"
+							? "animate-kbar-out"
 							: animation === "in"
-								? "animate-kbar opacity-0"
+								? "animate-kbar"
 								: ""
 				}`}>
 				<div
@@ -270,7 +270,7 @@ const KbarPanel = () => {
 						onChange={(e) => setInputValue(e.target.value)}
 						value={inputValue}
 						autoFocus
-						className="w-full flex-1 rounded-tl-lg rounded-tr-lg bg-transparent px-5 py-4.5 text-lg text-gray-600 outline-none dark:text-gray-300"
+						className="w-full flex-1 rounded-tl-lg rounded-tr-lg bg-transparent px-5 py-4.5 text-lg text-gray-600 outline-hidden dark:text-gray-300"
 					/>
 					<div className="mr-5 flex items-center">
 						<ul className="flex list-none gap-x-2 text-gray-400 dark:text-gray-500">
@@ -305,7 +305,7 @@ const KbarPanel = () => {
 						</ul>
 					</div>
 					{loading && resolvedTheme === "dark" && (
-						<div className="kbar-loading-bar absolute bottom-[-1.25px] z-50 h-[1.5px] w-full animate-kbarLoadingBar" />
+						<div className="kbar-loading-bar animate-kbar-loading-bar absolute bottom-[-1.25px] z-50 h-[1.5px] w-full" />
 					)}
 				</div>
 				<div

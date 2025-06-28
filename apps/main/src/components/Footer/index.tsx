@@ -57,18 +57,18 @@ export default function Footer() {
 	if (!mounted) return null
 
 	return (
-		<footer className="mt-20 border-b border-t border-gray-200 bg-white py-4 text-center dark:border-gray-700 dark:bg-gray-800">
+		<footer className="mt-20 border-t border-b border-gray-200 bg-white py-4 text-center dark:border-gray-700 dark:bg-gray-800">
 			<div className="fixed bottom-8 left-8 text-gray-500 dark:text-gray-300">
 				<button
 					aria-label="change theme"
 					onClick={() => {
 						setTheme(targetThemes[themes.indexOf(theme)])
 					}}
-					className="effect-pressing flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white !p-3 text-xl tracking-wider shadow-sm hover:shadow-inner focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+					className="effect-pressing flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white p-3! text-xl tracking-wider shadow-xs hover:shadow-inner focus:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
 					<span className="h-7 w-7">{icons[themes.indexOf(theme)]}</span>
 				</button>
 			</div>
-			<div className="fixed bottom-8 right-8 text-gray-500 dark:text-gray-300">
+			<div className="fixed right-8 bottom-8 text-gray-500 dark:text-gray-300">
 				<OffsetTransition componentRef={backToTopRef}>
 					<button
 						ref={backToTopRef}
@@ -76,7 +76,7 @@ export default function Footer() {
 						onClick={() => {
 							window.scrollTo({ top: 0, behavior: "smooth" })
 						}}
-						className="effect-pressing flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white p-3 text-xl tracking-wider opacity-0 shadow-sm hover:shadow-inner focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+						className="effect-pressing flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white p-3 text-xl tracking-wider opacity-0 shadow-xs hover:shadow-inner focus:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
 						<span className="h-7 w-7">
 							<Icon name="arrowUp" />
 						</span>

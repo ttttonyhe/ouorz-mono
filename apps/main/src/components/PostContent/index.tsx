@@ -22,7 +22,7 @@ export default function PostContent({ content, onRendered }: PostContentProps) {
 	}, [onRendered])
 
 	return (
-		<div className="prose tracking-wide dark:prose-dark lg:prose-xl prose-ul:m-2 prose-ul:ps-5 prose-hr:border-gray-200 prose-hr:dark:border-gray-700">
+		<div className="prose dark:prose-dark lg:prose-xl prose-ul:m-2 prose-ul:ps-5 prose-hr:border-gray-200 dark:prose-hr:border-gray-700 tracking-wide">
 			<Highlight innerHTML={true}>{content}</Highlight>
 		</div>
 	)

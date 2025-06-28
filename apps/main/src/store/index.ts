@@ -16,6 +16,7 @@ const store = configureStore({
 	middleware: (getDefaultMiddleware) => {
 		return getDefaultMiddleware({
 			immutableCheck: false,
+			serializableCheck: false,
 		}).concat(sagaMiddleware)
 	},
 })

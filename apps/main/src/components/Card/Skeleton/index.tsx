@@ -2,7 +2,7 @@ import ContentLoader from "react-content-loader"
 
 export default function CardSkeleton() {
 	return (
-		<div className="mb-6 w-full rounded-md border bg-white p-10 text-center shadow-sm dark:border-gray-800 dark:bg-gray-800">
+		<div className="mb-6 w-full rounded-md border bg-white p-10 text-center shadow-xs dark:border-gray-800 dark:bg-gray-800">
 			<ContentLoader
 				className="block dark:hidden"
 				uniqueKey="card-skeleton-light"

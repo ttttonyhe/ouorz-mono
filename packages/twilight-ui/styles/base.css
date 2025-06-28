@@ -1,32 +1,36 @@
-.effect-pressing {
-	@apply active:!scale-[0.985] active:!translate-y-[0.5px] transition-transform duration-[50ms] ease-linear;
-}
+@import "./vendor.css";
 
-.label-group {
-	@apply flex flex-nowrap items-center rounded-md border dark:border-gray-600;
-}
+@layer components {
+	.effect-pressing {
+		@apply active:!scale-[0.985] active:!translate-y-[0.5px] transition-transform duration-[50ms] ease-linear;
+	}
+	
+	.label-group {
+		@apply flex flex-nowrap items-center rounded-md border dark:border-gray-600;
+	}
+	
+	.label-group label {
+		@apply h-full;
+	}
+	
+	.label-group label:only-child {
+		border-radius: calc(0.375rem - 1px);
+	}
+	
+	.label-group label:not(:first-child),
+	.label-group label:not(:last-child) {
+		@apply rounded-none border-l dark:border-gray-600;
+	}
+	
+	.label-group label:not(:only-child):first-child {
+		@apply rounded-tr-none rounded-br-none border-none;
+		border-top-left-radius: calc(0.375rem - 1px);
+		border-bottom-left-radius: calc(0.375rem - 1px);
+	}
 
-.label-group label {
-	@apply h-full;
-}
-
-.label-group label:only-child {
-	border-radius: calc(0.375rem - 1px);
-}
-
-.label-group label:not(:first-child),
-.label-group label:not(:last-child) {
-	@apply rounded-none border-l dark:border-gray-600;
-}
-
-.label-group label:not(:only-child):first-child {
-	@apply rounded-tr-none rounded-br-none border-none;
-	border-top-left-radius: calc(0.375rem - 1px);
-	border-bottom-left-radius: calc(0.375rem - 1px);
-}
-
-.label-group label:not(:only-child):last-child {
-	@apply rounded-tl-none rounded-bl-none;
-	border-top-right-radius: calc(0.375rem - 1px);
-	border-bottom-right-radius: calc(0.375rem - 1px);
+	.label-group label:not(:only-child):last-child {
+		@apply rounded-tl-none rounded-bl-none;
+		border-top-right-radius: calc(0.375rem - 1px);
+		border-bottom-right-radius: calc(0.375rem - 1px);
+	}
 }

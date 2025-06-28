@@ -92,7 +92,7 @@ const Tabs = (props: TabsProps) => {
 				"tabs-highlighter z-0",
 				className || "",
 				bgColor || "bg-menu",
-				bgDark || "dark:bg-gray-700/40 backdrop-blur-sm",
+				bgDark || "dark:bg-gray-700/40 backdrop-blur-xs",
 			].join(" ")
 		} else {
 			highlighterRef.current.className = ""
@@ -177,7 +177,7 @@ const Tabs = (props: TabsProps) => {
 					listRef.current.children[0],
 					items[0].bgColor,
 					items[0].bgDark,
-					delay === 0 ? "" : "animate-kbarHighlighter",
+					delay === 0 ? "" : "animate-kbar-highlighter",
 					0,
 					"above"
 				)

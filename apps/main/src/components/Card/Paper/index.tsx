@@ -38,11 +38,11 @@ const PaperCard = (props: PaperCardProps) => {
 			onClick={() => {
 				defaultLink && window?.open(defaultLink, "_blank")
 			}}
-			className="group flex w-full cursor-pointer flex-col gap-y-2 rounded-md border bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600">
+			className="group flex w-full cursor-pointer flex-col gap-y-2 rounded-md border bg-white shadow-xs transition-all hover:-translate-y-1 hover:border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600">
 			<div className="text-normal flex w-full items-center border-b border-gray-200 px-4.5 py-2.5 font-serif font-medium tracking-wide text-gray-700 dark:border-gray-700 dark:text-white dark:group-hover:border-gray-600">
 				<p>{title}</p>
 			</div>
-			<div className="flex flex-col gap-y-2.5 px-4.5 pb-3.5 pt-1">
+			<div className="flex flex-col gap-y-2.5 px-4.5 pt-1 pb-3.5">
 				<div className="text-sm tracking-wide text-gray-600 dark:text-gray-300">
 					{
 						// Make my name (Lipeng He) bold, also split authors by comma
@@ -66,7 +66,7 @@ const PaperCard = (props: PaperCardProps) => {
 							<Link href={venue.href}>{venue.name}</Link>
 						)}
 					</div>
-					<div className="flex items-center justify-between gap-x-2.5 overflow-x-auto whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+					<div className="flex items-center justify-between gap-x-2.5 overflow-x-auto text-sm whitespace-nowrap text-gray-500 dark:text-gray-300">
 						{links.map((link) => (
 							<Link
 								key={link.href}

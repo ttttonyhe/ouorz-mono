@@ -1,6 +1,5 @@
 // Custom and Tailwind CSS
 import "../styles/base.css"
-import "../styles/vendor.css"
 
 // Button
 export { default as Button } from "./Button"

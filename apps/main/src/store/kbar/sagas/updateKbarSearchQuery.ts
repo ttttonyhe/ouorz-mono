@@ -49,7 +49,7 @@ export default function* updateKbarSearchQuerySaga(
 						onClick: () => {
 							window.location.href = `https://lipeng.ac/post/${id}`
 						},
-						className: "w-full !justify-start !p-4",
+						className: "w-full justify-start! p-4!",
 						description: `${index + 1} / ${totalResultLength}`,
 					}
 				}

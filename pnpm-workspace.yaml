@@ -2,5 +2,7 @@ packages:
   - apps/*
   - packages/*
   - '!**/wordpress/**'
+
 onlyBuiltDependencies:
+  - '@tailwindcss/oxide'
   - cypress
