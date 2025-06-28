@@ -18,14 +18,6 @@
         "^build"
       ]
     },
-    "@twilight-toolkit/ui#build": {
-      "outputs": [
-        "dist/**"
-      ],
-      "dependsOn": [
-        "@twilight-toolkit/utils#build"
-      ]
-    },
     "@twilight-toolkit/utils#build": {
       "outputs": [
         "dist/**"

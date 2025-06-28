@@ -7,6 +7,11 @@ import useAnalytics from "~/hooks/analytics"
 export default function CardFooter({ item }: { item: WPPost }) {
 	const { trackEvent } = useAnalytics()
 	const [canShare, setCanShare] = useState<boolean | undefined>()
+	const [mounted, setMounted] = useState(false)
+
+	useEffect(() => {
+		setMounted(true)
+	}, [])
 
 	const doShare = async () => {
 		try {
@@ -21,8 +26,10 @@ export default function CardFooter({ item }: { item: WPPost }) {
 	}
 
 	useEffect(() => {
-		setCanShare(!!navigator.share)
-	}, [])
+		if (mounted) {
+			setCanShare(!!navigator.share)
+		}
+	}, [mounted])
 
 	return (
 		<div className="h-auto w-full items-center rounded-br-md rounded-bl-md border-t border-gray-100 px-5 py-3 lg:px-10 lg:py-2 dark:border-gray-700">

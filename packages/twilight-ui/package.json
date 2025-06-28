@@ -15,17 +15,15 @@
   },
   "scripts": {
     "dev": "storybook dev -p 6006 --quiet",
-    "build": "tsx ./scripts/build.ts",
     "build:storybook": "storybook build",
     "start:storybook": "http-server -s -p 5555 ./storybook-static",
     "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo",
-    "upgrade": "ncu --upgrade",
-    "prepublishOnly": "turbo run build"
+    "upgrade": "ncu --upgrade"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.11",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",

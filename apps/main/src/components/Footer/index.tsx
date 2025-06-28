@@ -31,7 +31,7 @@ export default function Footer() {
 
 	useEffect(() => {
 		// Cursor glowing effect
-		if (resolvedTheme === "dark") {
+		if (mounted && resolvedTheme === "dark") {
 			const glowingArea = document.querySelector(".glowing-area")
 			const glowingDivs = document.querySelectorAll(".glowing-div")
 
@@ -52,7 +52,7 @@ export default function Footer() {
 		}
 		// Hide kbar on route change
 		visible && dispatch(deactivateKbar())
-	}, [pathname, resolvedTheme])
+	}, [pathname, resolvedTheme, mounted])
 
 	if (!mounted) return null
 

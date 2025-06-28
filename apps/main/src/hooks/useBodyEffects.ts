@@ -6,11 +6,17 @@ import { useEffect, useState, useRef, Dispatch, SetStateAction } from "react"
 const useBodyScroll = (): [boolean, Dispatch<SetStateAction<boolean>>] => {
 	if (typeof document === "undefined") return [false, (t: boolean) => t]
 
-	const bodyRef = useRef<HTMLElement>(document.body)
+	const bodyRef = useRef<HTMLElement | null>(null)
 	const [scrollable, setScrollable] = useState(true)
 
 	useEffect(() => {
-		if (!bodyRef || !bodyRef.current) return
+		// Initialize the ref with document.body in useEffect to avoid hydration mismatch
+		if (!bodyRef.current) {
+			bodyRef.current = document.body
+		}
+
+		if (!bodyRef.current) return
+
 		if (scrollable) {
 			bodyRef.current.style.overflow = "auto"
 		} else {
@@ -30,10 +36,17 @@ const useBodyPointerEvents = (): [
 ] => {
 	if (typeof document === "undefined") return [false, (t: boolean) => t]
 
-	const bodyRef = useRef<HTMLElement>(document.body)
+	const bodyRef = useRef<HTMLElement | null>(null)
 	const [pointerEvents, setPointerEvents] = useState(true)
 
 	useEffect(() => {
+		// Initialize the ref with document.body in useEffect to avoid hydration mismatch
+		if (!bodyRef.current) {
+			bodyRef.current = document.body
+		}
+
+		if (!bodyRef.current) return
+
 		if (pointerEvents) {
 			bodyRef.current.style.pointerEvents = "auto"
 		} else {
