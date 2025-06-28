@@ -1,8 +1,6 @@
 import "highlight.js/styles/atom-one-dark.css"
-import dynamic from "next/dynamic"
 import { useEffect, useState } from "react"
-
-const Highlight = dynamic(() => import("react-highlight"), { ssr: false })
+import Highlight from "react-highlight"
 
 interface PostContentProps {
 	content: string
