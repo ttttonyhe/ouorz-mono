@@ -78,7 +78,7 @@ const Pages: NextPageWithLayout = () => {
 					href="/page/249"
 				/>
 				<PageCard
-					title="Links"
+					title="Blogroll"
 					des="Friends from the Internet"
 					icon="people"
 					className="text-gray-400"
