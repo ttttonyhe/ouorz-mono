@@ -121,6 +121,17 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
+						title="FedVLP: Visual-aware Latent Prompt Generation for Multimodal Federated Learning"
+						authors="Hao Pan, Xiaoli Zhao, Yuchen Jiang, Lipeng He, Bingquan Wang, and Yincan Shu"
+						accepted={true}
+						venue={{
+							name: "Computer Vision and Image Understanding",
+							href: "https://www.sciencedirect.com/journal/computer-vision-and-image-understanding",
+							color: "border-l-yellow-400! border-l-4",
+						}}
+						links={[]}
+					/>
+					<PaperCard
 						title="Activation Approximations Can Incur Safety Vulnerabilities Even in Aligned LLMs: Comprehensive Analysis and Defense"
 						authors="Jiawen Zhang*, Kejia Chen*, Lipeng He*, Jian Lou, Dan Li, Zunlei Feng, Mingli Song, Jian Liu, Kui Ren, and Xiaohu Yang"
 						accepted={true}
@@ -279,12 +290,6 @@ const Home: NextPageWithLayout = () => {
 					<PaperCard
 						title="Token-by-Token Manipulation: Inference-Time Jailbreaking on Production LLMs via Autoregressive Harmful Guidance"
 						authors="Jiawen Zhang*, Lipeng He*, Kejia Chen*, Jian Liu, Zunlei Feng, Mingli Song, Jian Lou, Dan Li, and Xiaohu Yang"
-						accepted={false}
-						links={[]}
-					/>
-					<PaperCard
-						title="FedVLP: Visual-aware Latent Prompt Generation for Multimodal Federated Learning"
-						authors="Hao Pan, Xiaoli Zhao, Yuchen Jiang, Lipeng He, Bingquan Wang, and Yincan Shu"
 						accepted={false}
 						links={[]}
 					/>
