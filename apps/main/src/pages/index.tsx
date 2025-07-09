@@ -129,7 +129,13 @@ const Home: NextPageWithLayout = () => {
 							href: "https://www.sciencedirect.com/journal/computer-vision-and-image-understanding",
 							color: "border-l-yellow-400! border-l-4",
 						}}
-						links={[]}
+						links={[
+							{
+								label: "Paper",
+								href: "https://www.sciencedirect.com/science/article/abs/pii/S1077314225001651",
+								default: true,
+							},
+						]}
 					/>
 					<PaperCard
 						title="Activation Approximations Can Incur Safety Vulnerabilities Even in Aligned LLMs: Comprehensive Analysis and Defense"
