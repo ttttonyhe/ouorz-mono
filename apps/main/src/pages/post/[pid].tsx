@@ -124,7 +124,7 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 				)}
 			</article>
 			{isPostContentRendered && <Aside preNext={post.post_prenext} />}
-			<div className="border-t border-gray-200 lg:mt-5 lg:border-none">
+			<div className="border-t border-gray-200 lg:mt-5 lg:border-none dark:border-gray-600">
 				<SubscriptionBox type="lg" />
 			</div>
 			<CommentBox />

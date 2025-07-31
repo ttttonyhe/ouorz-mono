@@ -825,7 +825,7 @@
 	}
 
 	.nexment-comments-div .nexment-comments-title .nexment-comments-content {
-		@apply dark:border-gray-600 dark:bg-gray-700;
+		@apply dark:!border-gray-600 dark:bg-gray-700;
 	}
 
 	.nexment-reply-container

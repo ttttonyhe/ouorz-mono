@@ -49,7 +49,7 @@ const EmploymentCard = (props: EmploymentCardProps) => {
 				</div>
 			</div>
 			{organizationFullName && (
-				<div className="-mt-[8px] flex items-center justify-between border-t border-gray-200 px-4.5 py-1.5 dark:border-gray-700">
+				<div className="-mt-[8px] flex items-center justify-between overflow-hidden overflow-x-auto border-t border-gray-200 px-4.5 py-1.5 whitespace-nowrap dark:border-gray-700">
 					<p className="text-sm text-gray-500 dark:text-gray-400">
 						{organizationFullName}
 					</p>
