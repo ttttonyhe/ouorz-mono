@@ -17,7 +17,7 @@ class AppDocument extends Document {
 
 	render() {
 		return (
-			<Html lang="zh-cn" prefix="og: http://ogp.me/ns#">
+			<Html lang="en" prefix="og: http://ogp.me/ns#">
 				<Head>
 					<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 					<link
