@@ -24,6 +24,7 @@ const feedShelfNames = {
 	toRead: "to-read",
 	read: "read",
 	all: "#ALL#",
+	mustRead: "must-read",
 }
 
 const goodreads = async (
