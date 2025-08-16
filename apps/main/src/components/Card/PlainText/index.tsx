@@ -38,15 +38,15 @@ export default function CardPlainText({ item }: Props) {
 	const doUpvote = useDebouncedFunction(upvote, 2000)
 
 	return (
-		<div className="mb-6 w-full rounded-md border bg-white shadow-xs dark:border-gray-800 dark:bg-gray-800">
+		<div className="shadow-xs mb-6 w-full rounded-md border bg-white dark:border-gray-800 dark:bg-gray-800">
 			<div className="px-5 py-5 lg:px-10 lg:py-9">
 				<h1
-					className="text-2 leading-2 font-normal tracking-wider text-gray-600 lg:text-3xl lg:leading-10 dark:text-white"
+					className="leading-2 text-2 font-normal tracking-wider text-gray-600 dark:text-white lg:text-3xl lg:leading-10"
 					dangerouslySetInnerHTML={{ __html: item.post_title }}
 				/>
 			</div>
-			<div className="h-auto w-full items-center rounded-br-md rounded-bl-md border-t border-gray-100 px-5 pt-3 pb-3 lg:px-10 lg:pt-2 lg:pb-2 dark:border-gray-700">
-				<p className="text-5 lg:text-4 flex items-center space-x-2 leading-2 tracking-wide text-gray-500 lg:leading-8 dark:text-gray-400">
+			<div className="h-auto w-full items-center rounded-bl-md rounded-br-md border-t border-gray-100 px-5 pb-3 pt-3 dark:border-gray-700 lg:px-10 lg:pb-2 lg:pt-2">
+				<p className="leading-2 flex items-center space-x-2 text-5 tracking-wide text-gray-500 dark:text-gray-400 lg:text-4 lg:leading-8">
 					<button
 						className="flex cursor-pointer items-center space-x-1 rounded-md text-red-400 hover:text-red-500"
 						onClick={() => {

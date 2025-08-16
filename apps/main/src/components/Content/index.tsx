@@ -9,7 +9,7 @@ const Content = (props: Props) => {
 	return (
 		<div>
 			<Header />
-			<main className="min-h-main lg:w-page mx-auto h-auto w-full pt-0 lg:pt-24">
+			<main className="mx-auto h-auto min-h-main w-full pt-0 lg:w-page lg:pt-24">
 				<>{children}</>
 			</main>
 			<Footer />

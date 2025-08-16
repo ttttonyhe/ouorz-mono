@@ -35,13 +35,13 @@ export default function PageCard({
 	}
 	return (
 		<div
-			className="glowing-div flex cursor-pointer items-center rounded-md border bg-white px-4 pt-3 pb-4 shadow-xs transition-shadow hover:shadow-md dark:border-0 dark:bg-gray-700"
+			className="glowing-div shadow-xs flex cursor-pointer items-center rounded-md border bg-white px-4 pb-4 pt-3 transition-shadow hover:shadow-md dark:border-0 dark:bg-gray-700"
 			onClick={handleClick}>
 			<GlowingBackground />
 			<div className="glowing-div-content flex items-center overflow-hidden">
 				{icon && (
 					<div
-						className={`mr-4 hidden h-auto w-20 items-center justify-center border-r border-r-gray-200 pr-3 lg:flex dark:border-r-gray-600 ${
+						className={`mr-4 hidden h-auto w-20 items-center justify-center border-r border-r-gray-200 pr-3 dark:border-r-gray-600 lg:flex ${
 							className ? className : ""
 						}`}>
 						{icon.indexOf("://") > -1 ? (

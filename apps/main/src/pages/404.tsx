@@ -16,10 +16,10 @@ const PageNotFound: NextPageWithLayout = () => {
 			</Head>
 			<div className="mt-0 flex h-[65vh] items-center justify-center pt-24 lg:mt-20 lg:pt-0">
 				<div className="text-center">
-					<h1 className="lg:text-1 mb-0.5 text-3xl leading-14 font-medium tracking-wide text-black dark:text-white">
+					<h1 className="mb-0.5 text-3xl font-medium leading-14 tracking-wide text-black dark:text-white lg:text-1">
 						Oops
 					</h1>
-					<p className="text-3 lg:text-2 leading-14 font-light tracking-wide text-gray-500">
+					<p className="text-3 font-light leading-14 tracking-wide text-gray-500 lg:text-2">
 						404 Not Found
 					</p>
 					<div className="mt-4 inline-block justify-center">

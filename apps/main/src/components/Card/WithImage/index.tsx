@@ -90,13 +90,13 @@ export default function CardWithImage({ item, sticky }: Props) {
 		}
 
 		return (
-			<div className="mb-6 w-full rounded-md border bg-white shadow-xs dark:border-gray-700 dark:bg-gray-800">
+			<div className="shadow-xs mb-6 w-full rounded-md border bg-white dark:border-gray-700 dark:bg-gray-800">
 				<div className="p-5 lg:grid lg:grid-flow-col lg:grid-cols-3 lg:gap-9 lg:p-10">
 					<Hover
 						perspective={1000}
 						max={25}
 						scale={1.01}
-						className={`h-img relative col-span-1 col-end-2 hidden min-h-full w-full overflow-hidden rounded-md border border-gray-200 shadow-xs transition-all hover:shadow-md dark:opacity-90 ${
+						className={`shadow-xs relative col-span-1 col-end-2 hidden h-img min-h-full w-full overflow-hidden rounded-md border border-gray-200 transition-all hover:shadow-md dark:opacity-90 ${
 							showThumbnail ? "lg:block" : "lg:hidden"
 						} ${summarized ? "animate-shrink-disappear" : ""}`}>
 						<Image
@@ -160,27 +160,27 @@ export default function CardWithImage({ item, sticky }: Props) {
 							</div>
 						</div>
 						{summary && !showThumbnail ? (
-							<div className="animate-appear mt-6 lg:mt-4">
+							<div className="mt-6 animate-appear lg:mt-4">
 								<Link href={`/post/${item.id}`}>
-									<div className="group mb-4 flex flex-col gap-x-2 rounded-md border shadow-xs transition-colors hover:bg-gray-50 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-700">
-										<h2 className="flex w-full items-center justify-between gap-x-1 border-b px-3.5 py-2 text-sm font-semibold tracking-wide text-gray-500 uppercase dark:border-gray-600 dark:text-gray-300 dark:group-hover:border-gray-500">
+									<div className="shadow-xs group mb-4 flex flex-col gap-x-2 rounded-md border transition-colors hover:bg-gray-50 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-700">
+										<h2 className="flex w-full items-center justify-between gap-x-1 border-b px-3.5 py-2 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:border-gray-600 dark:text-gray-300 dark:group-hover:border-gray-500">
 											TITLE
 											<span className="-mr-2 h-4 w-4 opacity-0 transition-all group-hover:mr-0 group-hover:opacity-100">
 												<Icon name="right" />
 											</span>
 										</h2>
 										<h1
-											className="text-4 lg:text-3 overflow-hidden px-3.5 py-1.5 leading-2 tracking-wide text-ellipsis text-gray-500 lg:leading-7 dark:text-gray-400"
+											className="leading-2 overflow-hidden text-ellipsis px-3.5 py-1.5 text-4 tracking-wide text-gray-500 dark:text-gray-400 lg:text-3 lg:leading-7"
 											dangerouslySetInnerHTML={{ __html: item.post_title }}
 										/>
 									</div>
 								</Link>
-								<div className="mb-4 flex flex-col gap-x-2 rounded-md border shadow-xs dark:border-gray-600">
-									<h2 className="w-full border-b px-3.5 py-2 text-sm font-semibold tracking-wide text-gray-500 uppercase dark:border-gray-600 dark:text-gray-300">
+								<div className="shadow-xs mb-4 flex flex-col gap-x-2 rounded-md border dark:border-gray-600">
+									<h2 className="w-full border-b px-3.5 py-2 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:border-gray-600 dark:text-gray-300">
 										TL;DR
 									</h2>
 									<p
-										className="text-4 lg:text-3 overflow-hidden px-3.5 py-1.5 leading-2 tracking-wide text-ellipsis text-gray-500 lg:leading-7 dark:text-gray-400"
+										className="leading-2 overflow-hidden text-ellipsis px-3.5 py-1.5 text-4 tracking-wide text-gray-500 dark:text-gray-400 lg:text-3 lg:leading-7"
 										dangerouslySetInnerHTML={{
 											__html: summary,
 										}}
@@ -203,12 +203,12 @@ export default function CardWithImage({ item, sticky }: Props) {
 							<div className="mt-6 lg:mt-4">
 								<Link href={`/post/${item.id}`}>
 									<h1
-										className="text-2 lg:text-list-title mb-5 font-medium tracking-wider text-gray-700 dark:text-white"
+										className="lg:text-list-title mb-5 text-2 font-medium tracking-wider text-gray-700 dark:text-white"
 										dangerouslySetInnerHTML={{ __html: item.post_title }}
 									/>
 								</Link>
 								<p
-									className="text-4 lg:text-3 overflow-hidden leading-2 tracking-wide text-ellipsis text-gray-500 lg:leading-8 dark:text-gray-400"
+									className="leading-2 overflow-hidden text-ellipsis text-4 tracking-wide text-gray-500 dark:text-gray-400 lg:text-3 lg:leading-8"
 									dangerouslySetInnerHTML={{
 										__html: trimStr(item.post_excerpt.four, 150),
 									}}

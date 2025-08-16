@@ -150,7 +150,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 				<div
 					className={`${
 						recursionTimes == 0 ? "border-l-0" : ""
-					}toc-sub -my-1 cursor-pointer overflow-hidden border-gray-100 py-2 text-ellipsis whitespace-nowrap hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-700`}
+					}toc-sub -my-1 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap border-gray-100 py-2 hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-700`}
 					style={{
 						paddingLeft: recursionTimes == 0 ? "0px" : "10px",
 						marginLeft: recursionTimes == 0 ? "0px" : "10px",
@@ -171,9 +171,9 @@ export default function Aside({ preNext }: { preNext: any }) {
 				<li
 					className={`${
 						item[1] !== 0
-							? "toc-sub hover:rounded-tl-none hover:rounded-bl-none"
+							? "toc-sub hover:rounded-bl-none hover:rounded-tl-none"
 							: ""
-					} cursor-pointer overflow-hidden border-gray-100 py-2 pr-[10px] text-ellipsis whitespace-nowrap hover:rounded-md hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-700`}
+					} cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap border-gray-100 py-2 pr-[10px] hover:rounded-md hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-700`}
 					id={`header${item[0]}`}
 					style={{
 						paddingLeft: "10px",
@@ -206,14 +206,14 @@ export default function Aside({ preNext }: { preNext: any }) {
 		if (a || b) {
 			return (
 				<div
-					className={`mt-5 grid rounded-xl border bg-white text-xl text-gray-700 shadow-xs dark:border-gray-800 dark:bg-gray-800 dark:text-gray-400 ${
+					className={`shadow-xs mt-5 grid rounded-xl border bg-white text-xl text-gray-700 dark:border-gray-800 dark:bg-gray-800 dark:text-gray-400 ${
 						a && b ? "grid-cols-2" : "grid-cols-1"
 					} tour`}>
 					{a && (
 						<Link href={`/post/${preNext.prev[0]}`} passHref>
 							<div
 								className={`flex cursor-pointer items-center justify-center px-6 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 ${
-									b ? "rounded-tl-xl rounded-bl-xl" : "rounded-xl"
+									b ? "rounded-bl-xl rounded-tl-xl" : "rounded-xl"
 								}`}>
 								<span className="mr-2 h-6 w-6">
 									<Icon name="leftPlain" />
@@ -226,7 +226,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 						<Link href={`/post/${preNext.next[0]}`} passHref>
 							<div
 								className={`flex cursor-pointer items-center justify-center px-6 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 ${
-									a ? "rounded-tr-xl rounded-br-xl" : "rounded-xl"
+									a ? "rounded-br-xl rounded-tr-xl" : "rounded-xl"
 								}`}>
 								Next
 								<span className="ml-2 h-6 w-6">
@@ -243,10 +243,10 @@ export default function Aside({ preNext }: { preNext: any }) {
 	}
 
 	return (
-		<aside className="aside group w-toc fixed top-24 -ml-56 hidden xl:block">
+		<aside className="aside group fixed top-24 -ml-56 hidden w-toc xl:block">
 			{headersEl.length ? (
 				<div>
-					<div className="rounded-xl border bg-white shadow-xs dark:border-gray-800 dark:bg-gray-800">
+					<div className="shadow-xs rounded-xl border bg-white dark:border-gray-800 dark:bg-gray-800">
 						<h1 className="flex items-center border-b border-gray-200 px-6 py-3 text-2xl font-medium tracking-wide text-gray-700 dark:border-gray-700 dark:text-white">
 							<span className="-mt-[1.5px] mr-2 h-[19px] w-[19px]">
 								<Icon name="toc" />

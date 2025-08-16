@@ -22,8 +22,8 @@ const EmploymentCard = (props: EmploymentCardProps) => {
 	} = props
 
 	return (
-		<div className="flex w-full flex-col gap-y-2 rounded-md border bg-white shadow-xs lg:min-w-110 dark:border-gray-700 dark:bg-gray-800">
-			<div className="text-normal flex w-full items-center justify-between gap-x-2.5 overflow-hidden overflow-x-auto border-b border-gray-200 px-4.5 py-2.5 font-medium tracking-wide whitespace-nowrap text-gray-700 dark:border-gray-700 dark:text-white">
+		<div className="shadow-xs lg:min-w-110 flex w-full flex-col gap-y-2 rounded-md border bg-white dark:border-gray-700 dark:bg-gray-800">
+			<div className="text-normal flex w-full items-center justify-between gap-x-2.5 overflow-hidden overflow-x-auto whitespace-nowrap border-b border-gray-200 px-4.5 py-2.5 font-medium tracking-wide text-gray-700 dark:border-gray-700 dark:text-white">
 				<div className="flex items-center gap-x-2">
 					{orgLogoSrc && (
 						<Image
@@ -40,7 +40,7 @@ const EmploymentCard = (props: EmploymentCardProps) => {
 					{jobType}
 				</label>
 			</div>
-			<div className="flex items-center justify-between gap-x-2.5 overflow-hidden overflow-x-auto px-4.5 pt-1 pb-2.5 whitespace-nowrap">
+			<div className="flex items-center justify-between gap-x-2.5 overflow-hidden overflow-x-auto whitespace-nowrap px-4.5 pb-2.5 pt-1">
 				<div className="text-sm tracking-wide text-gray-600 dark:text-gray-300">
 					<p>{jobTitle}</p>
 				</div>
@@ -49,7 +49,7 @@ const EmploymentCard = (props: EmploymentCardProps) => {
 				</div>
 			</div>
 			{organizationFullName && (
-				<div className="-mt-[8px] flex items-center justify-between overflow-hidden overflow-x-auto border-t border-gray-200 px-4.5 py-1.5 whitespace-nowrap dark:border-gray-700">
+				<div className="-mt-[8px] flex items-center justify-between overflow-hidden overflow-x-auto whitespace-nowrap border-t border-gray-200 px-4.5 py-1.5 dark:border-gray-700">
 					<p className="text-sm text-gray-500 dark:text-gray-400">
 						{organizationFullName}
 					</p>

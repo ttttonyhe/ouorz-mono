@@ -27,7 +27,7 @@ const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 		}, [])
 
 		return (
-			<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-xs">
+			<div className="shadow-xs mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center">
 				<h1 className="text-lg font-medium">404 Not Found</h1>
 				<p className="text-sm font-light tracking-wide text-gray-500">
 					redirecting...
@@ -59,12 +59,12 @@ const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 			</Head>
 			<article
 				data-cy="pageContent"
-				className="bg-white p-5 pt-24 lg:rounded-xl lg:border lg:p-20 lg:shadow-xs dark:border-gray-800 dark:bg-gray-800">
+				className="lg:shadow-xs bg-white p-5 pt-24 dark:border-gray-800 dark:bg-gray-800 lg:rounded-xl lg:border lg:p-20">
 				<div className="mb-20">
-					<h1 className="text-1.5 lg:text-post-title leading-snug font-medium tracking-wider">
+					<h1 className="lg:text-post-title text-1.5 font-medium leading-snug tracking-wider">
 						{page.title.rendered}
 					</h1>
-					<p className="text-5 mt-2 flex space-x-2 tracking-wide text-gray-500 lg:text-xl dark:text-gray-400">
+					<p className="mt-2 flex space-x-2 text-5 tracking-wide text-gray-500 dark:text-gray-400 lg:text-xl">
 						<span>
 							Posted <TimeAgo date={page.date} />
 						</span>

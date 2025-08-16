@@ -37,7 +37,7 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 		}, [])
 
 		return (
-			<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-xs">
+			<div className="shadow-xs mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center">
 				<h1 className="text-lg font-medium">404 Not Found</h1>
 				<p className="text-sm font-light tracking-wide text-gray-500">
 					redirecting...
@@ -82,7 +82,7 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 			</Head>
 			<article
 				data-cy="postContent"
-				className="bg-white p-5 pt-24 lg:rounded-xl lg:border lg:p-20 lg:pt-20 lg:shadow-xs dark:border-gray-800 dark:bg-gray-800">
+				className="lg:shadow-xs bg-white p-5 pt-24 dark:border-gray-800 dark:bg-gray-800 lg:rounded-xl lg:border lg:p-20 lg:pt-20">
 				<div className="mb-20">
 					<div className="mb-3 flex">
 						<Link href={`/cate/${post.post_categories[0].term_id}`}>
@@ -91,10 +91,10 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 							</Label>
 						</Link>
 					</div>
-					<h1 className="text-1.5 lg:text-post-title leading-snug font-medium tracking-wider">
+					<h1 className="lg:text-post-title text-1.5 font-medium leading-snug tracking-wider">
 						{post.title.rendered}
 					</h1>
-					<p className="text-5 mt-2 flex space-x-2 tracking-wide whitespace-nowrap text-gray-500 lg:text-xl">
+					<p className="mt-2 flex space-x-2 whitespace-nowrap text-5 tracking-wide text-gray-500 lg:text-xl">
 						<span>
 							Posted <TimeAgo date={post.date} />
 						</span>
@@ -124,7 +124,7 @@ const BlogPost: NextPageWithLayout = ({ status, post }: Props) => {
 				)}
 			</article>
 			{isPostContentRendered && <Aside preNext={post.post_prenext} />}
-			<div className="border-t border-gray-200 lg:mt-5 lg:border-none dark:border-gray-600">
+			<div className="border-t border-gray-200 dark:border-gray-600 lg:mt-5 lg:border-none">
 				<SubscriptionBox type="lg" />
 			</div>
 			<CommentBox />

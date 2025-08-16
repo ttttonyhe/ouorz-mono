@@ -27,14 +27,14 @@ export default function PostContent({ content, onRendered }: PostContentProps) {
 
 	if (!mounted) {
 		return (
-			<div className="prose dark:prose-dark lg:prose-xl prose-ul:m-2 prose-ul:ps-5 prose-hr:border-gray-200 dark:prose-hr:border-gray-700 tracking-wide">
+			<div className="prose tracking-wide dark:prose-dark lg:prose-xl prose-ul:m-2 prose-ul:ps-5 prose-hr:border-gray-200 dark:prose-hr:border-gray-700">
 				<div>Loading...</div>
 			</div>
 		)
 	}
 
 	return (
-		<div className="prose dark:prose-dark lg:prose-xl prose-ul:m-2 prose-ul:ps-5 prose-hr:border-gray-200 dark:prose-hr:border-gray-700 tracking-wide">
+		<div className="prose tracking-wide dark:prose-dark lg:prose-xl prose-ul:m-2 prose-ul:ps-5 prose-hr:border-gray-200 dark:prose-hr:border-gray-700">
 			<Highlight innerHTML={true}>{content}</Highlight>
 		</div>
 	)

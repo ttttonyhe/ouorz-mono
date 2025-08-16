@@ -43,7 +43,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
 				enableSystem={true}>
 				{/* Redux Store Provider */}
 				<ReduxProvider store={store}>
-					<div className="animate-appear bg-gbg min-h-screen dark:bg-neutral-900 dark:text-white">
+					<div className="min-h-screen animate-appear bg-gbg dark:bg-neutral-900 dark:text-white">
 						<>{getLayout(<Component {...pageProps} />)}</>
 					</div>
 				</ReduxProvider>

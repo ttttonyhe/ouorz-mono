@@ -27,13 +27,13 @@ export default function Reader() {
 					}}
 				/>
 				<div
-					className={`reader ml-reader-offset w-page fixed top-0 z-60 mx-auto mt-20 overflow-hidden overflow-y-auto rounded-tl-xl rounded-tr-xl bg-white px-20 py-16 shadow-md dark:border-gray-800 dark:bg-gray-800 ${
+					className={`reader ml-reader-offset z-60 fixed top-0 mx-auto mt-20 w-page overflow-hidden overflow-y-auto rounded-tl-xl rounded-tr-xl bg-white px-20 py-16 shadow-md dark:border-gray-800 dark:bg-gray-800 ${
 						animation === "in" ? "animate-reader" : "animate-reader-out"
 					}`}>
-					<h1 className="text-post-title leading-snug font-medium tracking-wider">
+					<h1 className="text-post-title font-medium leading-snug tracking-wider">
 						{postData.title.rendered}
 					</h1>
-					<p className="mt-2 mb-16 flex space-x-2 text-xl tracking-wide text-gray-500">
+					<p className="mb-16 mt-2 flex space-x-2 text-xl tracking-wide text-gray-500">
 						<span>
 							Posted <TimeAgo date={postData.date} />
 						</span>

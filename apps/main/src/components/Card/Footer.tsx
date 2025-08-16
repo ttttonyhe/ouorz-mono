@@ -32,9 +32,9 @@ export default function CardFooter({ item }: { item: WPPost }) {
 	}, [mounted])
 
 	return (
-		<div className="h-auto w-full items-center rounded-br-md rounded-bl-md border-t border-gray-100 px-5 py-3 lg:px-10 lg:py-2 dark:border-gray-700">
+		<div className="h-auto w-full items-center rounded-bl-md rounded-br-md border-t border-gray-100 px-5 py-3 dark:border-gray-700 lg:px-10 lg:py-2">
 			<p
-				className={`text-5 lg:text-4 flex items-center justify-between leading-2 tracking-wide whitespace-nowrap text-gray-500 lg:leading-8 dark:text-gray-400 ${
+				className={`leading-2 flex items-center justify-between whitespace-nowrap text-5 tracking-wide text-gray-500 dark:text-gray-400 lg:text-4 lg:leading-8 ${
 					canShare === false ? "animate-appear" : ""
 				}`}>
 				<span className="flex items-center gap-x-2">
