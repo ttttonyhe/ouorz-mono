@@ -392,7 +392,7 @@ const Home: NextPageWithLayout = () => {
 						orgLogoSrc="https://static.ouorz.com/ezra_logo.jpg"
 						organization="Bluelet AI"
 						organizationFullName="Agentic AI and data platform solutions for talent acquisition and matching"
-						jobTitle="Co-founder, CTO"
+						jobTitle="Interim CTO, Co-Founder"
 						jobType="Leadership"
 						dateString="May 2025 - June 2025"
 					/>

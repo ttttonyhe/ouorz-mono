@@ -3,6 +3,9 @@ packages:
   - packages/*
   - '!**/wordpress/**'
 
+ignoredBuiltDependencies:
+  - '@sentry/cli'
+
 onlyBuiltDependencies:
   - '@tailwindcss/oxide'
   - cypress
