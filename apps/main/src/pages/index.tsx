@@ -121,23 +121,6 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
-						title="FedVLP: Visual-aware Latent Prompt Generation for Multimodal Federated Learning"
-						authors="Hao Pan, Xiaoli Zhao, Yuchen Jiang, Lipeng He, Bingquan Wang, and Yincan Shu"
-						accepted={true}
-						venue={{
-							name: "Computer Vision and Image Understanding",
-							href: "https://www.sciencedirect.com/journal/computer-vision-and-image-understanding",
-							color: "border-l-yellow-400! border-l-4",
-						}}
-						links={[
-							{
-								label: "Paper",
-								href: "https://www.sciencedirect.com/science/article/abs/pii/S1077314225001651",
-								default: true,
-							},
-						]}
-					/>
-					<PaperCard
 						title="Activation Approximations Can Incur Safety Vulnerabilities Even in Aligned LLMs: Comprehensive Analysis and Defense"
 						authors="Jiawen Zhang*, Kejia Chen*, Lipeng He*, Jian Lou, Dan Li, Zunlei Feng, Mingli Song, Jian Liu, Kui Ren, and Xiaohu Yang"
 						accepted={true}
@@ -210,6 +193,26 @@ const Home: NextPageWithLayout = () => {
 							{
 								label: "Code",
 								href: "https://github.com/zju-abclab/NEXUS",
+							},
+						]}
+					/>
+				</div>
+				<hr className="mt-5 dark:border-gray-700" />
+				<div className="mt-5 flex flex-col gap-y-4">
+					<PaperCard
+						title="FedVLP: Visual-aware Latent Prompt Generation for Multimodal Federated Learning"
+						authors="Hao Pan, Xiaoli Zhao, Yuchen Jiang, Lipeng He, Bingquan Wang, and Yincan Shu"
+						accepted={true}
+						venue={{
+							name: "Computer Vision and Image Understanding",
+							href: "https://www.sciencedirect.com/journal/computer-vision-and-image-understanding",
+							color: "border-l-yellow-400! border-l-4",
+						}}
+						links={[
+							{
+								label: "Paper",
+								href: "https://www.sciencedirect.com/science/article/abs/pii/S1077314225001651",
+								default: true,
 							},
 						]}
 					/>
@@ -347,6 +350,12 @@ const Home: NextPageWithLayout = () => {
 					<ServiceCard
 						serviceRole="Program Committee Member"
 						serviceType="Conference"
+						serviceTitle="Privacy Enhancing Technologies Symposium (PoPETs/PETS) 2026"
+						serviceOrganization="Artifact Evaluation"
+					/>
+					<ServiceCard
+						serviceRole="Program Committee Member"
+						serviceType="Conference"
 						serviceTitle="ACM Conference on Computer and Communications Security (CCS) 2025"
 						serviceOrganization="Artifact Evaluation"
 					/>
@@ -389,10 +398,18 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<EmploymentCard
+						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
+						organization="University of Waterloo"
+						organizationFullName="CS 135 Designing Functional Programs"
+						jobTitle="Instructional Apprentice (IA)"
+						jobType="Teaching"
+						dateString="Sept 2025 - Present"
+					/>
+					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/ezra_logo.jpg"
 						organization="Bluelet AI"
 						organizationFullName="Agentic AI and data platform solutions for talent acquisition and matching"
-						jobTitle="Interim CTO, Co-Founder"
+						jobTitle="Interim CTO"
 						jobType="Leadership"
 						dateString="May 2025 - June 2025"
 					/>
@@ -419,7 +436,7 @@ const Home: NextPageWithLayout = () => {
 							orgLogoSrc="https://static.ouorz.com/crysp_logo.png"
 							organization="University of Waterloo"
 							organizationFullName="Cryptography, Security, and Privacy (CrySP) Lab"
-							jobTitle="Undergraduate Research Assistant (URA)"
+							jobTitle="Research Assistant (URA)"
 							jobType="Research, Part-time"
 							dateString="Jan 2025 - Present"
 						/>
@@ -427,7 +444,7 @@ const Home: NextPageWithLayout = () => {
 							orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
 							organization="University of Waterloo"
 							organizationFullName="CS 135 Designing Functional Programs"
-							jobTitle="Instructional Support Assistant (ISA)"
+							jobTitle="Teaching Assistant (ISA)"
 							jobType="Teaching, Co-op"
 							dateString="Aug 2024 - Dec 2024"
 						/>
@@ -462,7 +479,7 @@ const Home: NextPageWithLayout = () => {
 						orgLogoSrc="https://static.ouorz.com/bitbuy_logo.png"
 						organization="Bitbuy"
 						organizationFullName="Cryptocurrency Exchange, Publicly Traded on TSX: WNDR"
-						jobTitle="Front End Software Engineer"
+						jobTitle="Software Engineer"
 						jobType="SWE, Co-op"
 						dateString="Sep -  Dec 2021"
 						organizationLocation="Toronto, ON"
@@ -479,14 +496,42 @@ const Home: NextPageWithLayout = () => {
 					</label>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
-					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
-						organization="University of Waterloo"
-						organizationFullName="Mathematics (Combinatorics and Optimization), Minor in Computing"
-						jobTitle="Honours Bachelor's Degree (Co-op)"
-						jobType="Undergraduate"
-						dateString="Sep 2020 - Apr 2025"
-					/>
+					<div
+						onScroll={(e) => {
+							const target = e.target as HTMLDivElement
+
+							let maskClass = ""
+							if (
+								target.scrollLeft > 0 &&
+								target.scrollLeft < target.scrollWidth - target.clientWidth
+							) {
+								maskClass = "mask-x-full"
+							} else if (target.scrollLeft === 0) {
+								maskClass = "mask-x-r"
+							} else {
+								maskClass = "mask-x-l"
+							}
+
+							setMaskClass(maskClass)
+						}}
+						className={`flex gap-x-4 overflow-x-auto whitespace-nowrap ${maskClass}`}>
+						<EmploymentCard
+							orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
+							organization="University of Waterloo"
+							organizationFullName="Computer Science"
+							jobTitle="Master's Degree (Research/Thesis)"
+							jobType="MPhil"
+							dateString="Sep 2025 - Present"
+						/>
+						<EmploymentCard
+							orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
+							organization="University of Waterloo"
+							organizationFullName="Mathematics (Minor in Computing)"
+							jobTitle="Honours Bachelor's Degree (Co-op)"
+							jobType="Undergrad"
+							dateString="Sep 2020 - Apr 2025"
+						/>
+					</div>
 				</div>
 			</section>
 			<section className="mb-24 mt-14">
@@ -497,6 +542,15 @@ const Home: NextPageWithLayout = () => {
 						</span>
 						<span className="uppercase">Newsletter</span>
 					</label>
+					<Link
+						href="https://kukfm.com"
+						target="_blank"
+						className="flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
+						Podcast
+						<span className="h-5 w-5 underline">
+							<Icon name="externalLink" />
+						</span>
+					</Link>
 					{/* <button
 						data-cy="showIndexPosts"
 						onClick={() => setShowPosts(!showPosts)}
