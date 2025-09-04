@@ -78,7 +78,7 @@ const Home: NextPageWithLayout = () => {
 					</span>
 					<span className="uppercase">About Me</span>
 				</label>
-				<div className="mt-[15px] flex flex-col break-words px-1 text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
+				<div className="mt-[15px] flex flex-col break-words px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-left lg:text-[17px]">
 					<p>
 						I&#39;m pursuing a Master of Mathematics (Research/Thesis) degree in
 						Computer Science at UWaterloo. I am grateful to be advised by{" "}
@@ -86,7 +86,7 @@ const Home: NextPageWithLayout = () => {
 							href="https://asokan.org/asokan/"
 							target="_blank"
 							rel="noreferrer"
-							className="text-blue-500">
+							className="text-blue-500 hover:underline">
 							N. Asokan
 						</a>
 						.
@@ -97,7 +97,7 @@ const Home: NextPageWithLayout = () => {
 							href="https://ssg-research.github.io"
 							target="_blank"
 							rel="noreferrer"
-							className="text-blue-500">
+							className="text-blue-500 hover:underline">
 							Secure Systems Group (SSG)
 						</a>
 						,{" "}
@@ -105,7 +105,7 @@ const Home: NextPageWithLayout = () => {
 							href="https://crysp.uwaterloo.ca"
 							target="_blank"
 							rel="noreferrer"
-							className="text-blue-500">
+							className="text-blue-500 hover:underline">
 							Cryptography, Security, and Privacy (CrySP) Lab
 						</a>
 						, and the{" "}
@@ -113,7 +113,7 @@ const Home: NextPageWithLayout = () => {
 							href="https://uwaterloo.ca/cybersecurity-privacy-institute"
 							target="_blank"
 							rel="noreferrer"
-							className="text-blue-500">
+							className="text-blue-500 hover:underline">
 							Cybersecurity and Privacy Institute (CPI)
 						</a>
 						. I also worked with{" "}
@@ -121,7 +121,7 @@ const Home: NextPageWithLayout = () => {
 							href="https://jianliu.phd"
 							target="_blank"
 							rel="noreferrer"
-							className="text-blue-500">
+							className="text-blue-500 hover:underline">
 							Jian Liu
 						</a>{" "}
 						at{" "}
@@ -129,7 +129,7 @@ const Home: NextPageWithLayout = () => {
 							href="https://zju-abc.com"
 							target="_blank"
 							rel="noreferrer"
-							className="text-blue-500">
+							className="text-blue-500 hover:underline">
 							ABC Lab
 						</a>
 						,{" "}
@@ -137,10 +137,18 @@ const Home: NextPageWithLayout = () => {
 							href="https://www.zju.edu.cn/english"
 							target="_blank"
 							rel="noreferrer"
-							className="text-blue-500">
+							className="text-blue-500 hover:underline">
 							Zhejiang University
 						</a>
-						.
+						. Currently, my office is located in the{" "}
+						<a
+							href="https://cs.uwaterloo.ca/about/visit-us"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500 hover:underline">
+							William G. Davis Computer Research Centre
+						</a>
+						, DC 3333B, M3.
 					</p>
 					<p className="mt-3.5">
 						I come from a background in software engineering. In the limit of my
@@ -149,15 +157,22 @@ const Home: NextPageWithLayout = () => {
 							href="https://lists.lipeng.ac/subscription/form"
 							target="_blank"
 							rel="noreferrer"
-							className="text-blue-500">
-							writer
+							className="text-blue-500 hover:underline">
+							wri
+						</a>
+						<a
+							href="https://www.instagram.com/endings_be_damned"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500 hover:underline">
+							ter
 						</a>
 						,{" "}
 						<a
 							href="https://kukfm.com"
 							target="_blank"
 							rel="noreferrer"
-							className="text-blue-500">
+							className="text-blue-500 hover:underline">
 							podcaster
 						</a>
 						, designer, and{" "}
@@ -165,18 +180,10 @@ const Home: NextPageWithLayout = () => {
 							href="https://www.linkedin.com/in/~lhe"
 							target="_blank"
 							rel="noreferrer"
-							className="text-blue-500">
+							className="text-blue-500 hover:underline">
 							entrepreneur
 						</a>
-						. I enjoy reading biographies and autobiographies,{" "}
-						<a
-							href="https://www.instagram.com/endings_be_damned"
-							target="_blank"
-							rel="noreferrer"
-							className="text-blue-500">
-							collecting quotes
-						</a>
-						, playing poker, pool, and competitive video games.
+						.
 					</p>
 				</div>
 			</section>

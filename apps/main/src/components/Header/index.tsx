@@ -136,7 +136,6 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 				},
 		{
 			label: "Pages",
-			className: "hidden lg:block",
 			icon: "pages",
 			link: {
 				internal: "/pages",
