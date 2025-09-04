@@ -195,28 +195,31 @@ const Home: NextPageWithLayout = () => {
 					<span className="uppercase">Research Interests</span>
 				</label>
 				<div className="mt-[15px] flex flex-col gap-y-2 break-words px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
-					<p className="mb-5">
+					<p>
 						My research interests span <strong>computer security</strong> and
 						the <strong>theory & applications of cryptography</strong>{" "}
 						(especially across computing and data sciences).
 					</p>
-					<hr className="dark:border-gray-700" />
 					<p className="mt-3.5">
 						I think broadly about the privacy, security and trustworthiness of
 						modern computing systems; this intersects with areas such as:
 					</p>
-					<ul className="my-2 mb-3.5 list-disc pl-5">
+					<ul className="my-2 list-disc pl-5">
 						<li className="pl-3">
 							Trustworthy Machine Learning (ML Security & Privacy)
 						</li>
 						<li className="pl-3">Blockchain Security and Scalability, and</li>
 						<li className="pl-3">Secure Computation</li>
 					</ul>
-					<hr className="dark:border-gray-700" />
 					<p className="mt-3.5">
 						Through a combination of systems design and cryptography, I hope to
 						make existing systems more useful and secure, while also unlocking
 						new application scenarios.
+					</p>
+					<hr className="mb-3.5 mt-3.5 dark:border-gray-700" />
+					<p>
+						My research is supported by the International Master&#39;s Award of
+						Excellence (IMAE) and the David R. Cheriton Graduate Scholarship.
 					</p>
 				</div>
 			</section>
