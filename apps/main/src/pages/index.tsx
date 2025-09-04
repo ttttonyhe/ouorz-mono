@@ -74,6 +74,115 @@ const Home: NextPageWithLayout = () => {
 			<section className="mt-16">
 				<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5">
+						<Icon name="me" />
+					</span>
+					<span className="uppercase">About Me</span>
+				</label>
+				<div className="mt-[15px] flex flex-col break-words px-1 text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
+					<p>
+						I'm pursuing a Master of Mathematics (Research/Thesis) degree in
+						Computer Science at UWaterloo. I am grateful to be advised by{" "}
+						<a
+							href="https://asokan.org/asokan/"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500">
+							N. Asokan
+						</a>
+						.
+					</p>
+					<p className="mt-3.5">
+						I'm part of{" "}
+						<a
+							href="https://ssg-research.github.io"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500">
+							Secure Systems Group (SSG)
+						</a>
+						,{" "}
+						<a
+							href="https://crysp.uwaterloo.ca"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500">
+							Cryptography, Security, and Privacy (CrySP) Lab
+						</a>
+						, and the{" "}
+						<a
+							href="https://uwaterloo.ca/cybersecurity-privacy-institute"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500">
+							Cybersecurity and Privacy Institute (CPI)
+						</a>
+						. I also worked with{" "}
+						<a
+							href="https://jianliu.phd"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500">
+							Jian Liu
+						</a>{" "}
+						at{" "}
+						<a
+							href="https://zju-abc.com"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500">
+							ABC Lab
+						</a>
+						,{" "}
+						<a
+							href="https://www.zju.edu.cn/english"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500">
+							Zhejiang University
+						</a>
+						.
+					</p>
+					<p className="mt-3.5">
+						I come from a background in software engineering. In the limit of my
+						life, I also hope to be a pianist,{" "}
+						<a
+							href="https://lists.lipeng.ac/subscription/form"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500">
+							writer
+						</a>
+						,{" "}
+						<a
+							href="https://kukfm.com"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500">
+							podcaster
+						</a>
+						, designer, and{" "}
+						<a
+							href="https://www.linkedin.com/in/~lhe"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500">
+							entrepreneur
+						</a>
+						. I enjoy reading biographies and autobiographies,{" "}
+						<a
+							href="https://www.instagram.com/endings_be_damned"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500">
+							collecting quotes
+						</a>
+						, playing poker, pool, and competitive video games.
+					</p>
+				</div>
+			</section>
+			<section className="mt-16">
+				<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="mr-1.5 flex h-5 w-5">
 						<Icon name="microscope" />
 					</span>
 					<span className="uppercase">Research Interests</span>

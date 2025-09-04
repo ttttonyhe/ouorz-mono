@@ -142,13 +142,13 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 				internal: "/pages",
 			},
 		},
-		{
-			label: "About",
-			icon: "me",
-			link: {
-				internal: "/post/126",
-			},
-		},
+		// {
+		// 	label: "About",
+		// 	icon: "me",
+		// 	link: {
+		// 		internal: "/post/126",
+		// 	},
+		// },
 	]
 
 	const kbarItems: KbarListItem[] = [
