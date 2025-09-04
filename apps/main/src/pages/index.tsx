@@ -80,7 +80,7 @@ const Home: NextPageWithLayout = () => {
 				</label>
 				<div className="mt-[15px] flex flex-col break-words px-1 text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p>
-						I'm pursuing a Master of Mathematics (Research/Thesis) degree in
+						I&#39;m pursuing a Master of Mathematics (Research/Thesis) degree in
 						Computer Science at UWaterloo. I am grateful to be advised by{" "}
 						<a
 							href="https://asokan.org/asokan/"
@@ -92,7 +92,7 @@ const Home: NextPageWithLayout = () => {
 						.
 					</p>
 					<p className="mt-3.5">
-						I'm part of{" "}
+						I&#39;m part of{" "}
 						<a
 							href="https://ssg-research.github.io"
 							target="_blank"
