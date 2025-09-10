@@ -206,15 +206,15 @@ const Home: NextPageWithLayout = () => {
 					</p>
 					<ul className="my-2 list-disc pl-5">
 						<li className="pl-3">
-							Trustworthy Machine Learning (ML Security & Privacy)
+							Trustworthy Machine Learning (ML Safety, Security & Privacy)
 						</li>
 						<li className="pl-3">Blockchain Security and Scalability, and</li>
 						<li className="pl-3">Secure Computation</li>
 					</ul>
 					<p className="mt-3.5">
-						Through a combination of systems design and cryptography, I hope to
-						make existing systems more useful and secure, while also unlocking
-						new application scenarios.
+						Through a combination of systems design and analysis, I hope to make
+						deployed solutions more reliable, useful, and aligned, while also
+						enabling entirely new application scenarios.
 					</p>
 					<hr className="mb-3.5 mt-3.5 dark:border-gray-700" />
 					<p>
