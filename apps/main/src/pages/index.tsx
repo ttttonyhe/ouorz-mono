@@ -151,7 +151,7 @@ const Home: NextPageWithLayout = () => {
 						, DC 3333B, M3.
 					</p>
 					<p className="mt-3.5">
-						I'm in pursuit of knowledge, experience, and the various other
+						I&#39;m in pursuit of knowledge, experience, and the various other
 						beautiful things life has to offer. I strive to{" "}
 						<span className="inline-block bg-gradient-to-r from-blue-500 via-green-500 to-indigo-500 bg-clip-text text-transparent">
 							live deliberately
