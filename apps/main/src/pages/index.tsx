@@ -151,8 +151,13 @@ const Home: NextPageWithLayout = () => {
 						, DC 3333B, M3.
 					</p>
 					<p className="mt-3.5">
-						I come from a background in software engineering. In the limit of my
-						life, I also hope to be a pianist,{" "}
+						I'm in pursuit of knowledge, experience, and the various other
+						beautiful things life has to offer. I strive to{" "}
+						<span className="inline-block bg-gradient-to-r from-blue-500 via-green-500 to-indigo-500 bg-clip-text text-transparent">
+							live deliberately
+						</span>
+						. Before research, I spent some years doing software engineering. In
+						the limit of my life, I also hope to be a pianist,{" "}
 						<a
 							href="https://lists.lipeng.ac/subscription/form"
 							target="_blank"
@@ -479,15 +484,9 @@ const Home: NextPageWithLayout = () => {
 						serviceOrganization="Artifact Evaluation"
 					/>
 					<ServiceCard
-						serviceRole="Reviewer"
+						serviceRole="Invited Reviewer"
 						serviceType="Journal"
 						serviceTitle="IEEE Transactions on Dependable and Secure Computing (TDSC)"
-					/>
-					<ServiceCard
-						serviceRole="Student Member"
-						serviceType="Membership"
-						serviceTitle="The Cybersecurity and Privacy Institute (CPI)"
-						serviceOrganization="University of Waterloo"
 					/>
 					<ServiceCard
 						serviceRole="Student Member"
