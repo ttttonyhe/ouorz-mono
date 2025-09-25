@@ -1,10 +1,10 @@
 import Document, {
-	Html,
+	type DocumentContext,
+	type DocumentInitialProps,
 	Head,
+	Html,
 	Main,
 	NextScript,
-	DocumentContext,
-	DocumentInitialProps,
 } from "next/document"
 
 class AppDocument extends Document {

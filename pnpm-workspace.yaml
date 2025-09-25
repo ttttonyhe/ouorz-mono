@@ -7,6 +7,16 @@ ignoredBuiltDependencies:
   - '@sentry/cli'
 
 onlyBuiltDependencies:
+  - '@prisma/client'
+  - '@prisma/engines'
+  - '@swc/core'
   - '@tailwindcss/oxide'
+  - core-js-pure
+  - cpu-features
   - cypress
+  - esbuild
+  - keccak
+  - prisma
+  - secp256k1
   - sharp
+  - ssh2

@@ -1,7 +1,8 @@
+import "@twilight-toolkit/ui/styles/base.css"
 import type { NextPage } from "next"
-import { ThemeProvider } from "next-themes"
 import type { AppProps } from "next/app"
 import Script from "next/script"
+import { ThemeProvider } from "next-themes"
 import NextNprogress from "nextjs-progressbar"
 import type { ReactElement, ReactNode } from "react"
 import { Provider as ReduxProvider } from "react-redux"
@@ -44,7 +45,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
 				{/* Redux Store Provider */}
 				<ReduxProvider store={store}>
 					<div className="min-h-screen animate-appear bg-gbg dark:bg-neutral-900 dark:text-white">
-						<>{getLayout(<Component {...pageProps} />)}</>
+						{getLayout(<Component {...pageProps} />)}
 					</div>
 				</ReduxProvider>
 			</ThemeProvider>

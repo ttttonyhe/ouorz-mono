@@ -1,9 +1,10 @@
-import { TabsProps } from "."
-import TabItemComponent from "./item"
-import React, { useEffect, useRef, useState } from "react"
+import type React from "react"
+import { useEffect, useRef, useState } from "react"
 import { useHotkeys } from "react-hotkeys-hook"
 import { useMouseLeaveListener } from "~/hooks"
 import scrollToItemWithinDiv from "~/utilities/scrollTo"
+import type { TabsProps } from "."
+import TabItemComponent from "./item"
 
 const Tabs = (props: TabsProps) => {
 	const { items, direction, defaultHighlighted, verticalListWrapper } = props
@@ -239,8 +240,7 @@ const Tabs = (props: TabsProps) => {
 			"enter",
 			(e) => {
 				e.preventDefault()
-				items[highlightedIndex].onClick !== null &&
-					items[highlightedIndex].onClick()
+				items[highlightedIndex].onClick?.()
 			},
 			{
 				enableOnFormTags: ["INPUT"],
@@ -257,7 +257,7 @@ const Tabs = (props: TabsProps) => {
 		verticalListWrapper.current.style.height = `${
 			listHeight >= 340 ? 360 : listHeight + 20
 		}px`
-	}, [direction, defaultHighlighted, verticalListWrapper, listRef, items])
+	}, [direction, verticalListWrapper])
 
 	// Highlight the first item when defaultHighlighted is true
 	useEffect(() => {
@@ -267,7 +267,11 @@ const Tabs = (props: TabsProps) => {
 
 		// wait for list height to be updated
 		highlightFirstItem(highlightedIndex <= 0 ? delay : 0)
-	}, [defaultHighlighted, items, listRef])
+	}, [
+		// wait for list height to be updated
+		highlightFirstItem,
+		highlightedIndex,
+	])
 
 	/* End Vertical List Methods */
 
@@ -311,11 +315,9 @@ const Tabs = (props: TabsProps) => {
 								}
 							}}
 							onClick={onClick}>
-							<>
-								{item.component || (
-									<TabItemComponent {...item} key={item.label} index={index} />
-								)}
-							</>
+							{item.component || (
+								<TabItemComponent {...item} key={item.label} index={index} />
+							)}
 						</li>
 					)
 				})}

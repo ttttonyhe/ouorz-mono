@@ -10,7 +10,7 @@ const ChirstmasBanner = () => {
 	}, [])
 
 	return (
-		<div className="shadow-xs flex w-full justify-center gap-x-4 rounded-md bg-rose-700 px-4.5 py-3 text-white">
+		<div className="flex w-full justify-center gap-x-4 rounded-md bg-rose-700 px-4.5 py-3 text-white shadow-xs">
 			{showSnow && <SnowFall />}
 			<div>
 				<i>🎄</i>

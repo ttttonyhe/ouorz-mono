@@ -1,13 +1,13 @@
 import { Icon } from "@twilight-toolkit/ui"
-import { GetServerSideProps } from "next"
+import type { GetServerSideProps } from "next"
 import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import List from "~/components/List"
 import { pageLayout } from "~/components/Page"
 import SubscriptionBox from "~/components/SubscriptionBox"
-import { NextPageWithLayout } from "~/pages/_app"
+import type { NextPageWithLayout } from "~/pages/_app"
 import getAPI from "~/utilities/api"
 
 interface CateProps {
@@ -35,7 +35,7 @@ const Cate: NextPageWithLayout = ({ info }: CateProps) => {
 				<div className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 					<div className="mb-4 items-center lg:flex">
 						<div className="flex-1 items-center">
-							<h1 className="flex justify-center text-1 font-medium tracking-wide text-black dark:text-white lg:justify-start">
+							<h1 className="flex justify-center font-medium text-1 text-black tracking-wide lg:justify-start dark:text-white">
 								<span className="mr-3 inline-block cursor-pointer hover:animate-spin">
 									🗂️
 								</span>
@@ -44,7 +44,7 @@ const Cate: NextPageWithLayout = ({ info }: CateProps) => {
 						</div>
 						<div className="mt-2 flex h-full items-center justify-center whitespace-nowrap lg:justify-end">
 							<div className="border-r border-r-gray-200 px-5 lg:flex-1 lg:text-center">
-								<p className="flex items-center text-xl text-gray-500 dark:text-gray-400">
+								<p className="flex items-center text-gray-500 text-xl dark:text-gray-400">
 									<span className="mr-2 h-6 w-6">
 										<Icon name="count" />
 									</span>
@@ -52,7 +52,7 @@ const Cate: NextPageWithLayout = ({ info }: CateProps) => {
 								</p>
 							</div>
 							<div className="px-5 lg:flex-1">
-								<p className="text-xl text-gray-500 dark:text-gray-400">
+								<p className="text-gray-500 text-xl dark:text-gray-400">
 									<Link href="/" className="flex items-center">
 										<span className="mr-2 h-6 w-6">
 											<Icon name="left" />
@@ -73,12 +73,12 @@ const Cate: NextPageWithLayout = ({ info }: CateProps) => {
 	} else {
 		useEffect(() => {
 			router.replace("/404")
-		}, [])
+		}, [router.replace])
 
 		return (
-			<div className="shadow-xs mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center">
-				<h1 className="text-lg font-medium">404 Not Found</h1>
-				<p className="text-sm font-light tracking-wide text-gray-500">
+			<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-xs">
+				<h1 className="font-medium text-lg">404 Not Found</h1>
+				<p className="font-light text-gray-500 text-sm tracking-wide">
 					redirecting...
 				</p>
 			</div>
@@ -93,7 +93,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 	const resInfo = await fetch(
 		getAPI("internal", "category", {
-			id: parseInt(cid as string),
+			id: parseInt(cid as string, 10),
 		})
 	)
 

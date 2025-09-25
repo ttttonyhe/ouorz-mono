@@ -3,7 +3,7 @@ import Image from "next/image"
 
 const NextJS13Preview = () => {
 	return (
-		<div className="shadow-xs flex w-full gap-x-4 rounded-md border bg-white px-4 py-2.5 pl-4.5 dark:border-gray-800 dark:bg-gray-800">
+		<div className="flex w-full gap-x-4 rounded-md border bg-white px-4 py-2.5 pl-4.5 shadow-xs dark:border-gray-800 dark:bg-gray-800">
 			<div className="flex items-center">
 				<Image
 					src="https://static.ouorz.com/nextjs-icon-light-background.svg"
@@ -23,12 +23,12 @@ const NextJS13Preview = () => {
 							</p>
 						</div>
 						<div className="-translate-y-[1.5px]">
-							<label className="rounded-full bg-green-100 px-2 pb-[2px] pt-px text-[0.65rem] leading-[0.65rem] text-green-500 dark:bg-green-800 dark:text-green-300">
+							<label className="rounded-full bg-green-100 px-2 pt-px pb-[2px] text-[0.65rem] text-green-500 leading-[0.65rem] dark:bg-green-800 dark:text-green-300">
 								Alpha
 							</label>
 						</div>
 					</div>
-					<p className="text-xs text-gray-400">
+					<p className="text-gray-400 text-xs">
 						Powered by nested layouts, React server components, streaming SSR
 						and more...
 					</p>

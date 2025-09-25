@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server"
+import { type NextRequest, NextResponse } from "next/server"
 
 const middleware = (req: NextRequest): NextResponse => {
 	if (req.nextUrl.pathname.startsWith("/assets/_next/")) {

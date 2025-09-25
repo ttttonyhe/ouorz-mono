@@ -1,6 +1,6 @@
-import Footer from "../Footer"
-import React from "react"
+import type React from "react"
 import Header from "~/components/Header"
+import Footer from "../Footer"
 
 interface Props {
 	children: React.ReactNode
@@ -12,7 +12,7 @@ export default function Page(props: Props) {
 		<div>
 			<Header />
 			<main className="mx-auto h-auto min-h-main w-full px-5 pt-0 lg:w-content lg:px-10 lg:pt-20">
-				<>{children}</>
+				{children}
 			</main>
 			<Footer />
 		</div>

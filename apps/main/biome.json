@@ -1,0 +1,127 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+	"root": false,
+	"extends": "//",
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": false
+	},
+	"files": {
+		"includes": [
+			"src/components/**/*.{ts,tsx}",
+			"src/pages/**/*.{ts,tsx}",
+			"src/hooks/**/*.{ts,tsx}",
+			"src/store/**/*.{ts,tsx}",
+			"src/utilities/**/*.{ts,tsx}",
+			"src/constants/**/*.{ts,tsx}",
+			"src/lib/**/*.{ts,tsx}",
+			"src/middleware.{ts,tsx}",
+			"*.{ts,tsx,js,jsx}"
+		],
+		"ignoreUnknown": true
+	},
+	"formatter": {
+		"enabled": true,
+		"formatWithErrors": false,
+		"indentStyle": "tab",
+		"indentWidth": 2,
+		"lineEnding": "lf",
+		"lineWidth": 80,
+		"attributePosition": "auto"
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"complexity": {
+				"noForEach": "off",
+				"noBannedTypes": "off"
+			},
+			"style": {
+				"noParameterAssign": "off",
+				"useConst": "error",
+				"useTemplate": "warn"
+			},
+			"suspicious": {
+				"noExplicitAny": "off",
+				"noArrayIndexKey": "off",
+				"noAssignInExpressions": "off",
+				"noControlCharactersInRegex": "off",
+				"noRedeclare": "warn",
+				"useIterableCallbackReturn": "warn"
+			},
+			"correctness": {
+				"useExhaustiveDependencies": "warn",
+				"useHookAtTopLevel": "warn",
+				"noNestedComponentDefinitions": "warn",
+				"useUniqueElementIds": "off",
+				"noUnusedVariables": "warn"
+			},
+			"nursery": {
+				"useSortedClasses": "error"
+			},
+			"a11y": {
+				"useKeyWithClickEvents": "off",
+				"useKeyWithMouseEvents": "off",
+				"noSvgWithoutTitle": "off",
+				"noStaticElementInteractions": "off",
+				"noLabelWithoutControl": "off",
+				"useButtonType": "off",
+				"useAriaPropsSupportedByRole": "off"
+			},
+			"security": {
+				"noDangerouslySetInnerHtml": "off"
+			},
+			"performance": {
+				"noImgElement": "off"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"jsxQuoteStyle": "double",
+			"quoteProperties": "asNeeded",
+			"trailingCommas": "es5",
+			"semicolons": "asNeeded",
+			"arrowParentheses": "always",
+			"bracketSameLine": true,
+			"quoteStyle": "double"
+		}
+	},
+	"json": {
+		"formatter": {
+			"trailingCommas": "none"
+		}
+	},
+	"css": {
+		"formatter": {
+			"enabled": true,
+			"indentStyle": "tab",
+			"lineWidth": 80
+		}
+	},
+	"overrides": [
+		{
+			"includes": [
+				"**/*.md",
+				"**/*.mdx"
+			],
+			"formatter": {
+				"lineWidth": 100
+			}
+		},
+		{
+			"includes": [
+				"cypress/**/*"
+			],
+			"linter": {
+				"rules": {
+					"suspicious": {
+						"noImplicitAnyLet": "off"
+					}
+				}
+			}
+		}
+	]
+}

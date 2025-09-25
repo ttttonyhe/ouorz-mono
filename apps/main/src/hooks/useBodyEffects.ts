@@ -1,4 +1,10 @@
-import { useEffect, useState, useRef, Dispatch, SetStateAction } from "react"
+import {
+	type Dispatch,
+	type SetStateAction,
+	useEffect,
+	useRef,
+	useState,
+} from "react"
 
 /**
  * Hook to turn on/off body scrolling

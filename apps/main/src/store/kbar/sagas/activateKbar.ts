@@ -1,14 +1,14 @@
+import { put } from "redux-saga/effects"
 import {
-	activateKbar,
+	type activateKbar,
 	addToKbarLists,
 	setKbarAnimation,
-	setKbarLocation,
-	showKbar,
-	setKbarLoading,
 	setKbarList,
+	setKbarLoading,
+	setKbarLocation,
 	setKbarPlaceholder,
+	showKbar,
 } from "../actions"
-import { put } from "redux-saga/effects"
 
 export default function* activateKbarSaga(
 	action: ReturnType<typeof activateKbar>

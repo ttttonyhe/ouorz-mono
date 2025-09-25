@@ -31,7 +31,9 @@ const removeLinks = (string: string) => {
 }
 
 const removeTrailingSpaces = (str: string) => {
-	let string = str.replace(/[\s\uFEFF\xA0]+$/g, "").replace(/[^\S\r\n]+/g, " ")
+	const string = str
+		.replace(/[\s\uFEFF\xA0]+$/g, "")
+		.replace(/[^\S\r\n]+/g, " ")
 	return string.replace(/(\s*\n\s*){2,}/g, "\n ")
 }
 

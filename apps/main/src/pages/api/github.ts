@@ -29,7 +29,7 @@ const github = async (
 	)
 	const stars = mine.reduce(
 		(accumulator: any, repository: { [x: string]: any }) => {
-			return accumulator + repository["stargazers_count"]
+			return accumulator + repository.stargazers_count
 		},
 		0
 	)

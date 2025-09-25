@@ -3,26 +3,26 @@ import Link from "next/link"
 
 const PagesAndLinks = () => {
 	return (
-		<div className="shadow-xs w-full rounded-md border bg-white dark:border-gray-700 dark:bg-gray-800">
-			<div className="flex w-full items-center justify-between gap-x-2.5 border-b border-gray-200 px-4.5 py-2.5 dark:border-gray-700">
-				<div className="flex items-center gap-x-[7px] text-[15px] font-medium tracking-wide text-gray-700 dark:text-white">
+		<div className="w-full rounded-md border bg-white shadow-xs dark:border-gray-700 dark:bg-gray-800">
+			<div className="flex w-full items-center justify-between gap-x-2.5 border-gray-200 border-b px-4.5 py-2.5 dark:border-gray-700">
+				<div className="flex items-center gap-x-[7px] font-medium text-[15px] text-gray-700 tracking-wide dark:text-white">
 					<span className="h-4.5 w-4.5 lg:h-7 lg:w-7">
 						<Icon name="cube" />
 					</span>
 					<span>Pages & Links</span>
 				</div>
 				<div className="-translate-y-[1.5px]">
-					<label className="rounded-full border-[1.5px] bg-gray-100 pb-[2.5px] pl-[7px] pr-[6.5px] pt-[1.5px] text-[0.675rem] font-medium leading-[0.675rem] text-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400">
+					<label className="rounded-full border-[1.5px] bg-gray-100 pt-[1.5px] pr-[6.5px] pb-[2.5px] pl-[7px] font-medium text-[0.675rem] text-gray-500 leading-[0.675rem] dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400">
 						Pinned
 					</label>
 				</div>
 			</div>
-			<div className="mask-x mt-4 flex items-center justify-between gap-x-2.5 overflow-x-auto whitespace-nowrap px-4.5 pb-4 text-sm text-gray-600 dark:text-gray-300">
+			<div className="mask-x mt-4 flex items-center justify-between gap-x-2.5 overflow-x-auto whitespace-nowrap px-4.5 pb-4 text-gray-600 text-sm dark:text-gray-300">
 				<div className="flex items-center gap-x-2.5">
 					<Link
 						href="https://shorturl.at/QYR4w"
 						target="_blank"
-						className="effect-pressing shadow-xs flex items-center gap-x-[4px] rounded-md border px-3 py-1 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
+						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
 						<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
 							<Icon name="calendarSchedule" />
 						</span>
@@ -31,7 +31,7 @@ const PagesAndLinks = () => {
 					<Link
 						href="https://static.ouorz.com/tonyhe_cv_v2.pdf"
 						target="_blank"
-						className="effect-pressing shadow-xs flex items-center gap-x-[4px] rounded-md border px-3 py-1 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
+						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
 						<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
 							<Icon name="profile" />
 						</span>
@@ -45,7 +45,7 @@ const PagesAndLinks = () => {
 					<Link
 						href="https://ttttonyhe.notion.site/250f879c89c8805fbcd1d8cba161cabf?pvs=105"
 						target="_blank"
-						className="effect-pressing shadow-xs flex items-center gap-x-[4px] rounded-md border px-3 py-1 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
+						className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
 						<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
 							<Icon name="comments" />
 						</span>

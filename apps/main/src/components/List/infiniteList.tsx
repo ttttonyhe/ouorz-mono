@@ -1,12 +1,12 @@
-import StaticList from "./staticList"
 import React from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 import useSWRInfinite from "swr/infinite"
 import CardClickable from "~/components/Card/Clickable"
 import CardEmpty from "~/components/Card/Empty"
 import CardSkeleton from "~/components/Card/Skeleton"
-import { ListTypes } from "~/constants/propTypes"
+import type { ListTypes } from "~/constants/propTypes"
 import getAPI from "~/utilities/api"
+import StaticList from "./staticList"
 
 export interface InfiniteListProps {
 	type: ListTypes

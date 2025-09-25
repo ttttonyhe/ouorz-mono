@@ -48,7 +48,7 @@ const useListener = (
 		return () => {
 			removeListener()
 		}
-	}, [listening, element])
+	}, [listening, element, listener, type])
 
 	return [listening, setListening]
 }

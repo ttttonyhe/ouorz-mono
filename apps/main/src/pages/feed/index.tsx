@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
-import { GetServerSideProps } from "next"
-import { FC } from "react"
+import type { GetServerSideProps } from "next"
+import type { FC } from "react"
 import RSS from "rss"
 import getAPI from "~/utilities/api"
 import { sanitizeStr } from "~/utilities/string"

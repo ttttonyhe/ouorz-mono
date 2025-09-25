@@ -1,5 +1,5 @@
+import type React from "react"
 import Tabs from "./component"
-import React from "react"
 
 export interface TabItemProps {
 	className?: string

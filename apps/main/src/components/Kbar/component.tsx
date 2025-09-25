@@ -1,19 +1,19 @@
-import { KbarProps } from "."
-import { KbarContextProvider } from "./context"
-import KbarPanel from "./panel"
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useHotkeys } from "react-hotkeys-hook"
 import {
-	useSelector,
-	useDispatch,
 	useBodyPointerEvents,
 	useBodyScroll,
 	useDebounce,
+	useDispatch,
+	useSelector,
 } from "~/hooks"
 import useAnalytics from "~/hooks/analytics"
 import { activateKbar, deactivateKbar, updateKbar } from "~/store/kbar/actions"
 import { searchLocation } from "~/store/kbar/sagas/updateKbarToSearch"
 import { selectKbar } from "~/store/kbar/selectors"
+import type { KbarProps } from "."
+import { KbarContextProvider } from "./context"
+import KbarPanel from "./panel"
 
 const Kbar = (props: KbarProps) => {
 	const dispatch = useDispatch()
@@ -67,7 +67,11 @@ const Kbar = (props: KbarProps) => {
 			setBodyPointerEvents(true)
 			setBodyScroll(true)
 		}
-	}, [visible])
+	}, [
+		visible, // disbale scrolling and pointer events when kbar is open
+		setBodyPointerEvents,
+		setBodyScroll,
+	])
 
 	// Input effects
 	useDebounce(
@@ -91,7 +95,7 @@ const Kbar = (props: KbarProps) => {
 				}}>
 				<div
 					data-cy="kbar-bg"
-					className={`bg-gray-50/90 pointer-events-auto absolute z-40 h-screen w-full dark:bg-black/70 ${
+					className={`pointer-events-auto absolute z-40 h-screen w-full bg-gray-50/90 dark:bg-black/70 ${
 						animation === "out" ? "animate-kbar-bg-out" : "animate-kbar-bg"
 					}`}
 					onClick={() => dispatch(deactivateKbar())}

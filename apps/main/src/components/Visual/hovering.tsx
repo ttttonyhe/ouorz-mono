@@ -1,4 +1,5 @@
-import React, { useRef, useState, MouseEvent, CSSProperties } from "react"
+import type React from "react"
+import { type CSSProperties, type MouseEvent, useRef, useState } from "react"
 
 interface Props {
 	className?: string
@@ -128,7 +129,7 @@ const Hover = ({
 			onMouseEnter={handleOnMouseEnter}
 			onMouseMove={handleOnMouseMove}
 			onMouseLeave={handleOnMouseLeave}>
-			<>{children}</>
+			{children}
 		</div>
 	)
 }

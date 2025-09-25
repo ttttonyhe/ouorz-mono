@@ -1,12 +1,11 @@
 import { Icon } from "@twilight-toolkit/ui"
-import { GetStaticProps } from "next"
+import type { GetStaticProps } from "next"
 import Head from "next/head"
 import Link from "next/link"
-import React from "react"
 import PageCard from "~/components/Card/Page"
 import { pageLayout } from "~/components/Page"
 import { GlowingBackground } from "~/components/Visual"
-import { NextPageWithLayout } from "~/pages/_app"
+import type { NextPageWithLayout } from "~/pages/_app"
 import getAPI from "~/utilities/api"
 
 const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
@@ -24,7 +23,7 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 				<div className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 					<div className="mb-4 flex items-center">
 						<div className="flex-1 items-center">
-							<h1 className="text-1 font-medium tracking-wide text-black dark:text-white">
+							<h1 className="font-medium text-1 text-black tracking-wide dark:text-white">
 								<span className="mr-3 inline-block cursor-pointer hover:animate-spin">
 									☕
 								</span>
@@ -33,7 +32,7 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						</div>
 						<div className="mt-2 flex h-full items-center justify-end whitespace-nowrap">
 							<div className="flex-1 px-5">
-								<p className="text-xl text-gray-500 dark:text-gray-400">
+								<p className="text-gray-500 text-xl dark:text-gray-400">
 									<Link href="/" className="flex items-center">
 										<span className="mr-2 h-6 w-6">
 											<Icon name="left" />
@@ -44,14 +43,14 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 							</div>
 						</div>
 					</div>
-					<div className="shadow-xs my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 dark:border-gray-800 dark:bg-gray-800">
-						<p className="items-center text-xl tracking-wide text-gray-500 dark:text-gray-400">
+					<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-xs dark:border-gray-800 dark:bg-gray-800">
+						<p className="items-center text-gray-500 text-xl tracking-wide dark:text-gray-400">
 							I am developing and maintaining various open source projects and
 							hosting a podcast about tech, life and career 🤓
 						</p>
 					</div>
 				</div>
-				<div className="mb-10 mt-5 grid grid-cols-2 gap-4">
+				<div className="mt-5 mb-10 grid grid-cols-2 gap-4">
 					<PageCard
 						title="Github"
 						des="ttttonyhe"
@@ -67,8 +66,8 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						href="https://kukfm.com"
 					/>
 				</div>
-				<div className="shadow-xs my-2 mb-10 w-full items-center rounded-md border bg-white p-7 dark:border-gray-800 dark:bg-gray-800">
-					<p className="items-center text-xl tracking-wide text-gray-500 dark:text-gray-300">
+				<div className="my-2 mb-10 w-full items-center rounded-md border bg-white p-7 shadow-xs dark:border-gray-800 dark:bg-gray-800">
+					<p className="items-center text-gray-500 text-xl tracking-wide dark:text-gray-300">
 						If you found my projects or podcast useful or interesting, please
 						consider supporting me through the following ways:
 					</p>
@@ -117,8 +116,8 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						/>
 					</div>
 				</div>
-				<div className="shadow-xs my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 dark:border-gray-800 dark:bg-gray-800">
-					<p className="items-center text-xl tracking-wide text-gray-500 dark:text-gray-400">
+				<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-xs dark:border-gray-800 dark:bg-gray-800">
+					<p className="items-center text-gray-500 text-xl tracking-wide dark:text-gray-400">
 						Contact me after finishing your payment, and I{"'"}ll put your name
 						on the list below
 					</p>
@@ -128,13 +127,13 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						return (
 							<div
 								key={index}
-								className="glowing-div shadow-xs flex cursor-pointer items-center rounded-md border bg-white px-5 py-4 transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800">
+								className="glowing-div flex cursor-pointer items-center rounded-md border bg-white px-5 py-4 shadow-xs transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800">
 								<GlowingBackground />
 								<div className="glowing-div-content flex w-full items-center overflow-hidden text-ellipsis whitespace-nowrap">
-									<h1 className="flex-1 items-center text-xl font-medium tracking-wide">
+									<h1 className="flex-1 items-center font-medium text-xl tracking-wide">
 										{item.name}
 									</h1>
-									<p className="flex items-center justify-end text-4 tracking-wide text-gray-400">
+									<p className="flex items-center justify-end text-4 text-gray-400 tracking-wide">
 										<span className="hidden lg:flex">
 											{item.date}&nbsp;|&nbsp;
 										</span>

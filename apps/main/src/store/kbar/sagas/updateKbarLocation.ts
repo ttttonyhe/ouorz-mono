@@ -1,9 +1,9 @@
+import { delay, put } from "redux-saga/effects"
 import {
-	setKbarLocation,
 	setKbarAnimation,
-	updateKbarLocation,
+	setKbarLocation,
+	type updateKbarLocation,
 } from "../actions"
-import { put, delay } from "redux-saga/effects"
 
 export default function* updateKbarLocationSaga(
 	action: ReturnType<typeof updateKbarLocation>

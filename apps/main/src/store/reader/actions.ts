@@ -1,4 +1,4 @@
-import { WPPost } from "~/constants/propTypes"
+import type { WPPost } from "~/constants/propTypes"
 
 // Actions watched by sagas
 export const SET_READER_REQUEST = "SET_READER_REQUEST"

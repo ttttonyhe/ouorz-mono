@@ -1,14 +1,14 @@
+import { put, select } from "redux-saga/effects"
 import {
 	addToKbarLists,
 	setKbarList,
-	updateKbarLocation,
 	setKbarPlaceholder,
-	updateKbar,
+	type updateKbar,
+	updateKbarLocation,
 	updateKbarToHome,
 	updateKbarToSearch,
 } from "../actions"
 import { selectKbar } from "../selectors"
-import { put, select } from "redux-saga/effects"
 
 export default function* updateKbarSaga(action: ReturnType<typeof updateKbar>) {
 	try {

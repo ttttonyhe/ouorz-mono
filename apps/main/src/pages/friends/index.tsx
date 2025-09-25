@@ -1,13 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Icon } from "@twilight-toolkit/ui"
-import { GetStaticProps } from "next"
+import type { GetStaticProps } from "next"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
-import React from "react"
 import { pageLayout } from "~/components/Page"
 import { GlowingBackground } from "~/components/Visual"
-import { NextPageWithLayout } from "~/pages/_app"
+import type { NextPageWithLayout } from "~/pages/_app"
 import getAPI from "~/utilities/api"
 import { trimStr } from "~/utilities/string"
 
@@ -25,7 +24,7 @@ const Friends: NextPageWithLayout = ({ friends }: { friends: any }) => {
 			<div className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="mb-4 flex items-center">
 					<div className="flex-1 items-center">
-						<h1 className="text-1 font-medium tracking-wide text-black dark:text-white">
+						<h1 className="font-medium text-1 text-black tracking-wide dark:text-white">
 							<span className="mr-3 inline-block cursor-pointer hover:animate-spin">
 								🧑‍🤝‍🧑
 							</span>
@@ -34,7 +33,7 @@ const Friends: NextPageWithLayout = ({ friends }: { friends: any }) => {
 					</div>
 					<div className="mt-2 flex h-full items-center justify-end whitespace-nowrap">
 						<div className="flex-1 px-5">
-							<p className="text-xl text-gray-500 dark:text-gray-400">
+							<p className="text-gray-500 text-xl dark:text-gray-400">
 								<Link href="/" className="flex items-center">
 									<span className="mr-2 h-6 w-6">
 										<Icon name="left" />
@@ -45,8 +44,8 @@ const Friends: NextPageWithLayout = ({ friends }: { friends: any }) => {
 						</div>
 					</div>
 				</div>
-				<div className="shadow-xs my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 dark:border-gray-800 dark:bg-gray-800">
-					<p className="items-center text-xl tracking-wide text-gray-500 dark:text-gray-400">
+				<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-xs dark:border-gray-800 dark:bg-gray-800">
+					<p className="items-center text-gray-500 text-xl tracking-wide dark:text-gray-400">
 						To join this webring, email me at ABC_tony.hlp@hotmail.com (with the
 						leading "ABC_" removed).
 					</p>
@@ -58,12 +57,12 @@ const Friends: NextPageWithLayout = ({ friends }: { friends: any }) => {
 				{friends.map((item, index) => {
 					return (
 						<div
-							className="glowing-div shadow-xs cursor-pointer items-center rounded-md border bg-white transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800"
+							className="glowing-div cursor-pointer items-center rounded-md border bg-white shadow-xs transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800"
 							key={index}>
 							<GlowingBackground />
 							<div className="glowing-div-content w-fullitems-center flex-1 px-6 py-4">
 								<a href={item.post_metas.link} target="_blank" rel="noreferrer">
-									<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
+									<h1 className="mb-0.5 flex items-center font-medium text-2xl tracking-wide">
 										<Image
 											alt={item.post_title}
 											src={item.post_img.url}
@@ -75,7 +74,7 @@ const Friends: NextPageWithLayout = ({ friends }: { friends: any }) => {
 										<span className="ml-2">{item.post_title}</span>
 									</h1>
 									<p
-										className="overflow-hidden text-ellipsis whitespace-nowrap text-4 tracking-wide text-gray-500 dark:text-gray-400"
+										className="overflow-hidden text-ellipsis whitespace-nowrap text-4 text-gray-500 tracking-wide dark:text-gray-400"
 										dangerouslySetInnerHTML={{
 											__html: trimStr(item.post_excerpt.four, 150),
 										}}

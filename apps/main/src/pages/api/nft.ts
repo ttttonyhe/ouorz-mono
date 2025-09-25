@@ -49,8 +49,8 @@ const nft = async (_req: NextRequest) => {
 		})
 
 	// Only return NFTs with media content
-	ethData["ownedNfts"] = ethData["ownedNfts"]
-		? ethData["ownedNfts"].filter((nft) => nft.media[0].raw !== "")
+	ethData.ownedNfts = ethData.ownedNfts
+		? ethData.ownedNfts.filter((nft) => nft.media[0].raw !== "")
 		: []
 
 	// Fetch SOL NFTs
@@ -82,16 +82,16 @@ const nft = async (_req: NextRequest) => {
 			return []
 		})
 
-	if (!solData["result"]) {
-		solData["result"] = {
+	if (!solData.result) {
+		solData.result = {
 			assets: [],
 		}
 	}
 
 	return new Response(
 		JSON.stringify({
-			eth: ethData["ownedNfts"],
-			sol: solData["result"]["assets"],
+			eth: ethData.ownedNfts,
+			sol: solData.result.assets,
 		}),
 		{
 			status: 200,

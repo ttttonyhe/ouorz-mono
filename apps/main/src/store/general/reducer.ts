@@ -1,5 +1,5 @@
+import type { AnyAction } from "@reduxjs/toolkit"
 import { SET_HEADER_TITLE } from "./actions"
-import { AnyAction } from "@reduxjs/toolkit"
 
 type GeneralState = {
 	headerTitle: string

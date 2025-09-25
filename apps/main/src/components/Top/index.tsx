@@ -13,7 +13,7 @@ export default function Top() {
 					<Button
 						type="default"
 						icon="mailFilled"
-						className="w-full! text-3 leading-14 text-teal-600">
+						className="w-full! text-3 text-teal-600 leading-14">
 						<span className="pl-1 tracking-normal">Email</span>
 					</Button>
 				</a>
@@ -25,7 +25,7 @@ export default function Top() {
 					<Button
 						type="default"
 						icon="googleScholar"
-						className="w-full! px-1! text-3 leading-14 text-blue-500">
+						className="w-full! px-1! text-3 text-blue-500 leading-14">
 						<span className="tracking-normal">Google Scholar</span>
 					</Button>
 				</a>
@@ -37,7 +37,7 @@ export default function Top() {
 					<Button
 						type="default"
 						icon="linkedIn"
-						className="w-full! text-3 leading-14 text-blue-700">
+						className="w-full! text-3 text-blue-700 leading-14">
 						<span className="pl-1 tracking-normal">LinkedIn</span>
 					</Button>
 				</a>
@@ -49,7 +49,7 @@ export default function Top() {
 					<Button
 						type="default"
 						icon="github"
-						className="w-full! text-3 leading-14 text-gray-800">
+						className="w-full! text-3 text-gray-800 leading-14">
 						<span className="pl-1 tracking-normal">Github</span>
 					</Button>
 				</a>
@@ -58,7 +58,7 @@ export default function Top() {
 				<Button
 					type="default"
 					icon="email"
-					className="w-full! text-3 leading-14 text-gray-500 lg:hidden">
+					className="w-full! text-3 text-gray-500 leading-14 lg:hidden">
 					<span className="tracking-normal">Email</span>
 				</Button>
 				<Link
@@ -68,7 +68,7 @@ export default function Top() {
 					<Button
 						type="default"
 						icon="googleScholar"
-						className="w-full! h-full text-blue-500">
+						className="h-full w-full! text-blue-500">
 						<span className="pl-0.5 text-4 leading-14 tracking-normal lg:text-3">
 							Google Scholar
 						</span>

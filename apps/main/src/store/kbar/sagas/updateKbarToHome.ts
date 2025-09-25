@@ -1,11 +1,11 @@
+import { put, select } from "redux-saga/effects"
 import {
-	updateKbarLocation,
 	setKbarList,
-	setKbarPlaceholder,
 	setKbarLoading,
+	setKbarPlaceholder,
+	updateKbarLocation,
 } from "../actions"
 import { selectKbar } from "../selectors"
-import { put, select } from "redux-saga/effects"
 
 export default function* updateKbarToHomeSaga() {
 	try {
@@ -17,7 +17,7 @@ export default function* updateKbarToHomeSaga() {
 		// get list cache
 		const { lists } = yield select(selectKbar)
 		// set the location to home
-		yield put(setKbarList(lists["home"]))
+		yield put(setKbarList(lists.home))
 
 		// stop loading in case it's still running
 		yield put(setKbarLoading(false))

@@ -1,5 +1,6 @@
 import { useTheme } from "next-themes"
-import React, { useState, useEffect } from "react"
+import type React from "react"
+import { useEffect, useState } from "react"
 
 interface Props {
 	handler: (position: number) => void
@@ -37,7 +38,7 @@ const ScrollWrapper = (props: Props) => {
 		return () => {
 			window.removeEventListener("scroll", handler)
 		}
-	}, [resolvedTheme])
+	}, [handler])
 
 	if (yOffset < startPosition) {
 		return null

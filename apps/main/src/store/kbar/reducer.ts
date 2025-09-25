@@ -1,15 +1,16 @@
-import { KbarList, KbarLists } from "./actions"
+import type { AnyAction } from "@reduxjs/toolkit"
 import {
 	ADD_TO_KBAR_LISTS,
-	SET_KBAR_LIST,
-	SET_KBAR_PLACEHOLDER,
-	SET_KBAR_ANIMATION,
-	SET_KBAR_LOCATION,
-	SET_KBAR_LOADING,
 	HIDE_KBAR,
+	type KbarList,
+	type KbarLists,
+	SET_KBAR_ANIMATION,
+	SET_KBAR_LIST,
+	SET_KBAR_LOADING,
+	SET_KBAR_LOCATION,
+	SET_KBAR_PLACEHOLDER,
 	SHOW_KBAR,
 } from "./actions"
-import { AnyAction } from "@reduxjs/toolkit"
 
 type KbarState = {
 	// Kbar panel animation

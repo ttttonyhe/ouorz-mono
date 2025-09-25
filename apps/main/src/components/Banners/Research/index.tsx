@@ -3,30 +3,30 @@ import { Icon } from "@twilight-toolkit/ui"
 const NexusPaper = () => {
 	return (
 		<div className="flex flex-col gap-4 lg:flex-row">
-			<div className="shadow-xs flex-1 rounded-lg border bg-white dark:border-gray-700 dark:bg-gray-800">
-				<div className="flex w-full items-center justify-between gap-x-2.5 border-b border-gray-200 px-4.5 py-2.5 dark:border-gray-700">
-					<div className="flex items-center gap-x-[7px] text-[15px] font-medium tracking-wide text-gray-700 dark:text-white">
+			<div className="flex-1 rounded-lg border bg-white shadow-xs dark:border-gray-700 dark:bg-gray-800">
+				<div className="flex w-full items-center justify-between gap-x-2.5 border-gray-200 border-b px-4.5 py-2.5 dark:border-gray-700">
+					<div className="flex items-center gap-x-[7px] font-medium text-[15px] text-gray-700 tracking-wide dark:text-white">
 						<span className="h-4.5 w-4.5 lg:h-7 lg:w-7">🧬</span>
 						<span>NEXUS</span>
 					</div>
 					<div className="-translate-y-[1.5px]">
-						<label className="rounded-full border-[1.5px] bg-gray-100 py-[2.5px] pl-[7px] pr-[6.5px] text-[0.675rem] font-medium leading-[0.675rem] text-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400">
+						<label className="rounded-full border-[1.5px] bg-gray-100 py-[2.5px] pr-[6.5px] pl-[7px] font-medium text-[0.675rem] text-gray-500 leading-[0.675rem] dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400">
 							NDSS 2025
 						</label>
 					</div>
 				</div>
-				<div className="mt-4 flex items-center px-4.5 pb-4 text-sm tracking-wider text-gray-600 dark:text-gray-300">
+				<div className="mt-4 flex items-center px-4.5 pb-4 text-gray-600 text-sm tracking-wider dark:text-gray-300">
 					<p>
 						The first non-interactive protocol for secure transformer inference.
 					</p>
 				</div>
-				<div className="mask-x flex items-center justify-between gap-x-2.5 overflow-x-auto whitespace-nowrap px-4.5 pb-4 text-sm text-gray-600 dark:text-gray-300">
+				<div className="mask-x flex items-center justify-between gap-x-2.5 overflow-x-auto whitespace-nowrap px-4.5 pb-4 text-gray-600 text-sm dark:text-gray-300">
 					<div className="flex items-center gap-x-2.5">
 						<a
 							href="https://eprint.iacr.org/2024/136"
 							rel="noreferrer noopener"
 							target="_blank"
-							className="effect-pressing shadow-xs flex items-center gap-x-[4px] rounded-md border px-3 py-1 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
+							className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
 							<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
 								<Icon name="paper" />
 							</span>
@@ -62,28 +62,28 @@ const NexusPaper = () => {
 					</div>
 				</div>
 			</div>
-			<div className="shadow-xs flex-1 rounded-lg border bg-white dark:border-gray-700 dark:bg-gray-800">
-				<div className="flex w-full items-center justify-between gap-x-2.5 border-b border-gray-200 px-4.5 py-2.5 dark:border-gray-700">
-					<div className="flex items-center gap-x-[7px] text-[15px] font-medium tracking-wide text-gray-700 dark:text-white">
+			<div className="flex-1 rounded-lg border bg-white shadow-xs dark:border-gray-700 dark:bg-gray-800">
+				<div className="flex w-full items-center justify-between gap-x-2.5 border-gray-200 border-b px-4.5 py-2.5 dark:border-gray-700">
+					<div className="flex items-center gap-x-[7px] font-medium text-[15px] text-gray-700 tracking-wide dark:text-white">
 						<span className="h-4.5 w-4.5 lg:h-7 lg:w-7">👀</span>
 						<span>LookAhead</span>
 					</div>
 					<div className="-translate-y-[1.5px]">
-						<label className="rounded-full border-[1.5px] bg-gray-100 py-[2.5px] pl-[7px] pr-[6.5px] text-[0.675rem] font-medium leading-[0.675rem] text-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400">
+						<label className="rounded-full border-[1.5px] bg-gray-100 py-[2.5px] pr-[6.5px] pl-[7px] font-medium text-[0.675rem] text-gray-500 leading-[0.675rem] dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400">
 							Under Submission
 						</label>
 					</div>
 				</div>
-				<div className="mt-4 flex items-center px-4.5 pb-4 text-sm tracking-wider text-gray-600 dark:text-gray-300">
+				<div className="mt-4 flex items-center px-4.5 pb-4 text-gray-600 text-sm tracking-wider dark:text-gray-300">
 					<p>A new direction for detecting and preventing DeFi attacks.</p>
 				</div>
-				<div className="mask-x flex items-center justify-between gap-x-2.5 overflow-x-auto whitespace-nowrap px-4.5 pb-4 text-sm text-gray-600 dark:text-gray-300">
+				<div className="mask-x flex items-center justify-between gap-x-2.5 overflow-x-auto whitespace-nowrap px-4.5 pb-4 text-gray-600 text-sm dark:text-gray-300">
 					<div className="flex items-center gap-x-2.5">
 						<a
 							href="https://arxiv.org/abs/2401.07261"
 							rel="noreferrer noopener"
 							target="_blank"
-							className="effect-pressing shadow-xs flex items-center gap-x-[4px] rounded-md border px-3 py-1 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
+							className="effect-pressing flex items-center gap-x-[4px] rounded-md border px-3 py-1 shadow-xs hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:hover:border-gray-600 dark:hover:bg-gray-600">
 							<span className="h-4.5 w-4.5 lg:h-[16px] lg:w-[16px]">
 								<Icon name="paper" />
 							</span>

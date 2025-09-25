@@ -1,20 +1,20 @@
-import Kbar, { KbarListItem } from "../Kbar"
-import { HeaderTransition, OffsetTransition } from "../Motion"
-import ScrollWrapper from "../Motion/scroll"
-import Tabs from "../Tabs"
-import { useTheme } from "next-themes"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import React, { MutableRefObject, useRef } from "react"
+import { useTheme } from "next-themes"
+import { type MutableRefObject, useRef } from "react"
 import { useDispatch, useSelector } from "~/hooks"
 import useAnalytics from "~/hooks/analytics"
 import { selectGeneral } from "~/store/general/selectors"
 import {
-	updateKbarToSearch,
 	activateKbar,
 	updateKbarSearchQuery,
+	updateKbarToSearch,
 } from "~/store/kbar/actions"
+import Kbar, { type KbarListItem } from "../Kbar"
+import { HeaderTransition, OffsetTransition } from "../Motion"
+import ScrollWrapper from "../Motion/scroll"
+import Tabs from "../Tabs"
 
 interface HeaderSearchBarComponentProps {
 	activateKbar: () => void
@@ -27,12 +27,12 @@ const HeaderSearchBarComponent = ({
 		<div className="effect-pressing hidden lg:flex lg:w-[65%] xl:w-[620px]">
 			<div
 				aria-label="Command + K to open the command palette"
-				className="absolute left-3 top-[6px] z-10 cursor-not-allowed rounded-md border bg-gray-50 px-1.5 py-0.5 text-xs text-gray-400 dark:border-gray-600 dark:bg-transparent">
+				className="absolute top-[6px] left-3 z-10 cursor-not-allowed rounded-md border bg-gray-50 px-1.5 py-0.5 text-gray-400 text-xs dark:border-gray-600 dark:bg-transparent">
 				⌘+K
 			</div>
 			<input
 				type="text"
-				className="outline-hidden dark:bg-gray-800/50 dark:shadow-xs w-full rounded-md border border-gray-200 bg-white/90 px-3 py-2 pl-[54px] text-sm transition-shadow hover:bg-neutral-50 dark:border-gray-700 dark:hover:border-gray-700 dark:hover:bg-gray-800"
+				className="w-full rounded-md border border-gray-200 bg-white/90 px-3 py-2 pl-[54px] text-sm outline-hidden transition-shadow hover:bg-neutral-50 dark:border-gray-700 dark:bg-gray-800/50 dark:shadow-xs dark:hover:border-gray-700 dark:hover:bg-gray-800"
 				placeholder="Type your command or search..."
 				onFocus={activateKbar}
 				data-oa="click-activateKbar"
@@ -93,7 +93,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 						/>
 						{/* </a> */}
 					</div>
-					<div className="text-3 font-medium text-black">
+					<div className="font-medium text-3 text-black">
 						<Link href="/" passHref>
 							<h3 className="text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300">
 								Tony He
@@ -496,7 +496,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			<header
 				ref={headerRef}
 				id="header"
-				className="header fixed top-0 z-50 grid h-auto w-full grid-cols-8 border-b border-gray-200 px-1 py-2 leading-14 duration-300 dark:border-b-transparent dark:backdrop-blur-lg lg:border-0 lg:bg-transparent lg:px-5 lg:py-4">
+				className="header fixed top-0 z-50 grid h-auto w-full grid-cols-8 border-gray-200 border-b px-1 py-2 leading-14 duration-300 lg:border-0 lg:bg-transparent lg:px-5 lg:py-4 dark:border-b-transparent dark:backdrop-blur-lg">
 				<div className="col-start-1 col-end-3 flex items-center lg:items-baseline lg:space-x-2">
 					<Tabs items={leftTabItems} />
 				</div>

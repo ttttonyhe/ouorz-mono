@@ -1,13 +1,12 @@
 import { Icon } from "@twilight-toolkit/ui"
 import Head from "next/head"
 import Link from "next/link"
-import React from "react"
 import useSWR from "swr"
 import { PodcastCard, PodcastCardLoading } from "~/components/Card/Podcast"
 import { pageLayout } from "~/components/Page"
-import { WPPost } from "~/constants/propTypes"
+import type { WPPost } from "~/constants/propTypes"
 import fetcher from "~/lib/fetcher"
-import { NextPageWithLayout } from "~/pages/_app"
+import type { NextPageWithLayout } from "~/pages/_app"
 import getAPI from "~/utilities/api"
 
 const Podcasts: NextPageWithLayout = () => {
@@ -33,24 +32,24 @@ const Podcasts: NextPageWithLayout = () => {
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="mb-4 flex items-center">
 					<div className="flex flex-1 items-center">
-						<div className="mr-4.5 mt-1 flex -rotate-6 cursor-pointer items-center">
+						<div className="-rotate-6 mt-1 mr-4.5 flex cursor-pointer items-center">
 							<span className="text-[35px] drop-shadow-lg hover:animate-spin">
 								🎙️
 							</span>
 						</div>
 						<div>
-							<h2 className="flex items-center gap-x-1.5 text-[28px] font-medium tracking-wide text-black dark:text-white">
+							<h2 className="flex items-center gap-x-1.5 font-medium text-[28px] text-black tracking-wide dark:text-white">
 								Podcasts
 							</h2>
-							<p className="-mt-1 text-sm text-neutral-500 dark:text-gray-400">
+							<p className="-mt-1 text-neutral-500 text-sm dark:text-gray-400">
 								I have listened to a wide variety of audio podcasts over the
 								years. Here are some of the ones that I really enjoyed.
 							</p>
 						</div>
 					</div>
 					<div className="mt-2 flex h-full items-center justify-end whitespace-nowrap">
-						<div className="flex-1 pl-5 pr-3">
-							<p className="text-xl text-gray-500 dark:text-gray-400">
+						<div className="flex-1 pr-3 pl-5">
+							<p className="text-gray-500 text-xl dark:text-gray-400">
 								<Link href="/" className="flex items-center">
 									<span className="mr-2 h-6 w-6">
 										<Icon name="left" />
@@ -65,7 +64,7 @@ const Podcasts: NextPageWithLayout = () => {
 			<div className="my-5">
 				<hr className="dark:border-gray-600" />
 			</div>
-			<section className="mb-10 mt-4 grid grid-cols-2 gap-4 lg:grid-cols-3">
+			<section className="mt-4 mb-10 grid grid-cols-2 gap-4 lg:grid-cols-3">
 				{data && !error ? (
 					data.map((podcast: WPPost) => (
 						<PodcastCard

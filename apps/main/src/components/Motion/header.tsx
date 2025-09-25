@@ -1,6 +1,6 @@
-import ScrollWrapper from "./scroll"
 import { useTheme } from "next-themes"
-import React from "react"
+import type React from "react"
+import ScrollWrapper from "./scroll"
 
 interface Props {
 	componentRef: React.MutableRefObject<HTMLDivElement>
@@ -32,7 +32,7 @@ const BoxShadowTransition = (props: Props) => {
 
 	return (
 		<ScrollWrapper handler={handler} endPosition={40}>
-			<>{children}</>
+			{children}
 		</ScrollWrapper>
 	)
 }

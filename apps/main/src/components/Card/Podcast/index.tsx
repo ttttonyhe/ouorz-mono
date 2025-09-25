@@ -14,39 +14,39 @@ const PodcastCard = (props: PodcastCardProps) => {
 	return (
 		<div
 			onClick={() => openLink(link)}
-			className="w-50 shadow-xs group z-40 flex cursor-pointer items-center rounded-md border bg-white transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-700">
+			className="group z-40 flex w-50 cursor-pointer items-center rounded-md border bg-white shadow-xs transition-shadow hover:shadow-md dark:border-gray-700 dark:bg-gray-700">
 			<div className="h-full overflow-hidden rounded-[5px] opacity-100 lg:group-hover:opacity-0">
-				<div className="h-auto w-full border-b bg-gray-200 dark:border-gray-700 dark:bg-gray-800 lg:h-[196px]">
+				<div className="h-auto w-full border-b bg-gray-200 lg:h-[196px] dark:border-gray-700 dark:bg-gray-800">
 					<img
 						className="z-10 h-full w-full rounded-tl-md rounded-tr-md"
 						src={imageURL}
 						alt={title}
 					/>
 				</div>
-				<div className="px-3.5 pb-5 pt-4.5">
-					<h2 className="text-normal mb-0.5 overflow-hidden text-ellipsis whitespace-nowrap font-medium tracking-wider">
+				<div className="px-3.5 pt-4.5 pb-5">
+					<h2 className="mb-0.5 overflow-hidden text-ellipsis whitespace-nowrap font-medium text-normal tracking-wider">
 						{title}
 					</h2>
 					<p
-						className="line-clamp-2 text-sm leading-snug tracking-wide text-gray-600 dark:text-gray-400"
+						className="line-clamp-2 text-gray-600 text-sm leading-snug tracking-wide dark:text-gray-400"
 						dangerouslySetInnerHTML={{
 							__html: description,
 						}}
 					/>
 				</div>
 			</div>
-			<div className="absolute left-5 top-8 hidden h-full w-40 overflow-hidden rounded-md opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 lg:block">
+			<div className="absolute top-8 left-5 hidden h-full w-40 overflow-hidden rounded-md opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 lg:block">
 				<div className="translate-y-1 transition-all duration-300 ease-in-out group-hover:translate-y-0">
 					<img
 						className="mb-2 h-10 w-10 rounded-md border"
 						src={imageURL}
 						alt={title}
 					/>
-					<h2 className="mb-1 text-sm font-bold tracking-wider text-black dark:text-white">
+					<h2 className="mb-1 font-bold text-black text-sm tracking-wider dark:text-white">
 						{title}
 					</h2>
 					<p
-						className="line-clamp-2 text-xs font-medium leading-snug tracking-wide text-gray-800 group-hover:line-clamp-none dark:text-gray-300"
+						className="line-clamp-2 font-medium text-gray-800 text-xs leading-snug tracking-wide group-hover:line-clamp-none dark:text-gray-300"
 						dangerouslySetInnerHTML={{
 							__html: description,
 						}}
@@ -59,7 +59,7 @@ const PodcastCard = (props: PodcastCardProps) => {
 
 const PodcastCardLoading = (props: { uniqueKey: string }) => {
 	return (
-		<div className="w-50 shadow-xs z-40 flex items-center rounded-md border bg-white transition-shadow hover:shadow-md dark:border dark:border-gray-700 dark:bg-gray-800">
+		<div className="z-40 flex w-50 items-center rounded-md border bg-white shadow-xs transition-shadow hover:shadow-md dark:border dark:border-gray-700 dark:bg-gray-800">
 			<ContentLoader
 				className="block dark:hidden"
 				uniqueKey={`${props.uniqueKey}-light`}

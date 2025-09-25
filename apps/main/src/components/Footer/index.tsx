@@ -1,12 +1,12 @@
-import { OffsetTransition } from "../Motion"
 import { Icon } from "@twilight-toolkit/ui"
-import { useTheme } from "next-themes"
 import { useRouter } from "next/router"
-import { useEffect, useState, useRef } from "react"
+import { useTheme } from "next-themes"
+import { useEffect, useRef, useState } from "react"
 import smoothScroll from "smoothscroll-polyfill"
 import { useDispatch, useSelector } from "~/hooks"
 import { deactivateKbar } from "~/store/kbar/actions"
 import { selectKbar } from "~/store/kbar/selectors"
+import { OffsetTransition } from "../Motion"
 
 const themes = ["system", "dark", "light"]
 const icons = [
@@ -52,23 +52,28 @@ export default function Footer() {
 		}
 		// Hide kbar on route change
 		visible && dispatch(deactivateKbar())
-	}, [pathname, resolvedTheme, mounted])
+	}, [
+		resolvedTheme,
+		mounted,
+		dispatch, // Hide kbar on route change
+		visible,
+	])
 
 	if (!mounted) return null
 
 	return (
-		<footer className="mt-20 border-b border-t border-gray-200 bg-white py-4 text-center dark:border-gray-700 dark:bg-gray-800">
+		<footer className="mt-20 border-gray-200 border-t border-b bg-white py-4 text-center dark:border-gray-700 dark:bg-gray-800">
 			<div className="fixed bottom-8 left-8 text-gray-500 dark:text-gray-300">
 				<button
 					aria-label="change theme"
 					onClick={() => {
 						setTheme(targetThemes[themes.indexOf(theme)])
 					}}
-					className="effect-pressing p-3! shadow-xs focus:outline-hidden flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white text-xl tracking-wider hover:shadow-inner dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+					className="effect-pressing flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white p-3! text-xl tracking-wider shadow-xs hover:shadow-inner focus:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
 					<span className="h-7 w-7">{icons[themes.indexOf(theme)]}</span>
 				</button>
 			</div>
-			<div className="fixed bottom-8 right-8 text-gray-500 dark:text-gray-300">
+			<div className="fixed right-8 bottom-8 text-gray-500 dark:text-gray-300">
 				<OffsetTransition componentRef={backToTopRef}>
 					<button
 						ref={backToTopRef}
@@ -76,14 +81,14 @@ export default function Footer() {
 						onClick={() => {
 							window.scrollTo({ top: 0, behavior: "smooth" })
 						}}
-						className="effect-pressing shadow-xs focus:outline-hidden flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white p-3 text-xl tracking-wider opacity-0 hover:shadow-inner dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+						className="effect-pressing flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white p-3 text-xl tracking-wider opacity-0 shadow-xs hover:shadow-inner focus:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
 						<span className="h-7 w-7">
 							<Icon name="arrowUp" />
 						</span>
 					</button>
 				</OffsetTransition>
 			</div>
-			<p className="text-4 tracking-wide text-gray-500 dark:text-gray-400">
+			<p className="text-4 text-gray-500 tracking-wide dark:text-gray-400">
 				<a
 					href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
 					target="_blank"

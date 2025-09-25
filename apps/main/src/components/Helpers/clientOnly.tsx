@@ -1,5 +1,5 @@
-import { useSyncExternalStore } from "react"
 import type { ReactNode } from "react"
+import { useSyncExternalStore } from "react"
 
 const ClientOnly = ({ children }: { children: ReactNode }) => {
 	const isServer = useSyncExternalStore(

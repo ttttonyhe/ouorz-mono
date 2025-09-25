@@ -32,6 +32,9 @@ const NextConfigs = {
 			exclude: ["log", "error"],
 		},
 	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
 }
 
 const SentryWebpackPluginOptions = {

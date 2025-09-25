@@ -1,6 +1,7 @@
-import Footer from "../Footer"
-import React, { PropsWithChildren } from "react"
+import type React from "react"
+import type { PropsWithChildren } from "react"
 import Header from "~/components/Header"
+import Footer from "../Footer"
 
 interface Props extends PropsWithChildren<{}> {}
 
@@ -10,7 +11,7 @@ const Content = (props: Props) => {
 		<div>
 			<Header />
 			<main className="mx-auto h-auto min-h-main w-full pt-0 lg:w-page lg:pt-24">
-				<>{children}</>
+				{children}
 			</main>
 			<Footer />
 		</div>

@@ -1,11 +1,11 @@
+import { call, delay, put, select } from "redux-saga/effects"
 import {
-	setKbarLoading,
-	setKbarList,
-	updateKbarSearchQuery,
 	addToKbarLists,
+	setKbarList,
+	setKbarLoading,
+	type updateKbarSearchQuery,
 } from "../actions"
 import { selectKbar } from "../selectors"
-import { call, delay, put, select } from "redux-saga/effects"
 
 export default function* updateKbarSearchQuerySaga(
 	action: ReturnType<typeof updateKbarSearchQuery>

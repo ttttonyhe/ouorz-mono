@@ -1,9 +1,8 @@
-import React from "react"
 import CardPlainText from "~/components/Card/PlainText"
 import CardWithImage from "~/components/Card/WithImage"
 import CardWithOutImage from "~/components/Card/WithOutImage"
 import Reader from "~/components/Reader"
-import { WPPost } from "~/constants/propTypes"
+import type { WPPost } from "~/constants/propTypes"
 
 export interface StaticListProps {
 	posts?: WPPost[]

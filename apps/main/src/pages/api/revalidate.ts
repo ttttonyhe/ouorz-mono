@@ -1,6 +1,6 @@
-import { use } from "../../lib/middleware"
 import Cors from "cors"
 import type { NextApiRequest, NextApiResponse } from "next"
+import { use } from "../../lib/middleware"
 
 type ResDataType = {
 	status: number

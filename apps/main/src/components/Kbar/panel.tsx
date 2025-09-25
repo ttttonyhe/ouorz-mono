@@ -1,14 +1,15 @@
-import HotkeyHelper from "../Helpers/hotKey"
-import Tabs, { TabItemProps } from "../Tabs"
-import { kbarContext } from "./context"
 import { Icon } from "@twilight-toolkit/ui"
-import { useTheme } from "next-themes"
 import { useRouter } from "next/router"
-import React, { useContext, useEffect, useState, useRef } from "react"
+import { useTheme } from "next-themes"
+import type React from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import ContentLoader from "react-content-loader"
 import { useDispatch, useSelector } from "~/hooks"
 import { deactivateKbar, updateKbar } from "~/store/kbar/actions"
 import { selectKbar } from "~/store/kbar/selectors"
+import HotkeyHelper from "../Helpers/hotKey"
+import Tabs, { type TabItemProps } from "../Tabs"
+import { kbarContext } from "./context"
 
 const ListComponentLoading = ({ resolvedTheme }: { resolvedTheme: string }) => {
 	if (resolvedTheme === "dark") {
@@ -57,7 +58,7 @@ const ListComponent = ({
 		if (wrapperHeight) {
 			verticalListWrapper.current.style.height = `${wrapperHeight}px`
 		}
-	}, [loading, verticalListWrapper, tabsListItems])
+	}, [loading, verticalListWrapper, tabsListItems, resolvedTheme])
 
 	if (loading || tabsListItems == null) {
 		return <ListComponentLoading resolvedTheme={resolvedTheme} />
@@ -171,7 +172,7 @@ const KbarPanel = () => {
 				className: "w-full justify-start! p-4!",
 				component:
 					item.hoverable === false ? (
-						<p className="kbar-list-heading text-sm text-gray-400">
+						<p className="kbar-list-heading text-gray-400 text-sm">
 							{item.label}
 						</p>
 					) : (
@@ -189,7 +190,7 @@ const KbarPanel = () => {
 							</div>
 							<div className="flex items-center gap-x-2.5">
 								{item.description && (
-									<div className="text-sm text-gray-400">
+									<div className="text-gray-400 text-sm">
 										{item.description}
 									</div>
 								)}
@@ -216,7 +217,14 @@ const KbarPanel = () => {
 		// update list data
 		setiInitialListItems(tabsListItems)
 		setTabsListItems(tabsListItems)
-	}, [list, location])
+	}, [
+		list,
+		location,
+		dispatch,
+		router.push, // clear input value
+		setInputValue,
+		setInputValueChangeHandler,
+	])
 
 	// Search list items
 	useEffect(() => {
@@ -238,26 +246,28 @@ const KbarPanel = () => {
 		})
 
 		setTabsListItems(resultList)
-	}, [inputValue, initialListItems])
+	}, [inputValue, initialListItems, inputValueChangeHandler])
 
 	return (
 		<div
 			data-cy="kbar-panel"
-			className="pointer-events-auto absolute -ml-10 flex h-screen w-screen justify-center">
-			{// register shortcuts of list items
-			list?.map((item, index) => {
-				if (item.shortcut?.length) {
-					return <HotkeyHelper key={index} item={item} />
-				}
-			})}
+			className="-ml-10 pointer-events-auto absolute flex h-screen w-screen justify-center">
+			{
+				// register shortcuts of list items
+				list?.map((item, index) => {
+					if (item.shortcut?.length) {
+						return <HotkeyHelper key={index} item={item} />
+					}
+				})
+			}
 			<div
-				className={`ml-15 z-50 mt-[8%] h-fit max-h-[420px] w-[620px] overflow-hidden rounded-xl border bg-white/70 shadow-2xl backdrop-blur-lg dark:border-gray-700 dark:bg-black/70 ${
+				className={`z-50 mt-[8%] ml-15 h-fit max-h-[420px] w-[620px] overflow-hidden rounded-xl border bg-white/70 shadow-2xl backdrop-blur-lg dark:border-gray-700 dark:bg-black/70 ${
 					animation === "transition"
 						? "animate-kbar-transition"
 						: animation === "out"
 							? "animate-kbar-out"
 							: animation === "in"
-								? "animate-kbar"
+								? "animate-kbar opacity-0"
 								: ""
 				}`}>
 				<div
@@ -269,8 +279,7 @@ const KbarPanel = () => {
 						placeholder={placeholder}
 						onChange={(e) => setInputValue(e.target.value)}
 						value={inputValue}
-						autoFocus
-						className="outline-hidden w-full flex-1 rounded-tl-lg rounded-tr-lg bg-transparent px-5 py-4.5 text-lg text-gray-600 dark:text-gray-300"
+						className="w-full flex-1 rounded-tl-lg rounded-tr-lg bg-transparent px-5 py-4.5 text-gray-600 text-lg outline-hidden dark:text-gray-300"
 					/>
 					<div className="mr-5 flex items-center">
 						<ul className="flex list-none gap-x-2 text-gray-400 dark:text-gray-500">
@@ -305,7 +314,7 @@ const KbarPanel = () => {
 						</ul>
 					</div>
 					{loading && resolvedTheme === "dark" && (
-						<div className="kbar-loading-bar animate-kbar-loading-bar absolute bottom-[-1.25px] z-50 h-[1.5px] w-full" />
+						<div className="kbar-loading-bar absolute bottom-[-1.25px] z-50 h-[1.5px] w-full animate-kbar-loading-bar" />
 					)}
 				</div>
 				<div

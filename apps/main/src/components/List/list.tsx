@@ -1,6 +1,5 @@
+import type { ListTypes } from "~/constants/propTypes"
 import InfiniteList from "./infiniteList"
-import React from "react"
-import { ListTypes } from "~/constants/propTypes"
 
 export interface ListProps {
 	type?: ListTypes

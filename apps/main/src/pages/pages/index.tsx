@@ -1,10 +1,9 @@
 import { Icon } from "@twilight-toolkit/ui"
 import Head from "next/head"
 import Link from "next/link"
-import React from "react"
 import PageCard from "~/components/Card/Page"
 import { pageLayout } from "~/components/Page"
-import { NextPageWithLayout } from "~/pages/_app"
+import type { NextPageWithLayout } from "~/pages/_app"
 
 const Pages: NextPageWithLayout = () => {
 	return (
@@ -20,7 +19,7 @@ const Pages: NextPageWithLayout = () => {
 			<div className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="mb-4 flex items-center">
 					<div className="flex-1 items-center">
-						<h1 className="text-1 font-medium tracking-wide text-black dark:text-white">
+						<h1 className="font-medium text-1 text-black tracking-wide dark:text-white">
 							<span className="mr-3 inline-block cursor-pointer hover:animate-spin">
 								📑
 							</span>
@@ -29,7 +28,7 @@ const Pages: NextPageWithLayout = () => {
 					</div>
 					<div className="mt-2 flex h-full items-center justify-end whitespace-nowrap">
 						<div className="flex-1 px-5">
-							<p className="text-xl text-gray-500 dark:text-gray-400">
+							<p className="text-gray-500 text-xl dark:text-gray-400">
 								<Link href="/" className="flex items-center">
 									<span className="mr-2 h-6 w-6">
 										<Icon name="left" />

@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next"
+import type { GetServerSideProps } from "next"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
@@ -8,7 +8,7 @@ import { contentLayout } from "~/components/Content"
 import PostContent from "~/components/PostContent"
 import SubscriptionBox from "~/components/SubscriptionBox"
 import { useDispatch } from "~/hooks"
-import { NextPageWithLayout } from "~/pages/_app"
+import type { NextPageWithLayout } from "~/pages/_app"
 import { setHeaderTitle } from "~/store/general/actions"
 import getAPI from "~/utilities/api"
 
@@ -24,12 +24,12 @@ const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 	if (!status || !page) {
 		useEffect(() => {
 			router.replace("/404")
-		}, [])
+		}, [router.replace])
 
 		return (
-			<div className="shadow-xs mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center">
-				<h1 className="text-lg font-medium">404 Not Found</h1>
-				<p className="text-sm font-light tracking-wide text-gray-500">
+			<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-xs">
+				<h1 className="font-medium text-lg">404 Not Found</h1>
+				<p className="font-light text-gray-500 text-sm tracking-wide">
 					redirecting...
 				</p>
 			</div>
@@ -45,7 +45,7 @@ const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 		return () => {
 			dispatch(setHeaderTitle(""))
 		}
-	}, [pgid])
+	}, [dispatch, page.title.rendered])
 
 	return (
 		<div>
@@ -59,12 +59,12 @@ const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 			</Head>
 			<article
 				data-cy="pageContent"
-				className="lg:shadow-xs bg-white p-5 pt-24 dark:border-gray-800 dark:bg-gray-800 lg:rounded-xl lg:border lg:p-20">
+				className="bg-white p-5 pt-24 lg:rounded-xl lg:border lg:p-20 lg:shadow-xs dark:border-gray-800 dark:bg-gray-800">
 				<div className="mb-20">
-					<h1 className="lg:text-post-title text-1.5 font-medium leading-snug tracking-wider">
+					<h1 className="font-medium text-1.5 leading-snug tracking-wider lg:text-post-title">
 						{page.title.rendered}
 					</h1>
-					<p className="mt-2 flex space-x-2 text-5 tracking-wide text-gray-500 dark:text-gray-400 lg:text-xl">
+					<p className="mt-2 flex space-x-2 text-5 text-gray-500 tracking-wide lg:text-xl dark:text-gray-400">
 						<span>
 							Posted <TimeAgo date={page.date} />
 						</span>
@@ -89,14 +89,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		// Increase page views
 		fetch(
 			getAPI("internal", "visit", {
-				id: parseInt(pgid as string),
+				id: parseInt(pgid as string, 10),
 			})
 		)
 
 		// Fetch page data
 		const resData = await fetch(
 			getAPI("internal", "page", {
-				id: parseInt(pgid as string),
+				id: parseInt(pgid as string, 10),
 			})
 		)
 

@@ -11,8 +11,8 @@ const analytics = async (
 	_req: NextApiRequest,
 	res: NextApiResponse<ResDataType>
 ) => {
-	const startAt = new Date(new Date().getTime() - duration).getTime()
-	const endAt = new Date().getTime()
+	const startAt = new Date(Date.now() - duration).getTime()
+	const endAt = Date.now()
 
 	const response = await fetch(
 		`${ANALYTICS_API.STATS}?start_at=${startAt}&end_at=${endAt}`,

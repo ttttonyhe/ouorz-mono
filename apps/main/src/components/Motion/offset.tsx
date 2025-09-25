@@ -1,5 +1,5 @@
+import type React from "react"
 import ScrollWrapper from "./scroll"
-import React from "react"
 
 interface Props {
 	componentRef: React.MutableRefObject<any>
@@ -23,7 +23,7 @@ const OffsetTransition = (props: Props) => {
 
 	return (
 		<ScrollWrapper handler={handler} startPosition={50} endPosition={125}>
-			<>{children}</>
+			{children}
 		</ScrollWrapper>
 	)
 }

@@ -16,8 +16,8 @@ const jms = async (_req: NextApiRequest, res: NextApiResponse<ResDataType>) => {
 	)
 
 	return res.status(200).json({
-		total: data.monthly_bw_limit_b / Math.pow(10, 9),
-		used: data.bw_counter_b / Math.pow(10, 9),
+		total: data.monthly_bw_limit_b / 10 ** 9,
+		used: data.bw_counter_b / 10 ** 9,
 	})
 }
 

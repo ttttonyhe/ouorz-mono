@@ -1,10 +1,8 @@
-import React from "react"
 import useSWR from "swr"
 import CardEmpty from "~/components/Card/Empty"
-import { NFTCard } from "~/components/Card/NFT"
-import { NFTCardLoading } from "~/components/Card/NFT"
+import { NFTCard, NFTCardLoading } from "~/components/Card/NFT"
 import fetcher from "~/lib/fetcher"
-import { EthNFT, SolNFT } from "~/pages/api/nft"
+import type { EthNFT, SolNFT } from "~/pages/api/nft"
 
 type NFTApiResData = {
 	eth: EthNFT[]

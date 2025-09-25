@@ -1,0 +1,10 @@
+node_modules
+.next
+dist
+public
+cypress
+src/assets/scripts/vendors/
+src/assets/styles/vendors/
+**/*.d.ts
+*.config.js
+*.config.ts
