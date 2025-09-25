@@ -257,7 +257,7 @@ const Tabs = (props: TabsProps) => {
 		verticalListWrapper.current.style.height = `${
 			listHeight >= 340 ? 360 : listHeight + 20
 		}px`
-	}, [direction, verticalListWrapper])
+	}, [direction, defaultHighlighted, verticalListWrapper, listRef, items])
 
 	// Highlight the first item when defaultHighlighted is true
 	useEffect(() => {
@@ -267,11 +267,7 @@ const Tabs = (props: TabsProps) => {
 
 		// wait for list height to be updated
 		highlightFirstItem(highlightedIndex <= 0 ? delay : 0)
-	}, [
-		// wait for list height to be updated
-		highlightFirstItem,
-		highlightedIndex,
-	])
+	}, [defaultHighlighted, items, listRef])
 
 	/* End Vertical List Methods */
 

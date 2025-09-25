@@ -58,7 +58,7 @@ const ListComponent = ({
 		if (wrapperHeight) {
 			verticalListWrapper.current.style.height = `${wrapperHeight}px`
 		}
-	}, [loading, verticalListWrapper, tabsListItems, resolvedTheme])
+	}, [loading, verticalListWrapper, tabsListItems])
 
 	if (loading || tabsListItems == null) {
 		return <ListComponentLoading resolvedTheme={resolvedTheme} />
@@ -217,14 +217,7 @@ const KbarPanel = () => {
 		// update list data
 		setiInitialListItems(tabsListItems)
 		setTabsListItems(tabsListItems)
-	}, [
-		list,
-		location,
-		dispatch,
-		router.push, // clear input value
-		setInputValue,
-		setInputValueChangeHandler,
-	])
+	}, [list, location])
 
 	// Search list items
 	useEffect(() => {
@@ -246,7 +239,7 @@ const KbarPanel = () => {
 		})
 
 		setTabsListItems(resultList)
-	}, [inputValue, initialListItems, inputValueChangeHandler])
+	}, [inputValue, initialListItems])
 
 	return (
 		<div

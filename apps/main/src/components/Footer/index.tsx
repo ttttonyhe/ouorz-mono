@@ -52,12 +52,7 @@ export default function Footer() {
 		}
 		// Hide kbar on route change
 		visible && dispatch(deactivateKbar())
-	}, [
-		resolvedTheme,
-		mounted,
-		dispatch, // Hide kbar on route change
-		visible,
-	])
+	}, [resolvedTheme, mounted, pathname])
 
 	if (!mounted) return null
 

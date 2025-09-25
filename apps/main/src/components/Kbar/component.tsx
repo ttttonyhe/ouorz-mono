@@ -67,11 +67,7 @@ const Kbar = (props: KbarProps) => {
 			setBodyPointerEvents(true)
 			setBodyScroll(true)
 		}
-	}, [
-		visible, // disbale scrolling and pointer events when kbar is open
-		setBodyPointerEvents,
-		setBodyScroll,
-	])
+	}, [visible])
 
 	// Input effects
 	useDebounce(

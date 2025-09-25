@@ -24,7 +24,7 @@ const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 	if (!status || !page) {
 		useEffect(() => {
 			router.replace("/404")
-		}, [router.replace])
+		}, [])
 
 		return (
 			<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-xs">
@@ -45,7 +45,7 @@ const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 		return () => {
 			dispatch(setHeaderTitle(""))
 		}
-	}, [dispatch, page.title.rendered])
+	}, [pgid])
 
 	return (
 		<div>

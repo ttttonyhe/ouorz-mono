@@ -37,7 +37,7 @@ export default function useTimeoutFunction(
 		set()
 
 		return clear
-	}, [clear, set])
+	}, [ms])
 
 	return [isReady, clear, set]
 }

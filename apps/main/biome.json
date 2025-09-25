@@ -52,7 +52,7 @@
 				"useIterableCallbackReturn": "warn"
 			},
 			"correctness": {
-				"useExhaustiveDependencies": "warn",
+				"useExhaustiveDependencies": "off",
 				"useHookAtTopLevel": "warn",
 				"noNestedComponentDefinitions": "warn",
 				"useUniqueElementIds": "off",

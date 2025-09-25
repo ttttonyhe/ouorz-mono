@@ -61,7 +61,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 			setSummarizing(false)
 			console.log(e)
 		}
-	}, [item.content.rendered, item.id, trackEvent])
+	}, [])
 
 	useInterval(
 		() => {

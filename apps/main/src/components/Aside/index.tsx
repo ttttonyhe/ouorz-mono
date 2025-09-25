@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import scrollToItemWithinDiv from "~/utilities/scrollTo"
 
 export default function Aside({ preNext }: { preNext: any }) {
-	const _router = useRouter()
+	const router = useRouter()
 	const [headersResult, setHeadersResult] = useState<any>([])
 	const [headersEl, setHeadersEl] = useState<any>([])
 
@@ -137,7 +137,7 @@ export default function Aside({ preNext }: { preNext: any }) {
 		return () => {
 			window.removeEventListener("scroll", scrollHandler)
 		}
-	}, [getAllHeaders, scrollToItemWithinDivDebounced])
+	}, [router.query])
 
 	const SubItem = ({
 		item,

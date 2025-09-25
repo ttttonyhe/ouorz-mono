@@ -38,7 +38,7 @@ const ScrollWrapper = (props: Props) => {
 		return () => {
 			window.removeEventListener("scroll", handler)
 		}
-	}, [handler])
+	}, [resolvedTheme])
 
 	if (yOffset < startPosition) {
 		return null
