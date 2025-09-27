@@ -273,6 +273,7 @@ const KbarPanel = () => {
 						onChange={(e) => setInputValue(e.target.value)}
 						value={inputValue}
 						className="w-full flex-1 rounded-tl-lg rounded-tr-lg bg-transparent px-5 py-4.5 text-gray-600 text-lg outline-hidden dark:text-gray-300"
+						autoFocus
 					/>
 					<div className="mr-5 flex items-center">
 						<ul className="flex list-none gap-x-2 text-gray-400 dark:text-gray-500">

@@ -68,7 +68,8 @@
 				"noStaticElementInteractions": "off",
 				"noLabelWithoutControl": "off",
 				"useButtonType": "off",
-				"useAriaPropsSupportedByRole": "off"
+				"useAriaPropsSupportedByRole": "off",
+				"noAutofocus": "off"
 			},
 			"security": {
 				"noDangerouslySetInnerHtml": "off"
