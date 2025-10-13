@@ -180,9 +180,17 @@ const Home: NextPageWithLayout = () => {
 							className="text-blue-500 hover:underline">
 							podcaster
 						</a>
-						, designer, and{" "}
+						,{" "}
 						<a
-							href="https://www.linkedin.com/in/~lhe"
+							href="https://www.cssdesignawards.com/sites/tony-he/43449"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500 hover:underline">
+							designer
+						</a>
+						, and{" "}
+						<a
+							href="https://www.producthunt.com/products/snapod-beta"
 							target="_blank"
 							rel="noreferrer"
 							className="text-blue-500 hover:underline">
@@ -399,6 +407,12 @@ const Home: NextPageWithLayout = () => {
 					</Link>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
+					<PaperCard
+						title="Locket: Robust Feature-Locking Technique for Language Models"
+						authors="Lipeng He, Vasisht Duddu, N. Asokan"
+						accepted={false}
+						links={[]}
+					/>
 					<PaperCard
 						title="Safety at One Shot: Patching Fine-Tuned LLMs with A Single Instance"
 						authors="Jiawen Zhang, Lipeng He, Kejia Chen, Jian Lou, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
