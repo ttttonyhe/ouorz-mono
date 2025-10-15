@@ -411,7 +411,13 @@ const Home: NextPageWithLayout = () => {
 						title="Locket: Robust Feature-Locking Technique for Language Models"
 						authors="Lipeng He, Vasisht Duddu, N. Asokan"
 						accepted={false}
-						links={[]}
+						links={[
+							{
+								label: "Paper",
+								href: "https://arxiv.org/abs/2510.12117",
+								default: true,
+							},
+						]}
 					/>
 					<PaperCard
 						title="Safety at One Shot: Patching Fine-Tuned LLMs with A Single Instance"
