@@ -270,23 +270,6 @@ const Home: NextPageWithLayout = () => {
 						]}
 					/>
 					<PaperCard
-						title="On the Atomicity and Efficiency of Blockchain Payment Channels"
-						authors="Di Wu, Shoupeng Ren, Yuman Bai, Lipeng He, Jian Liu, Wu Wen, Kui Ren, and Chun Chen"
-						venue={{
-							name: "USENIX Security 2025",
-							href: "https://www.usenix.org/conference/usenixsecurity25",
-							color: "border-l-red-500! border-l-4",
-						}}
-						accepted={true}
-						links={[
-							{
-								label: "Paper",
-								href: "https://eprint.iacr.org/2025/180",
-								default: true,
-							},
-						]}
-					/>
-					<PaperCard
 						title="LookAhead: Preventing DeFi Attacks via Unveiling Adversarial Contracts"
 						authors="Shoupeng Ren, Lipeng He, Tianyu Tu, Di Wu, Jian Liu, Kui Ren, and Chun Chen"
 						venue={{
@@ -325,6 +308,23 @@ const Home: NextPageWithLayout = () => {
 							{
 								label: "Code",
 								href: "https://github.com/zju-abclab/NEXUS",
+							},
+						]}
+					/>
+					<PaperCard
+						title="On the Atomicity and Efficiency of Blockchain Payment Channels"
+						authors="Di Wu, Shoupeng Ren, Yuman Bai, Lipeng He, Jian Liu, Wu Wen, Kui Ren, and Chun Chen"
+						venue={{
+							name: "USENIX Security 2025",
+							href: "https://www.usenix.org/conference/usenixsecurity25",
+							color: "border-l-red-500! border-l-4",
+						}}
+						accepted={true}
+						links={[
+							{
+								label: "Paper",
+								href: "https://eprint.iacr.org/2025/180",
+								default: true,
 							},
 						]}
 					/>
