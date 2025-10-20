@@ -553,7 +553,7 @@ const Home: NextPageWithLayout = () => {
 						orgLogoSrc="https://static.ouorz.com/ezra_logo.jpg"
 						organization="Bluelet AI"
 						organizationFullName="Agentic AI and data platform solutions for talent acquisition and matching"
-						jobTitle="Interim CTO"
+						jobTitle="Co-Founder & CTO"
 						jobType="Leadership"
 						dateString="May 2025 - June 2025"
 					/>
@@ -664,7 +664,7 @@ const Home: NextPageWithLayout = () => {
 							organization="University of Waterloo"
 							organizationFullName="Computer Science"
 							jobTitle="Master's Degree (Research/Thesis)"
-							jobType="MPhil"
+							jobType="MMath"
 							dateString="Sep 2025 - Present"
 						/>
 						<EmploymentCard
@@ -672,10 +672,18 @@ const Home: NextPageWithLayout = () => {
 							organization="University of Waterloo"
 							organizationFullName="Mathematics (Minor in Computing)"
 							jobTitle="Honours Bachelor's Degree (Co-op)"
-							jobType="Undergrad"
+							jobType="BMath"
 							dateString="Sep 2020 - Apr 2025"
 						/>
 					</div>
+					<EmploymentCard
+						orgLogoSrc="https://static.ouorz.com/ntu_logo.jpeg"
+						organization="Nanyang Technological University"
+						organizationFullName="Mathematical Sciences"
+						jobTitle="GEM Trailblazer Exchange Student"
+						jobType="Undergrad"
+						dateString="Aug 2023 - Dec 2023"
+					/>
 				</div>
 			</section>
 			<section className="mt-14 mb-24">
