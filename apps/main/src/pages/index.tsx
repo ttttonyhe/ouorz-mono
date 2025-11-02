@@ -153,9 +153,13 @@ const Home: NextPageWithLayout = () => {
 					<p className="mt-3.5">
 						I&#39;m in pursuit of knowledge, experience, and the various other
 						beautiful things life has to offer. I strive to{" "}
-						<span className="inline-block bg-gradient-to-r from-blue-500 via-green-500 to-indigo-500 bg-clip-text text-transparent">
+						<a
+							href="https://www.goodreads.com/quotes/2690-i-went-to-the-woods-because-i-wished-to-live"
+							target="_blank"
+							rel="noreferrer"
+							className="inline-block bg-gradient-to-r from-blue-500 via-green-500 to-indigo-500 bg-clip-text text-transparent hover:from-blue-600 hover:via-green-600 hover:to-indigo-600">
 							live deliberately
-						</span>
+						</a>
 						. Before research, I spent some years doing software engineering. In
 						the limit of my life, I also hope to be a pianist,{" "}
 						<a
@@ -264,8 +268,16 @@ const Home: NextPageWithLayout = () => {
 						links={[
 							{
 								label: "Paper",
-								href: "https://arxiv.org/abs/2502.00840",
+								href: "https://www.usenix.org/system/files/usenixsecurity25-zhang-jiawen.pdf",
 								default: true,
+							},
+							{
+								label: "Code",
+								href: "https://github.com/Kevin-Zh-CS/QuadA",
+							},
+							{
+								label: "Website",
+								href: "https://kevin-zh-cs.github.io/QuadA",
 							},
 						]}
 					/>
@@ -325,6 +337,10 @@ const Home: NextPageWithLayout = () => {
 								label: "Paper",
 								href: "https://eprint.iacr.org/2025/180",
 								default: true,
+							},
+							{
+								label: "Code",
+								href: "https://github.com/zju-abclab/ultraviolet",
 							},
 						]}
 					/>
@@ -416,6 +432,10 @@ const Home: NextPageWithLayout = () => {
 								label: "Paper",
 								href: "https://arxiv.org/abs/2510.12117",
 								default: true,
+							},
+							{
+								label: "Poster",
+								href: "https://uwaterloo.ca/cybersecurity-privacy-institute/2025conference",
 							},
 						]}
 					/>
