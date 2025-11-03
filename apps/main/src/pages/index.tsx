@@ -325,7 +325,7 @@ const Home: NextPageWithLayout = () => {
 					/>
 					<PaperCard
 						title="On the Atomicity and Efficiency of Blockchain Payment Channels"
-						authors="Di Wu, Shoupeng Ren, Yuman Bai, Lipeng He, Jian Liu, Wu Wen, Kui Ren, and Chun Chen"
+						authors="Di Wu, Shoupeng Ren, Yuman Bai, Lipeng He, Jian Liu, Wu Wen, Kui Ren, et al."
 						venue={{
 							name: "USENIX Security 2025",
 							href: "https://www.usenix.org/conference/usenixsecurity25",
@@ -366,7 +366,7 @@ const Home: NextPageWithLayout = () => {
 					/>
 					<PaperCard
 						title="A Survey of Multimodal Federated Learning: Background, Applications, and Perspectives"
-						authors="Hao Pan, Xiaoli Zhao, Lipeng He, Yicong Shi and Xiaogang Lin"
+						authors="Hao Pan, Xiaoli Zhao, Lipeng He, Yicong Shi, and Xiaogang Lin"
 						venue={{
 							name: "Multimedia Systems",
 							href: "https://link.springer.com/journal/530",
@@ -425,7 +425,7 @@ const Home: NextPageWithLayout = () => {
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
 						title="Locket: Robust Feature-Locking Technique for Language Models"
-						authors="Lipeng He, Vasisht Duddu, N. Asokan"
+						authors="Lipeng He, Vasisht Duddu, and N. Asokan"
 						accepted={false}
 						links={[
 							{
@@ -442,6 +442,12 @@ const Home: NextPageWithLayout = () => {
 					<PaperCard
 						title="Safety at One Shot: Patching Fine-Tuned LLMs with A Single Instance"
 						authors="Jiawen Zhang, Lipeng He, Kejia Chen, Jian Lou, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
+						accepted={false}
+						links={[]}
+					/>
+					<PaperCard
+						title="Beyond Detection: A Federated Prompt Industrial Anomaly Analysis Framework with Expert Knowledge"
+						authors="Hao Pan, Xiaoli Zhao, Lipeng He, and Xiwu Shang"
 						accepted={false}
 						links={[]}
 					/>
