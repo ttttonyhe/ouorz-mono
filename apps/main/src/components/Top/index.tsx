@@ -55,12 +55,18 @@ export default function Top() {
 				</a>
 			</div>
 			<div className="flex w-full gap-x-2 whitespace-nowrap lg:hidden">
-				<Button
-					type="default"
-					icon="email"
-					className="w-full! text-3 text-gray-500 leading-14 lg:hidden">
-					<span className="tracking-normal">Email</span>
-				</Button>
+				<a
+					target="_blank"
+					href="mailto:lipeng.he@uwaterloo.ca"
+					rel="noreferrer"
+					className="w-full">
+					<Button
+						type="default"
+						icon="email"
+						className="w-full! text-3 text-gray-500 leading-14 lg:hidden">
+						<span className="tracking-normal">Email</span>
+					</Button>
+				</a>
 				<Link
 					target="_blank"
 					href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
