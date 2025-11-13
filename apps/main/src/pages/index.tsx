@@ -233,11 +233,6 @@ const Home: NextPageWithLayout = () => {
 						deployed solutions more reliable, useful, and aligned, while also
 						enabling entirely new application scenarios.
 					</p>
-					<hr className="mt-3.5 mb-3.5 dark:border-gray-700" />
-					<p>
-						My research is supported by the International Master&#39;s Award of
-						Excellence (IMAE) and the David R. Cheriton Graduate Scholarship.
-					</p>
 				</div>
 			</section>
 			<section className="mt-14">
@@ -526,18 +521,21 @@ const Home: NextPageWithLayout = () => {
 					<ServiceCard
 						serviceRole="Program Committee Member"
 						serviceType="Conference"
+						serviceTypeColor="border-l-green-600! border-l-4"
 						serviceTitle="Privacy Enhancing Technologies Symposium (PoPETs/PETS) 2026"
 						serviceOrganization="Artifact Evaluation"
 					/>
 					<ServiceCard
 						serviceRole="Program Committee Member"
 						serviceType="Conference"
+						serviceTypeColor="border-l-red-400! border-l-4"
 						serviceTitle="ACM Conference on Computer and Communications Security (CCS) 2025"
 						serviceOrganization="Artifact Evaluation"
 					/>
 					<ServiceCard
 						serviceRole="Invited Reviewer"
 						serviceType="Journal"
+						serviceTypeColor="border-l-red-400! border-l-4"
 						serviceTitle="IEEE Transactions on Dependable and Secure Computing (TDSC)"
 					/>
 					<ServiceCard
@@ -545,6 +543,64 @@ const Home: NextPageWithLayout = () => {
 						serviceType="Membership"
 						serviceTitle="Association for Computing Machinery (ACM)"
 						serviceOrganization="lipenghe@acm.org"
+					/>
+				</div>
+			</section>
+			<section className="mt-14">
+				<div className="flex items-center justify-between">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+						<span className="mr-1.5 flex h-5 w-5">
+							<Icon name="money" />
+						</span>
+						<span className="uppercase">Funding</span>
+					</label>
+				</div>
+				<div className="mt-5 flex flex-col gap-y-4">
+					<ServiceCard
+						serviceRole="Lambda Research Grant Program"
+						serviceType="Industry"
+						serviceTitle="USD 5,000, Principal Investigator: N. Asokan"
+						serviceOrganization="Lambda.ai"
+					/>
+					<ServiceCard
+						serviceRole="David R. Cheriton Graduate Scholarship"
+						serviceType="University"
+						serviceTitle="CAD 10,000"
+						serviceOrganization="University of Waterloo"
+					/>
+					<ServiceCard
+						serviceRole="International Master's Award of Excellence (IMAE)"
+						serviceType="University"
+						serviceTitle="CAD 7,500"
+						serviceOrganization="University of Waterloo"
+					/>
+				</div>
+			</section>
+			<section className="mt-14">
+				<div className="flex items-center justify-between">
+					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+						<span className="mr-1.5 flex h-5 w-5">
+							<Icon name="presentation" />
+						</span>
+						<span className="uppercase">Teaching</span>
+					</label>
+				</div>
+				<div className="mt-5 flex flex-col gap-y-4">
+					<EmploymentCard
+						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
+						organization="University of Waterloo"
+						organizationFullName="CS 135 Designing Functional Programs"
+						jobTitle="Instructional Apprentice (IA)"
+						jobType="Part-time"
+						dateString="Sept 2025 - Present"
+					/>
+					<EmploymentCard
+						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
+						organization="University of Waterloo"
+						organizationFullName="CS 135 Designing Functional Programs"
+						jobTitle="Instructional Support Assistant (ISA)"
+						jobType="Co-op"
+						dateString="Aug 2024 - Dec 2024"
 					/>
 				</div>
 			</section>
@@ -568,14 +624,6 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
-						organization="University of Waterloo"
-						organizationFullName="CS 135 Designing Functional Programs"
-						jobTitle="Instructional Apprentice (IA)"
-						jobType="Teaching"
-						dateString="Sept 2025 - Present"
-					/>
-					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/ezra_logo.jpg"
 						organization="Bluelet AI"
 						organizationFullName="Agentic AI and data platform solutions for talent acquisition and matching"
@@ -583,42 +631,14 @@ const Home: NextPageWithLayout = () => {
 						jobType="Leadership"
 						dateString="May 2025 - June 2025"
 					/>
-					<div
-						onScroll={(e) => {
-							const target = e.target as HTMLDivElement
-
-							let maskClass = ""
-							if (
-								target.scrollLeft > 0 &&
-								target.scrollLeft < target.scrollWidth - target.clientWidth
-							) {
-								maskClass = "mask-x-full"
-							} else if (target.scrollLeft === 0) {
-								maskClass = "mask-x-r"
-							} else {
-								maskClass = "mask-x-l"
-							}
-
-							setMaskClass(maskClass)
-						}}
-						className={`flex gap-x-4 overflow-x-auto whitespace-nowrap ${maskClass}`}>
-						<EmploymentCard
-							orgLogoSrc="https://static.ouorz.com/crysp_logo.png"
-							organization="University of Waterloo"
-							organizationFullName="Cryptography, Security, and Privacy (CrySP) Lab"
-							jobTitle="Research Assistant (URA)"
-							jobType="Research, Part-time"
-							dateString="Jan 2025 - Present"
-						/>
-						<EmploymentCard
-							orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
-							organization="University of Waterloo"
-							organizationFullName="CS 135 Designing Functional Programs"
-							jobTitle="Teaching Assistant (ISA)"
-							jobType="Teaching, Co-op"
-							dateString="Aug 2024 - Dec 2024"
-						/>
-					</div>
+					<EmploymentCard
+						orgLogoSrc="https://static.ouorz.com/crysp_logo.png"
+						organization="University of Waterloo"
+						organizationFullName="Cryptography, Security, and Privacy (CrySP) Lab"
+						jobTitle="Research Assistant (URA)"
+						jobType="Research, Part-time"
+						dateString="Jan 2025 - Present"
+					/>
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/zju_logo.png"
 						organization="Zhejiang University"

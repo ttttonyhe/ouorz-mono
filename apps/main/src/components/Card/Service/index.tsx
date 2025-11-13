@@ -3,10 +3,17 @@ interface ServiceCardProps {
 	serviceType: string
 	serviceTitle: string
 	serviceOrganization?: string
+	serviceTypeColor?: string
 }
 
 const ServiceCard = (props: ServiceCardProps) => {
-	const { serviceRole, serviceType, serviceTitle, serviceOrganization } = props
+	const {
+		serviceRole,
+		serviceType,
+		serviceTitle,
+		serviceOrganization,
+		serviceTypeColor,
+	} = props
 
 	return (
 		<div className="flex w-full flex-col gap-y-2 rounded-md border bg-white shadow-xs lg:min-w-110 dark:border-gray-700 dark:bg-gray-800">
@@ -14,7 +21,8 @@ const ServiceCard = (props: ServiceCardProps) => {
 				<div className="flex items-center gap-x-2">
 					<p>{serviceRole}</p>
 				</div>
-				<label className="rounded-full border bg-gray-100 px-2.5 py-0.5 text-gray-500 text-xs dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400">
+				<label
+					className={`rounded-full border bg-gray-100 px-2.5 py-0.5 text-gray-500 text-xs dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 ${serviceTypeColor || ""}`}>
 					{serviceType}
 				</label>
 			</div>
