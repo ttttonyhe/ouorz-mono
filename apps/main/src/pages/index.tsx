@@ -533,6 +533,13 @@ const Home: NextPageWithLayout = () => {
 					<ServiceCard
 						serviceRole="Program Committee Member"
 						serviceType="Conference"
+						serviceTypeColor="border-l-red-400! border-l-4"
+						serviceTitle="USENIX Security Symposium 2026"
+						serviceOrganization="Artifact Evaluation"
+					/>
+					<ServiceCard
+						serviceRole="Program Committee Member"
+						serviceType="Conference"
 						serviceTypeColor="border-l-green-600! border-l-4"
 						serviceTitle="Privacy Enhancing Technologies Symposium (PoPETs/PETS) 2026"
 						serviceOrganization="Artifact Evaluation"
