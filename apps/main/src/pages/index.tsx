@@ -25,13 +25,13 @@ const Home: NextPageWithLayout = () => {
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="flex items-center justify-between gap-x-10 gap-y-8">
 					<div className="-ml-1 flex flex-col gap-y-2.5">
-						<h1 className="flex items-center whitespace-nowrap break-words font-medium text-3xl text-black tracking-wide lg:text-[1.8rem] dark:text-white">
+						<h1 className="wrap-break-word flex items-center whitespace-nowrap font-medium text-3xl text-black tracking-wide lg:text-[1.8rem] dark:text-white">
 							<span className="mr-2 inline-block animate-wave-hand cursor-pointer hover:animate-wave-hand-again">
 								👋
 							</span>
 							Tony (Lipeng) He
 						</h1>
-						<div className="flex flex-col gap-y-1.5 break-words px-1 font-light text-4 text-gray-500 leading-relaxed tracking-wider lg:text-2 dark:text-gray-300">
+						<div className="wrap-break-word flex flex-col gap-y-1.5 px-1 font-light text-4 text-gray-500 leading-relaxed tracking-wider lg:text-2 dark:text-gray-300">
 							<p>
 								I am a student, software engineer, and researcher at the{" "}
 								<a
@@ -78,7 +78,7 @@ const Home: NextPageWithLayout = () => {
 					</span>
 					<span className="uppercase">About Me</span>
 				</label>
-				<div className="mt-[15px] flex flex-col break-words px-1 text-justify font-light text-3 text-gray-500 leading-relaxed tracking-wide underline-offset-[6px] lg:text-left lg:text-[17px] dark:text-gray-300">
+				<div className="wrap-break-word mt-[15px] flex flex-col px-1 text-justify font-light text-3 text-gray-500 leading-relaxed tracking-wide underline-offset-[6px] lg:text-left lg:text-[17px] dark:text-gray-300">
 					<p>
 						I&#39;m pursuing a Master of Mathematics (Research/Thesis) degree in
 						Computer Science at UWaterloo. I am grateful to be advised by{" "}
@@ -157,7 +157,7 @@ const Home: NextPageWithLayout = () => {
 							href="https://www.goodreads.com/quotes/2690-i-went-to-the-woods-because-i-wished-to-live"
 							target="_blank"
 							rel="noreferrer"
-							className="inline-block bg-gradient-to-r from-blue-500 via-green-500 to-indigo-500 bg-clip-text text-transparent hover:from-blue-600 hover:via-green-600 hover:to-indigo-600">
+							className="inline-block bg-linear-to-r from-blue-500 via-green-500 to-indigo-500 bg-clip-text text-transparent hover:from-blue-600 hover:via-green-600 hover:to-indigo-600">
 							live deliberately
 						</a>
 						. Before research, I spent some years doing software engineering. In
@@ -211,7 +211,7 @@ const Home: NextPageWithLayout = () => {
 					</span>
 					<span className="uppercase">Research Interests</span>
 				</label>
-				<div className="mt-[15px] flex flex-col gap-y-2 break-words px-1 text-justify font-light text-3 text-gray-500 leading-relaxed tracking-wide underline-offset-[6px] lg:text-[17px] dark:text-gray-300">
+				<div className="wrap-break-word mt-[15px] flex flex-col gap-y-2 px-1 text-justify font-light text-3 text-gray-500 leading-relaxed tracking-wide underline-offset-[6px] lg:text-[17px] dark:text-gray-300">
 					<p>
 						My research interests span <strong>computer security</strong> and
 						the <strong>theory & applications of cryptography</strong>{" "}
@@ -419,6 +419,18 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
+						title="Always Aligned: Understanding and Preserving Safety in Fine-Tuned LLMs"
+						authors="Jiawen Zhang, Yangfan Hu, Kejia Chen, Lipeng He, Jiachen Ma, Jian Lou, Dan Li, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
+						accepted={false}
+						links={[]}
+					/>
+					<PaperCard
+						title="SoK: Colluding Adversaries in Machine Learning Pipelines"
+						authors="Vasisht Duddu, Lipeng He, Asim Waheed, and N. Asokan"
+						accepted={false}
+						links={[]}
+					/>
+					<PaperCard
 						title="Locket: Robust Feature-Locking Technique for Language Models"
 						authors="Lipeng He, Vasisht Duddu, and N. Asokan"
 						accepted={false}
@@ -559,7 +571,7 @@ const Home: NextPageWithLayout = () => {
 					<ServiceCard
 						serviceRole="Lambda Research Grant Program"
 						serviceType="Industry"
-						serviceTitle="USD 5,000, Principal Investigator: N. Asokan"
+						serviceTitle="USD 5,000; Principal Investigator: N. Asokan"
 						serviceOrganization="Lambda.ai"
 					/>
 					<ServiceCard
@@ -726,7 +738,7 @@ const Home: NextPageWithLayout = () => {
 						orgLogoSrc="https://static.ouorz.com/ntu_logo.jpeg"
 						organization="Nanyang Technological University"
 						organizationFullName="Mathematical Sciences"
-						jobTitle="GEM Trailblazer Exchange Student"
+						jobTitle="Exchange Student (GEM Trailblazer)"
 						jobType="Undergrad"
 						dateString="Aug 2023 - Dec 2023"
 					/>

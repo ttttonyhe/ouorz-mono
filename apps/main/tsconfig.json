@@ -1,35 +1,53 @@
 {
-	"compilerOptions": {
-		"target": "esnext",
-		"lib": ["dom", "dom.iterable", "esnext"],
-		"allowJs": true,
-		"skipLibCheck": true,
-		"strict": false,
-		"forceConsistentCasingInFileNames": true,
-		"noEmit": true,
-		"esModuleInterop": true,
-		"module": "esnext",
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"jsx": "preserve",
-		"baseUrl": ".",
-		"paths": {
-			"~/*": ["src/*"],
-			"react": ["./node_modules/@types/react"],
-			"@twilight-toolkit/ui": ["../../packages/twilight-ui/src/index"],
-			"@twilight-toolkit/utils": ["../../packages/twilight-utils/src/index"]
-		},
-		"typeRoots": ["node_modules/@types", "./typings"],
-		"incremental": true
-	},
-	"include": [
-		"next-env.d.ts",
-		"twin.d.ts",
-		"**/*.ts",
-		"**/*.tsx",
-		"next.config.js",
-		"src/components/Highlight/index.js"
-	],
-	"exclude": ["node_modules", "cypress"]
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "src/*"
+      ],
+      "react": [
+        "./node_modules/@types/react"
+      ],
+      "@twilight-toolkit/ui": [
+        "../../packages/twilight-ui/src/index"
+      ],
+      "@twilight-toolkit/utils": [
+        "../../packages/twilight-utils/src/index"
+      ]
+    },
+    "typeRoots": [
+      "node_modules/@types",
+      "./typings"
+    ],
+    "incremental": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "twin.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "next.config.js",
+    "src/components/Highlight/index.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "cypress"
+  ]
 }

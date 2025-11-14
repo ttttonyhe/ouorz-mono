@@ -16,7 +16,7 @@
 			"src/utilities/**/*.{ts,tsx}",
 			"src/constants/**/*.{ts,tsx}",
 			"src/lib/**/*.{ts,tsx}",
-			"src/middleware.{ts,tsx}",
+			"src/proxy.{ts,tsx}",
 			"*.{ts,tsx,js,jsx}"
 		],
 		"ignoreUnknown": true
