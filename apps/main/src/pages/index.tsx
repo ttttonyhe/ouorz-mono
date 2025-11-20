@@ -475,7 +475,7 @@ const Home: NextPageWithLayout = () => {
 							},
 							{
 								label: "Poster",
-								href: "https://uwaterloo.ca/cybersecurity-privacy-institute/2025conference",
+								href: "https://static.ouorz.com/locket-cpi-poster.pdf",
 							},
 						]}
 					/>
