@@ -213,25 +213,58 @@ const Home: NextPageWithLayout = () => {
 				</label>
 				<div className="wrap-break-word mt-[15px] flex flex-col gap-y-2 px-1 text-justify font-light text-3 text-gray-500 leading-relaxed tracking-wide underline-offset-[6px] lg:text-[17px] dark:text-gray-300">
 					<p>
-						My research interests span <strong>computer security</strong> and
-						the <strong>theory & applications of cryptography</strong>{" "}
-						(especially across computing and data sciences).
+						My research focuses on <strong>Trustworthy Machine Learning</strong>
+						, with an emphasis on the security, privacy, and safety of{" "}
+						<a
+							className="text-blue-500 hover:underline"
+							href="https://genai.owasp.org/llm-top-10"
+							target="_blank"
+							rel="noreferrer">
+							large language models (LLMs)
+						</a>{" "}
+						and modern Artificial Intelligence (AI) systems. I develop effective
+						and efficient <strong>adversarial attacks</strong>, as well as{" "}
+						<strong>principled defenses</strong>, drawing on applied
+						cryptography, theoretical machine learning, and computer security to
+						characterize and mitigate emerging threats.
 					</p>
 					<p className="mt-3.5">
-						I think broadly about the privacy, security and trustworthiness of
-						modern computing systems; this intersects with areas such as:
+						More broadly, I am interested in{" "}
+						<a
+							className="text-blue-500 hover:underline"
+							href="https://www.anthropic.com/research#alignment"
+							target="_blank"
+							rel="noreferrer">
+							alignment
+						</a>
+						, interpretability, explainability, and reinforcement learning for
+						building controllable and reliable AI systems.
 					</p>
-					<ul className="my-2 list-disc pl-5">
-						<li className="pl-3">
-							Trustworthy Machine Learning (ML Safety, Security & Privacy)
-						</li>
-						<li className="pl-3">Blockchain Security and Scalability, and</li>
-						<li className="pl-3">Secure Computation</li>
-					</ul>
 					<p className="mt-3.5">
-						Through a combination of systems design and analysis, I hope to make
-						deployed solutions more reliable, useful, and aligned, while also
-						enabling entirely new application scenarios.
+						I also study the design and <strong>software engineering</strong> of
+						agentic systems for both AI-for-security use cases and real-world
+						business applications, with a particular focus on the security and
+						privacy of{" "}
+						<a
+							className="text-blue-500 hover:underline"
+							href="https://www.ibm.com/think/topics/ai-agent-security"
+							target="_blank"
+							rel="noreferrer">
+							LLM-based agents
+						</a>{" "}
+						and multi-agent systems.
+					</p>
+					<p className="mt-3.5">
+						A central goal of my work is to bridge theoretical security research
+						with real-world deployments and{" "}
+						<a
+							href="https://www.ycombinator.com/companies?industry=Security"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500 hover:underline">
+							viable business models
+						</a>
+						, enabling more trustworthy AI in practice.
 					</p>
 				</div>
 			</section>
