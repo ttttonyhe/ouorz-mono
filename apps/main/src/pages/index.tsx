@@ -609,10 +609,16 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<ServiceCard
+						serviceRole="AWS Startup Activate Credits (Portfolio)"
+						serviceType="Industry"
+						serviceTitle="USD 25,000"
+						serviceOrganization="Amazon Web Services (AWS)"
+					/>
+					<ServiceCard
 						serviceRole="Lambda Research Grant Program"
 						serviceType="Industry"
 						serviceTitle="USD 5,000; Principal Investigator: N. Asokan"
-						serviceOrganization="Lambda.ai"
+						serviceOrganization="λ (Lambda) AI"
 					/>
 					<ServiceCard
 						serviceRole="David R. Cheriton Graduate Scholarship"
