@@ -237,14 +237,36 @@ const Home: NextPageWithLayout = () => {
 							rel="noreferrer">
 							alignment
 						</a>
-						, interpretability, explainability, and reinforcement learning for
-						building controllable and reliable AI systems.
+						,{" "}
+						<a
+							className="text-blue-500 hover:underline"
+							href="https://www.goodfire.ai/research"
+							target="_blank"
+							rel="noreferrer">
+							interpretability
+						</a>
+						, and{" "}
+						<a
+							className="text-blue-500 hover:underline"
+							href="https://www.alignmentforum.org/w/reinforcement-learning"
+							target="_blank"
+							rel="noreferrer">
+							reinforcement learning
+						</a>{" "}
+						for building controllable and reliable AI systems.
 					</p>
 					<p className="mt-3.5">
 						I also study the design and <strong>software engineering</strong> of
-						agentic systems for both AI-for-security use cases and real-world
-						business applications, with a particular focus on the security and
-						privacy of{" "}
+						agentic systems for both{" "}
+						<a
+							className="text-blue-500 hover:underline"
+							href="https://rdi.berkeley.edu/frontier-ai-impact-on-cybersecurity/index.html"
+							target="_blank"
+							rel="noreferrer">
+							AI-for-security
+						</a>{" "}
+						use cases and real-world business applications, with a particular
+						focus on the security and privacy of{" "}
 						<a
 							className="text-blue-500 hover:underline"
 							href="https://www.ibm.com/think/topics/ai-agent-security"
