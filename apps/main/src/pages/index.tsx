@@ -232,7 +232,7 @@ const Home: NextPageWithLayout = () => {
 						More broadly, I am interested in{" "}
 						<a
 							className="text-blue-500 hover:underline"
-							href="https://www.anthropic.com/research#alignment"
+							href="https://www.anthropic.com/research/team/alignment"
 							target="_blank"
 							rel="noreferrer">
 							alignment
