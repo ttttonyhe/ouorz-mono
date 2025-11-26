@@ -18,7 +18,7 @@
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^2.10.1",
-		"@sentry/nextjs": "^10.25.0",
+		"@sentry/nextjs": "^10.27.0",
 		"@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
 		"@twilight-toolkit/ui": "workspace:*",
 		"@twilight-toolkit/utils": "workspace:*",
