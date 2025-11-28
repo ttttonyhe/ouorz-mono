@@ -4,6 +4,7 @@ import Link from "next/link"
 import PageCard from "~/components/Card/Page"
 import { pageLayout } from "~/components/Page"
 import type { NextPageWithLayout } from "~/pages/_app"
+import { getViewTransitionName } from "~/utilities/viewTransition"
 
 const Pages: NextPageWithLayout = () => {
 	return (
@@ -47,6 +48,7 @@ const Pages: NextPageWithLayout = () => {
 					icon="ppt"
 					className="text-blue-500"
 					href="/dashboard"
+					viewTransitionName={getViewTransitionName("Dashboard")}
 				/>
 				<PageCard
 					title="Web 3.0"
@@ -54,6 +56,7 @@ const Pages: NextPageWithLayout = () => {
 					icon="rainbow"
 					className="text-pink-500"
 					href="/web3"
+					viewTransitionName={getViewTransitionName("Web 3.0")}
 				/>
 				<PageCard
 					title="Reading List"
@@ -61,6 +64,7 @@ const Pages: NextPageWithLayout = () => {
 					icon="bookmark"
 					className="text-green-500"
 					href="/reading-list"
+					viewTransitionName={getViewTransitionName("Reading List")}
 				/>
 				<PageCard
 					title="Podcasts"
@@ -68,6 +72,7 @@ const Pages: NextPageWithLayout = () => {
 					icon="mic"
 					className="text-yellow-500"
 					href="/podcasts"
+					viewTransitionName={getViewTransitionName("Podcasts")}
 				/>
 				<PageCard
 					title="Guestbook"
@@ -82,6 +87,7 @@ const Pages: NextPageWithLayout = () => {
 					icon="links"
 					className="text-gray-400"
 					href="/links"
+					viewTransitionName={getViewTransitionName("Links")}
 				/>
 				<PageCard
 					title="Analytics"

@@ -1,6 +1,7 @@
 import "@twilight-toolkit/ui/styles/base.css"
 import type { NextPage } from "next"
 import type { AppProps } from "next/app"
+import { useRouter } from "next/router"
 import Script from "next/script"
 import { ThemeProvider } from "next-themes"
 import NextNprogress from "nextjs-progressbar"
@@ -8,6 +9,7 @@ import type { ReactElement, ReactNode } from "react"
 import { Provider as ReduxProvider } from "react-redux"
 import store from "~/store"
 import "~/styles/global.css"
+import { useViewTransitionRouter } from "~/utilities/viewTransition"
 
 export type NextPageWithLayout = NextPage & {
 	layout?: (page: ReactElement) => ReactNode
@@ -18,7 +20,11 @@ type AppPropsWithLayout = AppProps & {
 }
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
+	const router = useRouter()
 	const getLayout = Component.layout ?? ((page) => page)
+
+	// Enable view transitions for browser back/forward navigation
+	useViewTransitionRouter(router)
 
 	return (
 		<div>

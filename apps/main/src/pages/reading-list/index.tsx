@@ -1,14 +1,19 @@
 import { Icon } from "@twilight-toolkit/ui"
 import Head from "next/head"
-import Link from "next/link"
+import { useRouter } from "next/router"
 import useSWR from "swr"
 import { BookCard, BookCardLoading } from "~/components/Card/Book"
 import { pageLayout } from "~/components/Page"
 import fetcher from "~/lib/fetcher"
 import type { NextPageWithLayout } from "~/pages/_app"
 import type { Book } from "~/pages/api/goodreads"
+import {
+	getViewTransitionName,
+	navigateWithTransition,
+} from "~/utilities/viewTransition"
 
 const ReadingList: NextPageWithLayout = () => {
+	const router = useRouter()
 	const { data: currentlyReading, error: currentlyReadingError } = useSWR(
 		"api/goodreads?shelf=currentlyReading",
 		fetcher
@@ -46,7 +51,12 @@ const ReadingList: NextPageWithLayout = () => {
 						</div>
 						<div>
 							<h2 className="flex items-center gap-x-1.5 whitespace-nowrap font-medium text-[28px] text-black tracking-wide dark:text-white">
-								Reading List
+								<span
+									style={{
+										viewTransitionName: getViewTransitionName("Reading List"),
+									}}>
+									Reading List
+								</span>
 							</h2>
 							<p className="-mt-1 text-neutral-500 text-sm dark:text-gray-400">
 								I{"'"}m reading or re-reading (on average) one book every month
@@ -56,12 +66,15 @@ const ReadingList: NextPageWithLayout = () => {
 					<div className="mt-2 flex h-full items-center justify-end whitespace-nowrap">
 						<div className="flex-1 pr-2 pl-5">
 							<p className="text-gray-500 text-xl dark:text-gray-400">
-								<Link href="/" className="flex items-center">
+								<button
+									type="button"
+									onClick={() => navigateWithTransition(router, "/pages")}
+									className="flex cursor-pointer items-center">
 									<span className="mr-2 h-6 w-6">
 										<Icon name="left" />
 									</span>
-									Home
-								</Link>
+									Pages
+								</button>
 							</p>
 						</div>
 					</div>

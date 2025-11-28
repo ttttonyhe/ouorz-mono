@@ -3,6 +3,7 @@ import Image from "next/image"
 import { useRouter } from "next/router"
 import { GlowingBackground } from "~/components/Visual"
 import openLink from "~/utilities/externalLink"
+import { navigateWithTransition } from "~/utilities/viewTransition"
 
 interface Props {
 	title: string
@@ -12,6 +13,7 @@ interface Props {
 	className?: string
 	href?: string
 	wrappable?: boolean
+	viewTransitionName?: string
 }
 
 export default function PageCard({
@@ -22,12 +24,17 @@ export default function PageCard({
 	className,
 	href,
 	wrappable,
+	viewTransitionName,
 }: Props) {
 	const router = useRouter()
 	const handleClick = () => {
 		if (href) {
 			if (href.indexOf("http") === -1) {
-				router.push(href)
+				if (viewTransitionName) {
+					navigateWithTransition(router, href)
+				} else {
+					router.push(href)
+				}
 			} else {
 				openLink(href)
 			}
@@ -70,7 +77,10 @@ export default function PageCard({
 								<Icon name={iconSmall} />
 							</span>
 						)}
-						{title}
+						<span
+							style={viewTransitionName ? { viewTransitionName } : undefined}>
+							{title}
+						</span>
 					</h1>
 					<p
 						className={`text-4 text-gray-600 tracking-wide dark:text-gray-400 ${

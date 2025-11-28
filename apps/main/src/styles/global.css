@@ -967,4 +967,54 @@
 	.header {
 		transform: translateY(15%);
 	}
+
+	/* View Transitions API styles */
+	@supports (view-transition-name: none) {
+		::view-transition-old(root),
+		::view-transition-new(root) {
+			animation-duration: 0.3s;
+		}
+
+		/* Page title transitions */
+		::view-transition-old(page-title-dashboard),
+		::view-transition-new(page-title-dashboard),
+		::view-transition-old(page-title-web-3-0),
+		::view-transition-new(page-title-web-3-0),
+		::view-transition-old(page-title-reading-list),
+		::view-transition-new(page-title-reading-list),
+		::view-transition-old(page-title-podcasts),
+		::view-transition-new(page-title-podcasts),
+		::view-transition-old(page-title-links),
+		::view-transition-new(page-title-links) {
+			animation-duration: 0.35s;
+			animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		/* Smooth cross-fade for the rest of the page */
+		::view-transition-old(root) {
+			animation-name: fade-out;
+		}
+
+		::view-transition-new(root) {
+			animation-name: fade-in;
+		}
+
+		@keyframes fade-out {
+			from {
+				opacity: 1;
+			}
+			to {
+				opacity: 0;
+			}
+		}
+
+		@keyframes fade-in {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+	}
 }

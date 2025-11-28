@@ -1,17 +1,23 @@
 import { Icon } from "@twilight-toolkit/ui"
 import type { GetStaticProps } from "next"
 import Head from "next/head"
-import Link from "next/link"
+import { useRouter } from "next/router"
 import React from "react"
 import PageCard from "~/components/Card/Page"
 import { pageLayout } from "~/components/Page"
 import { GlowingBackground } from "~/components/Visual"
 import type { NextPageWithLayout } from "~/pages/_app"
 import getAPI from "~/utilities/api"
+import {
+	getViewTransitionName,
+	navigateWithTransition,
+} from "~/utilities/viewTransition"
 
 const NFTs = React.lazy(() => import("~/components/Grids/NFTs"))
 
 const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
+	const router = useRouter()
+
 	return (
 		<div>
 			<Head>
@@ -33,7 +39,12 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 							</div>
 							<div>
 								<h2 className="flex items-center gap-x-1.5 font-medium text-[28px] text-black tracking-wide dark:text-white">
-									Web 3.0{" "}
+									<span
+										style={{
+											viewTransitionName: getViewTransitionName("Web 3.0"),
+										}}>
+										Web 3.0
+									</span>{" "}
 									<span className="rounded-full border border-green-300 bg-green-50 px-2 py-0.5 text-green-500 text-xs dark:border-green-700 dark:bg-green-800 dark:text-green-400">
 										Beta
 									</span>
@@ -46,12 +57,15 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						<div className="mt-2 flex h-full items-center justify-end whitespace-nowrap">
 							<div className="flex-1 px-5">
 								<p className="text-gray-500 text-xl dark:text-gray-400">
-									<Link href="/" className="flex items-center">
+									<button
+										type="button"
+										onClick={() => navigateWithTransition(router, "/pages")}
+										className="flex cursor-pointer items-center">
 										<span className="mr-2 h-6 w-6">
 											<Icon name="left" />
 										</span>
-										Home
-									</Link>
+										Pages
+									</button>
 								</p>
 							</div>
 						</div>
