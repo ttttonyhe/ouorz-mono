@@ -54,6 +54,7 @@
 		"@types/react-highlight": "^0.12.8",
 		"@types/rss": "^0.0.32",
 		"@types/smoothscroll-polyfill": "^0.3.4",
+		"baseline-browser-mapping": "^2.8.32",
 		"comma-number": "^2.1.0",
 		"cssnano": "^7.1.2",
 		"nexment": "^0.0.688",
