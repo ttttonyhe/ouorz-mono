@@ -39,7 +39,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 10
+          version: 10.x.x
           run_install: false
 
       - name: Get pnpm store directory
