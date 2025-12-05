@@ -34,11 +34,11 @@ class AppDocument extends Document {
 					/>
 					<meta
 						name="description"
-						content="Lipeng He, Student Researcher and Full Stack Software Engineer."
+						content="Tony (Lipeng) He (贺莉朋) is a researcher and software engineer."
 					/>
 					<meta
 						name="keywords"
-						content="Tony He, Lipeng He, 贺莉朋, 博客, 个人博客, 独立博客, 前端开发, 后端开发, 全栈开发, 区块链, 工程师, 研究学者, Researcher, Crypto, Blockchain, Tony, Developer, Blogger, Podcaster, Blog, Personal Site, WordPress, Next.js, React.js, TypeScript, JavaScript"
+						content="Tony He, Lipeng He, 贺莉朋, 工程师, 研究学者, Researcher, Software Engineer, Tony"
 					/>
 					<meta name="robots" content="index,follow" />
 					<meta name="googlebot" content="index,follow" />
@@ -47,7 +47,7 @@ class AppDocument extends Document {
 					<meta property="og:title" content="Tony He" />
 					<meta
 						property="og:description"
-						content="Lipeng He, Student Researcher and Full Stack Software Engineer."
+						content="Tony (Lipeng) He is a researcher and software engineer."
 					/>
 					<meta
 						property="og:image"
@@ -66,7 +66,7 @@ class AppDocument extends Document {
 					/>
 					<meta
 						property="twitter:description"
-						content="Lipeng He, Student Researcher and Full Stack Software Engineer."
+						content="Tony (Lipeng) He is a researcher and software engineer."
 					/>
 					<meta name="theme-color" content="#f7f8f9" />
 					<link rel="canonical" href="https://lipeng.ac" />

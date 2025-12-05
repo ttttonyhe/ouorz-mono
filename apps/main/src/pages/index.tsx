@@ -669,10 +669,18 @@ const Home: NextPageWithLayout = () => {
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
 						organization="University of Waterloo"
+						organizationFullName="CS 436 Networks and Distributed Computer Systems"
+						jobTitle="Teaching Assistant (TA)"
+						jobType="Part-time"
+						dateString="Jan 2026 - Present"
+					/>
+					<EmploymentCard
+						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
+						organization="University of Waterloo"
 						organizationFullName="CS 135 Designing Functional Programs"
 						jobTitle="Instructional Apprentice (IA)"
 						jobType="Part-time"
-						dateString="Sept 2025 - Present"
+						dateString="Sept 2025 - Dec 2025"
 					/>
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"

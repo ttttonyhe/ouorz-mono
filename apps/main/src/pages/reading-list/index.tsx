@@ -59,7 +59,8 @@ const ReadingList: NextPageWithLayout = () => {
 								</span>
 							</h2>
 							<p className="-mt-1 text-neutral-500 text-sm dark:text-gray-400">
-								I{"'"}m reading or re-reading (on average) one book every month
+								Some books are to be tasted; others swallowed; and some few to
+								be chewed and digested. <i>—— Francis Bacon</i>
 							</p>
 						</div>
 					</div>
