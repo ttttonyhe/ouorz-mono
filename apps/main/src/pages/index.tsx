@@ -278,8 +278,10 @@ const Home: NextPageWithLayout = () => {
 					</p>
 					<p className="mt-3.5">
 						A central goal of my work is to leverage theoretical security
-						research to address bottlenecks in real-world production systems;
-						bridging theoretical discoveries with practical deployments and{" "}
+						research to address{" "}
+						<strong>bottlenecks in real-world production systems</strong>
+						{"; "}
+						bridging scientific discoveries with practical deployments and{" "}
 						<a
 							href="https://www.ycombinator.com/companies?industry=Security"
 							target="_blank"
