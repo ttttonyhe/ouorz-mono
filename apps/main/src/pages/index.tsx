@@ -374,6 +374,10 @@ const Home: NextPageWithLayout = () => {
 								label: "Code",
 								href: "https://github.com/zju-abclab/NEXUS",
 							},
+							{
+								label: "🏆 Top-cited",
+								href: "https://www.mlsec.org/topnotch/sec_2020s.html",
+							},
 						]}
 					/>
 					<PaperCard
