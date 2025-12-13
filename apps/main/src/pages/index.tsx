@@ -405,6 +405,32 @@ const Home: NextPageWithLayout = () => {
 				<hr className="mt-5 dark:border-gray-700" />
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
+						title="StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs"
+						authors="Jialin Yang, Dongfu Jiang, Lipeng He, Sherman Siu, Yuxuan Zhang, Disen Liao, Benjamin Schneider, Ping Nie, Wenhu Chen, et al."
+						accepted={true}
+						venue={{
+							name: "Transactions on Machine Learning Research",
+							href: "https://jmlr.org/tmlr",
+							color: "border-l-gray-500! border-l-4",
+						}}
+						links={[
+							{
+								label: "Paper",
+								href: "https://arxiv.org/abs/2505.20139",
+								default: true,
+							},
+							{
+								label: "Code",
+								href: "https://github.com/TIGER-AI-Lab/StructEval",
+							},
+							{
+								label: "Website",
+								href: "https://tiger-ai-lab.github.io/StructEval",
+								default: true,
+							},
+						]}
+					/>
+					<PaperCard
 						title="FedVLP: Visual-aware Latent Prompt Generation for Multimodal Federated Learning"
 						authors="Hao Pan, Xiaoli Zhao, Yuchen Jiang, Lipeng He, Bingquan Wang, and Yincan Shu"
 						accepted={true}
@@ -519,27 +545,6 @@ const Home: NextPageWithLayout = () => {
 						authors="Hao Pan, Xiaoli Zhao, Lipeng He, and Xiwu Shang"
 						accepted={false}
 						links={[]}
-					/>
-					<PaperCard
-						title="StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs"
-						authors="Jialin Yang, Dongfu Jiang, Lipeng He, Sherman Siu, Yuxuan Zhang, Disen Liao, Benjamin Schneider, Ping Nie, Wenhu Chen, et al."
-						accepted={false}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2505.20139",
-								default: true,
-							},
-							{
-								label: "Code",
-								href: "https://github.com/TIGER-AI-Lab/StructEval",
-							},
-							{
-								label: "Website",
-								href: "https://tiger-ai-lab.github.io/StructEval",
-								default: true,
-							},
-						]}
 					/>
 					<PaperCard
 						title="Token-by-Token Manipulation: Inference-Time Jailbreaking on Production LLMs via Autoregressive Harmful Guidance"
