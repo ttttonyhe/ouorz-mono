@@ -643,6 +643,12 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<ServiceCard
+						serviceRole="University of Waterloo Graduate Scholarship"
+						serviceType="University"
+						serviceTitle="CAD 4,000"
+						serviceOrganization="University of Waterloo"
+					/>
+					<ServiceCard
 						serviceRole="AWS Startup Activate Credits (Portfolio)"
 						serviceType="Industry"
 						serviceTitle="USD 25,000"
