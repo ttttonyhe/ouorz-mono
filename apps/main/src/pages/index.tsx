@@ -652,7 +652,7 @@ const Home: NextPageWithLayout = () => {
 						serviceRole="AWS Startup Activate Credits (Portfolio)"
 						serviceType="Industry"
 						serviceTitle="USD 25,000"
-						serviceOrganization="Amazon"
+						serviceOrganization="Amazon, Y Combinator"
 					/>
 					<ServiceCard
 						serviceRole="Lambda Research Grant Program"
