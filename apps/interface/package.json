@@ -12,7 +12,7 @@
   "dependencies": {
     "@ouorz/twilight-protocol": "workspace:*",
     "ethers": "^5.7.2",
-    "next": "^13.4.3",
+    "next": "^14.2.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "zksync-web3": "^0.14.3"
