@@ -1,9 +1,0 @@
-# Security Policy for lipeng.ac
-# https://securitytxt.org/
-
-Contact: mailto:tony.hlp@hotmail.com
-Expires: 2026-12-31T23:59:59Z
-Preferred-Languages: en, zh
-Canonical: https://lipeng.ac/.well-known/security.txt
-Policy: https://github.com/ttttonyhe/ouorz-mono/blob/main/SECURITY.md
-

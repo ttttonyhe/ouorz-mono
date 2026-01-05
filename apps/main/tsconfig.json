@@ -36,13 +36,7 @@
       "node_modules/@types",
       "./typings"
     ],
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "strictNullChecks": true
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
@@ -50,9 +44,7 @@
     "**/*.ts",
     "**/*.tsx",
     "next.config.js",
-    "src/components/Highlight/index.js",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    "src/components/Highlight/index.js"
   ],
   "exclude": [
     "node_modules",
