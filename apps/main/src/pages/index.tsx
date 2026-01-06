@@ -214,16 +214,17 @@ const Home: NextPageWithLayout = () => {
 				<div className="wrap-break-word mt-[15px] flex flex-col gap-y-2 px-1 text-justify font-light text-3 text-gray-500 leading-relaxed tracking-wide underline-offset-[6px] lg:text-[17px] dark:text-gray-300">
 					<p>
 						My research focuses on <strong>Trustworthy Machine Learning</strong>
-						, with an emphasis on the security, privacy, and safety of{" "}
+						, with an emphasis on the adversarial robustness of{" "}
 						<a
 							className="text-blue-500 hover:underline"
 							href="https://genai.owasp.org/llm-top-10"
 							target="_blank"
 							rel="noreferrer">
 							large language models (LLMs)
-						</a>{" "}
-						and modern Artificial Intelligence (AI) systems. I develop effective
-						and efficient <strong>adversarial attacks</strong>, as well as{" "}
+						</a>
+						, and the security &amp; privacy of modern Artificial Intelligence
+						(AI) systems. I develop effective and efficient{" "}
+						<strong>adversarial attacks</strong>, as well as{" "}
 						<strong>principled defenses</strong>, drawing on applied
 						cryptography, theoretical machine learning, and computer security to
 						characterize and mitigate emerging threats.
@@ -279,9 +280,9 @@ const Home: NextPageWithLayout = () => {
 					<p className="mt-3.5">
 						A central goal of my work is to leverage theoretical security
 						research to address{" "}
-						<strong>bottlenecks in real-world production systems</strong>
-						{"; "}
-						bridging scientific discoveries with practical deployments and{" "}
+						<strong>bottlenecks in real-world production systems</strong>. I
+						look for ways to bridge research efforts with practical deployments
+						and{" "}
 						<a
 							href="https://www.ycombinator.com/companies?industry=Security"
 							target="_blank"
