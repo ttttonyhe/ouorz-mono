@@ -428,6 +428,10 @@ const Home: NextPageWithLayout = () => {
 								href: "https://tiger-ai-lab.github.io/StructEval",
 								default: true,
 							},
+							{
+								label: "🏆 J2C",
+								href: "https://neurips.cc/public/JournalToConference",
+							},
 						]}
 					/>
 					<PaperCard

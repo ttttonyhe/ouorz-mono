@@ -17,18 +17,18 @@
 		"clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo && rm -rf .next"
 	},
 	"dependencies": {
-		"@reduxjs/toolkit": "^2.11.1",
-		"@sentry/nextjs": "^10.30.0",
+		"@reduxjs/toolkit": "^2.11.2",
+		"@sentry/nextjs": "^10.32.1",
 		"@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
 		"@twilight-toolkit/ui": "workspace:*",
 		"@twilight-toolkit/utils": "workspace:*",
-		"algoliasearch": "5.46.0",
+		"algoliasearch": "5.46.2",
 		"cors": "^2.8.5",
 		"dotenv-webpack": "^8.1.1",
 		"highlight.js": "^11.11.1",
 		"html2plaintext": "^2.1.4",
 		"lodash": "^4.17.21",
-		"next": "^16.0.10",
+		"next": "^16.1.1",
 		"postcss-nesting": "^13.0.2",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
@@ -40,21 +40,21 @@
 		"rss-parser": "^3.13.0",
 		"sharp": "^0.34.5",
 		"strip-ansi": "^7.1.2",
-		"styled-components": "^6.1.19"
+		"styled-components": "^6.2.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.3.8",
+		"@biomejs/biome": "2.3.11",
 		"@tailwindcss/postcss": "^4.1.18",
 		"@tailwindcss/typography": "^0.5.19",
 		"@types/cors": "^2.8.19",
 		"@types/lodash": "^4.17.21",
-		"@types/node": "^25.0.1",
+		"@types/node": "^25.0.3",
 		"@types/react": "^19.2.7",
 		"@types/react-dom": "^19.2.3",
 		"@types/react-highlight": "^0.12.8",
 		"@types/rss": "^0.0.32",
 		"@types/smoothscroll-polyfill": "^0.3.4",
-		"baseline-browser-mapping": "^2.9.7",
+		"baseline-browser-mapping": "^2.9.11",
 		"comma-number": "^2.1.0",
 		"cssnano": "^7.1.2",
 		"nexment": "^0.0.688",
@@ -67,17 +67,17 @@
 		"react-infinite-scroll-component": "^6.1.1",
 		"react-timeago": "^8.3.0",
 		"smoothscroll-polyfill": "^0.4.4",
-		"swr": "^2.3.7",
+		"swr": "^2.3.8",
 		"tailwindcss": "^4.1.18",
 		"ts-loader": "^9.5.4",
 		"typescript": "^5.9.3",
-		"webpack": "^5.103.0"
+		"webpack": "^5.104.1"
 	},
 	"optionalDependencies": {
 		"@testing-library/cypress": "^10.1.0",
 		"@types/chai": "^5.2.3",
 		"@types/jest": "^30.0.0",
 		"@types/mocha": "^10.0.10",
-		"cypress": "^15.7.1"
+		"cypress": "^15.8.1"
 	}
 }
