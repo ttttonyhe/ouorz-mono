@@ -512,7 +512,7 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
-						title="Always Aligned: Understanding and Preserving Safety in Fine-Tuned LLMs"
+						title="Understanding and Preserving Safety in Fine-Tuned LLMs"
 						authors="Jiawen Zhang, Yangfan Hu, Kejia Chen, Lipeng He, Jiachen Ma, Jian Lou, Dan Li, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
 						accepted={false}
 						links={[]}
@@ -543,10 +543,16 @@ const Home: NextPageWithLayout = () => {
 						title="Safety at One Shot: Patching Fine-Tuned LLMs with A Single Instance"
 						authors="Jiawen Zhang, Lipeng He, Kejia Chen, Jian Lou, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
 						accepted={false}
-						links={[]}
+						links={[
+							{
+								label: "Paper",
+								href: "https://arxiv.org/abs/2601.01887",
+								default: true,
+							},
+						]}
 					/>
 					<PaperCard
-						title="Beyond Detection: A Federated Prompt Industrial Anomaly Analysis Framework with Expert Knowledge"
+						title="From Detection to Diagnosis: Lightweight Federated Prompt Learning for Interpretable Industrial Anomaly Analysis"
 						authors="Hao Pan, Xiaoli Zhao, Lipeng He, and Xiwu Shang"
 						accepted={false}
 						links={[]}
