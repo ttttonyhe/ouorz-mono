@@ -549,6 +549,10 @@ const Home: NextPageWithLayout = () => {
 								href: "https://arxiv.org/abs/2601.01887",
 								default: true,
 							},
+							{
+								label: "Code",
+								href: "https://github.com/Kevin-Zh-CS/safety-at-one-shot",
+							},
 						]}
 					/>
 					<PaperCard
@@ -559,7 +563,7 @@ const Home: NextPageWithLayout = () => {
 					/>
 					<PaperCard
 						title="Token-by-Token Manipulation: Inference-Time Jailbreaking on Production LLMs via Autoregressive Harmful Guidance"
-						authors="Jiawen Zhang*, Lipeng He*, Kejia Chen*, Jian Liu, Zunlei Feng, Mingli Song, Jian Lou, Dan Li, and Xiaohu Yang"
+						authors="Jiawen Zhang, Lipeng He, Kejia Chen, Jian Liu, Zunlei Feng, Mingli Song, Jian Lou, Dan Li, and Xiaohu Yang"
 						accepted={false}
 						links={[]}
 					/>
