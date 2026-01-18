@@ -515,7 +515,13 @@ const Home: NextPageWithLayout = () => {
 						title="Understanding and Preserving Safety in Fine-Tuned LLMs"
 						authors="Jiawen Zhang, Yangfan Hu, Kejia Chen, Lipeng He, Jiachen Ma, Jian Lou, Dan Li, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
 						accepted={false}
-						links={[]}
+						links={[
+							{
+								label: "Paper",
+								href: "https://arxiv.org/abs/2601.10141",
+								default: true,
+							},
+						]}
 					/>
 					<PaperCard
 						title="SoK: Colluding Adversaries in Machine Learning Pipelines"
