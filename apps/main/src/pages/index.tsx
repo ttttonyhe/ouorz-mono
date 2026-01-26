@@ -311,6 +311,27 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
+						title="Safety at One Shot: Patching Fine-Tuned LLMs with A Single Instance"
+						authors="Jiawen Zhang, Lipeng He, Kejia Chen, Jian Lou, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
+						accepted={true}
+						venue={{
+							name: "ICLR 2026",
+							href: "https://iclr.cc",
+							color: "border-l-red-500! border-l-4",
+						}}
+						links={[
+							{
+								label: "Paper",
+								href: "https://arxiv.org/abs/2601.01887",
+								default: true,
+							},
+							{
+								label: "Code",
+								href: "https://github.com/Kevin-Zh-CS/safety-at-one-shot",
+							},
+						]}
+					/>
+					<PaperCard
 						title="Activation Approximations Can Incur Safety Vulnerabilities Even in Aligned LLMs: Comprehensive Analysis and Defense"
 						authors="Jiawen Zhang*, Kejia Chen*, Lipeng He*, Jian Lou, Dan Li, Zunlei Feng, Mingli Song, Jian Liu, Kui Ren, and Xiaohu Yang"
 						accepted={true}
@@ -542,22 +563,6 @@ const Home: NextPageWithLayout = () => {
 							{
 								label: "Poster",
 								href: "https://static.ouorz.com/locket-cpi-poster.pdf",
-							},
-						]}
-					/>
-					<PaperCard
-						title="Safety at One Shot: Patching Fine-Tuned LLMs with A Single Instance"
-						authors="Jiawen Zhang, Lipeng He, Kejia Chen, Jian Lou, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
-						accepted={false}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2601.01887",
-								default: true,
-							},
-							{
-								label: "Code",
-								href: "https://github.com/Kevin-Zh-CS/safety-at-one-shot",
 							},
 						]}
 					/>
