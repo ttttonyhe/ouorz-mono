@@ -545,6 +545,12 @@ const Home: NextPageWithLayout = () => {
 						]}
 					/>
 					<PaperCard
+						title="SoK: Colluding Adversaries in Machine Learning Pipelines"
+						authors="Vasisht Duddu, Lipeng He, Asim Waheed, and N. Asokan"
+						accepted={false}
+						links={[]}
+					/>
+					<PaperCard
 						title="Locket: Robust Feature-Locking Technique for Language Models"
 						authors="Lipeng He, Vasisht Duddu, and N. Asokan"
 						accepted={false}
