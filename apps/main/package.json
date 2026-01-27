@@ -27,7 +27,7 @@
 		"dotenv-webpack": "^8.1.1",
 		"highlight.js": "^11.11.1",
 		"html2plaintext": "^2.1.4",
-		"lodash": "^4.17.21",
+		"lodash": "^4.17.23",
 		"next": "^16.1.2",
 		"postcss-nesting": "^14.0.0",
 		"react": "^18.3.1",
