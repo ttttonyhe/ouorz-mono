@@ -533,6 +533,12 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
+						title="Backdooring Bias in LLMs"
+						authors="Anudeep Das, Prach Chantasantitam, Gurjot Singh, Lipeng He, Mariia Ponomarenko, and Florian Kerschbaum"
+						accepted={false}
+						links={[]}
+					/>
+					<PaperCard
 						title="Understanding and Preserving Safety in Fine-Tuned LLMs"
 						authors="Jiawen Zhang, Yangfan Hu, Kejia Chen, Lipeng He, Jiachen Ma, Jian Lou, Dan Li, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
 						accepted={false}
@@ -792,7 +798,7 @@ const Home: NextPageWithLayout = () => {
 						orgLogoSrc="https://static.ouorz.com/jewlr-logo.svg"
 						organization="Safyre Labs"
 						organizationFullName="E-Commerce Platform, Supply Chain"
-						jobTitle="Full Stack Software Engineer"
+						jobTitle="Back End Software Engineer"
 						jobType="SWE, Co-op"
 						dateString="May -  Aug 2022"
 						organizationLocation="North York, ON"
@@ -801,7 +807,7 @@ const Home: NextPageWithLayout = () => {
 						orgLogoSrc="https://static.ouorz.com/bitbuy_logo.png"
 						organization="Bitbuy"
 						organizationFullName="Cryptocurrency Exchange, Publicly Traded on TSX: WNDR"
-						jobTitle="Software Engineer"
+						jobTitle="Front End Software Engineer"
 						jobType="SWE, Co-op"
 						dateString="Sep -  Dec 2021"
 						organizationLocation="Toronto, ON"
