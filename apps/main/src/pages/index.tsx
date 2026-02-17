@@ -533,10 +533,16 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
-						title="Backdooring Bias in LLMs"
+						title="Backdooring Bias in Large Language Models"
 						authors="Anudeep Das, Prach Chantasantitam, Gurjot Singh, Lipeng He, Mariia Ponomarenko, and Florian Kerschbaum"
 						accepted={false}
-						links={[]}
+						links={[
+							{
+								label: "Paper",
+								href: "https://arxiv.org/abs/2602.13427",
+								default: true,
+							},
+						]}
 					/>
 					<PaperCard
 						title="Understanding and Preserving Safety in Fine-Tuned LLMs"
