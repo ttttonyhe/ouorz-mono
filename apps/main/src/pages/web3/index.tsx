@@ -260,29 +260,37 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						</p>
 					</div>
 					<div className="grid grid-cols-2 gap-4" data-cy="sponsorsItems">
-						{sponsors.map((item: any, index: number) => {
-							return (
-								<div
-									key={index}
-									className="glowing-div flex cursor-pointer items-center rounded-md border bg-white px-5 py-4 shadow-xs transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800">
-									<GlowingBackground />
-									<div className="glowing-div-content flex w-full items-center overflow-hidden text-ellipsis whitespace-nowrap">
-										<h1 className="flex-1 items-center font-medium text-xl tracking-wide">
-											{item.name}
-										</h1>
-										<p className="flex items-center justify-end text-4 text-gray-400 tracking-wide">
-											<span className="hidden lg:flex">
-												{item.date}&nbsp;|&nbsp;
-											</span>
-											<span className="text-gray-700 dark:text-white">
-												{item.unit}
-												{item.amount}
-											</span>
-										</p>
+						{sponsors.length > 0 ? (
+							sponsors.map((item: any, index: number) => {
+								return (
+									<div
+										key={index}
+										className="glowing-div flex cursor-pointer items-center rounded-md border bg-white px-5 py-4 shadow-xs transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800">
+										<GlowingBackground />
+										<div className="glowing-div-content flex w-full items-center overflow-hidden text-ellipsis whitespace-nowrap">
+											<h1 className="flex-1 items-center font-medium text-xl tracking-wide">
+												{item.name}
+											</h1>
+											<p className="flex items-center justify-end text-4 text-gray-400 tracking-wide">
+												<span className="hidden lg:flex">
+													{item.date}&nbsp;|&nbsp;
+												</span>
+												<span className="text-gray-700 dark:text-white">
+													{item.unit}
+													{item.amount}
+												</span>
+											</p>
+										</div>
 									</div>
-								</div>
-							)
-						})}
+								)
+							})
+						) : (
+							<div className="col-span-2 rounded-md border border-gray-200 bg-white px-6 py-8 text-center dark:border-gray-800 dark:bg-gray-800">
+								<p className="text-gray-500 dark:text-gray-400">
+									No sponsors yet. Be the first one!
+								</p>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
@@ -293,20 +301,43 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 Web3.layout = pageLayout
 
 export const getStaticProps: GetStaticProps = async () => {
-	const res = await fetch(getAPI("internal", "sponsors"))
-	const data = await res.json()
+	try {
+		const res = await fetch(getAPI("internal", "sponsors"))
 
-	if (!data) {
-		return {
-			notFound: true,
+		if (!res.ok) {
+			return {
+				revalidate: 60,
+				props: {
+					sponsors: [],
+				},
+			}
 		}
-	}
 
-	return {
-		revalidate: 5 * 24 * 60 * 60,
-		props: {
-			sponsors: data.donors,
-		},
+		const data = await res.json()
+
+		if (!data || !Array.isArray(data.donors)) {
+			return {
+				revalidate: 60,
+				props: {
+					sponsors: [],
+				},
+			}
+		}
+
+		return {
+			revalidate: 5 * 24 * 60 * 60,
+			props: {
+				sponsors: data.donors,
+			},
+		}
+	} catch (error) {
+		console.error("Failed to fetch sponsors data:", error)
+		return {
+			revalidate: 60,
+			props: {
+				sponsors: [],
+			},
+		}
 	}
 }
 

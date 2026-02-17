@@ -136,7 +136,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	const pid = context.params.pid
 
 	try {
-		// Fetch page data
 		const resData = await fetch(
 			getAPI("internal", "post", {
 				id: parseInt(pid as string, 10),
@@ -150,45 +149,60 @@ export const getStaticProps: GetStaticProps = async (context) => {
 				},
 				revalidate: 10,
 			}
-		} else {
-			let postData = {}
-			try {
-				postData = await resData.json()
-			} catch (e) {
-				console.error(e)
-				console.log(resData)
-			}
+		}
 
+		const postData = await resData.json()
+
+		if (!postData || Object.keys(postData).length === 0) {
 			return {
 				props: {
-					status: true,
-					post: postData,
+					status: false,
 				},
-				revalidate: 3600 * 24,
+				revalidate: 10,
 			}
 		}
-	} catch (e) {
-		console.error(e)
+
+		return {
+			props: {
+				status: true,
+				post: postData,
+			},
+			revalidate: 3600 * 24,
+		}
+	} catch (error) {
+		console.error("Failed to fetch post data:", error)
+		return {
+			props: {
+				status: false,
+			},
+			revalidate: 10,
+		}
 	}
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	// get all post ids for SSG
-	const res = await fetch(getAPI("internal", "allPostIDs"))
-	let postIDs: number[] = []
-
 	try {
-		postIDs = await res.json()
-	} catch (e) {
-		console.error(e)
-		console.log(res)
+		const res = await fetch(getAPI("internal", "allPostIDs"))
+
+		if (!res.ok) {
+			return { paths: [], fallback: "blocking" }
+		}
+
+		const postIDs: number[] = await res.json()
+
+		if (!Array.isArray(postIDs)) {
+			return { paths: [], fallback: "blocking" }
+		}
+
+		const paths = postIDs.map((id) => ({
+			params: { pid: id.toString() },
+		}))
+
+		return { paths, fallback: "blocking" }
+	} catch (error) {
+		console.error("Failed to fetch post IDs:", error)
+		return { paths: [], fallback: "blocking" }
 	}
-
-	const paths = postIDs.map((id) => ({
-		params: { pid: id.toString() },
-	}))
-
-	return { paths, fallback: "blocking" }
 }
 
 BlogPost.layout = contentLayout

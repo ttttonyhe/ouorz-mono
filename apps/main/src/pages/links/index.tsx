@@ -204,37 +204,45 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 					</p>
 				</div>
 				<div className="mt-5 grid grid-cols-2 gap-4" data-cy="friendsItems">
-					{friends.map((item, index) => {
-						return (
-							<div
-								className="hover:-translate-y-0.5 z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white shadow-xs transition-all duration-300 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none"
-								key={index}>
-								<a
-									href={item.post_metas.link}
-									target="_blank"
-									rel="noreferrer"
-									className="w-full flex-1 items-center px-6 py-4">
-									<h1 className="mb-0.5 flex items-center font-medium text-2xl tracking-wide">
-										<Image
-											alt={item.post_title}
-											src={item.post_img.url}
-											width={20}
-											height={20}
-											className="rounded-full border border-gray-200 dark:border-gray-500"
-											loading="lazy"
+					{friends.length > 0 ? (
+						friends.map((item, index) => {
+							return (
+								<div
+									className="hover:-translate-y-0.5 z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white shadow-xs transition-all duration-300 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none"
+									key={index}>
+									<a
+										href={item.post_metas.link}
+										target="_blank"
+										rel="noreferrer"
+										className="w-full flex-1 items-center px-6 py-4">
+										<h1 className="mb-0.5 flex items-center font-medium text-2xl tracking-wide">
+											<Image
+												alt={item.post_title}
+												src={item.post_img.url}
+												width={20}
+												height={20}
+												className="rounded-full border border-gray-200 dark:border-gray-500"
+												loading="lazy"
+											/>
+											<span className="ml-2">{item.post_title}</span>
+										</h1>
+										<p
+											className="overflow-hidden text-ellipsis whitespace-nowrap text-4 text-gray-500 tracking-wide dark:text-gray-400"
+											dangerouslySetInnerHTML={{
+												__html: trimStr(item.post_excerpt.four, 150),
+											}}
 										/>
-										<span className="ml-2">{item.post_title}</span>
-									</h1>
-									<p
-										className="overflow-hidden text-ellipsis whitespace-nowrap text-4 text-gray-500 tracking-wide dark:text-gray-400"
-										dangerouslySetInnerHTML={{
-											__html: trimStr(item.post_excerpt.four, 150),
-										}}
-									/>
-								</a>
-							</div>
-						)
-					})}
+									</a>
+								</div>
+							)
+						})
+					) : (
+						<div className="col-span-2 rounded-md border border-gray-200 bg-white px-6 py-8 text-center dark:border-gray-700 dark:bg-gray-800">
+							<p className="text-gray-500 dark:text-gray-400">
+								No webring links available at the moment.
+							</p>
+						</div>
+					)}
 				</div>
 			</section>
 		</div>
@@ -244,23 +252,61 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 Links.layout = pageLayout
 
 export const getStaticProps: GetStaticProps = async () => {
-	const resCount = await fetch(getAPI("internal", "postStats"))
-	const dataCount = await resCount.json()
-	const count: number = dataCount.count
+	try {
+		const resCount = await fetch(getAPI("internal", "postStats"))
+		if (!resCount.ok) {
+			return {
+				revalidate: 60,
+				props: {
+					friends: [],
+				},
+			}
+		}
 
-	const res = await fetch(
-		getAPI("internal", "posts", {
-			cate: 2,
-			perPage: count,
-		})
-	)
-	const data = await res.json()
+		const dataCount = await resCount.json()
+		const count: number = dataCount?.count ?? 0
 
-	return {
-		revalidate: 24 * 60 * 60,
-		props: {
-			friends: data,
-		},
+		if (count === 0) {
+			return {
+				revalidate: 60,
+				props: {
+					friends: [],
+				},
+			}
+		}
+
+		const res = await fetch(
+			getAPI("internal", "posts", {
+				cate: 2,
+				perPage: count,
+			})
+		)
+
+		if (!res.ok) {
+			return {
+				revalidate: 60,
+				props: {
+					friends: [],
+				},
+			}
+		}
+
+		const data = await res.json()
+
+		return {
+			revalidate: 24 * 60 * 60,
+			props: {
+				friends: Array.isArray(data) ? data : [],
+			},
+		}
+	} catch (error) {
+		console.error("Failed to fetch friends data:", error)
+		return {
+			revalidate: 60,
+			props: {
+				friends: [],
+			},
+		}
 	}
 }
 
