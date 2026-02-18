@@ -1,13 +1,13 @@
 /// <reference types="cypress" />
 
 describe("Kbar", function () {
-	this.beforeEach(() => {
-		cy.viewport("macbook-13")
-		cy.visit("/")
-		cy.get("body").type("{esc}{esc}")
-		// FIXME: this is a workaround for cypress to wait for the kbar component to load
-		cy.wait(1500)
-	})
+        this.beforeEach(() => {
+                cy.viewport("macbook-13")
+                cy.visit("/")
+                cy.get("body").type("{esc}{esc}")
+                // wait for kbar component button to appear
+                cy.get('[data-cy="cmdkbutton"]').should('be.visible')
+        })
 
 	context("enter key combination cmd + k", () => {
 		it("should display kbar background and panel", function () {
