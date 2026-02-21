@@ -8,7 +8,7 @@
     "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo"
   },
   "dependencies": {
-    "eslint": "^8.34.0",
+    "eslint": "^9.26.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-turbo": "latest"
   }
