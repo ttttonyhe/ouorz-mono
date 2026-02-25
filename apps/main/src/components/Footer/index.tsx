@@ -96,7 +96,17 @@ export default function Footer() {
 					target="_blank"
 					rel="noreferrer">
 					Open Source Software (OSS)
-				</a>
+				</a>{" "}
+				<span>·</span>{" "}
+				<p className="inline-flex items-center gap-1">
+					<a href="https://cs.uwatering.com/#https://lipeng.ac/?nav=prev">←</a>
+					<a
+						href="https://cs.uwatering.com/#https://lipeng.ac/"
+						target="_blank">
+						<Icon name="uwCSWebring" />
+					</a>
+					<a href="https://cs.uwatering.com/#https://lipeng.ac/?nav=next">→</a>
+				</p>
 			</p>
 		</footer>
 	)
