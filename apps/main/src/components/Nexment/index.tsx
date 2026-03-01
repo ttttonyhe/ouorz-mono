@@ -13,13 +13,12 @@ const NexmentComponent = () => {
 			replyEmailNotifications: true,
 			descriptionTag: true,
 		},
-		leancloud: {
-			appId: process.env.NEXT_PUBLIC_LC_ID,
-			appKey: process.env.NEXT_PUBLIC_LC_KEY,
-			serverURL: "https://ouorz-nexment.ouorz.com",
+		supabase: {
+			url: "https://ainpzfmspbpvpfcatnwq.supabase.co",
+			anonKey: "sb_publishable_LT9i2hIpENWPlyXyj-jmSw_ra4mPiSP",
 		},
 		admin: {
-			name: "TonyHe",
+			name: "Tony He",
 			email: "tony.hlp@hotmail.com",
 		},
 		blackList: [
