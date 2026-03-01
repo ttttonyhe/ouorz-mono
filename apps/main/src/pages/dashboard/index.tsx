@@ -32,7 +32,7 @@ const Dashboard: NextPageWithLayout = () => {
 			<div className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="mb-4 flex items-center">
 					<div className="flex-1 items-center">
-						<h1 className="font-medium text-1 text-black tracking-wide dark:text-white">
+						<h1 className="text-1 font-medium tracking-wide text-black dark:text-white">
 							<span className="mr-3 inline-block cursor-pointer hover:animate-spin">
 								📊
 							</span>
@@ -46,7 +46,7 @@ const Dashboard: NextPageWithLayout = () => {
 					</div>
 					<div className="mt-2 flex h-full items-center justify-end whitespace-nowrap">
 						<div className="flex-1 px-5">
-							<p className="text-gray-500 text-xl dark:text-gray-400">
+							<p className="text-xl text-gray-500 dark:text-gray-400">
 								<button
 									type="button"
 									onClick={() => navigateWithTransition(router, "/pages")}
@@ -60,21 +60,21 @@ const Dashboard: NextPageWithLayout = () => {
 						</div>
 					</div>
 				</div>
-				<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-xs dark:border-gray-800 dark:bg-gray-800">
-					<p className="items-center text-gray-500 text-xl tracking-wide dark:text-gray-400">
+				<div className="shadow-xs my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 dark:border-gray-800 dark:bg-gray-800">
+					<p className="items-center text-xl tracking-wide text-gray-500 dark:text-gray-400">
 						Personal dashboard tracking various metrics of this website, and
 						across platforms like Twitter, GitHub, and more.
 					</p>
 				</div>
 			</div>
 			<div
-				className="glowing-area mt-5 mb-10 grid gap-4 lg:grid-cols-2"
+				className="glowing-area mb-10 mt-5 grid gap-4 lg:grid-cols-2"
 				data-cy="metricCards">
 				<GithubStarMetric />
 				<GithubFollowerMetric />
 			</div>
-			<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-xs dark:border-gray-800 dark:bg-gray-800">
-				<p className="items-center text-gray-500 text-xl tracking-wide dark:text-gray-400">
+			<div className="shadow-xs my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 dark:border-gray-800 dark:bg-gray-800">
+				<p className="items-center text-xl tracking-wide text-gray-500 dark:text-gray-400">
 					For detailed data analytics, see:{" "}
 					<a
 						className="font-medium text-gray-700 dark:text-gray-200"
@@ -86,7 +86,7 @@ const Dashboard: NextPageWithLayout = () => {
 				</p>
 			</div>
 			<div
-				className="glowing-area mt-5 mb-28 grid gap-4 lg:grid-cols-2"
+				className="glowing-area mb-28 mt-5 grid gap-4 lg:grid-cols-2"
 				data-cy="metricCards">
 				<NexmentMetric />
 				<SspaiMetric />

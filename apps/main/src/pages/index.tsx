@@ -25,13 +25,13 @@ const Home: NextPageWithLayout = () => {
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="flex items-center justify-between gap-x-10 gap-y-8">
 					<div className="-ml-1 flex flex-col gap-y-2.5">
-						<h1 className="wrap-break-word flex items-center whitespace-nowrap font-medium text-3xl text-black tracking-wide lg:text-[1.8rem] dark:text-white">
-							<span className="mr-2 inline-block animate-wave-hand cursor-pointer hover:animate-wave-hand-again">
+						<h1 className="wrap-break-word flex items-center whitespace-nowrap text-3xl font-medium tracking-wide text-black dark:text-white lg:text-[1.8rem]">
+							<span className="animate-wave-hand hover:animate-wave-hand-again mr-2 inline-block cursor-pointer">
 								👋
 							</span>
 							Tony (Lipeng) He
 						</h1>
-						<div className="wrap-break-word flex flex-col gap-y-1.5 px-1 font-light text-4 text-gray-500 leading-relaxed tracking-wider lg:text-2 dark:text-gray-300">
+						<div className="wrap-break-word flex flex-col gap-y-1.5 px-1 text-4 font-light leading-relaxed tracking-wider text-gray-500 dark:text-gray-300 lg:text-2">
 							<p>
 								I am a student, software engineer, and researcher at the{" "}
 								<a
@@ -54,7 +54,7 @@ const Home: NextPageWithLayout = () => {
 							height={105}
 							width={105}
 							alt="Tony teaching an undergraduate CS course"
-							className="rounded-xl bg-gray-200 shadow-xs dark:border dark:border-gray-600"
+							className="shadow-xs rounded-xl bg-gray-200 dark:border dark:border-gray-600"
 						/>
 					</div>
 				</div>
@@ -72,13 +72,13 @@ const Home: NextPageWithLayout = () => {
 				</div>
 			</section>
 			<section className="mt-16">
-				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+				<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5">
 						<Icon name="me" />
 					</span>
-					<span className="uppercase">About Me</span>
+					<span className="uppercase">About</span>
 				</label>
-				<div className="wrap-break-word mt-[15px] flex flex-col px-1 text-justify font-light text-3 text-gray-500 leading-relaxed tracking-wide underline-offset-[6px] lg:text-left lg:text-[17px] dark:text-gray-300">
+				<div className="wrap-break-word mt-[15px] flex flex-col px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-left lg:text-[17px]">
 					<p>
 						I&#39;m pursuing a Master of Mathematics (Research/Thesis) degree in
 						Computer Science at UWaterloo. I am grateful to be advised by{" "}
@@ -157,7 +157,7 @@ const Home: NextPageWithLayout = () => {
 							href="https://www.goodreads.com/quotes/2690-i-went-to-the-woods-because-i-wished-to-live"
 							target="_blank"
 							rel="noreferrer"
-							className="inline-block bg-linear-to-r from-blue-500 via-green-500 to-indigo-500 bg-clip-text text-transparent hover:from-blue-600 hover:via-green-600 hover:to-indigo-600">
+							className="bg-linear-to-r inline-block from-blue-500 via-green-500 to-indigo-500 bg-clip-text text-transparent hover:from-blue-600 hover:via-green-600 hover:to-indigo-600">
 							live deliberately
 						</a>
 						. Before research, I spent some years doing software engineering. In
@@ -205,13 +205,13 @@ const Home: NextPageWithLayout = () => {
 				</div>
 			</section>
 			<section className="mt-16">
-				<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+				<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5">
 						<Icon name="microscope" />
 					</span>
 					<span className="uppercase">Research Interests</span>
 				</label>
-				<div className="wrap-break-word mt-[15px] flex flex-col gap-y-2 px-1 text-justify font-light text-3 text-gray-500 leading-relaxed tracking-wide underline-offset-[6px] lg:text-[17px] dark:text-gray-300">
+				<div className="wrap-break-word mt-[15px] flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p>
 						My research focuses on <strong>Trustworthy Machine Learning</strong>
 						, with an emphasis on the adversarial robustness of{" "}
@@ -296,7 +296,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="newspaper" />
 						</span>
@@ -515,7 +515,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="article" />
 						</span>
@@ -594,7 +594,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="personSpeaks" />
 						</span>
@@ -603,7 +603,7 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
-						title="UWaterloo Cybersecurity and Privacy Institute (CPI) Graduate Student Conference (GradConf 2025)"
+						title="Cybersecurity and Privacy Institute (CPI) Graduate Student Conference 2025"
 						authors="Activation Approximations Can Incur Safety Vulnerabilities Even in Aligned LLMs: Comprehensive Analysis and Defense"
 						accepted={true}
 						venue={{
@@ -627,7 +627,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="service" />
 						</span>
@@ -672,7 +672,25 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+						<span className="mr-1.5 flex h-5 w-5">
+							<Icon name="empathize" />
+						</span>
+						<span className="uppercase">Mentoring</span>
+					</label>
+				</div>
+				<div className="mt-5 flex flex-col gap-y-4">
+					<ServiceCard
+						serviceRole="Directed Reading Program (DRP)"
+						serviceType="Mentor"
+						serviceTitle="AI Safety and Security Challenges in LLM-based Autonomous Agents (Spring 2026)"
+						serviceOrganization="Women in Mathematics (WiM)"
+					/>
+				</div>
+			</section>
+			<section className="mt-14">
+				<div className="flex items-center justify-between">
+					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="money" />
 						</span>
@@ -714,7 +732,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="presentation" />
 						</span>
@@ -750,7 +768,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="suitcase" />
 						</span>
@@ -822,7 +840,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="graduationCapOutline" />
 						</span>
@@ -876,9 +894,9 @@ const Home: NextPageWithLayout = () => {
 					/>
 				</div>
 			</section>
-			<section className="mt-14 mb-24">
+			<section className="mb-24 mt-14">
 				<div className="flex justify-between">
-					<label className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="edit" />
 						</span>

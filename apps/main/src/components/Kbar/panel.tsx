@@ -1,15 +1,15 @@
+import HotkeyHelper from "../Helpers/hotKey"
+import Tabs, { type TabItemProps } from "../Tabs"
+import { kbarContext } from "./context"
 import { Icon } from "@twilight-toolkit/ui"
-import { useRouter } from "next/router"
 import { useTheme } from "next-themes"
+import { useRouter } from "next/router"
 import type React from "react"
 import { useContext, useEffect, useRef, useState } from "react"
 import ContentLoader from "react-content-loader"
 import { useDispatch, useSelector } from "~/hooks"
 import { deactivateKbar, updateKbar } from "~/store/kbar/actions"
 import { selectKbar } from "~/store/kbar/selectors"
-import HotkeyHelper from "../Helpers/hotKey"
-import Tabs, { type TabItemProps } from "../Tabs"
-import { kbarContext } from "./context"
 
 const ListComponentLoading = ({ resolvedTheme }: { resolvedTheme: string }) => {
 	if (resolvedTheme === "dark") {
@@ -172,7 +172,7 @@ const KbarPanel = () => {
 				className: "w-full justify-start! p-4!",
 				component:
 					item.hoverable === false ? (
-						<p className="kbar-list-heading text-gray-400 text-sm">
+						<p className="kbar-list-heading text-sm text-gray-400">
 							{item.label}
 						</p>
 					) : (
@@ -190,7 +190,7 @@ const KbarPanel = () => {
 							</div>
 							<div className="flex items-center gap-x-2.5">
 								{item.description && (
-									<div className="text-gray-400 text-sm">
+									<div className="text-sm text-gray-400">
 										{item.description}
 									</div>
 								)}
@@ -244,17 +244,15 @@ const KbarPanel = () => {
 	return (
 		<div
 			data-cy="kbar-panel"
-			className="-ml-10 pointer-events-auto absolute flex h-screen w-screen justify-center">
-			{
-				// register shortcuts of list items
-				list?.map((item, index) => {
-					if (item.shortcut?.length) {
-						return <HotkeyHelper key={index} item={item} />
-					}
-				})
-			}
+			className="pointer-events-auto absolute -ml-10 flex h-screen w-screen justify-center">
+			{// register shortcuts of list items
+			list?.map((item, index) => {
+				if (item.shortcut?.length) {
+					return <HotkeyHelper key={index} item={item} />
+				}
+			})}
 			<div
-				className={`z-50 mt-[8%] ml-15 h-fit max-h-[420px] w-[620px] overflow-hidden rounded-xl border bg-white/70 shadow-2xl backdrop-blur-lg dark:border-gray-700 dark:bg-black/70 ${
+				className={`ml-15 z-50 mt-[8%] h-fit max-h-[420px] w-[620px] overflow-hidden rounded-xl border bg-white/70 shadow-2xl backdrop-blur-lg dark:border-gray-700 dark:bg-black/70 ${
 					animation === "transition"
 						? "animate-kbar-transition"
 						: animation === "out"
@@ -272,7 +270,7 @@ const KbarPanel = () => {
 						placeholder={placeholder}
 						onChange={(e) => setInputValue(e.target.value)}
 						value={inputValue}
-						className="w-full flex-1 rounded-tl-lg rounded-tr-lg bg-transparent px-5 py-4.5 text-gray-600 text-lg outline-hidden dark:text-gray-300"
+						className="outline-hidden w-full flex-1 rounded-tl-lg rounded-tr-lg bg-transparent px-5 py-4.5 text-lg text-gray-600 dark:text-gray-300"
 						autoFocus
 					/>
 					<div className="mr-5 flex items-center">

@@ -1,11 +1,10 @@
-/* eslint-disable camelcase */
 import { tuple } from "~/utilities/dataTypes"
 
 const _ListTypes = tuple("index", "cate", "search")
 const _LabelTypes = tuple("sticky", "primary", "secondary", "green", "gray")
 
 export interface WPPost {
-	code: any
+	code?: any
 	post_img: { url: any }
 	post_title: string
 	post_excerpt: {
@@ -41,6 +40,7 @@ export interface WPPost {
 	}
 	content: {
 		rendered: string
+		raw?: string
 	}
 }
 

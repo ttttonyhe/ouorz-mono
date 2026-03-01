@@ -32,6 +32,44 @@ const NextConfigs = {
 			exclude: ["log", "error"],
 		},
 	},
+	async rewrites() {
+		return [
+			{
+				source: "/feed",
+				destination: "/feed.xml",
+			},
+		]
+	},
+	async headers() {
+		const cacheHeaders = [
+			{ key: "Cache-Control", value: "max-age=3600" },
+			{ key: "CDN-Cache-Control", value: `max-age=${3600 * 24}` },
+			{ key: "Vercel-CDN-Cache-Control", value: `max-age=${3600 * 24 * 7}` },
+		]
+		return [
+			{
+				source: "/feed.xml",
+				headers: [
+					{ key: "Content-Type", value: "application/rss+xml; charset=utf-8" },
+					...cacheHeaders,
+				],
+			},
+			{
+				source: "/sitemap.xml",
+				headers: [
+					{ key: "Content-Type", value: "text/xml; charset=utf-8" },
+					...cacheHeaders,
+				],
+			},
+			{
+				source: "/llms.txt",
+				headers: [
+					{ key: "Content-Type", value: "text/plain; charset=utf-8" },
+					...cacheHeaders,
+				],
+			},
+		]
+	},
 }
 
 const SentryWebpackPluginOptions = {

@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next"
-import { WORDPRESS_API } from "~/constants/apiURLs"
+import { getPosts } from "~/content/posts"
+import { getPathViews } from "~/content/views"
 
 type ResDataType = {
 	views: number
@@ -10,18 +11,16 @@ const posts = async (
 	_req: NextApiRequest,
 	res: NextApiResponse<ResDataType>
 ) => {
-	const response = await fetch(WORDPRESS_API.POSTSTATS)
+	res.setHeader("Cache-Control", "no-store, max-age=0")
 
-	const data = await response.json()
-
-	res.setHeader(
-		"Cache-Control",
-		"public, s-maxage=1200, stale-while-revalidate=600"
-	)
+	const allPosts = getPosts()
+	const views = (
+		await Promise.all(allPosts.map((post) => getPathViews(`/post/${post.id}`)))
+	).reduce((sum, value) => sum + value, 0)
 
 	return res.status(200).json({
-		views: data.views,
-		count: data.count,
+		views,
+		count: allPosts.length,
 	})
 }
 

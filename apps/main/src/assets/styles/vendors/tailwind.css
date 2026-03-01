@@ -1,13 +1,13 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @config '../../../../tailwind.config.js';
 
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    @apply border-gray-200;
-  }
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		@apply border-gray-200;
+	}
 }

@@ -1,9 +1,9 @@
-import { delay, put } from "redux-saga/effects"
 import {
 	setKbarLoading,
 	setKbarPlaceholder,
 	updateKbarLocation,
 } from "../actions"
+import { delay, put } from "redux-saga/effects"
 
 export const searchLocation = ["home", "search"]
 

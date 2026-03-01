@@ -1,3 +1,4 @@
+import StaticList from "./staticList"
 import React from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 import useSWRInfinite from "swr/infinite"
@@ -6,7 +7,6 @@ import CardEmpty from "~/components/Card/Empty"
 import CardSkeleton from "~/components/Card/Skeleton"
 import type { ListTypes } from "~/constants/propTypes"
 import getAPI from "~/utilities/api"
-import StaticList from "./staticList"
 
 export interface InfiniteListProps {
 	type: ListTypes
@@ -29,7 +29,7 @@ const getApiUrl = ({ type, cate, target }: InfiniteListProps) => {
 			return getAPI("internal", "posts", {
 				perPage: 10,
 				cate,
-				cateExclude: "5,2,74,334,335",
+				cateExclude: "5,2,334,335",
 			})
 		case "search":
 			return getAPI("internal", "posts", {

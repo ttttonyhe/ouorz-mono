@@ -179,3 +179,8 @@ cache-zk
 
 # Cypress error screenshots
 apps/main/cypress/screenshots
+
+# Generated static files
+apps/main/public/feed.xml
+apps/main/public/sitemap.xml
+apps/main/public/llms.txt

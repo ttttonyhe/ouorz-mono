@@ -26,9 +26,13 @@ const init = (middleware: any): ((req: any, res: any) => Promise<any>) => {
  * @param {*} middleware
  * @return {*}  {Promise<void>}
  */
-const use = async (middleware: any, req: any, res: any): Promise<void> => {
+const runMiddleware = async (
+	middleware: any,
+	req: any,
+	res: any
+): Promise<void> => {
 	const initiation = init(middleware)
 	await initiation(req, res)
 }
 
-export { init, use }
+export { init, runMiddleware }

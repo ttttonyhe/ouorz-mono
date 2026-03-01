@@ -5,8 +5,8 @@ import Head from "next/head"
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { pageLayout } from "~/components/Page"
+import { getPostStats, getPosts } from "~/content/posts"
 import type { NextPageWithLayout } from "~/pages/_app"
-import getAPI from "~/utilities/api"
 import { trimStr } from "~/utilities/string"
 import {
 	getViewTransitionName,
@@ -29,13 +29,13 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="mb-4 flex items-center">
 					<div className="flex flex-1 items-center">
-						<div className="-rotate-6 mt-1 mr-4.5 flex cursor-pointer items-center">
+						<div className="mr-4.5 mt-1 flex -rotate-6 cursor-pointer items-center">
 							<span className="text-[35px] drop-shadow-lg hover:animate-spin">
 								🔗
 							</span>
 						</div>
 						<div>
-							<h2 className="flex items-center gap-x-1.5 whitespace-nowrap font-medium text-[28px] text-black tracking-wide dark:text-white">
+							<h2 className="flex items-center gap-x-1.5 whitespace-nowrap text-[28px] font-medium tracking-wide text-black dark:text-white">
 								<span
 									style={{
 										viewTransitionName: getViewTransitionName("Links"),
@@ -43,14 +43,14 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 									Links
 								</span>
 							</h2>
-							<p className="-mt-1 text-neutral-500 text-sm dark:text-gray-400">
+							<p className="-mt-1 text-sm text-neutral-500 dark:text-gray-400">
 								A collection of fun stuff and links from the internet.
 							</p>
 						</div>
 					</div>
 					<div className="mt-2 flex h-full items-center justify-end whitespace-nowrap">
-						<div className="flex-1 pr-2 pl-5">
-							<p className="text-gray-500 text-xl dark:text-gray-400">
+						<div className="flex-1 pl-5 pr-2">
+							<p className="text-xl text-gray-500 dark:text-gray-400">
 								<button
 									type="button"
 									onClick={() => navigateWithTransition(router, "/pages")}
@@ -69,26 +69,26 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 				<hr className="dark:border-gray-600" />
 			</div>
 			<section className="mb-10">
-				<label className="inline-flex items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+				<label className="shadow-xs inline-flex items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5 text-blue-500">
 						<Icon name="pencilTool" />
 					</span>
 					<span className="uppercase">Tools</span>
 				</label>
-				<div className="my-2 mb-4 flex w-full items-center rounded-br-xl rounded-bl-xl border border-gray-300 bg-white px-4 py-3 shadow-xs dark:border-gray-600 dark:bg-gray-700">
-					<p className="items-center text-neutral-500 text-xl tracking-wide dark:text-gray-300">
+				<div className="shadow-xs my-2 mb-4 flex w-full items-center rounded-bl-xl rounded-br-xl border border-gray-300 bg-white px-4 py-3 dark:border-gray-600 dark:bg-gray-700">
+					<p className="items-center text-xl tracking-wide text-neutral-500 dark:text-gray-300">
 						With a high bar for build quality, aesthetic, and usability. Here
 						are some of the indie tools that I use or researched.
 					</p>
 				</div>
 				<div className="mt-5 grid grid-cols-2 gap-4" data-cy="toolsItems">
-					<div className="hover:-translate-y-0.5 z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white shadow-xs transition-all duration-300 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none">
+					<div className="shadow-xs z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none">
 						<a
 							href="https://beyz.ai/meeting-assistant"
 							target="_blank"
 							rel="noreferrer"
 							className="w-full flex-1 items-center px-6 py-4">
-							<h1 className="mb-0.5 flex items-center font-medium text-2xl tracking-wide">
+							<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 								<Image
 									alt="Notion"
 									src="https://static.ouorz.com/beyz_logo.jpeg"
@@ -100,20 +100,20 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 								<span className="ml-2">Beyz</span>
 							</h1>
 							<p
-								className="overflow-hidden text-ellipsis whitespace-nowrap text-4 text-gray-500 tracking-wide dark:text-gray-400"
+								className="overflow-hidden text-ellipsis whitespace-nowrap text-4 tracking-wide text-gray-500 dark:text-gray-400"
 								dangerouslySetInnerHTML={{
 									__html: trimStr("Real-Time Meeting Assistant", 150),
 								}}
 							/>
 						</a>
 					</div>
-					<div className="hover:-translate-y-0.5 z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white shadow-xs transition-all duration-300 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none">
+					<div className="shadow-xs z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none">
 						<a
 							href="https://cap.so"
 							target="_blank"
 							rel="noreferrer"
 							className="w-full flex-1 items-center px-6 py-4">
-							<h1 className="mb-0.5 flex items-center font-medium text-2xl tracking-wide">
+							<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 								<Image
 									alt="Notion"
 									src="https://static.ouorz.com/cap-logo.png"
@@ -125,20 +125,20 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 								<span className="ml-2">Cap</span>
 							</h1>
 							<p
-								className="overflow-hidden text-ellipsis whitespace-nowrap text-4 text-gray-500 tracking-wide dark:text-gray-400"
+								className="overflow-hidden text-ellipsis whitespace-nowrap text-4 tracking-wide text-gray-500 dark:text-gray-400"
 								dangerouslySetInnerHTML={{
 									__html: trimStr("Open-source screen recording tool", 150),
 								}}
 							/>
 						</a>
 					</div>
-					<div className="hover:-translate-y-0.5 z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white shadow-xs transition-all duration-300 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none">
+					<div className="shadow-xs z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none">
 						<a
 							href="https://www.mintlify.com"
 							target="_blank"
 							rel="noreferrer"
 							className="w-full flex-1 items-center px-6 py-4">
-							<h1 className="mb-0.5 flex items-center font-medium text-2xl tracking-wide">
+							<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 								<Image
 									alt="Notion"
 									src="https://static.ouorz.com/mintlify_logo.png"
@@ -150,7 +150,7 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 								<span className="ml-2">Mintlify</span>
 							</h1>
 							<p
-								className="overflow-hidden text-ellipsis whitespace-nowrap text-4 text-gray-500 tracking-wide dark:text-gray-400"
+								className="overflow-hidden text-ellipsis whitespace-nowrap text-4 tracking-wide text-gray-500 dark:text-gray-400"
 								dangerouslySetInnerHTML={{
 									__html: trimStr(
 										"The intelligent documentation platform",
@@ -160,13 +160,13 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 							/>
 						</a>
 					</div>
-					<div className="hover:-translate-y-0.5 z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white shadow-xs transition-all duration-300 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none">
+					<div className="shadow-xs z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none">
 						<a
 							href="https://www.raycast.com"
 							target="_blank"
 							rel="noreferrer"
 							className="w-full flex-1 items-center px-6 py-4">
-							<h1 className="mb-0.5 flex items-center font-medium text-2xl tracking-wide">
+							<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 								<Image
 									alt="Notion"
 									src="https://static.ouorz.com/raycast-logo.png"
@@ -178,7 +178,7 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 								<span className="ml-2">Raycast</span>
 							</h1>
 							<p
-								className="overflow-hidden text-ellipsis whitespace-nowrap text-4 text-gray-500 tracking-wide dark:text-gray-400"
+								className="overflow-hidden text-ellipsis whitespace-nowrap text-4 tracking-wide text-gray-500 dark:text-gray-400"
 								dangerouslySetInnerHTML={{
 									__html: trimStr("macOS Spotlight alternative", 150),
 								}}
@@ -191,14 +191,14 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 				<hr className="dark:border-gray-600" />
 			</div>
 			<section className="mb-10">
-				<label className="inline-flex items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+				<label className="shadow-xs inline-flex items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5 text-orange-500">
 						<Icon name="people" />
 					</span>
 					<span className="uppercase">Webring</span>
 				</label>
-				<div className="my-2 mb-4 flex w-full items-center rounded-br-xl rounded-bl-xl border border-gray-300 bg-white px-4 py-3 shadow-xs dark:border-gray-600 dark:bg-gray-700">
-					<p className="items-center text-neutral-500 text-xl tracking-wide dark:text-gray-300">
+				<div className="shadow-xs my-2 mb-4 flex w-full items-center rounded-bl-xl rounded-br-xl border border-gray-300 bg-white px-4 py-3 dark:border-gray-600 dark:bg-gray-700">
+					<p className="items-center text-xl tracking-wide text-neutral-500 dark:text-gray-300">
 						To join this webring, email me at ABC_tony.hlp@hotmail.com (with the
 						leading "ABC_" removed).
 					</p>
@@ -208,14 +208,14 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 						friends.map((item, index) => {
 							return (
 								<div
-									className="hover:-translate-y-0.5 z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white shadow-xs transition-all duration-300 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none"
+									className="shadow-xs z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none"
 									key={index}>
 									<a
 										href={item.post_metas.link}
 										target="_blank"
 										rel="noreferrer"
 										className="w-full flex-1 items-center px-6 py-4">
-										<h1 className="mb-0.5 flex items-center font-medium text-2xl tracking-wide">
+										<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 											<Image
 												alt={item.post_title}
 												src={item.post_img.url}
@@ -227,7 +227,7 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 											<span className="ml-2">{item.post_title}</span>
 										</h1>
 										<p
-											className="overflow-hidden text-ellipsis whitespace-nowrap text-4 text-gray-500 tracking-wide dark:text-gray-400"
+											className="overflow-hidden text-ellipsis whitespace-nowrap text-4 tracking-wide text-gray-500 dark:text-gray-400"
 											dangerouslySetInnerHTML={{
 												__html: trimStr(item.post_excerpt.four, 150),
 											}}
@@ -253,17 +253,7 @@ Links.layout = pageLayout
 
 export const getStaticProps: GetStaticProps = async () => {
 	try {
-		const resCount = await fetch(getAPI("internal", "postStats"))
-		if (!resCount.ok) {
-			return {
-				revalidate: 60,
-				props: {
-					friends: [],
-				},
-			}
-		}
-
-		const dataCount = await resCount.json()
+		const dataCount = getPostStats()
 		const count: number = dataCount?.count ?? 0
 
 		if (count === 0) {
@@ -275,23 +265,10 @@ export const getStaticProps: GetStaticProps = async () => {
 			}
 		}
 
-		const res = await fetch(
-			getAPI("internal", "posts", {
-				cate: 2,
-				perPage: count,
-			})
-		)
-
-		if (!res.ok) {
-			return {
-				revalidate: 60,
-				props: {
-					friends: [],
-				},
-			}
-		}
-
-		const data = await res.json()
+		const data = getPosts({
+			cate: 2,
+			perPage: count,
+		})
 
 		return {
 			revalidate: 24 * 60 * 60,

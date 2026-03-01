@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable prettier/prettier */
-
 const colors = require("tailwindcss/colors")
 
 module.exports = {
@@ -20,7 +17,9 @@ module.exports = {
 				10: "30px",
 				20: "60px",
 				readerOffset: "-47.5px",
+				"reader-offset": "-47.5px",
 				searchOffset: "calc((100% - 680px) / 2)",
+				"search-offset": "calc((100% - 680px) / 2)",
 				aside: "calc(100% - 6rem)",
 			},
 			colors: {
@@ -53,8 +52,10 @@ module.exports = {
 				4: "14px",
 				5: "12px",
 				listTitle: "26px",
+				"list-title": "26px",
 				label: "18px",
 				postTitle: "30px",
+				"post-title": "30px",
 				xl: "15px",
 				"2xl": "18px",
 				"3xl": "22.5px",
@@ -71,29 +72,51 @@ module.exports = {
 			},
 			animation: {
 				pointerIn: "pointerIn ease-in-out .25s forwards",
+				"pointer-in": "pointerIn ease-in-out .25s forwards",
 				pointerOut: "pointerOut ease-in-out .25s forwards",
+				"pointer-out": "pointerOut ease-in-out .25s forwards",
+				pointer: "pointerIn ease-in-out .25s forwards",
 				appear: "opacityProgressIn ease-in-out .25s forwards",
 				disappear: "opacityProgressOut ease-in-out .25s forwards",
 				shrinkDisappear: "shrinkDisappear ease-in-out .5s forwards",
+				"shrink-disappear": "shrinkDisappear ease-in-out .5s forwards",
 				expandImageCardInfo: "expandImageCardInfo ease-in-out .25s forwards",
+				"expand-image-card-info":
+					"expandImageCardInfo ease-in-out .25s forwards",
 				reader: "moveUp ease-in-out .5s",
 				readerOut: "moveDown ease-in-out .5s",
+				"reader-out": "moveDown ease-in-out .5s",
 				readerBg: "opacityProgressIn ease-in-out .5s",
+				"reader-bg": "opacityProgressIn ease-in-out .5s",
 				readerBgOut: "opacityProgressOut ease-in-out .5s",
+				"reader-bg-out": "opacityProgressOut ease-in-out .5s",
 				searchBgOut: "opacityProgressOut ease-in-out .15s forwards",
+				"search-bg-out": "opacityProgressOut ease-in-out .15s forwards",
 				search: "200ms ease 0s 1 normal none running search",
 				searchOut: "150ms ease 0s 1 normal forwards running searchOut",
+				"search-out": "150ms ease 0s 1 normal forwards running searchOut",
 				kbar: "200ms ease 0.25s 1 normal forwards running kbar",
 				kbarOut: "200ms ease 0s 1 normal forwards running kbarOut",
+				"kbar-out": "200ms ease 0s 1 normal forwards running kbarOut",
 				kbarBg: "200ms ease 0s 1 normal none running opacityProgressIn",
+				"kbar-bg": "200ms ease 0s 1 normal none running opacityProgressIn",
 				kbarBgOut: "200ms ease 0s 1 normal forwards running opacityProgressOut",
+				"kbar-bg-out":
+					"200ms ease 0s 1 normal forwards running opacityProgressOut",
 				kbarTransition: "200ms ease 0s 1 normal none running kbarTransition",
+				"kbar-transition": "200ms ease 0s 1 normal none running kbarTransition",
 				kbarHighlighter:
 					"100ms ease 0s 1 normal none running opacityProgressIn",
+				"kbar-highlighter":
+					"100ms ease 0s 1 normal none running opacityProgressIn",
 				kbarLoadingBar: "gradientSwipe ease-in-out 2s infinite",
+				"kbar-loading-bar": "gradientSwipe ease-in-out 2s infinite",
 				waveHand: "wavingHand ease-in-out 1.5s 3",
+				"wave-hand": "wavingHand ease-in-out 1.5s 3",
 				waveHandAgain: "wavingHand ease-in-out 1.5s infinite",
+				"wave-hand-again": "wavingHand ease-in-out 1.5s infinite",
 				completePulse: "completePulse ease-in-out 2.5s infinite",
+				"complete-pulse": "completePulse ease-in-out 2.5s infinite",
 			},
 			keyframes: {
 				expandImageCardInfo: {

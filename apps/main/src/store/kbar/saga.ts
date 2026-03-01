@@ -1,4 +1,3 @@
-import { cancel, fork, take, takeLatest } from "redux-saga/effects"
 import {
 	ACTIVATE_KBAR,
 	DEACTIVATE_KBAR,
@@ -17,6 +16,7 @@ import {
 	updateKbarToSearchSaga,
 } from "./sagas"
 import updateKbarSearchQuerySaga from "./sagas/updateKbarSearchQuery"
+import { cancel, fork, take, takeLatest } from "redux-saga/effects"
 
 // Custom takeLatest function to:
 // 1. Delegate update kbar requests to their own saga

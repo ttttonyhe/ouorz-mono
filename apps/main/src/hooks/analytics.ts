@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-
 // Dummy analytics functions for development environment
 const dummyTrackView = (_url?: string, _referrer?: string, _uuid?: string) => {}
 const dummyTrackEvent = (

@@ -1,6 +1,6 @@
+import { HIDE_READER, SET_ANIMATION, SET_READER, SHOW_READER } from "./actions"
 import type { AnyAction } from "@reduxjs/toolkit"
 import type { WPPost } from "~/constants/propTypes"
-import { HIDE_READER, SET_ANIMATION, SET_READER, SHOW_READER } from "./actions"
 
 type ReaderState = {
 	animation: "in" | "out" | ""

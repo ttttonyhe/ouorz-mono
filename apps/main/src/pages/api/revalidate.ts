@@ -1,6 +1,6 @@
+import { runMiddleware } from "../../lib/middleware"
 import Cors from "cors"
 import type { NextApiRequest, NextApiResponse } from "next"
-import { use } from "../../lib/middleware"
 
 type ResDataType = {
 	status: number
@@ -13,7 +13,7 @@ const revalidate = async (
 	res: NextApiResponse<ResDataType>
 ) => {
 	// apply CORS middleware
-	await use(
+	await runMiddleware(
 		Cors({
 			methods: ["POST"],
 		}),

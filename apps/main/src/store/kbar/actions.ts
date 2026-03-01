@@ -90,7 +90,7 @@ export const updateKbarToHome = () => {
 	}
 }
 
-// Update Kbar search query (search via Algolia)
+// Update Kbar search query (search local MDX posts)
 export const updateKbarSearchQuery = (query: string) => {
 	return {
 		type: UPDATE_KBAR_SEARCH_QUERY,

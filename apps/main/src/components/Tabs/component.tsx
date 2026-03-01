@@ -1,10 +1,10 @@
+import type { TabsProps } from "."
+import TabItemComponent from "./item"
 import type React from "react"
 import { useEffect, useRef, useState } from "react"
 import { useHotkeys } from "react-hotkeys-hook"
 import { useMouseLeaveListener } from "~/hooks"
 import scrollToItemWithinDiv from "~/utilities/scrollTo"
-import type { TabsProps } from "."
-import TabItemComponent from "./item"
 
 const Tabs = (props: TabsProps) => {
 	const { items, direction, defaultHighlighted, verticalListWrapper } = props

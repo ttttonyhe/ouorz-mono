@@ -1,6 +1,5 @@
 /* Constants */
-const WP_API_ROOT = "https://blog.ouorz.com/wp-json/wp/v2"
-const TONY_WP_API_ROOT = "https://blog.ouorz.com/wp-json/tony/v1"
+const LOCAL_CONTENT_API_ROOT = "/api/content"
 
 /* API Methods */
 // Like a single WP post
@@ -10,27 +9,17 @@ interface LikeAPIParams {
 
 const likePostAPI = (params: LikeAPIParams) => {
 	const { id } = params
-	return `${TONY_WP_API_ROOT}/mark/${id}`
+	return `/api/like/${id}`
 }
 
 // Get all WP post IDs
 const postIDsAPI = () => {
-	return `${TONY_WP_API_ROOT}/posts_ids`
+	return `${LOCAL_CONTENT_API_ROOT}/allPostIDs`
 }
 
 // Subscribe to Listmonk newletter
 const subscribeToListmonkAPI = () => {
 	return "https://lists.lipeng.ac/api/public/subscription"
-}
-
-// Get search indices
-const searchIndicesAPI = () => {
-	return `${TONY_WP_API_ROOT}/searchIndexes`
-}
-
-// Get RSS data
-const rssDataAPI = () => {
-	return `${TONY_WP_API_ROOT}/rssData`
 }
 
 // Get a single WP page
@@ -40,22 +29,17 @@ interface PageAPIParams {
 
 const pageAPI = (params: PageAPIParams) => {
 	const { id } = params
-	return `${WP_API_ROOT}/pages/${id}`
-}
-
-// Post a post/page visit
-const visitAPI = () => {
-	return `${TONY_WP_API_ROOT}/visit`
+	return `${LOCAL_CONTENT_API_ROOT}/page?id=${id}`
 }
 
 // Get sponsors
 const sponsorAPI = () => {
-	return "https://blog.ouorz.com/wp-content/themes/peg/com/data/donors.php"
+	return `${LOCAL_CONTENT_API_ROOT}/sponsors`
 }
 
 // Get post statistics
 const postStatsAPI = () => {
-	return `${TONY_WP_API_ROOT}/poststats`
+	return `${LOCAL_CONTENT_API_ROOT}/postStats`
 }
 
 // Get a single WP post
@@ -65,7 +49,7 @@ interface PostAPIParams {
 
 const postAPI = (params: PostAPIParams) => {
 	const { id } = params
-	return `${WP_API_ROOT}/posts/${id}`
+	return `${LOCAL_CONTENT_API_ROOT}/post?id=${id}`
 }
 
 // Get a list of WP posts
@@ -84,7 +68,7 @@ const postsAPI = (params: PostsAPIParams) => {
 	const c = cate ? `&categories=${cate}` : ""
 	const p = perPage ? `&per_page=${perPage}` : ""
 	const sc = search ? `&search=${search}` : ""
-	return `${WP_API_ROOT}/posts?${s}${p}${c}${ce}${sc}`
+	return `${LOCAL_CONTENT_API_ROOT}/posts?${s}${p}${c}${ce}${sc}`
 }
 
 // Get WP category posts
@@ -95,7 +79,7 @@ interface CategoryAPIParams {
 
 const categoryAPI = (params: CategoryAPIParams) => {
 	const { id } = params
-	return `${WP_API_ROOT}/categories/${id}`
+	return `${LOCAL_CONTENT_API_ROOT}/category?id=${id}`
 }
 
 /* API Collection */
@@ -115,10 +99,7 @@ const API_COLLECTION = {
 		category: categoryAPI,
 		like: likePostAPI,
 		allPostIDs: postIDsAPI,
-		searchIndices: searchIndicesAPI,
-		rssData: rssDataAPI,
 		page: pageAPI,
-		visit: visitAPI,
 		sponsors: sponsorAPI,
 		postStats: postStatsAPI,
 		posts: postsAPI,

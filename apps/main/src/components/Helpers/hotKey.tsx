@@ -1,5 +1,5 @@
-import { useHotkeys } from "react-hotkeys-hook"
 import type { KbarListItem } from "../Kbar"
+import { useHotkeys } from "react-hotkeys-hook"
 
 /**
  *  Helper component to use react-hotkeys-hook to register hotkeys

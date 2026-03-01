@@ -1,4 +1,15 @@
-@import "../assets/styles/vendors/tailwind.css";
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		@apply border-gray-200;
+	}
+}
 
 @layer utilities {
 	.prose ol {
@@ -736,11 +747,11 @@
 	}
 
 	.kbar-list li .kbar-list-heading {
-		@apply mt-0.5 -mb-2;
+		@apply -mb-2 mt-0.5;
 	}
 
 	.kbar-list li:first-child .kbar-list-heading {
-		@apply mt-0 -mb-1;
+		@apply -mb-1 mt-0;
 	}
 
 	/* Workaround for React onMouseLeave not triggering when user's cursor is moving fast*/

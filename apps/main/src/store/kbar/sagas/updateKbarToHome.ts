@@ -1,4 +1,3 @@
-import { put, select } from "redux-saga/effects"
 import {
 	setKbarList,
 	setKbarLoading,
@@ -6,6 +5,7 @@ import {
 	updateKbarLocation,
 } from "../actions"
 import { selectKbar } from "../selectors"
+import { put, select } from "redux-saga/effects"
 
 export default function* updateKbarToHomeSaga() {
 	try {

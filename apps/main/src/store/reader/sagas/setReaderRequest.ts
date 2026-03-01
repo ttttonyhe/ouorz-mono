@@ -1,5 +1,5 @@
-import { put } from "redux-saga/effects"
 import { setReader, setReaderAnimation, showReader } from "../actions"
+import { put } from "redux-saga/effects"
 
 export default function* setReaderRequstSaga(
 	action: ReturnType<typeof setReader>
