@@ -9,8 +9,10 @@ ignoredBuiltDependencies:
 onlyBuiltDependencies:
   - '@prisma/client'
   - '@prisma/engines'
+  - '@sentry-internal/node-cpu-profiler'
   - '@swc/core'
   - '@tailwindcss/oxide'
+  - core-js
   - core-js-pure
   - cpu-features
   - cypress
