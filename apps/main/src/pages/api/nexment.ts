@@ -1,19 +1,29 @@
 import type { NextRequest } from "next/server"
-import { LEANCLOUD_API } from "~/constants/apiURLs"
+
+const SUPABASE_URL = "https://ainpzfmspbpvpfcatnwq.supabase.co"
+const SUPABASE_KEY = "sb_publishable_LT9i2hIpENWPlyXyj-jmSw_ra4mPiSP"
 
 const nexment = async (_req: NextRequest) => {
-	const response = await fetch(`${LEANCLOUD_API.NEXMENT}?count=1&limit=0`, {
-		headers: {
-			"X-LC-Id": process.env.NEXT_PUBLIC_LC_ID,
-			"X-LC-Key": process.env.NEXT_PUBLIC_LC_KEY,
-		},
-	})
+	const response = await fetch(
+		`${SUPABASE_URL}/rest/v1/nexment_comments?select=*`,
+		{
+			method: "HEAD",
+			headers: {
+				apikey: SUPABASE_KEY,
+				Authorization: `Bearer ${SUPABASE_KEY}`,
+				Prefer: "count=exact",
+			},
+		}
+	)
 
-	const data = await response.json()
+	const count = parseInt(
+		response.headers.get("content-range")?.split("/")[1] ?? "0",
+		10
+	)
 
 	return new Response(
 		JSON.stringify({
-			count: data.count,
+			count,
 		}),
 		{
 			status: 200,
