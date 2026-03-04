@@ -40,7 +40,8 @@
 
 <br/>
 
-### Summary of Tech Stacks
+<details>
+<summary>Summary of Tech Stacks</summary>
 
 Super opinionated, completely overkill.
 
@@ -77,6 +78,7 @@ Super opinionated, completely overkill.
 - CI/CD
   - Github Actions
   - Vercel
+</details>
 
 <br/>
 
