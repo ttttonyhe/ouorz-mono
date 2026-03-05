@@ -26,7 +26,7 @@ const Home: NextPageWithLayout = () => {
 				<div className="flex items-center justify-between gap-x-10 gap-y-8">
 					<div className="-ml-1 flex flex-col gap-y-2.5">
 						<h1 className="wrap-break-word flex items-center whitespace-nowrap text-3xl font-medium tracking-wide text-black dark:text-white lg:text-[1.8rem]">
-							<span className="animate-wave-hand hover:animate-wave-hand-again mr-2 inline-block cursor-pointer">
+							<span className="mr-2 inline-block animate-wave-hand cursor-pointer hover:animate-wave-hand-again">
 								👋
 							</span>
 							Tony (Lipeng) He
@@ -602,6 +602,23 @@ const Home: NextPageWithLayout = () => {
 					</label>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
+					<PaperCard
+						title="Cybersecurity and Privacy Institute (CPI) Graduate Student Conference 2026"
+						authors="Locket: Robust Feature-Locking Technique for Language Models"
+						accepted={true}
+						venue={{
+							name: "Spotlight Talk",
+							href: "https://uwaterloo.ca/cybersecurity-privacy-institute/2026gradstudentconference",
+							color: "border-l-gray-500! border-l-4",
+						}}
+						links={[
+							{
+								label: "Poster",
+								href: "https://static.ouorz.com/locket-cpi-poster.pdf",
+								default: true,
+							},
+						]}
+					/>
 					<PaperCard
 						title="Cybersecurity and Privacy Institute (CPI) Graduate Student Conference 2025"
 						authors="Activation Approximations Can Incur Safety Vulnerabilities Even in Aligned LLMs: Comprehensive Analysis and Defense"
