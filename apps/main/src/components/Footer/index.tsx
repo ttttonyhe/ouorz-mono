@@ -99,13 +99,25 @@ export default function Footer() {
 				</a>{" "}
 				<span>·</span>{" "}
 				<p className="inline-flex items-center gap-1">
-					<a href="https://cs.uwatering.com/#https://lipeng.ac/?nav=prev">←</a>
+					<a
+						href="https://cs.uwatering.com/#https://lipeng.ac/?nav=prev"
+						rel="noreferrer"
+						target="_blank">
+						←
+					</a>
 					<a
 						href="https://cs.uwatering.com/#https://lipeng.ac/"
-						target="_blank">
+						target="_blank"
+						rel="noreferrer"
+						className="pt-0.5">
 						<Icon name="uwCSWebring" />
 					</a>
-					<a href="https://cs.uwatering.com/#https://lipeng.ac/?nav=next">→</a>
+					<a
+						href="https://cs.uwatering.com/#https://lipeng.ac/?nav=next"
+						rel="noreferrer"
+						target="_blank">
+						→
+					</a>
 				</p>
 			</p>
 		</footer>

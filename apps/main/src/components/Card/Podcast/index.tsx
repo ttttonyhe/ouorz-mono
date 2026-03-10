@@ -35,7 +35,7 @@ const PodcastCard = (props: PodcastCardProps) => {
 					/>
 				</div>
 			</div>
-			<div className="absolute left-5 top-8 hidden h-full w-40 overflow-hidden rounded-md opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 lg:block">
+			<div className="absolute left-5 top-8 hidden h-full w-40 overflow-hidden rounded-md opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100 lg:block">
 				<div className="translate-y-1 transition-all duration-300 ease-in-out group-hover:translate-y-0">
 					<img
 						className="mb-2 h-10 w-10 rounded-md border"

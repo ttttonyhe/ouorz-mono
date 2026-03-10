@@ -38,7 +38,7 @@ class AppDocument extends Document {
 					/>
 					<meta
 						name="keywords"
-						content="Tony He, Lipeng He, 贺莉朋, 工程师, 研究学者, Researcher, Software Engineer, Tony"
+						content="Tony He, Lipeng He, 贺莉朋, 工程师, 研究学者, Researcher, Software Engineer, Tony, AI Safety, AI Security, AI Privacy, AI Alignment, Reinforcement Learning, Trustworthy AI, Trustworthy ML"
 					/>
 					<meta name="robots" content="index,follow" />
 					<meta name="googlebot" content="index,follow" />

@@ -90,19 +90,22 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 							className="w-full flex-1 items-center px-6 py-4">
 							<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 								<Image
-									alt="Notion"
-									src="https://static.ouorz.com/beyz_logo.jpeg"
+									alt="ButterGrow"
+									src="https://static.ouorz.com/buttergrow_logo.webp"
 									width={20}
 									height={20}
 									className="rounded-full border border-gray-200 dark:border-gray-500"
 									loading="lazy"
 								/>
-								<span className="ml-2">Beyz</span>
+								<span className="ml-2">ButterGrow</span>
 							</h1>
 							<p
 								className="overflow-hidden text-ellipsis whitespace-nowrap text-4 tracking-wide text-gray-500 dark:text-gray-400"
 								dangerouslySetInnerHTML={{
-									__html: trimStr("Real-Time Meeting Assistant", 150),
+									__html: trimStr(
+										"The AI Growth Agency based on OpenClaw",
+										150
+									),
 								}}
 							/>
 						</a>
@@ -115,7 +118,7 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 							className="w-full flex-1 items-center px-6 py-4">
 							<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 								<Image
-									alt="Notion"
+									alt="Cap"
 									src="https://static.ouorz.com/cap-logo.png"
 									width={20}
 									height={20}
@@ -140,7 +143,7 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 							className="w-full flex-1 items-center px-6 py-4">
 							<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 								<Image
-									alt="Notion"
+									alt="Mintlify"
 									src="https://static.ouorz.com/mintlify_logo.png"
 									width={20}
 									height={20}
@@ -168,7 +171,7 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 							className="w-full flex-1 items-center px-6 py-4">
 							<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 								<Image
-									alt="Notion"
+									alt="Raycast"
 									src="https://static.ouorz.com/raycast-logo.png"
 									width={20}
 									height={20}
