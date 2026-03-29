@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"ignoreDeprecations": "6.0",
 		"target": "es2015",
 		"lib": ["esnext"],
 		"allowJs": true,
@@ -8,11 +9,10 @@
 		"noEmit": true,
 		"esModuleInterop": true,
 		"module": "esnext",
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"noImplicitAny": false,
-		"baseUrl": "./",
 		"allowSyntheticDefaultImports": true,
 		"experimentalDecorators": true,
 		"noImplicitReturns": true,
