@@ -84,7 +84,7 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 				<div className="mt-5 grid grid-cols-2 gap-4" data-cy="toolsItems">
 					<div className="shadow-xs z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none">
 						<a
-							href="https://beyz.ai/meeting-assistant"
+							href="https://buttergrow.com"
 							target="_blank"
 							rel="noreferrer"
 							className="w-full flex-1 items-center px-6 py-4">
@@ -112,78 +112,25 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 					</div>
 					<div className="shadow-xs z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none">
 						<a
-							href="https://cap.so"
+							href="https://github.com/ttttonyhe/autogrind"
 							target="_blank"
 							rel="noreferrer"
 							className="w-full flex-1 items-center px-6 py-4">
 							<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 								<Image
-									alt="Cap"
-									src="https://static.ouorz.com/cap-logo.png"
+									alt="Autogrind"
+									src="https://static.ouorz.com/autogrind-logo.png"
 									width={20}
 									height={20}
 									className="rounded-full border border-gray-200 dark:border-gray-500"
 									loading="lazy"
 								/>
-								<span className="ml-2">Cap</span>
+								<span className="ml-2">Autogrind</span>
 							</h1>
 							<p
 								className="overflow-hidden text-ellipsis whitespace-nowrap text-4 tracking-wide text-gray-500 dark:text-gray-400"
 								dangerouslySetInnerHTML={{
-									__html: trimStr("Open-source screen recording tool", 150),
-								}}
-							/>
-						</a>
-					</div>
-					<div className="shadow-xs z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none">
-						<a
-							href="https://www.mintlify.com"
-							target="_blank"
-							rel="noreferrer"
-							className="w-full flex-1 items-center px-6 py-4">
-							<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
-								<Image
-									alt="Mintlify"
-									src="https://static.ouorz.com/mintlify_logo.png"
-									width={20}
-									height={20}
-									className="rounded-full border border-gray-200 dark:border-gray-500"
-									loading="lazy"
-								/>
-								<span className="ml-2">Mintlify</span>
-							</h1>
-							<p
-								className="overflow-hidden text-ellipsis whitespace-nowrap text-4 tracking-wide text-gray-500 dark:text-gray-400"
-								dangerouslySetInnerHTML={{
-									__html: trimStr(
-										"The intelligent documentation platform",
-										150
-									),
-								}}
-							/>
-						</a>
-					</div>
-					<div className="shadow-xs z-40 flex w-full cursor-pointer flex-col rounded-md border bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600 dark:hover:shadow-none">
-						<a
-							href="https://www.raycast.com"
-							target="_blank"
-							rel="noreferrer"
-							className="w-full flex-1 items-center px-6 py-4">
-							<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
-								<Image
-									alt="Raycast"
-									src="https://static.ouorz.com/raycast-logo.png"
-									width={20}
-									height={20}
-									className="rounded-full border border-gray-200 dark:border-gray-500"
-									loading="lazy"
-								/>
-								<span className="ml-2">Raycast</span>
-							</h1>
-							<p
-								className="overflow-hidden text-ellipsis whitespace-nowrap text-4 tracking-wide text-gray-500 dark:text-gray-400"
-								dangerouslySetInnerHTML={{
-									__html: trimStr("macOS Spotlight alternative", 150),
+									__html: trimStr("24x7 auto-work mode for your agents", 150),
 								}}
 							/>
 						</a>
