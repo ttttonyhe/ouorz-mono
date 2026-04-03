@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"ignoreDeprecations": "6.0",
+		"ignoreDeprecations": "5.0",
 		"target": "esnext",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,

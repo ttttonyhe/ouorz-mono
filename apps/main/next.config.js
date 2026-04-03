@@ -23,6 +23,14 @@ const NextConfigs = {
 				protocol: "https",
 				hostname: "i.gr-assets.com",
 			},
+			{
+				protocol: "https",
+				hostname: "luneresearch.com",
+			},
+			{
+				protocol: "https",
+				hostname: "www.snapodcast.com",
+			},
 		],
 		path: "/assets/_next/image",
 	},

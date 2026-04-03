@@ -41,68 +41,98 @@ const Pages: NextPageWithLayout = () => {
 					</div>
 				</div>
 			</div>
-			<div className="glowing-area mt-5 grid grid-cols-2 gap-4">
-				<PageCard
-					title="Dashboard"
-					des="Track my metrics"
-					icon="ppt"
-					className="text-blue-500"
-					href="/dashboard"
-					viewTransitionName={getViewTransitionName("Dashboard")}
-				/>
-				<PageCard
-					title="Web 3.0"
-					des="Wallets, identities and assets"
-					icon="rainbow"
-					className="text-pink-500"
-					href="/web3"
-					viewTransitionName={getViewTransitionName("Web 3.0")}
-				/>
-				<PageCard
-					title="Reading List"
-					des="My book shelf"
-					icon="bookmark"
-					className="text-green-500"
-					href="/reading-list"
-					viewTransitionName={getViewTransitionName("Reading List")}
-				/>
-				<PageCard
-					title="Podcasts"
-					des="My recommendations"
-					icon="mic"
-					className="text-yellow-500"
-					href="/podcasts"
-					viewTransitionName={getViewTransitionName("Podcasts")}
-				/>
-				<PageCard
-					title="Guestbook"
-					des="Leave your comments"
-					icon="question"
-					className="text-gray-400"
-					href="/page/249"
-				/>
-				<PageCard
-					title="Links"
-					des="A collection of fun stuff"
-					icon="links"
-					className="text-gray-400"
-					href="/links"
-					viewTransitionName={getViewTransitionName("Links")}
-				/>
-				<PageCard
-					title="Analytics"
-					des="Website statistics"
-					icon="growth"
-					className="text-gray-400"
-					href="https://analytics.ouorz.com/share/E4O9QpCn/ouorz-next"
-				/>
-				<PageCard
-					title="Known Unknowns"
-					des="Podcast"
-					icon="microphone"
-					className="text-gray-400"
-					href="https://kukfm.com"
-				/>
+			<div className="mt-5 flex flex-col gap-y-10">
+				<div className="glowing-area grid grid-cols-2 gap-4">
+					<PageCard
+						title="Dashboard"
+						des="Track my metrics"
+						icon="ppt"
+						className="text-blue-500"
+						href="/dashboard"
+						viewTransitionName={getViewTransitionName("Dashboard")}
+					/>
+					<PageCard
+						title="Web 3.0"
+						des="Wallets, identities and assets"
+						icon="rainbow"
+						className="text-pink-500"
+						href="/web3"
+						viewTransitionName={getViewTransitionName("Web 3.0")}
+					/>
+					<PageCard
+						title="Reading List"
+						des="My book shelf"
+						icon="bookmark"
+						className="text-green-500"
+						href="/reading-list"
+						viewTransitionName={getViewTransitionName("Reading List")}
+					/>
+					<PageCard
+						title="Podcasts"
+						des="My recommendations"
+						icon="mic"
+						className="text-yellow-500"
+						href="/podcasts"
+						viewTransitionName={getViewTransitionName("Podcasts")}
+					/>
+					<PageCard
+						title="Guestbook"
+						des="Leave your comments"
+						icon="question"
+						className="text-gray-400"
+						href="/page/249"
+					/>
+					<PageCard
+						title="Links"
+						des="A collection of fun stuff"
+						icon="links"
+						className="text-gray-400"
+						href="/links"
+						viewTransitionName={getViewTransitionName("Links")}
+					/>
+					<PageCard
+						title="Analytics"
+						des="Website statistics"
+						icon="growth"
+						className="text-gray-400"
+						href="https://analytics.ouorz.com/share/E4O9QpCn/ouorz-next"
+					/>
+					<PageCard
+						title="Known Unknowns"
+						des="Podcast"
+						icon="microphone"
+						className="text-gray-400"
+						href="https://kukfm.com"
+					/>
+				</div>
+				<hr className="dark:border-gray-600" />
+				<div className="glowing-area grid grid-cols-2 gap-4">
+					<PageCard
+						title="Lune Research"
+						des="AI-native research workspace"
+						icon="https://luneresearch.com/lune-logo.svg"
+						href="https://luneresearch.com"
+					/>
+					<PageCard
+						title="Snapod"
+						des="PaaS for podcasters"
+						icon="🎙️"
+						href="https://www.snapodcast.com"
+					/>
+					<PageCard
+						title="Last Week in Agents"
+						des="RSS feed for top-tier papers"
+						icon="rss"
+						className="text-yellow-500"
+						href="https://openclaw.lipeng.ac/feeds/last-week-in-agents.xml"
+					/>
+					<PageCard
+						title="Autogrind"
+						des="24x7 auto-work mode skill"
+						icon="✊"
+						href="https://github.com/ttttonyhe/autogrind"
+					/>
+				</div>
 			</div>
 		</div>
 	)
