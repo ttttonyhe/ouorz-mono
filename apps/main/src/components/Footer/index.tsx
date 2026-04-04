@@ -98,7 +98,7 @@ export default function Footer() {
 					Open Source Software (OSS)
 				</a>{" "}
 				<span>·</span>{" "}
-				<p className="inline-flex items-center gap-1">
+				<span className="inline-flex items-center gap-1">
 					<a
 						href="https://cs.uwatering.com/#https://lipeng.ac/?nav=prev"
 						rel="noreferrer"
@@ -118,7 +118,7 @@ export default function Footer() {
 						target="_blank">
 						→
 					</a>
-				</p>
+				</span>
 			</p>
 		</footer>
 	)
