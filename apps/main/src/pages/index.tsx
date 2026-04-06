@@ -311,6 +311,27 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
+						title="Locket: Robust Feature-Locking Technique for Language Models"
+						authors="Lipeng He, Vasisht Duddu, and N. Asokan"
+						accepted={true}
+						venue={{
+							name: "ACL 2026",
+							href: "https://2026.aclweb.org",
+							color: "border-l-red-500! border-l-4",
+						}}
+						links={[
+							{
+								label: "Paper",
+								href: "https://arxiv.org/abs/2510.12117",
+								default: true,
+							},
+							{
+								label: "Poster",
+								href: "https://static.ouorz.com/locket-cpi-poster.pdf",
+							},
+						]}
+					/>
+					<PaperCard
 						title="Safety at One Shot: Patching Fine-Tuned LLMs with A Single Instance"
 						authors="Jiawen Zhang, Lipeng He, Kejia Chen, Jian Lou, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
 						accepted={true}
@@ -561,22 +582,6 @@ const Home: NextPageWithLayout = () => {
 						authors="Vasisht Duddu, Lipeng He, Asim Waheed, and N. Asokan"
 						accepted={false}
 						links={[]}
-					/>
-					<PaperCard
-						title="Locket: Robust Feature-Locking Technique for Language Models"
-						authors="Lipeng He, Vasisht Duddu, and N. Asokan"
-						accepted={false}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2510.12117",
-								default: true,
-							},
-							{
-								label: "Poster",
-								href: "https://static.ouorz.com/locket-cpi-poster.pdf",
-							},
-						]}
 					/>
 					<PaperCard
 						title="From Detection to Diagnosis: Lightweight Federated Prompt Learning for Interpretable Industrial Anomaly Analysis"
