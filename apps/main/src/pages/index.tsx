@@ -554,6 +554,12 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
+						title="Revealing and Benchmarking the Safety Risks in Blockchain Agents"
+						authors="Jiawen Zhang, Kejia Chen, Lipeng He, Yechao Zhang, Jian Liu and Xiaohu Yang"
+						accepted={false}
+						links={[]}
+					/>
+					<PaperCard
 						title="Backdooring Bias in Large Language Models"
 						authors="Anudeep Das, Prach Chantasantitam, Gurjot Singh, Lipeng He, Mariia Ponomarenko, and Florian Kerschbaum"
 						accepted={false}
@@ -703,8 +709,8 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<ServiceCard
-						serviceRole="Directed Reading Program (DRP)"
-						serviceType="Mentor"
+						serviceRole="Directed Reading Program (DRP) Mentor"
+						serviceType="University"
 						serviceTitle="AI Safety and Security Challenges in LLM-based Autonomous Agents (Spring 2026)"
 						serviceOrganization="Women in Mathematics (WiM)"
 					/>
