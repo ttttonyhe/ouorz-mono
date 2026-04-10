@@ -311,6 +311,23 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
+						title="Understanding and Preserving Safety in Fine-Tuned LLMs"
+						authors="Jiawen Zhang, Yangfan Hu, Kejia Chen, Lipeng He, Jiachen Ma, Jian Lou, Dan Li, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
+						accepted={true}
+						venue={{
+							name: "CCS 2026",
+							href: "https://www.sigsac.org/ccs/CCS2026/index.html",
+							color: "border-l-red-500! border-l-4",
+						}}
+						links={[
+							{
+								label: "Paper",
+								href: "https://arxiv.org/abs/2601.10141",
+								default: true,
+							},
+						]}
+					/>
+					<PaperCard
 						title="Locket: Robust Feature-Locking Technique for Language Models"
 						authors="Lipeng He, Vasisht Duddu, and N. Asokan"
 						accepted={true}
@@ -567,18 +584,6 @@ const Home: NextPageWithLayout = () => {
 							{
 								label: "Paper",
 								href: "https://arxiv.org/abs/2602.13427",
-								default: true,
-							},
-						]}
-					/>
-					<PaperCard
-						title="Understanding and Preserving Safety in Fine-Tuned LLMs"
-						authors="Jiawen Zhang, Yangfan Hu, Kejia Chen, Lipeng He, Jiachen Ma, Jian Lou, Dan Li, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
-						accepted={false}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2601.10141",
 								default: true,
 							},
 						]}
