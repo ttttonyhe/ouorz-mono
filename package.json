@@ -59,6 +59,11 @@
 		"solhint-plugin-prettier": "^0.1.0",
 		"turbo": "^2.9.3"
 	},
+	"pnpm": {
+		"overrides": {
+			"better-auth": "1.4.9"
+		}
+	},
 	"husky": {
 		"hooks": {
 			"pre-commit": "lint-staged"
