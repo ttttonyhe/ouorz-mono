@@ -346,6 +346,10 @@ const Home: NextPageWithLayout = () => {
 								label: "Poster",
 								href: "https://static.ouorz.com/locket-cpi-poster.pdf",
 							},
+							{
+								label: "Code",
+								href: "https://github.com/ssg-research/locket",
+							},
 						]}
 					/>
 					<PaperCard
