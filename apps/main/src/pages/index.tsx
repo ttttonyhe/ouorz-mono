@@ -686,7 +686,7 @@ const Home: NextPageWithLayout = () => {
 						serviceRole="Program Committee Member"
 						serviceType="Conference"
 						serviceTypeColor="border-l-red-400! border-l-4"
-						serviceTitle="ACM Conference on Computer and Communications Security (CCS) 2025"
+						serviceTitle="ACM Conference on Computer and Communications Security (CCS) 2025, 2026"
 						serviceOrganization="Artifact Evaluation"
 					/>
 					<ServiceCard
