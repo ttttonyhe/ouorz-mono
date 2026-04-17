@@ -24,7 +24,7 @@ const Home: NextPageWithLayout = () => {
 			</Head>
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="flex items-center justify-between gap-x-10 gap-y-8">
-					<div className="-ml-1 flex flex-col gap-y-2.5">
+					<div className="flex flex-col gap-y-2.5">
 						<h1 className="wrap-break-word flex items-center whitespace-nowrap text-3xl font-medium tracking-wide text-black dark:text-white lg:text-[1.8rem]">
 							{/* <span className="mr-2 inline-block animate-wave-hand cursor-pointer hover:animate-wave-hand-again">
 								👋
@@ -222,14 +222,21 @@ const Home: NextPageWithLayout = () => {
 							rel="noreferrer">
 							large language models (LLMs)
 						</a>
-						, and the security &amp; privacy of modern Artificial Intelligence
-						(AI) systems. I develop effective and efficient{" "}
+						, and the security &amp; privacy of modern AI systems.{" "}
+						<strong>
+							I study how robustness breaks under real-world deployment
+							conditions and how to fix it.
+						</strong>
+					</p>
+					<p className="mt-3.5">
+						To that end, I develop effective and efficient{" "}
 						<strong>adversarial attacks</strong>, as well as{" "}
 						<strong>principled defenses</strong>, drawing on applied
 						cryptography, theoretical machine learning, and computer security to
 						characterize and mitigate emerging threats.
 					</p>
-					<p className="mt-3.5">
+					<hr className="mt-3.5 dark:border-gray-700" />
+					<p className="mt-3.5 opacity-50 transition-opacity duration-300 ease-in-out hover:opacity-100">
 						More broadly, I am interested in{" "}
 						<a
 							className="text-blue-500 hover:underline"
@@ -256,7 +263,7 @@ const Home: NextPageWithLayout = () => {
 						</a>{" "}
 						for building controllable and reliable AI systems.
 					</p>
-					<p className="mt-3.5">
+					<p className="mt-3.5 opacity-50 transition-opacity duration-300 ease-in-out hover:opacity-100">
 						I also study the design and <strong>software engineering</strong> of
 						agentic systems for both{" "}
 						<a
@@ -277,7 +284,7 @@ const Home: NextPageWithLayout = () => {
 						</a>{" "}
 						and multi-agent systems.
 					</p>
-					<p className="mt-3.5">
+					<p className="mt-3.5 opacity-50 transition-opacity duration-300 ease-in-out hover:opacity-100">
 						A central goal of my work is to leverage theoretical security
 						research to address{" "}
 						<strong>bottlenecks in real-world production systems</strong>. I
