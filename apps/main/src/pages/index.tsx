@@ -212,7 +212,13 @@ const Home: NextPageWithLayout = () => {
 					<span className="uppercase">Research Interests</span>
 				</label>
 				<div className="wrap-break-word mt-[15px] flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
-					<p>
+					<p className="border-l-2 border-gray-300 pl-4">
+						Our agenda: ensure AI&apos;s transformative potential reaches the
+						largest set of markets in the most beneficially impactful way.
+						Safety is the unlock that guarantees the world will benefit from AI.
+					</p>
+					<hr className="mt-3.5 dark:border-gray-700" />
+					<p className="mt-3.5">
 						My research focuses on <strong>Trustworthy Machine Learning</strong>
 						, with an emphasis on the adversarial robustness of{" "}
 						<a
@@ -235,8 +241,7 @@ const Home: NextPageWithLayout = () => {
 						cryptography, theoretical machine learning, and computer security to
 						characterize and mitigate emerging threats.
 					</p>
-					<hr className="mt-3.5 dark:border-gray-700" />
-					<p className="mt-3.5 opacity-50 transition-opacity duration-300 ease-in-out hover:opacity-100">
+					<p className="mt-3.5">
 						More broadly, I am interested in{" "}
 						<a
 							className="text-blue-500 hover:underline"
@@ -263,6 +268,7 @@ const Home: NextPageWithLayout = () => {
 						</a>{" "}
 						for building controllable and reliable AI systems.
 					</p>
+					<hr className="mt-3.5 dark:border-gray-700" />
 					<p className="mt-3.5 opacity-50 transition-opacity duration-300 ease-in-out hover:opacity-100">
 						I also study the design and <strong>software engineering</strong> of
 						agentic systems for both{" "}
