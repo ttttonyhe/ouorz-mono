@@ -213,9 +213,10 @@ const Home: NextPageWithLayout = () => {
 				</label>
 				<div className="wrap-break-word mt-[15px] flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p className="border-l-2 border-gray-300 pl-4">
-						Our agenda: ensure AI&apos;s transformative potential reaches the
-						largest set of markets in the most beneficially impactful way.
-						Safety is the unlock that guarantees the world will benefit from AI.
+						Vision: To ensure AI&apos;s transformative potential reaches as much
+						of the society as possible in the most beneficially impactful way,
+						with safety as the unlock that guarantees the world will benefit
+						from AI.
 					</p>
 					<hr className="mt-3.5 dark:border-gray-700" />
 					<p className="mt-3.5">
@@ -230,7 +231,7 @@ const Home: NextPageWithLayout = () => {
 						</a>
 						, and the security &amp; privacy of modern AI systems.{" "}
 						<strong>
-							I study how robustness breaks under real-world deployment
+							I study how robustness breaks under realistic deployment
 							conditions and how to fix it.
 						</strong>
 					</p>
