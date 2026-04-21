@@ -212,14 +212,7 @@ const Home: NextPageWithLayout = () => {
 					<span className="uppercase">Research Interests</span>
 				</label>
 				<div className="wrap-break-word mt-[15px] flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
-					<p className="border-l-2 border-gray-300 pl-4">
-						Vision: To ensure AI&apos;s transformative potential reaches as much
-						of the society as possible in the most beneficially impactful way,
-						with safety as the unlock that guarantees the world will benefit
-						from AI.
-					</p>
-					<hr className="mt-3.5 dark:border-gray-700" />
-					<p className="mt-3.5">
+					<p>
 						My research focuses on <strong>Trustworthy Machine Learning</strong>
 						, with an emphasis on the adversarial robustness of{" "}
 						<a
@@ -229,7 +222,7 @@ const Home: NextPageWithLayout = () => {
 							rel="noreferrer">
 							large language models (LLMs)
 						</a>
-						, and the security &amp; privacy of modern AI systems.{" "}
+						, and the security &amp; privacy of agentic AI systems.{" "}
 						<strong>
 							I study how robustness breaks under realistic deployment
 							conditions and how to fix it.
@@ -270,7 +263,7 @@ const Home: NextPageWithLayout = () => {
 						for building controllable and reliable AI systems.
 					</p>
 					<hr className="mt-3.5 dark:border-gray-700" />
-					<p className="mt-3.5 opacity-50 transition-opacity duration-300 ease-in-out hover:opacity-100">
+					{/* <p className="mt-3.5 opacity-50 transition-opacity duration-300 ease-in-out hover:opacity-100">
 						I also study the design and <strong>software engineering</strong> of
 						agentic systems for both{" "}
 						<a
@@ -290,8 +283,8 @@ const Home: NextPageWithLayout = () => {
 							LLM-based agents
 						</a>{" "}
 						and multi-agent systems.
-					</p>
-					<p className="mt-3.5 opacity-50 transition-opacity duration-300 ease-in-out hover:opacity-100">
+					</p> */}
+					<p className="mt-3.5">
 						A central goal of my work is to leverage theoretical security
 						research to address{" "}
 						<strong>bottlenecks in real-world production systems</strong>. I
@@ -308,7 +301,22 @@ const Home: NextPageWithLayout = () => {
 					</p>
 				</div>
 			</section>
-			<section className="mt-14">
+			<section className="mt-16">
+				<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="mr-1.5 flex h-5 w-5">
+						<Icon name="rainbow" />
+					</span>
+					<span className="uppercase">Research Vision</span>
+				</label>
+				<div className="wrap-break-word mt-[15px] flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
+					<p>
+						To ensure AI&apos;s transformative potential reaches as much of the
+						society as possible in the most beneficially impactful way, with
+						safety as the unlock that guarantees the world will benefit from AI.
+					</p>
+				</div>
+			</section>
+			<section className="mt-16">
 				<div className="flex items-center justify-between">
 					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
