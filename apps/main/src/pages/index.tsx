@@ -287,9 +287,8 @@ const Home: NextPageWithLayout = () => {
 					<p className="mt-3.5">
 						A central goal of my work is to leverage theoretical security
 						research to address{" "}
-						<strong>bottlenecks in real-world production systems</strong>. I
-						look for ways to bridge research efforts with practical deployments
-						and{" "}
+						<strong>bottlenecks in real-world systems</strong>. I look for ways
+						to bridge research efforts with practical deployments and{" "}
 						<a
 							href="https://www.ycombinator.com/companies?industry=Security"
 							target="_blank"
@@ -311,8 +310,8 @@ const Home: NextPageWithLayout = () => {
 				<div className="wrap-break-word mt-[15px] flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p>
 						To ensure AI&apos;s transformative potential reaches as much of the
-						society as possible in the most beneficially impactful way, with
-						safety as the unlock that guarantees the world will benefit from AI.
+						society as possible in the most impactful way, with safety as the
+						unlock that guarantees the world will benefit from AI.
 					</p>
 				</div>
 			</section>
