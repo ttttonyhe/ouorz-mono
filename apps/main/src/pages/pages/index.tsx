@@ -108,23 +108,23 @@ const Pages: NextPageWithLayout = () => {
 				<hr className="dark:border-gray-600" />
 				<div className="glowing-area grid grid-cols-2 gap-4">
 					<PageCard
-						title="Lune Research"
-						des="AI-native research workspace"
+						title="Lune"
+						des="Research tools for agents"
 						icon="https://luneresearch.com/lune-logo.svg"
 						href="https://luneresearch.com"
+					/>
+					<PageCard
+						title="Retroguard"
+						des="Verifiably secure AI guardrails"
+						icon="https://retroguard.ai/logo.svg"
+						className="text-purple-500"
+						href="https://retroguard.ai"
 					/>
 					<PageCard
 						title="Snapod"
 						des="PaaS for podcasters"
 						icon="🎙️"
 						href="https://www.snapodcast.com"
-					/>
-					<PageCard
-						title="Last Week in Agents"
-						des="RSS feed for top-tier papers"
-						icon="rss"
-						className="text-yellow-500"
-						href="https://openclaw.lipeng.ac/feeds/last-week-in-agents.xml"
 					/>
 					<PageCard
 						title="Autogrind"

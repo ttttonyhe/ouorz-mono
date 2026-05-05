@@ -232,7 +232,7 @@ const Home: NextPageWithLayout = () => {
 						To that end, I develop effective and efficient{" "}
 						<strong>adversarial attacks</strong>, as well as{" "}
 						<strong>principled defenses</strong>, drawing on applied
-						cryptography, theoretical machine learning, and computer security to
+						cryptography, theoretical machine learning, and systems security to
 						characterize and mitigate emerging threats.
 					</p>
 					<p className="mt-3.5">
