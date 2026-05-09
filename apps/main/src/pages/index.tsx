@@ -596,6 +596,12 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
+						title="Defending against Adaptive Prompt Injection Attacks via Reasoning-enabled Task Alignment"
+						authors="Lipeng He, Yihan Wang, Jiawen Zhang and N. Asokan"
+						accepted={false}
+						links={[]}
+					/>
+					<PaperCard
 						title="Revealing and Benchmarking the Safety Risks in Blockchain Agents"
 						authors="Jiawen Zhang, Kejia Chen, Lipeng He, Yechao Zhang, Jian Liu and Xiaohu Yang"
 						accepted={false}

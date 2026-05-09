@@ -297,16 +297,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			description: "Link",
 			icon: "email",
 			link: {
-				external: "mailto:tony.hlp@hotmail.com",
-			},
-		},
-		{
-			label: "Leave a Comment",
-			id: "comment",
-			description: "Page",
-			icon: "comments",
-			link: {
-				internal: "/page/249",
+				external: "mailto:lipeng.he@uwaterloo.ca",
 			},
 		},
 		{
@@ -383,30 +374,12 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			},
 		},
 		{
-			label: "Thoughts",
-			id: "thoughts",
-			description: "Link",
-			icon: "lightBulb",
-			link: {
-				external: "https://notion.ouorz.com",
-			},
-		},
-		{
 			label: "Podcast",
 			id: "podcast",
 			description: "Link",
 			icon: "mic",
 			link: {
 				external: "https://kukfm.com",
-			},
-		},
-		{
-			label: "Snapod",
-			id: "snapod",
-			description: "Link",
-			icon: "microphone",
-			link: {
-				external: "https://www.snapodcast.com",
 			},
 		},
 		{
@@ -420,7 +393,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			description: "Link",
 			icon: "twitterX",
 			link: {
-				external: "https://x.com/ttttonyhe",
+				external: "https://x.com/tonyhe_lipeng",
 			},
 		},
 		{
