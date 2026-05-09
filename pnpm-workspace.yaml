@@ -3,24 +3,6 @@ packages:
   - packages/*
   - '!**/wordpress/**'
 
-allowBuilds:
-  '@prisma/client': true
-  '@prisma/engines': true
-  '@sentry-internal/node-cpu-profiler': true
-  '@sentry/cli': true
-  '@swc/core': true
-  '@tailwindcss/oxide': true
-  core-js: true
-  core-js-pure: true
-  cpu-features: true
-  cypress: true
-  esbuild: true
-  keccak: true
-  prisma: true
-  secp256k1: true
-  sharp: true
-  ssh2: true
-
 ignoredBuiltDependencies:
   - '@sentry/cli'
 
