@@ -33,7 +33,7 @@ const Home: NextPageWithLayout = () => {
 						</h1>
 						<div className="wrap-break-word flex flex-col gap-y-1.5 px-1 text-4 font-light leading-relaxed tracking-wider text-gray-500 dark:text-gray-300 lg:text-2">
 							<p>
-								I am a student, software engineer, and researcher at the{" "}
+								Student, software engineer, founder, and researcher at the{" "}
 								<a
 									href="https://uwaterloo.ca"
 									target="_blank"
@@ -194,7 +194,7 @@ const Home: NextPageWithLayout = () => {
 						</a>
 						, and{" "}
 						<a
-							href="https://www.producthunt.com/products/snapod-beta"
+							href="https://inretrograde.io"
 							target="_blank"
 							rel="noreferrer"
 							className="text-blue-500 hover:underline">
@@ -834,29 +834,12 @@ const Home: NextPageWithLayout = () => {
 				<div className="flex items-center justify-between">
 					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
-							<Icon name="suitcase" />
+							<Icon name="microscope" />
 						</span>
-						<span className="uppercase">Experience</span>
+						<span className="uppercase">Research Experience</span>
 					</label>
-					<Link
-						href="https://www.linkedin.com/in/~lhe/"
-						target="_blank"
-						className="flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
-						LinkedIn
-						<span className="h-5 w-5 underline">
-							<Icon name="externalLink" />
-						</span>
-					</Link>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
-					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/ezra_logo.jpg"
-						organization="Bluelet AI"
-						organizationFullName="Agentic AI and data platform solutions for talent acquisition and matching"
-						jobTitle="Co-Founder & CTO"
-						jobType="Leadership"
-						dateString="May 2025 - June 2025"
-					/>
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/crysp_logo.png"
 						organization="University of Waterloo"
@@ -872,6 +855,43 @@ const Home: NextPageWithLayout = () => {
 						jobTitle="Research Assistant"
 						jobType="Research, Co-op"
 						dateString="May - Aug 2024"
+					/>
+				</div>
+			</section>
+			<section className="mt-14">
+				<div className="flex items-center justify-between">
+					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+						<span className="mr-1.5 flex h-5 w-5">
+							<Icon name="suitcase" />
+						</span>
+						<span className="uppercase">Industry Experience</span>
+					</label>
+					<Link
+						href="https://www.linkedin.com/in/~lhe/"
+						target="_blank"
+						className="flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
+						LinkedIn
+						<span className="h-5 w-5 underline">
+							<Icon name="externalLink" />
+						</span>
+					</Link>
+				</div>
+				<div className="mt-5 flex flex-col gap-y-4">
+					<EmploymentCard
+						orgLogoSrc="https://static.ouorz.com/retrograde-labs-logo.png"
+						organization="Retrograde Labs"
+						organizationFullName="Accelerating frontier scientific discovery and commercialization"
+						jobTitle="Co-Founder"
+						jobType="Leadership"
+						dateString="May 2026 - Present"
+					/>
+					<EmploymentCard
+						orgLogoSrc="https://static.ouorz.com/ezra_logo.jpg"
+						organization="Bluelet AI"
+						organizationFullName="Agentic AI and data platform solutions for talent acquisition and matching"
+						jobTitle="Co-Founder & CTO"
+						jobType="Leadership"
+						dateString="May 2025 - June 2025"
 					/>
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/biorender_logo.png"
@@ -892,9 +912,9 @@ const Home: NextPageWithLayout = () => {
 						organizationLocation="North York, ON"
 					/>
 					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/bitbuy_logo.png"
-						organization="Bitbuy"
-						organizationFullName="Cryptocurrency Exchange, Publicly Traded on TSX: WNDR"
+						orgLogoSrc="https://static.ouorz.com/robinhood-logo.png"
+						organization="Robinhood"
+						organizationFullName="Bitbuy (Cryptocurrency Exchange), TSX: WNDR"
 						jobTitle="Front End Software Engineer"
 						jobType="SWE, Co-op"
 						dateString="Sep -  Dec 2021"
