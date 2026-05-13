@@ -54,6 +54,7 @@ const Home: NextPageWithLayout = () => {
 							height={105}
 							width={105}
 							alt="Tony teaching an undergraduate CS course"
+							priority
 							className="shadow-xs rounded-xl bg-gray-200 dark:border dark:border-gray-600"
 						/>
 					</div>
@@ -490,6 +491,17 @@ const Home: NextPageWithLayout = () => {
 				<hr className="mt-5 dark:border-gray-700" />
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
+						title="Revealing and Benchmarking the Safety Risks in Blockchain Agents"
+						authors="Jiawen Zhang, Kejia Chen, Lipeng He, Yechao Zhang, Jian Liu and Xiaohu Yang"
+						accepted={true}
+						venue={{
+							name: "BCRA 2026",
+							href: "https://bcra-conf.seedsbit.com/",
+							color: "border-l-gray-500! border-l-4",
+						}}
+						links={[]}
+					/>
+					<PaperCard
 						title="StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs"
 						authors="Jialin Yang, Dongfu Jiang, Lipeng He, Sherman Siu, Yuxuan Zhang, Disen Liao, Benjamin Schneider, Ping Nie, Wenhu Chen, et al."
 						accepted={true}
@@ -598,12 +610,6 @@ const Home: NextPageWithLayout = () => {
 					<PaperCard
 						title="Defending against Adaptive Prompt Injection Attacks via Reasoning-enabled Task Alignment"
 						authors="Lipeng He, Yihan Wang, Jiawen Zhang and N. Asokan"
-						accepted={false}
-						links={[]}
-					/>
-					<PaperCard
-						title="Revealing and Benchmarking the Safety Risks in Blockchain Agents"
-						authors="Jiawen Zhang, Kejia Chen, Lipeng He, Yechao Zhang, Jian Liu and Xiaohu Yang"
 						accepted={false}
 						links={[]}
 					/>
