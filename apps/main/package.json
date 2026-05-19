@@ -18,8 +18,8 @@
 		"content:recover:wayback": "node scripts/recover-wayback.mjs"
 	},
 	"dependencies": {
-		"@reduxjs/toolkit": "^2.11.2",
-		"@sentry/nextjs": "^10.52.0",
+		"@reduxjs/toolkit": "^2.12.0",
+		"@sentry/nextjs": "^10.53.1",
 		"@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
 		"@twilight-toolkit/ui": "workspace:*",
 		"@twilight-toolkit/utils": "workspace:*",
@@ -29,7 +29,7 @@
 		"gray-matter": "^4.0.3",
 		"highlight.js": "^11.11.1",
 		"html2plaintext": "^2.1.4",
-		"katex": "^0.16.45",
+		"katex": "^0.16.47",
 		"lodash": "^4.18.1",
 		"marked": "^18.0.3",
 		"next": "^16.2.6",
@@ -38,7 +38,7 @@
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
 		"react-hotkeys-hook": "^5.3.2",
-		"react-redux": "^9.2.0",
+		"react-redux": "^9.3.0",
 		"react-snowfall": "^2.4.0",
 		"redux-saga": "^1.4.3",
 		"rehype-highlight": "^7.0.2",
@@ -59,13 +59,13 @@
 		"@tailwindcss/typography": "^0.5.19",
 		"@types/cors": "^2.8.19",
 		"@types/lodash": "^4.17.24",
-		"@types/node": "^25.6.2",
+		"@types/node": "^25.9.0",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
 		"@types/react-highlight": "^0.12.8",
 		"@types/rss": "^0.0.32",
 		"@types/smoothscroll-polyfill": "^0.3.4",
-		"baseline-browser-mapping": "^2.10.29",
+		"baseline-browser-mapping": "^2.10.31",
 		"comma-number": "^2.1.0",
 		"cssnano": "^8.0.1",
 		"eslint": "^9.39.3",
@@ -93,6 +93,6 @@
 		"@types/chai": "^5.2.3",
 		"@types/jest": "^30.0.0",
 		"@types/mocha": "^10.0.10",
-		"cypress": "^15.14.2"
+		"cypress": "^15.15.0"
 	}
 }

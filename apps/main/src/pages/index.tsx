@@ -214,8 +214,14 @@ const Home: NextPageWithLayout = () => {
 				</label>
 				<div className="wrap-break-word mt-[15px] flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p>
-						My research focuses on <strong>Trustworthy Machine Learning</strong>
-						, with an emphasis on the adversarial robustness of{" "}
+						<strong className="font-bold">TL;DR</strong>: I study{" "}
+						<strong className="font-medium">AI Safety and Security</strong> in
+						real-world systems and applications.
+					</p>
+					<hr className="mt-3.5 dark:border-gray-700" />
+					<p className="mt-3.5">
+						My research focuses on Trustworthy Machine Learning , with an
+						emphasis on the adversarial robustness of{" "}
 						<a
 							className="text-blue-500 hover:underline"
 							href="https://genai.owasp.org/llm-top-10"
@@ -223,18 +229,15 @@ const Home: NextPageWithLayout = () => {
 							rel="noreferrer">
 							large language models (LLMs)
 						</a>
-						, and the security &amp; privacy of agentic AI systems.{" "}
-						<strong>
-							I study how robustness breaks under realistic deployment
-							conditions and how to fix it.
-						</strong>
+						, and the security &amp; privacy of agentic AI systems. I study how
+						robustness breaks under realistic deployment conditions and how to
+						fix it.
 					</p>
 					<p className="mt-3.5">
-						To that end, I develop effective and efficient{" "}
-						<strong>adversarial attacks</strong>, as well as{" "}
-						<strong>principled defenses</strong>, drawing on applied
-						cryptography, theoretical machine learning, and systems security to
-						characterize and mitigate emerging threats.
+						To that end, I develop effective and efficient adversarial attacks,
+						as well as principled defenses, drawing on applied cryptography,
+						theoretical machine learning, and systems security to characterize
+						and mitigate emerging threats.
 					</p>
 					<p className="mt-3.5">
 						More broadly, I am interested in{" "}
@@ -287,9 +290,8 @@ const Home: NextPageWithLayout = () => {
 					</p> */}
 					<p className="mt-3.5">
 						A central goal of my work is to leverage theoretical security
-						research to address{" "}
-						<strong>bottlenecks in real-world systems</strong>. I look for ways
-						to bridge research efforts with practical deployments and{" "}
+						research to address bottlenecks in real-world systems. I look for
+						ways to bridge research efforts with practical deployments and{" "}
 						<a
 							href="https://www.ycombinator.com/companies?industry=Security"
 							target="_blank"
