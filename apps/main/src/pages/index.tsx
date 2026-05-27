@@ -214,7 +214,7 @@ const Home: NextPageWithLayout = () => {
 				</label>
 				<div className="wrap-break-word mt-[15px] flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p>
-						<strong className="font-bold">TL;DR</strong>: I study{" "}
+						TL;DR: I study{" "}
 						<strong className="font-medium">AI Safety and Security</strong> in
 						real-world systems and applications.
 					</p>
@@ -334,6 +334,23 @@ const Home: NextPageWithLayout = () => {
 					</span>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
+					{/* <PaperCard
+						title="SoK: Colluding Adversaries in Machine Learning Pipelines"
+						authors="Vasisht Duddu, Lipeng He, Asim Waheed, and N. Asokan"
+						accepted={true}
+						venue={{
+							name: "USENIX Security 2026",
+							href: "https://www.usenix.org/conference/usenixsecurity26",
+							color: "border-l-red-500! border-l-4",
+						}}
+						links={[
+							{
+								label: "Paper",
+								href: "#",
+								default: true,
+							},
+						]}
+					/> */}
 					<PaperCard
 						title="Understanding and Preserving Safety in Fine-Tuned LLMs"
 						authors="Jiawen Zhang, Yangfan Hu, Kejia Chen, Lipeng He, Jiachen Ma, Jian Lou, Dan Li, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
@@ -369,6 +386,10 @@ const Home: NextPageWithLayout = () => {
 							{
 								label: "Poster",
 								href: "https://static.ouorz.com/locket-cpi-poster.pdf",
+							},
+							{
+								label: "Workshop",
+								href: "https://openreview.net/forum?id=1JBK4x8ik9",
 							},
 							{
 								label: "Code",

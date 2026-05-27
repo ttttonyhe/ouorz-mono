@@ -34,7 +34,15 @@ const PaperCard = (props: PaperCardProps) => {
 
 	return (
 		<div
-			onClick={() => {
+			onClick={(e) => {
+				// If the click originated from a link or inside a link, do nothing
+				const isLink = (node: EventTarget | null): boolean => {
+					if (!node || !(node instanceof Element)) return false
+					if (node.tagName === "A") return true
+					if (node === e.currentTarget) return false
+					return isLink(node.parentElement)
+				}
+				if (isLink(e.target)) return
 				defaultLink && window?.open(defaultLink, "_blank")
 			}}
 			className="shadow-xs group flex w-full cursor-pointer flex-col gap-y-2 rounded-md border bg-white transition-all hover:-translate-y-1 hover:border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:border-gray-600">
@@ -62,7 +70,9 @@ const PaperCard = (props: PaperCardProps) => {
 						{!accepted ? (
 							"Under Submission"
 						) : (
-							<Link href={venue.href}>{venue.name}</Link>
+							<Link href={venue.href} target="_blank" rel="noopener noreferrer">
+								{venue.name}
+							</Link>
 						)}
 					</div>
 					<div className="flex items-center justify-between gap-x-2.5 overflow-x-auto whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
@@ -70,7 +80,8 @@ const PaperCard = (props: PaperCardProps) => {
 							<Link
 								key={link.href}
 								href={link.href}
-								onClick={(e) => e.stopPropagation()}
+								target="_blank"
+								rel="noopener noreferrer"
 								className="underline underline-offset-4 transition-colors hover:text-blue-500">
 								<span>{link.label} →</span>
 							</Link>
