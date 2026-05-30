@@ -334,7 +334,7 @@ const Home: NextPageWithLayout = () => {
 					</span>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
-					{/* <PaperCard
+					<PaperCard
 						title="SoK: Colluding Adversaries in Machine Learning Pipelines"
 						authors="Vasisht Duddu, Lipeng He, Asim Waheed, and N. Asokan"
 						accepted={true}
@@ -347,10 +347,10 @@ const Home: NextPageWithLayout = () => {
 							{
 								label: "Paper",
 								href: "#",
-								default: true,
+								default: false,
 							},
 						]}
-					/> */}
+					/>
 					<PaperCard
 						title="Understanding and Preserving Safety in Fine-Tuned LLMs"
 						authors="Jiawen Zhang, Yangfan Hu, Kejia Chen, Lipeng He, Jiachen Ma, Jian Lou, Dan Li, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
@@ -647,12 +647,6 @@ const Home: NextPageWithLayout = () => {
 								default: true,
 							},
 						]}
-					/>
-					<PaperCard
-						title="SoK: Colluding Adversaries in Machine Learning Pipelines"
-						authors="Vasisht Duddu, Lipeng He, Asim Waheed, and N. Asokan"
-						accepted={false}
-						links={[]}
 					/>
 					<PaperCard
 						title="From Detection to Diagnosis: Lightweight Federated Prompt Learning for Interpretable Industrial Anomaly Analysis"
