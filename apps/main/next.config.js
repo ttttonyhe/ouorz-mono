@@ -26,6 +26,14 @@ const NextConfigs = {
 			{
 				protocol: "https",
 				hostname: "luneresearch.com",
+				pathname: "/lune-logo.svg",
+				search: "",
+			},
+			{
+				protocol: "https",
+				hostname: "retroguard.ai",
+				pathname: "/logo.svg",
+				search: "",
 			},
 			{
 				protocol: "https",

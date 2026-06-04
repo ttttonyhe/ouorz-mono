@@ -1,28 +1,28 @@
-import type { TabsProps } from "."
-import TabItemComponent from "./item"
 import type React from "react"
-import { useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { useHotkeys } from "react-hotkeys-hook"
 import { useMouseLeaveListener } from "~/hooks"
 import scrollToItemWithinDiv from "~/utilities/scrollTo"
+import type { TabsProps } from "."
+import TabItemComponent from "./item"
 
 const Tabs = (props: TabsProps) => {
 	const { items, direction, defaultHighlighted, verticalListWrapper } = props
 	const wrapperRef = useRef<HTMLDivElement>(null)
 	const highlighterRef = useRef<HTMLDivElement>(null)
 	const listRef = useRef<HTMLUListElement>(null)
-	const [withinWrapper, setWithinWrapper] = useState(false)
 	const [highlightedIndex, setHighlightedIndex] = useState<number>(-1)
+	const withinWrapperRef = useRef(false)
+	const highlightedIndexRef = useRef(highlightedIndex)
 
-	/**
-	 * Remove the highlighter
-	 */
-	const reset = (skipVertical?: boolean) => {
-		if (skipVertical && direction === "vertical") return
-		setWithinWrapper(false)
-		styleHighlighter(false)
-		setHighlightedIndex(-1)
-	}
+	const updateWithinWrapper = useCallback((value: boolean) => {
+		withinWrapperRef.current = value
+	}, [])
+
+	const updateHighlightedIndex = useCallback((value: number) => {
+		highlightedIndexRef.current = value
+		setHighlightedIndex(value)
+	}, [])
 
 	/* Begin Highlighting Methods */
 
@@ -36,69 +36,78 @@ const Tabs = (props: TabsProps) => {
 	 * @param {string} [bgDark]
 	 * @param {string} [className]
 	 */
-	const styleHighlighter = (
-		visible: boolean,
-		wrapperBoundingBox?: DOMRect | null,
-		tabBoundingBox?: DOMRect | null,
-		bgColor?: string,
-		bgDark?: string,
-		className?: string
-	) => {
-		if (!highlighterRef.current) return
+	const styleHighlighter = useCallback(
+		(
+			visible: boolean,
+			wrapperBoundingBox?: DOMRect | null,
+			tabBoundingBox?: DOMRect | null,
+			bgColor?: string,
+			bgDark?: string,
+			className?: string
+		) => {
+			if (!highlighterRef.current) return
 
-		// animation duration
-		highlighterRef.current.style.transitionDuration =
-			visible && (withinWrapper || highlightedIndex > 0) ? "150ms" : "0ms"
+			highlighterRef.current.style.transitionDuration =
+				visible && (withinWrapperRef.current || highlightedIndexRef.current > 0)
+					? "150ms"
+					: "0ms"
 
-		// visibility
-		highlighterRef.current.style.opacity = visible ? "1" : "0"
+			highlighterRef.current.style.opacity = visible ? "1" : "0"
 
-		// width
-		if (visible) {
-			highlighterRef.current.style.width =
-				highlightedIndex === -1 &&
-				defaultHighlighted &&
-				direction === "vertical"
-					? "100%"
-					: `${tabBoundingBox.width}px`
-		} else {
-			highlighterRef.current.style.width = "0"
-		}
+			if (visible && tabBoundingBox) {
+				highlighterRef.current.style.width =
+					highlightedIndexRef.current === -1 &&
+					defaultHighlighted &&
+					direction === "vertical"
+						? "100%"
+						: `${tabBoundingBox.width}px`
+			} else {
+				highlighterRef.current.style.width = "0"
+			}
 
-		// height
-		if (visible) {
-			highlighterRef.current.style.height =
-				highlightedIndex === -1 &&
-				defaultHighlighted &&
-				direction === "vertical"
-					? "46.3889px"
-					: `${tabBoundingBox.height}px`
-		} else {
-			highlighterRef.current.style.height = "0"
-		}
+			if (visible && tabBoundingBox) {
+				highlighterRef.current.style.height =
+					highlightedIndexRef.current === -1 &&
+					defaultHighlighted &&
+					direction === "vertical"
+						? "46.3889px"
+						: `${tabBoundingBox.height}px`
+			} else {
+				highlighterRef.current.style.height = "0"
+			}
 
-		// position
-		if (visible) {
-			highlighterRef.current.style.transform =
-				direction === "vertical"
-					? `translateY(${tabBoundingBox.top - wrapperBoundingBox.top}px)`
-					: `translateX(${tabBoundingBox.left - wrapperBoundingBox.left}px)`
-		} else {
-			highlighterRef.current.style.transform = "none"
-		}
+			if (visible && wrapperBoundingBox && tabBoundingBox) {
+				highlighterRef.current.style.transform =
+					direction === "vertical"
+						? `translateY(${tabBoundingBox.top - wrapperBoundingBox.top}px)`
+						: `translateX(${tabBoundingBox.left - wrapperBoundingBox.left}px)`
+			} else {
+				highlighterRef.current.style.transform = "none"
+			}
 
-		// background color and class name
-		if (visible) {
-			highlighterRef.current.className = [
-				"tabs-highlighter z-0",
-				className || "",
-				bgColor || "bg-menu",
-				bgDark || "dark:bg-gray-700/40 backdrop-blur-xs",
-			].join(" ")
-		} else {
-			highlighterRef.current.className = ""
-		}
-	}
+			if (visible) {
+				highlighterRef.current.className = [
+					"tabs-highlighter z-0",
+					className || "",
+					bgColor || "bg-menu",
+					bgDark || "dark:bg-gray-700/40 backdrop-blur-xs",
+				].join(" ")
+			} else {
+				highlighterRef.current.className = ""
+			}
+		},
+		[defaultHighlighted, direction]
+	)
+
+	const reset = useCallback(
+		(skipVertical?: boolean) => {
+			if (skipVertical && direction === "vertical") return
+			updateWithinWrapper(false)
+			styleHighlighter(false)
+			updateHighlightedIndex(-1)
+		},
+		[direction, styleHighlighter, updateHighlightedIndex, updateWithinWrapper]
+	)
 
 	/**
 	 * Highlight the tab that the mouse is currently hovering over
@@ -110,171 +119,195 @@ const Tabs = (props: TabsProps) => {
 	 * @param {number} [index] - index of the tab to highlight
 	 * @param {string} [from] - highlighter initial direction
 	 */
-	const highlight = (
-		e: React.MouseEvent<HTMLElement> | Element,
-		bgColor?: string,
-		bgDark?: string,
-		className?: string,
-		index?: number,
-		from?: "above" | "below"
-	) => {
-		// skip unhoverable tabs and loop through the rest
-		if (items[index]?.hoverable === false && e instanceof Element) {
-			const targetIndex =
-				from === "below"
-					? index - 1 >= 0
-						? index - 1
-						: items.length - 1
-					: index + 1 < items.length
-						? index + 1
-						: 0
-			if (targetIndex >= 0 && targetIndex < items.length) {
-				highlight(
-					listRef.current.children[targetIndex],
-					items[targetIndex].bgColor,
-					items[targetIndex].bgDark,
-					className,
-					targetIndex,
-					from
-				)
+	const highlight = useCallback(
+		(
+			e: React.MouseEvent<HTMLElement> | Element,
+			bgColor?: string,
+			bgDark?: string,
+			className?: string,
+			index = -1,
+			from?: "above" | "below"
+		) => {
+			if (items[index]?.hoverable === false && e instanceof Element) {
+				const targetIndex =
+					from === "below"
+						? index - 1 >= 0
+							? index - 1
+							: items.length - 1
+						: index + 1 < items.length
+							? index + 1
+							: 0
+				const targetElement = listRef.current?.children[targetIndex]
+
+				if (targetElement && targetIndex >= 0 && targetIndex < items.length) {
+					highlight(
+						targetElement,
+						items[targetIndex].bgColor,
+						items[targetIndex].bgDark,
+						className,
+						targetIndex,
+						from
+					)
+				}
+				return
 			}
-			return
-		}
 
-		// vertical tabs have a different scroll behavior
-		if (verticalListWrapper) {
-			scrollToItemWithinDiv(
-				verticalListWrapper.current,
-				listRef.current.children[index]
+			const targetListElement = listRef.current?.children[index]
+
+			if (verticalListWrapper?.current && targetListElement) {
+				scrollToItemWithinDiv(verticalListWrapper.current, targetListElement)
+			}
+
+			const targetTabBoundingBox =
+				e instanceof Element
+					? e.getBoundingClientRect()
+					: e.currentTarget.getBoundingClientRect()
+			const wrapperBoundingBox = wrapperRef.current?.getBoundingClientRect()
+			styleHighlighter(
+				true,
+				wrapperBoundingBox,
+				targetTabBoundingBox,
+				bgColor,
+				bgDark,
+				className
 			)
-		}
-
-		const targetTabBoundingBox =
-			e instanceof Element
-				? e.getBoundingClientRect()
-				: e.currentTarget.getBoundingClientRect()
-		const wrapperBoundingBox = wrapperRef.current?.getBoundingClientRect()
-		styleHighlighter(
-			true,
-			wrapperBoundingBox,
-			targetTabBoundingBox,
-			bgColor,
-			bgDark,
-			className
-		)
-		setWithinWrapper(true)
-		index >= 0 && setHighlightedIndex(index)
-	}
+			updateWithinWrapper(true)
+			index >= 0 && updateHighlightedIndex(index)
+		},
+		[
+			items,
+			styleHighlighter,
+			updateHighlightedIndex,
+			updateWithinWrapper,
+			verticalListWrapper,
+		]
+	)
 
 	/**
 	 * Hightlight the first tab item when defaultHighlighted is true and direction
 	 * is vertical
 	 */
-	const highlightFirstItem = (delay: number) => {
-		setTimeout(() => {
-			if (!listRef.current) return
-			if (items[0] && direction === "vertical" && defaultHighlighted) {
-				highlight(
-					listRef.current.children[0],
-					items[0].bgColor,
-					items[0].bgDark,
-					delay === 0 ? "" : "animate-kbar-highlighter",
-					0,
-					"above"
-				)
-			} else {
-				reset()
+	const highlightFirstItem = useCallback(
+		(delay: number) => {
+			const timeout = window.setTimeout(() => {
+				if (!listRef.current) return
+				if (items[0] && direction === "vertical" && defaultHighlighted) {
+					highlight(
+						listRef.current.children[0],
+						items[0].bgColor,
+						items[0].bgDark,
+						delay === 0 ? "" : "animate-kbar-highlighter",
+						0,
+						"above"
+					)
+				} else {
+					reset()
+				}
+			}, delay)
+
+			return () => {
+				window.clearTimeout(timeout)
 			}
-		}, delay)
-	}
+		},
+		[defaultHighlighted, direction, highlight, items, reset]
+	)
 
 	/* End Highlighting Methods */
 
 	/* Begin Vertical List Methods */
 
-	// Register keyboard shortcuts
-	if (direction === "vertical") {
-		// navigation
-		useHotkeys(
-			"down",
-			(e) => {
-				e.preventDefault()
-				const targetIndex =
-					highlightedIndex + 1 < items.length ? highlightedIndex + 1 : 0
-				highlight(
-					listRef.current.children[targetIndex],
-					items[targetIndex].bgColor,
-					items[targetIndex].bgDark,
-					"",
-					targetIndex,
-					"above"
-				)
-			},
-			{
-				enableOnFormTags: ["INPUT"],
-			},
-			[highlightedIndex]
-		)
-		useHotkeys(
-			"up",
-			(e) => {
-				e.preventDefault()
-				const targetIndex =
-					highlightedIndex - 1 >= 0 ? highlightedIndex - 1 : items.length - 1
-				highlight(
-					listRef.current.children[targetIndex],
-					items[targetIndex].bgColor,
-					items[targetIndex].bgDark,
-					"",
-					targetIndex,
-					"below"
-				)
-			},
-			{
-				enableOnFormTags: ["INPUT"],
-			},
-			[highlightedIndex]
-		)
-		// action triggerer
-		useHotkeys(
-			"enter",
-			(e) => {
-				e.preventDefault()
-				items[highlightedIndex].onClick?.()
-			},
-			{
-				enableOnFormTags: ["INPUT"],
-			},
-			[highlightedIndex]
-		)
-	}
+	useHotkeys(
+		"down",
+		(e) => {
+			if (direction !== "vertical") return
+			e.preventDefault()
+			const targetIndex =
+				highlightedIndex + 1 < items.length ? highlightedIndex + 1 : 0
+			const targetElement = listRef.current?.children[targetIndex]
 
-	// Dynamically adjust the height of the list wrapper to fit the content
+			if (!targetElement) return
+
+			highlight(
+				targetElement,
+				items[targetIndex].bgColor,
+				items[targetIndex].bgDark,
+				"",
+				targetIndex,
+				"above"
+			)
+		},
+		{
+			enableOnFormTags: ["INPUT"],
+		},
+		[direction, highlight, highlightedIndex, items]
+	)
+	useHotkeys(
+		"up",
+		(e) => {
+			if (direction !== "vertical") return
+			e.preventDefault()
+			const targetIndex =
+				highlightedIndex - 1 >= 0 ? highlightedIndex - 1 : items.length - 1
+			const targetElement = listRef.current?.children[targetIndex]
+
+			if (!targetElement) return
+
+			highlight(
+				targetElement,
+				items[targetIndex].bgColor,
+				items[targetIndex].bgDark,
+				"",
+				targetIndex,
+				"below"
+			)
+		},
+		{
+			enableOnFormTags: ["INPUT"],
+		},
+		[direction, highlight, highlightedIndex, items]
+	)
+	useHotkeys(
+		"enter",
+		(e) => {
+			if (direction !== "vertical") return
+			e.preventDefault()
+			items[highlightedIndex]?.onClick?.()
+		},
+		{
+			enableOnFormTags: ["INPUT"],
+		},
+		[direction, highlightedIndex, items]
+	)
+
 	useEffect(() => {
 		if (direction !== "vertical") return
-		if (!listRef.current || !verticalListWrapper.current) return
+		if (!listRef.current || !verticalListWrapper?.current) return
 		const listHeight = listRef.current.getBoundingClientRect().height
 		verticalListWrapper.current.style.height = `${
 			listHeight >= 340 ? 360 : listHeight + 20
 		}px`
-	}, [direction, defaultHighlighted, verticalListWrapper, listRef, items])
+	}, [direction, items, verticalListWrapper])
 
-	// Highlight the first item when defaultHighlighted is true
 	useEffect(() => {
+		if (direction !== "vertical") return
+		if (!defaultHighlighted) {
+			reset()
+			return
+		}
 		if (!listRef.current) return
 		const listHeight = listRef.current.getBoundingClientRect().height
 		const delay = listHeight <= 340 ? 0 : 100
 
-		// wait for list height to be updated
-		highlightFirstItem(highlightedIndex <= 0 ? delay : 0)
-	}, [defaultHighlighted, items, listRef])
+		return highlightFirstItem(delay)
+	}, [defaultHighlighted, direction, highlightFirstItem, reset])
 
 	/* End Vertical List Methods */
 
-	// Reset the highlighter when mouse leaves the viewport
-	useMouseLeaveListener(() => {
+	const resetOnViewportLeave = useCallback(() => {
 		reset(true)
-	})
+	}, [reset])
+
+	useMouseLeaveListener(resetOnViewportLeave)
 
 	return (
 		<div

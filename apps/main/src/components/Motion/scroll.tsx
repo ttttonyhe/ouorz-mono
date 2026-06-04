@@ -1,6 +1,6 @@
 import { useTheme } from "next-themes"
 import type React from "react"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 interface Props {
 	handler: (position: number) => void
@@ -10,11 +10,16 @@ interface Props {
 }
 
 const ScrollWrapper = (props: Props) => {
-	const { handler: applyEffect, startPosition, endPosition, children } = props
+	const {
+		handler: applyEffect,
+		startPosition = 0,
+		endPosition,
+		children,
+	} = props
 	const { resolvedTheme } = useTheme()
 	const [yOffset, setYOffset] = useState(0)
 
-	const handler = () => {
+	const handler = useCallback(() => {
 		let position = window.scrollY
 
 		if (position < startPosition) {
@@ -27,7 +32,7 @@ const ScrollWrapper = (props: Props) => {
 
 		setYOffset(position)
 		applyEffect(position)
-	}
+	}, [applyEffect, endPosition, startPosition])
 
 	useEffect(() => {
 		// invoke scroll handler once after changing theme
@@ -38,7 +43,7 @@ const ScrollWrapper = (props: Props) => {
 		return () => {
 			window.removeEventListener("scroll", handler)
 		}
-	}, [resolvedTheme])
+	}, [handler, resolvedTheme])
 
 	if (yOffset < startPosition) {
 		return null

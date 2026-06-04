@@ -10,13 +10,12 @@ import {
  * Hook to turn on/off body scrolling
  */
 const useBodyScroll = (): [boolean, Dispatch<SetStateAction<boolean>>] => {
-	if (typeof document === "undefined") return [false, (t: boolean) => t]
-
 	const bodyRef = useRef<HTMLElement | null>(null)
 	const [scrollable, setScrollable] = useState(true)
 
 	useEffect(() => {
-		// Initialize the ref with document.body in useEffect to avoid hydration mismatch
+		if (typeof document === "undefined") return
+
 		if (!bodyRef.current) {
 			bodyRef.current = document.body
 		}
@@ -40,13 +39,12 @@ const useBodyPointerEvents = (): [
 	boolean,
 	Dispatch<SetStateAction<boolean>>,
 ] => {
-	if (typeof document === "undefined") return [false, (t: boolean) => t]
-
 	const bodyRef = useRef<HTMLElement | null>(null)
 	const [pointerEvents, setPointerEvents] = useState(true)
 
 	useEffect(() => {
-		// Initialize the ref with document.body in useEffect to avoid hydration mismatch
+		if (typeof document === "undefined") return
+
 		if (!bodyRef.current) {
 			bodyRef.current = document.body
 		}

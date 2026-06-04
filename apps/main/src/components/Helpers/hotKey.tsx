@@ -1,29 +1,28 @@
-import type { KbarListItem } from "../Kbar"
 import { useHotkeys } from "react-hotkeys-hook"
 
-/**
- *  Helper component to use react-hotkeys-hook to register hotkeys
- *  for Kbar list items
- *
- * @param {{ item: KbarListItem }} { item }
- * @return {*}
- */
-const HotkeyHelper = ({ item }: { item: KbarListItem }) => {
+const HotkeyHelper = ({
+	onTrigger,
+	shortcut,
+}: {
+	onTrigger: () => void
+	shortcut: string[]
+}) => {
+	const hotkey = `shift+${shortcut.join("+")}`
+
 	useHotkeys(
-		`shift+${item.shortcut.join("+")}`,
+		hotkey,
 		(e) => {
-			// Only trigger if shift key is actually pressed
 			if (e.shiftKey) {
 				e.preventDefault()
-				item.action()
+				onTrigger()
 			}
 		},
 		{
 			enableOnFormTags: ["INPUT"],
 			useKey: true,
-		}
+		},
+		[onTrigger]
 	)
-	// render nothing
 	return null
 }
 

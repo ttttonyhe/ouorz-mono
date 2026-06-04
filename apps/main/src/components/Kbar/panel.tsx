@@ -1,15 +1,15 @@
-import HotkeyHelper from "../Helpers/hotKey"
-import Tabs, { type TabItemProps } from "../Tabs"
-import { kbarContext } from "./context"
 import { Icon } from "@twilight-toolkit/ui"
-import { useTheme } from "next-themes"
 import { useRouter } from "next/router"
+import { useTheme } from "next-themes"
 import type React from "react"
-import { useContext, useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useMemo, useRef } from "react"
 import ContentLoader from "react-content-loader"
 import { useDispatch, useSelector } from "~/hooks"
 import { deactivateKbar, updateKbar } from "~/store/kbar/actions"
 import { selectKbar } from "~/store/kbar/selectors"
+import HotkeyHelper from "../Helpers/hotKey"
+import Tabs, { type TabItemProps } from "../Tabs"
+import { kbarContext } from "./context"
 
 const ListComponentLoading = ({ resolvedTheme }: { resolvedTheme: string }) => {
 	if (resolvedTheme === "dark") {
@@ -35,8 +35,8 @@ const ListComponent = ({
 	tabsListItems,
 	verticalListWrapper,
 }: {
-	tabsListItems: TabItemProps[]
-	verticalListWrapper: React.MutableRefObject<HTMLDivElement>
+	tabsListItems: TabItemProps[] | null
+	verticalListWrapper: React.MutableRefObject<HTMLDivElement | null>
 }) => {
 	const { resolvedTheme } = useTheme()
 	const { loading } = useSelector(selectKbar)
@@ -58,7 +58,7 @@ const ListComponent = ({
 		if (wrapperHeight) {
 			verticalListWrapper.current.style.height = `${wrapperHeight}px`
 		}
-	}, [loading, verticalListWrapper, tabsListItems])
+	}, [loading, resolvedTheme, verticalListWrapper, tabsListItems])
 
 	if (loading || tabsListItems == null) {
 		return <ListComponentLoading resolvedTheme={resolvedTheme} />
@@ -98,21 +98,19 @@ const KbarPanel = () => {
 	const { list, placeholder, animation, location, loading } =
 		useSelector(selectKbar)
 	const verticalListWrapper = useRef<HTMLDivElement>(null)
-	const [initialListItems, setiInitialListItems] = useState<TabItemProps[]>([])
-	const [tabsListItems, setTabsListItems] = useState<TabItemProps[]>(null)
 
-	// Update list data for vertical Tabs component
-	useEffect(() => {
-		// Decorate list item actions
-		list?.forEach((item) => {
-			// create action functions for link items
+	const initialListItems = useMemo(() => {
+		if (!list) return null
+
+		return list.map((item) => {
 			let actionFunc = item.action
 
-			// link
 			if (item.link) {
 				if (item.link.external) {
 					actionFunc = () => {
-						window.open(item.link.external, "_blank").focus()
+						window
+							.open(item.link.external, "_blank", "noopener,noreferrer")
+							?.focus()
 					}
 				} else if (item.link.internal) {
 					actionFunc = () => {
@@ -121,7 +119,6 @@ const KbarPanel = () => {
 				}
 			}
 
-			// sublist
 			if (item.sublist) {
 				actionFunc = () => {
 					dispatch(
@@ -135,31 +132,30 @@ const KbarPanel = () => {
 				}
 			}
 
-			item.action = () => {
-				if (item.singleton !== false && !item.sublist) {
-					dispatch(deactivateKbar())
-				}
+			const onClick = actionFunc
+				? () => {
+						if (item.singleton !== false && !item.sublist) {
+							dispatch(deactivateKbar())
+						}
 
-				if (item.link) {
-					setTimeout(() => {
-						actionFunc()
-					}, 250)
-				} else {
-					actionFunc()
-				}
+						if (item.link) {
+							setTimeout(() => {
+								actionFunc()
+							}, 250)
+						} else {
+							actionFunc()
+						}
 
-				// clear input value
-				setInputValue("")
+						setInputValue("")
 
-				if (item.onInputChange) {
-					setInputValueChangeHandler(() => item.onInputChange)
-				} else {
-					setInputValueChangeHandler(undefined)
-				}
-			}
-		})
+						if (item.onInputChange) {
+							setInputValueChangeHandler(() => item.onInputChange)
+						} else {
+							setInputValueChangeHandler(undefined)
+						}
+					}
+				: undefined
 
-		const tabsListItems = list?.map((item) => {
 			return {
 				label: item.label,
 				icon: item.icon,
@@ -167,12 +163,14 @@ const KbarPanel = () => {
 				bgColor: item.bgColor,
 				bgDark: item.bgDark,
 				link: item.link,
-				onClick: item.action,
+				onClick,
 				hoverable: item.hoverable,
+				shortcut: item.shortcut,
+				description: item.description,
 				className: "w-full justify-start! p-4!",
 				component:
 					item.hoverable === false ? (
-						<p className="kbar-list-heading text-sm text-gray-400">
+						<p className="kbar-list-heading text-gray-400 text-sm">
 							{item.label}
 						</p>
 					) : (
@@ -190,7 +188,7 @@ const KbarPanel = () => {
 							</div>
 							<div className="flex items-center gap-x-2.5">
 								{item.description && (
-									<div className="text-sm text-gray-400">
+									<div className="text-gray-400 text-sm">
 										{item.description}
 									</div>
 								)}
@@ -213,46 +211,55 @@ const KbarPanel = () => {
 					),
 			}
 		})
+	}, [
+		dispatch,
+		list,
+		location,
+		router,
+		setInputValue,
+		setInputValueChangeHandler,
+	])
 
-		// update list data
-		setiInitialListItems(tabsListItems)
-		setTabsListItems(tabsListItems)
-	}, [list, location])
-
-	// Search list items
-	useEffect(() => {
+	const tabsListItems = useMemo(() => {
 		if (
 			!initialListItems ||
 			!initialListItems.length ||
 			!!inputValueChangeHandler
 		) {
-			return
+			return initialListItems
 		}
 
-		const resultList = initialListItems.filter((item) => {
-			// filter out unhoverable items when input value is not empty
+		return initialListItems.filter((item) => {
 			return (
 				!inputValue ||
 				(item.hoverable !== false &&
 					item.label.toLowerCase().includes(inputValue.toLowerCase()))
 			)
 		})
-
-		setTabsListItems(resultList)
-	}, [inputValue, initialListItems])
+	}, [inputValue, inputValueChangeHandler, initialListItems])
 
 	return (
 		<div
 			data-cy="kbar-panel"
-			className="pointer-events-auto absolute -ml-10 flex h-screen w-screen justify-center">
-			{// register shortcuts of list items
-			list?.map((item, index) => {
-				if (item.shortcut?.length) {
-					return <HotkeyHelper key={index} item={item} />
-				}
-			})}
+			className="-ml-10 pointer-events-auto absolute flex h-screen w-screen justify-center">
+			{
+				// register shortcuts of list items
+				initialListItems?.map((item) => {
+					if (item.shortcut?.length && item.onClick) {
+						return (
+							<HotkeyHelper
+								key={item.label}
+								onTrigger={item.onClick}
+								shortcut={item.shortcut}
+							/>
+						)
+					}
+
+					return null
+				})
+			}
 			<div
-				className={`ml-15 z-50 mt-[8%] h-fit max-h-[420px] w-[620px] overflow-hidden rounded-xl border bg-white/70 shadow-2xl backdrop-blur-lg dark:border-gray-700 dark:bg-black/70 ${
+				className={`z-50 mt-[8%] ml-15 h-fit max-h-[420px] w-[620px] overflow-hidden rounded-xl border bg-white/70 shadow-2xl backdrop-blur-lg dark:border-gray-700 dark:bg-black/70 ${
 					animation === "transition"
 						? "animate-kbar-transition"
 						: animation === "out"
@@ -270,7 +277,7 @@ const KbarPanel = () => {
 						placeholder={placeholder}
 						onChange={(e) => setInputValue(e.target.value)}
 						value={inputValue}
-						className="outline-hidden w-full flex-1 rounded-tl-lg rounded-tr-lg bg-transparent px-5 py-4.5 text-lg text-gray-600 dark:text-gray-300"
+						className="w-full flex-1 rounded-tl-lg rounded-tr-lg bg-transparent px-5 py-4.5 text-gray-600 text-lg outline-hidden dark:text-gray-300"
 						autoFocus
 					/>
 					<div className="mr-5 flex items-center">

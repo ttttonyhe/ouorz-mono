@@ -1,5 +1,5 @@
-import Tabs from "./component"
 import type React from "react"
+import Tabs from "./component"
 
 export interface TabItemProps {
 	className?: string
@@ -14,6 +14,8 @@ export interface TabItemProps {
 		internal?: string
 		external?: string
 	}
+	shortcut?: string[]
+	description?: string
 	onClick?: () => void
 }
 
