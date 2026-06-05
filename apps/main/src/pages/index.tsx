@@ -162,7 +162,7 @@ const Home: NextPageWithLayout = () => {
 							live deliberately
 						</a>
 						. Before research, I spent some years doing software engineering. In
-						the limit of my life, I also hope to be a pianist,{" "}
+						the limit of my life, I am also trying to be a pianist,{" "}
 						<a
 							href="https://lists.lipeng.ac/subscription/form"
 							target="_blank"
@@ -201,7 +201,23 @@ const Home: NextPageWithLayout = () => {
 							className="text-blue-500 hover:underline">
 							entrepreneur
 						</a>
-						.
+						<sup>[1]</sup>.
+					</p>
+					<p className="mt-8">
+						<sup>[1]</sup>&nbsp;Retrograde Labs is a research-backed startup
+						building the trust layer for agentic AI. I strive to do the kind of
+						research that not only helps us identify failure modes and address
+						problems &amp; bottlenecks, but can also be turned into something
+						useful in production, and something that is able to withstand the{" "}
+						<a
+							href="https://www.ycombinator.com/companies?industry=Security"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500 hover:underline">
+							test of the market
+						</a>{" "}
+						and real customers. At Retrograde Labs, I build, grow, and scale
+						products that apply research ideas in real-world workflows.
 					</p>
 				</div>
 			</section>
@@ -214,92 +230,43 @@ const Home: NextPageWithLayout = () => {
 				</label>
 				<div className="wrap-break-word mt-[15px] flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p>
-						TL;DR: I study{" "}
-						<strong className="font-medium">AI Safety and Security</strong> in
-						real-world systems and applications.
+						TL;DR: I study how AI safety and security break in deployed systems,
+						and how to build defenses that survive those conditions.
 					</p>
 					<hr className="mt-3.5 dark:border-gray-700" />
 					<p className="mt-3.5">
-						My research focuses on Trustworthy Machine Learning , with an
-						emphasis on the adversarial robustness of{" "}
+						My research focuses on{" "}
+						<strong className="font-medium">
+							Trustworthy Machine Learning
+						</strong>
+						, with an emphasis on LLM robustness of and the security &amp;
+						privacy of agentic AI systems. I study failures that appear when
+						models are fine-tuned, approximated, compressed, connected to tools,
+						exposed to external content, or placed in multi-agent, and other
+						production ML pipeline settings. I care about{" "}
 						<a
-							className="text-blue-500 hover:underline"
 							href="https://genai.owasp.org/llm-top-10"
-							target="_blank"
-							rel="noreferrer">
-							large language models (LLMs)
-						</a>
-						, and the security &amp; privacy of agentic AI systems. I study how
-						robustness breaks under realistic deployment conditions and how to
-						fix it.
-					</p>
-					<p className="mt-3.5">
-						To that end, I develop effective and efficient adversarial attacks,
-						as well as principled defenses, drawing on applied cryptography,
-						theoretical machine learning, and systems security to characterize
-						and mitigate emerging threats.
-					</p>
-					<p className="mt-3.5">
-						More broadly, I am interested in{" "}
-						<a
-							className="text-blue-500 hover:underline"
-							href="https://www.anthropic.com/research/team/alignment"
-							target="_blank"
-							rel="noreferrer">
-							alignment
-						</a>
-						,{" "}
-						<a
-							className="text-blue-500 hover:underline"
-							href="https://www.goodfire.ai/research"
-							target="_blank"
-							rel="noreferrer">
-							interpretability
-						</a>
-						, and{" "}
-						<a
-							className="text-blue-500 hover:underline"
-							href="https://www.alignmentforum.org/w/reinforcement-learning"
-							target="_blank"
-							rel="noreferrer">
-							reinforcement learning
-						</a>{" "}
-						for building controllable and reliable AI systems.
-					</p>
-					<hr className="mt-3.5 dark:border-gray-700" />
-					{/* <p className="mt-3.5 opacity-50 transition-opacity duration-300 ease-in-out hover:opacity-100">
-						I also study the design and <strong>software engineering</strong> of
-						agentic systems for both{" "}
-						<a
-							className="text-blue-500 hover:underline"
-							href="https://rdi.berkeley.edu/frontier-ai-impact-on-cybersecurity/index.html"
-							target="_blank"
-							rel="noreferrer">
-							AI-for-security
-						</a>{" "}
-						use cases and real-world business applications, with a particular
-						focus on the security and privacy of{" "}
-						<a
-							className="text-blue-500 hover:underline"
-							href="https://www.ibm.com/think/topics/ai-agent-security"
-							target="_blank"
-							rel="noreferrer">
-							LLM-based agents
-						</a>{" "}
-						and multi-agent systems.
-					</p> */}
-					<p className="mt-3.5">
-						A central goal of my work is to leverage theoretical security
-						research to address bottlenecks in real-world systems. I look for
-						ways to bridge research efforts with practical deployments and{" "}
-						<a
-							href="https://www.ycombinator.com/companies?industry=Security"
 							target="_blank"
 							rel="noreferrer"
 							className="text-blue-500 hover:underline">
-							viable business models
-						</a>
-						, thus enabling more trustworthy AI in practice.
+							issues
+						</a>{" "}
+						such as data leakage, prompt injection, unsafe tool use, brittle
+						safety behavior, and systems that cannot explain or audit what
+						happened.
+					</p>
+					<p className="mt-3.5">
+						I develop effective and efficient adversarial attacks, as well as
+						principled defenses, drawing on applied cryptography, theoretical
+						machine learning, and systems security to characterize and mitigate
+						emerging threats.
+					</p>
+					<p className="mt-3.5">
+						I am especially interested in agents that retrieve information, call
+						tools, write code, or act on private context. These systems need
+						stronger guarantees around provenance, permissions, policy, and
+						auditability before people can safely delegate important work to
+						them.
 					</p>
 				</div>
 			</section>
