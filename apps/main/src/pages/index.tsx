@@ -313,8 +313,8 @@ const Home: NextPageWithLayout = () => {
 						links={[
 							{
 								label: "Paper",
-								href: "#",
-								default: false,
+								href: "https://static.ouorz.com/sok_colluding_adversaries.pdf",
+								default: true,
 							},
 						]}
 					/>
