@@ -207,7 +207,7 @@ const Home: NextPageWithLayout = () => {
 						<sup>[1]</sup>&nbsp;Retrograde Labs is a research-backed startup
 						building the trust layer for agentic AI. I strive to do the kind of
 						research that not only helps us identify failure modes and address
-						problems &amp; bottlenecks, but can also be turned into something
+						theoretical bottlenecks, but can also be turned into something
 						useful in production, and something that is able to withstand the{" "}
 						<a
 							href="https://www.ycombinator.com/companies?industry=Security"
@@ -217,7 +217,8 @@ const Home: NextPageWithLayout = () => {
 							test of the market
 						</a>{" "}
 						and real customers. At Retrograde Labs, I build, grow, and scale
-						products that apply research ideas in real-world workflows.
+						products that apply research ideas to address issues in real-world
+						workflows.
 					</p>
 				</div>
 			</section>
@@ -239,7 +240,7 @@ const Home: NextPageWithLayout = () => {
 						<strong className="font-medium">
 							Trustworthy Machine Learning
 						</strong>
-						, with an emphasis on LLM robustness of and the security &amp;
+						, with an emphasis on the robustness of LLMs and the security &amp;
 						privacy of agentic AI systems. I study failures that appear when
 						models are fine-tuned, approximated, compressed, connected to tools,
 						exposed to external content, or placed in multi-agent, and other
