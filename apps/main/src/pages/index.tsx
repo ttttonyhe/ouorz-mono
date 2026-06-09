@@ -599,8 +599,20 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
+						title="Beyond Similarity: Trustworthy Memory Search for Personal AI Agents"
+						authors="Jiawen Zhang, Kejia Chen, Jiachen Ma, Yangfan Hu, Lipeng He, Yechao Zhang, Jian Liu, Xiaohu Yang, Tianwei Zhang, and Ruoxi Jia"
+						accepted={false}
+						links={[
+							{
+								label: "Paper",
+								href: "https://arxiv.org/abs/2606.06054",
+								default: true,
+							},
+						]}
+					/>
+					<PaperCard
 						title="Defending against Adaptive Prompt Injection Attacks via Reasoning-enabled Task Alignment"
-						authors="Lipeng He, Yihan Wang, Jiawen Zhang and N. Asokan"
+						authors="Lipeng He, Yihan Wang, Jiawen Zhang, and N. Asokan"
 						accepted={false}
 						links={[]}
 					/>
