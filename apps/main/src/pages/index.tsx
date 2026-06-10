@@ -314,7 +314,7 @@ const Home: NextPageWithLayout = () => {
 						links={[
 							{
 								label: "Paper",
-								href: "https://static.ouorz.com/sok_colluding_adversaries.pdf",
+								href: "http://arxiv.org/abs/2606.10091",
 								default: true,
 							},
 						]}
