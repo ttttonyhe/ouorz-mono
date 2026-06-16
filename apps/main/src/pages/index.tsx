@@ -927,9 +927,9 @@ const Home: NextPageWithLayout = () => {
 						organizationLocation="North York, ON"
 					/>
 					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/robinhood-logo.png"
-						organization="Robinhood"
-						organizationFullName="Bitbuy (Cryptocurrency Exchange), TSX: WNDR"
+						orgLogoSrc="https://static.ouorz.com/bitbuy_logo.png"
+						organization="Bitbuy"
+						organizationFullName="Cryptocurrency Exchange, Part of Robinhood, TSX: WNDR"
 						jobTitle="Front End Software Engineer"
 						jobType="SWE, Co-op"
 						dateString="Sep -  Dec 2021"
