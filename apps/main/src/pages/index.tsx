@@ -599,6 +599,12 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
+						title="SecStep: Guarding Agents Against Prompt Injection via Action Backtracking"
+						authors="Jiawen Zhang, Yechao Zhang, Lipeng He, Kejia Chen, Jiachen Ma, Yangfan Hu, Jian Lou, Jian Liu, Xiaohu Yang, and Tianwei Zhang"
+						accepted={false}
+						links={[]}
+					/>
+					<PaperCard
 						title="Beyond Similarity: Trustworthy Memory Search for Personal AI Agents"
 						authors="Jiawen Zhang, Kejia Chen, Jiachen Ma, Yangfan Hu, Lipeng He, Yechao Zhang, Jian Liu, Xiaohu Yang, Tianwei Zhang, and Ruoxi Jia"
 						accepted={false}
@@ -614,7 +620,13 @@ const Home: NextPageWithLayout = () => {
 						title="Defending against Adaptive Prompt Injection Attacks via Reasoning-enabled Task Alignment"
 						authors="Lipeng He, Yihan Wang, Jiawen Zhang, and N. Asokan"
 						accepted={false}
-						links={[]}
+						links={[
+							{
+								label: "Paper",
+								href: "https://arxiv.org/abs/2606.15441",
+								default: true,
+							},
+						]}
 					/>
 					<PaperCard
 						title="Backdooring Bias in Large Language Models"
