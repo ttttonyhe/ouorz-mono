@@ -205,7 +205,7 @@ const Home: NextPageWithLayout = () => {
 					</p>
 					<p className="mt-8">
 						<sup>[1]</sup>&nbsp;Retrograde Labs is a research-backed startup
-						building the trust layer for agentic AI. I strive to do the kind of
+						building the trust layer for agentic AI. We strive to do the kind of
 						research that not only helps us identify failure modes and address
 						theoretical bottlenecks, but can also be turned into something
 						useful in production, and something that is able to withstand the{" "}
@@ -216,7 +216,7 @@ const Home: NextPageWithLayout = () => {
 							className="text-blue-500 hover:underline">
 							test of the market
 						</a>{" "}
-						and real customers. At Retrograde Labs, I build, grow, and scale
+						and real customers. At Retrograde Labs, we build, grow, and scale
 						products that apply research ideas to address issues in real-world
 						workflows.
 					</p>
@@ -263,7 +263,7 @@ const Home: NextPageWithLayout = () => {
 						emerging threats.
 					</p>
 					<p className="mt-3.5">
-						I am especially interested in agents that retrieve information, call
+						Currently, I am interested in agents that retrieve information, call
 						tools, write code, or act on private context. These systems need
 						stronger guarantees around provenance, permissions, policy, and
 						auditability before people can safely delegate important work to
