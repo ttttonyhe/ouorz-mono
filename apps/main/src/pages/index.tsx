@@ -257,18 +257,20 @@ const Home: NextPageWithLayout = () => {
 						happened.
 					</p>
 					<p className="mt-3.5">
-						I develop effective and efficient adversarial attacks, as well as
-						principled defenses, drawing on applied cryptography, theoretical
+						I develop effective and efficient adversarial attacks (e.g.,
+						automated red-teaming), as well as principled/scalable defenses
+						(e.g., based on reinforcement learning, mechanistic
+						interpretability), drawing on applied cryptography, theoretical
 						machine learning, and systems security to characterize and mitigate
 						emerging threats.
 					</p>
-					<p className="mt-3.5">
+					{/* <p className="mt-3.5">
 						Currently, I am interested in agents that retrieve information, call
 						tools, write code, or act on private context. These systems need
 						stronger guarantees around provenance, permissions, policy, and
 						auditability before people can safely delegate important work to
 						them.
-					</p>
+					</p> */}
 				</div>
 			</section>
 			<section className="mt-16">
