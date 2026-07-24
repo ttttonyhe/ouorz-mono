@@ -81,19 +81,7 @@ const Home: NextPageWithLayout = () => {
 				</label>
 				<div className="wrap-break-word mt-[15px] flex flex-col px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-left lg:text-[17px]">
 					<p>
-						I&#39;m pursuing a Master of Mathematics (Research/Thesis) degree in
-						Computer Science at UWaterloo. I am grateful to be advised by{" "}
-						<a
-							href="https://asokan.org/asokan/"
-							target="_blank"
-							rel="noreferrer"
-							className="text-blue-500 hover:underline">
-							N. Asokan
-						</a>
-						.
-					</p>
-					<p className="mt-3.5">
-						I&#39;m part of{" "}
+						I&#39;m a computer science PhD student at UWaterloo. I&#39;m part of{" "}
 						<a
 							href="https://ssg-research.github.io"
 							target="_blank"
@@ -117,6 +105,25 @@ const Home: NextPageWithLayout = () => {
 							className="text-blue-500 hover:underline">
 							Cybersecurity and Privacy Institute (CPI)
 						</a>
+						.
+					</p>
+					<p className="mt-3.5">
+						I am grateful to be advised by{" "}
+						<a
+							href="https://asokan.org/asokan/"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500 hover:underline">
+							N. Asokan
+						</a>{" "}
+						and{" "}
+						<a
+							href="https://cs.uwaterloo.ca/~y328yu/"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500 hover:underline">
+							Yaoliang Yu
+						</a>
 						. I also worked with{" "}
 						<a
 							href="https://jianliu.phd"
@@ -127,19 +134,19 @@ const Home: NextPageWithLayout = () => {
 						</a>{" "}
 						at{" "}
 						<a
-							href="https://zju-abc.com"
-							target="_blank"
-							rel="noreferrer"
-							className="text-blue-500 hover:underline">
-							ABC Lab
-						</a>
-						,{" "}
-						<a
 							href="https://www.zju.edu.cn/english"
 							target="_blank"
 							rel="noreferrer"
 							className="text-blue-500 hover:underline">
 							Zhejiang University
+						</a>{" "}
+						and did applied cryptography research at{" "}
+						<a
+							href="https://zju-abc.com"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500 hover:underline">
+							ABC Lab
 						</a>
 						. Currently, my office is located in the{" "}
 						<a
@@ -149,7 +156,7 @@ const Home: NextPageWithLayout = () => {
 							className="text-blue-500 hover:underline">
 							William G. Davis Computer Research Centre
 						</a>
-						, DC 3333B, M3.
+						, DC 3333.
 					</p>
 					<p className="mt-3.5">
 						I&#39;m in pursuit of knowledge, experience, and the various other
@@ -978,8 +985,8 @@ const Home: NextPageWithLayout = () => {
 							orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
 							organization="University of Waterloo"
 							organizationFullName="Computer Science"
-							jobTitle="Master's Degree (Research/Thesis)"
-							jobType="MMath"
+							jobTitle="Doctor of Philosophy"
+							jobType="PhD"
 							dateString="Sep 2025 - Present"
 						/>
 						<EmploymentCard
