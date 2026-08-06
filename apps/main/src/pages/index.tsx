@@ -79,7 +79,7 @@ const Home: NextPageWithLayout = () => {
 					</span>
 					<span className="uppercase">About</span>
 				</label>
-				<div className="wrap-break-word mt-[15px] flex flex-col px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-left lg:text-[17px]">
+				<div className="wrap-break-word mt-3.75 flex flex-col px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-left lg:text-[17px]">
 					<p>
 						I&#39;m a computer science PhD student at UWaterloo. I&#39;m part of{" "}
 						<a
@@ -236,7 +236,7 @@ const Home: NextPageWithLayout = () => {
 					</span>
 					<span className="uppercase">Research Interests</span>
 				</label>
-				<div className="wrap-break-word mt-[15px] flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
+				<div className="wrap-break-word mt-3.75 flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p>
 						TL;DR: I study how AI safety and security break in deployed systems,
 						and how to build defenses that survive those conditions.
@@ -287,7 +287,7 @@ const Home: NextPageWithLayout = () => {
 					</span>
 					<span className="uppercase">Research Vision</span>
 				</label>
-				<div className="wrap-break-word mt-[15px] flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
+				<div className="wrap-break-word mt-3.75 flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p>
 						To ensure AI&apos;s transformative potential reaches as much of the
 						society as possible in the most impactful way, with safety as the
@@ -727,14 +727,7 @@ const Home: NextPageWithLayout = () => {
 						serviceRole="Program Committee Member"
 						serviceType="Conference"
 						serviceTypeColor="border-l-red-400! border-l-4"
-						serviceTitle="USENIX Security Symposium 2027"
-					/>
-					<ServiceCard
-						serviceRole="Program Committee Member"
-						serviceType="Conference"
-						serviceTypeColor="border-l-red-400! border-l-4"
-						serviceTitle="USENIX Security Symposium 2026"
-						serviceOrganization="Artifact Evaluation"
+						serviceTitle="USENIX Security Symposium 2026 (AE), 2027"
 					/>
 					<ServiceCard
 						serviceRole="Program Committee Member"
