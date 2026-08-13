@@ -238,8 +238,9 @@ const Home: NextPageWithLayout = () => {
 				</label>
 				<div className="wrap-break-word mt-3.75 flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p>
-						TL;DR: I study how AI safety and security break in deployed systems,
-						and how to build defenses that survive those conditions.
+						TL;DR: I study how adversarial robustness breaks when AI is deployed
+						into real-world systems, and how to build defenses that survive
+						those conditions.
 					</p>
 					<hr className="mt-3.5 dark:border-gray-700" />
 					<p className="mt-3.5">
@@ -251,7 +252,7 @@ const Home: NextPageWithLayout = () => {
 						privacy of agentic AI systems. I study failures that appear when
 						models are fine-tuned, approximated, compressed, connected to tools,
 						exposed to external content, or placed in multi-agent, and other
-						production ML pipeline settings. I care about{" "}
+						production ML pipeline settings. I am interested in{" "}
 						<a
 							href="https://genai.owasp.org/llm-top-10"
 							target="_blank"
@@ -290,8 +291,8 @@ const Home: NextPageWithLayout = () => {
 				<div className="wrap-break-word mt-3.75 flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
 					<p>
 						To ensure AI&apos;s transformative potential reaches as much of the
-						society as possible in the most impactful way, with safety as the
-						unlock that guarantees the world will benefit from AI.
+						society as possible in the most beneficially impactful way, with
+						safety as the unlock that guarantees the world will benefit from AI.
 					</p>
 				</div>
 			</section>
@@ -727,21 +728,22 @@ const Home: NextPageWithLayout = () => {
 						serviceRole="Program Committee Member"
 						serviceType="Conference"
 						serviceTypeColor="border-l-red-400! border-l-4"
-						serviceTitle="USENIX Security Symposium 2026 (AE), 2027"
+						serviceTitle="USENIX Security Symposium 2026 (AEC), 2027 (PC)"
+						serviceOrganization="🏆 Noteworthy Reviewer, 2026"
 					/>
 					<ServiceCard
 						serviceRole="Program Committee Member"
 						serviceType="Conference"
 						serviceTypeColor="border-l-green-600! border-l-4"
 						serviceTitle="Privacy Enhancing Technologies Symposium (PoPETs/PETS) 2026"
-						serviceOrganization="Artifact Evaluation"
+						serviceOrganization="Artifact Evaluation (AE)"
 					/>
 					<ServiceCard
 						serviceRole="Program Committee Member"
 						serviceType="Conference"
 						serviceTypeColor="border-l-red-400! border-l-4"
 						serviceTitle="ACM Conference on Computer and Communications Security (CCS) 2025, 2026"
-						serviceOrganization="Artifact Evaluation"
+						serviceOrganization="Artifact Evaluation (AE)"
 					/>
 					<ServiceCard
 						serviceRole="Invited Reviewer"
