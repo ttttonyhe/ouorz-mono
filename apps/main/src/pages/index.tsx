@@ -788,6 +788,12 @@ const Home: NextPageWithLayout = () => {
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<ServiceCard
+						serviceRole="International Doctoral Student Award (IDSA)"
+						serviceType="University"
+						serviceTitle="CAD 5,100 per term"
+						serviceOrganization="University of Waterloo"
+					/>
+					<ServiceCard
 						serviceRole="University of Waterloo Graduate Scholarship"
 						serviceType="University"
 						serviceTitle="CAD 4,000"
@@ -814,7 +820,7 @@ const Home: NextPageWithLayout = () => {
 					<ServiceCard
 						serviceRole="International Master's Award of Excellence (IMAE)"
 						serviceType="University"
-						serviceTitle="CAD 7,500"
+						serviceTitle="CAD 2,500 per term"
 						serviceOrganization="University of Waterloo"
 					/>
 				</div>
@@ -832,10 +838,18 @@ const Home: NextPageWithLayout = () => {
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
 						organization="University of Waterloo"
+						organizationFullName="CS 858 Trustworthy Machine Learning: a Systems Security Approach"
+						jobTitle="Course Staff (Expert)"
+						jobType="Part-time"
+						dateString="Sep 2026 - Present"
+					/>
+					<EmploymentCard
+						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
+						organization="University of Waterloo"
 						organizationFullName="CS 436 Networks and Distributed Computer Systems"
 						jobTitle="Teaching Assistant (TA)"
 						jobType="Part-time"
-						dateString="Jan 2026 - Present"
+						dateString="Jan 2026 - Apr 2026"
 					/>
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
