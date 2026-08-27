@@ -1,8 +1,8 @@
+import { StoryFn, Meta, StoryObj } from "@storybook/react-webpack5"
 import React from "react"
-import { StoryFn, Meta, StoryObj } from "@storybook/react"
 
-import LabelGroup from "./label-group"
 import Label from "../Label/label"
+import LabelGroup from "./label-group"
 
 const meta: Meta<typeof LabelGroup> = {
 	title: "Components/ Label Group",
@@ -24,11 +24,7 @@ const Template: StoryFn<typeof LabelGroup> = ({ children }) => {
 export const OneLabel: Story = {
 	render: Template,
 	args: {
-		children: (
-			<>
-				<Label type="green">Preview</Label>
-			</>
-		),
+		children: <Label type="green">Preview</Label>,
 	},
 }
 

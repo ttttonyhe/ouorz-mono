@@ -1,16 +1,17 @@
-import * as hre from "hardhat"
 import { Deployer } from "@matterlabs/hardhat-zksync-deploy"
-import { Wallet } from "zksync-web3"
+import * as hre from "hardhat"
+import { Wallet } from "zksync-ethers"
 
-import Contracts from "../constants/contracts"
 import ContractConstructorArguments from "../constants/arguments"
+import Contracts from "../constants/contracts"
+import { requireDeployerPrivateKey } from "./deployerWallet"
 
 async function main() {
 	console.log(
 		"Deploying Twilight Blog proxy, proxy admin and the latest implementation..."
 	)
 
-	const wallet = new Wallet(process.env.DEPLOYER_PRIVATE_KEY)
+	const wallet = new Wallet(requireDeployerPrivateKey())
 	const deployer = new Deployer(hre, wallet)
 
 	const artifact = await deployer.loadArtifact(Contracts.Blog)
@@ -20,12 +21,12 @@ async function main() {
 		JSON.stringify(ContractConstructorArguments.TwilightBlog)
 	)
 
-	const contracts = await hre.zkUpgrades.deployProxy(
+	const contract = await hre.zkUpgrades.deployProxy(
 		deployer.zkWallet,
 		artifact,
 		ContractConstructorArguments.TwilightBlog
 	)
-	await contracts.deployed()
+	await contract.waitForDeployment()
 
 	console.log(
 		`${artifact.contractName} has been deployed, ` +

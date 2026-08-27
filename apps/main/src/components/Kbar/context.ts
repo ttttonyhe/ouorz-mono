@@ -1,10 +1,14 @@
-import { createContext } from "react"
+import { createContext, type Dispatch, type SetStateAction } from "react"
+
+export type KbarInputValueChangeHandler = (newValue: string) => void
 
 export type KbarContext = {
 	inputValue: string
 	setInputValue: (value: string) => void
-	inputValueChangeHandler?: (newValue: string) => void
-	setInputValueChangeHandler?: (handler: (newValue: string) => void) => void
+	inputValueChangeHandler?: KbarInputValueChangeHandler
+	setInputValueChangeHandler?: Dispatch<
+		SetStateAction<KbarInputValueChangeHandler | undefined>
+	>
 }
 
 const kbarContext = createContext<KbarContext>({

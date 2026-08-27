@@ -1,5 +1,6 @@
+import * as Readline from "node:readline"
+
 import * as hre from "hardhat"
-import * as Readline from "readline"
 
 import Contracts from "../constants/contracts"
 

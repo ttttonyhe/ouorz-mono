@@ -1,12 +1,15 @@
 "use client"
 
-import { Menu } from "../Sidebar"
-import { BREAKPOINTS, DRAWER_SNAP_POINTS } from "@/constants/ui"
-import drawer from "@/styles/drawer.module.css"
 import cn from "clsx"
 import { useState } from "react"
 import { useWindowSize } from "react-use"
 import { Drawer as VaulDrawer } from "vaul"
+
+import { BREAKPOINTS, DRAWER_SNAP_POINTS } from "@/constants/ui"
+
+import { Menu } from "../Sidebar"
+
+import drawer from "@/styles/drawer.module.css"
 
 const Drawer = () => {
 	const { width } = useWindowSize()
@@ -30,10 +33,10 @@ const Drawer = () => {
 				<VaulDrawer.Content
 					className={cn(
 						drawer.dialog,
-						"fixed bottom-0 left-0 right-0 z-overlay mt-24 flex h-[96%] flex-col rounded-t-[10px] bg-zinc-100 outline-none lg:hidden"
+						"fixed right-0 bottom-0 left-0 z-overlay mt-24 flex h-[96%] flex-col rounded-t-[10px] bg-zinc-100 outline-hidden lg:hidden"
 					)}>
 					<VaulDrawer.Title className="DialogTitle" />
-					<div className="mx-auto mb-4 mt-4 h-1.5 w-12 flex-shrink-0 rounded-full bg-zinc-300" />
+					<div className="mx-auto mt-4 mb-4 h-1.5 w-12 flex-shrink-0 rounded-full bg-zinc-300" />
 					<Menu
 						horizontalShrink={false}
 						navigationCallback={() =>

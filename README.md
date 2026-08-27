@@ -48,9 +48,9 @@ Super opinionated, completely overkill.
 - TypeScript
 - Framework
   - React (Next.js)
-  - Foundation/Adaptor implementation *coming soon*
+  - Foundation/Adaptor implementation _coming soon_
   - Storybook
-  - Turborepo
+  - Turborepo (Bun workspaces)
 - Data Fetching
   - swr
     - Infinite Loading
@@ -71,13 +71,14 @@ Super opinionated, completely overkill.
   - Newsletter (Listmonk)
 - Error Logging & Web Vitals Metric
   - Sentry
-- Linters
-  - ESLint
-  - Prettier
-  - CommitLint
+- Linting & Formatting
+  - Oxlint (with the vendored anti-slop and no-comment-walls plugins)
+  - Oxfmt
+  - CommitLint (via Lefthook)
 - CI/CD
   - Github Actions
   - Vercel
+
 </details>
 
 <br/>
@@ -86,7 +87,7 @@ Super opinionated, completely overkill.
 
 ```bash
 git clone git@github.com:ttttonyhe/ouorz-mono.git
-pnpm install
+bun install
 cd apps/main
 ```
 
@@ -104,18 +105,19 @@ Create a `.env` file with your configuration, see below for a list of environmen
   - REVALIDATION_REQUEST_TOKEN
 
 ```
-pnpm run dev:main
+bun run dev:main
 ```
 
 <br/>
 <hr/>
 
 ## WordPress App
+
 > **Warning**
-> 
+>
 > Running WordPress in a Docker container is extremely slow on lower-spec machines
-> 
-> \>=1 GB of RAM without MySQL 8, or >=2 GB of RAM with MySQL 8 is recommended
+>
+> At least 1 GB of RAM without MySQL 8, or 2 GB of RAM with MySQL 8, is recommended
 
 This project is wrapped up in a Docker container built based on the official WordPress Docker image: [wordpress:php8.0-apache](https://hub.docker.com/layers/library/wordpress/php8.0-apache/images/sha256-121ce32b1837fa372989ae498eee6c7ff49e022715e035e00d65c8d07592a5d9).
 
@@ -187,6 +189,7 @@ ouorz-wordpress
 This project is based on [Umami](https://umami.is)
 
 ### Geolocation Data Access
+
 Follow the instructions [here →](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data) to sign up for Maxmind GeoLite2, and retrieve a license key
 
 <br/>
@@ -195,7 +198,7 @@ Follow the instructions [here →](https://dev.maxmind.com/geoip/geolite2-free-g
 
 ```bash
 git clone git@github.com:ttttonyhe/ouorz-mono.git
-pnpm install
+bun install
 cd apps/analytics
 ```
 
@@ -206,8 +209,8 @@ Create a `.env` file with your configuration, see below for a list of environmen
 - MAXMIND_LICENSE_KEY
 
 ```
-pnpm --filter @ouorz/analytics run build-postgresql-client
-pnpm run dev:analytics
+bun run --filter '@ouorz/analytics' build-postgresql-client
+bun run dev:analytics
 ```
 
 <br/>
@@ -218,7 +221,6 @@ pnpm run dev:analytics
 A super opinionated front-end toolkit library
 
 ![twilight-toolkit-storybook](https://user-images.githubusercontent.com/21199796/182478030-52acb1f1-c60d-415b-9924-195e9b9d2ca5.png)
-
 
 ### UI
 
@@ -241,26 +243,67 @@ Work in progress
 
 Build system: [Turborepo](https://turborepo.org) with Remote Caching
 
-Monorepo Manager: [PNpm](https://pnpm.io/workspaces)
+Package manager: [Bun](https://bun.com/docs/install/workspaces) workspaces
+
+Linter: [Oxlint](https://oxc.rs/docs/guide/usage/linter.html) · Formatter: [Oxfmt](https://oxc.rs/docs/guide/usage/formatter.html)
+
+Git hooks: [Lefthook](https://lefthook.dev)
 
 <br/>
 
 ### Practices
 
 #### Running Scripts
-+ Use project aliases to run commands in different packages more easily:
+
+- Use project aliases to run commands in different packages more easily:
   ```bash
-  pnpm --filter @ouorz/main run upgrade
+  bun run --filter @ouorz/main upgrade
   ```
-+ Use pre-defined Turborepo scripts whenever content awareness (i.e. caching) is needed:
+- Use pre-defined Turborepo scripts whenever content awareness (i.e. caching) is needed:
   ```bash
-  pnpm run build:main
+  bun run build:main
   ```
 
 #### Managing Dependencies
-+ Root `package.json` should only contain development dependencies
 
-> WIP
+- Root `package.json` should only contain development dependencies
+
+#### Linting and Formatting
+
+Oxlint and Oxfmt run once for the whole repository, so there is no per-package
+lint script to keep in sync:
+
+```bash
+bun run lint          # report problems
+bun run lint:fix      # apply the fixes that are safe to apply
+bun run format        # format every file
+bun run check         # what CI runs
+```
+
+Solidity keeps its own toolchain, since Oxfmt does not read `.sol` files:
+
+```bash
+bun run lint:sol
+bun run format:sol
+```
+
+The `anti-slop` and `no-comment-walls` rules live in `tools/oxlint/`. They are
+vendored on purpose: edit them in place when a rule stops matching how the
+project is written.
+
+#### Git Hooks
+
+`lefthook.yml` holds every hook. Jobs run in parallel, are filtered by glob, and
+re-stage whatever they fix, so a commit only pays for the file types it touches.
+
+```bash
+bunx lefthook install          # after a fresh clone (bun install does this too)
+bunx lefthook run pre-commit   # try the hook without committing
+LEFTHOOK=0 git commit          # bypass the hooks once
+```
+
+Solidity keeps Prettier because Oxfmt does not read `.sol`; `.prettierrc.mjs`
+exists for that alone and should never be pointed at the whole repository.
 
 <br/>
 
@@ -288,18 +331,18 @@ Test runner: [Cypress](https://www.cypress.io)
 Start server:
 
 ```bash
-pnpm run build:main
-pnpm run start:main
+bun run build:main
+bun run start:main
 
 # or
 cd apps/main
-pnpm run dev:test
+bun run dev:test
 ```
 
 Run tests:
 
 ```bash
-pnpm run test:main
+bun run test:main
 ```
 
 `apps/main` uses Cypress Dashboard, disable it by changing the configuration file accordingly.
@@ -322,8 +365,8 @@ Build then deploy the Docker image via `apps/wordpress/Dockerfile`.
 This project utilizes a combination of Server-side Rendering (SSR) and (On-demand) Incremental Static Generation (ISG):
 
 ```bash
-pnpm run build:main
-pnpm run start:main
+bun run build:main
+bun run start:main
 ```
 
 <br/>
@@ -331,8 +374,8 @@ pnpm run start:main
 ### apps/analytics
 
 ```bash
-pnpm run build:analytics
-pnpm run start:analytics
+bun run build:analytics
+bun run start:analytics
 ```
 
 <br/>
@@ -342,7 +385,7 @@ pnpm run start:analytics
 To deploy the storybook, export it as a static web app:
 
 ```bash
-pnpm run build:twilight:ui:storybook
+bun run build:twilight:ui:storybook
 ```
 
 <br/>
@@ -392,7 +435,7 @@ Traffic is automatically routed through a private IPv6 address restricted to you
 Make sure to set root directory path to `apps/<project-name>`, then update build command to the following:
 
 ```bash
-cd ../.. && pnpm run build:<project-name>
+cd ../.. && bun run build:<project-name>
 ```
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ttttonyhe/ouorz-mono)
@@ -410,6 +453,7 @@ git diff --quiet HEAD^ HEAD ./
 <br/>
 
 ## License
+
 [GPL-3.0](https://github.com/ttttonyhe/ouorz-mono/blob/main/LICENSE)
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fttttonyhe%2Fouorz-mono.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fttttonyhe%2Fouorz-mono?ref=badge_large)

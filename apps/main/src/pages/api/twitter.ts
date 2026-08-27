@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next"
+
 import { TWITTER_API } from "~/constants/apiURLs"
 
 type ResDataType = {
@@ -6,7 +7,8 @@ type ResDataType = {
 }
 
 /**
- * @deprecated Twitter v2 API free tier does not support this request any more
+ * The Twitter v2 free tier dropped follower counts, so this route answers with
+ * an error. It stays wired up so the dashboard tile keeps its shape.
  */
 const twitter = async (
 	_req: NextApiRequest,

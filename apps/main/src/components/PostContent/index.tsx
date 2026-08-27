@@ -1,40 +1,25 @@
 import "highlight.js/styles/atom-one-dark.css"
-import { useEffect, useState } from "react"
 import Highlight from "react-highlight"
+
+import useMounted from "~/hooks/useMounted"
 
 interface PostContentProps {
 	content: string
-	onRendered?: () => void
 }
 
-export default function PostContent({ content, onRendered }: PostContentProps) {
-	const [mounted, setMounted] = useState(false)
-
-	useEffect(() => {
-		setMounted(true)
-	}, [])
-
-	useEffect(() => {
-		// Call onRendered after the component mounts and Highlight is ready
-		if (mounted && onRendered) {
-			const timer = setTimeout(() => {
-				onRendered()
-			}, 100) // Small delay to ensure Highlight has rendered
-
-			return () => clearTimeout(timer)
-		}
-	}, [onRendered, mounted])
+export default function PostContent({ content }: PostContentProps) {
+	const mounted = useMounted()
 
 	if (!mounted) {
 		return (
-			<div className="prose tracking-wide dark:prose-dark lg:prose-xl prose-ul:m-2 prose-ul:ps-5 prose-hr:border-gray-200 dark:prose-hr:border-gray-700">
+			<div className="prose tracking-wide lg:prose-xl dark:prose-dark prose-ul:m-2 prose-ul:ps-5 prose-hr:border-gray-200 dark:prose-hr:border-gray-700">
 				<div>Loading...</div>
 			</div>
 		)
 	}
 
 	return (
-		<div className="prose tracking-wide dark:prose-dark lg:prose-xl prose-ul:m-2 prose-ul:ps-5 prose-hr:border-gray-200 dark:prose-hr:border-gray-700">
+		<div className="prose tracking-wide lg:prose-xl dark:prose-dark prose-ul:m-2 prose-ul:ps-5 prose-hr:border-gray-200 dark:prose-hr:border-gray-700">
 			<Highlight innerHTML={true}>{content}</Highlight>
 		</div>
 	)

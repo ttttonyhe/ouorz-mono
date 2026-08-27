@@ -35,7 +35,7 @@ const Hover = ({
 	}
 
 	const handleOnMouseMove = (event: MouseEvent) => {
-		if (updateCall.current !== null && typeof window !== "undefined") {
+		if (updateCall.current !== null) {
 			window.cancelAnimationFrame(updateCall.current)
 		}
 		updateCall.current = requestAnimationFrame(() => updateElementStyle(event))
@@ -63,8 +63,8 @@ const Hover = ({
 		x = Math.min(Math.max(x, 0), 1)
 		y = Math.min(Math.max(y, 0), 1)
 
-		const tiltX = -1 * parseFloat((max / 2 - x * max).toFixed(2))
-		const tiltY = -1 * parseFloat((max / 2 - y * max).toFixed(2))
+		const tiltX = -1 * Number((max / 2 - x * max).toFixed(2))
+		const tiltY = -1 * Number((max / 2 - y * max).toFixed(2))
 
 		const angle =
 			Math.atan2(
@@ -111,14 +111,12 @@ const Hover = ({
 	}
 
 	const handleReset = () => {
-		if (typeof window !== "undefined") {
-			window.requestAnimationFrame(() => {
-				setTiltStyles((prevStyle) => ({
-					...prevStyle,
-					transform: `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`,
-				}))
-			})
-		}
+		window.requestAnimationFrame(() => {
+			setTiltStyles((prevStyle) => ({
+				...prevStyle,
+				transform: `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`,
+			}))
+		})
 	}
 
 	return (

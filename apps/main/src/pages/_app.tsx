@@ -9,7 +9,9 @@ import Script from "next/script"
 import NextNprogress from "nextjs-progressbar"
 import type { ReactElement, ReactNode } from "react"
 import { Provider as ReduxProvider } from "react-redux"
+
 import store from "~/store"
+
 import "~/styles/global.css"
 import { useViewTransitionRouter } from "~/utilities/viewTransition"
 
@@ -46,10 +48,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
 				options={{ showSpinner: false }}
 			/>
 			{/* Next-Themes Theme Provider */}
-			<ThemeProvider
-				attribute="class"
-				defaultTheme="light"
-				enableSystem={true}>
+			<ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
 				{/* Redux Store Provider */}
 				<ReduxProvider store={store}>
 					<div className="min-h-screen animate-appear bg-gbg dark:bg-neutral-900 dark:text-white">

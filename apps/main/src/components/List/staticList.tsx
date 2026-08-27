@@ -14,7 +14,7 @@ const StaticList = ({ posts, sticky }: StaticListProps) => {
 		<div>
 			<div key="PostList" data-cy="indexPosts">
 				{posts.map((item: WPPost) => {
-					if (item.code == null) {
+					if (item.code === null || item.code === undefined) {
 						if (item.post_img.url) {
 							return <CardWithImage item={item} sticky={sticky} key={item.id} />
 						} else if (item.post_categories[0].term_id === 58) {

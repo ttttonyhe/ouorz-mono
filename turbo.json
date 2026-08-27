@@ -1,136 +1,99 @@
 {
-  "$schema": "https://turborepo.org/schema.json",
-  "ui": "stream",
-  "globalDependencies": [
-    "tsconfig.json",
-    ".env.*"
-  ],
-  "remoteCache": {
-    "signature": true
-  },
-  "tasks": {
-    "build": {
-      "outputs": [
-        "dist/**",
-        ".next/**"
-      ],
-      "dependsOn": [
-        "^build"
-      ]
-    },
-    "@twilight-toolkit/utils#build": {
-      "outputs": [
-        "dist/**"
-      ]
-    },
-    "@twilight-toolkit/ui#build:storybook": {
-      "outputs": [
-        "storybook-static/**"
-      ],
-      "dependsOn": [
-        "@twilight-toolkit/utils#build"
-      ]
-    },
-    "@ouorz/main#build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        ".next/**"
-      ],
-      "env": [
-        "REVALIDATION_REQUEST_TOKEN",
-        "SENTRY_ORG",
-        "SENTRY_PROJECT",
-        "SENTRY_AUTH_TOKEN",
-        "SENTRY_IGNORE_API_RESOLUTION_ERROR",
-        "NEXT_PUBLIC_SENTRY_DSN",
-        "NEXT_PUBLIC_LC_KEY",
-        "NEXT_PUBLIC_LC_ID",
-        "JMS_API_PATH",
-        "GITHUB_TOKEN",
-        "ALCHEMY_API_PATH",
-        "QUICK_NODE_API_PATH",
-        "NEXT_PUBLIC_HOST_URL",
-        "ANALYTICS_START_TIME",
-        "ANALYTICS_TOKEN",
-        "SPOTIFY_REFRESH_TOKEN",
-        "TWITTER_ACCESS_TOKEN",
-        "TWITTER_ACCESS_TOKEN_SECRET",
-        "OPENAI_API_KEY",
-        "ALGOLIA_APP_ID",
-        "ALGOLIA_API_KEY",
-        "ALGOLIA_INDEX_NAME"
-      ]
-    },
-    "@ouorz/preview#build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        ".next/**"
-      ]
-    },
-    "@ouorz/analytics#build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        ".next/**"
-      ],
-      "env": [
-        "DATABASE_URL",
-        "HASH_SALT",
-        "MAXMIND_LICENSE_KEY"
-      ]
-    },
-    "@ouorz/analytics#build-edge": {
-      "outputs": [
-        ".next/**"
-      ],
-      "env": [
-        "DATABASE_URL",
-        "HASH_SALT",
-        "MAXMIND_LICENSE_KEY"
-      ]
-    },
-    "test": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": []
-    },
-    "start": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [],
-      "persistent": true
-    },
-    "@twilight-toolkit/ui#start:storybook": {
-      "dependsOn": [
-        "^build"
-      ],
-      "persistent": true
-    },
-    "lint": {
-      "outputs": []
-    },
-    "dev": {
-      "cache": false,
-      "persistent": true
-    },
-    "dev:test": {
-      "cache": false,
-      "persistent": true
-    },
-    "clean": {
-      "cache": false
-    },
-    "upgrade": {
-      "outputs": [
-        "package.json"
-      ]
-    }
-  }
+	"$schema": "https://turborepo.org/schema.json",
+	"ui": "stream",
+	"globalDependencies": [
+		".env.*",
+		".oxlintrc.jsonc",
+		".oxfmtrc.json",
+		".solhint.json",
+		".solhintignore",
+		".prettierrc.mjs"
+	],
+	"remoteCache": {
+		"signature": true
+	},
+	"tasks": {
+		"build": {
+			"outputs": ["dist/**", ".next/**"],
+			"dependsOn": ["^build"]
+		},
+		"@twilight-toolkit/utils#build": {
+			"outputs": ["dist/**"]
+		},
+		"@twilight-toolkit/ui#build:storybook": {
+			"outputs": ["storybook-static/**"],
+			"dependsOn": ["@twilight-toolkit/utils#build"]
+		},
+		"@ouorz/main#build": {
+			"dependsOn": ["^build"],
+			"outputs": [".next/**"],
+			"env": [
+				"REVALIDATION_REQUEST_TOKEN",
+				"SENTRY_ORG",
+				"SENTRY_PROJECT",
+				"SENTRY_AUTH_TOKEN",
+				"SENTRY_IGNORE_API_RESOLUTION_ERROR",
+				"NEXT_PUBLIC_SENTRY_DSN",
+				"NEXT_PUBLIC_LC_KEY",
+				"NEXT_PUBLIC_LC_ID",
+				"JMS_API_PATH",
+				"GITHUB_TOKEN",
+				"ALCHEMY_API_PATH",
+				"QUICK_NODE_API_PATH",
+				"NEXT_PUBLIC_HOST_URL",
+				"ANALYTICS_START_TIME",
+				"ANALYTICS_TOKEN",
+				"SPOTIFY_REFRESH_TOKEN",
+				"TWITTER_ACCESS_TOKEN",
+				"TWITTER_ACCESS_TOKEN_SECRET",
+				"OPENAI_API_KEY",
+				"ALGOLIA_APP_ID",
+				"ALGOLIA_API_KEY",
+				"ALGOLIA_INDEX_NAME"
+			]
+		},
+		"@ouorz/preview#build": {
+			"dependsOn": ["^build"],
+			"outputs": [".next/**"]
+		},
+		"@ouorz/analytics#build": {
+			"dependsOn": ["^build"],
+			"outputs": [".next/**"],
+			"env": ["DATABASE_URL", "HASH_SALT", "MAXMIND_LICENSE_KEY"]
+		},
+		"@ouorz/analytics#build-edge": {
+			"outputs": [".next/**"],
+			"env": ["DATABASE_URL", "HASH_SALT", "MAXMIND_LICENSE_KEY"]
+		},
+		"test": {
+			"dependsOn": ["^build"],
+			"outputs": []
+		},
+		"start": {
+			"dependsOn": ["^build"],
+			"outputs": [],
+			"persistent": true
+		},
+		"@twilight-toolkit/ui#start:storybook": {
+			"dependsOn": ["^build"],
+			"persistent": true
+		},
+		"dev": {
+			"cache": false,
+			"persistent": true
+		},
+		"dev:test": {
+			"cache": false,
+			"persistent": true
+		},
+		"clean": {
+			"cache": false
+		},
+		"upgrade": {
+			"outputs": ["package.json"]
+		},
+		"lint": {
+			"outputs": []
+		}
+	}
 }

@@ -115,7 +115,11 @@ const getAPI = <T extends API_TYPE>(
 	name: keyof (typeof API_COLLECTION)[T],
 	methodParams?: Parameters<API_METHOD>[0]
 ): ReturnType<API_METHOD> => {
-	const apiMethod = API_COLLECTION[type as string][name as string]
+	// SAFETY: `name` is constrained to `keyof API_COLLECTION[T]`, so the lookup always
+	// yields a collection method; TypeScript cannot narrow the generic index to one signature.
+	const apiMethod = API_COLLECTION[type][name] as (
+		params?: Parameters<API_METHOD>[0]
+	) => string
 	return apiMethod(methodParams)
 }
 

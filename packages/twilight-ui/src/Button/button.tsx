@@ -1,6 +1,7 @@
+import React from "react"
+
 import Icon from "../Icon"
 import type { ButtonTypes, IconNames } from "../utils/propTypes"
-import React from "react"
 
 interface Props {
 	/**
@@ -19,7 +20,6 @@ interface Props {
 	 * The content inside the button
 	 */
 	children?: React.ReactNode
-	[prop: string]: any
 }
 
 type NativeAttrs = Omit<React.ButtonHTMLAttributes<any>, keyof Props>
@@ -51,7 +51,7 @@ const Template = ({
 					<Icon name={icon} />
 				</span>
 			)}
-			<>{children}</>
+			{children}
 		</button>
 	)
 }
@@ -97,7 +97,7 @@ const Button = ({
 					{children}
 				</Template>
 			)
-		default:
+		case "default":
 			return (
 				<Template
 					aria-label="default"

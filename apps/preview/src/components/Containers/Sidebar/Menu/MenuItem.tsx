@@ -1,7 +1,8 @@
-import MenuContext from "../context"
 import cn from "clsx"
 import Link from "next/link"
 import { useContext, type FC, type PropsWithChildren } from "react"
+
+import MenuContext from "../context"
 
 interface MenuItemProps {
 	pathname: string

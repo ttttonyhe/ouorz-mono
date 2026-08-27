@@ -25,6 +25,56 @@ export type KbarLists = {
 	[listKey: string]: KbarList
 }
 
+/* Action shapes handled by the reducer */
+export type SetKbarListAction = {
+	type: typeof SET_KBAR_LIST
+	payload: { list: KbarList }
+}
+export type AddToKbarListsAction = {
+	type: typeof ADD_TO_KBAR_LISTS
+	payload: { key: string; list: KbarList }
+}
+export type ShowKbarAction = { type: typeof SHOW_KBAR; payload: null }
+export type HideKbarAction = { type: typeof HIDE_KBAR; payload: null }
+export type SetKbarAnimationAction = {
+	type: typeof SET_KBAR_ANIMATION
+	payload: { state: "in" | "out" | "transition" | "" }
+}
+export type SetKbarLocationAction = {
+	type: typeof SET_KBAR_LOCATION
+	payload: { location: string[] }
+}
+export type SetKbarLoadingAction = {
+	type: typeof SET_KBAR_LOADING
+	payload: { status: boolean }
+}
+export type SetKbarPlaceholderAction = {
+	type: typeof SET_KBAR_PLACEHOLDER
+	payload: { placeholder: string }
+}
+
+export type KbarAction =
+	| SetKbarListAction
+	| AddToKbarListsAction
+	| ShowKbarAction
+	| HideKbarAction
+	| SetKbarAnimationAction
+	| SetKbarLocationAction
+	| SetKbarLoadingAction
+	| SetKbarPlaceholderAction
+
+/** Every action type the kbar reducer knows how to handle. */
+export const KBAR_REDUCER_ACTION_TYPES: readonly string[] = [
+	SET_KBAR_LIST,
+	ADD_TO_KBAR_LISTS,
+	SHOW_KBAR,
+	HIDE_KBAR,
+	SET_KBAR_ANIMATION,
+	SET_KBAR_LOCATION,
+	SET_KBAR_LOADING,
+	SET_KBAR_PLACEHOLDER,
+]
+
 /* Action creators */
 /* Saga actions */
 export const activateKbar = (homeList: KbarListItem[]) => {
@@ -102,21 +152,23 @@ export const updateKbarSearchQuery = (query: string) => {
 
 /* Redux actions */
 /* UI actions */
-export const showKbar = () => {
+export const showKbar = (): ShowKbarAction => {
 	return {
 		type: SHOW_KBAR,
 		payload: null,
 	}
 }
 
-export const hideKbar = () => {
+export const hideKbar = (): HideKbarAction => {
 	return {
 		type: HIDE_KBAR,
 		payload: null,
 	}
 }
 
-export const setKbarAnimation = (state: "in" | "out" | "transition" | "") => {
+export const setKbarAnimation = (
+	state: "in" | "out" | "transition" | ""
+): SetKbarAnimationAction => {
 	return {
 		type: SET_KBAR_ANIMATION,
 		payload: {
@@ -126,7 +178,10 @@ export const setKbarAnimation = (state: "in" | "out" | "transition" | "") => {
 }
 
 /* Data actions */
-export const addToKbarLists = (key: string, list: KbarListItem[]) => {
+export const addToKbarLists = (
+	key: string,
+	list: KbarListItem[]
+): AddToKbarListsAction => {
 	return {
 		type: ADD_TO_KBAR_LISTS,
 		payload: {
@@ -136,7 +191,7 @@ export const addToKbarLists = (key: string, list: KbarListItem[]) => {
 	}
 }
 
-export const setKbarList = (list: KbarListItem[]) => {
+export const setKbarList = (list: KbarListItem[]): SetKbarListAction => {
 	return {
 		type: SET_KBAR_LIST,
 		payload: {
@@ -145,7 +200,7 @@ export const setKbarList = (list: KbarListItem[]) => {
 	}
 }
 
-export const setKbarLocation = (location: string[]) => {
+export const setKbarLocation = (location: string[]): SetKbarLocationAction => {
 	return {
 		type: SET_KBAR_LOCATION,
 		payload: {
@@ -154,7 +209,7 @@ export const setKbarLocation = (location: string[]) => {
 	}
 }
 
-export const setKbarLoading = (status: boolean) => {
+export const setKbarLoading = (status: boolean): SetKbarLoadingAction => {
 	return {
 		type: SET_KBAR_LOADING,
 		payload: {
@@ -163,7 +218,9 @@ export const setKbarLoading = (status: boolean) => {
 	}
 }
 
-export const setKbarPlaceholder = (placeholder: string) => {
+export const setKbarPlaceholder = (
+	placeholder: string
+): SetKbarPlaceholderAction => {
 	return {
 		type: SET_KBAR_PLACEHOLDER,
 		payload: {

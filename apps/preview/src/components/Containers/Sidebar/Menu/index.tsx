@@ -1,14 +1,16 @@
 "use client"
 
+import cn from "clsx"
+import { FC, useContext } from "react"
+import { useUpdateEffect } from "react-use"
+
 import Footer from "../../Footer"
 import Header from "../../Header"
 import MenuContext from "../context"
 import MenuItem from "./MenuItem"
 import MenuSection from "./MenuSection"
+
 import responsive from "@/styles/responsive.module.css"
-import cn from "clsx"
-import { FC, useContext } from "react"
-import { useUpdateEffect } from "react-use"
 
 interface MenuProps {
 	horizontalShrink?: boolean
@@ -22,7 +24,7 @@ const Menu: FC<MenuProps> = ({
 	const { activePathname } = useContext(MenuContext)
 
 	useUpdateEffect(() => {
-		navigationCallback && navigationCallback()
+		navigationCallback?.()
 	}, [activePathname])
 
 	return (

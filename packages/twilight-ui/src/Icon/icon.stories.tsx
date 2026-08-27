@@ -1,5 +1,5 @@
+import { StoryFn, StoryObj, Meta } from "@storybook/react-webpack5"
 import React from "react"
-import { StoryFn, StoryObj, Meta } from "@storybook/react"
 
 import Icon from "."
 import icons from "./icons"
@@ -21,7 +21,7 @@ type Story = StoryObj<typeof Icon>
 
 const Template: StoryFn<typeof Icon> = (args) => {
 	return (
-		<i className="flex w-8 h-8">
+		<i className="flex h-8 w-8">
 			<Icon {...args} />
 		</i>
 	)

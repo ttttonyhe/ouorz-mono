@@ -1,5 +1,6 @@
 import { Label } from "@twilight-toolkit/ui"
 import Link from "next/link"
+
 import CardFooter from "~/components/Card/Footer"
 import type { WPPost } from "~/constants/propTypes"
 import { useDispatch } from "~/hooks"
@@ -14,7 +15,7 @@ interface Props {
 export default function CardWithOutImage({ item, sticky }: Props) {
 	const dispatch = useDispatch()
 	return (
-		<div className="shadow-xs mb-6 w-full rounded-md border bg-white dark:border-gray-700 dark:bg-gray-800">
+		<div className="mb-6 w-full rounded-md border bg-white shadow-xs dark:border-gray-700 dark:bg-gray-800">
 			<div className="p-5 lg:p-10">
 				<div className="col-span-2 col-end-4">
 					<div className="grid grid-cols-4 items-center">
@@ -39,12 +40,12 @@ export default function CardWithOutImage({ item, sticky }: Props) {
 					</div>
 					<div className="mt-4">
 						<Link href={`/post/${item.id}`}>
-							<h1 className="mb-2.5 text-2 font-medium tracking-wider text-gray-700 dark:text-white lg:text-list-title">
+							<h1 className="mb-2.5 text-2 font-medium tracking-wider text-gray-700 lg:text-list-title dark:text-white">
 								{item.post_title}
 							</h1>
 						</Link>
 						<p
-							className="leading-2 overflow-hidden text-ellipsis text-4 tracking-wide text-gray-500 dark:text-gray-400 lg:text-3 lg:leading-8"
+							className="overflow-hidden text-4 leading-2 tracking-wide text-ellipsis text-gray-500 lg:text-3 lg:leading-8 dark:text-gray-400"
 							dangerouslySetInnerHTML={{
 								__html: trimStr(item.post_excerpt.four, 150),
 							}}

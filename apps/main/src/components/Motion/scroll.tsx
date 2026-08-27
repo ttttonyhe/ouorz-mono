@@ -1,6 +1,5 @@
-import { useTheme } from "next-themes"
 import type React from "react"
-import { useCallback, useEffect, useState } from "react"
+import { useEffect, useSyncExternalStore } from "react"
 
 interface Props {
 	handler: (position: number) => void
@@ -9,6 +8,16 @@ interface Props {
 	children: React.ReactNode
 }
 
+const subscribeToScroll = (onScroll: () => void) => {
+	window.addEventListener("scroll", onScroll, { passive: true })
+	return () => {
+		window.removeEventListener("scroll", onScroll)
+	}
+}
+
+const getScrollY = () => window.scrollY
+const getServerScrollY = () => 0
+
 const ScrollWrapper = (props: Props) => {
 	const {
 		handler: applyEffect,
@@ -16,40 +25,23 @@ const ScrollWrapper = (props: Props) => {
 		endPosition,
 		children,
 	} = props
-	const { resolvedTheme } = useTheme()
-	const [yOffset, setYOffset] = useState(0)
 
-	const handler = useCallback(() => {
-		let position = window.scrollY
-
-		if (position < startPosition) {
-			position = 0
-		}
-
-		if (position >= endPosition) {
-			position = endPosition
-		}
-
-		setYOffset(position)
-		applyEffect(position)
-	}, [applyEffect, endPosition, startPosition])
+	const scrollY = useSyncExternalStore(
+		subscribeToScroll,
+		getScrollY,
+		getServerScrollY
+	)
+	const position = scrollY < startPosition ? 0 : Math.min(scrollY, endPosition)
 
 	useEffect(() => {
-		// invoke scroll handler once after changing theme
-		handler()
+		applyEffect(position)
+	}, [applyEffect, position])
 
-		window.addEventListener("scroll", handler, { passive: true })
-
-		return () => {
-			window.removeEventListener("scroll", handler)
-		}
-	}, [handler, resolvedTheme])
-
-	if (yOffset < startPosition) {
+	if (position < startPosition) {
 		return null
 	}
 
-	return <>{children}</>
+	return children
 }
 
 export default ScrollWrapper

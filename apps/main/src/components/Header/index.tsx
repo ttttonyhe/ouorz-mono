@@ -1,12 +1,9 @@
-import Kbar, { type KbarListItem } from "../Kbar"
-import { HeaderTransition, OffsetTransition } from "../Motion"
-import ScrollWrapper from "../Motion/scroll"
-import Tabs from "../Tabs"
 import { useTheme } from "next-themes"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { type MutableRefObject, useRef } from "react"
+import { type RefObject, useRef } from "react"
+
 import { useDispatch, useSelector } from "~/hooks"
 import useAnalytics from "~/hooks/analytics"
 import { selectGeneral } from "~/store/general/selectors"
@@ -16,25 +13,30 @@ import {
 	updateKbarToSearch,
 } from "~/store/kbar/actions"
 
+import Kbar, { type KbarListItem } from "../Kbar"
+import { HeaderTransition, OffsetTransition } from "../Motion"
+import ScrollWrapper from "../Motion/scroll"
+import Tabs from "../Tabs"
+
 interface HeaderSearchBarComponentProps {
-	activateKbar: () => void
+	onActivate: () => void
 }
 
 const HeaderSearchBarComponent = ({
-	activateKbar,
+	onActivate,
 }: HeaderSearchBarComponentProps) => {
 	return (
 		<div className="effect-pressing hidden lg:flex lg:w-[65%] xl:w-[620px]">
 			<div
 				aria-label="Command + K to open the command palette"
-				className="absolute left-3 top-[6px] z-10 cursor-not-allowed rounded-md border bg-gray-50 px-1.5 py-0.5 text-xs text-gray-400 dark:border-gray-600 dark:bg-transparent">
+				className="absolute top-[6px] left-3 z-10 cursor-not-allowed rounded-md border bg-gray-50 px-1.5 py-0.5 text-xs text-gray-400 dark:border-gray-600 dark:bg-transparent">
 				⌘+K
 			</div>
 			<input
 				type="text"
-				className="outline-hidden dark:bg-gray-800/50 dark:shadow-xs w-full rounded-md border border-gray-200 bg-white/90 px-3 py-2 pl-[54px] text-sm transition-shadow hover:bg-neutral-50 dark:border-gray-700 dark:hover:border-gray-700 dark:hover:bg-gray-800"
+				className="w-full rounded-md border border-gray-200 bg-white/90 px-3 py-2 pl-[54px] text-sm outline-hidden transition-shadow hover:bg-neutral-50 dark:border-gray-700 dark:bg-gray-800/50 dark:shadow-xs dark:hover:border-gray-700 dark:hover:bg-gray-800"
 				placeholder="Type your command or search..."
-				onFocus={activateKbar}
+				onFocus={onActivate}
 				data-oa="click-activateKbar"
 				data-cy="cmdkbutton"
 			/>
@@ -49,7 +51,7 @@ const HeaderTitleComponent = () => {
 
 	return (
 		<div className="mx-auto hidden items-center justify-center space-x-3 overflow-hidden lg:flex">
-			<h3 className="overflow-hidden text-ellipsis whitespace-nowrap font-medium">
+			<h3 className="overflow-hidden font-medium text-ellipsis whitespace-nowrap">
 				{headerTitle}
 			</h3>
 		</div>
@@ -57,7 +59,7 @@ const HeaderTitleComponent = () => {
 }
 
 interface HeaderComponentProps {
-	headerRef: MutableRefObject<HTMLDivElement>
+	headerRef: RefObject<HTMLDivElement | null>
 }
 
 const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
@@ -141,13 +143,6 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 				internal: "/pages",
 			},
 		},
-		// {
-		// 	label: "About",
-		// 	icon: "me",
-		// 	link: {
-		// 		internal: "/post/126",
-		// 	},
-		// },
 	]
 
 	const kbarItems: KbarListItem[] = [
@@ -469,7 +464,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			<header
 				ref={headerRef}
 				id="header"
-				className="header fixed top-0 z-50 grid h-auto w-full grid-cols-8 border-b border-gray-200 px-1 py-2 leading-14 duration-300 dark:border-b-transparent dark:backdrop-blur-lg lg:border-0 lg:bg-transparent lg:px-5 lg:py-4">
+				className="header fixed top-0 z-50 grid h-auto w-full grid-cols-8 border-b border-gray-200 px-1 py-2 leading-14 duration-300 lg:border-0 lg:bg-transparent lg:px-5 lg:py-4 dark:border-b-transparent dark:backdrop-blur-lg">
 				<div className="col-start-1 col-end-3 flex items-center lg:items-baseline lg:space-x-2">
 					<Tabs items={leftTabItems} />
 				</div>
@@ -481,7 +476,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 							<HeaderTitleComponent />
 						) : (
 							<HeaderSearchBarComponent
-								activateKbar={() => dispatch(activateKbar(kbarItems))}
+								onActivate={() => dispatch(activateKbar(kbarItems))}
 							/>
 						)}
 					</div>

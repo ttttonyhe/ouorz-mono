@@ -2,6 +2,7 @@ import { Icon } from "@twilight-toolkit/ui"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import useSWR from "swr"
+
 import { PodcastCard, PodcastCardLoading } from "~/components/Card/Podcast"
 import { pageLayout } from "~/components/Page"
 import type { WPPost } from "~/constants/propTypes"
@@ -37,7 +38,7 @@ const Podcasts: NextPageWithLayout = () => {
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="mb-4 flex items-center">
 					<div className="flex flex-1 items-center">
-						<div className="mr-4.5 mt-1 flex -rotate-6 cursor-pointer items-center">
+						<div className="mt-1 mr-4.5 flex -rotate-6 cursor-pointer items-center">
 							<span className="text-[35px] drop-shadow-lg hover:animate-spin">
 								🎙️
 							</span>
@@ -58,7 +59,7 @@ const Podcasts: NextPageWithLayout = () => {
 						</div>
 					</div>
 					<div className="mt-2 flex h-full items-center justify-end whitespace-nowrap">
-						<div className="flex-1 pl-5 pr-3">
+						<div className="flex-1 pr-3 pl-5">
 							<p className="text-xl text-gray-500 dark:text-gray-400">
 								<button
 									type="button"
@@ -77,7 +78,7 @@ const Podcasts: NextPageWithLayout = () => {
 			<div className="my-5">
 				<hr className="dark:border-gray-600" />
 			</div>
-			<section className="mb-10 mt-4 grid grid-cols-2 gap-4 lg:grid-cols-3">
+			<section className="mt-4 mb-10 grid grid-cols-2 gap-4 lg:grid-cols-3">
 				{data && !error ? (
 					data.map((podcast: WPPost) => (
 						<PodcastCard

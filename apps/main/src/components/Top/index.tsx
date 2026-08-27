@@ -8,6 +8,7 @@ export default function Top() {
 				<a
 					target="_blank"
 					href="mailto:lipeng.he@uwaterloo.ca"
+					aria-label="Email"
 					className="col-span-3"
 					rel="noreferrer">
 					<Button
@@ -20,6 +21,7 @@ export default function Top() {
 				<a
 					target="_blank"
 					href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
+					aria-label="Google Scholar"
 					rel="noreferrer"
 					className="col-span-3">
 					<Button
@@ -32,6 +34,7 @@ export default function Top() {
 				<a
 					target="_blank"
 					href="https://www.linkedin.com/in/~lhe"
+					aria-label="LinkedIn"
 					rel="noreferrer"
 					className="col-span-2">
 					<Button
@@ -44,6 +47,7 @@ export default function Top() {
 				<a
 					target="_blank"
 					href="https://github.com/ttttonyhe"
+					aria-label="Github"
 					rel="noreferrer"
 					className="col-span-2">
 					<Button
@@ -58,6 +62,7 @@ export default function Top() {
 				<a
 					target="_blank"
 					href="mailto:lipeng.he@uwaterloo.ca"
+					aria-label="Email"
 					rel="noreferrer"
 					className="w-full">
 					<Button
@@ -70,11 +75,12 @@ export default function Top() {
 				<Link
 					target="_blank"
 					href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
+					aria-label="Google Scholar"
 					rel="noreferrer">
 					<Button
 						type="default"
 						icon="googleScholar"
-						className="w-full! h-full text-blue-500">
+						className="h-full w-full! text-blue-500">
 						<span className="pl-0.5 text-4 leading-14 tracking-normal lg:text-3">
 							Google Scholar
 						</span>

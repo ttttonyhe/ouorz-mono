@@ -1,5 +1,7 @@
 {
-  "github": {
-    "silent": true
-  }
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"github": {
+		"silent": true
+	},
+	"installCommand": "bunx bun@1.4.0 install --frozen-lockfile"
 }

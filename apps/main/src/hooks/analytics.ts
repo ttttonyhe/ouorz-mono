@@ -1,3 +1,5 @@
+import { isBrowser } from "~/utilities/environment"
+
 // Dummy analytics functions for development environment
 const dummyTrackView = (_url?: string, _referrer?: string, _uuid?: string) => {}
 const dummyTrackEvent = (
@@ -15,7 +17,7 @@ const dummyReturn = {
  *	Get the analytics object
  */
 const getAnalytics = () => {
-	if (process.env.NODE_ENV === "development" || typeof window === "undefined") {
+	if (process.env.NODE_ENV === "development" || !isBrowser()) {
 		return dummyReturn
 	}
 

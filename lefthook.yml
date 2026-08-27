@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/evilmartians/lefthook/master/schema.json
+min_version: 2.1.0
+
+pre-commit:
+  parallel: true
+  jobs:
+    - name: source
+      glob:
+        - "*.js"
+        - "*.jsx"
+        - "*.mjs"
+        - "*.cjs"
+        - "*.ts"
+        - "*.tsx"
+        - "*.mts"
+        - "*.cts"
+      # Oxlint rewrites code, so it runs before Oxfmt normalises the result.
+      # `--no-error-on-unmatched-pattern` keeps a commit that only touches ignored
+      # paths (vendored code, generated files) from failing on an empty selection.
+      run: >-
+        bunx oxlint --fix --no-error-on-unmatched-pattern {staged_files}
+        && bunx oxfmt --no-error-on-unmatched-pattern {staged_files}
+      stage_fixed: true
+
+    - name: assets
+      glob:
+        - "*.json"
+        - "*.jsonc"
+        - "*.css"
+        - "*.scss"
+        - "*.md"
+        - "*.mdx"
+        - "*.yml"
+        - "*.yaml"
+        - "*.html"
+      run: bunx oxfmt --no-error-on-unmatched-pattern {staged_files}
+      stage_fixed: true
+
+    - name: solidity
+      glob: "*.sol"
+      # Oxfmt does not read Solidity, so contracts keep their own toolchain.
+      run: bunx prettier --write {staged_files} && bunx solhint -c .solhint.json {staged_files}
+      stage_fixed: true
+
+commit-msg:
+  jobs:
+    - name: commitlint
+      run: bunx commitlint --edit {1}

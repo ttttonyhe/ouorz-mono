@@ -1,4 +1,5 @@
 import useSWR from "swr"
+
 import CardEmpty from "~/components/Card/Empty"
 import { NFTCard, NFTCardLoading } from "~/components/Card/NFT"
 import fetcher from "~/lib/fetcher"
@@ -28,7 +29,7 @@ const NFTs = () => {
 
 	if (
 		data &&
-		(!data.eth || !data.eth.length || !data.sol || !data.eth.length)
+		(!data.eth || data.eth.length === 0 || !data.sol || data.eth.length === 0)
 	) {
 		return <CardEmpty />
 	}

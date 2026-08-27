@@ -3,6 +3,7 @@ import type { GetStaticProps } from "next"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import React from "react"
+
 import PageCard from "~/components/Card/Page"
 import { pageLayout } from "~/components/Page"
 import { GlowingBackground } from "~/components/Visual"
@@ -32,7 +33,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 				<div className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 					<div className="mb-4 flex items-center">
 						<div className="flex flex-1 items-center">
-							<div className="mr-4.5 mt-1 flex -rotate-6 cursor-pointer items-center">
+							<div className="mt-1 mr-4.5 flex -rotate-6 cursor-pointer items-center">
 								<span className="text-[35px] drop-shadow-lg hover:animate-spin">
 									🌈
 								</span>
@@ -75,12 +76,12 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					<hr className="dark:border-gray-600" />
 				</div>
 				<div className="mb-10">
-					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5 text-yellow-500">
 							<Icon name="bitcoin" />
 						</span>
 						<span className="uppercase">Bitcoin</span>
-					</label>
+					</span>
 					<div className="mt-4">
 						<div className="mb-4">
 							<PageCard
@@ -109,12 +110,12 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					</div>
 				</div>
 				<div className="mb-10">
-					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pl-3 pt-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 pl-3 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-[4px] flex h-5 w-5 text-blue-500">
 							<Icon name="eth" />
 						</span>
 						<span className="uppercase">Ethereum</span>
-					</label>
+					</span>
 					<div className="mt-4">
 						<div className="flex flex-col gap-4 lg:flex-row">
 							<div className="flex-1">
@@ -141,12 +142,12 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					</div>
 				</div>
 				<div className="mb-10">
-					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5 text-purple-500">
 							<Icon name="solana" />
 						</span>
 						<span className="uppercase">Solana</span>
-					</label>
+					</span>
 					<div className="mt-4">
 						<div className="flex flex-col gap-4 lg:flex-row">
 							<div className="flex-1">
@@ -176,12 +177,12 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					<hr className="dark:border-gray-600" />
 				</div>
 				<div className="mb-10">
-					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="collection" />
 						</span>
 						<span className="uppercase">Non-fungible Tokens (NFTs)</span>
-					</label>
+					</span>
 					<div className="mt-4">
 						<NFTs />
 					</div>
@@ -190,13 +191,13 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					<hr className="dark:border-gray-600" />
 				</div>
 				<div className="mb-28">
-					<label className="shadow-xs inline-flex items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5 text-pink-500">
 							<Icon name="love" />
 						</span>
 						<span className="uppercase">Sponsor Me</span>
-					</label>
-					<div className="shadow-xs my-2 mb-4 flex w-full items-center rounded-bl-xl rounded-br-xl border border-gray-300 bg-white px-4 py-3 dark:border-gray-600 dark:bg-gray-700">
+					</span>
+					<div className="my-2 mb-4 flex w-full items-center rounded-br-xl rounded-bl-xl border border-gray-300 bg-white px-4 py-3 shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<p className="items-center text-xl tracking-wide">
 							I am developing and maintaining various open source projects and
 							hosting a podcast about tech, life and career:
@@ -220,13 +221,13 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 							/>
 						</div>
 					</div>
-					<div className="shadow-xs my-2 mb-4 flex w-full items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 py-3 dark:border-gray-600 dark:bg-gray-700">
+					<div className="my-2 mb-4 flex w-full items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 py-3 shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<p className="items-center text-xl tracking-wide">
 							If you found my projects interesting or helpful, please consider
 							supporting me through the following ways:
 						</p>
 					</div>
-					<div className="mb-10 mt-4">
+					<div className="mt-4 mb-10">
 						<div className="mb-4">
 							<PageCard
 								title="Github Sponsors"
@@ -253,7 +254,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 							/>
 						</div>
 					</div>
-					<div className="shadow-xs my-2 mb-4 flex w-full items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 py-3 dark:border-gray-600 dark:bg-gray-700">
+					<div className="my-2 mb-4 flex w-full items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 py-3 shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<p className="items-center text-xl tracking-wide">
 							Contact me after finishing your payment, and I{"'"}ll put your
 							name on the list below:
@@ -261,11 +262,11 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					</div>
 					<div className="grid grid-cols-2 gap-4" data-cy="sponsorsItems">
 						{sponsors.length > 0 ? (
-							sponsors.map((item: any, index: number) => {
+							sponsors.map((item: any) => {
 								return (
 									<div
-										key={index}
-										className="glowing-div shadow-xs flex cursor-pointer items-center rounded-md border bg-white px-5 py-4 transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800">
+										key={`${item.name}-${item.date}`}
+										className="glowing-div flex cursor-pointer items-center rounded-md border bg-white px-5 py-4 shadow-xs transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800">
 										<GlowingBackground />
 										<div className="glowing-div-content flex w-full items-center overflow-hidden text-ellipsis whitespace-nowrap">
 											<h1 className="flex-1 items-center text-xl font-medium tracking-wide">
@@ -300,7 +301,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 
 Web3.layout = pageLayout
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = () => {
 	try {
 		const data = getSponsors()
 

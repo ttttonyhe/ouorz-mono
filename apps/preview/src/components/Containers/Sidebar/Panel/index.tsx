@@ -1,8 +1,9 @@
 "use client"
 
-import responsive from "@/styles/responsive.module.css"
 import cn from "clsx"
 import { FC } from "react"
+
+import responsive from "@/styles/responsive.module.css"
 
 interface PanelProps {
 	horizontalShrink?: boolean

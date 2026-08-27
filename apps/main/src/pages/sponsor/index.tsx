@@ -2,6 +2,7 @@ import { Icon } from "@twilight-toolkit/ui"
 import type { GetStaticProps } from "next"
 import Head from "next/head"
 import Link from "next/link"
+
 import PageCard from "~/components/Card/Page"
 import { pageLayout } from "~/components/Page"
 import { GlowingBackground } from "~/components/Visual"
@@ -43,14 +44,14 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 							</div>
 						</div>
 					</div>
-					<div className="shadow-xs my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 dark:border-gray-800 dark:bg-gray-800">
+					<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-xs dark:border-gray-800 dark:bg-gray-800">
 						<p className="items-center text-xl tracking-wide text-gray-500 dark:text-gray-400">
 							I am developing and maintaining various open source projects and
 							hosting a podcast about tech, life and career 🤓
 						</p>
 					</div>
 				</div>
-				<div className="mb-10 mt-5 grid grid-cols-2 gap-4">
+				<div className="mt-5 mb-10 grid grid-cols-2 gap-4">
 					<PageCard
 						title="Github"
 						des="ttttonyhe"
@@ -66,7 +67,7 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						href="https://kukfm.com"
 					/>
 				</div>
-				<div className="shadow-xs my-2 mb-10 w-full items-center rounded-md border bg-white p-7 dark:border-gray-800 dark:bg-gray-800">
+				<div className="my-2 mb-10 w-full items-center rounded-md border bg-white p-7 shadow-xs dark:border-gray-800 dark:bg-gray-800">
 					<p className="items-center text-xl tracking-wide text-gray-500 dark:text-gray-300">
 						If you found my projects or podcast useful or interesting, please
 						consider supporting me through the following ways:
@@ -116,7 +117,7 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						/>
 					</div>
 				</div>
-				<div className="shadow-xs my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 dark:border-gray-800 dark:bg-gray-800">
+				<div className="my-2 flex w-full items-center rounded-md border bg-white px-5 py-3 shadow-xs dark:border-gray-800 dark:bg-gray-800">
 					<p className="items-center text-xl tracking-wide text-gray-500 dark:text-gray-400">
 						Contact me after finishing your payment, and I{"'"}ll put your name
 						on the list below
@@ -124,11 +125,11 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 				</div>
 				<div className="mt-5 grid grid-cols-2 gap-4" data-cy="sponsorsItems">
 					{sponsors.length > 0 ? (
-						sponsors.map((item, index) => {
+						sponsors.map((item) => {
 							return (
 								<div
-									key={index}
-									className="glowing-div shadow-xs flex cursor-pointer items-center rounded-md border bg-white px-5 py-4 transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800">
+									key={`${item.name}-${item.date}`}
+									className="glowing-div flex cursor-pointer items-center rounded-md border bg-white px-5 py-4 shadow-xs transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800">
 									<GlowingBackground />
 									<div className="glowing-div-content flex w-full items-center overflow-hidden text-ellipsis whitespace-nowrap">
 										<h1 className="flex-1 items-center text-xl font-medium tracking-wide">
@@ -162,7 +163,7 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 
 Sponsor.layout = pageLayout
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = () => {
 	try {
 		const data = getSponsors()
 

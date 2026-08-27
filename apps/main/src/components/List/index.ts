@@ -11,7 +11,9 @@ export type ListComponentType = typeof List & {
 	Static: typeof StaticList
 	Infinite: typeof InfiniteList
 }
-;(List as ListComponentType).Static = StaticList
-;(List as ListComponentType).Infinite = InfiniteList
+const ListComponent: ListComponentType = Object.assign(List, {
+	Static: StaticList,
+	Infinite: InfiniteList,
+})
 
-export default List as ListComponentType
+export default ListComponent

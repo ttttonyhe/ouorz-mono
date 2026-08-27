@@ -1,12 +1,14 @@
 import { Icon } from "@twilight-toolkit/ui"
-import { useRouter } from "next/router"
 import { useTheme } from "next-themes"
+import { useRouter } from "next/router"
 import type React from "react"
-import { useContext, useEffect, useMemo, useRef } from "react"
+import { useCallback, useContext, useEffect, useMemo, useRef } from "react"
 import ContentLoader from "react-content-loader"
+
 import { useDispatch, useSelector } from "~/hooks"
 import { deactivateKbar, updateKbar } from "~/store/kbar/actions"
 import { selectKbar } from "~/store/kbar/selectors"
+
 import HotkeyHelper from "../Helpers/hotKey"
 import Tabs, { type TabItemProps } from "../Tabs"
 import { kbarContext } from "./context"
@@ -34,17 +36,17 @@ const ListComponentLoading = ({ resolvedTheme }: { resolvedTheme: string }) => {
 const ListComponent = ({
 	tabsListItems,
 	verticalListWrapper,
+	setWrapperHeight,
 }: {
 	tabsListItems: TabItemProps[] | null
-	verticalListWrapper: React.MutableRefObject<HTMLDivElement | null>
+	verticalListWrapper: React.RefObject<HTMLDivElement | null>
+	setWrapperHeight: (height: number) => void
 }) => {
 	const { resolvedTheme } = useTheme()
 	const { loading } = useSelector(selectKbar)
 
-	// update vertical list wrapper height
-	// when the list is loading or no results found
+	// The loading and empty states have fixed heights the list itself cannot measure.
 	useEffect(() => {
-		if (!verticalListWrapper.current) return
 		let wrapperHeight = 0
 
 		if (loading) {
@@ -56,11 +58,11 @@ const ListComponent = ({
 		}
 
 		if (wrapperHeight) {
-			verticalListWrapper.current.style.height = `${wrapperHeight}px`
+			setWrapperHeight(wrapperHeight)
 		}
-	}, [loading, resolvedTheme, verticalListWrapper, tabsListItems])
+	}, [loading, resolvedTheme, setWrapperHeight, tabsListItems])
 
-	if (loading || tabsListItems == null) {
+	if (loading || tabsListItems === null || tabsListItems === undefined) {
 		return <ListComponentLoading resolvedTheme={resolvedTheme} />
 	}
 
@@ -81,6 +83,7 @@ const ListComponent = ({
 			direction="vertical"
 			defaultHighlighted
 			verticalListWrapper={verticalListWrapper}
+			onListHeightChange={setWrapperHeight}
 		/>
 	)
 }
@@ -99,6 +102,12 @@ const KbarPanel = () => {
 		useSelector(selectKbar)
 	const verticalListWrapper = useRef<HTMLDivElement>(null)
 
+	const setWrapperHeight = useCallback((height: number) => {
+		if (verticalListWrapper.current) {
+			verticalListWrapper.current.style.height = `${height}px`
+		}
+	}, [])
+
 	const initialListItems = useMemo(() => {
 		if (!list) return null
 
@@ -114,7 +123,7 @@ const KbarPanel = () => {
 					}
 				} else if (item.link.internal) {
 					actionFunc = () => {
-						router.push(item.link.internal)
+						void router.push(item.link.internal)
 					}
 				}
 			}
@@ -170,7 +179,7 @@ const KbarPanel = () => {
 				className: "w-full justify-start! p-4!",
 				component:
 					item.hoverable === false ? (
-						<p className="kbar-list-heading text-gray-400 text-sm">
+						<p className="kbar-list-heading text-sm text-gray-400">
 							{item.label}
 						</p>
 					) : (
@@ -188,7 +197,7 @@ const KbarPanel = () => {
 							</div>
 							<div className="flex items-center gap-x-2.5">
 								{item.description && (
-									<div className="text-gray-400 text-sm">
+									<div className="text-sm text-gray-400">
 										{item.description}
 									</div>
 								)}
@@ -223,7 +232,7 @@ const KbarPanel = () => {
 	const tabsListItems = useMemo(() => {
 		if (
 			!initialListItems ||
-			!initialListItems.length ||
+			initialListItems.length === 0 ||
 			!!inputValueChangeHandler
 		) {
 			return initialListItems
@@ -241,7 +250,7 @@ const KbarPanel = () => {
 	return (
 		<div
 			data-cy="kbar-panel"
-			className="-ml-10 pointer-events-auto absolute flex h-screen w-screen justify-center">
+			className="pointer-events-auto absolute -ml-10 flex h-screen w-screen justify-center">
 			{
 				// register shortcuts of list items
 				initialListItems?.map((item) => {
@@ -277,7 +286,7 @@ const KbarPanel = () => {
 						placeholder={placeholder}
 						onChange={(e) => setInputValue(e.target.value)}
 						value={inputValue}
-						className="w-full flex-1 rounded-tl-lg rounded-tr-lg bg-transparent px-5 py-4.5 text-gray-600 text-lg outline-hidden dark:text-gray-300"
+						className="w-full flex-1 rounded-tl-lg rounded-tr-lg bg-transparent px-5 py-4.5 text-lg text-gray-600 outline-hidden dark:text-gray-300"
 						autoFocus
 					/>
 					<div className="mr-5 flex items-center">
@@ -325,6 +334,7 @@ const KbarPanel = () => {
 					<ListComponent
 						tabsListItems={tabsListItems}
 						verticalListWrapper={verticalListWrapper}
+						setWrapperHeight={setWrapperHeight}
 					/>
 				</div>
 			</div>

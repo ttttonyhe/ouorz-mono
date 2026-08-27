@@ -1,8 +1,8 @@
+import { StoryFn, Meta, StoryObj } from "@storybook/react-webpack5"
 import React from "react"
-import { StoryFn, Meta, StoryObj } from "@storybook/react"
 
-import Label from "./label"
 import { iconsNames } from "../utils/propTypes"
+import Label from "./label"
 
 const meta: Meta<typeof Label> = {
 	title: "Components/ Label",

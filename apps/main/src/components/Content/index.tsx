@@ -1,9 +1,11 @@
-import Footer from "../Footer"
 import type React from "react"
 import type { PropsWithChildren } from "react"
+
 import Header from "~/components/Header"
 
-interface Props extends PropsWithChildren<{}> {}
+import Footer from "../Footer"
+
+type Props = PropsWithChildren
 
 const Content = (props: Props) => {
 	const { children } = props

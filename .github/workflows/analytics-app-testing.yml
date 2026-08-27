@@ -5,14 +5,20 @@ on:
     branches:
       - main
     paths:
-      - 'apps/analytics/**'
-      - '.github/workflows/**'
+      - "apps/analytics/**"
+      - "package.json"
+      - "bun.lock"
+      - "turbo.json"
+      - ".github/workflows/**"
   pull_request:
     branches:
       - main
     paths:
-      - 'apps/analytics/**'
-      - '.github/workflows/**'
+      - "apps/analytics/**"
+      - "package.json"
+      - "bun.lock"
+      - "turbo.json"
+      - ".github/workflows/**"
 
 jobs:
   run-smoke-test:
@@ -24,38 +30,20 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
 
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: 18
-
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 8
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: |
-            ~/.cache/Cypress
-            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node-version: 24
 
       - name: Install dependencies
-        run: pnpm install
+        run: bun install --frozen-lockfile
 
       - name: Setup environment variables
         run: |
@@ -65,7 +53,7 @@ jobs:
           echo MAXMIND_LICENSE_KEY=${{ secrets.MAXMIND_LICENSE_KEY }} >> apps/analytics/.env
 
       - name: Build Prisma client
-        run: cd apps/analytics && pnpm run build-postgresql-client
+        run: bun run --filter '@ouorz/analytics' build-postgresql-client
 
       - name: Build app
-        run: pnpm run build:analytics
+        run: bun run build:analytics

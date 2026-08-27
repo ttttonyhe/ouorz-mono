@@ -1,14 +1,12 @@
 import { z } from "zod"
 
 const postSchema = z.object({
-	data: z
-		.object({
-			slug: z.number(),
-			title: z.string(),
-			description: z.string(),
-			date: z.date(),
-		})
-		.passthrough(),
+	data: z.looseObject({
+		slug: z.number(),
+		title: z.string(),
+		description: z.string(),
+		date: z.date(),
+	}),
 	content: z.string(),
 })
 

@@ -1,17 +1,18 @@
 import type { GetStaticPaths, GetStaticProps } from "next"
 import Head from "next/head"
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import TimeAgo from "react-timeago"
+
 import CommentBox from "~/components/CommentBox"
 import { contentLayout } from "~/components/Content"
 import PostContent from "~/components/PostContent"
 import SubscriptionBox from "~/components/SubscriptionBox"
 import { getPageById, getPageIds, type LocalPage } from "~/content/pages"
 import { useDispatch } from "~/hooks"
+import useLiveViews from "~/hooks/useLiveViews"
 import type { NextPageWithLayout } from "~/pages/_app"
 import { setHeaderTitle } from "~/store/general/actions"
-import getAPI from "~/utilities/api"
 
 interface Props {
 	status: boolean
@@ -21,12 +22,15 @@ interface Props {
 const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 	const router = useRouter()
 	const dispatch = useDispatch()
-	const [liveViews, setLiveViews] = useState<number | null>(null)
-	const [isViewsLoading, setIsViewsLoading] = useState(true)
+	const { views: pageViews, isLoading: isViewsLoading } = useLiveViews(
+		"page",
+		page?.id,
+		page?.post_metas.views ?? 0
+	)
 
 	useEffect(() => {
 		if (!status || !page) {
-			router.replace("/404")
+			void router.replace("/404")
 		}
 	}, [page, router, status])
 
@@ -38,44 +42,9 @@ const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 		}
 	}, [dispatch, page])
 
-	useEffect(() => {
-		if (!page?.id) return
-		let isActive = true
-		setIsViewsLoading(true)
-
-		const fetchViews = async () => {
-			const response = await fetch(
-				getAPI("internal", "page", { id: Number(page.id) }),
-				{
-					cache: "no-store",
-				}
-			)
-			if (!response.ok || !isActive) return
-			const data = await response.json()
-			setLiveViews(Number(data?.post_metas?.views ?? 0))
-			setIsViewsLoading(false)
-		}
-
-		fetchViews().catch(() => {
-			if (isActive) {
-				setLiveViews(page.post_metas.views ?? 0)
-				setIsViewsLoading(false)
-			}
-		})
-
-		const interval = window.setInterval(() => {
-			fetchViews().catch(() => {})
-		}, 15000)
-
-		return () => {
-			isActive = false
-			window.clearInterval(interval)
-		}
-	}, [page?.id, page?.post_metas.views])
-
 	if (!status || !page) {
 		return (
-			<div className="shadow-xs mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center">
+			<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-xs">
 				<h1 className="text-lg font-medium">404 Not Found</h1>
 				<p className="text-sm font-light tracking-wide text-gray-500">
 					redirecting...
@@ -85,7 +54,6 @@ const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 	}
 
 	const title = `${page.title.rendered} - Tony He`
-	const pageViews = liveViews ?? page.post_metas.views
 
 	return (
 		<div>
@@ -99,12 +67,12 @@ const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 			</Head>
 			<article
 				data-cy="pageContent"
-				className="lg:shadow-xs bg-white p-5 pt-24 dark:border-gray-800 dark:bg-gray-800 lg:rounded-xl lg:border lg:p-20">
+				className="bg-white p-5 pt-24 lg:rounded-xl lg:border lg:p-20 lg:shadow-xs dark:border-gray-800 dark:bg-gray-800">
 				<div className="mb-20">
-					<h1 className="text-1.5 font-medium leading-snug tracking-wider lg:text-post-title">
+					<h1 className="text-1.5 leading-snug font-medium tracking-wider lg:text-post-title">
 						{page.title.rendered}
 					</h1>
-					<p className="mt-2 flex space-x-2 text-5 tracking-wide text-gray-500 dark:text-gray-400 lg:text-xl">
+					<p className="mt-2 flex space-x-2 text-5 tracking-wide text-gray-500 lg:text-xl dark:text-gray-400">
 						<span>
 							Posted <TimeAgo date={page.date} />
 						</span>
@@ -126,7 +94,7 @@ const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 	)
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = (context) => {
 	const pageId = Number(context.params?.pgid)
 	const page = getPageById(pageId)
 
@@ -148,7 +116,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	}
 }
 
-export const getStaticPaths: GetStaticPaths = async () => ({
+export const getStaticPaths: GetStaticPaths = () => ({
 	paths: getPageIds().map((id) => ({ params: { pgid: String(id) } })),
 	fallback: "blocking",
 })

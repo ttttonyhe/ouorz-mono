@@ -16,10 +16,10 @@ const nexment = async (_req: NextRequest) => {
 		}
 	)
 
-	const count = parseInt(
-		response.headers.get("content-range")?.split("/")[1] ?? "0",
-		10
+	const reported = Math.trunc(
+		Number(response.headers.get("content-range")?.split("/")[1] ?? "0")
 	)
+	const count = Number.isFinite(reported) ? reported : 0
 
 	return new Response(
 		JSON.stringify({

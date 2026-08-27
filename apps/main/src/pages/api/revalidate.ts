@@ -1,6 +1,8 @@
-import { runMiddleware } from "../../lib/middleware"
 import Cors from "cors"
 import type { NextApiRequest, NextApiResponse } from "next"
+
+import { runMiddleware } from "~/lib/middleware"
+import { parseBody, revalidateBodySchema } from "~/lib/requestBody"
 
 type ResDataType = {
 	status: number
@@ -21,11 +23,9 @@ const revalidate = async (
 		res
 	)
 
-	// deconstruct post request body
-	const { token, path } = req.body
+	const body = parseBody(revalidateBodySchema, req.body)
 
-	// validate token
-	if (token !== process.env.REVALIDATION_REQUEST_TOKEN) {
+	if (!body || body.token !== process.env.REVALIDATION_REQUEST_TOKEN) {
 		return res
 			.status(401)
 			.json({ status: 401, revalidated: false, message: "Invalid token" })
@@ -33,8 +33,8 @@ const revalidate = async (
 
 	// execute revalidation
 	try {
-		await res.revalidate(path)
-		return res.json({ status: 401, revalidated: true })
+		await res.revalidate(body.path)
+		return res.json({ status: 200, revalidated: true })
 	} catch (err) {
 		console.log(err)
 		return res.status(500).json({

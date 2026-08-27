@@ -1,10 +1,13 @@
-import { Post } from "."
-import { toLocalDate } from "./transformers/post"
+import fs from "fs"
+import { resolve } from "path"
+
+import matter, { GrayMatterFile } from "gray-matter"
+
 import { CONTENT_ROOT_DIR } from "@/constants/utils"
 import { postSchema } from "@/database/schema"
-import fs from "fs"
-import matter, { GrayMatterFile } from "gray-matter"
-import { resolve } from "path"
+
+import { Post } from "."
+import { toLocalDate } from "./transformers/post"
 
 /**
  * Recursively get all the filepaths in the content directory
@@ -94,7 +97,7 @@ export const getPosts = (bySlugs: string[] = []): Post[] => {
 	// Sort according to bySlug order
 	if (bySlugs.length > 0) {
 		posts = bySlugs.map((slug) => {
-			const post = posts.find((post) => post.slug === slug)
+			const post = posts.find((candidate) => candidate.slug === slug)
 			if (!post) {
 				throw new Error(`Post with slug ${slug} not found`)
 			}
@@ -137,7 +140,7 @@ export const getPostSlugs = (): string[] => {
 export const getPostBySlug = (slug: string) => {
 	const posts = getPosts([slug])
 
-	if (!posts.length) {
+	if (posts.length === 0) {
 		throw new Error(`Post with slug ${slug} not found`)
 	}
 

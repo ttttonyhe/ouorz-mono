@@ -7,7 +7,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import TimeAgo from "react-timeago"
-import { CardTool } from "~/components/Card/WithImage/tool"
+
 import CommentBox from "~/components/CommentBox"
 import { contentLayout } from "~/components/Content"
 import PostContent from "~/components/PostContent"
@@ -15,9 +15,9 @@ import SubscriptionBox from "~/components/SubscriptionBox"
 import { serializeMDX } from "~/content/mdx"
 import { getPostById, getPostIds, type LocalPost } from "~/content/posts"
 import { useDispatch } from "~/hooks"
+import useLiveViews from "~/hooks/useLiveViews"
 import type { NextPageWithLayout } from "~/pages/_app"
 import { setHeaderTitle } from "~/store/general/actions"
-import getAPI from "~/utilities/api"
 import { trimStr } from "~/utilities/string"
 
 const Aside = dynamic(() => import("~/components/Aside"), { ssr: false })
@@ -31,21 +31,35 @@ interface Props {
 const BlogPost: NextPageWithLayout = ({ status, post, mdxSource }: Props) => {
 	const router = useRouter()
 	const dispatch = useDispatch()
-	const [isPostContentRendered, setIsPostContentRendered] = useState(false)
-	const [liveViews, setLiveViews] = useState<number | null>(null)
-	const [isViewsLoading, setIsViewsLoading] = useState(true)
+	/**
+	 * The table of contents measures the rendered post, so it mounts a beat after
+	 * the content lands and syntax highlighting has settled. Tracking which post
+	 * was measured resets this when the router swaps one post for another, and
+	 * covers the MDX and the HTML branch alike.
+	 */
+	const [renderedPostId, setRenderedPostId] = useState<string | null>(null)
 
 	useEffect(() => {
-		setIsPostContentRendered(true)
-	}, [])
+		const id = post?.id ?? null
+		const timer = setTimeout(() => setRenderedPostId(id), 100)
+		return () => clearTimeout(timer)
+	}, [post?.id])
+
+	const isPostContentRendered =
+		renderedPostId !== null && renderedPostId === post?.id
 
 	useEffect(() => {
 		if (!status || !post) {
-			router.replace("/404")
+			void router.replace("/404")
 		}
 	}, [post, router, status])
 
 	const postId = post?.id
+	const { views: postViews, isLoading: isViewsLoading } = useLiveViews(
+		"post",
+		postId,
+		post?.post_metas.views ?? 0
+	)
 
 	useEffect(() => {
 		if (!post) return
@@ -55,47 +69,11 @@ const BlogPost: NextPageWithLayout = ({ status, post, mdxSource }: Props) => {
 		}
 	}, [dispatch, post])
 
-	useEffect(() => {
-		if (!postId) return
-		let isActive = true
-		setIsViewsLoading(true)
-
-		const fetchViews = async () => {
-			const response = await fetch(
-				getAPI("internal", "post", { id: Number(postId) }),
-				{
-					cache: "no-store",
-				}
-			)
-			if (!response.ok || !isActive) return
-			const data = await response.json()
-			setLiveViews(Number(data?.post_metas?.views ?? 0))
-			setIsViewsLoading(false)
-		}
-
-		fetchViews().catch(() => {
-			if (isActive) {
-				setLiveViews(post?.post_metas.views ?? 0)
-				setIsViewsLoading(false)
-			}
-		})
-		const interval = window.setInterval(() => {
-			fetchViews().catch(() => {})
-		}, 15000)
-
-		return () => {
-			isActive = false
-			window.clearInterval(interval)
-		}
-	}, [post?.post_metas.views, postId])
-
 	if (!post) return null
-
-	const postViews = liveViews ?? post.post_metas.views
 
 	if (!status || !post) {
 		return (
-			<div className="shadow-xs mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center">
+			<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-xs">
 				<h1 className="text-lg font-medium">404 Not Found</h1>
 				<p className="text-sm font-light tracking-wide text-gray-500">
 					redirecting...
@@ -124,7 +102,7 @@ const BlogPost: NextPageWithLayout = ({ status, post, mdxSource }: Props) => {
 			</Head>
 			<article
 				data-cy="postContent"
-				className="lg:shadow-xs bg-white p-5 pt-24 dark:border-gray-800 dark:bg-gray-800 lg:rounded-xl lg:border lg:p-20 lg:pt-20">
+				className="bg-white p-5 pt-24 lg:rounded-xl lg:border lg:p-20 lg:pt-20 lg:shadow-xs dark:border-gray-800 dark:bg-gray-800">
 				<div className="mb-20">
 					<div className="mb-3 flex">
 						<Link href={`/cate/${post.post_categories[0].term_id}`}>
@@ -133,10 +111,10 @@ const BlogPost: NextPageWithLayout = ({ status, post, mdxSource }: Props) => {
 							</Label>
 						</Link>
 					</div>
-					<h1 className="text-1.5 font-medium leading-snug tracking-wider lg:text-post-title">
+					<h1 className="text-1.5 leading-snug font-medium tracking-wider lg:text-post-title">
 						{post.title.rendered}
 					</h1>
-					<p className="mt-2 flex space-x-2 whitespace-nowrap text-5 tracking-wide text-gray-500 lg:text-xl">
+					<p className="mt-2 flex space-x-2 text-5 tracking-wide whitespace-nowrap text-gray-500 lg:text-xl">
 						<span>
 							Posted <TimeAgo date={post.date} />
 						</span>
@@ -168,14 +146,11 @@ const BlogPost: NextPageWithLayout = ({ status, post, mdxSource }: Props) => {
 						<PostContent content={post.content.rendered} />
 					)}
 				</div>
-				{post.post_categories[0].term_id === 4 && (
-					<div className="mt-12">
-						<CardTool item={post as any} preview={false} />
-					</div>
-				)}
 			</article>
-			{isPostContentRendered && <Aside preNext={post.post_prenext} />}
-			<div className="border-t border-gray-200 dark:border-gray-600 lg:mt-5 lg:border-none">
+			{isPostContentRendered && (
+				<Aside key={post.id} preNext={post.post_prenext} />
+			)}
+			<div className="border-t border-gray-200 lg:mt-5 lg:border-none dark:border-gray-600">
 				<SubscriptionBox type="lg" />
 			</div>
 			<CommentBox />
@@ -196,7 +171,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 		}
 	}
 
-	const shouldRenderAsHTML = /<\w+[\s\S]*>/.test(post.content.raw)
+	const shouldRenderAsHTML = /<\w+[\s\S]*>/u.test(post.content.raw)
 	let mdxSource: MDXRemoteSerializeResult | null = null
 
 	if (!shouldRenderAsHTML) {
@@ -219,7 +194,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	}
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = () => {
 	const paths = getPostIds().map((id) => ({
 		params: { pid: id.toString() },
 	}))

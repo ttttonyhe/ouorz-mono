@@ -1,6 +1,8 @@
 import type { NextRouter } from "next/router"
 import { useEffect } from "react"
 
+import { supportsViewTransitions } from "~/utilities/environment"
+
 /**
  * Generates a CSS-safe view-transition-name from a title string.
  * The name must be a valid CSS ident (no spaces, special chars, etc.)
@@ -8,20 +10,9 @@ import { useEffect } from "react"
 export const getViewTransitionName = (title: string): string => {
 	return `page-title-${title
 		.toLowerCase()
-		.replace(/[^a-z0-9]/g, "-")
-		.replace(/-+/g, "-")
-		.replace(/^-|-$/g, "")}`
-}
-
-/**
- * Checks if the View Transitions API is supported.
- */
-const isViewTransitionSupported = (): boolean => {
-	return (
-		typeof document !== "undefined" &&
-		"startViewTransition" in document &&
-		typeof document.startViewTransition === "function"
-	)
+		.replaceAll(/[^a-z0-9]/gu, "-")
+		.replaceAll(/-+/gu, "-")
+		.replaceAll(/^-|-$/gu, "")}`
 }
 
 /**
@@ -33,7 +24,7 @@ export const navigateWithTransition = (
 	router: NextRouter,
 	href: string
 ): void => {
-	if (isViewTransitionSupported()) {
+	if (supportsViewTransitions()) {
 		document.startViewTransition(() => {
 			return new Promise<void>((resolve) => {
 				const handleComplete = () => {
@@ -41,11 +32,11 @@ export const navigateWithTransition = (
 					resolve()
 				}
 				router.events.on("routeChangeComplete", handleComplete)
-				router.push(href)
+				void router.push(href)
 			})
 		})
 	} else {
-		router.push(href)
+		void router.push(href)
 	}
 }
 
@@ -55,7 +46,7 @@ export const navigateWithTransition = (
  */
 export const useViewTransitionRouter = (router: NextRouter): void => {
 	useEffect(() => {
-		if (!isViewTransitionSupported()) return
+		if (!supportsViewTransitions()) return
 
 		const handleBeforePopState = (): boolean => {
 			// Start view transition and let Next.js handle navigation normally

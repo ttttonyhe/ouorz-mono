@@ -1,11 +1,20 @@
-import { HIDE_READER, SET_ANIMATION, SET_READER, SHOW_READER } from "./actions"
-import type { AnyAction } from "@reduxjs/toolkit"
+import type { UnknownAction } from "@reduxjs/toolkit"
+
 import type { WPPost } from "~/constants/propTypes"
+
+import {
+	HIDE_READER,
+	READER_REDUCER_ACTION_TYPES,
+	type ReaderAction,
+	SET_ANIMATION,
+	SET_READER,
+	SHOW_READER,
+} from "./actions"
 
 type ReaderState = {
 	animation: "in" | "out" | ""
 	visible: boolean
-	postData?: WPPost
+	postData: WPPost | null
 }
 
 const ReaderInitialState: ReaderState = {
@@ -14,10 +23,15 @@ const ReaderInitialState: ReaderState = {
 	postData: null,
 }
 
+const isReaderAction = (action: UnknownAction): action is ReaderAction =>
+	READER_REDUCER_ACTION_TYPES.includes(action.type)
+
 const readerReducer = (
 	state = ReaderInitialState,
-	action: AnyAction
-): typeof ReaderInitialState => {
+	action: UnknownAction
+): ReaderState => {
+	if (!isReaderAction(action)) return state
+
 	switch (action.type) {
 		case SET_READER:
 			return {

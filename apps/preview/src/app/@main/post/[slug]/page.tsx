@@ -1,8 +1,10 @@
-import { MDXPostRenderer } from "@/components/MDX"
-import { getPostBySlug, getPostSlugs } from "@/database/getContent"
-import article from "@/styles/article.module.css"
 import cn from "clsx"
 import { FC } from "react"
+
+import { MDXPostRenderer } from "@/components/MDX"
+import { getPostBySlug, getPostSlugs } from "@/database/getContent"
+
+import article from "@/styles/article.module.css"
 
 export interface PostProps {
 	params: Promise<{
@@ -24,7 +26,7 @@ const PostPage: FC<PostProps> = async ({ params }) => {
 			<div
 				className={cn(
 					article.renderer,
-					"mx-5 h-fit w-article-content min-w-0 pb-24 pt-14",
+					"mx-5 h-fit w-article-content min-w-0 pt-14 pb-24",
 					// Prose
 					"prose tracking-wide dark:prose-invert",
 					// Links

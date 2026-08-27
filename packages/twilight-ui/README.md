@@ -7,6 +7,7 @@ A super opinionated UI library for React & Tailwind CSS
 <br/>
 
 ## Foreword
+
 This project is work in progress.
 
 <br/>
@@ -47,10 +48,10 @@ In a Tailwind CSS project, Twilight UI should be used headlessly (to avoid styli
 
    ```javascript
    module.exports = {
-     content: [
-      // ...
-      "./node_module/@twilight-toolkit/ui/dist/index-headless.js",
-     ],
+   	content: [
+   		// ...
+   		"./node_module/@twilight-toolkit/ui/dist/index-headless.js",
+   	],
    }
    ```
 

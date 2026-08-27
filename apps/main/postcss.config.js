@@ -1,7 +1,9 @@
-module.exports = {
-	plugins: {
-		"@tailwindcss/postcss": {},
-		"@tailwindcss/nesting": {},
-		...(process.env.NODE_ENV === "production" ? { cssnano: {} } : {}),
-	},
+const plugins = {
+	"@tailwindcss/postcss": {},
 }
+
+if (process.env.NODE_ENV === "production") {
+	plugins.cssnano = {}
+}
+
+module.exports = { plugins }

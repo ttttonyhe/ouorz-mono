@@ -2,6 +2,7 @@ import { Icon } from "@twilight-toolkit/ui"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import useSWR from "swr"
+
 import { BookCard, BookCardLoading } from "~/components/Card/Book"
 import { pageLayout } from "~/components/Page"
 import fetcher from "~/lib/fetcher"
@@ -44,13 +45,13 @@ const ReadingList: NextPageWithLayout = () => {
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="mb-4 flex items-center">
 					<div className="flex flex-1 items-center">
-						<div className="mr-4.5 mt-1 flex -rotate-6 cursor-pointer items-center">
+						<div className="mt-1 mr-4.5 flex -rotate-6 cursor-pointer items-center">
 							<span className="text-[35px] drop-shadow-lg hover:animate-spin">
 								📚
 							</span>
 						</div>
 						<div>
-							<h2 className="flex items-center gap-x-1.5 whitespace-nowrap text-[28px] font-medium tracking-wide text-black dark:text-white">
+							<h2 className="flex items-center gap-x-1.5 text-[28px] font-medium tracking-wide whitespace-nowrap text-black dark:text-white">
 								<span
 									style={{
 										viewTransitionName: getViewTransitionName("Reading List"),
@@ -65,7 +66,7 @@ const ReadingList: NextPageWithLayout = () => {
 						</div>
 					</div>
 					<div className="mt-2 flex h-full items-center justify-end whitespace-nowrap">
-						<div className="flex-1 pl-5 pr-2">
+						<div className="flex-1 pr-2 pl-5">
 							<p className="text-xl text-gray-500 dark:text-gray-400">
 								<button
 									type="button"
@@ -85,12 +86,12 @@ const ReadingList: NextPageWithLayout = () => {
 				<hr className="dark:border-gray-600" />
 			</div>
 			<section className="mb-10">
-				<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+				<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-[22px] w-[22px] text-purple-500">
 						<Icon name="bookShelf" />
 					</span>
 					<span className="uppercase">Curated</span>
-				</label>
+				</span>
 				<div className="mt-4">
 					<div className="grid grid-cols-2 gap-4">
 						{mustRead && !mustReadError ? (
@@ -110,12 +111,12 @@ const ReadingList: NextPageWithLayout = () => {
 				<hr className="dark:border-gray-600" />
 			</div>
 			<section className="mb-10">
-				<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+				<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-[22px] w-[22px] text-green-500">
 						<Icon name="eye" />
 					</span>
 					<span className="uppercase">Currently Reading</span>
-				</label>
+				</span>
 				<div className="mt-4">
 					<div className="grid grid-cols-2 gap-4">
 						{currentlyReading && !currentlyReadingError ? (
@@ -135,12 +136,12 @@ const ReadingList: NextPageWithLayout = () => {
 				<hr className="dark:border-gray-600" />
 			</div>
 			<section className="mb-10">
-				<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+				<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-[22px] w-[22px] text-yellow-500">
 						<Icon name="checkDouble" />
 					</span>
 					<span className="uppercase">Read</span>
-				</label>
+				</span>
 				<div className="mt-4">
 					<div className="grid grid-cols-2 gap-4">
 						{read && !readError ? (
@@ -160,12 +161,12 @@ const ReadingList: NextPageWithLayout = () => {
 				<hr className="dark:border-gray-600" />
 			</div>
 			<section className="mb-28">
-				<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pb-1 pt-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+				<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5 text-blue-500">
 						<Icon name="bookmark" />
 					</span>
 					<span className="uppercase">To Read</span>
-				</label>
+				</span>
 				<div className="mt-4">
 					<div className="grid grid-cols-2 gap-4">
 						{toRead && !allError ? (

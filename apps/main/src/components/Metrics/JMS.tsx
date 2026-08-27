@@ -1,12 +1,14 @@
-import MetricCard from "./Card"
 import useSWR from "swr"
+
 import fetcher from "~/lib/fetcher"
+
+import MetricCard from "./Card"
 
 export default function JMSMetric() {
 	const { data } = useSWR("api/jms", fetcher)
 
-	const used = parseInt(data?.used, 10).toString()
-	const total = parseInt(data?.total, 10).toString()
+	const used = Math.trunc(Number(data?.used)).toString()
+	const total = Math.trunc(Number(data?.total)).toString()
 	const link = "https://justmysocks.net/members/clientarea.php"
 
 	return (

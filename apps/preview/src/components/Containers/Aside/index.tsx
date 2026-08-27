@@ -1,9 +1,10 @@
 "use client"
 
-import responsive from "@/styles/responsive.module.css"
 import cn from "clsx"
 import { usePathname } from "next/navigation"
 import { FC } from "react"
+
+import responsive from "@/styles/responsive.module.css"
 
 interface AsideProps {
 	horizontalShrink?: boolean

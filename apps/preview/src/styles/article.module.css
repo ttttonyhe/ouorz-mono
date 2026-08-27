@@ -1,3 +1,5 @@
+@reference "./globals.css";
+
 .renderer {
 	@apply animate-article-appear opacity-0;
 	animation-delay: 0.3s;

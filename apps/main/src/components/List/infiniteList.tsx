@@ -1,12 +1,14 @@
-import StaticList from "./staticList"
 import React from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 import useSWRInfinite from "swr/infinite"
+
 import CardClickable from "~/components/Card/Clickable"
 import CardEmpty from "~/components/Card/Empty"
 import CardSkeleton from "~/components/Card/Skeleton"
 import type { ListTypes } from "~/constants/propTypes"
 import getAPI from "~/utilities/api"
+
+import StaticList from "./staticList"
 
 export interface InfiniteListProps {
 	type: ListTypes
@@ -48,24 +50,23 @@ const InfiniteList = (props: InfiniteListProps) => {
 
 	const { data, error, size, setSize } = useSWRInfinite(
 		(index) => `${url}&page=${index + 1}`,
-		async (url) => {
-			const res = await fetch(url)
+		async (pageUrl) => {
+			const res = await fetch(pageUrl)
 			if (!res.ok) {
 				throw new Error()
 			}
 			return res.json()
 		}
 	)
-	const postData = data ? [].concat(...data) : []
+	const postData = data ? data.flat() : []
 	const isEmpty = data?.[0]?.length === 0
-	const isReachingEnd =
-		isEmpty || (data && data[data.length - 1]?.length < 10) || error
+	const isReachingEnd = isEmpty || (data && data.at(-1)?.length < 10) || error
 
 	return (
 		<InfiniteScroll
 			dataLength={postData.length}
 			next={() => {
-				setSize(size + 1)
+				void setSize(size + 1)
 			}}
 			hasMore={!isReachingEnd && !stopLoading}
 			loader={

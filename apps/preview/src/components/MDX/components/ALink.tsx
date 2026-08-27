@@ -11,7 +11,7 @@ const CustomALink: FC<PropsWithChildren<CustomALinkProps>> = ({
 	if (!href) return null
 
 	if (href.startsWith("#")) {
-		return <a href={href} />
+		return <a href={href}>{children}</a>
 	}
 
 	return (

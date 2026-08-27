@@ -50,7 +50,7 @@ const nft = async (_req: NextRequest) => {
 
 	// Only return NFTs with media content
 	ethData.ownedNfts = ethData.ownedNfts
-		? ethData.ownedNfts.filter((nft) => nft.media[0].raw !== "")
+		? ethData.ownedNfts.filter((ownedNft) => ownedNft.media[0].raw !== "")
 		: []
 
 	// Fetch SOL NFTs

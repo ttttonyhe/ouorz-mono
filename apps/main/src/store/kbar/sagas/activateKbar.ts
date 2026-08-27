@@ -1,3 +1,5 @@
+import { put } from "redux-saga/effects"
+
 import {
 	type activateKbar,
 	addToKbarLists,
@@ -8,7 +10,6 @@ import {
 	setKbarPlaceholder,
 	showKbar,
 } from "../actions"
-import { put } from "redux-saga/effects"
 
 export default function* activateKbarSaga(
 	action: ReturnType<typeof activateKbar>

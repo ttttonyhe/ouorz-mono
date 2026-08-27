@@ -1,8 +1,9 @@
-import ScrollWrapper from "./scroll"
 import type React from "react"
 
+import ScrollWrapper from "./scroll"
+
 interface Props {
-	componentRef: React.MutableRefObject<any>
+	componentRef: React.RefObject<HTMLElement | null>
 	children: React.ReactNode
 	disabled?: boolean
 }
@@ -18,7 +19,7 @@ const OffsetTransition = (props: Props) => {
 	}
 
 	if (props.disabled) {
-		return <>{children}</>
+		return children
 	}
 
 	return (

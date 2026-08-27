@@ -1,86 +1,145 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Contract, Web3Provider, Provider, Signer } from "zksync-web3"
-import { ethers } from "ethers"
-
-import Address from "@ouorz/twilight-protocol/deployment/address.json"
 import Artifact from "@ouorz/twilight-protocol/artifacts-zk/contracts/TwilightBlog.sol/TwilightBlog.json"
+import Address from "@ouorz/twilight-protocol/deployment/address.json"
+import { useEffect, useState } from "react"
+import { BrowserProvider, Contract, Provider, type Signer } from "zksync-ethers"
+
+const ERA_TESTNET_RPC = "https://testnet.era.zksync.dev"
+
+interface EthereumProvider {
+	selectedAddress: string | null
+	request: (payload: { method: string }) => Promise<string[]>
+	on: (event: "accountsChanged", handler: (accounts: string[]) => void) => void
+	removeListener: (
+		event: "accountsChanged",
+		handler: (accounts: string[]) => void
+	) => void
+}
+
+interface Category {
+	id: string
+	name: string
+	description: string
+}
+
+interface RawCategory {
+	id: bigint
+	name: string
+	description: string
+}
+
+// SAFETY: `ethereum` is injected by the wallet extension and is absent otherwise,
+// so it is read as an optional property and every caller handles `undefined`.
+const getEthereum = (): EthereumProvider | undefined =>
+	(globalThis as { ethereum?: EthereumProvider }).ethereum
 
 class BlogContractInterface {
-	provider: Provider
-	signer: Signer
-	contract: Contract
-	account: string
+	private constructor(
+		readonly provider: Provider,
+		readonly signer: Signer,
+		readonly contract: Contract
+	) {}
 
-	constructor(selectedAddress: string) {
-		this.provider = new Provider("https://testnet.era.zksync.dev")
-		this.signer = new Web3Provider((window as any).ethereum).getSigner(
+	static async connect(
+		ethereum: EthereumProvider,
+		selectedAddress: string
+	): Promise<BlogContractInterface> {
+		const provider = new Provider(ERA_TESTNET_RPC)
+		const signer = await new BrowserProvider(ethereum).getSigner(
 			selectedAddress
 		)
-		this.contract = new Contract(
+		const contract = new Contract(
 			Address.TwilightBlogProxy,
 			Artifact.abi,
-			this.signer
+			signer
 		)
+		return new BlogContractInterface(provider, signer, contract)
 	}
 
-	async getAuthor() {
-		return await this.contract.author()
+	getAuthor(): Promise<string> {
+		return this.contract.author()
 	}
 
-	async getBlogUri() {
-		return await this.contract.blogUri()
+	getBlogUri(): Promise<string> {
+		return this.contract.blogUri()
 	}
 
-	async categories() {
-		const categoryDetails = await this.contract
-			.categories()
-			.then((categories: any) =>
-				categories.map((category: any) => {
-					const categoryDetail = {
-						id: category.id.toString(),
-						name: category.name,
-						description: category.description,
-					}
-					return categoryDetail
-				})
-			)
-		return categoryDetails
+	async getCategories(): Promise<Category[]> {
+		const categories: RawCategory[] = await this.contract.categories()
+		return categories.map((category) => ({
+			id: category.id.toString(),
+			name: category.name,
+			description: category.description,
+		}))
 	}
 
-	async updateBlogUri(blogUri: string) {
+	async updateBlogUri(blogUri: string): Promise<void> {
 		await this.contract.updateBlogUri(blogUri)
 	}
 
-	async createNewCategory(id: number, name: string, description: string) {
+	async createCategory(
+		id: number,
+		name: string,
+		description: string
+	): Promise<void> {
 		await this.contract.createCategory(id, name, description)
 	}
-}
-
-const requestConnection = () => {
-	;(window as any).ethereum.request({
-		method: "eth_requestAccounts",
-	})
 }
 
 const Page = () => {
 	const [contractInterface, setContractInterface] =
 		useState<BlogContractInterface>()
-	const [account, setAccount] = useState<string>("")
-	const [blogUri, setBlogUri] = useState<string>("")
-	const [authorAddress, setAuthorAddress] = useState<string>("")
-	const [categories, setCategories] = useState<ethers.utils.Result>()
+	const [account, setAccount] = useState("")
+	const [blogUri, setBlogUri] = useState("")
+	const [authorAddress, setAuthorAddress] = useState("")
+	const [categories, setCategories] = useState<Category[]>([])
 
 	useEffect(() => {
-		;(window as any).ethereum.on("accountsChanged", (accounts: string[]) => {
-			setAccount(accounts[0])
-		})
-		setAccount((window as any).ethereum.selectedAddress)
-		setContractInterface(
-			new BlogContractInterface((window as any).ethereum.selectedAddress)
-		)
+		const ethereum = getEthereum()
+		if (!ethereum) return
+
+		/**
+		 * The wallet is usually unauthorised on first load, so the contract interface is
+		 * rebuilt from the account itself rather than only at mount. `generation` drops a
+		 * connection whose account was superseded while it was still resolving.
+		 */
+		let generation = 0
+		let cancelled = false
+
+		const attach = (address: string | null) => {
+			generation += 1
+			const attempt = generation
+
+			setAccount(address ?? "")
+			setContractInterface(undefined)
+
+			if (!address) return
+
+			BlogContractInterface.connect(ethereum, address).then((instance) => {
+				if (cancelled || attempt !== generation) return instance
+				setContractInterface(instance)
+				return instance
+			}, console.error)
+		}
+
+		const onAccountsChanged = (accounts: string[]) =>
+			attach(accounts[0] ?? null)
+
+		ethereum.on("accountsChanged", onAccountsChanged)
+		attach(ethereum.selectedAddress)
+
+		return () => {
+			cancelled = true
+			ethereum.removeListener("accountsChanged", onAccountsChanged)
+		}
 	}, [])
+
+	const requestConnection = () => {
+		getEthereum()
+			?.request({ method: "eth_requestAccounts" })
+			.catch(console.error)
+	}
 
 	return (
 		<main>
@@ -88,54 +147,54 @@ const Page = () => {
 			<ul>
 				<li>Blog uri: {blogUri}</li>
 				<li>Author address: {authorAddress}</li>
-				{categories?.map((category) => (
+				{categories.map((category) => (
 					<li key={category.id}>
 						{category.name} : {category.description}
 					</li>
 				))}
 			</ul>
-			<button onClick={() => requestConnection()}>Connect</button>
+			<button type="button" onClick={requestConnection}>
+				Connect
+			</button>
 			<button
-				onClick={async () => {
-					const blogUri = await contractInterface.getBlogUri()
-					setBlogUri(blogUri)
-				}}
-			>
+				type="button"
+				onClick={() => {
+					void contractInterface?.getBlogUri().then(setBlogUri, console.error)
+				}}>
 				Get blog uri
 			</button>
 			<button
-				onClick={async () => {
-					const authorAddress = await contractInterface.getAuthor()
-					setAuthorAddress(authorAddress)
-				}}
-			>
+				type="button"
+				onClick={() => {
+					void contractInterface
+						?.getAuthor()
+						.then(setAuthorAddress, console.error)
+				}}>
 				Get author address
 			</button>
 			<button
-				onClick={async () => {
-					const categories = await contractInterface.categories()
-					console.log(categories)
-					setCategories(categories)
-				}}
-			>
+				type="button"
+				onClick={() => {
+					void contractInterface
+						?.getCategories()
+						.then(setCategories, console.error)
+				}}>
 				Get categories
 			</button>
 			<button
-				onClick={async () => {
-					await contractInterface.updateBlogUri("newUri")
-				}}
-			>
+				type="button"
+				onClick={() => {
+					void contractInterface?.updateBlogUri("newUri").catch(console.error)
+				}}>
 				Update blog uri
 			</button>
 			<button
-				onClick={async () => {
-					await contractInterface.createNewCategory(
-						2,
-						"Cate2",
-						"Cate2 description"
-					)
-				}}
-			>
+				type="button"
+				onClick={() => {
+					void contractInterface
+						?.createCategory(2, "Cate2", "Cate2 description")
+						.catch(console.error)
+				}}>
 				Create new category
 			</button>
 		</main>

@@ -1,9 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from "next"
+
 import { GITHUB_API } from "~/constants/apiURLs"
 
 type ResDataType = {
 	followers: number
 	stars: number
+}
+
+type Repository = {
+	fork: boolean
+	stargazers_count: number
 }
 
 const headers = {
@@ -24,13 +30,11 @@ const github = async (
 	const user = await userResponse.json()
 	const repositories = await userReposResponse.json()
 
-	const mine: any[] = Object.values(repositories).filter(
-		(repo: { fork: any }) => !repo.fork
+	const mine: Repository[] = Object.values<Repository>(repositories).filter(
+		(repo) => !repo.fork
 	)
 	const stars = mine.reduce(
-		(accumulator: any, repository: { [x: string]: any }) => {
-			return accumulator + repository.stargazers_count
-		},
+		(accumulator, repository) => accumulator + repository.stargazers_count,
 		0
 	)
 

@@ -1,6 +1,8 @@
 version: 2
 updates:
-  - package-ecosystem: npm
-    directory: '/apps/main/'
+  # Bun has its own ecosystem; `npm` would not maintain `bun.lock`, and a manifest-only
+  # update would then fail every `--frozen-lockfile` install.
+  - package-ecosystem: bun
+    directory: "/"
     schedule:
       interval: weekly

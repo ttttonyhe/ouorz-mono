@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next"
+
 import { SUBSTATS_API } from "~/constants/apiURLs"
 
 type ResDataType = {

@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next"
+
 import { ANALYTICS_API } from "~/constants/apiURLs"
 
 type ResDataType = {
@@ -22,7 +23,7 @@ const analytics = async (
 				Authorization: `Bearer ${process.env.ANALYTICS_TOKEN}`,
 			},
 		}
-	).then((res) => res.json())
+	).then((analyticsResponse) => analyticsResponse.json())
 
 	const allTimeViews: number = response.pageviews?.value || 0
 

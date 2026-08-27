@@ -1,5 +1,7 @@
+import { isBrowser } from "~/utilities/environment"
+
 const openLink = (link: string) => {
-	if (typeof window !== "undefined") {
+	if (isBrowser()) {
 		window.open(link, "_blank", "noopener,noreferrer")
 	}
 }

@@ -1,6 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 import { Resend } from "resend"
 
+import {
+	mailerBodySchema,
+	type MailerRequestBody,
+	parseBody,
+} from "~/lib/requestBody"
+
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 const FROM_ADDRESS =
@@ -9,13 +15,6 @@ const FROM_ADDRESS =
 const ALLOWED_ORIGINS = process.env.ALLOWED_ORIGINS
 	? process.env.ALLOWED_ORIGINS.split(",").map((o) => o.trim())
 	: null
-
-interface MailerRequestBody {
-	fromName: string
-	toEmail: string
-	content: string
-	url: string
-}
 
 function buildEmailHtml(body: MailerRequestBody): string {
 	return `
@@ -81,10 +80,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 		return
 	}
 
-	const body = req.body as MailerRequestBody
+	const body = parseBody(mailerBodySchema, req.body)
 
-	if (!body.toEmail) {
-		res.status(400).json({ error: "Target email missing" })
+	if (!body) {
+		res.status(400).json({ error: "Invalid request body" })
 		return
 	}
 

@@ -1,7 +1,9 @@
-import MetricCard from "./Card"
 import format from "comma-number"
 import useSWR from "swr"
+
 import fetcher from "~/lib/fetcher"
+
+import MetricCard from "./Card"
 
 export default function PostViewsMetric() {
 	const { data } = useSWR("api/posts", fetcher)

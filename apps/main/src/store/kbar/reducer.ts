@@ -1,6 +1,10 @@
+import type { UnknownAction } from "@reduxjs/toolkit"
+
 import {
 	ADD_TO_KBAR_LISTS,
 	HIDE_KBAR,
+	KBAR_REDUCER_ACTION_TYPES,
+	type KbarAction,
 	type KbarList,
 	type KbarLists,
 	SET_KBAR_ANIMATION,
@@ -10,15 +14,14 @@ import {
 	SET_KBAR_PLACEHOLDER,
 	SHOW_KBAR,
 } from "./actions"
-import type { AnyAction } from "@reduxjs/toolkit"
 
 type KbarState = {
 	// Kbar panel animation
 	animation: "in" | "out" | "transition" | ""
 	// Kbar visibility
 	visible: boolean
-	// Current displaying list
-	list: KbarList
+	// Current displaying list, null while a new one is loading
+	list: KbarList | null
 	// Kbar list cache (key-list pairs)
 	lists: KbarLists
 	// Kbar location (an array of list keys)
@@ -41,10 +44,15 @@ const KbarInitialState: KbarState = {
 	placeholder: "Type your command or search...",
 }
 
+const isKbarAction = (action: UnknownAction): action is KbarAction =>
+	KBAR_REDUCER_ACTION_TYPES.includes(action.type)
+
 const kbarReducer = (
 	state = KbarInitialState,
-	action: AnyAction
-): typeof KbarInitialState => {
+	action: UnknownAction
+): KbarState => {
+	if (!isKbarAction(action)) return state
+
 	switch (action.type) {
 		case SET_KBAR_LIST:
 			return {

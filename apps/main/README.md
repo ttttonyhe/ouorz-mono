@@ -26,7 +26,7 @@ This app now uses a local, fully static content workflow:
 If WordPress is unavailable and you need to recover old posts from public archives, run:
 
 ```bash
-pnpm content:recover:wayback
+bun run content:recover:wayback
 ```
 
 This script pulls snapshots from the Wayback Machine and writes starter MDX files under `content/posts` for manual cleanup.

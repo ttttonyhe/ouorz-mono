@@ -1,7 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
 
-:root {
-	@apply dark:text-white;
+@layer base {
+	/* Tailwind v4 dropped the default border colour from preflight, so a bare
+	   `border-*` would otherwise resolve to `currentColor`. */
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		@apply border-gray-200 dark:border-neutral-800;
+	}
+
+	/* next-themes puts `.dark` on the `<html>` element, which is `:root` itself,
+	   so this has to match the element rather than a descendant of it. */
+	:root.dark {
+		@apply text-white;
+	}
 }

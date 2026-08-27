@@ -1,4 +1,5 @@
 import { cancel, fork, take, takeLatest } from "redux-saga/effects"
+
 import {
 	ACTIVATE_KBAR,
 	DEACTIVATE_KBAR,
@@ -18,9 +19,7 @@ import {
 } from "./sagas"
 import updateKbarSearchQuerySaga from "./sagas/updateKbarSearchQuery"
 
-// Custom takeLatest function to:
-// 1. Delegate update kbar requests to their own saga
-// 2. Cancel previous update kbar tasks if it is still running
+/** Delegates each update-kbar request to its own saga, cancelling the previous one. */
 const takeLatestUpdateAction = (pattern: string | string[]) => {
 	return fork(function* () {
 		let lastTask: any

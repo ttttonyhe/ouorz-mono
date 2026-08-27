@@ -1,3 +1,5 @@
+import { call, delay, put, select } from "redux-saga/effects"
+
 import {
 	addToKbarLists,
 	setKbarList,
@@ -5,7 +7,6 @@ import {
 	type updateKbarSearchQuery,
 } from "../actions"
 import { selectKbar } from "../selectors"
-import { call, delay, put, select } from "redux-saga/effects"
 
 export default function* updateKbarSearchQuerySaga(
 	action: ReturnType<typeof updateKbarSearchQuery>
@@ -32,7 +33,7 @@ export default function* updateKbarSearchQuerySaga(
 						query: action.payload.query,
 					}),
 				})
-				return await res.json()
+				return res.json()
 			}, "/api/search")
 
 			// construct post list data

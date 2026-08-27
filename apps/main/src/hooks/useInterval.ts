@@ -1,19 +1,19 @@
 import { useEffect, useRef } from "react"
 
-const useInterval = (callback: Function, delay?: number | null) => {
-	const savedCallback = useRef<Function>(() => {})
+type IntervalCallback = () => void
+
+const useInterval = (callback: IntervalCallback, delay?: number | null) => {
+	const savedCallback = useRef<IntervalCallback>(() => {})
 
 	useEffect(() => {
 		savedCallback.current = callback
 	})
 
 	useEffect(() => {
-		if (delay !== null) {
-			const interval = setInterval(() => savedCallback.current(), delay || 0)
-			return () => clearInterval(interval)
-		}
+		if (delay === null) return
 
-		return undefined
+		const interval = setInterval(() => savedCallback.current(), delay ?? 0)
+		return () => clearInterval(interval)
 	}, [delay])
 }
 

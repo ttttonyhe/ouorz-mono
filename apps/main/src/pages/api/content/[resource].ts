@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next"
+
 import { serializeMDX } from "~/content/mdx"
 import { getPageById } from "~/content/pages"
 import {
@@ -10,35 +11,26 @@ import {
 } from "~/content/posts"
 import { getSponsors } from "~/content/static-data"
 import { getPathViews } from "~/content/views"
+import {
+	paramEquals,
+	readNumberParam,
+	readParam,
+} from "~/utilities/queryParams"
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-	const { resource } = req.query
-	const key = Array.isArray(resource) ? resource[0] : resource
+	const key = readParam(req.query.resource)
 
 	switch (key) {
 		case "posts": {
 			res.setHeader("Cache-Control", "no-store, max-age=0")
 
-			const sticky =
-				typeof req.query.sticky === "string"
-					? req.query.sticky === "1"
-					: undefined
-			const cate =
-				typeof req.query.categories === "string"
-					? Number(req.query.categories)
-					: undefined
-			const cateExclude =
-				typeof req.query.categories_exclude === "string"
-					? req.query.categories_exclude
-					: undefined
-			const perPage =
-				typeof req.query.per_page === "string"
-					? Number(req.query.per_page)
-					: undefined
-			const page =
-				typeof req.query.page === "string" ? Number(req.query.page) : 1
-			const search =
-				typeof req.query.search === "string" ? req.query.search : undefined
+			const stickyParam = readParam(req.query.sticky)
+			const sticky = stickyParam === undefined ? undefined : stickyParam === "1"
+			const cate = readNumberParam(req.query.categories)
+			const cateExclude = readParam(req.query.categories_exclude)
+			const perPage = readNumberParam(req.query.per_page)
+			const page = readNumberParam(req.query.page) ?? 1
+			const search = readParam(req.query.search)
 
 			const posts = getPosts({
 				sticky,
@@ -49,14 +41,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 				search,
 			})
 
-			const postsWithViews = await Promise.all(
-				posts.map(async (post) => ({
-					...post,
-					post_metas: {
-						...post.post_metas,
-						views: await getPathViews(`/post/${post.id}`),
-					},
-				}))
+			const views = await Promise.all(
+				posts.map((post) => getPathViews(`/post/${post.id}`))
+			)
+			const postsWithViews = posts.map((post, index) =>
+				Object.assign({}, post, {
+					post_metas: Object.assign({}, post.post_metas, {
+						views: views[index],
+					}),
+				})
 			)
 
 			return res.status(200).json(postsWithViews)
@@ -65,13 +58,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 			res.setHeader("Cache-Control", "no-store, max-age=0")
 
 			const id = Number(req.query.id)
-			const withMdx =
-				typeof req.query.render === "string" && req.query.render === "mdx"
+			const withMdx = paramEquals(req.query.render, "mdx")
 			const post = getPostById(id)
 			if (!post) return res.status(404).json({})
 
 			let mdxSource = null
-			if (withMdx && !/<\w+[\s\S]*>/.test(post.content.raw)) {
+			if (withMdx && !/<\w+[\s\S]*>/u.test(post.content.raw)) {
 				try {
 					mdxSource = await serializeMDX(post.content.raw)
 				} catch {
@@ -85,7 +77,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 					...post.post_metas,
 					views: await getPathViews(`/post/${post.id}`),
 				},
-				...(mdxSource ? { mdxSource } : {}),
+				mdxSource,
 			})
 		}
 		case "allPostIDs":

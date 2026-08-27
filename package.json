@@ -1,14 +1,13 @@
 {
 	"name": "ouorz-mono",
-	"description": "Monorepo for Tony's Personal Website and Related Projects",
 	"version": "0.0.2",
-	"packageManager": "pnpm@10.28.2",
-	"license": "GPL-3.0-or-later",
 	"private": true,
-	"engines": {
-		"pnpm": ">=8",
-		"node": ">=18.0.0"
-	},
+	"description": "Monorepo for Tony's Personal Website and Related Projects",
+	"license": "GPL-3.0-or-later",
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
 	"scripts": {
 		"dev": "turbo run dev --parallel",
 		"dev:main": "turbo run dev --filter=@ouorz/main",
@@ -18,9 +17,16 @@
 		"dev:twilight": "turbo run dev --parallel --filter=./packages/twilight-*",
 		"dev:twilight:ui": "turbo run dev --filter=@twilight-toolkit/ui",
 		"dev:twilight:utils": "turbo run dev --filter=@twilight-toolkit/utils",
-		"lint": "turbo run lint --parallel",
-		"lint:main": "turbo run lint --filter=@ouorz/main",
-		"lint:analytics": "turbo run lint --filter=@ouorz/analytics",
+		"lint": "oxlint",
+		"lint:main": "oxlint apps/main",
+		"lint:preview": "oxlint apps/preview",
+		"lint:twilight": "oxlint packages",
+		"lint:fix": "oxlint --fix",
+		"lint:sol": "turbo run lint --filter=@ouorz/twilight-protocol",
+		"format": "oxfmt",
+		"format:check": "oxfmt --check",
+		"format:sol": "prettier --write \"packages/twilight-protocol/contracts/**/*.sol\"",
+		"check": "oxlint && oxfmt --check",
 		"test": "turbo run test --parallel",
 		"test:main": "turbo run test --filter=@ouorz/main",
 		"build": "turbo run build --parallel",
@@ -36,37 +42,52 @@
 		"start:main": "turbo run start --filter=@ouorz/main",
 		"start:analytics": "turbo run start --filter=@ouorz/analytics",
 		"start:twilight:ui:storybook": "turbo run @twilight-toolkit/ui#start:storybook",
-		"upgrade:root": "ncu -u && pnpm install",
-		"upgrade:dev": "turbo run upgrade --parallel --filter=./apps/* && pnpm install",
-		"upgrade:dev:analytics": "turbo run upgrade --parallel --filter=@ouorz/analytics && pnpm install",
-		"upgrade:dev:main": "turbo run upgrade --filter=@ouorz/main && pnpm install",
-		"upgrade:dev:preview": "turbo run upgrade --filter=@ouorz/preview && pnpm install",
-		"upgrade:dev:twilight:ui": "turbo run upgrade --filter=@twilight-toolkit/ui && pnpm install",
-		"upgrade:prod:main": "pnpm run upgrade:dev:main && pnpm install --no-optional",
-		"clean": "turbo run clean --parallel && rm -rf node_modules",
-		"preinstall": "npx only-allow pnpm"
+		"upgrade:root": "ncu -u && bun install",
+		"upgrade:dev": "turbo run upgrade --parallel --filter=./apps/* && bun install",
+		"upgrade:dev:analytics": "turbo run upgrade --parallel --filter=@ouorz/analytics && bun install",
+		"upgrade:dev:main": "turbo run upgrade --filter=@ouorz/main && bun install",
+		"upgrade:dev:preview": "turbo run upgrade --filter=@ouorz/preview && bun install",
+		"upgrade:dev:twilight:ui": "turbo run upgrade --filter=@twilight-toolkit/ui && bun install",
+		"clean": "turbo run clean --parallel && rm -rf node_modules"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^19.5.0",
-		"@commitlint/config-conventional": "^19.5.0",
-		"@ouorz/eslint-config-root": "workspace:*",
-		"@ouorz/prettier-config": "workspace:*",
-		"husky": "^9.1.6",
-		"lint-staged": "^15.2.10",
-		"prettier": "^3.3.3",
-		"prettier-plugin-solidity": "^1.4.1",
-		"solhint": "^5.0.3",
+		"@commitlint/cli": "^21.2.2",
+		"@commitlint/config-conventional": "^21.2.2",
+		"@oxlint/plugins": "1.80.0",
+		"lefthook": "^2.1.10",
+		"oxfmt": "0.65.0",
+		"oxlint": "1.80.0",
+		"oxlint-tsgolint": "7.0.2001",
+		"prettier": "^3.9.6",
+		"prettier-plugin-solidity": "^2.4.1",
+		"solhint": "^6.2.4",
 		"solhint-plugin-prettier": "^0.1.0",
-		"turbo": "^2.9.18"
+		"turbo": "^2.10.12"
 	},
-	"pnpm": {
-		"overrides": {
-			"better-auth": "1.4.9"
-		}
+	"overrides": {
+		"better-auth": "1.4.9"
 	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	}
+	"engines": {
+		"bun": ">=1.4.0",
+		"node": ">=22.18.0"
+	},
+	"packageManager": "bun@1.4.0",
+	"trustedDependencies": [
+		"@prisma/client",
+		"@prisma/engines",
+		"@sentry-internal/node-cpu-profiler",
+		"@swc/core",
+		"@tailwindcss/oxide",
+		"core-js",
+		"core-js-pure",
+		"cpu-features",
+		"cypress",
+		"esbuild",
+		"keccak",
+		"lefthook",
+		"prisma",
+		"secp256k1",
+		"sharp",
+		"ssh2"
+	]
 }

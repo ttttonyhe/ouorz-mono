@@ -1,4 +1,5 @@
 import type React from "react"
+
 import Tabs from "./component"
 
 export interface TabItemProps {
@@ -23,7 +24,9 @@ export interface TabsProps {
 	items: TabItemProps[]
 	direction?: "vertical"
 	defaultHighlighted?: boolean
-	verticalListWrapper?: React.MutableRefObject<HTMLElement>
+	verticalListWrapper?: React.RefObject<HTMLElement | null>
+	/** Called with the height the vertical list wants its wrapper to have. */
+	onListHeightChange?: (height: number) => void
 }
 
 export interface TabItemComponentProps extends TabItemProps {

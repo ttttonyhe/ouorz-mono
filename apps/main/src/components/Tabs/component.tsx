@@ -1,19 +1,47 @@
 import type React from "react"
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef } from "react"
 import { useHotkeys } from "react-hotkeys-hook"
+
 import { useMouseLeaveListener } from "~/hooks"
 import scrollToItemWithinDiv from "~/utilities/scrollTo"
+
 import type { TabsProps } from "."
 import TabItemComponent from "./item"
 
+/** Walks past unhoverable tabs in the given direction, wrapping at both ends. */
+const nextHoverableIndex = (
+	items: TabsProps["items"],
+	index: number,
+	from?: "above" | "below"
+): number => {
+	let cursor = index
+	for (let step = 0; step < items.length; step += 1) {
+		if (items[cursor]?.hoverable !== false) return cursor
+		cursor =
+			from === "below"
+				? cursor - 1 >= 0
+					? cursor - 1
+					: items.length - 1
+				: cursor + 1 < items.length
+					? cursor + 1
+					: 0
+	}
+	return -1
+}
+
 const Tabs = (props: TabsProps) => {
-	const { items, direction, defaultHighlighted, verticalListWrapper } = props
+	const {
+		items,
+		direction,
+		defaultHighlighted,
+		verticalListWrapper,
+		onListHeightChange,
+	} = props
 	const wrapperRef = useRef<HTMLDivElement>(null)
 	const highlighterRef = useRef<HTMLDivElement>(null)
 	const listRef = useRef<HTMLUListElement>(null)
-	const [highlightedIndex, setHighlightedIndex] = useState<number>(-1)
 	const withinWrapperRef = useRef(false)
-	const highlightedIndexRef = useRef(highlightedIndex)
+	const highlightedIndexRef = useRef(-1)
 
 	const updateWithinWrapper = useCallback((value: boolean) => {
 		withinWrapperRef.current = value
@@ -21,7 +49,6 @@ const Tabs = (props: TabsProps) => {
 
 	const updateHighlightedIndex = useCallback((value: number) => {
 		highlightedIndexRef.current = value
-		setHighlightedIndex(value)
 	}, [])
 
 	/* Begin Highlighting Methods */
@@ -128,51 +155,43 @@ const Tabs = (props: TabsProps) => {
 			index = -1,
 			from?: "above" | "below"
 		) => {
-			if (items[index]?.hoverable === false && e instanceof Element) {
-				const targetIndex =
-					from === "below"
-						? index - 1 >= 0
-							? index - 1
-							: items.length - 1
-						: index + 1 < items.length
-							? index + 1
-							: 0
-				const targetElement = listRef.current?.children[targetIndex]
+			let target: React.MouseEvent<HTMLElement> | Element = e
+			let targetIndex = index
+			let targetBgColor = bgColor
+			let targetBgDark = bgDark
 
-				if (targetElement && targetIndex >= 0 && targetIndex < items.length) {
-					highlight(
-						targetElement,
-						items[targetIndex].bgColor,
-						items[targetIndex].bgDark,
-						className,
-						targetIndex,
-						from
-					)
-				}
-				return
+			if (items[index]?.hoverable === false && e instanceof Element) {
+				targetIndex = nextHoverableIndex(items, index, from)
+				const element =
+					targetIndex >= 0 ? listRef.current?.children[targetIndex] : undefined
+				if (!element) return
+
+				target = element
+				targetBgColor = items[targetIndex].bgColor
+				targetBgDark = items[targetIndex].bgDark
 			}
 
-			const targetListElement = listRef.current?.children[index]
+			const targetListElement = listRef.current?.children[targetIndex]
 
 			if (verticalListWrapper?.current && targetListElement) {
 				scrollToItemWithinDiv(verticalListWrapper.current, targetListElement)
 			}
 
 			const targetTabBoundingBox =
-				e instanceof Element
-					? e.getBoundingClientRect()
-					: e.currentTarget.getBoundingClientRect()
+				target instanceof Element
+					? target.getBoundingClientRect()
+					: target.currentTarget.getBoundingClientRect()
 			const wrapperBoundingBox = wrapperRef.current?.getBoundingClientRect()
 			styleHighlighter(
 				true,
 				wrapperBoundingBox,
 				targetTabBoundingBox,
-				bgColor,
-				bgDark,
+				targetBgColor,
+				targetBgDark,
 				className
 			)
 			updateWithinWrapper(true)
-			index >= 0 && updateHighlightedIndex(index)
+			if (targetIndex >= 0) updateHighlightedIndex(targetIndex)
 		},
 		[
 			items,
@@ -221,8 +240,8 @@ const Tabs = (props: TabsProps) => {
 		(e) => {
 			if (direction !== "vertical") return
 			e.preventDefault()
-			const targetIndex =
-				highlightedIndex + 1 < items.length ? highlightedIndex + 1 : 0
+			const current = highlightedIndexRef.current
+			const targetIndex = current + 1 < items.length ? current + 1 : 0
 			const targetElement = listRef.current?.children[targetIndex]
 
 			if (!targetElement) return
@@ -239,15 +258,15 @@ const Tabs = (props: TabsProps) => {
 		{
 			enableOnFormTags: ["INPUT"],
 		},
-		[direction, highlight, highlightedIndex, items]
+		[direction, highlight, items]
 	)
 	useHotkeys(
 		"up",
 		(e) => {
 			if (direction !== "vertical") return
 			e.preventDefault()
-			const targetIndex =
-				highlightedIndex - 1 >= 0 ? highlightedIndex - 1 : items.length - 1
+			const current = highlightedIndexRef.current
+			const targetIndex = current - 1 >= 0 ? current - 1 : items.length - 1
 			const targetElement = listRef.current?.children[targetIndex]
 
 			if (!targetElement) return
@@ -264,29 +283,35 @@ const Tabs = (props: TabsProps) => {
 		{
 			enableOnFormTags: ["INPUT"],
 		},
-		[direction, highlight, highlightedIndex, items]
+		[direction, highlight, items]
 	)
 	useHotkeys(
 		"enter",
 		(e) => {
 			if (direction !== "vertical") return
 			e.preventDefault()
-			items[highlightedIndex]?.onClick?.()
+			items[highlightedIndexRef.current]?.onClick?.()
 		},
 		{
 			enableOnFormTags: ["INPUT"],
 		},
-		[direction, highlightedIndex, items]
+		[direction, items]
 	)
 
+	// Latest-callback ref: reporting the height is event-like, not a dependency of
+	// the measurement itself.
+	const onListHeightChangeRef = useRef(onListHeightChange)
 	useEffect(() => {
-		if (direction !== "vertical") return
-		if (!listRef.current || !verticalListWrapper?.current) return
+		onListHeightChangeRef.current = onListHeightChange
+	})
+
+	useEffect(() => {
+		if (direction !== "vertical" || items.length === 0 || !listRef.current) {
+			return
+		}
 		const listHeight = listRef.current.getBoundingClientRect().height
-		verticalListWrapper.current.style.height = `${
-			listHeight >= 340 ? 360 : listHeight + 20
-		}px`
-	}, [direction, items, verticalListWrapper])
+		onListHeightChangeRef.current?.(listHeight >= 340 ? 360 : listHeight + 20)
+	}, [direction, items])
 
 	useEffect(() => {
 		if (direction !== "vertical") return
@@ -335,6 +360,11 @@ const Tabs = (props: TabsProps) => {
 								color ||
 								"text-gray-500 dark:text-gray-400 dark:transition-colors dark:hover:text-gray-300"
 							} ${className || ""} z-10 cursor-pointer rounded-md`}
+							onFocus={(e) => {
+								if (item.hoverable !== false) {
+									highlight(e.currentTarget, bgColor, bgDark, "", index)
+								}
+							}}
 							onMouseOver={(e) => {
 								if (item.hoverable !== false) {
 									highlight(e, bgColor, bgDark, "", index)

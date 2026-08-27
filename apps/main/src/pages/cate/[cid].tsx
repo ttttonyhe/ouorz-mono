@@ -4,6 +4,7 @@ import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
+
 import List from "~/components/List"
 import { pageLayout } from "~/components/Page"
 import SubscriptionBox from "~/components/SubscriptionBox"
@@ -20,7 +21,7 @@ const Cate: NextPageWithLayout = ({ info }: CateProps) => {
 
 	useEffect(() => {
 		if (!info.status) {
-			router.replace("/404")
+			void router.replace("/404")
 		}
 	}, [info.status, router])
 
@@ -41,7 +42,7 @@ const Cate: NextPageWithLayout = ({ info }: CateProps) => {
 				<div className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 					<div className="mb-4 items-center lg:flex">
 						<div className="flex-1 items-center">
-							<h1 className="flex justify-center text-1 font-medium tracking-wide text-black dark:text-white lg:justify-start">
+							<h1 className="flex justify-center text-1 font-medium tracking-wide text-black lg:justify-start dark:text-white">
 								<span className="mr-3 inline-block cursor-pointer hover:animate-spin">
 									🗂️
 								</span>
@@ -79,7 +80,7 @@ const Cate: NextPageWithLayout = ({ info }: CateProps) => {
 	}
 
 	return (
-		<div className="shadow-xs mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center">
+		<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-xs">
 			<h1 className="text-lg font-medium">404 Not Found</h1>
 			<p className="text-sm font-light tracking-wide text-gray-500">
 				redirecting...
@@ -90,7 +91,7 @@ const Cate: NextPageWithLayout = ({ info }: CateProps) => {
 
 Cate.layout = pageLayout
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = (context) => {
 	const cid = Number(context.params?.cid)
 	const infoData = getCategoryById(cid)
 
@@ -112,7 +113,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	}
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = () => {
 	const categoryIds = Array.from(
 		new Set(getAllPosts().map((post) => post.post_categories[0]?.term_id))
 	).filter(Boolean)

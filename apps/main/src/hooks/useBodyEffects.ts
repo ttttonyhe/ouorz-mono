@@ -14,8 +14,6 @@ const useBodyScroll = (): [boolean, Dispatch<SetStateAction<boolean>>] => {
 	const [scrollable, setScrollable] = useState(true)
 
 	useEffect(() => {
-		if (typeof document === "undefined") return
-
 		if (!bodyRef.current) {
 			bodyRef.current = document.body
 		}
@@ -43,8 +41,6 @@ const useBodyPointerEvents = (): [
 	const [pointerEvents, setPointerEvents] = useState(true)
 
 	useEffect(() => {
-		if (typeof document === "undefined") return
-
 		if (!bodyRef.current) {
 			bodyRef.current = document.body
 		}

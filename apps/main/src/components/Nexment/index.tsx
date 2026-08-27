@@ -1,12 +1,14 @@
 import Nexment from "nexment"
 import { useRouter } from "next/router"
 
+import { readParam } from "~/utilities/queryParams"
+
 const NexmentComponent = () => {
 	const { query } = useRouter()
-	const pageKey = query.pid ?? query.pgid
+	const pageKey = readParam(query.pid ?? query.pgid) ?? ""
 
 	const config = {
-		pageKey: pageKey as string,
+		pageKey,
 		features: {
 			linkInput: true,
 			replyListModal: true,

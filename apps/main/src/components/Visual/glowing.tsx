@@ -1,5 +1,5 @@
 import { useTheme } from "next-themes"
-import styled from "styled-components"
+import { styled } from "styled-components"
 
 interface GlowingBackgroundProps {
 	$rounded?: "sm" | "md" | "xl"
@@ -49,10 +49,10 @@ const GlowingDivBackground = styled.div<GlowingDivBackgroundProps>`
 	transition: opacity 400ms ease 0s;
 `
 
-const GlowingBackground = <K extends keyof GlowingBackgroundProps>({
+const GlowingBackground = ({
 	rounded,
 }: {
-	rounded?: GlowingBackgroundProps[K]
+	rounded?: GlowingBackgroundProps[keyof GlowingBackgroundProps]
 }) => {
 	// FIXME: useTheme is not working with styled-components in SSR mode
 	const { resolvedTheme } = useTheme()

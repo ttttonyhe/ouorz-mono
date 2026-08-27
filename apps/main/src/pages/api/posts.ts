@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next"
+
 import { getPosts } from "~/content/posts"
 import { getPathViews } from "~/content/views"
 

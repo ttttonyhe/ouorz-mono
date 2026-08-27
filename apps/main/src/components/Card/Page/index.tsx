@@ -1,6 +1,7 @@
 import { Icon } from "@twilight-toolkit/ui"
 import Image from "next/image"
 import { useRouter } from "next/router"
+
 import { GlowingBackground } from "~/components/Visual"
 import openLink from "~/utilities/externalLink"
 import { navigateWithTransition } from "~/utilities/viewTransition"
@@ -36,7 +37,7 @@ export default function PageCard({
 				if (viewTransitionName) {
 					navigateWithTransition(router, href)
 				} else {
-					router.push(href)
+					void router.push(href)
 				}
 			} else {
 				openLink(href)
@@ -54,7 +55,7 @@ export default function PageCard({
 						className={`mr-4 hidden h-auto w-20 items-center justify-center border-r border-r-gray-200 pr-3 lg:flex dark:border-r-gray-600 ${
 							className ? className : ""
 						}`}>
-						{icon.indexOf("://") > -1 ? (
+						{icon.includes("://") ? (
 							<Image
 								src={icon}
 								width={35}
@@ -63,7 +64,8 @@ export default function PageCard({
 								loading="lazy"
 								className="h-[35px] w-[35px] object-contain"
 							/>
-						) : /[^\x00-\x7F]/.test(icon) ? (
+						) : // oxlint-disable-next-line eslint/no-control-regex -- the range detects non-ASCII glyph icons
+						/[^\u0000-\u007F]/u.test(icon) ? (
 							<span className="flex h-[35px] w-[35px] items-center justify-center text-[32px] leading-none">
 								{icon}
 							</span>
@@ -74,7 +76,7 @@ export default function PageCard({
 				)}
 				<div className="w-full">
 					<h1
-						className={`flex items-center font-medium text-2xl tracking-wide ${
+						className={`flex items-center text-2xl font-medium tracking-wide ${
 							iconSmall || wrappable ? "" : "-mb-1"
 						}`}>
 						{iconSmall && (
@@ -91,7 +93,7 @@ export default function PageCard({
 						</span>
 					</h1>
 					<p
-						className={`text-4 text-gray-600 tracking-wide dark:text-gray-400 ${
+						className={`text-4 tracking-wide text-gray-600 dark:text-gray-400 ${
 							wrappable
 								? "overflow-wrap-breakword mt-1 leading-tight"
 								: "whitespace-nowrap"

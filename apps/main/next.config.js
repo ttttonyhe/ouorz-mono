@@ -1,8 +1,12 @@
+const path = require("node:path")
 const { withSentryConfig } = require("@sentry/nextjs")
 
 /** @type {import('next').NextConfig} */
 const NextConfigs = {
 	assetPrefix: "/assets",
+	turbopack: {
+		root: path.resolve(__dirname, "../.."),
+	},
 	poweredByHeader: false,
 	productionBrowserSourceMaps: true,
 	compress: true,
@@ -48,7 +52,7 @@ const NextConfigs = {
 			exclude: ["log", "error"],
 		},
 	},
-	async rewrites() {
+	rewrites() {
 		return [
 			{
 				source: "/feed",
@@ -56,7 +60,7 @@ const NextConfigs = {
 			},
 		]
 	},
-	async headers() {
+	headers() {
 		const cacheHeaders = [
 			{ key: "Cache-Control", value: "max-age=3600" },
 			{ key: "CDN-Cache-Control", value: `max-age=${3600 * 24}` },

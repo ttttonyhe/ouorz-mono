@@ -2,33 +2,38 @@
 
 @layer components {
 	.effect-pressing {
-		@apply active:!scale-[0.985] active:!translate-y-[0.5px] transition-transform duration-[50ms] ease-linear;
+		@apply transition-transform duration-[50ms] ease-linear active:!translate-y-[0.5px] active:!scale-[0.985];
 	}
-	
+
 	.label-group {
 		@apply flex flex-nowrap items-center rounded-md border dark:border-gray-600;
 	}
-	
-	.label-group label {
+
+	.label-group > * {
 		@apply h-full;
 	}
-	
-	.label-group label:only-child {
+
+	.label-group > *:only-child {
 		border-radius: calc(0.375rem - 1px);
 	}
-	
-	.label-group label:not(:first-child),
-	.label-group label:not(:last-child) {
+
+	/* Kept as two rules: Tailwind emits an invalid `:is(.dark *)` selector when a
+	   `dark:` utility is applied to a comma-separated rule, and the browser drops it. */
+	.label-group > *:not(:first-child) {
 		@apply rounded-none border-l dark:border-gray-600;
 	}
-	
-	.label-group label:not(:only-child):first-child {
+
+	.label-group > *:not(:last-child) {
+		@apply rounded-none border-l dark:border-gray-600;
+	}
+
+	.label-group > *:not(:only-child):first-child {
 		@apply rounded-tr-none rounded-br-none border-none;
 		border-top-left-radius: calc(0.375rem - 1px);
 		border-bottom-left-radius: calc(0.375rem - 1px);
 	}
 
-	.label-group label:not(:only-child):last-child {
+	.label-group > *:not(:only-child):last-child {
 		@apply rounded-tl-none rounded-bl-none;
 		border-top-right-radius: calc(0.375rem - 1px);
 		border-bottom-right-radius: calc(0.375rem - 1px);

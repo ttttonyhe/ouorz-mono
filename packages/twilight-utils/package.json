@@ -1,29 +1,30 @@
 {
-  "name": "@twilight-toolkit/utils",
-  "version": "0.0.1",
-  "description": "Twilight Toolkit Utilities",
-  "license": "SEE LICENSE IN LICENSE",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    }
-  },
-  "scripts": {
-    "dev": "pnpm run build --watch",
-    "build": "tsup src/index.ts --format cjs,esm --dts --clean --silent",
-    "clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo",
-    "prepublishOnly": "pnpm run build"
-  },
-  "devDependencies": {
-    "@types/node": "^18.0.0",
-    "tsup": "^6.7.0"
-  },
-  "dependencies": {
-    "react": "^18.1.0"
-  }
+	"name": "@twilight-toolkit/utils",
+	"version": "0.0.1",
+	"description": "Twilight Toolkit Utilities",
+	"license": "SEE LICENSE IN LICENSE",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"dev": "tsup src/index.ts --format cjs,esm --silent --watch",
+		"build": "tsup src/index.ts --format cjs,esm --clean --silent && tsc -p tsconfig.build.json",
+		"clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo",
+		"prepublishOnly": "bun run build"
+	},
+	"dependencies": {
+		"react": "^19.2.8"
+	},
+	"devDependencies": {
+		"@types/node": "^26.4.0",
+		"tsup": "^8.5.1",
+		"typescript": "^7.0.2"
+	}
 }

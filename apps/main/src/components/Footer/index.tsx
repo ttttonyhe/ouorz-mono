@@ -1,11 +1,14 @@
 import { Icon } from "@twilight-toolkit/ui"
-import { useRouter } from "next/router"
 import { useTheme } from "next-themes"
-import { useEffect, useRef, useState } from "react"
+import { useRouter } from "next/router"
+import { useEffect, useRef } from "react"
 import smoothScroll from "smoothscroll-polyfill"
+
 import { useDispatch, useSelector } from "~/hooks"
+import useMounted from "~/hooks/useMounted"
 import { deactivateKbar } from "~/store/kbar/actions"
 import { selectKbar } from "~/store/kbar/selectors"
+
 import { OffsetTransition } from "../Motion"
 
 const themes = ["system", "dark", "light"]
@@ -21,36 +24,35 @@ export default function Footer() {
 	const { visible } = useSelector(selectKbar)
 	const { setTheme, theme, resolvedTheme } = useTheme()
 	const { pathname } = useRouter()
-	const [mounted, setMounted] = useState(false)
+	const mounted = useMounted()
 	const backToTopRef = useRef<HTMLButtonElement>(null)
 	const previousPathnameRef = useRef(pathname)
 
 	useEffect(() => {
 		smoothScroll.polyfill()
-		setMounted(true)
 	}, [])
 
 	useEffect(() => {
 		if (!mounted || resolvedTheme !== "dark") return
 
-		const glowingArea = document.querySelector<HTMLElement>(".glowing-area")
-		const glowingDivs = document.querySelectorAll<HTMLElement>(".glowing-div")
-
-		if (!glowingArea) return
-
+		// Listening on the document keeps the glow working across route changes,
+		// where the previous page's `.glowing-area` node is replaced.
 		const handler = (ev: PointerEvent) => {
-			glowingDivs.forEach((featureEl) => {
+			for (const featureEl of document.querySelectorAll<HTMLElement>(
+				".glowing-div"
+			)) {
 				const rect = featureEl.getBoundingClientRect()
 				featureEl.style.setProperty("--x", `${ev.clientX - rect.left}`)
 				featureEl.style.setProperty("--y", `${ev.clientY - rect.top}`)
-			})
+			}
 		}
-		glowingArea.addEventListener("pointermove", handler)
+
+		document.addEventListener("pointermove", handler)
 
 		return () => {
-			glowingArea.removeEventListener("pointermove", handler)
+			document.removeEventListener("pointermove", handler)
 		}
-	}, [mounted, pathname, resolvedTheme])
+	}, [mounted, resolvedTheme])
 
 	useEffect(() => {
 		if (previousPathnameRef.current === pathname) return
@@ -62,7 +64,7 @@ export default function Footer() {
 	if (!mounted) return null
 
 	return (
-		<footer className="mt-20 border-gray-200 border-t border-b bg-white py-4 text-center dark:border-gray-700 dark:bg-gray-800">
+		<footer className="mt-20 border-t border-b border-gray-200 bg-white py-4 text-center dark:border-gray-700 dark:bg-gray-800">
 			<div className="fixed bottom-8 left-8 text-gray-500 dark:text-gray-300">
 				<button
 					aria-label="change theme"
@@ -88,7 +90,7 @@ export default function Footer() {
 					</button>
 				</OffsetTransition>
 			</div>
-			<p className="text-4 text-gray-500 tracking-wide dark:text-gray-400">
+			<p className="text-4 tracking-wide text-gray-500 dark:text-gray-400">
 				<a
 					href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
 					target="_blank"

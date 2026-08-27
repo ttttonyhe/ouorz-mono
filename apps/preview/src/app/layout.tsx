@@ -1,8 +1,9 @@
-import Drawer from "@/components/Containers/Drawer"
-import ThemeProvider from "@/providers/themeProvider"
-import "@/styles/globals.css"
 import type { Metadata } from "next"
 import type { FC, PropsWithChildren, ReactNode } from "react"
+
+import "@/styles/globals.css"
+import Drawer from "@/components/Containers/Drawer"
+import ThemeProvider from "@/providers/themeProvider"
 
 export const metadata: Metadata = {
 	title: "Tony He (Preview)",

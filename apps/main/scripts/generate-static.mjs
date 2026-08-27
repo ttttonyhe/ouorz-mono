@@ -1,7 +1,8 @@
-import matter from "gray-matter"
-import { marked } from "marked"
 import fs from "node:fs"
 import path from "node:path"
+
+import matter from "gray-matter"
+import { marked } from "marked"
 import RSS from "rss"
 import stripAnsi from "strip-ansi"
 
@@ -12,8 +13,9 @@ const Categories = ["personal", "technology", "life", "blogs"]
 
 const sanitizeStr = (str) =>
 	stripAnsi(
-		str.replace(
-			/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007f-\u0084\u0086-\u009f\uD800-\uDFFF\uFDD0-\uFDFF\uFFFF\uC008]/g,
+		str.replaceAll(
+			// oxlint-disable-next-line eslint/no-control-regex -- removing control characters is the point
+			/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F-\u0084\u0086-\u009F\uD800-\uDFFF\uFDD0-\uFDFF\uFFFF\uC008]/gu,
 			""
 		)
 	)
@@ -36,7 +38,7 @@ const getPosts = () => {
 				image: data.image ?? null,
 			}
 		})
-		.sort((a, b) => +new Date(b.date) - +new Date(a.date))
+		.toSorted((a, b) => +new Date(b.date) - +new Date(a.date))
 }
 
 /* ── RSS Feed ──────────────────────────────────────────────── */

@@ -1,11 +1,8 @@
 import html2plaintext from "html2plaintext"
 import type { NextApiRequest, NextApiResponse } from "next"
-import { OPENAI_API } from "~/constants/apiURLs"
 
-type ReqBodyType = {
-	identifier: string
-	content: string
-}
+import { OPENAI_API } from "~/constants/apiURLs"
+import { parseBody, summarizeBodySchema } from "~/lib/requestBody"
 
 type ResDataType =
 	| {
@@ -20,30 +17,31 @@ type ResDataType =
 	  }
 
 const removeCodeBlocks = (html: string) => {
-	const regex = /<code\b[^>]*>[\s\S]*?<\/code>|<pre\b[^>]*>[\s\S]*?<\/pre>/gi
+	const regex = /<code\b[^>]*>[\s\S]*?<\/code>|<pre\b[^>]*>[\s\S]*?<\/pre>/giu
 	return html.replace(regex, "")
 }
 
 const removeLinks = (string: string) => {
-	const regex = /(https?:\/\/[^\s]+)/g
+	const regex = /(https?:\/\/[^\s]+)/gu
 	return string.replace(regex, "[a link]")
 }
 
 const removeTrailingSpaces = (str: string) => {
 	const string = str
-		.replace(/[\s\uFEFF\xA0]+$/g, "")
-		.replace(/[^\S\r\n]+/g, " ")
-	return string.replace(/(\s*\n\s*){2,}/g, "\n ")
+		.replaceAll(/[\s\uFEFF\u00A0]+$/gu, "")
+		.replaceAll(/[^\S\r\n]+/gu, " ")
+	return string.replaceAll(/(\s*\n\s*){2,}/gu, "\n ")
 }
 
 const summarize = async (
 	req: NextApiRequest,
 	res: NextApiResponse<ResDataType>
 ) => {
-	let { identifier, content } = req.body as ReqBodyType
+	const body = parseBody(summarizeBodySchema, req.body)
 
-	if (identifier && content) {
-		content = removeCodeBlocks(content)
+	if (body) {
+		const { identifier } = body
+		let content = removeCodeBlocks(body.content)
 		content = html2plaintext(content)
 		content = removeLinks(content)
 		content = removeTrailingSpaces(content)

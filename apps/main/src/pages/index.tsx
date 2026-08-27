@@ -3,6 +3,7 @@ import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
+
 import PagesAndLinks from "~/components/Banners/PagesAndLinks"
 import EmploymentCard from "~/components/Card/Employment"
 import PaperCard from "~/components/Card/Paper"
@@ -25,13 +26,13 @@ const Home: NextPageWithLayout = () => {
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="flex items-center justify-between gap-x-10 gap-y-8">
 					<div className="flex flex-col gap-y-2.5">
-						<h1 className="wrap-break-word flex items-center whitespace-nowrap text-3xl font-medium tracking-wide text-black dark:text-white lg:text-[1.8rem]">
+						<h1 className="flex items-center text-3xl font-medium tracking-wide wrap-break-word whitespace-nowrap text-black lg:text-[1.8rem] dark:text-white">
 							{/* <span className="mr-2 inline-block animate-wave-hand cursor-pointer hover:animate-wave-hand-again">
 								👋
 							</span> */}
 							Tony (Lipeng) He
 						</h1>
-						<div className="wrap-break-word flex flex-col gap-y-1.5 px-1 text-4 font-light leading-relaxed tracking-wider text-gray-500 dark:text-gray-300 lg:text-2">
+						<div className="flex flex-col gap-y-1.5 px-1 text-4 leading-relaxed font-light tracking-wider wrap-break-word text-gray-500 lg:text-2 dark:text-gray-300">
 							<p>
 								Student, software engineer, founder, and researcher at the{" "}
 								<a
@@ -55,7 +56,7 @@ const Home: NextPageWithLayout = () => {
 							width={105}
 							alt="Tony teaching an undergraduate CS course"
 							priority
-							className="shadow-xs rounded-xl bg-gray-200 dark:border dark:border-gray-600"
+							className="rounded-xl bg-gray-200 shadow-xs dark:border dark:border-gray-600"
 						/>
 					</div>
 				</div>
@@ -73,13 +74,13 @@ const Home: NextPageWithLayout = () => {
 				</div>
 			</section>
 			<section className="mt-16">
-				<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+				<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5">
 						<Icon name="me" />
 					</span>
 					<span className="uppercase">About</span>
-				</label>
-				<div className="wrap-break-word mt-3.75 flex flex-col px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-left lg:text-[17px]">
+				</span>
+				<div className="mt-3.75 flex flex-col px-1 text-justify text-3 leading-relaxed font-light tracking-wide wrap-break-word text-gray-500 underline-offset-[6px] lg:text-left lg:text-[17px] dark:text-gray-300">
 					<p>
 						I&#39;m a computer science PhD student at UWaterloo. I&#39;m part of{" "}
 						<a
@@ -165,7 +166,7 @@ const Home: NextPageWithLayout = () => {
 							href="https://www.goodreads.com/quotes/2690-i-went-to-the-woods-because-i-wished-to-live"
 							target="_blank"
 							rel="noreferrer"
-							className="bg-linear-to-r inline-block from-blue-500 via-green-500 to-indigo-500 bg-clip-text text-transparent hover:from-blue-600 hover:via-green-600 hover:to-indigo-600">
+							className="inline-block bg-linear-to-r from-blue-500 via-green-500 to-indigo-500 bg-clip-text text-transparent hover:from-blue-600 hover:via-green-600 hover:to-indigo-600">
 							live deliberately
 						</a>
 						. Before research, I spent some years doing software engineering. In
@@ -230,13 +231,13 @@ const Home: NextPageWithLayout = () => {
 				</div>
 			</section>
 			<section className="mt-16">
-				<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+				<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5">
 						<Icon name="microscope" />
 					</span>
 					<span className="uppercase">Research Interests</span>
-				</label>
-				<div className="wrap-break-word mt-3.75 flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
+				</span>
+				<div className="mt-3.75 flex flex-col gap-y-2 px-1 text-justify text-3 leading-relaxed font-light tracking-wide wrap-break-word text-gray-500 underline-offset-[6px] lg:text-[17px] dark:text-gray-300">
 					<p>
 						TL;DR: I study how adversarial robustness breaks when AI is deployed
 						into real-world systems, and how to build defenses that survive
@@ -282,13 +283,13 @@ const Home: NextPageWithLayout = () => {
 				</div>
 			</section>
 			<section className="mt-16">
-				<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+				<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5">
 						<Icon name="rainbow" />
 					</span>
 					<span className="uppercase">Research Vision</span>
-				</label>
-				<div className="wrap-break-word mt-3.75 flex flex-col gap-y-2 px-1 text-justify text-3 font-light leading-relaxed tracking-wide text-gray-500 underline-offset-[6px] dark:text-gray-300 lg:text-[17px]">
+				</span>
+				<div className="mt-3.75 flex flex-col gap-y-2 px-1 text-justify text-3 leading-relaxed font-light tracking-wide wrap-break-word text-gray-500 underline-offset-[6px] lg:text-[17px] dark:text-gray-300">
 					<p>
 						To ensure AI&apos;s transformative potential reaches as much of the
 						society as possible in the most beneficially impactful way, with
@@ -298,7 +299,7 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-16">
 				<div className="flex items-center justify-between">
-					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="newspaper" />
 						</span>
@@ -306,7 +307,7 @@ const Home: NextPageWithLayout = () => {
 							Selected Publications
 						</span>
 						<span className="block uppercase lg:hidden">Publications</span>
-					</label>
+					</span>
 					<span className="flex items-center gap-x-1 text-right text-gray-500 underline-offset-4 dark:text-gray-400">
 						* indicates equal contribution
 					</span>
@@ -591,12 +592,12 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="article" />
 						</span>
 						<span className="block uppercase">Preprints</span>
-					</label>
+					</span>
 					<Link
 						href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
 						target="_blank"
@@ -666,12 +667,12 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="personSpeaks" />
 						</span>
 						<span className="uppercase">Talks</span>
-					</label>
+					</span>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
@@ -716,12 +717,12 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="service" />
 						</span>
 						<span className="uppercase">Academic Services</span>
-					</label>
+					</span>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<ServiceCard
@@ -761,12 +762,12 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="empathize" />
 						</span>
 						<span className="uppercase">Mentoring</span>
-					</label>
+					</span>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<ServiceCard
@@ -779,12 +780,12 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="money" />
 						</span>
 						<span className="uppercase">Funding</span>
-					</label>
+					</span>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<ServiceCard
@@ -827,12 +828,12 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="presentation" />
 						</span>
 						<span className="uppercase">Teaching</span>
-					</label>
+					</span>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<EmploymentCard
@@ -871,12 +872,12 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="microscope" />
 						</span>
 						<span className="uppercase">Research Experience</span>
-					</label>
+					</span>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<EmploymentCard
@@ -899,12 +900,12 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="suitcase" />
 						</span>
 						<span className="uppercase">Industry Experience</span>
-					</label>
+					</span>
 					<Link
 						href="https://www.linkedin.com/in/~lhe/"
 						target="_blank"
@@ -963,31 +964,31 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="graduationCapOutline" />
 						</span>
 						<span className="uppercase">Education</span>
-					</label>
+					</span>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<div
 						onScroll={(e) => {
-							const target = e.target as HTMLDivElement
+							const target = e.currentTarget
 
-							let maskClass = ""
+							let nextMaskClass = ""
 							if (
 								target.scrollLeft > 0 &&
 								target.scrollLeft < target.scrollWidth - target.clientWidth
 							) {
-								maskClass = "mask-x-full"
+								nextMaskClass = "mask-x-full"
 							} else if (target.scrollLeft === 0) {
-								maskClass = "mask-x-r"
+								nextMaskClass = "mask-x-r"
 							} else {
-								maskClass = "mask-x-l"
+								nextMaskClass = "mask-x-l"
 							}
 
-							setMaskClass(maskClass)
+							setMaskClass(nextMaskClass)
 						}}
 						className={`flex gap-x-4 overflow-x-auto whitespace-nowrap ${maskClass}`}>
 						<EmploymentCard
@@ -1017,14 +1018,14 @@ const Home: NextPageWithLayout = () => {
 					/>
 				</div>
 			</section>
-			<section className="mb-24 mt-14">
+			<section className="mt-14 mb-24">
 				<div className="flex justify-between">
-					<label className="shadow-xs inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider dark:border-gray-600 dark:bg-gray-700">
+					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="edit" />
 						</span>
 						<span className="uppercase">Newsletter</span>
-					</label>
+					</span>
 					<Link
 						href="https://kukfm.com"
 						target="_blank"

@@ -1,5 +1,6 @@
-import InfiniteList from "./infiniteList"
 import type { ListTypes } from "~/constants/propTypes"
+
+import InfiniteList from "./infiniteList"
 
 export interface ListProps {
 	type?: ListTypes

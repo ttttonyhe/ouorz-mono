@@ -33,7 +33,6 @@
 		"download-country-names": "node scripts/download-country-names.js",
 		"download-language-names": "node scripts/download-language-names.js",
 		"change-password": "node scripts/change-password.js",
-		"lint": "next lint --quiet --fix",
 		"clean": "rm -rf dist && rm -rf node_modules && rm -rf .turbo && rm -rf .next",
 		"upgrade": "ncu --upgrade -x rollup react-tooltip chart.js immer"
 	},
@@ -84,15 +83,11 @@
 	},
 	"devDependencies": {
 		"@formatjs/cli": "^6.2.4",
-		"@ouorz/eslint-config-next": "workspace:*",
-		"@ouorz/prettier-config": "workspace:*",
 		"@rollup/plugin-buble": "^1.0.3",
 		"@svgr/webpack": "^8.1.0",
 		"cross-env": "^7.0.3",
 		"eslint": "^8.55.0",
 		"extract-react-intl-messages": "^4.1.1",
-		"husky": "^8.0.3",
-		"lint-staged": "^15.1.0",
 		"postcss": "^8.4.32",
 		"postcss-flexbugs-fixes": "^5.0.2",
 		"postcss-import": "^15.1.0",

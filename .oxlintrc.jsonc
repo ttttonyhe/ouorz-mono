@@ -1,0 +1,173 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"plugins": [
+		"eslint",
+		"typescript",
+		"unicorn",
+		"oxc",
+		"import",
+		"promise",
+		"node",
+		"react",
+		"nextjs",
+		"jsx-a11y",
+	],
+	"categories": {
+		"correctness": "error",
+		"suspicious": "error",
+		"perf": "error",
+		"pedantic": "error",
+		"style": "off",
+		"restriction": "off",
+		"nursery": "off",
+	},
+	"env": {
+		"browser": true,
+		"node": true,
+		"es2025": true,
+	},
+	"options": {
+		// Type-aware linting is on for the rules that catch real bugs regardless of
+		// strictness. The families disabled below are all noise while `apps/main`
+		// runs with `strict: false`; revisit them if that ever changes.
+		"typeAware": true,
+		// ESLint is gone, so its directives no longer suppress anything, and a
+		// directive that stops matching a real finding is reported instead of rotting.
+		"respectEslintDisableDirectives": false,
+		"reportUnusedDisableDirectives": "error",
+	},
+	"settings": {
+		"next": {
+			"rootDir": ["apps/main/", "apps/preview/", "apps/interface/"],
+		},
+	},
+	"jsPlugins": [
+		{ "name": "anti-slop", "specifier": "./tools/oxlint/anti-slop/index.ts" },
+		{
+			"name": "no-comment-walls",
+			"specifier": "./tools/oxlint/no-comment-walls/index.ts",
+		},
+	],
+	"rules": {
+		// Automatic JSX runtime (`"jsx": "react-jsx"`) makes the React import unnecessary.
+		"react/react-in-jsx-scope": "off",
+		// Type-aware style rules; the formatter and the plain rules already cover this ground.
+		"typescript/consistent-return": "off",
+		"typescript/no-confusing-void-expression": "off",
+		"typescript/no-unnecessary-boolean-literal-compare": "off",
+		"typescript/no-useless-default-assignment": "off",
+		"typescript/prefer-nullish-coalescing": "off",
+		"typescript/prefer-readonly-parameter-types": "off",
+		"typescript/strict-boolean-expressions": "off",
+		"typescript/strict-void-return": "off",
+		// Arbitrary size caps, against page components that read top to bottom.
+		"eslint/max-lines": "off",
+		"eslint/max-lines-per-function": "off",
+		"import/max-dependencies": "off",
+		// Phrasing preferences the formatter does not own; noise, not signal.
+		"eslint/no-else-return": "off",
+		"eslint/no-negated-condition": "off",
+		"eslint/no-underscore-dangle": "off",
+		"eslint/no-warning-comments": "off",
+		"unicorn/no-negated-condition": "off",
+		// The site serves its images through an `assetPrefix` CDN path that
+		// `next/image` is not configured for; revisit with a custom loader.
+		"nextjs/no-img-element": "off",
+		// Cards and list rows are whole-surface click targets that already wrap a
+		// focusable link, so a second keyboard target would duplicate the tab stop.
+		// Carried over from the previous ESLint and Biome setup as accessibility debt.
+		"jsx-a11y/click-events-have-key-events": "off",
+		"jsx-a11y/no-static-element-interactions": "off",
+		"jsx-a11y/no-noninteractive-element-interactions": "off",
+		// The command palette is opened on purpose, so focusing its input is expected.
+		"jsx-a11y/no-autofocus": "off",
+		// Stylesheets are imported for their side effects.
+		"import/no-unassigned-import": ["error", { "allow": ["**/*.css"] }],
+
+		"anti-slop/no-chained-type-assertions": "error",
+		"anti-slop/no-conditional-empty-object-spread": "error",
+		"anti-slop/no-known-value-widening": "error",
+		"anti-slop/no-module-mocking": "error",
+		"anti-slop/no-object-parameters": "error",
+		"anti-slop/no-reflect-apply": "error",
+		"anti-slop/no-reflect-get": "error",
+		"anti-slop/no-runtime-typeof": "error",
+		"anti-slop/no-shape-in-symbol-names": "error",
+		"anti-slop/no-unknown-parameters": "error",
+		"anti-slop/no-unknown-returns": "error",
+		"anti-slop/no-unknown-type-aliases": "error",
+		"anti-slop/no-unsafe-dictionary-type": "error",
+		"anti-slop/no-widen-then-assert": "error",
+		"anti-slop/require-safety-comment-for-type-assertion": "error",
+		"no-comment-walls/no-comment-walls": "error",
+	},
+	"overrides": [
+		{
+			// `strictNullChecks` is off in these three workspaces, which makes every
+			// value look `any`-adjacent to the type-aware rules. The strict workspaces
+			// (preview, twilight-ui, twilight-utils) keep the checks.
+			"files": [
+				"apps/main/**",
+				"apps/interface/**",
+				"packages/twilight-protocol/**",
+			],
+			"rules": {
+				"typescript/no-unsafe-argument": "off",
+				"typescript/no-unsafe-assignment": "off",
+				"typescript/no-unsafe-call": "off",
+				"typescript/no-unsafe-member-access": "off",
+				"typescript/no-unsafe-return": "off",
+				"typescript/no-unsafe-type-assertion": "off",
+			},
+		},
+		{
+			// The icon lookup is keyed by names that arrive from content data, so it
+			// cannot carry the types these rules want. Everything else in this strict
+			// package keeps them.
+			"files": ["packages/twilight-ui/src/Icon/icon.tsx"],
+			"rules": {
+				"typescript/no-unsafe-assignment": "off",
+				"typescript/no-unsafe-member-access": "off",
+				"typescript/no-unsafe-return": "off",
+			},
+		},
+		{
+			// The single module that owns environment detection; every other module
+			// branches on the predicates it exports rather than probing `typeof`.
+			"files": ["apps/main/src/utilities/environment.ts"],
+			"rules": { "anti-slop/no-runtime-typeof": "off" },
+		},
+		{
+			// Hardhat runs these through ts-node in CommonJS, where there is no top-level await.
+			"files": ["packages/twilight-protocol/scripts/*.ts"],
+			"rules": { "unicorn/prefer-top-level-await": "off" },
+		},
+		{
+			// Hardhat registers its tasks through import side effects.
+			"files": ["packages/twilight-protocol/hardhat.config.ts"],
+			"rules": { "import/no-unassigned-import": "off" },
+		},
+		{
+			// Storybook previews are loaded for their side effects.
+			"files": ["packages/twilight-ui/.storybook/*"],
+			"rules": { "import/no-unassigned-import": "off" },
+		},
+		{
+			"files": ["apps/main/cypress/**/*.ts"],
+			"env": { "mocha": true },
+			"globals": { "cy": "readonly", "Cypress": "readonly" },
+		},
+	],
+	"ignorePatterns": [
+		"tools/oxlint/**",
+		"apps/analytics/**",
+		"apps/wordpress/**",
+		"apps/*/src/assets/scripts/vendors/**",
+		"**/next-env.d.ts",
+		"**/storybook-static/**",
+		"**/artifacts-zk/**",
+		"**/cache-zk/**",
+		"**/typechain/**",
+		".claude/**",
+	],
+}

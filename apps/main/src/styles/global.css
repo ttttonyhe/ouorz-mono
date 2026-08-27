@@ -747,11 +747,11 @@
 	}
 
 	.kbar-list li .kbar-list-heading {
-		@apply -mb-2 mt-0.5;
+		@apply mt-0.5 -mb-2;
 	}
 
 	.kbar-list li:first-child .kbar-list-heading {
-		@apply -mb-1 mt-0;
+		@apply mt-0 -mb-1;
 	}
 
 	/* Workaround for React onMouseLeave not triggering when user's cursor is moving fast*/

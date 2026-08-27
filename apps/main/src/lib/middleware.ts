@@ -1,5 +1,3 @@
-/* eslint no-unused-vars: 0 */
-
 /**
  * Middleware Initator
  *

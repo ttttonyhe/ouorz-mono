@@ -1,8 +1,9 @@
 "use client"
 
-import { THEME_STORAGE_KEY } from "@/constants/themes"
 import { ThemeProvider as NextThemeProvider } from "next-themes"
 import type { FC, PropsWithChildren } from "react"
+
+import { THEME_STORAGE_KEY } from "@/constants/themes"
 
 const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
 	return (

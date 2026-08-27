@@ -1,14 +1,20 @@
 "use client"
 
-import article from "@/styles/article.module.css"
 import cn from "clsx"
 import { useTheme } from "next-themes"
-import type { FC, PropsWithChildren } from "react"
+import type { FC } from "react"
 import { highlight } from "sugar-high"
 
-const CodeBlock: FC<PropsWithChildren> = ({ children }) => {
+import article from "@/styles/article.module.css"
+
+interface CodeBlockProps {
+	/** MDX passes the raw source of a fenced block as a string. */
+	children?: string
+}
+
+const CodeBlock: FC<CodeBlockProps> = ({ children }) => {
 	const { theme } = useTheme()
-	const codeHtml = highlight(children as string)
+	const codeHtml = highlight(children ?? "")
 
 	return (
 		<code

@@ -1,0 +1,66 @@
+{
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"useTabs": true,
+	"tabWidth": 2,
+	"printWidth": 80,
+	"endOfLine": "lf",
+	"insertFinalNewline": true,
+	"semi": false,
+	"singleQuote": false,
+	"jsxSingleQuote": false,
+	"quoteProps": "as-needed",
+	"trailingComma": "es5",
+	"bracketSameLine": true,
+	"bracketSpacing": true,
+	"arrowParens": "always",
+	"objectWrap": "preserve",
+	"proseWrap": "preserve",
+	"embeddedLanguageFormatting": "auto",
+	"sortImports": true,
+	"sortPackageJson": true,
+	"ignorePatterns": [
+		"bun.lock",
+		"bun.lockb",
+		"tools/oxlint/**",
+		"apps/analytics/**",
+		"apps/wordpress/**",
+		"apps/*/src/assets/scripts/vendors/**",
+		"**/next-env.d.ts",
+		"**/storybook-static/**",
+		"**/artifacts-zk/**",
+		"**/cache-zk/**",
+		"**/typechain/**",
+		"**/coverage/**",
+		".claude/**",
+		".github/ISSUE_TEMPLATE/**"
+	],
+	"overrides": [
+		{
+			"files": ["apps/main/**"],
+			"options": {
+				"sortTailwindcss": {
+					"stylesheet": "./apps/main/src/styles/global.css",
+					"functions": ["clsx", "cn", "classNames"]
+				}
+			}
+		},
+		{
+			"files": ["apps/preview/**"],
+			"options": {
+				"sortTailwindcss": {
+					"stylesheet": "./apps/preview/src/styles/globals.css",
+					"functions": ["clsx", "cn", "classNames"]
+				}
+			}
+		},
+		{
+			"files": ["packages/twilight-ui/**"],
+			"options": {
+				"sortTailwindcss": {
+					"stylesheet": "./packages/twilight-ui/styles/vendor.css",
+					"functions": ["clsx", "cn", "classNames"]
+				}
+			}
+		}
+	]
+}

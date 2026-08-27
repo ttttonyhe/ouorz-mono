@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next"
+
 import { getAllPosts, type LocalPost } from "~/content/posts"
+import { parseBody, searchBodySchema } from "~/lib/requestBody"
 
 const RESULT_LIMIT = 10
 const EXCLUDED_CATEGORY_IDS = new Set([2, 5, 74, 334, 335])
@@ -22,8 +24,8 @@ const normalizeText = (value: string) => value.toLowerCase().trim()
 
 const stripHtml = (value: string) =>
 	value
-		.replace(/<[^>]*>/g, " ")
-		.replace(/\s+/g, " ")
+		.replaceAll(/<[^>]*>/gu, " ")
+		.replaceAll(/\s+/gu, " ")
 		.trim()
 
 const scorePost = (
@@ -53,14 +55,10 @@ const scorePost = (
 	return score
 }
 
-const search = async (
-	req: NextApiRequest,
-	res: NextApiResponse<SearchResponse>
-) => {
-	const { query } = req.body ?? {}
-	const searchQuery = typeof query === "string" ? query : ""
+const search = (req: NextApiRequest, res: NextApiResponse<SearchResponse>) => {
+	const searchQuery = parseBody(searchBodySchema, req.body)?.query ?? ""
 	const normalizedQuery = normalizeText(searchQuery)
-	const queryTokens = normalizedQuery.split(/\s+/).filter(Boolean)
+	const queryTokens = normalizedQuery.split(/\s+/u).filter(Boolean)
 
 	const rankedHits = getAllPosts()
 		.filter((post) => {
@@ -72,7 +70,7 @@ const search = async (
 			score: scorePost(post, normalizedQuery, queryTokens),
 		}))
 		.filter(({ score }) => (normalizedQuery ? score > 0 : true))
-		.sort(
+		.toSorted(
 			(a, b) =>
 				b.score - a.score || +new Date(b.post.date) - +new Date(a.post.date)
 		)

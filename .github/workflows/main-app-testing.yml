@@ -5,14 +5,24 @@ on:
     branches:
       - main
     paths:
-      - 'apps/main/**'
-      - '.github/workflows/**'
+      - "apps/main/**"
+      - "packages/twilight-ui/**"
+      - "packages/twilight-utils/**"
+      - "package.json"
+      - "bun.lock"
+      - "turbo.json"
+      - ".github/workflows/**"
   pull_request:
     branches:
       - main
     paths:
-      - 'apps/main/**'
-      - '.github/workflows/**'
+      - "apps/main/**"
+      - "packages/twilight-ui/**"
+      - "packages/twilight-utils/**"
+      - "package.json"
+      - "bun.lock"
+      - "turbo.json"
+      - ".github/workflows/**"
 
 jobs:
   run-cypress-tests:
@@ -30,35 +40,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
+
       - name: Install Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 24
 
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
       - uses: actions/cache@v4
-        name: Setup pnpm cache
+        name: Setup Cypress cache
         with:
-          path: |
-            ~/.cache/Cypress
-            ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-${{ hashFiles('bun.lock') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+            ${{ runner.os }}-cypress-
 
       - name: Install dependencies
-        run: pnpm install
+        run: bun install --frozen-lockfile
 
       - name: Setup environment variables
         run: |
@@ -75,13 +76,13 @@ jobs:
         with:
           install: false
           working-directory: apps/main
-          start: pnpm run dev:test
-          wait-on: 'http://localhost:3000'
+          start: bun run dev:test
+          wait-on: "http://localhost:3000"
           wait-on-timeout: 120
           record: true
           browser: chrome
           parallel: true
-          group: 'Main App Tests'
+          group: "Main App Tests"
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
