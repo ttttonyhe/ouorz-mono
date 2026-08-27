@@ -1,8 +1,20 @@
 version: 2
 updates:
-  # Bun has its own ecosystem; `npm` would not maintain `bun.lock`, and a manifest-only
-  # update would then fail every `--frozen-lockfile` install.
-  - package-ecosystem: bun
+  # Package updates are not automated for now. Dependabot's Bun support reads
+  # `lockfileVersion` 1, and Bun 1.4 writes 2, so every run fails with
+  # "Unsupported bun.lock 'lockfileVersion' 2 ... supports up to 1". The `npm`
+  # ecosystem parses `package.json` but never maintains `bun.lock`, so its pull
+  # requests would fail the `--frozen-lockfile` install in every workflow.
+  # Re-add the block below once Dependabot ships a Bun that reads version 2:
+  #
+  #   - package-ecosystem: bun
+  #     directory: "/"
+  #     schedule:
+  #       interval: weekly
+  #
+  # Until then `bun run upgrade:root` and the per-workspace `upgrade:dev:*`
+  # scripts are the way to pick up new versions.
+  - package-ecosystem: github-actions
     directory: "/"
     schedule:
       interval: weekly
