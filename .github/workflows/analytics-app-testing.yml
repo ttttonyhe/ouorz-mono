@@ -45,10 +45,14 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      # Dependabot pull requests cannot read the repository secrets, and the build
+      # only reads the scheme off `DATABASE_URL` to pick a Prisma schema. Nothing
+      # connects, so a placeholder keeps those runs meaningful instead of failing
+      # on an empty value.
       - name: Setup environment variables
         run: |
           touch apps/analytics/.env
-          echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> apps/analytics/.env
+          echo DATABASE_URL=${{ secrets.DATABASE_URL || 'postgresql://placeholder' }} >> apps/analytics/.env
           echo HASH_SALT=${{ secrets.HASH_SALT }} >> apps/analytics/.env
           echo MAXMIND_LICENSE_KEY=${{ secrets.MAXMIND_LICENSE_KEY }} >> apps/analytics/.env
 
