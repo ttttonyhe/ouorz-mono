@@ -85,9 +85,18 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 							rel="noreferrer"
 							className="flex"
 						> */}
+						{/* The server cannot know the theme, so the `dark` class picks the icon */}
 						<Image
-							className="rounded-full"
-							src={resolvedTheme === "dark" ? "/icon-dark.png" : "/icon.png"}
+							className="rounded-full dark:hidden"
+							src="/icon.png"
+							alt="Tony's NFT avatar"
+							height={18}
+							width={18}
+							loading="lazy"
+						/>
+						<Image
+							className="hidden rounded-full dark:block"
+							src="/icon-dark.png"
 							alt="Tony's NFT avatar"
 							height={18}
 							width={18}

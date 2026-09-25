@@ -1,6 +1,5 @@
 import { Icon } from "@twilight-toolkit/ui"
 import Head from "next/head"
-import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -10,6 +9,7 @@ import PaperCard from "~/components/Card/Paper"
 import ServiceCard from "~/components/Card/Service"
 // import List from "~/components/List"
 import { pageLayout } from "~/components/Page"
+import ProfilePicture from "~/components/ProfilePicture"
 import SubscriptionBox from "~/components/SubscriptionBox"
 import Top from "~/components/Top"
 import type { NextPageWithLayout } from "~/pages/_app"
@@ -49,16 +49,7 @@ const Home: NextPageWithLayout = () => {
 							</p>
 						</div>
 					</div>
-					<div className="hidden shrink-0 pt-1 lg:block">
-						<Image
-							src="https://static.ouorz.com/avatar_real_small.jpg"
-							height={105}
-							width={105}
-							alt="Tony teaching an undergraduate CS course"
-							priority
-							className="rounded-xl bg-gray-200 shadow-xs dark:border dark:border-gray-600"
-						/>
-					</div>
+					<ProfilePicture className="mt-1 hidden shrink-0 lg:block" />
 				</div>
 			</section>
 			<section className="mt-10">
@@ -82,7 +73,7 @@ const Home: NextPageWithLayout = () => {
 				</span>
 				<div className="mt-3.75 flex flex-col px-1 text-justify text-3 leading-relaxed font-light tracking-wide wrap-break-word text-gray-500 underline-offset-[6px] lg:text-left lg:text-[17px] dark:text-gray-300">
 					<p>
-						I&#39;m a computer science PhD student at UWaterloo. I&#39;m part of{" "}
+						I&#39;m a computer science PhD student at UWaterloo; part of{" "}
 						<a
 							href="https://ssg-research.github.io"
 							target="_blank"
@@ -109,7 +100,7 @@ const Home: NextPageWithLayout = () => {
 						.
 					</p>
 					<p className="mt-3.5">
-						I am grateful to be advised by{" "}
+						I&#39;m grateful to be advised by{" "}
 						<a
 							href="https://asokan.org/asokan/"
 							target="_blank"
@@ -212,11 +203,11 @@ const Home: NextPageWithLayout = () => {
 						<sup>[1]</sup>.
 					</p>
 					<p className="mt-8">
-						<sup>[1]</sup>&nbsp;Retrograde Labs is a research-backed startup
-						building the trust layer for agentic AI. We strive to do the kind of
-						research that not only helps us identify failure modes and address
-						theoretical bottlenecks, but can also be turned into something
-						useful in production, and something that is able to withstand the{" "}
+						<sup>[1]</sup>&nbsp;Retrograde Labs is a research-driven startup
+						building the trust layer for AI. Our research aims not only to
+						uncover failure modes and address fundamental bottlenecks, but to
+						translate those insights into systems that work in production and
+						withstand the{" "}
 						<a
 							href="https://www.ycombinator.com/companies?industry=Security"
 							target="_blank"
@@ -224,9 +215,8 @@ const Home: NextPageWithLayout = () => {
 							className="text-blue-500 hover:underline">
 							test of the market
 						</a>{" "}
-						and real customers. At Retrograde Labs, we build, grow, and scale
-						products that apply research ideas to address issues in real-world
-						workflows.
+						and real customers. We build, grow, and scale products that turn
+						research ideas into practical solutions for real-world workflows.
 					</p>
 				</div>
 			</section>
@@ -920,19 +910,19 @@ const Home: NextPageWithLayout = () => {
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/retrograde-labs-logo.png"
 						organization="Retrograde Labs"
-						organizationFullName="Accelerating frontier scientific discovery and commercialization"
-						jobTitle="Co-Founder"
+						organizationFullName="Accelerating scientific discovery and commercialization"
+						jobTitle="Member of Technical Staff"
 						jobType="Leadership"
 						dateString="May 2026 - Present"
 					/>
-					<EmploymentCard
+					{/* <EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/ezra_logo.jpg"
 						organization="Bluelet AI"
 						organizationFullName="Agentic AI and data platform solutions for talent acquisition and matching"
 						jobTitle="Co-Founder & CTO"
 						jobType="Leadership"
 						dateString="May 2025 - June 2025"
-					/>
+					/> */}
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/biorender_logo.png"
 						organization="BioRender"

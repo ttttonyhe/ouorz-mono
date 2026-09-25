@@ -95,6 +95,9 @@ const Kbar = (props: KbarProps) => {
 	// Register keybinding that triggers/hides the kbar
 	useHotkeys("ctrl+k, meta+k", (e) => {
 		e.preventDefault()
+		// A modal dialog makes the page inert, and the palette belongs to the page
+		if (document.querySelector("dialog:modal")) return
+
 		dispatch(activateKbar(props.list))
 		trackEvent("activateKbar", "hotkey")
 	})

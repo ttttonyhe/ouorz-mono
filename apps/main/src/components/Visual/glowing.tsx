@@ -1,27 +1,11 @@
-import { useTheme } from "next-themes"
 import { styled } from "styled-components"
 
 interface GlowingBackgroundProps {
 	$rounded?: "sm" | "md" | "xl"
 }
 
-interface GlowingDivBackgroundProps extends GlowingBackgroundProps {
-	$resolvedTheme: string
-}
-
 // styled component props resolvers
-const background = (props: GlowingDivBackgroundProps) => {
-	return (
-		props.$resolvedTheme === "dark" &&
-		`radial-gradient(200px circle at var(--x-px) var(--y-px), rgba(255, 255, 255, 0.1), transparent)`
-	)
-}
-
-const backgroundColor = (props: GlowingDivBackgroundProps) => {
-	return props.$resolvedTheme === "dark" && "rgb(38,38,38)"
-}
-
-const borderRadius = (props: GlowingDivBackgroundProps) => {
+const borderRadius = (props: GlowingBackgroundProps) => {
 	switch (props.$rounded) {
 		case "sm":
 			return "0.125rem"
@@ -32,7 +16,8 @@ const borderRadius = (props: GlowingDivBackgroundProps) => {
 	}
 }
 
-const GlowingDivBackground = styled.div<GlowingDivBackgroundProps>`
+// Keyed on the `dark` class because `useTheme` is unknown during SSR
+const GlowingDivBackground = styled.div<GlowingBackgroundProps>`
 	border-radius: ${borderRadius};
 	pointer-events: none;
 	user-select: none;
@@ -43,10 +28,17 @@ const GlowingDivBackground = styled.div<GlowingDivBackgroundProps>`
 	bottom: 1px;
 	left: 1px;
 	right: 1px;
-	background: ${background};
-	background-color: ${backgroundColor};
 	contain: strict;
 	transition: opacity 400ms ease 0s;
+
+	.dark & {
+		background: radial-gradient(
+			200px circle at var(--x-px) var(--y-px),
+			rgba(255, 255, 255, 0.1),
+			transparent
+		);
+		background-color: rgb(38, 38, 38);
+	}
 `
 
 const GlowingBackground = ({
@@ -54,15 +46,7 @@ const GlowingBackground = ({
 }: {
 	rounded?: GlowingBackgroundProps[keyof GlowingBackgroundProps]
 }) => {
-	// FIXME: useTheme is not working with styled-components in SSR mode
-	const { resolvedTheme } = useTheme()
-
-	return (
-		<GlowingDivBackground
-			$rounded={rounded || "md"}
-			$resolvedTheme={resolvedTheme || "dark"}
-		/>
-	)
+	return <GlowingDivBackground $rounded={rounded || "md"} />
 }
 
 export default GlowingBackground

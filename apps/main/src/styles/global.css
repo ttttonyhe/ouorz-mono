@@ -284,6 +284,17 @@
 		overflow: hidden;
 	}
 
+	/* Keyed on the root because `useBodyScroll` pins an inline overflow on body */
+	html:has(dialog:modal) {
+		overflow: hidden;
+	}
+
+	/* Derived from the dialog itself, so every way of closing it brings the
+	   thumbnail back before focus returns to it */
+	.profile-picture:has(+ dialog:modal) {
+		visibility: hidden;
+	}
+
 	.stop-scrolling {
 		width: 100%;
 		position: fixed;
@@ -999,6 +1010,28 @@
 		::view-transition-new(page-title-links) {
 			animation-duration: 0.35s;
 			animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		/* Named only while its own morph runs, so page transitions leave the
+		   thumbnail in the page layer */
+		.profile-picture:has(+ dialog[data-morphing]:not(:modal)) > img,
+		.profile-picture + dialog[data-morphing]:modal .profile-picture-frame {
+			view-transition-name: profile-picture;
+		}
+
+		/* Both snapshots are square, so the group owns the rounding and keeps
+		   the corners at a constant radius while the photo scales. */
+		::view-transition-group(profile-picture) {
+			overflow: clip;
+			border-radius: var(--radius-xl);
+			animation-duration: 0.4s;
+			animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			::view-transition-group(profile-picture) {
+				animation: none;
+			}
 		}
 
 		/* Smooth cross-fade for the rest of the page */
