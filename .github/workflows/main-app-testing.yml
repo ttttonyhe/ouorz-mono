@@ -50,7 +50,7 @@ jobs:
         with:
           node-version: 24
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         name: Setup Cypress cache
         with:
           path: ~/.cache/Cypress
