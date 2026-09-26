@@ -3,5 +3,6 @@
 	"github": {
 		"silent": true
 	},
-	"installCommand": "bunx bun@1.4.0 install --frozen-lockfile"
+	"installCommand": "CYPRESS_INSTALL_BINARY=0 bun install --frozen-lockfile",
+	"buildCommand": "cd ../.. && bun run build:analytics:edge"
 }
