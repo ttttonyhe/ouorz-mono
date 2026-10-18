@@ -67,7 +67,7 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Test cypress specs
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7
         with:
           install: false
           working-directory: apps/main
