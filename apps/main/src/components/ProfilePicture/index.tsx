@@ -5,7 +5,8 @@ import { useEffect, useId, useRef, useState } from "react"
 import { supportsViewTransitions } from "~/utilities/environment"
 
 const SRC = "https://static.ouorz.com/avatar_real_small.jpg"
-const ALT = "Teaching an undergraduate CS class"
+const ALT = "Tony He teaching an undergraduate computer science class"
+const CAPTION = "Teaching an undergraduate CS class"
 const THUMBNAIL_SIZE = 105
 const FULL_SIZE = 708
 
@@ -91,7 +92,8 @@ export default function ProfilePicture({ className }: Props) {
 								src={SRC}
 								width={THUMBNAIL_SIZE}
 								height={THUMBNAIL_SIZE}
-								alt=""
+								alt={ALT}
+								aria-hidden="true"
 								loading="eager"
 								decoding="sync"
 								className="absolute inset-0 size-full"
@@ -102,7 +104,7 @@ export default function ProfilePicture({ className }: Props) {
 								width={FULL_SIZE}
 								height={FULL_SIZE}
 								quality={90}
-								alt=""
+								alt={ALT}
 								decoding="sync"
 								onLoad={() => setFullSizeLoaded(true)}
 								className={`absolute inset-0 size-full transition-opacity duration-300 ${
@@ -115,7 +117,7 @@ export default function ProfilePicture({ className }: Props) {
 						<p
 							id={captionId}
 							className="text-4 font-light tracking-wide text-gray-500 dark:text-gray-400">
-							{ALT}
+							{CAPTION}
 						</p>
 						{/* Closes through the dialog's click handler */}
 						<button

@@ -7,7 +7,7 @@ export const SITE_URL = "https://lipeng.ac"
 export const PERSON_ID = `${SITE_URL}/#person`
 export const SITE_NAME = "Tony (Lipeng) He"
 export const PROFILE_DESCRIPTION =
-	"Tony (Lipeng) He, 贺莉朋, is a researcher, software engineer, and startup founder. He is a computer science PhD student at the University of Waterloo researching Trustworthy AI."
+	"Tony (Lipeng) He, 贺莉朋, is a software engineer, startup founder, and University of Waterloo CS PhD student researching Trustworthy AI."
 
 export interface SeoPageProps {
 	post?: LocalPost

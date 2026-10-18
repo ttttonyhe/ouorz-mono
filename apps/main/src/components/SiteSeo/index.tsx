@@ -40,6 +40,7 @@ export default function SiteSeo({ metadata }: Props) {
 			"https://github.com/ttttonyhe",
 			"https://www.linkedin.com/in/~lhe",
 			"https://x.com/ttttonyhe",
+			"https://www.youtube.com/@ttttonyhe",
 		],
 	}
 	const website = {
@@ -109,6 +110,7 @@ export default function SiteSeo({ metadata }: Props) {
 			{isDefaultImage && <meta property="og:image:type" content="image/jpeg" />}
 			<meta property="og:image:alt" content={imageDescription} />
 			<meta name="twitter:card" content="summary_large_image" />
+			<meta name="twitter:site" content="@ttttonyhe" />
 			<meta name="twitter:creator" content="@ttttonyhe" />
 			<meta name="twitter:title" content={title} />
 			<meta name="twitter:description" content={description} />

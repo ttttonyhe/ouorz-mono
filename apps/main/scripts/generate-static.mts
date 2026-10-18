@@ -152,6 +152,7 @@ Tony publishes as Lipeng He. His research studies the safety and security of lar
 - [GitHub](https://github.com/ttttonyhe): Source code and software projects.
 - [ORCID](https://orcid.org/0009-0002-1802-7394): Researcher identifier.
 - [X](https://x.com/ttttonyhe): Public posts.
+- [YouTube](https://www.youtube.com/@ttttonyhe): YouTube channel.
 ${articleLinks}
 ## Other pages
 

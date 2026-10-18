@@ -890,6 +890,7 @@ const Home: NextPageWithLayout = () => {
 				<div className="mt-5 flex flex-col gap-y-4">
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/crysp_logo.png"
+						orgLogoAlt="Cryptography, Security, and Privacy (CrySP) Lab logo"
 						organization="University of Waterloo"
 						organizationFullName="Cryptography, Security, and Privacy (CrySP) Lab"
 						jobTitle="Research Assistant (URA)"

@@ -7,6 +7,7 @@ interface EmploymentCardProps {
 	jobType: string
 	dateString: string
 	orgLogoSrc?: string
+	orgLogoAlt?: string
 	organizationLocation?: string
 }
 
@@ -17,6 +18,7 @@ const EmploymentCard = (props: EmploymentCardProps) => {
 		dateString,
 		jobType,
 		orgLogoSrc,
+		orgLogoAlt,
 		organizationFullName,
 		organizationLocation,
 	} = props
@@ -30,7 +32,7 @@ const EmploymentCard = (props: EmploymentCardProps) => {
 							src={orgLogoSrc}
 							height={24}
 							width={24}
-							alt={`${organization} logo`}
+							alt={orgLogoAlt ?? `${organization} logo`}
 							className="rounded-full border bg-white dark:border-gray-700"
 						/>
 					)}
