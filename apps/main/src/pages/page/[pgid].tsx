@@ -1,6 +1,5 @@
 import type { GetStaticPaths, GetStaticProps } from "next"
 import Head from "next/head"
-import { useRouter } from "next/router"
 import { useEffect } from "react"
 import TimeAgo from "react-timeago"
 
@@ -15,55 +14,31 @@ import type { NextPageWithLayout } from "~/pages/_app"
 import { setHeaderTitle } from "~/store/general/actions"
 
 interface Props {
-	status: boolean
-	page?: LocalPage
+	page: LocalPage
 }
 
-const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
-	const router = useRouter()
+const BlogPage: NextPageWithLayout<Props> = ({ page }) => {
 	const dispatch = useDispatch()
 	const { views: pageViews, isLoading: isViewsLoading } = useLiveViews(
 		"page",
-		page?.id,
-		page?.post_metas.views ?? 0
+		page.id,
+		page.post_metas.views
 	)
 
 	useEffect(() => {
-		if (!status || !page) {
-			void router.replace("/404")
-		}
-	}, [page, router, status])
-
-	useEffect(() => {
-		if (!page) return
 		dispatch(setHeaderTitle(page.title.rendered))
 		return () => {
 			dispatch(setHeaderTitle(""))
 		}
 	}, [dispatch, page])
 
-	if (!status || !page) {
-		return (
-			<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-xs">
-				<h1 className="text-lg font-medium">404 Not Found</h1>
-				<p className="text-sm font-light tracking-wide text-gray-500">
-					redirecting...
-				</p>
-			</div>
-		)
-	}
-
-	const title = `${page.title.rendered} - Tony He`
-
 	return (
 		<div>
 			<Head>
-				<title>{title}</title>
 				<link
 					rel="icon"
 					href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>"
 				/>
-				<meta name="description" content={page.title.rendered} />
 			</Head>
 			<article
 				data-cy="pageContent"
@@ -72,7 +47,9 @@ const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 					<h1 className="text-1.5 leading-snug font-medium tracking-wider lg:text-post-title">
 						{page.title.rendered}
 					</h1>
-					<p className="mt-2 flex space-x-2 text-5 tracking-wide text-gray-500 lg:text-xl dark:text-gray-400">
+					<p
+						lang="en"
+						className="mt-2 flex space-x-2 text-5 tracking-wide text-gray-500 lg:text-xl dark:text-gray-400">
 						<span>
 							Posted <TimeAgo date={page.date} />
 						</span>
@@ -94,22 +71,16 @@ const BlogPage: NextPageWithLayout = ({ status, page }: Props) => {
 	)
 }
 
-export const getStaticProps: GetStaticProps = (context) => {
+export const getStaticProps: GetStaticProps<Props> = (context) => {
 	const pageId = Number(context.params?.pgid)
 	const page = getPageById(pageId)
 
 	if (!page) {
-		return {
-			props: {
-				status: false,
-			},
-			revalidate: 60,
-		}
+		return { notFound: true }
 	}
 
 	return {
 		props: {
-			status: true,
 			page,
 		},
 		revalidate: 24 * 3600,
@@ -118,7 +89,7 @@ export const getStaticProps: GetStaticProps = (context) => {
 
 export const getStaticPaths: GetStaticPaths = () => ({
 	paths: getPageIds().map((id) => ({ params: { pgid: String(id) } })),
-	fallback: "blocking",
+	fallback: false,
 })
 
 BlogPage.layout = contentLayout

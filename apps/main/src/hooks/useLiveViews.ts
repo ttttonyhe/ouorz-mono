@@ -1,14 +1,15 @@
 import useSWR from "swr"
+import { z } from "zod"
 
-import getAPI from "~/utilities/api"
+import createFetcher from "~/lib/fetcher"
+import api from "~/utilities/api"
 
 const REFRESH_INTERVAL = 15_000
 
-const fetchFresh = (url: string) =>
-	fetch(url, { cache: "no-store" }).then((response) => {
-		if (!response.ok) throw new Error(`Request failed: ${response.status}`)
-		return response.json()
-	})
+const fetchFresh = createFetcher(
+	z.object({ post_metas: z.object({ views: z.number().int().nonnegative() }) }),
+	{ cache: "no-store" }
+)
 
 interface LiveViews {
 	views: number
@@ -25,13 +26,13 @@ const useLiveViews = (
 	fallbackViews: number
 ): LiveViews => {
 	const { data, isLoading } = useSWR(
-		id === undefined ? null : getAPI("internal", resource, { id: Number(id) }),
+		id === undefined ? null : api.internal[resource]({ id: Number(id) }),
 		fetchFresh,
 		{ refreshInterval: REFRESH_INTERVAL }
 	)
 
 	return {
-		views: Number(data?.post_metas?.views ?? fallbackViews),
+		views: data?.post_metas.views ?? fallbackViews,
 		isLoading,
 	}
 }

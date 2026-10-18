@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef } from "react"
 
 /**
  * Hook to debounce a function
@@ -7,15 +7,16 @@ import { useState } from "react"
  * @param {number} delay
  * @return {*} debounced func
  */
-const useDebouncedFunction = <T>(
-	func: (...props: any[]) => T,
+const useDebouncedFunction = <Args extends unknown[], Result>(
+	func: (...props: Args) => Result,
 	delay: number
-): typeof func => {
-	const [lastTime, setLastTime] = useState(0)
+): ((...props: Args) => Result | undefined) => {
+	const lastTime = useRef(Number.NEGATIVE_INFINITY)
 
-	const debouncedFunc = (...props: any[]): T => {
-		if (lastTime > Date.now() - delay) return
-		setLastTime(Date.now())
+	const debouncedFunc = (...props: Args): Result | undefined => {
+		const now = Date.now()
+		if (lastTime.current > now - delay) return
+		lastTime.current = now
 		return func(...props)
 	}
 

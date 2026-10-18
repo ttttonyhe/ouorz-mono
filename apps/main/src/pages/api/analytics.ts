@@ -1,40 +1,25 @@
-import type { NextApiRequest, NextApiResponse } from "next"
+import { z } from "zod"
 
 import { ANALYTICS_API } from "~/constants/apiURLs"
+import {
+	apiHandler,
+	fetchJSON,
+	PUBLIC_CACHE,
+	requireEnv,
+} from "~/lib/apiHandler"
 
-type ResDataType = {
-	views: number
-}
+const analyticsSchema = z.object({
+	pageviews: z.object({ value: z.number().int().nonnegative() }),
+})
 
-const duration = 7 * 24 * 3600 * 1000
-
-const analytics = async (
-	_req: NextApiRequest,
-	res: NextApiResponse<ResDataType>
-) => {
-	const startAt = new Date(Date.now() - duration).getTime()
+export default apiHandler(["GET", "HEAD"], async (_req, res) => {
 	const endAt = Date.now()
-
-	const response = await fetch(
+	const startAt = endAt - 7 * 24 * 3600 * 1000
+	const data = await fetchJSON(
+		analyticsSchema,
 		`${ANALYTICS_API.STATS}?start_at=${startAt}&end_at=${endAt}`,
-		{
-			headers: {
-				Accept: "application/json",
-				Authorization: `Bearer ${process.env.ANALYTICS_TOKEN}`,
-			},
-		}
-	).then((analyticsResponse) => analyticsResponse.json())
-
-	const allTimeViews: number = response.pageviews?.value || 0
-
-	res.setHeader(
-		"Cache-Control",
-		"public, s-maxage=1200, stale-while-revalidate=600"
+		{ headers: { Authorization: `Bearer ${requireEnv("ANALYTICS_TOKEN")}` } }
 	)
-
-	return res.status(200).json({
-		views: allTimeViews,
-	})
-}
-
-export default analytics
+	res.setHeader("Cache-Control", PUBLIC_CACHE)
+	return res.status(200).json({ views: data.pageviews.value })
+})

@@ -5,15 +5,23 @@ import useSWRInfinite from "swr/infinite"
 import CardClickable from "~/components/Card/Clickable"
 import CardEmpty from "~/components/Card/Empty"
 import CardSkeleton from "~/components/Card/Skeleton"
-import type { ListTypes } from "~/constants/propTypes"
-import getAPI from "~/utilities/api"
+import {
+	type ListTypes,
+	type WPPost,
+	wpPostSchema,
+} from "~/constants/propTypes"
+import createFetcher from "~/lib/fetcher"
+import api from "~/utilities/api"
 
 import StaticList from "./staticList"
+
+const fetchPosts = createFetcher(wpPostSchema.array())
 
 export interface InfiniteListProps {
 	type: ListTypes
 	cate?: number
 	target?: string
+	initialPosts?: WPPost[]
 }
 
 /**
@@ -22,19 +30,18 @@ export interface InfiniteListProps {
 const getApiUrl = ({ type, cate, target }: InfiniteListProps) => {
 	switch (type) {
 		case "index":
-			return getAPI("internal", "posts", {
+			return api.internal.posts({
 				sticky: false,
 				perPage: 10,
 				cateExclude: "5,2,74,334,335",
 			})
 		case "cate":
-			return getAPI("internal", "posts", {
+			return api.internal.posts({
 				perPage: 10,
 				cate,
-				cateExclude: "5,2,334,335",
 			})
 		case "search":
-			return getAPI("internal", "posts", {
+			return api.internal.posts({
 				cateExclude: "5,2,74,334,335",
 				search: target,
 			})
@@ -44,26 +51,27 @@ const getApiUrl = ({ type, cate, target }: InfiniteListProps) => {
 }
 
 const InfiniteList = (props: InfiniteListProps) => {
-	const { type } = props
+	const { type, initialPosts } = props
 	const url = getApiUrl(props)
 	const [stopLoading, setStopLoading] = React.useState<boolean>(false)
 
-	const { data, error, size, setSize } = useSWRInfinite(
-		(index) => `${url}&page=${index + 1}`,
-		async (pageUrl) => {
-			const res = await fetch(pageUrl)
-			if (!res.ok) {
-				throw new Error()
-			}
-			return res.json()
-		}
+	const { data, error, size, setSize } = useSWRInfinite<WPPost[], Error>(
+		(index: number, previousPage: WPPost[] | null) =>
+			!url || (previousPage && previousPage.length < 10)
+				? null
+				: `${url}&page=${index + 1}`,
+		fetchPosts,
+		{ fallbackData: initialPosts ? [initialPosts] : undefined }
 	)
 	const postData = data ? data.flat() : []
 	const isEmpty = data?.[0]?.length === 0
-	const isReachingEnd = isEmpty || (data && data.at(-1)?.length < 10) || error
+	const lastPage = data?.at(-1)
+	const isReachingEnd =
+		isEmpty || (lastPage !== undefined && lastPage.length < 10) || !!error
 
 	return (
 		<InfiniteScroll
+			key={url}
 			dataLength={postData.length}
 			next={() => {
 				void setSize(size + 1)

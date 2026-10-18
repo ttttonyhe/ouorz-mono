@@ -1,11 +1,11 @@
-import { Icon } from "@twilight-toolkit/ui"
+import { Icon, type IconProps } from "@twilight-toolkit/ui"
 import type React from "react"
 
 import type { LabelTypes } from "~/constants/propTypes"
 
 interface LabelProps {
 	type: LabelTypes
-	icon?: string
+	icon?: IconProps["name"]
 	children?: React.ReactNode
 	preview?: boolean
 }

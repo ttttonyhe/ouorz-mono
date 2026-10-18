@@ -7,16 +7,20 @@ import { z } from "zod"
  */
 
 export const pageFrontmatterSchema = z.object({
-	id: z.number(),
+	id: z.number().int().positive(),
 	title: z.string(),
 	date: z.coerce.date(),
+	language: z.enum(["en", "zh-CN"]).optional(),
+	noindex: z.boolean().default(false),
 	views: z.number().optional(),
 })
 
 export const postFrontmatterSchema = z.object({
-	id: z.number(),
+	id: z.number().int().positive(),
 	title: z.string(),
 	date: z.coerce.date(),
+	language: z.enum(["en", "zh-CN"]).optional(),
+	noindex: z.boolean().default(false),
 	categoryId: z.number(),
 	categoryName: z.string(),
 	excerpt: z.string(),

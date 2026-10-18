@@ -4,7 +4,6 @@ import { useRouter } from "next/router"
 
 import GithubFollowerMetric from "~/components/Metrics/GithubFollowers"
 import GithubStarMetric from "~/components/Metrics/GithubStars"
-// import JMSMetric from "~/components/Metrics/JMS"
 import NexmentMetric from "~/components/Metrics/Nexment"
 import PageViewsMetric from "~/components/Metrics/PageViews"
 import PostsMetric from "~/components/Metrics/Posts"
@@ -22,13 +21,10 @@ const Dashboard: NextPageWithLayout = () => {
 	return (
 		<>
 			<Head>
-				<title>Dashboard - Tony He</title>
 				<link
 					rel="icon"
 					href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>"
 				/>
-				<meta name="description" content="TonyHe's personal dashboard" />
-				<meta name="robots" content="noindex" />
 			</Head>
 			<div className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="mb-4 flex items-center">

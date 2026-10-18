@@ -39,7 +39,9 @@ pre-commit:
     - name: solidity
       glob: "*.sol"
       # Oxfmt does not read Solidity, so contracts keep their own toolchain.
-      run: bunx prettier --write {staged_files} && bunx solhint -c .solhint.json {staged_files}
+      run: >-
+        bunx prettier --write {staged_files}
+        && bun run --cwd packages/twilight-protocol lint
       stage_fixed: true
 
 commit-msg:

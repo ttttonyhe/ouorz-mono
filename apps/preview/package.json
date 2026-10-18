@@ -12,33 +12,33 @@
 	},
 	"dependencies": {
 		"@mdx-js/loader": "^3.1.1",
+		"@mdx-js/mdx": "^3.1.1",
 		"@mdx-js/react": "^3.1.1",
-		"@next/mdx": "^16.3.3",
+		"@next/mdx": "^16.4.2",
 		"@types/mdx": "^2.0.14",
 		"clsx": "^2.1.1",
 		"gray-matter": "^4.0.3",
-		"next": "16.3.3",
-		"next-mdx-remote": "^6.0.0",
+		"next": "^16.4.2",
 		"next-themes": "^0.4.6",
-		"react": "^19",
-		"react-dom": "^19",
+		"react": "^19.3.1",
+		"react-dom": "^19.3.1",
 		"react-use": "^17.6.1",
 		"rehype-autolink-headings": "^7.1.0",
 		"rehype-mathjax": "^7.1.0",
 		"rehype-slug": "^6.0.0",
 		"remark-math": "^6.0.0",
-		"sugar-high": "^2.1.0",
+		"sugar-high": "^2.6.0",
 		"vaul": "^1.1.2",
-		"zod": "^4.4.3"
+		"zod": "^4.6.7"
 	},
 	"devDependencies": {
 		"@tailwindcss/postcss": "^4.3.3",
 		"@tailwindcss/typography": "^0.5.20",
-		"@types/node": "^26",
-		"@types/react": "^19",
-		"@types/react-dom": "^19",
-		"postcss": "^8",
+		"@types/node": "^26.6.5",
+		"@types/react": "^19.3.0",
+		"@types/react-dom": "^19.3.0",
+		"postcss": "^8.5.30",
 		"tailwindcss": "^4.3.3",
-		"typescript": "^7"
+		"typescript": "^7.0.2"
 	}
 }

@@ -1,0 +1,236 @@
+diff --git a/dist/call-optional-signature.js b/dist/call-optional-signature.js
+index 30aea5a5c88d96607e64fba6075831771c8779e9..cb99dd33594ddc5c0ba1f87fbd334a6d484765e2 100644
+--- a/dist/call-optional-signature.js
++++ b/dist/call-optional-signature.js
+@@ -1,10 +1,10 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.callOptionalSignature = callOptionalSignature;
+-const ethereumjs_util_1 = require("ethereumjs-util");
++const keccak_js_1 = require("ethereum-cryptography/keccak.js");
+ const provider_1 = require("./provider");
+ async function callOptionalSignature(provider, address, signature) {
+-    const data = '0x' + (0, ethereumjs_util_1.keccak256)(Buffer.from(signature)).toString('hex').slice(0, 8);
++    const data = '0x' + Buffer.from((0, keccak_js_1.keccak256)(Buffer.from(signature))).toString('hex').slice(0, 8);
+     try {
+         return await (0, provider_1.call)(provider, address, data);
+     }
+diff --git a/dist/eip-1967.js b/dist/eip-1967.js
+index 53fadfd5989da37b09bdf32df613cef1e4be8f6d..e8fc5e877b888b4fa77b7f61ad1a9ed6fcb3a967 100644
+--- a/dist/eip-1967.js
++++ b/dist/eip-1967.js
+@@ -7,7 +7,7 @@ exports.getBeaconAddress = getBeaconAddress;
+ exports.toFallbackEip1967Hash = toFallbackEip1967Hash;
+ exports.toEip1967Hash = toEip1967Hash;
+ exports.isEmptySlot = isEmptySlot;
+-const ethereumjs_util_1 = require("ethereumjs-util");
++const keccak_js_1 = require("ethereum-cryptography/keccak.js");
+ const error_1 = require("./error");
+ const provider_1 = require("./provider");
+ const address_1 = require("./utils/address");
+@@ -46,10 +46,10 @@ async function getStorageFallback(provider, address, ...slots) {
+     return storage;
+ }
+ function toFallbackEip1967Hash(label) {
+-    return '0x' + (0, ethereumjs_util_1.keccak256)(Buffer.from(label)).toString('hex');
++    return '0x' + Buffer.from((0, keccak_js_1.keccak256)(Buffer.from(label))).toString('hex');
+ }
+ function toEip1967Hash(label) {
+-    const hash = (0, ethereumjs_util_1.keccak256)(Buffer.from(label));
++    const hash = Buffer.from((0, keccak_js_1.keccak256)(Buffer.from(label)));
+     const bigNumber = BigInt('0x' + hash.toString('hex')) - 1n;
+     return '0x' + bigNumber.toString(16);
+ }
+diff --git a/dist/utils/address.js b/dist/utils/address.js
+index 8a05dcde6ab20ef7a9ef5027b15bb413f2f7d895..2351b07ed8682ca16c3ebbf97c537fbd576dc1b0 100644
+--- a/dist/utils/address.js
++++ b/dist/utils/address.js
+@@ -1,7 +1,7 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.parseAddress = parseAddress;
+-const ethereumjs_util_1 = require("ethereumjs-util");
++const ethereumjs_util_1 = require("@ethereumjs/util");
+ /**
+  * Parses an address from a hex string which may come from storage or a returned address via eth_call.
+  *
+diff --git a/dist/utils/erc7201.js b/dist/utils/erc7201.js
+index 9bf36d1712b8d4f9da6c52791a4df91a059ba64d..1d371092f45e1149323c8fb63b2d3d0ed64b8e1d 100644
+--- a/dist/utils/erc7201.js
++++ b/dist/utils/erc7201.js
+@@ -2,7 +2,7 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.ERC7201_FORMULA_PREFIX = void 0;
+ exports.calculateERC7201StorageLocation = calculateERC7201StorageLocation;
+-const ethereumjs_util_1 = require("ethereumjs-util");
++const keccak_js_1 = require("ethereum-cryptography/keccak.js");
+ const integer_literals_1 = require("./integer-literals");
+ exports.ERC7201_FORMULA_PREFIX = 'erc7201:';
+ /**
+@@ -13,12 +13,12 @@ exports.ERC7201_FORMULA_PREFIX = 'erc7201:';
+  * @returns The ERC-7201 storage location hash as a hex string
+  */
+ function calculateERC7201StorageLocation(id) {
+-    const firstHash = (0, ethereumjs_util_1.keccak256)(Buffer.from(id));
++    const firstHash = Buffer.from((0, keccak_js_1.keccak256)(Buffer.from(id)));
+     const minusOne = BigInt(`0x${firstHash.toString('hex')}`) - 1n;
+     // Pad to 64 hex chars so that `Buffer.from` doesn't silently truncate odd-length input;
+     // `abi.encode(uint256)` is always 32 bytes.
+     const minusOneBuffer = Buffer.from(minusOne.toString(16).padStart(64, '0'), 'hex');
+-    const secondHash = (0, ethereumjs_util_1.keccak256)(minusOneBuffer);
++    const secondHash = Buffer.from((0, keccak_js_1.keccak256)(minusOneBuffer));
+     const mask = BigInt('0xff');
+     const masked = BigInt(`0x${secondHash.toString('hex')}`) & ~mask;
+     return (0, integer_literals_1.toBytes32Hex)(masked);
+diff --git a/dist/version.js b/dist/version.js
+index d650682dac0779e6b4dcd9a26c602c75266ab5b0..f53085f6e6ac9d0c1e9b10d862e6a81dac3f39c6 100644
+--- a/dist/version.js
++++ b/dist/version.js
+@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.getVersion = getVersion;
+ exports.hashBytecode = hashBytecode;
+ exports.hashBytecodeWithoutMetadata = hashBytecodeWithoutMetadata;
+-const ethereumjs_util_1 = require("ethereumjs-util");
++const keccak_js_1 = require("ethereum-cryptography/keccak.js");
+ const cbor_1 = __importDefault(require("cbor"));
+ function getVersion(bytecode, linkedBytecode, constructorArgs = '') {
+     if (bytecode !== '') {
+@@ -23,7 +23,7 @@ function getVersion(bytecode, linkedBytecode, constructorArgs = '') {
+ function hashBytecode(bytecode, constructorArgs = '') {
+     bytecode = bytecode
+         .replace(/__\$([0-9a-fA-F]{34})\$__/g, (_, placeholder) => `000${placeholder}000`)
+-        .replace(/__\w{36}__/g, placeholder => (0, ethereumjs_util_1.keccak256)(Buffer.from(placeholder)).toString('hex', 0, 20));
++        .replace(/__\w{36}__/g, placeholder => Buffer.from((0, keccak_js_1.keccak256)(Buffer.from(placeholder))).toString('hex', 0, 20));
+     // Fail if bytecode is still not valid hex after transformations above.
+     // Buffer.from silently truncates at the first non-hex character.
+     // NOTE: Some bytecode seems to have odd length, so we cannot do ([0-9a-fA-F]{2})*
+@@ -37,7 +37,7 @@ function hashBytecode(bytecode, constructorArgs = '') {
+         Buffer.from(bytecode.replace(/^0x/, ''), 'hex'),
+         Buffer.from(constructorArgs.replace(/^0x/, ''), 'hex'),
+     ]);
+-    return (0, ethereumjs_util_1.keccak256)(buf).toString('hex');
++    return Buffer.from((0, keccak_js_1.keccak256)(buf)).toString('hex');
+ }
+ function hashBytecodeWithoutMetadata(bytecode, constructorArgs = '') {
+     return hashBytecode(trimBytecodeMetadata(bytecode), constructorArgs);
+diff --git a/package.json b/package.json
+index 0af18b1bc3fd83a1d37d3df92d6f0cc058d37bd3..64c2b905b0a458a5b78aece1f34b9f366e22ed65 100644
+--- a/package.json
++++ b/package.json
+@@ -68,10 +68,11 @@
+     "compare-versions": "^6.0.0",
+     "bignumber.js": "^9.1.2",
+     "debug": "^4.1.1",
+-    "ethereumjs-util": "^7.0.3",
+     "minimist": "^1.2.7",
+     "proper-lockfile": "^4.1.1",
+     "solidity-ast": "^0.4.60",
+-    "minimatch": "^10.2.5"
++    "minimatch": "^10.2.5",
++    "@ethereumjs/util": "^10.1.3",
++    "ethereum-cryptography": "^3.2.0"
+   }
+ }
+diff --git a/src/call-optional-signature.ts b/src/call-optional-signature.ts
+index 04121cb62896363ec10336e67ecfc22c1b5c84bb..88f5dcff88a2e65355c2d30fcbcd587722b5577c 100644
+--- a/src/call-optional-signature.ts
++++ b/src/call-optional-signature.ts
+@@ -1,8 +1,8 @@
+-import { keccak256 } from 'ethereumjs-util';
++import { keccak256 } from 'ethereum-cryptography/keccak.js';
+ import { call, EthereumProvider } from './provider';
+ 
+ export async function callOptionalSignature(provider: EthereumProvider, address: string, signature: string) {
+-  const data = '0x' + keccak256(Buffer.from(signature)).toString('hex').slice(0, 8);
++  const data = '0x' + Buffer.from(keccak256(Buffer.from(signature))).toString('hex').slice(0, 8);
+   try {
+     return await call(provider, address, data);
+   } catch (e: any) {
+diff --git a/src/eip-1967.ts b/src/eip-1967.ts
+index 4de67915975a5b19b3a54bbb532440c2718304bf..e14b2c2ecff0d767861ebd3e254187064b1db760 100644
+--- a/src/eip-1967.ts
++++ b/src/eip-1967.ts
+@@ -1,4 +1,4 @@
+-import { keccak256 } from 'ethereumjs-util';
++import { keccak256 } from 'ethereum-cryptography/keccak.js';
+ import { UpgradesError } from './error';
+ import { EthereumProvider, getStorageAt } from './provider';
+ import { parseAddress } from './utils/address';
+@@ -58,11 +58,11 @@ async function getStorageFallback(provider: EthereumProvider, address: string, .
+ }
+ 
+ export function toFallbackEip1967Hash(label: string): string {
+-  return '0x' + keccak256(Buffer.from(label)).toString('hex');
++  return '0x' + Buffer.from(keccak256(Buffer.from(label))).toString('hex');
+ }
+ 
+ export function toEip1967Hash(label: string): string {
+-  const hash = keccak256(Buffer.from(label));
++  const hash = Buffer.from(keccak256(Buffer.from(label)));
+   const bigNumber = BigInt('0x' + hash.toString('hex')) - 1n;
+   return '0x' + bigNumber.toString(16);
+ }
+diff --git a/src/utils/address.ts b/src/utils/address.ts
+index a4c81371e6bcf4201016639d8249f71e8aa140ec..012031bdd1696b20cedcbac5ae85d9df7a78fba4 100644
+--- a/src/utils/address.ts
++++ b/src/utils/address.ts
+@@ -1,4 +1,4 @@
+-import { toChecksumAddress } from 'ethereumjs-util';
++import { toChecksumAddress } from '@ethereumjs/util';
+ 
+ /**
+  * Parses an address from a hex string which may come from storage or a returned address via eth_call.
+diff --git a/src/utils/erc7201.ts b/src/utils/erc7201.ts
+index 7b8e5873f9e7d14af142f3f89c00755656c9cffe..99e97d9bff64d7a4aab4a25534d60d52de82cd90 100644
+--- a/src/utils/erc7201.ts
++++ b/src/utils/erc7201.ts
+@@ -1,4 +1,4 @@
+-import { keccak256 } from 'ethereumjs-util';
++import { keccak256 } from 'ethereum-cryptography/keccak.js';
+ 
+ import { toBytes32Hex } from './integer-literals';
+ 
+@@ -12,13 +12,13 @@ export const ERC7201_FORMULA_PREFIX = 'erc7201:';
+  * @returns The ERC-7201 storage location hash as a hex string
+  */
+ export function calculateERC7201StorageLocation(id: string): string {
+-  const firstHash = keccak256(Buffer.from(id));
++  const firstHash = Buffer.from(keccak256(Buffer.from(id)));
+   const minusOne = BigInt(`0x${firstHash.toString('hex')}`) - 1n;
+   // Pad to 64 hex chars so that `Buffer.from` doesn't silently truncate odd-length input;
+   // `abi.encode(uint256)` is always 32 bytes.
+   const minusOneBuffer = Buffer.from(minusOne.toString(16).padStart(64, '0'), 'hex');
+ 
+-  const secondHash = keccak256(minusOneBuffer);
++  const secondHash = Buffer.from(keccak256(minusOneBuffer));
+ 
+   const mask = BigInt('0xff');
+   const masked = BigInt(`0x${secondHash.toString('hex')}`) & ~mask;
+diff --git a/src/version.ts b/src/version.ts
+index c62d92f004d0e88160e7feba2457c227e1c2556e..16daa5221f3ac37e085ede1b94433b5bce9ae1a0 100644
+--- a/src/version.ts
++++ b/src/version.ts
+@@ -1,4 +1,4 @@
+-import { keccak256 } from 'ethereumjs-util';
++import { keccak256 } from 'ethereum-cryptography/keccak.js';
+ import cbor from 'cbor';
+ 
+ export interface Version {
+@@ -22,7 +22,7 @@ export function getVersion(bytecode: string, linkedBytecode?: string, constructo
+ export function hashBytecode(bytecode: string, constructorArgs = ''): string {
+   bytecode = bytecode
+     .replace(/__\$([0-9a-fA-F]{34})\$__/g, (_, placeholder) => `000${placeholder}000`)
+-    .replace(/__\w{36}__/g, placeholder => keccak256(Buffer.from(placeholder)).toString('hex', 0, 20));
++    .replace(/__\w{36}__/g, placeholder => Buffer.from(keccak256(Buffer.from(placeholder))).toString('hex', 0, 20));
+ 
+   // Fail if bytecode is still not valid hex after transformations above.
+   // Buffer.from silently truncates at the first non-hex character.
+@@ -40,7 +40,7 @@ export function hashBytecode(bytecode: string, constructorArgs = ''): string {
+     Buffer.from(constructorArgs.replace(/^0x/, ''), 'hex'),
+   ]);
+ 
+-  return keccak256(buf).toString('hex');
++  return Buffer.from(keccak256(buf)).toString('hex');
+ }
+ 
+ export function hashBytecodeWithoutMetadata(bytecode: string, constructorArgs = ''): string {

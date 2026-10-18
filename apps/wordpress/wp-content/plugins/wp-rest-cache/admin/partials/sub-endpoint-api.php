@@ -13,6 +13,6 @@
 <div class="wrap">
 	<?php
 	$wp_rest_cache_list = new \WP_Rest_Cache_Plugin\Admin\Includes\API_Caches_Table( 'endpoint' );
-	require_once 'caches-table.php';
+	require_once __DIR__ . '/caches-table.php';
 	?>
 </div>

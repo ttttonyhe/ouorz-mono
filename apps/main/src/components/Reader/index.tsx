@@ -1,5 +1,4 @@
 import { Icon } from "@twilight-toolkit/ui"
-import { MDXRemote } from "next-mdx-remote"
 import { useCallback, useEffect } from "react"
 import TimeAgo from "react-timeago"
 
@@ -15,7 +14,7 @@ export default function Reader() {
 	const [_bodyScrollable, setBodyScrollable] = useBodyScroll()
 	const { animation, visible, postData } = useSelector(selectReader)
 	const dispatch = useDispatch()
-	const { mdxSource, isLoading: isPreviewLoading } = useMdxPreview(
+	const { mdxHtml, isLoading: isPreviewLoading } = useMdxPreview(
 		postData?.id,
 		postData?.content.raw,
 		visible
@@ -51,7 +50,8 @@ export default function Reader() {
 	}, [dismissReader, visible])
 
 	return (
-		visible && (
+		visible &&
+		postData && (
 			<div>
 				<div
 					className={`reader-bg z-50 ${
@@ -103,10 +103,11 @@ export default function Reader() {
 							<div className="h-5 w-10/12 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
 							<div className="h-5 w-8/12 animate-pulse rounded bg-gray-200 dark:bg-gray-700" />
 						</div>
-					) : mdxSource ? (
-						<div className="prose max-w-none tracking-wide dark:prose-invert">
-							<MDXRemote {...mdxSource} />
-						</div>
+					) : mdxHtml !== null ? (
+						<div
+							className="prose max-w-none tracking-wide dark:prose-invert"
+							dangerouslySetInnerHTML={{ __html: mdxHtml }}
+						/>
 					) : (
 						<PostContent content={postData.content.rendered} />
 					)}

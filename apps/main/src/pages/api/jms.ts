@@ -1,24 +1,22 @@
-import type { NextApiRequest, NextApiResponse } from "next"
+import { z } from "zod"
 
-type ResDataType = {
-	total: number
-	used: number
-}
+import {
+	apiHandler,
+	fetchJSON,
+	PUBLIC_CACHE,
+	requireEnv,
+} from "~/lib/apiHandler"
 
-const jms = async (_req: NextApiRequest, res: NextApiResponse<ResDataType>) => {
-	const response = await fetch(process.env.JMS_API_PATH)
+const bandwidthSchema = z.object({
+	monthly_bw_limit_b: z.number().nonnegative(),
+	bw_counter_b: z.number().nonnegative(),
+})
 
-	const data = await response.json()
-
-	res.setHeader(
-		"Cache-Control",
-		"public, s-maxage=1200, stale-while-revalidate=600"
-	)
-
+export default apiHandler(["GET", "HEAD"], async (_req, res) => {
+	const data = await fetchJSON(bandwidthSchema, requireEnv("JMS_API_PATH"))
+	res.setHeader("Cache-Control", PUBLIC_CACHE)
 	return res.status(200).json({
 		total: data.monthly_bw_limit_b / 10 ** 9,
 		used: data.bw_counter_b / 10 ** 9,
 	})
-}
-
-export default jms
+})

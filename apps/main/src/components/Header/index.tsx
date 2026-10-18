@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { type RefObject, useRef } from "react"
 
+import { getContentLanguage } from "~/content/text"
 import { useDispatch, useSelector } from "~/hooks"
 import useAnalytics from "~/hooks/analytics"
 import { selectGeneral } from "~/store/general/selectors"
@@ -16,7 +17,7 @@ import {
 import Kbar, { type KbarListItem } from "../Kbar"
 import { HeaderTransition, OffsetTransition } from "../Motion"
 import ScrollWrapper from "../Motion/scroll"
-import Tabs from "../Tabs"
+import Tabs, { type TabItemProps } from "../Tabs"
 
 interface HeaderSearchBarComponentProps {
 	onActivate: () => void
@@ -34,6 +35,7 @@ const HeaderSearchBarComponent = ({
 			</div>
 			<input
 				type="text"
+				aria-label="Search posts and commands"
 				className="w-full rounded-md border border-gray-200 bg-white/90 px-3 py-2 pl-[54px] text-sm outline-hidden transition-shadow hover:bg-neutral-50 dark:border-gray-700 dark:bg-gray-800/50 dark:shadow-xs dark:hover:border-gray-700 dark:hover:bg-gray-800"
 				placeholder="Type your command or search..."
 				onFocus={onActivate}
@@ -51,7 +53,9 @@ const HeaderTitleComponent = () => {
 
 	return (
 		<div className="mx-auto hidden items-center justify-center space-x-3 overflow-hidden lg:flex">
-			<h3 className="overflow-hidden font-medium text-ellipsis whitespace-nowrap">
+			<h3
+				lang={getContentLanguage(headerTitle)}
+				className="overflow-hidden font-medium text-ellipsis whitespace-nowrap">
 				{headerTitle}
 			</h3>
 		</div>
@@ -72,7 +76,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 
 	const nonHomePage = router.pathname.split("/").length > 2
 
-	const leftTabItems = [
+	const leftTabItems: TabItemProps[] = [
 		{
 			label: "Avatar",
 			hoverable: false,
@@ -124,7 +128,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 		},
 	]
 
-	const rightTabItems = [
+	const rightTabItems: TabItemProps[] = [
 		nonHomePage
 			? {
 					label: "Home",
@@ -342,7 +346,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			description: "Page",
 			icon: "people",
 			link: {
-				internal: "/friends",
+				internal: "/links",
 			},
 		},
 		{
@@ -397,7 +401,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			description: "Link",
 			icon: "twitterX",
 			link: {
-				external: "https://x.com/tonyhe_lipeng",
+				external: "https://x.com/ttttonyhe",
 			},
 		},
 		{
@@ -471,28 +475,31 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 	return (
 		<ScrollWrapper handler={scrollHandler} startPosition={0} endPosition={15}>
 			<header
+				lang="en"
 				ref={headerRef}
 				id="header"
 				className="header fixed top-0 z-50 grid h-auto w-full grid-cols-8 border-b border-gray-200 px-1 py-2 leading-14 duration-300 lg:border-0 lg:bg-transparent lg:px-5 lg:py-4 dark:border-b-transparent dark:backdrop-blur-lg">
-				<div className="col-start-1 col-end-3 flex items-center lg:items-baseline lg:space-x-2">
-					<Tabs items={leftTabItems} />
-				</div>
-				<OffsetTransition disabled={!nonHomePage} componentRef={titleRef}>
-					<div
-						ref={titleRef}
-						className="col-start-3 col-end-7 flex items-center justify-center">
-						{nonHomePage ? (
-							<HeaderTitleComponent />
-						) : (
-							<HeaderSearchBarComponent
-								onActivate={() => dispatch(activateKbar(kbarItems))}
-							/>
-						)}
+				<nav aria-label="Main navigation" className="contents">
+					<div className="col-start-1 col-end-3 flex items-center lg:items-baseline lg:space-x-2">
+						<Tabs items={leftTabItems} />
 					</div>
-				</OffsetTransition>
-				<div className="col-start-7 col-end-9 flex justify-end space-x-2">
-					<Tabs items={rightTabItems} />
-				</div>
+					<OffsetTransition disabled={!nonHomePage} componentRef={titleRef}>
+						<div
+							ref={titleRef}
+							className="col-start-3 col-end-7 flex items-center justify-center">
+							{nonHomePage ? (
+								<HeaderTitleComponent />
+							) : (
+								<HeaderSearchBarComponent
+									onActivate={() => dispatch(activateKbar(kbarItems))}
+								/>
+							)}
+						</div>
+					</OffsetTransition>
+					<div className="col-start-7 col-end-9 flex justify-end space-x-2">
+						<Tabs items={rightTabItems} />
+					</div>
+				</nav>
 				<Kbar list={kbarItems} />
 			</header>
 		</ScrollWrapper>

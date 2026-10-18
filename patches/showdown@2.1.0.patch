@@ -1,0 +1,474 @@
+diff --git a/dist/showdown.js b/dist/showdown.js
+index 0607f73..cf0974f 100644
+--- a/dist/showdown.js
++++ b/dist/showdown.js
+@@ -2789,6 +2789,47 @@ showdown.Converter = function (converterOptions) {
+ /**
+  * Turn Markdown link shortcuts into XHTML <a> tags.
+  */
++var RE2JS = require('re2js').RE2JS,
++    linearPatterns = new Map(),
++    jsWhitespace = '\\t\\n\\v\\f\\r \\x{a0}\\x{1680}\\x{2000}-\\x{200a}\\x{2028}\\x{2029}\\x{202f}\\x{205f}\\x{3000}\\x{feff}';
++
++function linearPattern (expression) {
++  var key = expression.toString(), cached = linearPatterns.get(key);
++  if (cached) { return cached; }
++  var source = expression.source.replace(/\[\\S\]/g, '[^' + jsWhitespace + ']'),
++      output = '', inClass = false;
++  for (var i = 0; i < source.length; i++) {
++    var character = source.charAt(i);
++    if (source.slice(i, i + 6) === '[\\s\\S]') {
++      output += '(?s:.)';
++      i += 5;
++    } else if (character === '\\') {
++      var escaped = source.charAt(++i);
++      if (escaped === 's') {
++        output += inClass ? jsWhitespace : '[' + jsWhitespace + ']';
++      } else {
++        output += '\\' + escaped;
++      }
++    } else if (character === '[') {
++      inClass = true;
++      output += character;
++    } else if (character === ']') {
++      inClass = false;
++      output += character;
++    } else if (!inClass && character === '.') {
++      output += '[^\\n\\r\\x{2028}\\x{2029}]';
++    } else if (!inClass && character === '^' && expression.multiline) {
++      output += '(?:^|(?<=[\\r\\x{2028}\\x{2029}]))';
++    } else {
++      output += character;
++    }
++  }
++  var flags = RE2JS.LOOKBEHINDS | (expression.multiline ? RE2JS.MULTILINE : 0);
++  cached = RE2JS.compile(RE2JS.translateRegExp(output), flags);
++  linearPatterns.set(key, cached);
++  return cached;
++}
++
+ showdown.subParser('anchors', function (text, options, globals) {
+   'use strict';
+ 
+@@ -2801,7 +2842,7 @@ showdown.subParser('anchors', function (text, options, globals) {
+     linkId = linkId.toLowerCase();
+ 
+     // Special case for explicit empty url
+-    if (wholeMatch.search(/\(<?\s*>? ?(['"].*['"])?\)$/m) > -1) {
++    if (linearPattern(/\(<?\s*>? ?(['"].*['"])?\)(?:$|[\r\u2028\u2029])/m).matcher(wholeMatch).find()) {
+       url = '';
+     } else if (!url) {
+       if (!linkId) {
+@@ -2845,21 +2886,19 @@ showdown.subParser('anchors', function (text, options, globals) {
+   };
+ 
+   // First, handle reference-style links: [link text] [id]
+-  text = text.replace(/\[((?:\[[^\]]*]|[^\[\]])*)] ?(?:\n *)?\[(.*?)]()()()()/g, writeAnchorTag);
++  text = linearPattern(/\[((?:\[[^\]]*]|[^\[\]])*)] ?(?:\n *)?\[(.*?)]()()()()/g).matcher(text).replaceAll(writeAnchorTag);
+ 
+   // Next, inline-style links: [link text](url "optional title")
+   // cases with crazy urls like ./image/cat1).png
+-  text = text.replace(/\[((?:\[[^\]]*]|[^\[\]])*)]()[ \t]*\([ \t]?<([^>]*)>(?:[ \t]*((["'])([^"]*?)\5))?[ \t]?\)/g,
+-    writeAnchorTag);
++  text = linearPattern(/\[((?:\[[^\]]*]|[^\[\]])*)]()[ \t]*\([ \t]?<([^>]*)>(?:[ \t]*("[^"]*?"|'[^"]*?'))?[ \t]?\)/g).matcher(text).replaceAll(function (whole, label, id, url, title) { return writeAnchorTag(whole, label, id, url, undefined, undefined, title === undefined ? undefined : title.slice(1, -1)); });
+ 
+   // normal cases
+-  text = text.replace(/\[((?:\[[^\]]*]|[^\[\]])*)]()[ \t]*\([ \t]?<?([\S]+?(?:\([\S]*?\)[\S]*?)?)>?(?:[ \t]*((["'])([^"]*?)\5))?[ \t]?\)/g,
+-    writeAnchorTag);
++  text = linearPattern(/\[((?:\[[^\]]*]|[^\[\]])*)]()[ \t]*\([ \t]?<?([\S]+?(?:\([\S]*?\)[\S]*?)?)>?(?:[ \t]*("[^"]*?"|'[^"]*?'))?[ \t]?\)/g).matcher(text).replaceAll(function (whole, label, id, url, title) { return writeAnchorTag(whole, label, id, url, undefined, undefined, title === undefined ? undefined : title.slice(1, -1)); });
+ 
+   // handle reference-style shortcuts: [link text]
+   // These must come last in case you've also got [link test][1]
+   // or [link test](/foo)
+-  text = text.replace(/\[([^\[\]]+)]()()()()()/g, writeAnchorTag);
++  text = linearPattern(/\[([^\[\]]+)]()()()()()/g).matcher(text).replaceAll(writeAnchorTag);
+ 
+   // Lastly handle GithubMentions if option is enabled
+   if (options.ghMentions) {
+@@ -2885,12 +2924,10 @@ showdown.subParser('anchors', function (text, options, globals) {
+   return text;
+ });
+ 
++
+ // url allowed chars [a-z\d_.~:/?#[]@!$&'()*+,;=-]
+ 
+-var simpleURLRegex  = /([*~_]+|\b)(((https?|ftp|dict):\/\/|www\.)[^'">\s]+?\.[^'">\s]+?)()(\1)?(?=\s|$)(?!["<>])/gi,
+-    simpleURLRegex2 = /([*~_]+|\b)(((https?|ftp|dict):\/\/|www\.)[^'">\s]+\.[^'">\s]+?)([.!?,()\[\]])?(\1)?(?=\s|$)(?!["<>])/gi,
+-    delimUrlRegex   = /()<(((https?|ftp|dict):\/\/|www\.)[^'">\s]+)()>()/gi,
+-    simpleMailRegex = /(^|\s)(?:mailto:)?([A-Za-z0-9!#$%&'*+-/=?^_`{|}~.]+@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+)(?=$|\s)/gmi,
++var simpleMailRegex = /(^|\s)(?:mailto:)?([A-Za-z0-9!#$%&'*+-/=?^_`{|}~.]+@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+)(?=$|\s)/gmi,
+     delimMailRegex  = /<()(?:mailto:)?([-.\w]+@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+)>/gi,
+ 
+     replaceLink = function (options) {
+@@ -2931,12 +2968,87 @@ var simpleURLRegex  = /([*~_]+|\b)(((https?|ftp|dict):\/\/|www\.)[^'">\s]+?\.[^'
+       };
+     };
+ 
++function replaceAutoLinkURLs(text, options, delimited) {
++  'use strict';
++
++  var tokens = /[^'">\s]+/g,
++      prefixes = delimited ? /<(?:https?|ftp|dict):\/\/|<www\./gi : /(?:https?|ftp|dict):\/\/|www\./gi,
++      replace = replaceLink(options),
++      parts = [],
++      cursor = 0,
++      tokenMatch;
++
++  while ((tokenMatch = tokens.exec(text)) !== null) {
++    var token = tokenMatch[0],
++        tokenEnd = tokens.lastIndex,
++        prefix,
++        leading = '',
++        trailing = '',
++        punctuation = '',
++        matchStart,
++        urlStart,
++        urlEnd = token.length;
++
++    if (delimited ? text.charAt(tokenEnd) !== '>' : tokenEnd < text.length && !/\s/.test(text.charAt(tokenEnd))) {
++      continue;
++    }
++
++    prefixes.lastIndex = 0;
++    while ((prefix = prefixes.exec(token)) !== null) {
++      matchStart = prefix.index;
++      urlStart = matchStart + (delimited ? 1 : 0);
++      if (delimited) {
++        break;
++      }
++      while (matchStart > 0 && /[*~_]/.test(token.charAt(matchStart - 1))) {
++        --matchStart;
++      }
++      leading = token.slice(matchStart, urlStart);
++      if (leading || urlStart === 0 || !/[a-z\d_]/i.test(token.charAt(urlStart - 1))) {
++        break;
++      }
++    }
++    if (!prefix) {
++      continue;
++    }
++
++    if (delimited) {
++      if (prefixes.lastIndex === token.length) {
++        continue;
++      }
++      ++tokenEnd;
++    } else {
++      var bodyStart = prefixes.lastIndex,
++          dot = options.excludeTrailingPunctuationFromURLs ? token.lastIndexOf('.', token.length - 2) : token.indexOf('.', bodyStart + 1),
++          magicEnd = token.length - leading.length;
++
++      if (dot <= bodyStart || dot >= token.length - 1) {
++        continue;
++      }
++      if (leading && token.slice(magicEnd) === leading && magicEnd >= dot + 2) {
++        urlEnd = magicEnd;
++        trailing = leading;
++      }
++      if (options.excludeTrailingPunctuationFromURLs && urlEnd > dot + 2 && /[.!?,()\[\]]/.test(token.charAt(urlEnd - 1))) {
++        punctuation = token.charAt(--urlEnd);
++      }
++    }
++
++    matchStart += tokenMatch.index;
++    parts.push(text.slice(cursor, matchStart));
++    parts.push(replace(text.slice(matchStart, tokenEnd), leading, token.slice(urlStart, urlEnd), '', '', punctuation, trailing));
++    cursor = tokenEnd;
++  }
++
++  return parts.length ? parts.join('') + text.slice(cursor) : text;
++}
++
+ showdown.subParser('autoLinks', function (text, options, globals) {
+   'use strict';
+ 
+   text = globals.converter._dispatch('autoLinks.before', text, options, globals);
+ 
+-  text = text.replace(delimUrlRegex, replaceLink(options));
++  text = replaceAutoLinkURLs(text, options, true);
+   text = text.replace(delimMailRegex, replaceMail(options, globals));
+ 
+   text = globals.converter._dispatch('autoLinks.after', text, options, globals);
+@@ -2953,11 +3065,7 @@ showdown.subParser('simplifiedAutoLinks', function (text, options, globals) {
+ 
+   text = globals.converter._dispatch('simplifiedAutoLinks.before', text, options, globals);
+ 
+-  if (options.excludeTrailingPunctuationFromURLs) {
+-    text = text.replace(simpleURLRegex2, replaceLink(options));
+-  } else {
+-    text = text.replace(simpleURLRegex, replaceLink(options));
+-  }
++  text = replaceAutoLinkURLs(text, options, false);
+   text = text.replace(simpleMailRegex, replaceMail(options, globals));
+ 
+   text = globals.converter._dispatch('simplifiedAutoLinks.after', text, options, globals);
+@@ -2965,6 +3073,7 @@ showdown.subParser('simplifiedAutoLinks', function (text, options, globals) {
+   return text;
+ });
+ 
++
+ /**
+  * These are all the transformations that form block-level
+  * tags like paragraphs, headers, and list items.
+@@ -3572,63 +3681,68 @@ showdown.subParser('hashHTMLSpans', function (text, options, globals) {
+     return '¨C' + (globals.gHtmlSpans.push(html) - 1) + 'C';
+   }
+ 
+-  // Hash Self Closing tags
+-  text = text.replace(/<[^>]+?\/>/gi, function (wm) {
+-    return hashHTMLSpan(wm);
+-  });
+-
+-  // Hash tags without properties
+-  text = text.replace(/<([^>]+?)>[\s\S]*?<\/\1>/g, function (wm) {
+-    return hashHTMLSpan(wm);
+-  });
+-
+-  // Hash tags with properties
+-  text = text.replace(/<([^>]+?)\s[^>]+?>[\s\S]*?<\/\1>/g, function (wm) {
+-    return hashHTMLSpan(wm);
+-  });
+-
+-  // Hash self closing tags without />
+-  text = text.replace(/<[^>]+?>/gi, function (wm) {
+-    return hashHTMLSpan(wm);
+-  });
++  function pairedTags (source, attributes) {
++    var tags = [],
++        endings = new Map(),
++        positions = new Map(),
++        pattern = linearPattern(/<([^>]+)>/g).matcher(source);
++    while (pattern.find()) {
++      var tag = {start: pattern.start(), end: pattern.end(), content: pattern.group(1)};
++      tags.push(tag);
++      if (tag.content.charAt(0) === '/') {
++        var name = tag.content.slice(1),
++            closes = endings.get(name);
++        if (!closes) { closes = []; endings.set(name, closes); }
++        closes.push(tag);
++      }
++    }
+ 
+-  /*showdown.helper.matchRecursiveRegExp(text, '<code\\b[^>]*>', '</code>', 'gi');*/
++    var output = [], last = 0;
++    for (var i = 0; i < tags.length; i++) {
++      var opening = tags[i];
++      if (opening.start < last) { continue; }
++      var closeName = opening.content;
++      if (attributes) {
++        var space = closeName.search(/\s/);
++        if (space <= 0 || space === closeName.length - 1) { continue; }
++        closeName = closeName.slice(0, space);
++      }
++      var candidates = endings.get(closeName);
++      if (!candidates) { continue; }
++      var next = positions.get(closeName) || 0;
++      while (next < candidates.length && candidates[next].start < opening.end) { next++; }
++      positions.set(closeName, next);
++      if (next === candidates.length) { continue; }
++      var closing = candidates[next];
++      output.push(source.slice(last, opening.start));
++      output.push(hashHTMLSpan(source.slice(opening.start, closing.end)));
++      last = closing.end;
++    }
++    output.push(source.slice(last));
++    return output.join('');
++  }
+ 
+-  text = globals.converter._dispatch('hashHTMLSpans.after', text, options, globals);
+-  return text;
++  text = linearPattern(/<[^>]+?\/>/g).matcher(text).replaceAll(hashHTMLSpan);
++  text = pairedTags(text, false);
++  text = pairedTags(text, true);
++  text = linearPattern(/<[^>]+?>/g).matcher(text).replaceAll(hashHTMLSpan);
++  return globals.converter._dispatch('hashHTMLSpans.after', text, options, globals);
+ });
+ 
+-/**
+- * Unhash HTML spans
+- */
+ showdown.subParser('unhashHTMLSpans', function (text, options, globals) {
+   'use strict';
+   text = globals.converter._dispatch('unhashHTMLSpans.before', text, options, globals);
+-
+-  for (var i = 0; i < globals.gHtmlSpans.length; ++i) {
+-    var repText = globals.gHtmlSpans[i],
+-        // limiter to prevent infinite loop (assume 10 as limit for recurse)
+-        limit = 0;
+-
+-    while (/¨C(\d+)C/.test(repText)) {
+-      var num = RegExp.$1;
+-      repText = repText.replace('¨C' + num + 'C', globals.gHtmlSpans[num]);
+-      if (limit === 10) {
+-        console.error('maximum nesting of 10 spans reached!!!');
+-        break;
+-      }
+-      ++limit;
++  text = text.replace(/¨C(\d+)C/g, function (whole, index) {
++    var html = globals.gHtmlSpans[index], match, limit = 0;
++    while ((match = /¨C(\d+)C/.exec(html))) {
++      html = html.replace(match[0], globals.gHtmlSpans[match[1]]);
++      if (limit++ === 10) { break; }
+     }
+-    text = text.replace('¨C' + i + 'C', repText);
+-  }
+-
+-  text = globals.converter._dispatch('unhashHTMLSpans.after', text, options, globals);
+-  return text;
++    return html;
++  });
++  return globals.converter._dispatch('unhashHTMLSpans.after', text, options, globals);
+ });
+ 
+-/**
+- * Hash and escape <pre><code> elements that should not be parsed as markdown
+- */
+ showdown.subParser('hashPreCodeTags', function (text, options, globals) {
+   'use strict';
+   text = globals.converter._dispatch('hashPreCodeTags.before', text, options, globals);
+@@ -3660,10 +3774,10 @@ showdown.subParser('headers', function (text, options, globals) {
+       //	Header 2
+       //	--------
+       //
+-      setextRegexH1 = (options.smoothLivePreview) ? /^(.+)[ \t]*\n={2,}[ \t]*\n+/gm : /^(.+)[ \t]*\n=+[ \t]*\n+/gm,
+-      setextRegexH2 = (options.smoothLivePreview) ? /^(.+)[ \t]*\n-{2,}[ \t]*\n+/gm : /^(.+)[ \t]*\n-+[ \t]*\n+/gm;
++      setextRegexH1 = (options.smoothLivePreview) ? linearPattern(/^(.+)[ \t]*\n={2,}[ \t]*\n+/gm) : linearPattern(/^(.+)[ \t]*\n=+[ \t]*\n+/gm),
++      setextRegexH2 = (options.smoothLivePreview) ? linearPattern(/^(.+)[ \t]*\n-{2,}[ \t]*\n+/gm) : linearPattern(/^(.+)[ \t]*\n-+[ \t]*\n+/gm);
+ 
+-  text = text.replace(setextRegexH1, function (wholeMatch, m1) {
++  text = setextRegexH1.matcher(text).replaceAll(function (wholeMatch, m1) {
+ 
+     var spanGamut = showdown.subParser('spanGamut')(m1, options, globals),
+         hID = (options.noHeaderId) ? '' : ' id="' + headerId(m1) + '"',
+@@ -3672,7 +3786,7 @@ showdown.subParser('headers', function (text, options, globals) {
+     return showdown.subParser('hashBlock')(hashBlock, options, globals);
+   });
+ 
+-  text = text.replace(setextRegexH2, function (matchFound, m1) {
++  text = setextRegexH2.matcher(text).replaceAll(function (matchFound, m1) {
+     var spanGamut = showdown.subParser('spanGamut')(m1, options, globals),
+         hID = (options.noHeaderId) ? '' : ' id="' + headerId(m1) + '"',
+         hLevel = headerLevelStart + 1,
+@@ -3687,9 +3801,9 @@ showdown.subParser('headers', function (text, options, globals) {
+   //  ...
+   //  ###### Header 6
+   //
+-  var atxStyle = (options.requireSpaceBeforeHeadingText) ? /^(#{1,6})[ \t]+(.+?)[ \t]*#*\n+/gm : /^(#{1,6})[ \t]*(.+?)[ \t]*#*\n+/gm;
++  var atxStyle = (options.requireSpaceBeforeHeadingText) ? linearPattern(/^(#{1,6})[ \t]+(.+?)[ \t]*#*\n+/gm) : linearPattern(/^(#{1,6})[ \t]*(.+?)[ \t]*#*\n+/gm);
+ 
+-  text = text.replace(atxStyle, function (wholeMatch, m1, m2) {
++  text = atxStyle.matcher(text).replaceAll(function (wholeMatch, m1, m2) {
+     var hText = m2;
+     if (options.customizedHeaderId) {
+       hText = m2.replace(/\s?\{([^{]+?)}\s*$/, '');
+@@ -3797,11 +3911,11 @@ showdown.subParser('images', function (text, options, globals) {
+ 
+   text = globals.converter._dispatch('images.before', text, options, globals);
+ 
+-  var inlineRegExp      = /!\[([^\]]*?)][ \t]*()\([ \t]?<?([\S]+?(?:\([\S]*?\)[\S]*?)?)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:(["'])([^"]*?)\6)?[ \t]?\)/g,
+-      crazyRegExp       = /!\[([^\]]*?)][ \t]*()\([ \t]?<([^>]*)>(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:(?:(["'])([^"]*?)\6))?[ \t]?\)/g,
+-      base64RegExp      = /!\[([^\]]*?)][ \t]*()\([ \t]?<?(data:.+?\/.+?;base64,[A-Za-z0-9+/=\n]+?)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:(["'])([^"]*?)\6)?[ \t]?\)/g,
+-      referenceRegExp   = /!\[([^\]]*?)] ?(?:\n *)?\[([\s\S]*?)]()()()()()/g,
+-      refShortcutRegExp = /!\[([^\[\]]+)]()()()()()/g;
++  var inlineRegExp      = linearPattern(/!\[([^\]]*?)][ \t]*()\([ \t]?<?([\S]+?(?:\([\S]*?\)[\S]*?)?)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:("[^"]*?"|'[^"]*?'))?[ \t]?\)/g),
++      crazyRegExp       = linearPattern(/!\[([^\]]*?)][ \t]*()\([ \t]?<([^>]*)>(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:(?:("[^"]*?"|'[^"]*?')))?[ \t]?\)/g),
++      base64RegExp      = linearPattern(/!\[([^\]]*?)][ \t]*()\([ \t]?<?(data:.+?\/.+?;base64,[A-Za-z0-9+/=\n]+?)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:("[^"]*?"|'[^"]*?'))?[ \t]?\)/g),
++      referenceRegExp   = linearPattern(/!\[([^\]]*?)] ?(?:\n *)?\[([\s\S]*?)]()()()()()/g),
++      refShortcutRegExp = linearPattern(/!\[([^\[\]]+)]()()()()()/g);
+ 
+   function writeImageTagBase64 (wholeMatch, altText, linkId, url, width, height, m5, title) {
+     url = url.replace(/\s/g, '');
+@@ -3820,7 +3934,7 @@ showdown.subParser('images', function (text, options, globals) {
+       title = '';
+     }
+     // Special case for explicit empty url
+-    if (wholeMatch.search(/\(<?\s*>? ?(['"].*['"])?\)$/m) > -1) {
++    if (linearPattern(/\(<?\s*>? ?(['"].*['"])?\)(?:$|[\r\u2028\u2029])/m).matcher(wholeMatch).find()) {
+       url = '';
+ 
+     } else if (url === '' || url === null) {
+@@ -3874,21 +3988,21 @@ showdown.subParser('images', function (text, options, globals) {
+   }
+ 
+   // First, handle reference-style labeled images: ![alt text][id]
+-  text = text.replace(referenceRegExp, writeImageTag);
++  text = referenceRegExp.matcher(text).replaceAll(writeImageTag);
+ 
+   // Next, handle inline images:  ![alt text](url =<width>x<height> "optional title")
+ 
+   // base64 encoded images
+-  text = text.replace(base64RegExp, writeImageTagBase64);
++  text = base64RegExp.matcher(text).replaceAll(function (whole, label, id, url, width, height, title) { return writeImageTagBase64(whole, label, id, url, width, height, undefined, title === undefined ? undefined : title.slice(1, -1)); });
+ 
+   // cases with crazy urls like ./image/cat1).png
+-  text = text.replace(crazyRegExp, writeImageTag);
++  text = crazyRegExp.matcher(text).replaceAll(function (whole, label, id, url, width, height, title) { return writeImageTag(whole, label, id, url, width, height, undefined, title === undefined ? undefined : title.slice(1, -1)); });
+ 
+   // normal cases
+-  text = text.replace(inlineRegExp, writeImageTag);
++  text = inlineRegExp.matcher(text).replaceAll(function (whole, label, id, url, width, height, title) { return writeImageTag(whole, label, id, url, width, height, undefined, title === undefined ? undefined : title.slice(1, -1)); });
+ 
+   // handle reference-style shortcuts: ![img text]
+-  text = text.replace(refShortcutRegExp, writeImageTag);
++  text = refShortcutRegExp.matcher(text).replaceAll(writeImageTag);
+ 
+   text = globals.converter._dispatch('images.after', text, options, globals);
+   return text;
+@@ -4190,6 +4304,8 @@ showdown.subParser('metadata', function (text, options, globals) {
+     content = content
+       // ampersand first
+       .replace(/&/g, '&amp;')
++      .replace(/</g, '&lt;')
++      .replace(/>/g, '&gt;')
+       // double quotes
+       .replace(/"/g, '&quot;');
+ 
+@@ -4464,9 +4580,9 @@ showdown.subParser('tables', function (text, options, globals) {
+     return text;
+   }
+ 
+-  var tableRgx       = /^ {0,3}\|?.+\|.+\n {0,3}\|?[ \t]*:?[ \t]*(?:[-=]){2,}[ \t]*:?[ \t]*\|[ \t]*:?[ \t]*(?:[-=]){2,}[\s\S]+?(?:\n\n|¨0)/gm,
++  var tableRgx       = linearPattern(/^ {0,3}\|?.+\|.+\n {0,3}\|?[ \t]*:?[ \t]*(?:[-=]){2,}[ \t]*:?[ \t]*\|[ \t]*:?[ \t]*(?:[-=]){2,}[\s\S]+?(?:\n\n|¨0)/gm),
+       //singeColTblRgx = /^ {0,3}\|.+\|\n {0,3}\|[ \t]*:?[ \t]*(?:[-=]){2,}[ \t]*:?[ \t]*\|[ \t]*\n(?: {0,3}\|.+\|\n)+(?:\n\n|¨0)/gm;
+-      singeColTblRgx = /^ {0,3}\|.+\|[ \t]*\n {0,3}\|[ \t]*:?[ \t]*(?:[-=]){2,}[ \t]*:?[ \t]*\|[ \t]*\n( {0,3}\|.+\|[ \t]*\n)*(?:\n|¨0)/gm;
++      singeColTblRgx = linearPattern(/^ {0,3}\|.+\|[ \t]*\n {0,3}\|[ \t]*:?[ \t]*(?:[-=]){2,}[ \t]*:?[ \t]*\|[ \t]*\n( {0,3}\|.+\|[ \t]*\n)*(?:\n|¨0)/gm);
+ 
+   function parseStyles (sLine) {
+     if (/^:[ \t]*--*$/.test(sLine)) {
+@@ -4485,7 +4601,9 @@ showdown.subParser('tables', function (text, options, globals) {
+     header = header.trim();
+     // support both tablesHeaderId and tableHeaderId due to error in documentation so we don't break backwards compatibility
+     if (options.tablesHeaderId || options.tableHeaderId) {
+-      id = ' id="' + header.replace(/ /g, '_').toLowerCase() + '"';
++      id = ' id="' + header.replace(/ /g, '_').toLowerCase()
++        .replace(/&/g, '&amp;').replace(/"/g, '&quot;')
++        .replace(/</g, '&lt;').replace(/>/g, '&gt;') + '"';
+     }
+     header = showdown.subParser('spanGamut')(header, options, globals);
+ 
+@@ -4590,10 +4708,10 @@ showdown.subParser('tables', function (text, options, globals) {
+   text = text.replace(/\\(\|)/g, showdown.helper.escapeCharactersCallback);
+ 
+   // parse multi column tables
+-  text = text.replace(tableRgx, parseTable);
++  text = tableRgx.matcher(text).replaceAll(parseTable);
+ 
+   // parse one column tables
+-  text = text.replace(singeColTblRgx, parseTable);
++  text = singeColTblRgx.matcher(text).replaceAll(parseTable);
+ 
+   text = globals.converter._dispatch('tables.after', text, options, globals);
+ 
+diff --git a/package.json b/package.json
+index e7e2552..c5ee366 100644
+--- a/package.json
++++ b/package.json
+@@ -69,6 +69,7 @@
+     "source-map-support": "^0.5.20"
+   },
+   "dependencies": {
+-    "commander": "^9.0.0"
++    "commander": "^9.0.0",
++    "re2js": "2.8.8"
+   }
+ }

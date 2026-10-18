@@ -83,14 +83,14 @@ export const activateKbar = (homeList: KbarListItem[]) => {
 		payload: {
 			homeList,
 		},
-	}
+	} as const
 }
 
 export const deactivateKbar = () => {
 	return {
 		type: DEACTIVATE_KBAR,
 		payload: null,
-	}
+	} as const
 }
 
 // Perform transition animation and update Kbar location
@@ -100,7 +100,7 @@ export const updateKbarLocation = (location: string[]) => {
 		payload: {
 			location,
 		},
-	}
+	} as const
 }
 
 /*
@@ -121,7 +121,7 @@ export const updateKbar = (params: {
 			items: params.items,
 			placeholder: params.placeholder,
 		},
-	}
+	} as const
 }
 
 // Update kbar to display a list of all blog posts for searching
@@ -129,7 +129,7 @@ export const updateKbarToSearch = () => {
 	return {
 		type: UPDATE_KBAR_TO_SEARCH,
 		payload: null,
-	}
+	} as const
 }
 
 // Update Kbar to display home list
@@ -137,7 +137,7 @@ export const updateKbarToHome = () => {
 	return {
 		type: UPDATE_KBAR_TO_HOME,
 		payload: null,
-	}
+	} as const
 }
 
 // Update Kbar search query (search local MDX posts)
@@ -147,7 +147,7 @@ export const updateKbarSearchQuery = (query: string) => {
 		payload: {
 			query,
 		},
-	}
+	} as const
 }
 
 /* Redux actions */

@@ -1,4 +1,4 @@
-import { put, select } from "redux-saga/effects"
+import { put } from "redux-saga/effects"
 
 import {
 	setKbarList,
@@ -6,7 +6,7 @@ import {
 	setKbarPlaceholder,
 	updateKbarLocation,
 } from "../actions"
-import { selectKbar } from "../selectors"
+import { selectKbarState } from "../selectors"
 
 export default function* updateKbarToHomeSaga() {
 	try {
@@ -16,7 +16,7 @@ export default function* updateKbarToHomeSaga() {
 		yield put(setKbarPlaceholder("Type your command or search..."))
 
 		// get list cache
-		const { lists } = yield select(selectKbar)
+		const { lists } = yield* selectKbarState()
 		// set the location to home
 		yield put(setKbarList(lists.home))
 

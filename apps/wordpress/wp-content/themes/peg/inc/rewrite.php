@@ -1,7 +1,7 @@
 <?php
 function html_page_permalink() {
 global $wp_rewrite;
-if ( !strpos($wp_rewrite->get_page_permastruct(), '.html')){
+if (strpos($wp_rewrite->get_page_permastruct(), '.html') === false){
 $wp_rewrite->page_structure = $wp_rewrite->page_structure . '.html';
 }
 }

@@ -11,12 +11,14 @@
 
 namespace WP_Rest_Cache_Plugin\Includes\Caching;
 
+use WP_Rest_Cache_Plugin\Includes\Util;
+
 /**
  * Class responsible for caching and saving cache relations.
  *
  * @package    WP_Rest_Cache_Plugin
  * @subpackage WP_Rest_Cache_Plugin/Includes/Caching
- * @author:    Richard Korthuis - Acato <richardkorthuis@acato.nl>
+ * @author     Richard Korthuis - Acato <richardkorthuis@acato.nl>
  */
 class Caching {
 
@@ -25,7 +27,7 @@ class Caching {
 	 *
 	 * @var string DB_VERSION The current version of the database tables.
 	 */
-	const DB_VERSION = '2020.3.0';
+	const DB_VERSION = '2026.1.0';
 
 	/**
 	 * The table name for the table where caches are stored together with their statistics.
@@ -131,7 +133,7 @@ class Caching {
 	 * @return mixed The cache item.
 	 */
 	public function get_cache( $cache_key ) {
-		$expiration = $this->get_cache_expiration( $cache_key );
+		$expiration = $this->get_cache_expiration( $cache_key ) ?? '';
 		if ( 1 === strtotime( $expiration ) ) {
 			return false;
 		}
@@ -172,7 +174,7 @@ class Caching {
 
 		$this->register_endpoint_cache( $cache_key, $value, $uri, $request_headers, $request_method );
 
-		set_transient(
+		$result = set_transient(
 			$this->transient_key( $cache_key ),
 			$value,
 			$this->get_timeout(
@@ -185,6 +187,13 @@ class Caching {
 				]
 			)
 		);
+
+		if ( false === $result && defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+			// translators: %1$s: The endpoint URI, %2$s: The cache key.
+			$message = sprintf( __( 'WP REST Cache: Failed to set cache for endpoint: %1$s (cache_key: %2$s)', 'wp-rest-cache' ), $uri, $cache_key );
+			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+			error_log( $message );
+		}
 	}
 
 	/**
@@ -243,7 +252,7 @@ class Caching {
 		global $wpdb;
 
 		$uri_parts    = wp_parse_url( $endpoint );
-		$request_path = rtrim( $uri_parts['path'], '/' );
+		$request_path = rtrim( $uri_parts['path'] ?? '', '/' );
 
 		if ( self::FLUSH_STRICT === $strictness && isset( $uri_parts['query'] ) && ! empty( $uri_parts['query'] ) ) {
 			parse_str( $uri_parts['query'], $params );
@@ -252,9 +261,12 @@ class Caching {
 		}
 
 		$sql              = "UPDATE `{$this->db_table_caches}`
-		SET `expiration` = %s
-        WHERE ";
+		SET `expiration` = %s";
 		$prepare_params[] = date_i18n( 'Y-m-d H:i:s', 1 );
+		if ( $force ) {
+			$sql .= ', `deleted` = 1';
+		}
+		$sql .= ' WHERE ';
 		switch ( $strictness ) {
 			case self::FLUSH_STRICT:
 				$sql             .= ' `request_uri` = %s ';
@@ -345,11 +357,15 @@ class Caching {
 		}
 
 		$this->delete_related_caches( $post_id, $post->post_type, true );
+
+		if ( post_type_supports( $post->post_type, 'comments' ) ) {
+			$this->delete_comment_type_related_caches();
+		}
 	}
 
 	/**
 	 * Fired upon WordPress 'transition_post_status' hook. Delete all non-single endpoint caches for this post type if
-	 * the new or the old status is 'publish'.
+	 * the new or the old status (but not both) is 'publish'.
 	 *
 	 * @param string   $new_status The new status of the post.
 	 * @param string   $old_status The old status of the post.
@@ -358,11 +374,96 @@ class Caching {
 	 * @return void
 	 */
 	public function transition_post_status( $new_status, $old_status, $post ) {
-		if ( 'publish' !== $new_status && 'publish' !== $old_status ) {
+		if ( $new_status === $old_status || ( 'publish' !== $new_status && 'publish' !== $old_status ) ) {
 			return;
 		}
 
 		$this->delete_object_type_caches( $post->post_type );
+
+		if ( 'publish' === $old_status && post_type_supports( $post->post_type, 'comments' ) ) {
+			$this->delete_comment_type_related_caches();
+		}
+	}
+
+	/**
+	 * Fired upon WordPress 'updated_post_meta' hook. Delete all related caches.
+	 *
+	 * @param int    $meta_id ID of updated metadata entry.
+	 * @param int    $object_id ID of the object metadata is for.
+	 * @param string $meta_key Metadata key.
+	 * @param mixed  $_meta_value Metadata value.
+	 *
+	 * @return void
+	 */
+	public function updated_post_meta( $meta_id, $object_id, $meta_key, $_meta_value ) {
+		$this->updated_meta( 'post', $meta_id, $object_id, $meta_key, $_meta_value );
+	}
+
+	/**
+	 * Delete related caches when metadata is updated.
+	 *
+	 * @param string $meta_type The meta type, can be any of post, comment, term or user.
+	 * @param int    $meta_id ID of updated metadata entry.
+	 * @param int    $object_id ID of the object metadata is for.
+	 * @param string $meta_key Metadata key.
+	 * @param mixed  $_meta_value Metadata value.
+	 *
+	 * @return void
+	 */
+	private function updated_meta( $meta_type, $meta_id, $object_id, $meta_key, $_meta_value ) {
+		/**
+		 * Should caches be flushed on meta update?
+		 *
+		 * Allows external determination if caches should be flushed when meta is updated.
+		 *
+		 * @param boolean $flush Whether the cache should be flushed (true) or not (false)
+		 * @param string $meta_type The meta type, can be any of post, comment, term or user.
+		 * @param int $meta_id ID of updated metadata entry.
+		 * @param int $object_id ID of the object metadata is for.
+		 * @param string $meta_key Metadata key.
+		 * @param mixed $_meta_value Metadata value.
+		 *
+		 * @since 2026.1.0
+		 */
+		$flush = apply_filters( 'wp_rest_cache/flush_on_meta_update', false, $meta_type, $meta_id, $object_id, $meta_key, $_meta_value );
+
+		/**
+		 * Should caches be flushed on meta update? Based on meta type / meta key.
+		 *
+		 * Allows external determination if caches should be flushed when meta is updated.
+		 *
+		 * @param boolean $flush Whether the cache should be flushed (true) or not (false)
+		 * @param int $meta_id ID of updated metadata entry.
+		 * @param int $object_id ID of the object metadata is for.
+		 * @param mixed $_meta_value Metadata value.
+		 *
+		 * @since 2026.1.0
+		 */
+		$flush = apply_filters( "wp_rest_cache/flush_on_meta_update/{$meta_type}/{$meta_key}", $flush, $meta_id, $object_id, $_meta_value );
+		if ( true === $flush ) {
+			$meta_subtype = get_object_subtype( $meta_type, $object_id );
+			$this->delete_related_caches( $object_id, $meta_subtype );
+		}
+	}
+
+	/**
+	 * Fired upon WordPress 'add_attachment' hook. Delete all non-single endpoint caches for attachments.
+	 *
+	 * @return void
+	 */
+	public function add_attachment() {
+		$this->delete_object_type_caches( 'attachment' );
+	}
+
+	/**
+	 * Fired upon WordPress 'edit_attachment' hook. Delete all related caches for this attachment.
+	 *
+	 * @param int $attachment_id Attachment ID.
+	 *
+	 * @return void
+	 */
+	public function edit_attachment( $attachment_id ) {
+		$this->delete_related_caches( $attachment_id, 'attachment' );
 	}
 
 	/**
@@ -395,40 +496,243 @@ class Caching {
 	 * Fired upon WordPress 'delete_term' hook. Delete all related caches for this term, including all single cache
 	 * statistics.
 	 *
-	 * @param int            $term Term ID.
-	 * @param int            $tt_id Term taxonomy ID.
-	 * @param string         $taxonomy Taxonomy slug.
-	 * @param mixed          $deleted_term Copy of the already-deleted term, in the form specified by the parent function.
-	 *                                         \WP_Error otherwise.
-	 *                                        \WP_Error otherwise.
-	 * @param array<int,int> $object_ids List of term object IDs.
+	 * @param int    $term Term ID.
+	 * @param int    $tt_id Term taxonomy ID.
+	 * @param string $taxonomy Taxonomy slug.
 	 *
 	 * @return void
 	 */
-	public function delete_term( $term, $tt_id, $taxonomy, $deleted_term, $object_ids ) {
+	public function delete_term( $term, $tt_id, $taxonomy ) {
 		$this->delete_related_caches( $term, $taxonomy, true );
+	}
+
+	/**
+	 * Fired upon WordPress 'updated_term_meta' hook. Delete all related caches.
+	 *
+	 * @param int    $meta_id ID of updated metadata entry.
+	 * @param int    $object_id ID of the object metadata is for.
+	 * @param string $meta_key Metadata key.
+	 * @param mixed  $_meta_value Metadata value.
+	 *
+	 * @return void
+	 */
+	public function updated_term_meta( $meta_id, $object_id, $meta_key, $_meta_value ) {
+		$this->updated_meta( 'term', $meta_id, $object_id, $meta_key, $_meta_value );
+	}
+
+	/**
+	 * Fired upon WordPress 'set_object_terms' hook. Delete all related caches.
+	 *
+	 * @since 2026.1.2
+	 *
+	 * @param int               $object_id  ID of the object.
+	 * @param array<int,string> $terms      An array of object term IDs or slugs.
+	 * @param array<int,int>    $tt_ids     An array of term taxonomy IDs.
+	 * @param string            $taxonomy   Taxonomy slug.
+	 * @param bool              $append     Whether to append new terms to the old terms.
+	 * @param array<int,int>    $old_tt_ids Old array of term taxonomy IDs.
+	 *
+	 * @return void
+	 */
+	public function set_object_terms( $object_id, $terms, $tt_ids, $taxonomy, $append, $old_tt_ids ) {
+		/**
+		 * Should caches be flushed on setting object terms?
+		 *
+		 * Allows to disable cache flushing when terms are set on an object.
+		 *
+		 * @since 2026.1.2
+		 *
+		 * @param bool               $flush       Whether the cache should be flushed (true) or not (false).
+		 * @param int                $object_id   ID of the object.
+		 * @param array<int,string>  $terms       An array of object term IDs or slugs.
+		 * @param array<int,int>     $tt_ids      An array of term taxonomy IDs.
+		 * @param string             $taxonomy    Taxonomy slug.
+		 * @param bool               $append      Whether to append new terms to the old terms.
+		 * @param array<int,int>     $old_tt_ids  Old array of term taxonomy IDs.
+		 */
+		$flush = apply_filters( 'wp_rest_cache/flush_on_set_terms', true, $object_id, $terms, $tt_ids, $taxonomy, $append, $old_tt_ids );
+
+		if ( true !== $flush ) {
+			return;
+		}
+
+		// Early exit if no terms changed (compare term taxonomy IDs directly to avoid database queries).
+		$tt_ids_sorted     = array_map( 'intval', (array) $tt_ids );
+		$old_tt_ids_sorted = array_map( 'intval', (array) $old_tt_ids );
+		sort( $tt_ids_sorted );
+		sort( $old_tt_ids_sorted );
+		if ( $tt_ids_sorted === $old_tt_ids_sorted ) {
+			return;
+		}
+
+		// Calculate affected terms using the difference between old and new term taxonomy IDs.
+		$added_tt_ids   = array_diff( $tt_ids_sorted, $old_tt_ids_sorted );
+		$removed_tt_ids = array_diff( $old_tt_ids_sorted, $tt_ids_sorted );
+
+		if ( $append ) {
+			$affected_tt_ids = $added_tt_ids;
+		} else {
+			$affected_tt_ids = array_unique( array_merge( $added_tt_ids, $removed_tt_ids ) );
+		}
+
+		if ( empty( $affected_tt_ids ) ) {
+			return;
+		}
+
+		// Get affected term IDs from term taxonomy IDs.
+		$affected_term_ids = get_terms(
+			[
+				'taxonomy'         => $taxonomy,
+				'term_taxonomy_id' => $affected_tt_ids,
+				'hide_empty'       => false,
+				'fields'           => 'ids',
+			]
+		);
+
+		if ( is_wp_error( $affected_term_ids ) || empty( $affected_term_ids ) ) {
+			return;
+		}
+
+		$term_ids_to_invalidate = array_map( 'intval', $affected_term_ids );
+
+		// Get all ancestor term IDs for hierarchical taxonomies in a single query.
+		if ( is_taxonomy_hierarchical( $taxonomy ) ) {
+			$ancestor_ids = $this->get_all_term_ancestors( $affected_term_ids, $taxonomy );
+			if ( ! empty( $ancestor_ids ) ) {
+				$term_ids_to_invalidate = array_unique( array_merge( $term_ids_to_invalidate, $ancestor_ids ) );
+			}
+		}
+
+		// Batch delete all related caches in a single query.
+		$this->delete_related_caches_batch( $term_ids_to_invalidate, $taxonomy );
+	}
+
+	/**
+	 * Get all ancestor term IDs for a set of terms in a single query.
+	 *
+	 * @since 2026.1.3
+	 *
+	 * @param array<int,int> $term_ids  Array of term IDs to get ancestors for.
+	 * @param string         $taxonomy  Taxonomy slug.
+	 *
+	 * @return array<int,int> Array of ancestor term IDs.
+	 */
+	private function get_all_term_ancestors( $term_ids, $taxonomy ) {
+		global $wpdb;
+
+		if ( empty( $term_ids ) ) {
+			return [];
+		}
+
+		$term_ids       = array_map( 'intval', $term_ids );
+		$ancestors      = [];
+		$terms_to_check = $term_ids;
+
+		// Get the taxonomy's hierarchical term data in a single query.
+		// We'll traverse up the parent chain iteratively to avoid recursive queries.
+		$placeholders = implode( ',', array_fill( 0, count( $term_ids ), '%d' ) );
+
+		// Get all terms in this taxonomy that could be ancestors (have no parent or are parents of our terms).
+		$all_terms = $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT t.term_id, tt.parent
+			FROM {$wpdb->terms} t
+			INNER JOIN {$wpdb->term_taxonomy} tt ON t.term_id = tt.term_id
+			WHERE tt.taxonomy = %s AND tt.parent > 0",
+				$taxonomy
+			)
+		);
+
+		// Build a parent lookup map.
+		$parent_map = [];
+		foreach ( $all_terms as $term ) {
+			$parent_map[ (int) $term->term_id ] = (int) $term->parent;
+		}
+
+		// Traverse up the parent chain for each affected term.
+		foreach ( $term_ids as $term_id ) {
+			$current = $term_id;
+			while ( isset( $parent_map[ $current ] ) && $parent_map[ $current ] > 0 ) {
+				$parent = $parent_map[ $current ];
+				if ( ! in_array( $parent, $ancestors, true ) ) {
+					$ancestors[] = $parent;
+				}
+				$current = $parent;
+			}
+		}
+
+		return $ancestors;
+	}
+
+	/**
+	 * Delete related caches for multiple object IDs of the same type in a single query.
+	 *
+	 * @since 2026.1.3
+	 *
+	 * @param array<int,int> $ids         Array of object IDs.
+	 * @param string         $object_type The type of the objects.
+	 *
+	 * @return int The number of affected cache rows.
+	 */
+	private function delete_related_caches_batch( $ids, $object_type ) {
+		global $wpdb;
+
+		if ( empty( $ids ) ) {
+			return 0;
+		}
+
+		$ids = array_map( 'intval', $ids );
+
+		/**
+		 * Fires before caches related to objects are flushed in batch.
+		 *
+		 * @since 2026.1.3
+		 *
+		 * @param array<int,int> $ids         The object IDs.
+		 * @param string         $object_type The object type.
+		 */
+		do_action( 'wp_rest_cache/pre_delete_related_caches_batch', $ids, $object_type );
+
+		$placeholders = implode( ',', array_fill( 0, count( $ids ), '%s' ) );
+
+		$sql = "UPDATE `{$this->db_table_caches}` AS `c`
+			INNER JOIN `{$this->db_table_relations}` AS `r`
+				ON `r`.`cache_id` = `c`.`cache_id`
+			SET `c`.`expiration` = %s
+			WHERE `r`.`object_id` IN ({$placeholders})
+			AND `r`.`object_type` = %s";
+
+		$prepare_args   = [ date_i18n( 'Y-m-d H:i:s', 1 ) ];
+		$prepare_args   = array_merge( $prepare_args, array_map( 'strval', $ids ) );
+		$prepare_args[] = $object_type;
+
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		$affected_rows = $wpdb->query( $wpdb->prepare( $sql, $prepare_args ) );
+
+		if ( 0 !== $affected_rows && false !== $affected_rows ) {
+			$this->schedule_cleanup();
+		}
+
+		return $affected_rows;
 	}
 
 	/**
 	 * Fired upon WordPress 'profile_update' hook. Delete all related caches for this user.
 	 *
-	 * @param int      $user_id User ID.
-	 * @param \WP_User $old_user_data Object containing user's data prior to update.
+	 * @param int $user_id User ID.
 	 *
 	 * @return void
 	 */
-	public function profile_update( $user_id, $old_user_data ) {
+	public function profile_update( $user_id ) {
 		$this->delete_related_caches( $user_id, 'user' );
 	}
 
 	/**
 	 * Fired upon WordPress 'user_register' hook. Delete all non-single endpoint caches for users.
 	 *
-	 * @param int $user_id User ID.
-	 *
 	 * @return void
 	 */
-	public function user_register( $user_id ) {
+	public function user_register() {
 		$this->delete_object_type_caches( 'users' );
 	}
 
@@ -445,15 +749,28 @@ class Caching {
 	}
 
 	/**
-	 * Fired upon WordPress 'deleted_comment', 'trashed_comment' and 'spammed_comment' hooks. Delete all related caches
-	 * for this comment, including all single cache statistics if comment is deleted.
+	 * Fired upon WordPress 'updated_user_meta' hook. Delete all related caches.
 	 *
-	 * @param int         $comment_id Comment ID.
-	 * @param \WP_Comment $comment The comment for which the hook was triggered.
+	 * @param int    $meta_id ID of updated metadata entry.
+	 * @param int    $object_id ID of the object metadata is for.
+	 * @param string $meta_key Metadata key.
+	 * @param mixed  $_meta_value Metadata value.
 	 *
 	 * @return void
 	 */
-	public function delete_comment_related_caches( $comment_id, $comment ) {
+	public function updated_user_meta( $meta_id, $object_id, $meta_key, $_meta_value ) {
+		$this->updated_meta( 'user', $meta_id, $object_id, $meta_key, $_meta_value );
+	}
+
+	/**
+	 * Fired upon WordPress 'deleted_comment', 'trashed_comment' and 'spammed_comment' hooks. Delete all related caches
+	 * for this comment, including all single cache statistics if comment is deleted.
+	 *
+	 * @param int $comment_id Comment ID.
+	 *
+	 * @return void
+	 */
+	public function delete_comment_related_caches( $comment_id ) {
 		switch ( current_filter() ) {
 			case 'deleted_comment':
 				$force_single_delete = true;
@@ -469,23 +786,35 @@ class Caching {
 	 * Fired upon WordPress 'edit_comment', 'untrashed_comment', 'unspammed_comment', 'wp_insert_comment' and
 	 * 'comment_post' hooks. Delete all non-single endpoint caches for comments.
 	 *
-	 * @param int         $comment_id Comment ID.
-	 * @param \WP_Comment $comment The comment for which the hook was triggered.
+	 * @return void
+	 */
+	public function delete_comment_type_related_caches() {
+		$this->delete_object_type_caches( 'comment' );
+	}
+
+	/**
+	 * Fired upon WordPress 'updated_comment_meta' hook. Delete all related caches.
+	 *
+	 * @param int    $meta_id ID of updated metadata entry.
+	 * @param int    $object_id ID of the object metadata is for.
+	 * @param string $meta_key Metadata key.
+	 * @param mixed  $_meta_value Metadata value.
 	 *
 	 * @return void
 	 */
-	public function delete_comment_type_related_caches( $comment_id, $comment ) {
-		$this->delete_object_type_caches( 'comment' );
+	public function updated_comment_meta( $meta_id, $object_id, $meta_key, $_meta_value ) {
+		$this->updated_meta( 'comment', $meta_id, $object_id, $meta_key, $_meta_value );
 	}
 
 	/**
 	 * Delete all caches.
 	 *
-	 * @param bool $delete True if caches need to be deleted instead of flushed.
+	 * @param bool         $delete       True if caches need to be deleted instead of flushed.
+	 * @param string|false $cache_filter Optional filter identifier passed to wp_rest_cache/filtered_cache_keys.
 	 *
 	 * @return int  The number of deleted caches.
 	 */
-	public function delete_all_caches( $delete ) {
+	public function delete_all_caches( $delete, $cache_filter = false ) {
 		global $wpdb;
 
 		$deleted = "( CASE
@@ -496,10 +825,52 @@ class Caching {
 			$deleted = '1';
 		}
 
+		$where_clause = '';
+
+		// Apply cache filter if specified.
+		if ( false !== $cache_filter ) {
+			/**
+			 * Filter to get cache keys matching a specific filter type.
+			 *
+			 * Returns an array of cache keys that match the filter criteria.
+			 * Used for filtering which caches to clear based on custom criteria.
+			 * If an empty array is returned, no caches will be cleared for this filter.
+			 *
+			 * @since 2026.2.0
+			 *
+			 * @param array  $cache_keys   Array of cache keys matching the filter (empty by default).
+			 * @param string $cache_filter The filter type identifier.
+			 */
+			$filtered_cache_keys = apply_filters( 'wp_rest_cache/filtered_cache_keys', [], $cache_filter );
+
+			if ( ! empty( $filtered_cache_keys ) ) {
+				// Sanitize cache keys - they should be MD5 hashes (32 hex chars).
+				$safe_keys = array_filter(
+					$filtered_cache_keys,
+					function ( $key ) {
+						return preg_match( '/^[a-f0-9]{32}$/i', $key );
+					}
+				);
+
+				if ( ! empty( $safe_keys ) ) {
+					$placeholders = implode( ',', array_fill( 0, count( $safe_keys ), '%s' ) );
+					// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
+					$where_clause = $wpdb->prepare( "WHERE `cache_key` IN ({$placeholders})", $safe_keys );
+				} else {
+					// All keys were filtered out as invalid, nothing to clear.
+					return 0;
+				}
+			} else {
+				// Filter returned empty array, nothing to clear for this filter type.
+				return 0;
+			}
+		}
+
 		$sql =
 			"UPDATE `{$this->db_table_caches}`
 				SET `expiration` = %s,
-					`deleted` = {$deleted}";
+					`deleted` = {$deleted}
+				{$where_clause}";
 
 		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$affected_rows = $wpdb->query( $wpdb->prepare( $sql, date_i18n( 'Y-m-d H:i:s', 1 ) ) );
@@ -524,6 +895,16 @@ class Caching {
 	 */
 	public function delete_related_caches( $id, $object_type, $force_single_delete = false, $delete = false ) {
 		global $wpdb;
+
+		/**
+		 * Fires before caches related to an object are flushed.
+		 *
+		 * @since 2024.1.0
+		 *
+		 * @param int    $id          The object ID.
+		 * @param string $object_type The object type.
+		 */
+		do_action( 'wp_rest_cache/pre_delete_related_caches', $id, $object_type );
 
 		$set_clause = '`c`.`expiration` = %s';
 
@@ -561,6 +942,15 @@ class Caching {
 	 */
 	public function delete_object_type_caches( $object_type, $delete = false ) {
 		global $wpdb;
+
+		/**
+		 * Fires before all non-single caches for an object type are flushed.
+		 *
+		 * @since 2024.1.0
+		 *
+		 * @param string $object_type The object type.
+		 */
+		do_action( 'wp_rest_cache/pre_delete_object_type_caches', $object_type );
 
 		if ( $delete ) {
 			$set_clause = '`expiration` = %s,
@@ -699,6 +1089,10 @@ class Caching {
 		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$result = $wpdb->get_row( $wpdb->prepare( $sql, $cache_key ), ARRAY_A );
 
+		if ( ! $result ) {
+			return null;
+		}
+
 		$result['is_active'] = ( false !== get_transient( $this->transient_key( $result['cache_key'] ) ) && 1 !== strtotime( $result['expiration'] ) );
 		if ( ! $result['is_active'] ) {
 			if ( 1 === strtotime( $result['expiration'] ) ) {
@@ -726,7 +1120,9 @@ class Caching {
 	private function update_cache_expiration( $cache_id, $expiration = null, $cleaned = false, $options = [] ) {
 		global $wpdb;
 
-		if ( is_null( $expiration ) ) {
+		$is_renew = is_null( $expiration );
+
+		if ( $is_renew ) {
 			$timeout = $this->get_timeout( true, $options );
 			if ( 0 !== $timeout && ! $this->get_memcache_used() ) {
 				// phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
@@ -735,15 +1131,25 @@ class Caching {
 			$expiration = date_i18n( 'Y-m-d H:i:s', $timeout );
 		}
 
+		$data    = [
+			'expiration' => $expiration,
+			'cleaned'    => (int) $cleaned,
+		];
+		$formats = [ '%s', '%d' ];
+
+		// Only clear `deleted` when renewing the cache (an existing key being re-cached). On an
+		// explicit-expiration call from delete_cache(), leave `deleted` alone so a previously
+		// hard-flagged row isn't accidentally resurrected.
+		if ( $is_renew ) {
+			$data['deleted'] = 0;
+			$formats[]       = '%d';
+		}
+
 		$wpdb->update(
 			$this->db_table_caches,
-			[
-				'expiration' => $expiration,
-				'deleted'    => 0,
-				'cleaned'    => (int) $cleaned,
-			],
+			$data,
 			[ 'cache_id' => $cache_id ],
-			[ '%s', '%d', '%d' ],
+			$formats,
 			[ '%d' ]
 		);
 	}
@@ -764,6 +1170,19 @@ class Caching {
 		if ( is_array( $object_id ) || is_array( $object_type ) ) {
 			return;
 		}
+
+		/**
+		 * Insert cache relation.
+		 *
+		 * Allows external action upon inserting a cache relation.
+		 *
+		 * @since 2025.2.0
+		 *
+		 * @param int $cache_id The row id of the current cache.
+		 * @param int $object_id The id of the object the cache has a relation with.
+		 * @param string $object_type The object type of the object the cache has a relation with.
+		 */
+		do_action( 'wp_rest_cache/insert_cache_relation', $cache_id, $object_id, $object_type );
 
 		$wpdb->replace(
 			$this->db_table_relations,
@@ -905,6 +1324,15 @@ class Caching {
 			}
 		}
 
+		if ( array_key_exists( 'type', $record )
+					&& array_key_exists( 'post', $record )
+					&& 'comment' === $record['type'] ) {
+			$object_type = get_post_type( $record['post'] );
+			if ( $object_type ) {
+				$this->insert_cache_relation( $cache_id, $record['post'], $object_type );
+			}
+		}
+
 		foreach ( $record as $field => $value ) {
 			if ( is_array( $value ) ) {
 				$this->process_recursive_cache_relations( $cache_id, $value );
@@ -1006,7 +1434,17 @@ class Caching {
 			}
 		}
 
-		return $results;
+		/**
+		 * Filter the cache data returned for the API Caches table.
+		 *
+		 * Allows adding custom data to each cache item for display in the admin table.
+		 *
+		 * @since 2026.2.0
+		 *
+		 * @param array<int,array<string,mixed>> $results  The cache data.
+		 * @param string                         $api_type The API type (endpoint).
+		 */
+		return apply_filters( 'wp_rest_cache/api_caches_table_data', $results, $api_type );
 	}
 
 	/**
@@ -1040,18 +1478,23 @@ class Caching {
 	 * @return string The where clause.
 	 */
 	private function get_where_clause( $api_type, &$prepare_args ) {
+		global $wpdb;
+
 		$where          = '`cache_type` = %s AND `deleted` = %d';
 		$prepare_args[] = $api_type;
 		$prepare_args[] = false;
-		$search         = filter_input( INPUT_POST, 's', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.NonceVerification.Missing -- read-only search filter from the list table form.
+		$search = isset( $_POST['s'] ) ? filter_var( $_POST['s'], FILTER_SANITIZE_FULL_SPECIAL_CHARS ) : null;
 		if ( ! $search ) {
-			$search = filter_input( INPUT_GET, 's', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.NonceVerification.Missing
+			$search = isset( $_GET['s'] ) ? filter_var( $_GET['s'], FILTER_SANITIZE_FULL_SPECIAL_CHARS ) : null;
 		}
 
 		if ( ! empty( $search ) ) {
 			$where         .= ' AND ( `request_uri` LIKE %s OR `object_type` LIKE %s )';
-			$prepare_args[] = '%' . $search . '%';
-			$prepare_args[] = '%' . $search . '%';
+			$search_escaped = '%' . $wpdb->esc_like( $search ) . '%';
+			$prepare_args[] = $search_escaped;
+			$prepare_args[] = $search_escaped;
 		}
 
 		return $where;
@@ -1063,8 +1506,9 @@ class Caching {
 	 * @return string The order by clause.
 	 */
 	private function get_orderby_clause() {
-		$order   = '`cache_id` DESC';
-		$orderby = filter_input( INPUT_GET, 'orderby', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+		$order = '`cache_id` DESC';
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.NonceVerification.Missing
+		$orderby = isset( $_GET['orderby'] ) ? filter_var( $_GET['orderby'], FILTER_SANITIZE_FULL_SPECIAL_CHARS ) : null;
 
 		if ( in_array(
 			$orderby,
@@ -1078,7 +1522,9 @@ class Caching {
 			true
 		)
 		) {
-			$order = '`' . $orderby . '` ' . ( filter_input( INPUT_GET, 'order', FILTER_SANITIZE_FULL_SPECIAL_CHARS ) === 'desc' ? 'DESC' : 'ASC' );
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$order_param = isset( $_GET['order'] ) ? filter_var( $_GET['order'], FILTER_SANITIZE_FULL_SPECIAL_CHARS ) : null;
+			$order       = '`' . $orderby . '` ' . ( 'desc' === $order_param ? 'DESC' : 'ASC' );
 		}
 
 		return $order;
@@ -1119,7 +1565,7 @@ class Caching {
 	 * @return int Timeout (in seconds if calculated).
 	 */
 	public function get_timeout( $calculated = true, $options = [] ) {
-		$timeout = get_option( 'wp_rest_cache_timeout', 1 );
+		$timeout = defined( 'WP_REST_CACHE_TIMEOUT' ) ? WP_REST_CACHE_TIMEOUT : get_option( 'wp_rest_cache_timeout', 1 );
 		if ( $calculated ) {
 			$timeout_interval = $this->get_timeout_interval();
 			$timeout          = $timeout * $timeout_interval;
@@ -1151,7 +1597,7 @@ class Caching {
 	 * @return int Timeout interval in seconds.
 	 */
 	public function get_timeout_interval() {
-		return get_option( 'wp_rest_cache_timeout_interval', YEAR_IN_SECONDS );
+		return defined( 'WP_REST_CACHE_TIMEOUT_INTERVAL' ) ? WP_REST_CACHE_TIMEOUT_INTERVAL : get_option( 'wp_rest_cache_timeout_interval', YEAR_IN_SECONDS );
 	}
 
 	/**
@@ -1160,7 +1606,7 @@ class Caching {
 	 * @return bool Whether or not a cron should be activated.
 	 */
 	public function should_regenerate() {
-		return get_option( 'wp_rest_cache_regenerate', false ) === '1';
+		return defined( 'WP_REST_CACHE_REGENERATE' ) ? WP_REST_CACHE_REGENERATE : get_option( 'wp_rest_cache_regenerate', false ) === '1';
 	}
 
 	/**
@@ -1169,7 +1615,7 @@ class Caching {
 	 * @return string The interval key.
 	 */
 	public function get_regenerate_interval() {
-		return get_option( 'wp_rest_cache_regenerate_interval', 'twicedaily' );
+		return defined( 'WP_REST_CACHE_REGENERATE_INTERVAL' ) ? WP_REST_CACHE_REGENERATE_INTERVAL : get_option( 'wp_rest_cache_regenerate_interval', 'twicedaily' );
 	}
 
 	/**
@@ -1178,7 +1624,7 @@ class Caching {
 	 * @return int Maximum nuber of caches.
 	 */
 	public function get_regenerate_number() {
-		return get_option( 'wp_rest_cache_regenerate_number', 10 );
+		return defined( 'WP_REST_CACHE_REGENERATE_NUMBER' ) ? WP_REST_CACHE_REGENERATE_NUMBER : get_option( 'wp_rest_cache_regenerate_number', 10 );
 	}
 
 	/**
@@ -1200,8 +1646,20 @@ class Caching {
 		$results = $wpdb->get_results( $sql, ARRAY_A );
 		foreach ( $results as &$result ) {
 			if ( 1 === strtotime( $result['expiration'] ) || false === get_transient( $this->transient_key( $result['cache_key'] ) ) ) {
+				/**
+				 * Filter whether to skip regeneration for a specific cache.
+				 *
+				 * @since 2026.2.0
+				 *
+				 * @param bool                $skip   Whether to skip regeneration. Default false.
+				 * @param array<string,mixed> $result The cache data.
+				 */
+				if ( apply_filters( 'wp_rest_cache/skip_cache_regeneration', false, $result ) ) {
+					continue;
+				}
+
 				// Regenerate.
-				$url    = get_home_url() . $result['request_uri'];
+				$url    = Util::get_home_url() . $result['request_uri'];
 				$return = wp_remote_get(
 					$url,
 					[
@@ -1211,7 +1669,7 @@ class Caching {
 					]
 				);
 
-				$regenerate_number --;
+				--$regenerate_number;
 				if ( $regenerate_number <= 0 ) {
 					break;
 				}
@@ -1225,7 +1683,7 @@ class Caching {
 	 * @return bool Whether Memcache(d) is being used.
 	 */
 	public function get_memcache_used() {
-		return '1' === get_option( 'wp_rest_cache_memcache_used', false );
+		return defined( 'WP_REST_CACHE_MEMCACHE_USED' ) ? true === WP_REST_CACHE_MEMCACHE_USED : '1' === get_option( 'wp_rest_cache_memcache_used', false );
 	}
 
 	/**
@@ -1234,7 +1692,7 @@ class Caching {
 	 * @return string The list of global cacheable request headers.
 	 */
 	public function get_global_cacheable_request_headers() {
-		return get_option( 'wp_rest_cache_global_cacheable_request_headers', '' );
+		return defined( 'WP_REST_CACHE_GLOBAL_CACHEABLE_REQUEST_HEADERS' ) ? WP_REST_CACHE_GLOBAL_CACHEABLE_REQUEST_HEADERS : get_option( 'wp_rest_cache_global_cacheable_request_headers', '' );
 	}
 
 	/**
@@ -1255,7 +1713,21 @@ class Caching {
 	 * @return void
 	 */
 	private function schedule_cleanup() {
-		if ( ! wp_next_scheduled( 'wp_rest_cache_cleanup_deleted_caches' ) ) {
+		/**
+		 * Should caches be deleted immediately instead of via a cron?
+		 *
+		 * This filter can be used to delete caches immediately instead of via a cron job, which is there for
+		 * performance reasons.
+		 *
+		 * @since 2023.1.0
+		 *
+		 * @param boolean $immediate_deletion Whether the caches should be deleted immediately (true) or with a cron (false, default).
+		 */
+		$immediate_deletion = apply_filters( 'wp_rest_cache/delete_caches_immediately', false );
+
+		if ( $immediate_deletion ) {
+			$this->cleanup_deleted_caches();
+		} elseif ( ! wp_next_scheduled( 'wp_rest_cache_cleanup_deleted_caches' ) ) {
 			wp_schedule_single_event( time() + 5 * MINUTE_IN_SECONDS, 'wp_rest_cache_cleanup_deleted_caches' );
 		}
 	}
@@ -1279,13 +1751,23 @@ class Caching {
 		 */
 		$limit = (int) apply_filters( 'wp_rest_cache/max_cleanup_caches', 1000 );
 
-		$sql = "SELECT  `cache_key`, `deleted`
+		$sql = "SELECT  `cache_key`, `deleted`, `request_uri`, `request_headers`
                 FROM    {$this->db_table_caches}
                 WHERE   `expiration` = %s
                 AND     `cleaned` = %d
                 LIMIT   %d";
 		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$caches = $wpdb->get_results( $wpdb->prepare( $sql, date_i18n( 'Y-m-d H:i:s', 1 ), 0, $limit ) );
+
+		/**
+		 * Fires when caches are deleted.
+		 *
+		 * @since 2023.1.0
+		 *
+		 * @param array $caches An array of caches that are deleted.
+		 */
+		do_action( 'wp_rest_cache/deleted_caches', $caches );
+
 		if ( $caches ) {
 			foreach ( $caches as $cache ) {
 				$this->delete_cache( $cache->cache_key, $cache->deleted );
@@ -1314,6 +1796,10 @@ class Caching {
 
 		$version = get_option( 'wp_rest_cache_database_version' );
 
+		if ( version_compare( '2026.1.0', $version, '>' ) ) {
+			$this->upgrade_2026_1_0();
+		}
+
 		$query = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $this->db_table_caches ) );
 
 		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
@@ -1328,7 +1814,7 @@ class Caching {
 					`request_uri` LONGTEXT NOT NULL,
 					`request_headers` LONGTEXT NOT NULL,
 					`request_method` VARCHAR(10) NOT NULL,
-					`object_type` VARCHAR(191) NOT NULL,
+					`object_type` VARCHAR(50) NOT NULL,
 					`cache_hits` BIGINT(20) NOT NULL,
 					`is_single` TINYINT(1) NOT NULL,
 					`expiration` DATETIME NOT NULL,
@@ -1352,21 +1838,14 @@ class Caching {
 		if ( self::DB_VERSION !== $version || $this->db_table_relations !== $current_db_version ) {
 			include_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
-			if ( $this->db_table_relations === $current_db_version && version_compare( '2020.1.1', $version, '>' ) ) {
-				// Added column lengths to INDEX, dbDelta doesn't detect it, so drop INDEX first.
-				$drop_query = "ALTER TABLE `{$this->db_table_relations}` DROP INDEX `object`;";
-				// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
-				$wpdb->query( $drop_query );
-			}
-
 			$sql_relations =
 				"CREATE TABLE `{$this->db_table_relations}` (
 					`cache_id` BIGINT(20) NOT NULL,
-					`object_id` VARCHAR(191) NOT NULL,
-					`object_type` VARCHAR(191) NOT NULL,
-					PRIMARY KEY (`cache_id`, `object_id`),
+					`object_id` VARCHAR(100) NOT NULL,
+					`object_type` VARCHAR(50) NOT NULL,
+					PRIMARY KEY (`cache_id`, `object_id`, `object_type`),
 					KEY `cache_id` (`cache_id`),
-					KEY `object` (`object_id`(100), `object_type`(100))
+					KEY `object` (`object_id`, `object_type`)
 				)";
 
 			dbDelta( $sql_relations );
@@ -1386,10 +1865,56 @@ class Caching {
 	 */
 	private function upgrade_2019_4_0() {
 		$nr_of_item_caches = $this->get_record_count( 'item' );
-		for ( $count = 0; $count * 100 < $nr_of_item_caches; $count ++ ) {
+		for ( $count = 0; $count * 100 < $nr_of_item_caches; $count++ ) {
 			$item_caches = $this->get_api_data( 'item', 100, $count + 1 );
 			foreach ( $item_caches as $item_cache ) {
 				$this->delete_cache( $item_cache['cache_key'], true );
+			}
+		}
+	}
+
+	/**
+	 * Drop indexes that prevent shrinking `object_id` and `object_type` columns.
+	 *
+	 * The composite PRIMARY KEY added in 2025.1.0 combined with VARCHAR(191) columns produced a key
+	 * larger than the 1000-byte MyISAM / 767-byte InnoDB-without-large-prefix limit. dbDelta cannot
+	 * alter a column that is part of an index, so the affected indexes are dropped here; dbDelta
+	 * then recreates them with the shrunk column sizes.
+	 *
+	 * @return void
+	 */
+	private function upgrade_2026_1_0() {
+		global $wpdb;
+
+		$query = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $this->db_table_caches ) );
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		if ( $this->db_table_caches === $wpdb->get_var( $query ) ) {
+			$check_index_query = "SHOW KEYS FROM `{$this->db_table_caches}` WHERE Key_name = 'non_single_caches'";
+			// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			if ( $wpdb->get_results( $check_index_query ) ) {
+				$drop_query = "ALTER TABLE `{$this->db_table_caches}` DROP INDEX `non_single_caches`;";
+				// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+				$wpdb->query( $drop_query );
+			}
+		}
+
+		$query = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $this->db_table_relations ) );
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+		if ( $this->db_table_relations === $wpdb->get_var( $query ) ) {
+			$check_primary_query = "SHOW KEYS FROM `{$this->db_table_relations}` WHERE Key_name = 'PRIMARY'";
+			// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			if ( $wpdb->get_results( $check_primary_query ) ) {
+				$drop_query = "ALTER TABLE `{$this->db_table_relations}` DROP PRIMARY KEY;";
+				// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+				$wpdb->query( $drop_query );
+			}
+
+			$check_object_query = "SHOW KEYS FROM `{$this->db_table_relations}` WHERE Key_name = 'object'";
+			// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+			if ( $wpdb->get_results( $check_object_query ) ) {
+				$drop_query = "ALTER TABLE `{$this->db_table_relations}` DROP INDEX `object`;";
+				// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+				$wpdb->query( $drop_query );
 			}
 		}
 	}

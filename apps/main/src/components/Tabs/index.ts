@@ -1,3 +1,4 @@
+import type { IconProps } from "@twilight-toolkit/ui"
 import type React from "react"
 
 import Tabs from "./component"
@@ -10,7 +11,7 @@ export interface TabItemProps {
 	color?: string
 	bgColor?: string
 	bgDark?: string
-	icon?: string
+	icon?: IconProps["name"]
 	link?: {
 		internal?: string
 		external?: string

@@ -1,17 +1,42 @@
 import useSWR from "swr"
+import { z } from "zod"
 
 import CardEmpty from "~/components/Card/Empty"
 import { NFTCard, NFTCardLoading } from "~/components/Card/NFT"
-import fetcher from "~/lib/fetcher"
-import type { EthNFT, SolNFT } from "~/pages/api/nft"
+import createFetcher from "~/lib/fetcher"
 
-type NFTApiResData = {
-	eth: EthNFT[]
-	sol: SolNFT[]
-}
+const nftResponseSchema = z.object({
+	eth: z.array(
+		z.object({
+			contract: z.object({ address: z.string().regex(/^0x[\da-fA-F]{40}$/u) }),
+			id: z.object({
+				tokenId: z.string().regex(/^\d+$/u),
+				tokenMetadata: z.object({ tokenType: z.string() }),
+			}),
+			title: z.string(),
+			description: z.string(),
+			media: z
+				.tuple([z.object({ raw: z.string().min(1) })])
+				.rest(z.object({ raw: z.string() })),
+		})
+	),
+	sol: z.array(
+		z.object({
+			tokenAddress: z.string().regex(/^[1-9A-HJ-NP-Za-km-z]{32,44}$/u),
+			imageUrl: z.string().min(1),
+			name: z.string(),
+			description: z.string(),
+		})
+	),
+})
+
+const fetchNFTs = createFetcher(nftResponseSchema)
 
 const NFTs = () => {
-	const { data, error } = useSWR<NFTApiResData>("api/nft", fetcher)
+	const { data, error } = useSWR<z.infer<typeof nftResponseSchema>, Error>(
+		"/api/nft",
+		fetchNFTs
+	)
 
 	if (error) {
 		return <CardEmpty />
@@ -27,10 +52,7 @@ const NFTs = () => {
 		)
 	}
 
-	if (
-		data &&
-		(!data.eth || data.eth.length === 0 || !data.sol || data.eth.length === 0)
-	) {
+	if (data.eth.length === 0 && data.sol.length === 0) {
 		return <CardEmpty />
 	}
 
@@ -39,14 +61,14 @@ const NFTs = () => {
 			{data.eth.map((item) => {
 				return (
 					<NFTCard
-						key={item.contract.address}
+						key={`${item.contract.address}-${item.id.tokenId}`}
 						image={item.media[0].raw}
 						title={item.title}
 						description={item.description}
 						tokenType={item.id.tokenMetadata.tokenType}
 						blockchain="ethereum"
 						contract={item.contract.address}
-						link={item.tokenUri.raw}
+						tokenId={item.id.tokenId}
 					/>
 				)
 			})}

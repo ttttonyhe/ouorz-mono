@@ -1,48 +1,39 @@
-import Cors from "cors"
-import type { NextApiRequest, NextApiResponse } from "next"
+import { timingSafeEqual } from "node:crypto"
 
-import { runMiddleware } from "~/lib/middleware"
+import { apiHandler, requireEnv } from "~/lib/apiHandler"
 import { parseBody, revalidateBodySchema } from "~/lib/requestBody"
 
-type ResDataType = {
-	status: number
-	revalidated: boolean
-	message?: string
-}
+export default apiHandler(["POST"], async (req, res) => {
+	const body = parseBody(revalidateBodySchema, req)
+	if (!body) {
+		return res.status(400).json({
+			status: 400,
+			revalidated: false,
+			message: "Invalid request body",
+		})
+	}
 
-const revalidate = async (
-	req: NextApiRequest,
-	res: NextApiResponse<ResDataType>
-) => {
-	// apply CORS middleware
-	await runMiddleware(
-		Cors({
-			methods: ["POST"],
-		}),
-		req,
-		res
-	)
-
-	const body = parseBody(revalidateBodySchema, req.body)
-
-	if (!body || body.token !== process.env.REVALIDATION_REQUEST_TOKEN) {
+	const expected = Buffer.from(requireEnv("REVALIDATION_REQUEST_TOKEN"))
+	const received = Buffer.from(body.token)
+	if (
+		received.length !== expected.length ||
+		!timingSafeEqual(received, expected)
+	) {
 		return res
 			.status(401)
 			.json({ status: 401, revalidated: false, message: "Invalid token" })
 	}
 
-	// execute revalidation
 	try {
 		await res.revalidate(body.path)
-		return res.json({ status: 200, revalidated: true })
-	} catch (err) {
-		console.log(err)
+		return res.status(200).json({ status: 200, revalidated: true })
+	} catch {
 		return res.status(500).json({
 			status: 500,
 			revalidated: false,
-			message: "A server side error has occured, make sure path exists",
+			message: "Unable to revalidate this path",
 		})
 	}
-}
+})
 
-export default revalidate
+export const config = { api: { bodyParser: { sizeLimit: "4kb" } } }

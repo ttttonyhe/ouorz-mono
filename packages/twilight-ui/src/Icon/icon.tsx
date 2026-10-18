@@ -1,6 +1,6 @@
 import React from "react"
 
-import { IconNames } from "../utils/propTypes"
+import type { IconNames } from "../utils/propTypes"
 import icons from "./icons"
 
 export interface IconProps {

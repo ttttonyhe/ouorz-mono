@@ -1,6 +1,7 @@
 import { Icon } from "@twilight-toolkit/ui"
 import { debounce } from "lodash"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { useEffect, useMemo, useState } from "react"
 
 import scrollToItemWithinDiv from "~/utilities/scrollTo"
@@ -32,9 +33,9 @@ const getHeadingElements = (): HTMLElement[] => {
 	)
 }
 
-const collectHeaders = (): [TocHeader[], number[]] => {
+const collectHeaders = (): TocHeader[] => {
 	const elements = getHeadingElements()
-	if (elements.length === 0) return [[], []]
+	if (elements.length === 0) return []
 
 	for (const item of document.querySelectorAll("#toc li")) {
 		item.classList.remove("toc-active")
@@ -43,14 +44,11 @@ const collectHeaders = (): [TocHeader[], number[]] => {
 	const levels = elements.map((element) => Number(element.tagName.slice(1, 2)))
 	const minLevel = Math.min(...levels)
 
-	return [
-		elements.map((element, index) => [
-			index,
-			(levels[index] - minLevel) * 10,
-			element.innerText,
-		]),
-		elements.map((element) => element.offsetTop),
-	]
+	return elements.map((element, index) => [
+		index,
+		(levels[index] - minLevel) * 10,
+		element.innerText,
+	])
 }
 
 /**
@@ -120,9 +118,13 @@ const SubItem = ({ item, inner, recursionTimes, onSelect }: SubItemProps) => {
 
 const Tour = ({ preNext }: AsideProps) => {
 	const hasNext =
-		Boolean(preNext.next[0]) && !EXCLUDED_CATEGORY_IDS.has(preNext.next[2])
+		preNext.next.length === 3 &&
+		Boolean(preNext.next[0]) &&
+		!EXCLUDED_CATEGORY_IDS.has(preNext.next[2])
 	const hasPrev =
-		Boolean(preNext.prev[0]) && !EXCLUDED_CATEGORY_IDS.has(preNext.prev[2])
+		preNext.prev.length === 3 &&
+		Boolean(preNext.prev[0]) &&
+		!EXCLUDED_CATEGORY_IDS.has(preNext.prev[2])
 
 	if (!hasPrev && !hasNext) return <div />
 
@@ -161,7 +163,7 @@ const Tour = ({ preNext }: AsideProps) => {
 	)
 }
 
-export default function Aside({ preNext }: AsideProps) {
+function AsideContent({ preNext }: AsideProps) {
 	const [headers, setHeaders] = useState<TocHeader[]>([])
 
 	const scrollToItemWithinDivDebounced = useMemo(
@@ -170,60 +172,31 @@ export default function Aside({ preNext }: AsideProps) {
 	)
 
 	useEffect(() => {
-		const [collected, offsets] = collectHeaders()
+		const collected = collectHeaders()
 		// oxlint-disable-next-line react/set-state-in-effect -- the table of contents can only be measured from the rendered post
 		setHeaders(collected)
 
-		let currentHeaderId = 1
-		let currentHeaderOffset = offsets[1]
-		let lastHeaderOffset = offsets[0]
+		let activeIndex = -1
 
 		const scrollHandler = () => {
-			const scrollPosition = window.scrollY - 250
 			const listDiv = document.querySelector("#toc")
-
-			const firstHeader = document.querySelector("#header0")
-			const currentHeader = document.querySelector(`#header${currentHeaderId}`)
-			const prevHeader = document.querySelector(`#header${currentHeaderId - 1}`)
-			const prevPrevHeader = document.querySelector(
-				`#header${currentHeaderId - 2}`
+			const nextIndex = getHeadingElements().findLastIndex(
+				(element) => element.getBoundingClientRect().top <= 75
 			)
+			if (nextIndex === activeIndex) return
 
-			if (scrollPosition >= currentHeaderOffset) {
-				prevHeader?.classList.remove("toc-active")
-				currentHeader?.classList.add("toc-active")
-				if (currentHeader) {
-					scrollToItemWithinDivDebounced(listDiv, currentHeader)
-				}
-				lastHeaderOffset = currentHeaderOffset
-				currentHeaderId += 1
-				currentHeaderOffset = offsets[currentHeaderId]
-			} else if (scrollPosition < lastHeaderOffset) {
-				if (currentHeaderId - 2 >= 0) {
-					prevHeader?.classList.remove("toc-active")
-					prevPrevHeader?.classList.add("toc-active")
-					if (prevPrevHeader) {
-						scrollToItemWithinDivDebounced(listDiv, prevPrevHeader)
-					}
-					currentHeaderId -= 1
-					lastHeaderOffset = offsets[currentHeaderId - 1]
-					currentHeaderOffset = offsets[currentHeaderId]
-				} else {
-					firstHeader?.classList.remove("toc-active")
-					currentHeaderId = 1
-					currentHeaderOffset = offsets[1]
-					lastHeaderOffset = offsets[0]
-				}
-			} else if (scrollPosition > lastHeaderOffset && currentHeaderId === 1) {
-				firstHeader?.classList.add("toc-active")
-				if (firstHeader) {
-					scrollToItemWithinDivDebounced(listDiv, firstHeader)
-				}
-			}
+			document
+				.querySelector(`#header${activeIndex}`)
+				?.classList.remove("toc-active")
+			const activeHeader = document.querySelector(`#header${nextIndex}`)
+			activeHeader?.classList.add("toc-active")
+			if (listDiv && activeHeader)
+				scrollToItemWithinDivDebounced(listDiv, activeHeader)
+			activeIndex = nextIndex
 		}
 
 		if (collected.length > 0) {
-			window.addEventListener("scroll", scrollHandler)
+			window.addEventListener("scroll", scrollHandler, { passive: true })
 		}
 		return () => {
 			window.removeEventListener("scroll", scrollHandler)
@@ -261,4 +234,9 @@ export default function Aside({ preNext }: AsideProps) {
 			</div>
 		</aside>
 	)
+}
+
+export default function Aside(props: AsideProps) {
+	const { asPath } = useRouter()
+	return <AsideContent key={asPath} {...props} />
 }

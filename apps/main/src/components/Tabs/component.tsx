@@ -356,6 +356,19 @@ const Tabs = (props: TabsProps) => {
 						<li
 							key={item.label}
 							aria-label="tab"
+							role={item.component && onClick ? "button" : undefined}
+							tabIndex={item.component && onClick ? 0 : undefined}
+							onKeyDown={(event) => {
+								if (
+									event.target === event.currentTarget &&
+									(event.key === "Enter" || event.key === " ") &&
+									onClick
+								) {
+									event.preventDefault()
+									event.stopPropagation()
+									onClick()
+								}
+							}}
 							className={`${direction !== "vertical" && "whitespace-nowrap"} ${
 								color ||
 								"text-gray-500 dark:text-gray-400 dark:transition-colors dark:hover:text-gray-300"

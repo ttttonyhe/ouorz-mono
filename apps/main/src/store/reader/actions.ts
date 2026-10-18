@@ -43,7 +43,7 @@ export const setReaderRequest = (postData: WPPost) => {
 		payload: {
 			postData,
 		},
-	}
+	} as const
 }
 
 export const setReader = (postData: WPPost): SetReaderAction => {
@@ -77,7 +77,7 @@ export const hideReaderRequest = () => {
 	return {
 		type: HIDE_READER_REQUEST,
 		payload: null,
-	}
+	} as const
 }
 
 export const hideReader = (): HideReaderAction => {

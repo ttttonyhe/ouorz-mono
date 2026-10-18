@@ -1,46 +1,39 @@
 import { Icon } from "@twilight-toolkit/ui"
+import type { GetServerSideProps } from "next"
 import Head from "next/head"
 import { useRouter } from "next/router"
-import useSWR from "swr"
 
-import { BookCard, BookCardLoading } from "~/components/Card/Book"
+import { BookCard } from "~/components/Card/Book"
 import { pageLayout } from "~/components/Page"
-import fetcher from "~/lib/fetcher"
+import { getGoodreadsBooks, type Book } from "~/content/goodreads"
 import type { NextPageWithLayout } from "~/pages/_app"
-import type { Book } from "~/pages/api/goodreads"
 import {
 	getViewTransitionName,
 	navigateWithTransition,
 } from "~/utilities/viewTransition"
 
-const ReadingList: NextPageWithLayout = () => {
+interface ReadingListProps {
+	mustRead: Book[]
+	currentlyReading: Book[]
+	read: Book[]
+	toRead: Book[]
+}
+
+const ReadingList: NextPageWithLayout<ReadingListProps> = ({
+	mustRead,
+	currentlyReading,
+	read,
+	toRead,
+}: ReadingListProps) => {
 	const router = useRouter()
-	const { data: currentlyReading, error: currentlyReadingError } = useSWR(
-		"api/goodreads?shelf=currentlyReading",
-		fetcher
-	)
-	const { data: toRead, error: allError } = useSWR(
-		"api/goodreads?shelf=toRead",
-		fetcher
-	)
-	const { data: read, error: readError } = useSWR(
-		"api/goodreads?shelf=read",
-		fetcher
-	)
-	const { data: mustRead, error: mustReadError } = useSWR(
-		"api/goodreads?shelf=mustRead",
-		fetcher
-	)
 
 	return (
 		<div>
 			<Head>
-				<title>Reading List - Tony He</title>
 				<link
 					rel="icon"
 					href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>"
 				/>
-				<meta name="description" content="Tony's GoodReads Reading List" />
 			</Head>
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="mb-4 flex items-center">
@@ -51,14 +44,14 @@ const ReadingList: NextPageWithLayout = () => {
 							</span>
 						</div>
 						<div>
-							<h2 className="flex items-center gap-x-1.5 text-[28px] font-medium tracking-wide whitespace-nowrap text-black dark:text-white">
+							<h1 className="flex items-center gap-x-1.5 text-[28px] font-medium tracking-wide whitespace-nowrap text-black dark:text-white">
 								<span
 									style={{
 										viewTransitionName: getViewTransitionName("Reading List"),
 									}}>
 									Reading List
 								</span>
-							</h2>
+							</h1>
 							<p className="-mt-1 text-sm text-neutral-500 dark:text-gray-400">
 								Some books are to be tasted; others swallowed; and some few to
 								be chewed and digested. <i>—— Francis Bacon</i>
@@ -86,24 +79,17 @@ const ReadingList: NextPageWithLayout = () => {
 				<hr className="dark:border-gray-600" />
 			</div>
 			<section className="mb-10">
-				<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+				<h2 className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-[22px] w-[22px] text-purple-500">
 						<Icon name="bookShelf" />
 					</span>
 					<span className="uppercase">Curated</span>
-				</span>
+				</h2>
 				<div className="mt-4">
 					<div className="grid grid-cols-2 gap-4">
-						{mustRead && !mustReadError ? (
-							mustRead.books.map((book: Book) => (
-								<BookCard key={book.title} {...book} />
-							))
-						) : (
-							<>
-								<BookCardLoading uniqueKey="cr-1" />
-								<BookCardLoading uniqueKey="cr-2" />
-							</>
-						)}
+						{mustRead.map((book) => (
+							<BookCard key={book.link} {...book} />
+						))}
 					</div>
 				</div>
 			</section>
@@ -111,24 +97,17 @@ const ReadingList: NextPageWithLayout = () => {
 				<hr className="dark:border-gray-600" />
 			</div>
 			<section className="mb-10">
-				<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+				<h2 className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-[22px] w-[22px] text-green-500">
 						<Icon name="eye" />
 					</span>
 					<span className="uppercase">Currently Reading</span>
-				</span>
+				</h2>
 				<div className="mt-4">
 					<div className="grid grid-cols-2 gap-4">
-						{currentlyReading && !currentlyReadingError ? (
-							currentlyReading.books.map((book: Book) => (
-								<BookCard key={book.title} {...book} />
-							))
-						) : (
-							<>
-								<BookCardLoading uniqueKey="cr-1" />
-								<BookCardLoading uniqueKey="cr-2" />
-							</>
-						)}
+						{currentlyReading.map((book) => (
+							<BookCard key={book.link} {...book} />
+						))}
 					</div>
 				</div>
 			</section>
@@ -136,24 +115,17 @@ const ReadingList: NextPageWithLayout = () => {
 				<hr className="dark:border-gray-600" />
 			</div>
 			<section className="mb-10">
-				<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+				<h2 className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-[22px] w-[22px] text-yellow-500">
 						<Icon name="checkDouble" />
 					</span>
 					<span className="uppercase">Read</span>
-				</span>
+				</h2>
 				<div className="mt-4">
 					<div className="grid grid-cols-2 gap-4">
-						{read && !readError ? (
-							read.books.map((book: Book) => (
-								<BookCard key={book.title} {...book} />
-							))
-						) : (
-							<>
-								<BookCardLoading uniqueKey="cr-1" />
-								<BookCardLoading uniqueKey="cr-2" />
-							</>
-						)}
+						{read.map((book) => (
+							<BookCard key={book.link} {...book} />
+						))}
 					</div>
 				</div>
 			</section>
@@ -161,28 +133,17 @@ const ReadingList: NextPageWithLayout = () => {
 				<hr className="dark:border-gray-600" />
 			</div>
 			<section className="mb-28">
-				<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+				<h2 className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5 text-blue-500">
 						<Icon name="bookmark" />
 					</span>
 					<span className="uppercase">To Read</span>
-				</span>
+				</h2>
 				<div className="mt-4">
 					<div className="grid grid-cols-2 gap-4">
-						{toRead && !allError ? (
-							toRead.books.map((book: Book) => (
-								<BookCard key={book.title} {...book} />
-							))
-						) : (
-							<>
-								<BookCardLoading uniqueKey="a-1" />
-								<BookCardLoading uniqueKey="a-2" />
-								<BookCardLoading uniqueKey="a-3" />
-								<BookCardLoading uniqueKey="a-4" />
-								<BookCardLoading uniqueKey="a-5" />
-								<BookCardLoading uniqueKey="a-6" />
-							</>
-						)}
+						{toRead.map((book) => (
+							<BookCard key={book.link} {...book} />
+						))}
 					</div>
 				</div>
 			</section>
@@ -191,5 +152,25 @@ const ReadingList: NextPageWithLayout = () => {
 }
 
 ReadingList.layout = pageLayout
+
+export const getServerSideProps: GetServerSideProps<ReadingListProps> = async ({
+	res,
+}) => {
+	const [mustRead, currentlyReading, read, toRead] = await Promise.all([
+		getGoodreadsBooks("mustRead"),
+		getGoodreadsBooks("currentlyReading"),
+		getGoodreadsBooks("read"),
+		getGoodreadsBooks("toRead"),
+	])
+
+	res.setHeader(
+		"Cache-Control",
+		"public, s-maxage=86400, stale-while-revalidate=604800"
+	)
+
+	return {
+		props: { mustRead, currentlyReading, read, toRead },
+	}
+}
 
 export default ReadingList

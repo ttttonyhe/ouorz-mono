@@ -10,29 +10,32 @@ import NextNprogress from "nextjs-progressbar"
 import type { ReactElement, ReactNode } from "react"
 import { Provider as ReduxProvider } from "react-redux"
 
+import SiteSeo from "~/components/SiteSeo"
 import store from "~/store"
+import { getPageMetadata } from "~/utilities/seo"
+import type { SeoPageProps } from "~/utilities/seo"
 
 import "~/styles/global.css"
 import { useViewTransitionRouter } from "~/utilities/viewTransition"
 
-export type NextPageWithLayout = NextPage & {
-	layout?: (page: ReactElement) => ReactNode
-}
+export type NextPageWithLayout<Props = Record<string, never>> =
+	NextPage<Props> & {
+		layout?: (page: ReactElement) => ReactNode
+	}
 
-type AppPropsWithLayout = AppProps & {
-	Component: NextPageWithLayout
+type AppPropsWithLayout = AppProps<SeoPageProps> & {
+	Component: NextPageWithLayout<SeoPageProps>
 }
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
 	const router = useRouter()
 	const getLayout = Component.layout ?? ((page) => page)
 
-	// Enable view transitions for browser back/forward navigation
 	useViewTransitionRouter(router)
 
 	return (
 		<div>
-			{/* Analytics Script */}
+			<SiteSeo metadata={getPageMetadata(router.pathname, pageProps)} />
 			<Script
 				async
 				defer
@@ -41,15 +44,12 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
 				data-website-id="e3d939fa-1fa0-4c06-adb1-1081d6b6686e"
 				src="https://analytics.ouorz.com/analytics.js"
 			/>
-			{/* NProgress Loading Progress Bar */}
 			<NextNprogress
 				color="#d4d4d8"
 				height={2}
 				options={{ showSpinner: false }}
 			/>
-			{/* Next-Themes Theme Provider */}
 			<ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
-				{/* Redux Store Provider */}
 				<ReduxProvider store={store}>
 					<div className="min-h-screen animate-appear bg-gbg dark:bg-neutral-900 dark:text-white">
 						{getLayout(<Component {...pageProps} />)}

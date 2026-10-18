@@ -1,40 +1,34 @@
-import { Deployer } from "@matterlabs/hardhat-zksync-deploy"
-import * as hre from "hardhat"
-import { Wallet } from "zksync-ethers"
+import { upgrades } from "@openzeppelin/hardhat-upgrades"
+import hre, { network } from "hardhat"
 
-import ContractConstructorArguments from "../constants/arguments"
-import Contracts from "../constants/contracts"
-import { requireDeployerPrivateKey } from "./deployerWallet"
+const uri = process.env.BLOG_URI?.trim()
+if (!uri) throw new Error("BLOG_URI is not set")
 
-async function main() {
+const connection = await network.create()
+try {
+	const upgradesApi = await upgrades(hre, connection)
+	const factory = await connection.ethers.getContractFactory("TwilightBlog")
+	const blog = await upgradesApi.deployProxy(factory, [uri], {
+		kind: "transparent",
+	})
+	await blog.waitForDeployment()
+
+	const proxy = await blog.getAddress()
 	console.log(
-		"Deploying Twilight Blog proxy, proxy admin and the latest implementation..."
+		JSON.stringify(
+			{
+				chainId: (
+					await connection.ethers.provider.getNetwork()
+				).chainId.toString(),
+				proxy,
+				admin: await upgradesApi.erc1967.getAdminAddress(proxy),
+				implementation:
+					await upgradesApi.erc1967.getImplementationAddress(proxy),
+			},
+			null,
+			2
+		)
 	)
-
-	const wallet = new Wallet(requireDeployerPrivateKey())
-	const deployer = new Deployer(hre, wallet)
-
-	const artifact = await deployer.loadArtifact(Contracts.Blog)
-
-	console.log(
-		"Initializer arguments: ",
-		JSON.stringify(ContractConstructorArguments.TwilightBlog)
-	)
-
-	const contract = await hre.zkUpgrades.deployProxy(
-		deployer.zkWallet,
-		artifact,
-		ContractConstructorArguments.TwilightBlog
-	)
-	await contract.waitForDeployment()
-
-	console.log(
-		`${artifact.contractName} has been deployed, ` +
-			"run verify:blog to verify the latest implementation contract"
-	)
+} finally {
+	await connection.close()
 }
-
-main().catch((error) => {
-	console.error(error)
-	process.exitCode = 1
-})

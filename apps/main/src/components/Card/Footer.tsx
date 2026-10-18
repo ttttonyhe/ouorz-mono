@@ -18,7 +18,8 @@ export default function CardFooter({ item }: { item: WPPost }) {
 			})
 			trackEvent("sharePost", "click")
 		} catch (err) {
-			console.error("Failed to share:", err.message)
+			if (err instanceof DOMException && err.name === "AbortError") return
+			console.error("Failed to share:", err)
 		}
 	}
 

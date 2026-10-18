@@ -1,14 +1,14 @@
 {
 	"compilerOptions": {
 		"target": "esnext",
-		"module": "node16",
+		"module": "esnext",
 		"allowJs": true,
 		"skipLibCheck": true,
-		"strict": false,
+		"strict": true,
 		"forceConsistentCasingInFileNames": true,
 		"noEmit": true,
 		"esModuleInterop": true,
-		"moduleResolution": "node16",
+		"moduleResolution": "bundler",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"incremental": true

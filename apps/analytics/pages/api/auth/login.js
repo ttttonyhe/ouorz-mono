@@ -1,20 +1,29 @@
-import { checkPassword, createSecureToken } from "lib/crypto"
+import { checkPassword, createSecureToken, hash } from "lib/crypto"
+import { publicAccount } from "lib/auth"
 import { getAccountByUsername } from "lib/queries"
-import { ok, unauthorized, badRequest } from "lib/response"
+import { ok, unauthorized, badRequest, methodNotAllowed } from "lib/response"
 
 export default async (req, res) => {
-	const { username, password } = req.body
+	if (req.method !== "POST") return methodNotAllowed(res)
+	const { username, password } = req.body || {}
 
-	if (!username || !password) {
+	if (
+		typeof username !== "string" ||
+		!username ||
+		typeof password !== "string" ||
+		!password
+	) {
 		return badRequest(res)
 	}
 
 	const account = await getAccountByUsername(username)
 
 	if (account && (await checkPassword(password, account.password))) {
-		const { user_id, username, is_admin } = account
-		const user = { user_id, username, is_admin }
-		const token = await createSecureToken(user)
+		const user = publicAccount(account)
+		const token = await createSecureToken({
+			user_id: account.user_id,
+			password_version: hash(account.password),
+		})
 
 		return ok(res, { token, user })
 	}

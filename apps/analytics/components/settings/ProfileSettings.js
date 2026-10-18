@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useRouter } from "next/router"
 import { FormattedMessage } from "react-intl"
 import PageHeader from "components/layout/PageHeader"
 import Button from "components/common/Button"
@@ -15,6 +16,7 @@ import LanguageSetting from "./LanguageSetting"
 import ThemeSetting from "./ThemeSetting"
 
 export default function ProfileSettings() {
+	const router = useRouter()
 	const { user } = useUser()
 	const [changePassword, setChangePassword] = useState(false)
 	const [message, setMessage] = useState(null)
@@ -27,6 +29,7 @@ export default function ProfileSettings() {
 				defaultMessage="Saved successfully."
 			/>
 		)
+		router.replace("/logout")
 	}
 
 	useEscapeKey(() => {

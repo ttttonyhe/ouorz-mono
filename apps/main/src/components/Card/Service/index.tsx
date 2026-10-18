@@ -21,10 +21,10 @@ const ServiceCard = (props: ServiceCardProps) => {
 				<div className="flex items-center gap-x-2">
 					<p>{serviceRole}</p>
 				</div>
-				<label
+				<span
 					className={`rounded-full border bg-gray-100 px-2.5 py-0.5 text-xs text-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 ${serviceTypeColor || ""}`}>
 					{serviceType}
-				</label>
+				</span>
 			</div>
 			<div className="flex items-center justify-between gap-x-2.5 overflow-hidden overflow-x-auto px-4.5 pt-1 pb-2.5 whitespace-nowrap">
 				<div className="text-sm tracking-wide text-gray-600 dark:text-gray-300">

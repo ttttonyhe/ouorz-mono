@@ -1,15 +1,16 @@
-import { put, select } from "redux-saga/effects"
+import { put } from "redux-saga/effects"
 
 import {
 	addToKbarLists,
 	setKbarList,
+	setKbarLoading,
 	setKbarPlaceholder,
 	type updateKbar,
 	updateKbarLocation,
 	updateKbarToHome,
 	updateKbarToSearch,
 } from "../actions"
-import { selectKbar } from "../selectors"
+import { selectKbarState } from "../selectors"
 
 export default function* updateKbarSaga(action: ReturnType<typeof updateKbar>) {
 	try {
@@ -37,9 +38,10 @@ export default function* updateKbarSaga(action: ReturnType<typeof updateKbar>) {
 		}
 
 		// retreive list from cache
-		const { lists } = yield select(selectKbar)
+		const { lists } = yield* selectKbarState()
 		// update current displaying list
 		yield put(setKbarList(lists[action.payload.key]))
+		yield put(setKbarLoading(false))
 	} catch (error) {
 		console.error(error)
 	}

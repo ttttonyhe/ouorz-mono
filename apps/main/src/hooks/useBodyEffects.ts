@@ -1,60 +1,40 @@
-import {
-	type Dispatch,
-	type SetStateAction,
-	useEffect,
-	useRef,
-	useState,
-} from "react"
+import { type Dispatch, type SetStateAction, useEffect, useState } from "react"
 
-/**
- * Hook to turn on/off body scrolling
- */
-const useBodyScroll = (): [boolean, Dispatch<SetStateAction<boolean>>] => {
-	const bodyRef = useRef<HTMLElement | null>(null)
-	const [scrollable, setScrollable] = useState(true)
+type BodyProperty = "overflow" | "pointerEvents"
+
+const locks = new Map<BodyProperty, { count: number; previous: string }>()
+
+const useBodyProperty = (
+	property: BodyProperty,
+	lockedValue: string
+): [boolean, Dispatch<SetStateAction<boolean>>] => {
+	const [enabled, setEnabled] = useState(true)
 
 	useEffect(() => {
-		if (!bodyRef.current) {
-			bodyRef.current = document.body
+		if (enabled) return
+
+		const body = document.body
+		const lock = locks.get(property) ?? {
+			count: 0,
+			previous: body.style[property],
 		}
+		lock.count += 1
+		locks.set(property, lock)
+		body.style[property] = lockedValue
 
-		if (!bodyRef.current) return
-
-		if (scrollable) {
-			bodyRef.current.style.overflow = "auto"
-		} else {
-			bodyRef.current.style.overflow = "hidden"
+		return () => {
+			lock.count -= 1
+			if (lock.count === 0) {
+				body.style[property] = lock.previous
+				locks.delete(property)
+			}
 		}
-	}, [scrollable])
+	}, [enabled, lockedValue, property])
 
-	return [scrollable, setScrollable]
+	return [enabled, setEnabled]
 }
 
-/**
- * Hook to set body pointerEvents to auto/none
- */
-const useBodyPointerEvents = (): [
-	boolean,
-	Dispatch<SetStateAction<boolean>>,
-] => {
-	const bodyRef = useRef<HTMLElement | null>(null)
-	const [pointerEvents, setPointerEvents] = useState(true)
-
-	useEffect(() => {
-		if (!bodyRef.current) {
-			bodyRef.current = document.body
-		}
-
-		if (!bodyRef.current) return
-
-		if (pointerEvents) {
-			bodyRef.current.style.pointerEvents = "auto"
-		} else {
-			bodyRef.current.style.pointerEvents = "none"
-		}
-	}, [pointerEvents])
-
-	return [pointerEvents, setPointerEvents]
-}
+const useBodyScroll = () => useBodyProperty("overflow", "hidden")
+const useBodyPointerEvents = () => useBodyProperty("pointerEvents", "none")
 
 export { useBodyScroll, useBodyPointerEvents }

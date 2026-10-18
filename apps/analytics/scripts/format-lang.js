@@ -1,23 +1,18 @@
 const fs = require("fs-extra")
 const path = require("path")
-const del = require("del")
+const { deleteSync } = require("del")
 const prettier = require("prettier")
-const chalk = require("chalk")
 
 const src = path.resolve(__dirname, "../lang")
 const dest = path.resolve(__dirname, "../build")
-const files = fs.readdirSync(src)
-
-const removed = del.sync([path.join(dest, "*.json")])
-
-if (removed.length) {
-	console.log(removed.map((n) => `${n} ${chalk.redBright("✗")}`).join("\n"))
-}
+const files = fs.readdirSync(src).filter((file) => file.endsWith(".json"))
 
 async function run() {
 	await fs.ensureDir(dest)
+	const removed = deleteSync([path.join(dest, "*.json")])
+	for (const file of removed) console.log("Removed", file)
 
-	files.forEach((file) => {
+	for (const file of files) {
 		const lang = require(`../lang/${file}`)
 		const keys = Object.keys(lang).sort()
 
@@ -26,16 +21,17 @@ async function run() {
 			return obj
 		}, {})
 
-		const json = prettier.format(JSON.stringify(formatted), { parser: "json" })
+		const json = await prettier.format(JSON.stringify(formatted), {
+			parser: "json",
+		})
 
 		fs.writeFileSync(path.resolve(dest, file), json)
 
-		console.log(
-			path.resolve(src, file),
-			chalk.greenBright("->"),
-			path.resolve(dest, file)
-		)
-	})
+		console.log(path.resolve(src, file), "->", path.resolve(dest, file))
+	}
 }
 
-run()
+run().catch((error) => {
+	console.error(error.message)
+	process.exitCode = 1
+})

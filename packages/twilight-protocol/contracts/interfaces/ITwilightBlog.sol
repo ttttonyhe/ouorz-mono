@@ -22,7 +22,7 @@ interface ITwilightBlog {
 		string calldata description_
 	) external;
 
-	/// @notice Files an existing entry under an existing category.
+	/// @notice Files an entry identifier under an existing category.
 	/// @param categoryId Category to file the entry under.
 	/// @param entryId Entry to file.
 	function addEntryToCategory(uint256 categoryId, uint256 entryId) external;
@@ -36,26 +36,40 @@ interface ITwilightBlog {
 	/// @param name_ New display name.
 	function updateCategoryName(uint256 categoryId, string calldata name_) external;
 
-	/// @notice Removes a category and the entry list attached to it.
+	/// @notice Removes up to 256 entries, then deletes the category once its list is empty.
 	/// @param categoryId Category to remove.
-	function deleteCategory(uint256 categoryId) external;
+	/// @return True when deleted; otherwise call again to continue cleanup.
+	function deleteCategory(uint256 categoryId) external returns (bool);
 
 	/// @notice The address allowed to write to this blog.
 	/// @return The author's address.
 	function author() external view returns (address);
 
-	/// @notice Every category with its metadata resolved.
-	/// @return Metadata for each category, in insertion order.
-	function categories() external view returns (DataTypes.CategoryMetadata[] memory);
+	/// @notice A page of categories with their metadata resolved.
+	/// @param start Inclusive offset in the current category set.
+	/// @param end Exclusive offset, at most 256 positions after start.
+	/// @return Metadata for each category, in unspecified order.
+	function categories(
+		uint256 start,
+		uint256 end
+	) external view returns (DataTypes.CategoryMetadata[] memory);
 
 	/// @notice The entries filed under a category.
 	/// @param categoryId Category to read.
+	/// @param start Inclusive offset in the current entry set.
+	/// @param end Exclusive offset, at most 256 positions after start.
 	/// @return Entry identifiers filed under the category.
-	function entries(uint256 categoryId) external view returns (uint256[] memory);
+	function entries(
+		uint256 categoryId,
+		uint256 start,
+		uint256 end
+	) external view returns (uint256[] memory);
 
-	/// @notice Identifiers of every category, without resolving their metadata.
-	/// @return Category identifiers, in insertion order.
-	function getCategoryIds() external view returns (uint256[] memory);
+	/// @notice A page of category identifiers without resolving their metadata.
+	/// @param start Inclusive offset in the current category set.
+	/// @param end Exclusive offset, at most 256 positions after start.
+	/// @return Category identifiers, in unspecified order.
+	function getCategoryIds(uint256 start, uint256 end) external view returns (uint256[] memory);
 
 	/// @notice Metadata for a single category.
 	/// @param categoryId Category to read.
@@ -66,6 +80,12 @@ interface ITwilightBlog {
 
 	/// @notice Entry identifiers filed under a category.
 	/// @param categoryId Category to read.
+	/// @param start Inclusive offset in the current entry set.
+	/// @param end Exclusive offset, at most 256 positions after start.
 	/// @return Entry identifiers filed under the category.
-	function getCategoryEntryIds(uint256 categoryId) external view returns (uint256[] memory);
+	function getCategoryEntryIds(
+		uint256 categoryId,
+		uint256 start,
+		uint256 end
+	) external view returns (uint256[] memory);
 }

@@ -1,5 +1,11 @@
 import type React from "react"
-import { type CSSProperties, type MouseEvent, useRef, useState } from "react"
+import {
+	type CSSProperties,
+	type MouseEvent,
+	useEffect,
+	useRef,
+	useState,
+} from "react"
 
 interface Props {
 	className?: string
@@ -26,8 +32,18 @@ const Hover = ({
 	const height = useRef(0)
 	const top = useRef(0)
 	const left = useRef(0)
-	const updateCall = useRef(null)
-	const transitionTimeout = useRef(null)
+	const updateCall = useRef<number | null>(null)
+	const transitionTimeout = useRef<number | null>(null)
+
+	useEffect(
+		() => () => {
+			if (updateCall.current !== null)
+				window.cancelAnimationFrame(updateCall.current)
+			if (transitionTimeout.current !== null)
+				window.clearTimeout(transitionTimeout.current)
+		},
+		[]
+	)
 
 	const handleOnMouseEnter = () => {
 		updateElementPosition()
@@ -47,6 +63,7 @@ const Hover = ({
 	}
 
 	const updateElementStyle = (event: MouseEvent) => {
+		if (width.current === 0 || height.current === 0) return
 		const values = getValues(event)
 
 		setTiltStyles((prevStyle) => ({
@@ -95,14 +112,15 @@ const Hover = ({
 	}
 
 	const setTransition = () => {
-		clearTimeout(transitionTimeout.current)
+		if (transitionTimeout.current !== null)
+			window.clearTimeout(transitionTimeout.current)
 
 		setTiltStyles((prevStyle) => ({
 			...prevStyle,
 			transition: `${speed}ms ${easing}`,
 		}))
 
-		transitionTimeout.current = setTimeout(() => {
+		transitionTimeout.current = window.setTimeout(() => {
 			setTiltStyles((prevStyle) => ({
 				...prevStyle,
 				transition: "",
@@ -111,7 +129,9 @@ const Hover = ({
 	}
 
 	const handleReset = () => {
-		window.requestAnimationFrame(() => {
+		if (updateCall.current !== null)
+			window.cancelAnimationFrame(updateCall.current)
+		updateCall.current = window.requestAnimationFrame(() => {
 			setTiltStyles((prevStyle) => ({
 				...prevStyle,
 				transform: `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`,

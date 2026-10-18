@@ -1,14 +1,19 @@
 import format from "comma-number"
 import useSWR from "swr"
+import { z } from "zod"
 
-import fetcher from "~/lib/fetcher"
+import createFetcher from "~/lib/fetcher"
 
 import MetricCard from "./Card"
 
-export default function TwitterMetric() {
-	const { data } = useSWR("api/twitter", fetcher)
+const fetchFollowers = createFetcher(
+	z.object({ followers: z.number().int().nonnegative() })
+)
 
-	const followers = format(data?.followers)
+export default function TwitterMetric() {
+	const { data } = useSWR("/api/twitter", fetchFollowers)
+
+	const followers = data && format(data.followers)
 	const link = "https://twitter.com/ttttonyhe"
 
 	return (

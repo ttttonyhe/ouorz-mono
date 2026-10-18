@@ -69,6 +69,8 @@ jspm_packages/
 # dotenv environment variables file
 .env
 .env.test
+.env.*
+!.env.example
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -175,6 +177,8 @@ dev.sh
 # zksync
 artifacts-zk
 cache-zk
+packages/twilight-protocol/artifacts/
+packages/twilight-protocol/cache/
 .upgradable
 
 # Cypress error screenshots

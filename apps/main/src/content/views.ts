@@ -1,26 +1,66 @@
+import { z } from "zod"
+
 import { ANALYTICS_API } from "~/constants/apiURLs"
+import type { LocalPost } from "~/content/posts"
+import { fetchJSON } from "~/lib/apiHandler"
 
-export const getPathViews = async (path: string): Promise<number> => {
-	const startAt = 0
-	const endAt = Date.now()
-	const apiURL = `${ANALYTICS_API.STATS}?start_at=${startAt}&end_at=${endAt}&url=${encodeURIComponent(path)}`
+const viewsSchema = z.object({
+	pageviews: z.object({ value: z.number().int().nonnegative() }),
+})
+interface ViewCacheEntry {
+	expiresAt: number
+	result: Promise<number | null>
+}
 
-	try {
-		const response = await fetch(apiURL, {
+const cache = new Map<string, ViewCacheEntry>()
+
+export const getPathViews = (
+	path: string,
+	signal = AbortSignal.timeout(10_000)
+): Promise<number | null> => {
+	const token = process.env.ANALYTICS_TOKEN
+	if (!token) return Promise.resolve(null)
+	const cached = cache.get(path)
+	if (cached && cached.expiresAt > Date.now()) return cached.result
+
+	const url = new URL(ANALYTICS_API.STATS)
+	url.search = new URLSearchParams({
+		start_at: "0",
+		end_at: String(Date.now()),
+		url: path,
+	}).toString()
+	const entry: ViewCacheEntry = {
+		expiresAt: Date.now() + 300_000,
+		result: fetchJSON(viewsSchema, url, {
 			cache: "no-store",
-			headers: {
-				Accept: "application/json",
-				Authorization: `Bearer ${process.env.ANALYTICS_TOKEN}`,
-			},
+			headers: { Authorization: `Bearer ${token}` },
+			signal,
 		})
-
-		if (!response.ok) {
-			return 0
-		}
-
-		const data = await response.json()
-		return Number(data?.pageviews?.value ?? 0)
-	} catch {
-		return 0
+			.then((data) => data.pageviews.value)
+			.catch(() => {
+				entry.expiresAt = Date.now() + 30_000
+				return null
+			}),
 	}
+	cache.set(path, entry)
+	return entry.result
+}
+
+export const getPostViews = async (posts: LocalPost[]): Promise<number[]> => {
+	const values: number[] = []
+	const signal = AbortSignal.timeout(10_000)
+	for (let index = 0; index < posts.length; index += 6) {
+		// oxlint-disable-next-line no-await-in-loop -- Bound the number of concurrent analytics requests.
+		const batch = await Promise.all(
+			posts
+				.slice(index, index + 6)
+				.map(
+					async (post) =>
+						(await getPathViews(`/post/${post.id}`, signal)) ??
+						post.post_metas.views
+				)
+		)
+		values.push(...batch)
+	}
+	return values
 }

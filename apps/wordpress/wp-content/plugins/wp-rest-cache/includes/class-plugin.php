@@ -55,28 +55,11 @@ class Plugin {
 	 */
 	public function __construct() {
 		$this->plugin_name = 'wp-rest-cache';
-		$this->version     = '2022.2.2';
+		$this->version     = '2026.3.1';
 
-		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_api_hooks();
 		$this->define_caching_hooks();
-	}
-
-	/**
-	 * Define the locale for this plugin for internationalization.
-	 *
-	 * Uses the WP_Rest_Cache_Plugin\Includes\I18n class in order to set the domain and to register the hook
-	 * with WordPress.
-	 *
-	 * @return void
-	 */
-	private function set_locale() {
-
-		$plugin_i18n = new I18n();
-
-		add_action( 'plugins_loaded', [ $plugin_i18n, 'load_plugin_textdomain' ] );
-
 	}
 
 	/**
@@ -93,12 +76,14 @@ class Plugin {
 		// Create custom plugin settings menu.
 		add_action( 'admin_menu', [ $plugin_admin, 'create_menu' ] );
 		add_action( 'admin_init', [ $plugin_admin, 'register_settings' ] );
+		add_action( 'admin_init', [ $plugin_admin, 'display_pro_message' ] );
 		add_action( 'admin_init', [ $plugin_admin, 'check_muplugin_existence' ] );
 		add_action( 'admin_init', [ $plugin_admin, 'check_memcache_ext_object_caching' ] );
 		add_action( 'admin_init', [ $plugin_admin, 'handle_actions' ] );
 		add_action( 'admin_notices', [ $plugin_admin, 'display_notices' ] );
 		add_action( 'network_admin_notices', [ $plugin_admin, 'display_notices' ] );
 		add_action( 'wp_before_admin_bar_render', [ $plugin_admin, 'admin_bar_item' ], 999 );
+		add_filter( 'wp_rest_cache/settings_panels', [ $plugin_admin, 'filter_settings_panels' ] );
 
 		// set-screen-option should be deprecated in favor of set_screen_option-{$option} but in WP version 5.4.2 there
 		// is a bug making both calls necessary until that bug is fixed in the next version.
@@ -113,7 +98,7 @@ class Plugin {
 				'add_plugin_settings_link',
 			]
 		);
-		add_action( 'update_option_wp_rest_cache_regenerate', [ $plugin_admin, 'regenerate_updated' ], 10, 3 );
+		add_action( 'update_option_wp_rest_cache_regenerate', [ $plugin_admin, 'regenerate_updated' ], 10, 2 );
 		add_action(
 			'update_option_wp_rest_cache_regenerate_interval',
 			[
@@ -121,11 +106,11 @@ class Plugin {
 				'regenerate_interval_updated',
 			],
 			10,
-			3
+			2
 		);
 		add_action( 'wp_ajax_flush_caches', [ $plugin_admin, 'flush_caches' ], 10, 1 );
 		add_action( 'activated_plugin', [ $plugin_admin, 'activated_plugin' ], 10, 2 );
-		add_action( 'deactivated_plugin', [ $plugin_admin, 'deactivated_plugin' ], 10, 2 );
+		add_action( 'deactivated_plugin', [ $plugin_admin, 'deactivated_plugin' ], 10 );
 
 		add_action( 'cli_init', [ $plugin_admin, 'add_cli_commands' ] );
 	}
@@ -145,8 +130,15 @@ class Plugin {
 
 		$item_api = new API\Item_Api();
 
-		add_filter( 'register_post_type_args', [ $item_api, 'set_post_type_rest_controller' ], 10, 2 );
-		add_filter( 'register_taxonomy_args', [ $item_api, 'set_taxonomy_rest_controller' ], 10, 2 );
+		add_filter( 'register_post_type_args', [ $item_api, 'set_post_type_rest_controller' ], 10 );
+		add_filter( 'register_taxonomy_args', [ $item_api, 'set_taxonomy_rest_controller' ], 10 );
+
+		$oembed_api = new API\Oembed_Api();
+
+		add_filter( 'wp_rest_cache/allowed_endpoints', [ $oembed_api, 'add_oembed_endpoint' ], 10, 1 );
+		add_filter( 'wp_rest_cache/determine_object_type', [ $oembed_api, 'determine_object_type' ], 10, 4 );
+		add_filter( 'wp_rest_cache/is_single_item', [ $oembed_api, 'is_single_oembed_item' ], 10, 3 );
+		add_action( 'wp_rest_cache/process_cache_relations', [ $oembed_api, 'process_cache_relations' ], 10, 4 );
 	}
 
 	/**
@@ -162,23 +154,31 @@ class Plugin {
 		add_action( 'save_post', [ $caching, 'save_post' ], 999, 3 );
 		add_action( 'delete_post', [ $caching, 'delete_post' ] );
 		add_action( 'transition_post_status', [ $caching, 'transition_post_status' ], 10, 3 );
+		add_action( 'updated_post_meta', [ $caching, 'updated_post_meta' ], 10, 4 );
+
+		add_action( 'add_attachment', [ $caching, 'add_attachment' ], 999 );
+		add_action( 'edit_attachment', [ $caching, 'edit_attachment' ], 999, 1 );
 
 		add_action( 'created_term', [ $caching, 'created_term' ], 999, 3 );
 		add_action( 'edited_term', [ $caching, 'edited_term' ], 999, 3 );
-		add_action( 'delete_term', [ $caching, 'delete_term' ], 10, 5 );
+		add_action( 'delete_term', [ $caching, 'delete_term' ], 10, 3 );
+		add_action( 'updated_term_meta', [ $caching, 'updated_term_meta' ], 10, 4 );
+		add_action( 'set_object_terms', [ $caching, 'set_object_terms' ], 10, 6 );
 
-		add_action( 'profile_update', [ $caching, 'profile_update' ], 999, 2 );
-		add_action( 'user_register', [ $caching, 'user_register' ], 999, 1 );
+		add_action( 'profile_update', [ $caching, 'profile_update' ], 999 );
+		add_action( 'user_register', [ $caching, 'user_register' ], 999 );
 		add_action( 'deleted_user', [ $caching, 'deleted_user' ] );
+		add_action( 'updated_user_meta', [ $caching, 'updated_user_meta' ], 10, 4 );
 
-		add_action( 'edit_comment', [ $caching, 'delete_comment_type_related_caches' ], 999, 2 );
-		add_action( 'deleted_comment', [ $caching, 'delete_comment_related_caches' ], 10, 2 );
-		add_action( 'trashed_comment', [ $caching, 'delete_comment_related_caches' ], 10, 2 );
-		add_action( 'untrashed_comment', [ $caching, 'delete_comment_type_related_caches' ], 999, 2 );
-		add_action( 'spammed_comment', [ $caching, 'delete_comment_related_caches' ], 10, 2 );
-		add_action( 'unspammed_comment', [ $caching, 'delete_comment_type_related_caches' ], 999, 2 );
-		add_action( 'wp_insert_comment', [ $caching, 'delete_comment_type_related_caches' ], 999, 2 );
-		add_action( 'comment_post', [ $caching, 'delete_comment_type_related_caches' ], 999, 2 );
+		add_action( 'edit_comment', [ $caching, 'delete_comment_type_related_caches' ], 999 );
+		add_action( 'deleted_comment', [ $caching, 'delete_comment_related_caches' ], 10 );
+		add_action( 'trashed_comment', [ $caching, 'delete_comment_related_caches' ], 10 );
+		add_action( 'untrashed_comment', [ $caching, 'delete_comment_type_related_caches' ], 999 );
+		add_action( 'spammed_comment', [ $caching, 'delete_comment_related_caches' ], 10 );
+		add_action( 'unspammed_comment', [ $caching, 'delete_comment_type_related_caches' ], 999 );
+		add_action( 'wp_insert_comment', [ $caching, 'delete_comment_type_related_caches' ], 999 );
+		add_action( 'comment_post', [ $caching, 'delete_comment_type_related_caches' ], 999 );
+		add_action( 'updated_comment_meta', [ $caching, 'updated_comment_meta' ], 10, 4 );
 
 		add_action( 'wp_rest_cache_regenerate_cron', [ $caching, 'regenerate_expired_caches' ] );
 		add_action( 'wp_rest_cache_cleanup_deleted_caches', [ $caching, 'cleanup_deleted_caches' ] );

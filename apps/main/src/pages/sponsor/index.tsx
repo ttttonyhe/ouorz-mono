@@ -6,19 +6,22 @@ import Link from "next/link"
 import PageCard from "~/components/Card/Page"
 import { pageLayout } from "~/components/Page"
 import { GlowingBackground } from "~/components/Visual"
+import type { SponsorsData } from "~/content/schema"
 import { getSponsors } from "~/content/static-data"
 import type { NextPageWithLayout } from "~/pages/_app"
 
-const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
+interface Props {
+	sponsors: SponsorsData["donors"]
+}
+
+const Sponsor: NextPageWithLayout<Props> = ({ sponsors }) => {
 	return (
 		<div>
 			<Head>
-				<title>Sponsor - Tony He</title>
 				<link
 					rel="icon"
 					href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>"
 				/>
-				<meta name="description" content="Sponsor Tony's work" />
 			</Head>
 			<div className="glowing-area">
 				<div className="mt-0 pt-24 lg:mt-20 lg:pt-0">
@@ -132,9 +135,9 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 									className="glowing-div flex cursor-pointer items-center rounded-md border bg-white px-5 py-4 shadow-xs transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800">
 									<GlowingBackground />
 									<div className="glowing-div-content flex w-full items-center overflow-hidden text-ellipsis whitespace-nowrap">
-										<h1 className="flex-1 items-center text-xl font-medium tracking-wide">
+										<p className="flex-1 items-center text-xl font-medium tracking-wide">
 											{item.name}
-										</h1>
+										</p>
 										<p className="flex items-center justify-end text-4 tracking-wide text-gray-400">
 											<span className="hidden lg:flex">
 												{item.date}&nbsp;|&nbsp;
@@ -163,7 +166,7 @@ const Sponsor: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 
 Sponsor.layout = pageLayout
 
-export const getStaticProps: GetStaticProps = () => {
+export const getStaticProps: GetStaticProps<Props> = () => {
 	try {
 		const data = getSponsors()
 

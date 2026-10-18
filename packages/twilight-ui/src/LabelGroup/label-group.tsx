@@ -9,7 +9,7 @@ interface Props {
 	children?: React.ReactNode
 }
 
-type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
+type NativeAttrs = Omit<React.HTMLAttributes<HTMLDivElement>, keyof Props>
 export type LabelGroupProps = Props & NativeAttrs
 
 const defaultChildren = (
@@ -22,8 +22,13 @@ const defaultChildren = (
 const LabelGroup = ({
 	children = defaultChildren,
 	className,
+	...rest
 }: LabelGroupProps) => {
-	return <div className={`label-group ${className ?? ""}`}>{children}</div>
+	return (
+		<div {...rest} className={`label-group ${className ?? ""}`}>
+			{children}
+		</div>
+	)
 }
 
 LabelGroup.displayName = "LabelGroup"

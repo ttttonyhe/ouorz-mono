@@ -1,5 +1,4 @@
 import { Icon } from "@twilight-toolkit/ui"
-import Head from "next/head"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -20,9 +19,6 @@ const Home: NextPageWithLayout = () => {
 
 	return (
 		<>
-			<Head>
-				<title>Tony (Lipeng) He</title>
-			</Head>
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="flex items-center justify-between gap-x-10 gap-y-8">
 					<div className="flex flex-col gap-y-2.5">
@@ -65,12 +61,14 @@ const Home: NextPageWithLayout = () => {
 				</div>
 			</section>
 			<section className="mt-16">
-				<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+				<h2
+					id="about"
+					className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5">
 						<Icon name="me" />
 					</span>
 					<span className="uppercase">About</span>
-				</span>
+				</h2>
 				<div className="mt-3.75 flex flex-col px-1 text-justify text-3 leading-relaxed font-light tracking-wide wrap-break-word text-gray-500 underline-offset-[6px] lg:text-left lg:text-[17px] dark:text-gray-300">
 					<p>
 						I&#39;m a computer science PhD student at UWaterloo; part of{" "}
@@ -221,12 +219,14 @@ const Home: NextPageWithLayout = () => {
 				</div>
 			</section>
 			<section className="mt-16">
-				<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+				<h2
+					id="research"
+					className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5">
 						<Icon name="microscope" />
 					</span>
 					<span className="uppercase">Research Interests</span>
-				</span>
+				</h2>
 				<div className="mt-3.75 flex flex-col gap-y-2 px-1 text-justify text-3 leading-relaxed font-light tracking-wide wrap-break-word text-gray-500 underline-offset-[6px] lg:text-[17px] dark:text-gray-300">
 					<p>
 						TL;DR: I study how adversarial robustness breaks when AI is deployed
@@ -273,12 +273,14 @@ const Home: NextPageWithLayout = () => {
 				</div>
 			</section>
 			<section className="mt-16">
-				<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+				<h2
+					id="research-vision"
+					className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5">
 						<Icon name="rainbow" />
 					</span>
 					<span className="uppercase">Research Vision</span>
-				</span>
+				</h2>
 				<div className="mt-3.75 flex flex-col gap-y-2 px-1 text-justify text-3 leading-relaxed font-light tracking-wide wrap-break-word text-gray-500 underline-offset-[6px] lg:text-[17px] dark:text-gray-300">
 					<p>
 						To ensure AI&apos;s transformative potential reaches as much of the
@@ -289,7 +291,9 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-16">
 				<div className="flex items-center justify-between">
-					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2
+						id="publications"
+						className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="newspaper" />
 						</span>
@@ -297,7 +301,7 @@ const Home: NextPageWithLayout = () => {
 							Selected Publications
 						</span>
 						<span className="block uppercase lg:hidden">Publications</span>
-					</span>
+					</h2>
 					<span className="flex items-center gap-x-1 text-right text-gray-500 underline-offset-4 dark:text-gray-400">
 						* indicates equal contribution
 					</span>
@@ -315,7 +319,7 @@ const Home: NextPageWithLayout = () => {
 						links={[
 							{
 								label: "Paper",
-								href: "http://arxiv.org/abs/2606.10091",
+								href: "https://arxiv.org/abs/2606.10091",
 								default: true,
 							},
 						]}
@@ -582,12 +586,14 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2
+						id="preprints"
+						className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="article" />
 						</span>
 						<span className="block uppercase">Preprints</span>
-					</span>
+					</h2>
 					<Link
 						href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
 						target="_blank"
@@ -657,12 +663,14 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2
+						id="talks"
+						className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="personSpeaks" />
 						</span>
 						<span className="uppercase">Talks</span>
-					</span>
+					</h2>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<PaperCard
@@ -707,12 +715,14 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2
+						id="service"
+						className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="service" />
 						</span>
 						<span className="uppercase">Academic Services</span>
-					</span>
+					</h2>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<ServiceCard
@@ -752,12 +762,14 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2
+						id="mentoring"
+						className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="empathize" />
 						</span>
 						<span className="uppercase">Mentoring</span>
-					</span>
+					</h2>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<ServiceCard
@@ -770,12 +782,14 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2
+						id="funding"
+						className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="money" />
 						</span>
 						<span className="uppercase">Funding</span>
-					</span>
+					</h2>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<ServiceCard
@@ -805,7 +819,7 @@ const Home: NextPageWithLayout = () => {
 					<ServiceCard
 						serviceRole="David R. Cheriton Graduate Scholarship"
 						serviceType="University"
-						serviceTitle="CAD 10,000"
+						serviceTitle="CAD 20,000"
 						serviceOrganization="University of Waterloo"
 					/>
 					<ServiceCard
@@ -818,12 +832,14 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2
+						id="teaching"
+						className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="presentation" />
 						</span>
 						<span className="uppercase">Teaching</span>
-					</span>
+					</h2>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<EmploymentCard
@@ -862,12 +878,14 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2
+						id="research-experience"
+						className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="microscope" />
 						</span>
 						<span className="uppercase">Research Experience</span>
-					</span>
+					</h2>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<EmploymentCard
@@ -890,12 +908,14 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2
+						id="industry-experience"
+						className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="suitcase" />
 						</span>
 						<span className="uppercase">Industry Experience</span>
-					</span>
+					</h2>
 					<Link
 						href="https://www.linkedin.com/in/~lhe/"
 						target="_blank"
@@ -954,12 +974,14 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14">
 				<div className="flex items-center justify-between">
-					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2
+						id="education"
+						className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="graduationCapOutline" />
 						</span>
 						<span className="uppercase">Education</span>
-					</span>
+					</h2>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
 					<div
@@ -1010,12 +1032,14 @@ const Home: NextPageWithLayout = () => {
 			</section>
 			<section className="mt-14 mb-24">
 				<div className="flex justify-between">
-					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2
+						id="newsletter"
+						className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="edit" />
 						</span>
 						<span className="uppercase">Newsletter</span>
-					</span>
+					</h2>
 					<Link
 						href="https://kukfm.com"
 						target="_blank"

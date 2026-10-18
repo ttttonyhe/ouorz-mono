@@ -2,7 +2,7 @@ import { Icon } from "@twilight-toolkit/ui"
 import { useTheme } from "next-themes"
 import { useRouter } from "next/router"
 import type React from "react"
-import { useCallback, useContext, useEffect, useMemo, useRef } from "react"
+import { useCallback, useEffect, useMemo, useRef } from "react"
 import ContentLoader from "react-content-loader"
 
 import { useDispatch, useSelector } from "~/hooks"
@@ -11,9 +11,13 @@ import { selectKbar } from "~/store/kbar/selectors"
 
 import HotkeyHelper from "../Helpers/hotKey"
 import Tabs, { type TabItemProps } from "../Tabs"
-import { kbarContext } from "./context"
+import { useKbarContext } from "./context"
 
-const ListComponentLoading = ({ resolvedTheme }: { resolvedTheme: string }) => {
+const ListComponentLoading = ({
+	resolvedTheme,
+}: {
+	resolvedTheme: string | undefined
+}) => {
 	if (resolvedTheme === "dark") {
 		return <div data-cy="kbar-list-loading" className="h-full" />
 	}
@@ -97,7 +101,7 @@ const KbarPanel = () => {
 		setInputValue,
 		inputValueChangeHandler,
 		setInputValueChangeHandler,
-	} = useContext(kbarContext)
+	} = useKbarContext()
 	const { list, placeholder, animation, location, loading } =
 		useSelector(selectKbar)
 	const verticalListWrapper = useRef<HTMLDivElement>(null)
@@ -113,46 +117,46 @@ const KbarPanel = () => {
 
 		return list.map((item) => {
 			let actionFunc = item.action
+			const externalLink = item.link?.external
+			const internalLink = item.link?.internal
+			const sublist = item.sublist
 
-			if (item.link) {
-				if (item.link.external) {
-					actionFunc = () => {
-						window
-							.open(item.link.external, "_blank", "noopener,noreferrer")
-							?.focus()
-					}
-				} else if (item.link.internal) {
-					actionFunc = () => {
-						void router.push(item.link.internal)
-					}
+			if (externalLink) {
+				actionFunc = () => {
+					window.open(externalLink, "_blank", "noopener,noreferrer")?.focus()
+				}
+			} else if (internalLink) {
+				actionFunc = () => {
+					void router.push(internalLink)
 				}
 			}
 
-			if (item.sublist) {
+			if (sublist) {
 				actionFunc = () => {
 					dispatch(
 						updateKbar({
-							key: item.sublist.key,
-							location: [...location, item.sublist.key],
-							items: item.sublist.list,
-							placeholder: item.sublist.placeholder,
+							key: sublist.key,
+							location: [...location, sublist.key],
+							items: sublist.list,
+							placeholder: sublist.placeholder,
 						})
 					)
 				}
 			}
 
-			const onClick = actionFunc
+			const action = actionFunc
+			const onClick = action
 				? () => {
 						if (item.singleton !== false && !item.sublist) {
 							dispatch(deactivateKbar())
 						}
 
-						if (item.link) {
+						if (item.link?.internal) {
 							setTimeout(() => {
-								actionFunc()
+								action()
 							}, 250)
 						} else {
-							actionFunc()
+							action()
 						}
 
 						setInputValue("")
@@ -250,6 +254,9 @@ const KbarPanel = () => {
 	return (
 		<div
 			data-cy="kbar-panel"
+			onClick={(event) => {
+				if (event.target === event.currentTarget) dispatch(deactivateKbar())
+			}}
 			className="pointer-events-auto absolute -ml-10 flex h-screen w-screen justify-center">
 			{
 				// register shortcuts of list items
@@ -283,6 +290,7 @@ const KbarPanel = () => {
 					} flex`}>
 					<input
 						data-cy="kbar-input"
+						aria-label="Search posts and commands"
 						placeholder={placeholder}
 						onChange={(e) => setInputValue(e.target.value)}
 						value={inputValue}

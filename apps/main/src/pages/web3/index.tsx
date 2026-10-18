@@ -7,6 +7,7 @@ import React from "react"
 import PageCard from "~/components/Card/Page"
 import { pageLayout } from "~/components/Page"
 import { GlowingBackground } from "~/components/Visual"
+import type { SponsorsData } from "~/content/schema"
 import { getSponsors } from "~/content/static-data"
 import type { NextPageWithLayout } from "~/pages/_app"
 import {
@@ -16,18 +17,20 @@ import {
 
 const NFTs = React.lazy(() => import("~/components/Grids/NFTs"))
 
-const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
+interface Props {
+	sponsors: SponsorsData["donors"]
+}
+
+const Web3: NextPageWithLayout<Props> = ({ sponsors }) => {
 	const router = useRouter()
 
 	return (
 		<div>
 			<Head>
-				<title>Web 3.0 - Tony He</title>
 				<link
 					rel="icon"
 					href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌈</text></svg>"
 				/>
-				<meta name="description" content="Tony's Web 3.0 Profile" />
 			</Head>
 			<div className="glowing-area">
 				<div className="mt-0 pt-24 lg:mt-20 lg:pt-0">
@@ -39,7 +42,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 								</span>
 							</div>
 							<div>
-								<h2 className="flex items-center gap-x-1.5 text-[28px] font-medium tracking-wide text-black dark:text-white">
+								<h1 className="flex items-center gap-x-1.5 text-[28px] font-medium tracking-wide text-black dark:text-white">
 									<span
 										style={{
 											viewTransitionName: getViewTransitionName("Web 3.0"),
@@ -49,7 +52,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 									<span className="rounded-full border border-green-300 bg-green-50 px-2 py-0.5 text-xs text-green-500 dark:border-green-700 dark:bg-green-800 dark:text-green-400">
 										Beta
 									</span>
-								</h2>
+								</h1>
 								<p className="-mt-1 text-sm text-neutral-500 dark:text-gray-400">
 									Wallets, Identities and Assets
 								</p>
@@ -76,15 +79,16 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					<hr className="dark:border-gray-600" />
 				</div>
 				<div className="mb-10">
-					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2 className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5 text-yellow-500">
 							<Icon name="bitcoin" />
 						</span>
 						<span className="uppercase">Bitcoin</span>
-					</span>
+					</h2>
 					<div className="mt-4">
 						<div className="mb-4">
 							<PageCard
+								heading="h3"
 								title="Native SegWit"
 								icon="wallet1"
 								des="bc1q6w0znvyyuag7egzgfke5j8f6f7r8laskfqstk4"
@@ -93,6 +97,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						</div>
 						<div className="grid grid-cols-2 gap-4">
 							<PageCard
+								heading="h3"
 								title="SegWit"
 								iconSmall="wallet2"
 								des="35Mb9GbWn5FWPU19X2EBvp9VR9cyZvDbG9"
@@ -100,6 +105,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 								wrappable={true}
 							/>
 							<PageCard
+								heading="h3"
 								title="Legacy"
 								iconSmall="wallet3"
 								des="1N3gofgiLDF3oCrFiqRxpALSH2CeauSq6V"
@@ -110,16 +116,17 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					</div>
 				</div>
 				<div className="mb-10">
-					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 pl-3 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2 className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 pl-3 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-[4px] flex h-5 w-5 text-blue-500">
 							<Icon name="eth" />
 						</span>
 						<span className="uppercase">Ethereum</span>
-					</span>
+					</h2>
 					<div className="mt-4">
 						<div className="flex flex-col gap-4 lg:flex-row">
 							<div className="flex-1">
 								<PageCard
+									heading="h3"
 									title="Wallet Address"
 									iconSmall="wallet1"
 									des="0x2650f08Da54F7019f9a3306bad0dfc8474644eAD"
@@ -130,6 +137,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 							</div>
 							<div className="flex-1">
 								<PageCard
+									heading="h3"
 									title="Name Service"
 									iconSmall="fingerprint"
 									des="(ENS) ttttonyhe.eth"
@@ -142,16 +150,17 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					</div>
 				</div>
 				<div className="mb-10">
-					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2 className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5 text-purple-500">
 							<Icon name="solana" />
 						</span>
 						<span className="uppercase">Solana</span>
-					</span>
+					</h2>
 					<div className="mt-4">
 						<div className="flex flex-col gap-4 lg:flex-row">
 							<div className="flex-1">
 								<PageCard
+									heading="h3"
 									title="Wallet Address"
 									iconSmall="wallet1"
 									des="G9T9yXeWLyspA9xLSLwZYvAPbSNV9E2NU7jWLpQDW6Re"
@@ -162,6 +171,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 							</div>
 							<div className="flex-1">
 								<PageCard
+									heading="h3"
 									title="Name Service"
 									iconSmall="fingerprint"
 									des="(Bonfida) tonyhe.sol"
@@ -177,12 +187,12 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					<hr className="dark:border-gray-600" />
 				</div>
 				<div className="mb-10">
-					<span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2 className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="collection" />
 						</span>
 						<span className="uppercase">Non-fungible Tokens (NFTs)</span>
-					</span>
+					</h2>
 					<div className="mt-4">
 						<NFTs />
 					</div>
@@ -191,12 +201,12 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					<hr className="dark:border-gray-600" />
 				</div>
 				<div className="mb-28">
-					<span className="inline-flex items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+					<h2 className="inline-flex items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<span className="mr-1.5 flex h-5 w-5 text-pink-500">
 							<Icon name="love" />
 						</span>
 						<span className="uppercase">Sponsor Me</span>
-					</span>
+					</h2>
 					<div className="my-2 mb-4 flex w-full items-center rounded-br-xl rounded-bl-xl border border-gray-300 bg-white px-4 py-3 shadow-xs dark:border-gray-600 dark:bg-gray-700">
 						<p className="items-center text-xl tracking-wide">
 							I am developing and maintaining various open source projects and
@@ -206,6 +216,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					<div className="mb-10">
 						<div className="mb-10 grid grid-cols-2 gap-4">
 							<PageCard
+								heading="h3"
 								title="Github"
 								des="ttttonyhe"
 								icon="githubLine"
@@ -213,6 +224,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 								href="https://github.com/ttttonyhe"
 							/>
 							<PageCard
+								heading="h3"
 								title="Podcast"
 								des="Known Unknowns"
 								icon="mic"
@@ -230,6 +242,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					<div className="mt-4 mb-10">
 						<div className="mb-4">
 							<PageCard
+								heading="h3"
 								title="Github Sponsors"
 								des="ttttonyhe"
 								icon="love"
@@ -239,6 +252,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 						</div>
 						<div className="grid grid-cols-2 gap-4">
 							<PageCard
+								heading="h3"
 								title="Alipay"
 								des="tony.hlp@hotmail.com"
 								icon="alipay"
@@ -246,6 +260,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 								href="https://static.ouorz.com/alipay.png"
 							/>
 							<PageCard
+								heading="h3"
 								title="Wechat Pay"
 								des="ttttonyhe"
 								icon="wxpay"
@@ -262,16 +277,16 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 					</div>
 					<div className="grid grid-cols-2 gap-4" data-cy="sponsorsItems">
 						{sponsors.length > 0 ? (
-							sponsors.map((item: any) => {
+							sponsors.map((item) => {
 								return (
 									<div
 										key={`${item.name}-${item.date}`}
 										className="glowing-div flex cursor-pointer items-center rounded-md border bg-white px-5 py-4 shadow-xs transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-800">
 										<GlowingBackground />
 										<div className="glowing-div-content flex w-full items-center overflow-hidden text-ellipsis whitespace-nowrap">
-											<h1 className="flex-1 items-center text-xl font-medium tracking-wide">
+											<p className="flex-1 items-center text-xl font-medium tracking-wide">
 												{item.name}
-											</h1>
+											</p>
 											<p className="flex items-center justify-end text-4 tracking-wide text-gray-400">
 												<span className="hidden lg:flex">
 													{item.date}&nbsp;|&nbsp;
@@ -301,7 +316,7 @@ const Web3: NextPageWithLayout = ({ sponsors }: { sponsors: any }) => {
 
 Web3.layout = pageLayout
 
-export const getStaticProps: GetStaticProps = () => {
+export const getStaticProps: GetStaticProps<Props> = () => {
 	try {
 		const data = getSponsors()
 

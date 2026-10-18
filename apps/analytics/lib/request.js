@@ -3,6 +3,7 @@ import requestIp from "request-ip"
 import { browserName, detectOS } from "detect-browser"
 import isLocalhost from "is-localhost-ip"
 import maxmind from "maxmind"
+import { isIP } from "net"
 
 import {
 	DESKTOP_OS,
@@ -16,8 +17,8 @@ let lookup
 
 export function getIpAddress(req) {
 	// Custom header
-	if (req.headers[process.env.CLIENT_IP_HEADER]) {
-		return req.headers[process.env.CLIENT_IP_HEADER]
+	if (req.headers[process.env.CLIENT_IP_HEADER?.toLowerCase()]) {
+		return req.headers[process.env.CLIENT_IP_HEADER.toLowerCase()]
 	}
 	// Cloudflare
 	else if (req.headers["cf-connecting-ip"]) {
@@ -57,12 +58,12 @@ export function getDevice(screen, browser, os) {
 
 export async function getCountry(req, ip) {
 	// Cloudflare
-	if (req.headers["cf-ipcountry"]) {
+	if (/^[A-Z]{2}$/.test(req.headers["cf-ipcountry"] || "")) {
 		return req.headers["cf-ipcountry"]
 	}
 
 	// Ignore local ips
-	if (await isLocalhost(ip)) {
+	if (typeof ip !== "string" || !isIP(ip) || (await isLocalhost(ip))) {
 		return
 	}
 
@@ -79,7 +80,7 @@ export async function getCountry(req, ip) {
 }
 
 export async function getClientInfo(req, { screen }) {
-	const userAgent = req.headers["user-agent"]
+	const userAgent = req.headers["user-agent"] || ""
 	const ip = getIpAddress(req)
 	const country = await getCountry(req, ip)
 	const browser = browserName(userAgent)
@@ -90,9 +91,29 @@ export async function getClientInfo(req, { screen }) {
 }
 
 export function getJsonBody(req) {
-	if ((req.headers["content-type"] || "").indexOf("text/plain") !== -1) {
-		return JSON.parse(req.body)
+	try {
+		const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body
+		return body && typeof body === "object" && !Array.isArray(body)
+			? body
+			: null
+	} catch {
+		return null
 	}
+}
 
-	return req.body
+export function getDateRange({ start_at, end_at }) {
+	if (
+		typeof start_at !== "string" ||
+		typeof end_at !== "string" ||
+		!start_at ||
+		!end_at
+	)
+		return null
+	const startDate = new Date(Number(start_at))
+	const endDate = new Date(Number(end_at))
+	return Number.isFinite(+startDate) &&
+		Number.isFinite(+endDate) &&
+		startDate <= endDate
+		? { startDate, endDate }
+		: null
 }

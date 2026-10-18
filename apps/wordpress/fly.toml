@@ -1,7 +1,7 @@
 app = "ouorz-wordpress"
 
 [mounts]
-  destination = "/var/www/html/wp-content"
+  destination = "/var/www/persistent-content"
   source = "ouorz_wordpress_wp_content"
 
 [[services]]

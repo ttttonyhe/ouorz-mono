@@ -9,7 +9,12 @@ export interface StaticListProps {
 	sticky?: boolean
 }
 
-const StaticList = ({ posts, sticky }: StaticListProps) => {
+const emptyPosts: WPPost[] = []
+
+const StaticList = ({
+	posts = emptyPosts,
+	sticky = false,
+}: StaticListProps) => {
 	return (
 		<div>
 			<div key="PostList" data-cy="indexPosts">

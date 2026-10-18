@@ -16,7 +16,7 @@ const List = ({ type, cate, target }: ListProps) => {
 			return <InfiniteList type="cate" cate={cate} />
 		case "search":
 			return <InfiniteList type="search" target={target} />
-		default:
+		case undefined:
 			return <div key="Empty post list" />
 	}
 }

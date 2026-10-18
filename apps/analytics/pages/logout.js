@@ -9,10 +9,9 @@ export default function LogoutPage() {
 
 	useEffect(() => {
 		removeItem(AUTH_TOKEN)
-		router.push("/login")
-
-		return () => setUser(null)
-	}, [])
+		setUser(null)
+		router.replace("/login")
+	}, [router])
 
 	return null
 }

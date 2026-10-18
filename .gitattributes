@@ -1,2 +1,5 @@
 apps/analytics/** linguist-vendored
 apps/wordpress/** linguist-vendored
+
+# Patch context must retain its whitespace and upstream line endings.
+patches/*.patch -text -whitespace

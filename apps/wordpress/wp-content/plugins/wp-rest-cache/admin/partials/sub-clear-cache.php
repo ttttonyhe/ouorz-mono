@@ -46,10 +46,25 @@ if ( isset( $_REQUEST['wp_rest_cache_nonce'] ) && wp_verify_nonce( sanitize_key(
 			<input type="hidden" name="page" value="wp-rest-cache">
 			<input type="hidden" name="sub" value="clear-cache">
 			<?php wp_nonce_field( 'wp_rest_cache_options', 'wp_rest_cache_nonce' ); ?>
-			<input type="checkbox" name="delete_caches" value="1">Delete all caches (this will make you lose all statistics)<br/><br/>
-			<input type="submit" name="submit" id="submit"
-				class="button button-<?php echo $wp_rest_cache_clear_cache ? 'disabled' : 'primary'; ?>" <?php echo $wp_rest_cache_clear_cache ? 'disabled' : ''; ?>
-				value="<?php esc_attr_e( 'Clear REST Cache', 'wp-rest-cache' ); ?>">
+			<p>
+				<label>
+					<input type="checkbox" name="delete_caches" value="1">
+					<?php esc_html_e( 'Delete all caches (this will make you lose all statistics)', 'wp-rest-cache' ); ?>
+				</label>
+			</p>
+			<?php
+			/**
+			 * Action to add extra options to the clear cache form.
+			 *
+			 * @since 2026.2.0
+			 */
+			do_action( 'wp_rest_cache/clear_cache_form_options' );
+			?>
+			<p>
+				<input type="submit" name="submit" id="submit"
+					class="button button-<?php echo $wp_rest_cache_clear_cache ? 'disabled' : 'primary'; ?>" <?php echo $wp_rest_cache_clear_cache ? 'disabled' : ''; ?>
+					value="<?php esc_attr_e( 'Clear REST Cache', 'wp-rest-cache' ); ?>">
+			</p>
 		</form>
 
 		<?php if ( $wp_rest_cache_clear_cache ) : ?>
@@ -66,7 +81,14 @@ if ( isset( $_REQUEST['wp_rest_cache_nonce'] ) && wp_verify_nonce( sanitize_key(
 				progressLabel = jQuery(".progress-label");
 			var ajaxurl = '<?php echo esc_js( admin_url( 'admin-ajax.php' ) ); ?>';
 			var ajaxnonce = '<?php echo esc_js( wp_create_nonce( 'wp_rest_cache_clear_cache_ajax' ) ); ?>';
-			var deletecaches = '<?php echo esc_js( filter_input( INPUT_GET, 'delete_caches', FILTER_VALIDATE_BOOLEAN ) ); ?>';
+			<?php
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- nonce verified above; these only drive the JS payload.
+			$wprc_delete = isset( $_GET['delete_caches'] ) ? (string) filter_var( $_GET['delete_caches'], FILTER_VALIDATE_BOOLEAN ) : '';
+			$wprc_filter = isset( $_GET['cache_filter'] ) ? (string) filter_var( $_GET['cache_filter'], FILTER_SANITIZE_FULL_SPECIAL_CHARS ) : '';
+			// phpcs:enable WordPress.Security.NonceVerification.Recommended
+			?>
+			var deletecaches = '<?php echo esc_js( $wprc_delete ); ?>';
+			var cachefilter = '<?php echo esc_js( $wprc_filter ); ?>';
 
 			progressbar.progressbar({
 				value: false,
@@ -87,7 +109,8 @@ if ( isset( $_REQUEST['wp_rest_cache_nonce'] ) && wp_verify_nonce( sanitize_key(
 						"action": "flush_caches",
 						"page": page,
 						"wp_rest_cache_nonce": ajaxnonce,
-						"delete_caches": deletecaches
+						"delete_caches": deletecaches,
+						"cache_filter": cachefilter
 					},
 					success: function (response) {
 						progressbar.progressbar("value", response.percentage);

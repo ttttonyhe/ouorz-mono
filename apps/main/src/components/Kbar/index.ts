@@ -1,3 +1,5 @@
+import type { IconProps } from "@twilight-toolkit/ui"
+
 import Kbar from "./component"
 
 export type KbarListItem = {
@@ -6,7 +8,7 @@ export type KbarListItem = {
 	color?: string
 	bgColor?: string
 	bgDark?: string
-	icon?: string
+	icon?: IconProps["name"]
 	link?: {
 		internal?: string
 		external?: string

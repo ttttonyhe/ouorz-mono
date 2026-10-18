@@ -1,4 +1,9 @@
 <?php
+if (($_GET['from'] ?? '') !== 'front') {
+    wp_redirect('https://www.ouorz.com/post/'.get_queried_object_id(), 301);
+    exit;
+}
+setPostViews(get_queried_object_id());
 header('Access-Control-Allow-Origin: *');
 get_header(); ?>
 <div class="container">
@@ -9,10 +14,4 @@ get_header(); ?>
         <a class="email" href="mailto:tony.hlp@hotmail.com">Email: tony.hlp@hotmail.com</a>
     </div>
 </div>
-<?php
-if($_GET['from'] !== 'front'){
-    header("Location:https://www.ouorz.com/post".$_SERVER['REQUEST_URI']);
-}else{
-    setPostViews($post->ID);
-} ?>
 <?php get_footer(); ?>

@@ -9,14 +9,17 @@ import { trimStr } from "~/utilities/string"
 
 interface Props {
 	item: WPPost
+	tool: NonNullable<WPPost["post_metas"]["fineTool"]>
 	sticky: boolean
 }
 
 export const CardTool = ({
 	item,
+	tool,
 	preview,
 }: {
 	item: WPPost
+	tool: Props["tool"]
 	preview: boolean
 }) => {
 	const dispatch = useDispatch()
@@ -24,7 +27,7 @@ export const CardTool = ({
 		<div className="w-full overflow-hidden rounded-md border border-gray-200 whitespace-nowrap shadow-xs lg:grid lg:grid-cols-8 lg:gap-3 dark:border-gray-600 dark:bg-gray-600">
 			<div
 				className={`col-start-1 col-end-2 rounded-tl-md rounded-bl-md ${
-					item.post_metas.fineTool.itemImgBorder
+					tool.itemImgBorder
 						? "border-r border-gray-200 dark:border-gray-600"
 						: ""
 				}`}
@@ -38,10 +41,10 @@ export const CardTool = ({
 			<div className="col-start-2 col-end-9 grid grid-cols-2 items-center py-2 pr-3 pl-3 lg:pl-0">
 				<div className="items-center justify-center">
 					<h2 className="text-xl font-medium text-gray-600 dark:text-gray-200">
-						{item.post_metas.fineTool.itemName}
+						{tool.itemName}
 					</h2>
 					<p className="text-5 text-ellipsis text-gray-500 dark:text-gray-400">
-						{item.post_metas.fineTool.itemDes}
+						{tool.itemDes}
 					</p>
 				</div>
 				<div className="hidden justify-end space-x-2 lg:flex">
@@ -56,12 +59,12 @@ export const CardTool = ({
 						/>
 					)}
 					<a
-						href={item.post_metas.fineTool.itemLink}
+						href={tool.itemLink}
 						target="_blank"
 						rel="noreferrer"
 						data-oa="click-visitTool">
 						<Label type="green" icon="right" preview={preview}>
-							{item.post_metas.fineTool.itemLinkName}
+							{tool.itemLinkName}
 						</Label>
 					</a>
 				</div>
@@ -70,14 +73,14 @@ export const CardTool = ({
 	)
 }
 
-export default function CardWithImageTool({ item, sticky }: Props) {
+export default function CardWithImageTool({ item, tool, sticky }: Props) {
 	return (
 		<div
 			className={`w-full rounded-md border bg-white shadow-xs dark:border-gray-700 dark:bg-gray-800 ${
 				sticky ? "mb-6 border-t-4 border-t-yellow-200" : "mb-6"
 			}`}>
 			<div className="p-5 lg:p-10">
-				<CardTool item={item} preview={true} />
+				<CardTool item={item} tool={tool} preview={true} />
 				<div className="mt-6">
 					<Link href={`/post/${item.id}`}>
 						<h1

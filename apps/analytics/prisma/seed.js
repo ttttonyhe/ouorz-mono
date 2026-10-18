@@ -1,6 +1,8 @@
+require("dotenv").config()
 const bcrypt = require("bcryptjs")
 const { PrismaClient } = require("@prisma/client")
-const prisma = new PrismaClient()
+const { getDatabaseConfig } = require("../lib/database.cjs")
+const prisma = new PrismaClient({ datasourceUrl: getDatabaseConfig().url })
 const SALT_ROUNDS = 10
 
 const hashPassword = (password) => {
@@ -8,12 +10,16 @@ const hashPassword = (password) => {
 }
 
 async function main() {
+	const password = process.env.ADMIN_PASSWORD
+	if (!password || Buffer.byteLength(password) > 72) {
+		throw new Error("ADMIN_PASSWORD is required and must not exceed 72 bytes")
+	}
 	await prisma.account.upsert({
 		where: { username: "helipeng" },
 		update: {},
 		create: {
 			username: "helipeng",
-			password: hashPassword(process.env.ADMIN_PASSWORD || "ouorz-analytics"),
+			password: hashPassword(password),
 			is_admin: true,
 		},
 	})
@@ -22,7 +28,7 @@ async function main() {
 main()
 	.catch((e) => {
 		console.error(e)
-		process.exit(1)
+		process.exitCode = 1
 	})
 	.finally(async () => {
 		await prisma.$disconnect()

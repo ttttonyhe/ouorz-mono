@@ -3,25 +3,36 @@ import { getJsonBody, getClientInfo } from "lib/request"
 import { uuid, isValidUuid, parseToken } from "lib/crypto"
 
 export async function getSession(req) {
-	const { payload } = getJsonBody(req)
+	const { payload } = getJsonBody(req) || {}
 
 	if (!payload) {
-		throw new Error("Invalid request")
+		return null
 	}
 
 	const { website: website_uuid, hostname, screen, language } = payload
 	const cache = req.headers["x-ouorz-analytics-cache"]
+	if (!isValidUuid(website_uuid)) return null
+
+	const website = await getWebsiteByUuid(website_uuid)
+	if (!website) return null
+	const { website_id } = website
 
 	if (cache) {
-		const result = await parseToken(cache)
+		const result = await parseToken(cache, "collection")
 
-		if (result) {
-			return result
+		if (result?.website_id === website_id && isValidUuid(result.session_uuid)) {
+			const session = await getSessionByUuid(result.session_uuid)
+			if (
+				session?.website_id === website_id &&
+				session.session_id === result.session_id
+			) {
+				return {
+					website_id,
+					session_id: session.session_id,
+					session_uuid: session.session_uuid,
+				}
+			}
 		}
-	}
-
-	if (!isValidUuid(website_uuid)) {
-		throw new Error(`Invalid website: ${website_uuid}`)
 	}
 
 	const { userAgent, browser, os, ip, country, device } = await getClientInfo(
@@ -29,16 +40,10 @@ export async function getSession(req) {
 		payload
 	)
 
-	const website = await getWebsiteByUuid(website_uuid)
-
-	if (!website) {
-		throw new Error(`Website not found: ${website_uuid}`)
-	}
-
-	const { website_id } = website
 	const session_uuid = uuid(website_id, hostname, ip, userAgent)
 
 	let session = await getSessionByUuid(session_uuid)
+	if (session && session.website_id !== website_id) return null
 
 	if (!session) {
 		try {
@@ -52,14 +57,12 @@ export async function getSession(req) {
 				country,
 				device,
 			})
-
-			if (!session) {
-				return null
-			}
 		} catch (e) {
-			if (!e.message.includes("Unique constraint")) {
+			if (e.code !== "P2002") {
 				throw e
 			}
+			session = await getSessionByUuid(session_uuid)
+			if (!session || session.website_id !== website_id) throw e
 		}
 	}
 
@@ -68,5 +71,6 @@ export async function getSession(req) {
 	return {
 		website_id,
 		session_id,
+		session_uuid,
 	}
 }

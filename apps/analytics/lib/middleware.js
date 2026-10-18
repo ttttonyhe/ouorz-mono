@@ -6,42 +6,49 @@ import { unauthorized, badRequest, serverError } from "./response"
 export function createMiddleware(middleware) {
 	return (req, res) =>
 		new Promise((resolve, reject) => {
-			middleware(req, res, (result) => {
-				if (result instanceof Error) {
-					return reject(result)
-				}
-				return resolve(result)
-			})
+			const finish = (error, proceed = false) => {
+				res.off("finish", ended)
+				res.off("close", ended)
+				if (error) reject(error)
+				else resolve(proceed)
+			}
+			const ended = () => finish()
+			res.once("finish", ended)
+			res.once("close", ended)
+
+			try {
+				Promise.resolve(
+					middleware(req, res, (error) => finish(error, !res.writableEnded))
+				).catch(finish)
+			} catch (error) {
+				finish(error)
+			}
 		})
 }
 
 export const useCors = createMiddleware(cors())
 
-export const useSession = createMiddleware(async (req, res, next) => {
-	let session
-
+export async function useSession(req, res) {
 	try {
-		session = await getSession(req)
-	} catch (e) {
-		console.error(e)
-		return serverError(res, e.message)
+		req.session = await getSession(req)
+	} catch (error) {
+		console.error(error)
+		serverError(res)
+		return false
 	}
 
-	if (!session) {
-		return badRequest(res)
+	if (!req.session) {
+		badRequest(res)
+		return false
 	}
+	return true
+}
 
-	req.session = session
-	next()
-})
-
-export const useAuth = createMiddleware(async (req, res, next) => {
-	const token = await getAuthToken(req)
-
-	if (!token) {
-		return unauthorized(res)
+export async function useAuth(req, res) {
+	req.auth = await getAuthToken(req)
+	if (!req.auth) {
+		unauthorized(res)
+		return false
 	}
-
-	req.auth = token
-	next()
-})
+	return true
+}

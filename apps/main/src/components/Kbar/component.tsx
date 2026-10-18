@@ -31,7 +31,11 @@ const KbarSession = () => {
 		useState<KbarInputValueChangeHandler | undefined>()
 
 	useEffect(() => {
-		if (location !== searchLocation || !kbarInputValueChangeHandler) return
+		if (
+			location.at(-1) !== searchLocation.at(-1) ||
+			!kbarInputValueChangeHandler
+		)
+			return
 
 		const timeout = window.setTimeout(() => {
 			kbarInputValueChangeHandler(kbarInputValue)
@@ -48,10 +52,11 @@ const KbarSession = () => {
 			setInputValue("")
 			setKbarInputValueChangeHandler(undefined)
 			// non-home location, esc to go back to last location
-			if (location.length >= 2) {
+			const previousLocation = location.at(-2)
+			if (previousLocation !== undefined) {
 				dispatch(
 					updateKbar({
-						key: location.at(-2),
+						key: previousLocation,
 						location: location.slice(0, location.length - 1),
 					})
 				)
@@ -62,7 +67,8 @@ const KbarSession = () => {
 		},
 		{
 			enableOnFormTags: ["INPUT"],
-		}
+		},
+		[dispatch, location]
 	)
 
 	return (
@@ -93,23 +99,23 @@ const Kbar = (props: KbarProps) => {
 	const { trackEvent } = useAnalytics()
 
 	// Register keybinding that triggers/hides the kbar
-	useHotkeys("ctrl+k, meta+k", (e) => {
-		e.preventDefault()
-		// A modal dialog makes the page inert, and the palette belongs to the page
-		if (document.querySelector("dialog:modal")) return
+	useHotkeys(
+		"ctrl+k, meta+k",
+		(e) => {
+			e.preventDefault()
+			// A modal dialog makes the page inert, and the palette belongs to the page.
+			if (document.querySelector("dialog:modal")) return
 
-		dispatch(activateKbar(props.list))
-		trackEvent("activateKbar", "hotkey")
-	})
+			dispatch(visible ? deactivateKbar() : activateKbar(props.list))
+			if (!visible) trackEvent("activateKbar", "hotkey")
+		},
+		{ enableOnFormTags: ["INPUT", "TEXTAREA"] },
+		[dispatch, props.list, trackEvent, visible]
+	)
 
 	useEffect(() => {
 		setBodyPointerEvents(!visible)
 		setBodyScroll(!visible)
-
-		return () => {
-			setBodyPointerEvents(true)
-			setBodyScroll(true)
-		}
 	}, [visible, setBodyPointerEvents, setBodyScroll])
 
 	return visible && <KbarSession />

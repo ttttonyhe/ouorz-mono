@@ -1,14 +1,17 @@
 import format from "comma-number"
 import useSWR from "swr"
 
-import fetcher from "~/lib/fetcher"
+import { postMetricsSchema } from "~/constants/propTypes"
+import createFetcher from "~/lib/fetcher"
 
 import MetricCard from "./Card"
 
-export default function PostsMetric() {
-	const { data } = useSWR("api/posts", fetcher)
+const fetchPosts = createFetcher(postMetricsSchema)
 
-	const count = format(data?.count)
+export default function PostsMetric() {
+	const { data } = useSWR("/api/posts", fetchPosts)
+
+	const count = data && format(data.count)
 	const link = "https://blog.ouorz.com/wp-admin"
 
 	return (

@@ -1,7 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 
 import { getPosts } from "~/content/posts"
-import { getPathViews } from "~/content/views"
+import { getPostViews } from "~/content/views"
+import { apiHandler } from "~/lib/apiHandler"
 
 type ResDataType = {
 	views: number
@@ -15,9 +16,10 @@ const posts = async (
 	res.setHeader("Cache-Control", "no-store, max-age=0")
 
 	const allPosts = getPosts()
-	const views = (
-		await Promise.all(allPosts.map((post) => getPathViews(`/post/${post.id}`)))
-	).reduce((sum, value) => sum + value, 0)
+	const views = (await getPostViews(allPosts)).reduce(
+		(sum, value) => sum + value,
+		0
+	)
 
 	return res.status(200).json({
 		views,
@@ -25,4 +27,4 @@ const posts = async (
 	})
 }
 
-export default posts
+export default apiHandler(["GET", "HEAD"], posts)

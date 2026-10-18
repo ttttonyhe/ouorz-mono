@@ -1,10 +1,8 @@
 import { Label } from "@twilight-toolkit/ui"
 import type { GetStaticPaths, GetStaticProps } from "next"
-import { MDXRemote, type MDXRemoteSerializeResult } from "next-mdx-remote"
 import dynamic from "next/dynamic"
 import Head from "next/head"
 import Link from "next/link"
-import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import TimeAgo from "react-timeago"
 
@@ -12,93 +10,54 @@ import CommentBox from "~/components/CommentBox"
 import { contentLayout } from "~/components/Content"
 import PostContent from "~/components/PostContent"
 import SubscriptionBox from "~/components/SubscriptionBox"
-import { serializeMDX } from "~/content/mdx"
+import { renderMDX } from "~/content/mdx"
 import { getPostById, getPostIds, type LocalPost } from "~/content/posts"
 import { useDispatch } from "~/hooks"
 import useLiveViews from "~/hooks/useLiveViews"
 import type { NextPageWithLayout } from "~/pages/_app"
 import { setHeaderTitle } from "~/store/general/actions"
-import { trimStr } from "~/utilities/string"
 
 const Aside = dynamic(() => import("~/components/Aside"), { ssr: false })
 
 interface Props {
-	status: boolean
-	post?: LocalPost
-	mdxSource?: MDXRemoteSerializeResult | null
+	post: LocalPost
+	mdxHtml: string | null
 }
 
-const BlogPost: NextPageWithLayout = ({ status, post, mdxSource }: Props) => {
-	const router = useRouter()
+const BlogPost: NextPageWithLayout<Props> = ({ post, mdxHtml }) => {
 	const dispatch = useDispatch()
-	/**
-	 * The table of contents measures the rendered post, so it mounts a beat after
-	 * the content lands and syntax highlighting has settled. Tracking which post
-	 * was measured resets this when the router swaps one post for another, and
-	 * covers the MDX and the HTML branch alike.
-	 */
+	// Measure the table of contents after post content and highlighting settle.
 	const [renderedPostId, setRenderedPostId] = useState<string | null>(null)
 
 	useEffect(() => {
-		const id = post?.id ?? null
+		const id = post.id
 		const timer = setTimeout(() => setRenderedPostId(id), 100)
 		return () => clearTimeout(timer)
-	}, [post?.id])
+	}, [post.id])
 
 	const isPostContentRendered =
-		renderedPostId !== null && renderedPostId === post?.id
+		renderedPostId !== null && renderedPostId === post.id
 
-	useEffect(() => {
-		if (!status || !post) {
-			void router.replace("/404")
-		}
-	}, [post, router, status])
-
-	const postId = post?.id
 	const { views: postViews, isLoading: isViewsLoading } = useLiveViews(
 		"post",
-		postId,
-		post?.post_metas.views ?? 0
+		post.id,
+		post.post_metas.views
 	)
 
 	useEffect(() => {
-		if (!post) return
 		dispatch(setHeaderTitle(post.title.rendered))
 		return () => {
 			dispatch(setHeaderTitle(""))
 		}
 	}, [dispatch, post])
 
-	if (!post) return null
-
-	if (!status || !post) {
-		return (
-			<div className="mx-auto w-1/3 animate-pulse rounded-md rounded-tl-none rounded-tr-none border border-t-0 bg-white py-3 text-center shadow-xs">
-				<h1 className="text-lg font-medium">404 Not Found</h1>
-				<p className="text-sm font-light tracking-wide text-gray-500">
-					redirecting...
-				</p>
-			</div>
-		)
-	}
-
-	const title = `${post.title.rendered} - Tony He`
-
 	return (
 		<div>
 			<Head>
-				<title>{title}</title>
 				<link
 					rel="icon"
 					href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📃</text></svg>"
 				/>
-				<meta
-					name="description"
-					content={trimStr(post.post_excerpt.four, 150)}
-				/>
-				{post.post_img.url && (
-					<meta property="og:image" content={post.post_img.url} />
-				)}
 			</Head>
 			<article
 				data-cy="postContent"
@@ -114,7 +73,9 @@ const BlogPost: NextPageWithLayout = ({ status, post, mdxSource }: Props) => {
 					<h1 className="text-1.5 leading-snug font-medium tracking-wider lg:text-post-title">
 						{post.title.rendered}
 					</h1>
-					<p className="mt-2 flex space-x-2 text-5 tracking-wide whitespace-nowrap text-gray-500 lg:text-xl">
+					<p
+						lang="en"
+						className="mt-2 flex space-x-2 text-5 tracking-wide whitespace-nowrap text-gray-500 lg:text-xl">
 						<span>
 							Posted <TimeAgo date={post.date} />
 						</span>
@@ -138,10 +99,11 @@ const BlogPost: NextPageWithLayout = ({ status, post, mdxSource }: Props) => {
 					</p>
 				</div>
 				<div className="blog-content">
-					{mdxSource ? (
-						<div className="prose max-w-none dark:prose-invert">
-							<MDXRemote {...mdxSource} />
-						</div>
+					{mdxHtml !== null ? (
+						<div
+							className="prose max-w-none dark:prose-invert"
+							dangerouslySetInnerHTML={{ __html: mdxHtml }}
+						/>
 					) : (
 						<PostContent content={post.content.rendered} />
 					)}
@@ -158,37 +120,21 @@ const BlogPost: NextPageWithLayout = ({ status, post, mdxSource }: Props) => {
 	)
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
 	const pid = Number(context.params?.pid)
 	const post = getPostById(pid)
 
 	if (!post) {
-		return {
-			props: {
-				status: false,
-			},
-			revalidate: 10,
-		}
+		return { notFound: true }
 	}
 
 	const shouldRenderAsHTML = /<\w+[\s\S]*>/u.test(post.content.raw)
-	let mdxSource: MDXRemoteSerializeResult | null = null
-
-	if (!shouldRenderAsHTML) {
-		try {
-			mdxSource = await serializeMDX(post.content.raw)
-		} catch {
-			mdxSource = null
-		}
-	}
+	const mdxHtml = shouldRenderAsHTML ? null : await renderMDX(post.content.raw)
 
 	return {
 		props: {
-			status: true,
-			post: {
-				...post,
-			},
-			mdxSource,
+			post,
+			mdxHtml,
 		},
 		revalidate: 24 * 3600,
 	}
@@ -199,7 +145,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 		params: { pid: id.toString() },
 	}))
 
-	return { paths, fallback: "blocking" }
+	return { paths, fallback: false }
 }
 
 BlogPost.layout = contentLayout

@@ -9,17 +9,19 @@
  * @subpackage WP_Rest_Cache_Plugin/Admin/Partials
  */
 
-if ( ! isset( $sub ) ) {
+if ( ! isset( $sub, $this->settings_panels ) ) {
 	return;
 }
 
 ?>
 <h1>WP REST Cache</h1>
 <h2 class="nav-tab-wrapper">
-	<a href="<?php echo esc_attr( admin_url( 'options-general.php?page=wp-rest-cache&sub=settings' ) ); ?>" id="settings"
-		class="nav-tab <?php echo 'settings' === $sub ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Settings', 'wp-rest-cache' ); ?></a>
-	<a href="<?php echo esc_attr( admin_url( 'options-general.php?page=wp-rest-cache&sub=endpoint-api' ) ); ?>" id="endpoint-api"
-		class="nav-tab <?php echo 'endpoint-api' === $sub ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Endpoint API Caches', 'wp-rest-cache' ); ?></a>
-	<a href="<?php echo esc_attr( admin_url( 'options-general.php?page=wp-rest-cache&sub=clear-cache' ) ); ?>" id="clear-cache"
-		class="nav-tab <?php echo 'clear-cache' === $sub ? 'nav-tab-active' : ''; ?>"><?php esc_html_e( 'Clear Caches', 'wp-rest-cache' ); ?></a>
+	<?php
+	foreach ( $this->settings_panels as $wprc_key => $wprc_panel ) {
+		?>
+		<a href="<?php echo esc_attr( admin_url( 'options-general.php?page=wp-rest-cache&sub=' . $wprc_key ) ); ?>" id="<?php echo esc_attr( $wprc_key ); ?>"
+			class="nav-tab <?php echo $wprc_key === $sub ? 'nav-tab-active' : ''; ?>"><?php echo esc_html( $wprc_panel['label'] ); ?></a>
+		<?php
+	}
+	?>
 </h2>

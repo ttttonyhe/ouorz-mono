@@ -32,7 +32,7 @@ function deel_keywords() {
     //foreach ( get_the_tags( $post->ID ) as $tag ) $keywords .= $tag->name . ', ';
     //}<br>    //如果文章有标签，关键词为标签
     $category = get_the_category();
-    $parent = get_cat_name($category[0]->category_parent);
+    $parent = !empty($category) ? get_cat_name($category[0]->category_parent) : '';
     //echo $parent;//得到父级分类名称
     foreach (get_the_category($post->ID) as $category) $keywords .= $parent.','. $category->cat_name . ', '.get_the_title();
     //关键词为父级分类名称，分类名称，文章标题
@@ -40,7 +40,7 @@ function deel_keywords() {
     $keywords = substr_replace($keywords , '' , -2);
   }
   if ($keywords) {
-    echo "<meta name=\"keywords\" content=\"$keywords\">\n";
+    echo '<meta name="keywords" content="'.esc_attr($keywords)."\">\n";
   }
 }
 //关键字加入head头部代码
@@ -80,12 +80,13 @@ function mee_insert_post_custom_button($_var) {
 }
 //插入文章
 function fa_insert_posts($atts, $content = null) {
-  extract(shortcode_atts(array(
-    'ids' => ''
-  ),
-    $atts));
-  $post = get_post((int)$ids);
-  $content .= '<div class="warp-post-embed"><a style="text-decoration: none;" href="https://www.ouorz.com/post/'.$ids.'" target="_blank" ><div class="embed-content"><h2>'.$post->post_title.'</h2><p><b>ID: '. $post->ID .'</b>&nbsp;&nbsp;发布于: '. $post->post_date .'</p></div></a></div>';
+  $atts = shortcode_atts(array('ids' => ''), $atts);
+  $id = absint($atts['ids']);
+  $post = $id ? get_post($id) : null;
+  if (!$post || !is_post_publicly_viewable($post)) {
+    return $content ?? '';
+  }
+  $content .= '<div class="warp-post-embed"><a style="text-decoration: none;" href="https://www.ouorz.com/post/'.$post->ID.'" target="_blank" ><div class="embed-content"><h2>'.esc_html(get_the_title($post)).'</h2><p><b>ID: '. $post->ID .'</b>&nbsp;&nbsp;发布于: '. esc_html($post->post_date) .'</p></div></a></div>';
   return $content;
 }
 add_shortcode('fa_insert_post', 'fa_insert_posts');
@@ -123,8 +124,7 @@ add_filter('body_class', 'lxtx_comment_body_class');
 
 function get_tag_post_count_by_id($tag_id) {
   $tag = get_term_by('id', $tag_id, 'post_tag');
-  _make_cat_compat($tag);
-  return $tag->count;
+  return $tag && !is_wp_error($tag) ? (int)$tag->count : 0;
 }
 
 //add post thumbnails
@@ -136,10 +136,10 @@ if (function_exists('add_theme_support')) {
 add_filter('wp_handle_upload_prefilter', 'custom_upload_filter');
 function custom_upload_filter($file) {
   $info = pathinfo($file['name']);
-  $ext = $info['extension'];
+  $ext = $info['extension'] ?? '';
   $filedate = date('YmdHis').rand(10,99);
   //为了避免时间重复，再加一段2位的随机数
-  $file['name'] = $filedate.'.'.$ext;
+  $file['name'] = $filedate.($ext === '' ? '' : '.'.$ext);
   return $file;
 }
 
@@ -230,14 +230,6 @@ function wp_rest_insert_tag_links() {
     )
   );
   register_rest_field('post',
-    'content',
-    array(
-      'get_callback' => 'get_post_content_for_api',
-      'update_callback' => null,
-      'schema' => null,
-    )
-  );
-  register_rest_field('post',
     'post_prenext',
     array(
       'get_callback' => 'get_post_prenext_for_api',
@@ -272,6 +264,9 @@ function get_total_post_count() {
 function wp_rest_get_categories_links($post) {
   $post_categories = array();
   $categories = wp_get_post_terms($post['id'], 'category', array('fields' => 'all'));
+  if (is_wp_error($categories)) {
+    return $post_categories;
+  }
 
   foreach ($categories as $term) {
     $term_link = get_term_link($term);
@@ -283,12 +278,31 @@ function wp_rest_get_categories_links($post) {
   return $post_categories;
 
 }
-function wp_rest_get_plain_excerpt($post) {
-  $excerpts = array();
-  $excerpts['nine'] = wp_trim_words(get_the_content($post['id']), 160);
-  $excerpts['four'] = wp_trim_words(get_the_content($post['id']), 70);
-  $excerpts['rss'] = get_the_excerpt($post['id']);
-  return $excerpts;
+function peg_rest_can_read_content(WP_Post $post, WP_REST_Request $request): bool {
+  $controller = new WP_REST_Posts_Controller($post->post_type);
+  return !post_password_required($post) || $controller->can_access_password_content($post, $request);
+}
+
+function wp_rest_get_plain_excerpt($post, $field, $request) {
+  $item = get_post($post['id']);
+  if (!$item || !peg_rest_can_read_content($item, $request)) {
+    return array('nine' => '', 'four' => '', 'rss' => '');
+  }
+
+  $password_filter = static function ($required, $post) use ($item) {
+    return $post->ID === $item->ID ? false : $required;
+  };
+  add_filter('post_password_required', $password_filter, 10, 2);
+  try {
+    $content = get_the_content(null, false, $item);
+    return array(
+      'nine' => wp_trim_words($content, 160),
+      'four' => wp_trim_words($content, 70),
+      'rss' => get_the_excerpt($item),
+    );
+  } finally {
+    remove_filter('post_password_required', $password_filter, 10);
+  }
 }
 
 function wp_rest_get_normal_date($post) {
@@ -299,30 +313,42 @@ function wp_rest_get_normal_date($post) {
   return $date;
 }
 
-function get_post_title_for_ordering() {
+function get_post_title_for_ordering($post) {
   $title = get_the_title($post['id']);
   return $title;
 }
 
-function get_page_content_for_api($post) {
-  $content = get_post($post['id'])->post_content;
-  $content = apply_filters('the_content', $content);
-  $content = str_replace(']]>', ']]&gt;', $content);
-  $content = str_replace('blog.ouorz.com', 'www.ouorz.com', $content);
-  return $content;
+function get_page_content_for_api($post, $field, $request) {
+  $item = get_post($post['id']);
+  if (!$item || !peg_rest_can_read_content($item, $request)) {
+    return '';
+  }
+
+  $content = $post['content']['rendered'] ?? apply_filters('the_content', $item->post_content);
+  return peg_format_rest_content($content);
 }
 
-function get_post_content_for_api($post) {
-  $content = get_post($post['id'])->post_content;
-  $content = apply_filters('the_content', $content);
-  $content = str_replace(']]>', ']]&gt;', $content);
-  $content = str_replace('blog.ouorz.com', 'www.ouorz.com', $content);
-  $content = str_replace('<pre>', '<pre><code>', $content);
-  $content = str_replace('</pre>', '</code></pre>', $content);
-  return array('rendered' => $content);
+function peg_format_rest_content(string $content): string {
+  return str_replace(array(']]>', 'blog.ouorz.com'), array(']]&gt;', 'www.ouorz.com'), $content);
 }
 
-function get_post_meta_for_api($post) {
+function peg_prepare_rest_post($response) {
+  $data = $response->get_data();
+  if (isset($data['content']['rendered'])) {
+    $data['content']['rendered'] = preg_replace_callback(
+      '/<pre>(.*?)<\/pre>/s',
+      static function ($match) {
+        return preg_match('/^\s*<code(?:\s|>)/', $match[1]) ? $match[0] : '<pre><code>'.$match[1].'</code></pre>';
+      },
+      peg_format_rest_content($data['content']['rendered'])
+    );
+    $response->set_data($data);
+  }
+  return $response;
+}
+add_filter('rest_prepare_post', 'peg_prepare_rest_post');
+
+function get_post_meta_for_api($post, $field, $request) {
   $post_meta = array();
   $post_meta['views'] = get_post_meta($post['id'],'post_views_count',true);
   $post_meta['link'] = get_post_meta($post['id'],'link',true);
@@ -330,8 +356,10 @@ function get_post_meta_for_api($post) {
   $post_meta['img'] = wp_get_attachment_image_src(get_post_thumbnail_id($post['id']), 'full');
   $post_meta['title'] = get_the_title($post['id']);
   $tagsss = get_the_tags($post['id']);
-  $post_meta['tag_name'] = $tagsss[0]->name;
-  $post_meta['reading']['word_count'] = mb_strlen(preg_replace('/\s/','',html_entity_decode(strip_tags(get_the_content($post['id'])))),'UTF-8');
+  $post_meta['tag_name'] = !is_wp_error($tagsss) && !empty($tagsss) ? $tagsss[0]->name : '';
+  $item = get_post($post['id']);
+  $content = $item && peg_rest_can_read_content($item, $request) ? $item->post_content : '';
+  $post_meta['reading']['word_count'] = mb_strlen(preg_replace('/\s/u','',html_entity_decode(strip_tags($content), ENT_QUOTES | ENT_HTML5, 'UTF-8')),'UTF-8');
   $post_meta['reading']['time_required'] = ceil($post_meta['reading']['word_count']/300);
   if (!empty(get_post_meta($post['id'],'itemName',true))) {
     $post_meta['fineTool'] = array(
@@ -443,10 +471,14 @@ add_action('init', 'get_site_info_api');
 function get_post_tags_for_api($post) {
   $tag_term = array();
   $tags = wp_get_post_tags($post['id']);
+  if (is_wp_error($tags)) {
+    return $tag_term;
+  }
   $i = 0;
   foreach ($tags as $tag) {
     $tag_term[$i]['id'] = $tag->term_id;
-    $tag_term[$i]['url'] = get_tag_link($tag->term_id);
+    $link = get_tag_link($tag->term_id);
+    $tag_term[$i]['url'] = is_wp_error($link) ? '' : $link;
     $tag_term[$i]['name'] = $tag->name;
     $i++;
   }
@@ -455,21 +487,26 @@ function get_post_tags_for_api($post) {
 
 //获取上下篇文章
 function get_post_prenext_for_api($post) {
-  $array = array();
-  $prev_post = get_previous_post(false,'');
-  $next_post = get_next_post(false,'');
-  $array['prev'][0] = $prev_post->ID;
-  $array['prev'][1] = $prev_post->post_title;
-  $array['prev'][2] = wp_get_post_categories($prev_post->ID)[0];
-  $array['next'][0] = $next_post->ID;
-  $array['next'][1] = $next_post->post_title;
-  $array['next'][2] = wp_get_post_categories($next_post->ID)[0];
+  $current_post = $GLOBALS['post'] ?? null;
+  $GLOBALS['post'] = get_post($post['id']);
+  $array = array('prev' => array(null, null, null), 'next' => array(null, null, null));
+  try {
+    foreach (array('prev' => get_previous_post(false, ''), 'next' => get_next_post(false, '')) as $direction => $adjacent) {
+      if (!$adjacent instanceof WP_Post) {
+        continue;
+      }
+      $categories = wp_get_post_categories($adjacent->ID);
+      $array[$direction] = array($adjacent->ID, $adjacent->post_title, is_wp_error($categories) ? null : ($categories[0] ?? null));
+    }
+  } finally {
+    $GLOBALS['post'] = $current_post;
+  }
   return $array;
 }
 
 //获取博客数据
-function rest_data_callback() {
-  if ($_GET['check'] == 'check') {
+function rest_data_callback($request) {
+  if ($request['check'] === 'check') {
     global $wpdb;
     $sql = "SELECT SUM(meta_value+0) FROM $wpdb->posts left join $wpdb->postmeta on ($wpdb->posts.ID = $wpdb->postmeta.post_id) WHERE meta_key = 'post_views_count'";
     $comment_views = intval($wpdb->get_var($sql));
@@ -479,9 +516,10 @@ function rest_data_callback() {
   }
 }
 function data_rest_register_route() {
-  register_rest_route('data/', 'site', [
+  register_rest_route('data', 'site', [
     'methods' => 'GET',
-    'callback' => 'rest_data_callback'
+    'callback' => 'rest_data_callback',
+    'permission_callback' => '__return_true',
   ]);
 }
 add_action('rest_api_init', 'data_rest_register_route');
@@ -523,7 +561,7 @@ add_filter('rest_post_collection_params', 'my_prefix_change_post_per_page', 10, 
 function my_prefix_change_post_per_page($params) {
   if (isset($params['per_page'])) {
     $count_posts = wp_count_posts();
-    $params['per_page']['maximum'] = $count_posts->publish;
+    $params['per_page']['maximum'] = max(100, (int)$count_posts->publish);
   }
   return $params;
 }
@@ -548,36 +586,12 @@ function get_words_count() {
   global $wpdb;
   $totalWords = 0;
   //$contents = $wpdb->get_results("SELECT post_content FROM $wpdb->posts WHERE post_status = 'publish' AND TO_DAYS(NOW()) - TO_DAYS(post_date) <= 365 ORDER BY post_date DESC");
-  $contents = $wpdb->get_results("SELECT post_content FROM$wpdb->posts WHERE post_status = 'publish'");
+  $contents = $wpdb->get_results("SELECT post_content FROM $wpdb->posts WHERE post_status = 'publish' AND post_type = 'post'");
   foreach ($contents as $content) {
     $totalWords += mb_strlen(strip_tags(apply_filters('the_content', $content->post_content)));
   }
 
-  //增加逗号
-  $countArray = str_split((string)$totalWords,1);
-  $countArrayCount = count($countArray);
-  for ($k = 0;$k < intval($countArrayCount/2);$k++) {
-    $temp = $countArray[$k];
-    $countArray[$k] = $countArray[$countArrayCount - $k - 1];
-    $countArray[$countArrayCount - $k - 1] = $temp;
-  }
-  $addCount = 0;
-  for ($i = 0;$i < $countArrayCount;$i++) {
-    if ($addCount == 3) {
-      $addCount = 0;
-      $wordsArray[] = ',';
-    } else {
-      $wordsArray[] = $countArray[$i];
-      $addCount++;
-    }
-  }
-  for ($k = 0;$k < intval($countArrayCount/2);$k++) {
-    $temp = $wordsArray[$k];
-    $wordsArray[$k] = $wordsArray[$countArrayCount - $k - 1];
-    $wordsArray[$countArrayCount - $k - 1] = $temp;
-  }
-  $totalWords = implode($wordsArray,'');
-  return $totalWords;
+  return number_format($totalWords);
 }
 
 //禁止压缩图片
@@ -648,23 +662,15 @@ add_action('admin_head-edit.php', 'suxingme_posts_id_column_css');
   Marks handler
 */
 function handleMark($params) {
-  $id = $params['id'];
-  $markCountBefore = (int)get_post_meta($id, "markCount",true);
-  if (!empty($id)) {
-    if (!$markCountBefore) {
-      $markCountBefore = 0;
-    }
-    $status = update_post_meta($id, "markCount", $markCountBefore + 1);
-    return $status ? array('status' => true,'markCountNow' => $markCountBefore + 1) : new WP_Error('Update has faild', 'Unknown error', array('status' => 404));
-  } else {
-    return new WP_Error('Post does not exist', 'Invalid post ID', array('status' => 404));
-  }
+  $count = peg_increment_post_counter(absint($params['id']), 'markCount');
+  return is_wp_error($count) ? $count : array('status' => true, 'markCountNow' => $count);
 }
 
 add_action('rest_api_init', function () {
   register_rest_route('tony/v1', '/mark/(?P<id>\d+)', array(
-    'methods' => 'GET',
+    'methods' => 'POST',
     'callback' => 'handleMark',
+    'permission_callback' => 'peg_counter_permissions',
   ));
 }
 );
@@ -673,23 +679,82 @@ add_action('rest_api_init', function () {
   Visit handler
 */
 function handleVisit($params) {
-  $id = $params['id'];
-  $visitCountBefore = (int)get_post_meta($id, "post_views_count",true);
-  if (!empty($id)) {
-    if (!$visitCountBefore) {
-      $visitCountBefore = 0;
+  $count = peg_increment_post_counter(absint($params['id']), 'post_views_count');
+  return is_wp_error($count) ? $count : array('status' => true, 'visitCountNow' => $count);
+}
+
+function peg_counter_permissions($request) {
+  $post = get_post(absint($request['id']));
+  if (!$post || $post->post_type !== 'post' || $post->post_status !== 'publish' || $post->post_password !== '') {
+    return new WP_Error('rest_post_invalid_id', 'Invalid post ID', array('status' => 404));
+  }
+  return true;
+}
+
+function peg_increment_post_counter(int $post_id, string $key) {
+  global $wpdb;
+  $error = new WP_Error('rest_counter_update_failed', 'Could not update the counter', array('status' => 500));
+  $visitor = $_SERVER['REMOTE_ADDR'] ?? '';
+  if (getenv('FLY_APP_NAME') === 'ouorz-wordpress' && filter_var($_SERVER['HTTP_FLY_CLIENT_IP'] ?? '', FILTER_VALIDATE_IP)) {
+    $visitor = $_SERVER['HTTP_FLY_CLIENT_IP'];
+  }
+  if (!filter_var($visitor, FILTER_VALIDATE_IP)) {
+    return new WP_Error('rest_counter_invalid_visitor', 'A valid visitor address is required', array('status' => 400));
+  }
+  $dedup_key = 'peg_counter_'.$post_id.'_'.$key.'_'.hash_hmac('sha256', inet_pton($visitor), wp_salt('nonce'));
+  $dedup_attempted = false;
+  $committed = false;
+  if ($wpdb->query('START TRANSACTION') === false) {
+    return $error;
+  }
+
+  try {
+    // Lock the post because a counter may not have a metadata row yet.
+    $id = $wpdb->get_var($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE ID = %d AND post_type IN ('post', 'page') AND post_status = 'publish' AND post_password = '' FOR UPDATE", $post_id));
+    if (!$id) {
+      return $wpdb->last_error ? $error : new WP_Error('rest_post_invalid_id', 'Invalid post ID', array('status' => 404));
     }
-    $status = update_post_meta($id, "post_views_count", $visitCountBefore + 1);
-    return $status ? array('status' => true,'visitCountNow' => $visitCountBefore + 1) : new WP_Error('Update has faild', 'Unknown error', array('status' => 404));
-  } else {
-    return new WP_Error('Post does not exist', 'Invalid post ID', array('status' => 404));
+
+    $row = $wpdb->get_row($wpdb->prepare("SELECT meta_id, meta_value FROM $wpdb->postmeta WHERE post_id = %d AND meta_key = %s ORDER BY meta_id LIMIT 1 FOR UPDATE", $post_id, $key));
+    if ($wpdb->last_error) {
+      return $error;
+    }
+    $count = max(0, (int)($row->meta_value ?? 0));
+    if (get_transient($dedup_key)) {
+      return $count;
+    }
+    $count++;
+    $result = $row === null
+      ? $wpdb->insert($wpdb->postmeta, array('post_id' => $post_id, 'meta_key' => $key, 'meta_value' => $count), array('%d', '%s', '%d'))
+      : $wpdb->update($wpdb->postmeta, array('meta_value' => $count), array('post_id' => $post_id, 'meta_key' => $key), array('%d'), array('%d', '%s'));
+
+    if (!$result) {
+      return $error;
+    }
+    $dedup_attempted = true;
+    if (!set_transient($dedup_key, 1, $key === 'markCount' ? DAY_IN_SECONDS : 5 * MINUTE_IN_SECONDS) || $wpdb->query('COMMIT') === false) {
+      return $error;
+    }
+    $committed = true;
+    wp_cache_delete($post_id, 'post_meta');
+    return $count;
+  } finally {
+    if (!$committed) {
+      $wpdb->query('ROLLBACK');
+      if ($dedup_attempted) {
+        wp_cache_delete($dedup_key, 'transient');
+        wp_cache_delete('_transient_'.$dedup_key, 'options');
+        wp_cache_delete('_transient_timeout_'.$dedup_key, 'options');
+      }
+    }
   }
 }
 
 add_action('rest_api_init', function () {
   register_rest_route('tony/v1', '/visit/(?P<id>\d+)', array(
-    'methods' => 'GET',
+    'methods' => 'POST',
     'callback' => 'handleVisit',
+    'permission_callback' => 'peg_counter_permissions',
   ));
 }
 );
@@ -715,6 +780,7 @@ add_action('rest_api_init', function () {
   register_rest_route('tony/v1', '/poststats', array(
     'methods' => 'GET',
     'callback' => 'getTotalPostsCount',
+    'permission_callback' => '__return_true',
   ));
 }
 );
@@ -731,6 +797,7 @@ add_action('rest_api_init', function () {
   register_rest_route('tony/v1', '/posts_count', array(
     'methods' => 'GET',
     'callback' => 'getPostsCount',
+    'permission_callback' => '__return_true',
   ));
 }
 );
@@ -752,34 +819,26 @@ function getPostsID() {
 add_action('rest_api_init', function () {
   register_rest_route('tony/v1', '/post_ids', array(
     'methods' => 'GET',
-    'callback' => 'getPostsID'
+    'callback' => 'getPostsID',
+    'permission_callback' => '__return_true',
   ));
 }
 );
-
-// TODO: remove this
-add_action('rest_api_init', function () {
-  register_rest_route('tony/v1', '/posts_ids', array(
-    'methods' => 'GET',
-    'callback' => 'getPostsID'
-  ));
-}
-);
-
 
 /*
  * Get all pages' ID for Next.js static generation 
  */
 
 function getPagesID() {
-	$pageIDs = array_map('intval', get_all_page_ids());
+	$pageIDs = get_posts(array('post_type' => 'page', 'post_status' => 'publish', 'posts_per_page' => -1, 'fields' => 'ids', 'has_password' => false));
 	return $pageIDs;
 }
 
 add_action('rest_api_init', function () {
   register_rest_route('tony/v1', '/page_ids', array(
     'methods' => 'GET',
-    'callback' => 'getPagesID'
+    'callback' => 'getPagesID',
+    'permission_callback' => '__return_true',
   ));
 }
 );
@@ -800,29 +859,11 @@ function getCatesID() {
 add_action('rest_api_init', function () {
   register_rest_route('tony/v1', '/cate_ids', array(
     'methods' => 'GET',
-    'callback' => 'getCatesID'
+    'callback' => 'getCatesID',
+    'permission_callback' => '__return_true',
   ));
 }
 );
-
-/*
- * Trigger Next.js On-demand ISR
- */
-function triggerRevalidation( $post_id ) {
-	// only revalidate posts (not pages)
-	if ( get_post_type($post_id) !== 'post' ) {
-        return;
-    }
-	$url = 'https://www.ouorz.com/api/revalidate';
-	$data = array('token' => 'GVwup6VQqM6vRejJ', 'path' => '/post/'.$post_id);
-	wp_remote_post( $url, array(
-    	'method' => 'POST',
-    	'body' => $data
-    ));
-}
-
-add_action( 'save_post', 'triggerRevalidation' );
-
 
 /*
  * Get all posts for search indexing
@@ -841,7 +882,8 @@ function getPostsForSearchIndexing() {
 add_action('rest_api_init', function () {
   register_rest_route('tony/v1', '/searchIndexes', array(
     'methods' => 'GET',
-    'callback' => 'getPostsForSearchIndexing'
+    'callback' => 'getPostsForSearchIndexing',
+    'permission_callback' => '__return_true',
   ));
 });
 
@@ -852,6 +894,7 @@ add_action('rest_api_init', function () {
 function getPostsForRSSFeed() {
 	$posts = get_posts(array(
     	'posts_per_page'  => -1,
+		'has_password' => false,
 		'category__not_in' => [5,2,74,120,58]
 	));
 	$ids = array_column($posts, 'ID');
@@ -864,7 +907,8 @@ function getPostsForRSSFeed() {
 add_action('rest_api_init', function () {
   register_rest_route('tony/v1', '/rssData', array(
     'methods' => 'GET',
-    'callback' => 'getPostsForRSSFeed'
+    'callback' => 'getPostsForRSSFeed',
+    'permission_callback' => '__return_true',
   ));
 });
 

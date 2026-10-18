@@ -3,7 +3,7 @@ import { useAuth } from "lib/middleware"
 import { ok, methodNotAllowed, unauthorized } from "lib/response"
 
 export default async (req, res) => {
-	await useAuth(req, res)
+	if (!(await useAuth(req, res))) return
 
 	const { user_id: current_user_id, is_admin } = req.auth
 	const { user_id, include_all } = req.query

@@ -4,7 +4,7 @@
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,
 		"skipLibCheck": true,
-		"strict": false,
+		"strict": true,
 		"forceConsistentCasingInFileNames": true,
 		"noEmit": true,
 		"esModuleInterop": true,
@@ -12,6 +12,7 @@
 		"moduleResolution": "bundler",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
+		"allowImportingTsExtensions": true,
 		"jsx": "react-jsx",
 		"paths": {
 			"~/*": ["./src/*"],
@@ -23,11 +24,11 @@
 	},
 	"include": [
 		"next-env.d.ts",
-		"twin.d.ts",
 		"**/*.ts",
+		"**/*.mts",
 		"**/*.tsx",
 		"next.config.js",
-		"src/components/Highlight/index.js"
+		"tailwind.config.mjs"
 	],
 	"exclude": ["node_modules", "cypress"]
 }

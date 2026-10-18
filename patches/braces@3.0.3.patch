@@ -1,0 +1,13 @@
+diff --git a/lib/constants.js b/lib/constants.js
+index 2bb3b8840382c56700869b3a9e1f958fcce01efd..21ce23535bb55e1c61873b1a121076d3f20db36c 100644
+--- a/lib/constants.js
++++ b/lib/constants.js
+@@ -1,7 +1,7 @@
+ 'use strict';
+ 
+ module.exports = {
+-  MAX_LENGTH: 10000,
++  MAX_LENGTH: 4096,
+ 
+   // Digits
+   CHAR_0: '0', /* 0 */

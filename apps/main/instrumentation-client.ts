@@ -4,6 +4,9 @@ import {
 	init,
 	replayIntegration,
 } from "@sentry/nextjs"
+import { z } from "zod"
+
+z.config({ jitless: true })
 
 init({
 	dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,

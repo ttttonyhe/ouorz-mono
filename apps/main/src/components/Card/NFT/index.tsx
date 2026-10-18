@@ -4,41 +4,43 @@ import ContentLoader from "react-content-loader"
 import { GlowingBackground } from "~/components/Visual"
 import openLink from "~/utilities/externalLink"
 
-interface PropsType {
-	blockchain: string
+interface NFTContent {
 	title: string
 	description: string
 	image: string
-	link?: string
-	contract?: string
-	token?: string
 	tokenType?: string
 	quantity?: number
 }
 
+type PropsType = NFTContent &
+	(
+		| {
+				blockchain: "ethereum"
+				tokenId: string
+				contract: string
+				token?: never
+		  }
+		| { blockchain: "solana"; token: string; contract?: never; tokenId?: never }
+	)
+
 const NFTCard = (props: PropsType) => {
-	let icon = "question"
-	let tokenLink = props.link
-	let link = props.link
+	const icon = props.blockchain === "ethereum" ? "eth" : "solana"
+	const link =
+		props.blockchain === "ethereum"
+			? `https://etherscan.io/nft/${props.contract}/${props.tokenId}`
+			: `https://solscan.io/token/${props.token}`
+	const tokenLink =
+		props.blockchain === "ethereum"
+			? `https://etherscan.io/address/${props.contract}`
+			: link
 	let imageSrc = props.image
 	const description = props.description || "Just another NFT"
 
-	// Determine token link based on blockchain
-	switch (props.blockchain) {
-		case "ethereum":
-			icon = "eth"
-			tokenLink = `https://etherscan.io/address/${props.contract}`
-			break
-		case "solana":
-			icon = "solana"
-			tokenLink = `https://solscan.io/token/${props.token}`
-			link = tokenLink
-			break
-	}
-
-	// Map ipfs hash to gateway url
-	if (imageSrc.includes("ipfs://")) {
-		imageSrc = `https://dweb.link/ipfs/${imageSrc.replace("ipfs://", "")}`
+	if (imageSrc.startsWith("ipfs://")) {
+		imageSrc = imageSrc.replace(
+			/^ipfs:\/\/(?:ipfs\/)?/u,
+			"https://dweb.link/ipfs/"
+		)
 	}
 
 	return (
@@ -77,9 +79,9 @@ const NFTCard = (props: PropsType) => {
 						</a>
 					</div>
 					<div onClick={() => openLink(link)}>
-						<h2 className="mb-0.5 overflow-hidden text-2 font-medium tracking-wider text-ellipsis whitespace-nowrap">
+						<h3 className="mb-0.5 overflow-hidden text-2 font-medium tracking-wider text-ellipsis whitespace-nowrap">
 							{props.title}
-						</h2>
+						</h3>
 						<p className="line-clamp-2 text-3 leading-snug tracking-wide text-gray-600 dark:text-gray-400">
 							{description}
 						</p>

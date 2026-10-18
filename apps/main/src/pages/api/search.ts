@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 
 import { getAllPosts, type LocalPost } from "~/content/posts"
+import { apiHandler } from "~/lib/apiHandler"
 import { parseBody, searchBodySchema } from "~/lib/requestBody"
 
 const RESULT_LIMIT = 10
@@ -55,8 +56,13 @@ const scorePost = (
 	return score
 }
 
-const search = (req: NextApiRequest, res: NextApiResponse<SearchResponse>) => {
-	const searchQuery = parseBody(searchBodySchema, req.body)?.query ?? ""
+const search = (
+	req: NextApiRequest,
+	res: NextApiResponse<SearchResponse | { error: string }>
+) => {
+	const body = parseBody(searchBodySchema, req)
+	if (!body) return res.status(400).json({ error: "Invalid request body" })
+	const searchQuery = body.query
 	const normalizedQuery = normalizeText(searchQuery)
 	const queryTokens = normalizedQuery.split(/\s+/u).filter(Boolean)
 
@@ -92,4 +98,6 @@ const search = (req: NextApiRequest, res: NextApiResponse<SearchResponse>) => {
 	})
 }
 
-export default search
+export const config = { api: { bodyParser: { sizeLimit: "4kb" } } }
+
+export default apiHandler(["POST"], search)

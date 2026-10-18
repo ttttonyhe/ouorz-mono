@@ -1,60 +1,77 @@
-import { call, delay, put, select } from "redux-saga/effects"
+import { call, delay, put, type CallEffect } from "redux-saga/effects"
+import { z } from "zod"
 
 import {
 	addToKbarLists,
 	setKbarList,
 	setKbarLoading,
+	type KbarList,
 	type updateKbarSearchQuery,
 } from "../actions"
-import { selectKbar } from "../selectors"
+import { selectKbarState } from "../selectors"
+
+const searchResponseSchema = z.object({
+	hits: z.array(
+		z.object({ post_id: z.number().int().positive(), post_title: z.string() })
+	),
+})
+
+type SearchResponse = z.infer<typeof searchResponseSchema>
+
+const searchPosts = async (query: string, signal: AbortSignal) => {
+	const response = await fetch("/api/search", {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({ query }),
+		signal,
+	})
+	if (!response.ok) throw new Error(`Search failed: ${response.status}`)
+	return searchResponseSchema.parse(await response.json())
+}
+
+function* fetchSearchPosts(
+	query: string,
+	signal: AbortSignal
+): Generator<CallEffect<SearchResponse>, SearchResponse, SearchResponse> {
+	return yield call(searchPosts, query, signal)
+}
 
 export default function* updateKbarSearchQuerySaga(
 	action: ReturnType<typeof updateKbarSearchQuery>
 ) {
+	const controller = new AbortController()
 	try {
 		// start loading
 		yield put(setKbarLoading(true))
 
 		// get list cache
-		const { lists } = yield select(selectKbar)
+		const { lists } = yield* selectKbarState()
 		const cacheKey = `search-${action.payload.query}`
-		let searchList = lists[cacheKey]
+		let searchList: KbarList = lists[cacheKey]
 
 		// determine if post data is already in cache
 		if (!searchList) {
 			// fetch search index data
-			const searchData = yield call(async (path) => {
-				const res = await fetch(path, {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						query: action.payload.query,
-					}),
-				})
-				return res.json()
-			}, "/api/search")
+			const searchData = yield* fetchSearchPosts(
+				action.payload.query,
+				controller.signal
+			)
 
 			// construct post list data
 			const totalResultLength = searchData.hits.length
-			searchList = searchData.hits.map(
-				(object: { post_id: string; post_title: string }, index: number) => {
-					const id = object.post_id
-					const title = object.post_title
-					return {
-						label: title,
-						link: {
-							internal: `/post/${id}`,
-						},
-						onClick: () => {
-							window.location.href = `https://lipeng.ac/post/${id}`
-						},
-						className: "w-full justify-start! p-4!",
-						description: `${index + 1} / ${totalResultLength}`,
-					}
+			searchList = searchData.hits.map((object, index) => {
+				const id = object.post_id
+				const title = object.post_title
+				return {
+					id: `post-${id}`,
+					label: title,
+					link: {
+						internal: `/post/${id}`,
+					},
+					className: "w-full justify-start! p-4!",
+					description: `${index + 1} / ${totalResultLength}`,
 				}
-			)
+			})
 
 			// add post list to cache
 			yield put(addToKbarLists(cacheKey, searchList))
@@ -66,10 +83,12 @@ export default function* updateKbarSearchQuerySaga(
 
 		// update current list
 		yield put(setKbarList(searchList))
-
-		// stop loading
-		yield put(setKbarLoading(false))
 	} catch (error) {
 		console.error(error)
+		yield put(setKbarList([]))
+	} finally {
+		controller.abort()
 	}
+
+	yield put(setKbarLoading(false))
 }

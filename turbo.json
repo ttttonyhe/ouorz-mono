@@ -7,7 +7,8 @@
 		".oxfmtrc.json",
 		".solhint.json",
 		".solhintignore",
-		".prettierrc.mjs"
+		".prettierrc.mjs",
+		"patches/*.patch"
 	],
 	"remoteCache": {
 		"signature": true
@@ -19,6 +20,9 @@
 		},
 		"@twilight-toolkit/utils#build": {
 			"outputs": ["dist/**"]
+		},
+		"@ouorz/twilight-protocol#build": {
+			"outputs": ["dist/**", "artifacts/**", "cache/**"]
 		},
 		"@twilight-toolkit/ui#build:storybook": {
 			"outputs": ["storybook-static/**"],
@@ -44,8 +48,7 @@
 				"ANALYTICS_START_TIME",
 				"ANALYTICS_TOKEN",
 				"SPOTIFY_REFRESH_TOKEN",
-				"TWITTER_ACCESS_TOKEN",
-				"TWITTER_ACCESS_TOKEN_SECRET",
+				"TWITTER_BEARER_TOKEN",
 				"OPENAI_API_KEY",
 				"ALGOLIA_APP_ID",
 				"ALGOLIA_API_KEY",
@@ -58,12 +61,21 @@
 		},
 		"@ouorz/analytics#build": {
 			"dependsOn": ["^build"],
-			"outputs": [".next/**"],
-			"env": ["DATABASE_URL", "HASH_SALT", "MAXMIND_LICENSE_KEY"]
-		},
-		"@ouorz/analytics#build-edge": {
-			"outputs": [".next/**"],
-			"env": ["DATABASE_URL", "HASH_SALT", "MAXMIND_LICENSE_KEY"]
+			"cache": false,
+			"outputs": [
+				".next/**",
+				"public/analytics.js",
+				"public/geo/**",
+				"prisma/schema.prisma"
+			],
+			"env": [
+				"DATABASE_TYPE",
+				"DATABASE_URL",
+				"DATABASE_DIRECT_URL",
+				"DATABASE_POOLING_URL",
+				"HASH_SALT",
+				"BASE_PATH"
+			]
 		},
 		"test": {
 			"dependsOn": ["^build"],
@@ -71,19 +83,25 @@
 		},
 		"start": {
 			"dependsOn": ["^build"],
+			"cache": false,
+			"passThroughEnv": ["*"],
 			"outputs": [],
 			"persistent": true
 		},
 		"@twilight-toolkit/ui#start:storybook": {
 			"dependsOn": ["^build"],
+			"cache": false,
+			"passThroughEnv": ["*"],
 			"persistent": true
 		},
 		"dev": {
 			"cache": false,
+			"passThroughEnv": ["*"],
 			"persistent": true
 		},
 		"dev:test": {
 			"cache": false,
+			"passThroughEnv": ["*"],
 			"persistent": true
 		},
 		"clean": {

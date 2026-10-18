@@ -2,7 +2,8 @@ import { Icon, Label } from "@twilight-toolkit/ui"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
+import { z } from "zod"
 
 import CardFooter from "~/components/Card/Footer"
 import CardWithImagePodcast from "~/components/Card/WithImage/podcast"
@@ -21,6 +22,10 @@ interface Props {
 	sticky: boolean
 }
 
+const summaryResponseSchema = z.object({
+	choices: z.array(z.object({ text: z.string() })),
+})
+
 export default function CardWithImage({ item, sticky }: Props) {
 	const { trackEvent } = useAnalytics()
 	const dispatch = useDispatch()
@@ -32,53 +37,71 @@ export default function CardWithImage({ item, sticky }: Props) {
 	const [outputting, setOutputting] = useState<boolean>(false)
 	const [showThumbnail, setShowThumbnail] = useState<boolean>(true)
 	const [summarizeError, setSummarizeError] = useState<string>("")
+	const requestRef = useRef<AbortController | null>(null)
+	const revealTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+	const thumbnailTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+	useEffect(
+		() => () => {
+			requestRef.current?.abort()
+			if (revealTimeoutRef.current !== null)
+				clearTimeout(revealTimeoutRef.current)
+			if (thumbnailTimeoutRef.current !== null)
+				clearTimeout(thumbnailTimeoutRef.current)
+		},
+		[]
+	)
 
 	const handleSummarize = useCallback(async () => {
+		if (requestRef.current) return
+		const request = new AbortController()
+		requestRef.current = request
 		trackEvent("summarizePost", "click")
 		setSummarizing(true)
 		setSummarizeError("")
 
 		try {
 			const res = await fetch("/api/summarize", {
+				signal: request.signal,
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
 					identifier: `posts/${item.id}`,
-					content: item.content.rendered,
 				}),
 			})
 
 			if (!res.ok) {
+				throw new Error("Failed to summarize")
+			}
+
+			const result = summaryResponseSchema.safeParse(await res.json())
+			const summaryText = result.success
+				? result.data.choices[0]?.text
+				: undefined
+			if (!summaryText?.trim()) {
+				setSummarizeError("No summary generated")
 				setSummarizing(false)
-				setSummarizeError("Failed to summarize")
+				requestRef.current = null
 				return
 			}
 
-			const data = await res.json()
-
-			setTimeout(() => {
-				const summaryText = data?.choices?.[0]?.text
-				if (!summaryText) {
-					setSummarizeError("No summary generated")
-					setSummarizing(false)
-					return
-				}
-
+			revealTimeoutRef.current = setTimeout(() => {
 				setOutputText(summaryText.replace(/^: /u, ""))
 				setSummarizing(false)
-				setTimeout(() => {
+				thumbnailTimeoutRef.current = setTimeout(() => {
 					setShowThumbnail(false)
 				}, 500)
 				setOutputting(true)
 			}, 1000)
-		} catch (e) {
+		} catch {
+			if (request.signal.aborted) return
+			requestRef.current = null
 			setSummarizing(false)
 			setSummarizeError("Failed to summarize")
-			console.log(e)
 		}
-	}, [item.content.rendered, item.id, trackEvent])
+	}, [item.id, trackEvent])
 
 	useInterval(
 		() => {
@@ -102,8 +125,14 @@ export default function CardWithImage({ item, sticky }: Props) {
 	const summarized = !summarizing && summary
 
 	if (item.post_metas.fineTool === undefined) {
-		if (item.post_categories[0].term_id === 120) {
-			return <CardWithImagePodcast item={item} sticky={sticky} />
+		if (item.post_categories[0].term_id === 120 && item.post_metas.podcast) {
+			return (
+				<CardWithImagePodcast
+					item={item}
+					podcast={item.post_metas.podcast}
+					sticky={sticky}
+				/>
+			)
 		}
 
 		return (
@@ -211,12 +240,9 @@ export default function CardWithImage({ item, sticky }: Props) {
 									<h2 className="w-full border-b px-3.5 py-2 text-sm font-semibold tracking-wide text-gray-500 uppercase dark:border-gray-600 dark:text-gray-300">
 										TL;DR
 									</h2>
-									<p
-										className="overflow-hidden px-3.5 py-1.5 text-4 leading-2 tracking-wide text-ellipsis text-gray-500 lg:text-3 lg:leading-7 dark:text-gray-400"
-										dangerouslySetInnerHTML={{
-											__html: summary,
-										}}
-									/>
+									<p className="overflow-hidden px-3.5 py-1.5 text-4 leading-2 tracking-wide text-ellipsis text-gray-500 lg:text-3 lg:leading-7 dark:text-gray-400">
+										{summary}
+									</p>
 								</div>
 								<div className="-mb-2">
 									<a
@@ -234,7 +260,7 @@ export default function CardWithImage({ item, sticky }: Props) {
 						) : (
 							<div className="mt-4 lg:mt-3.5">
 								<Link href={`/post/${item.id}`}>
-									<h1
+									<h2
 										className="mb-2.5 text-2 font-medium tracking-wider text-gray-700 lg:text-list-title dark:text-white"
 										dangerouslySetInnerHTML={{ __html: item.post_title }}
 									/>
@@ -254,5 +280,11 @@ export default function CardWithImage({ item, sticky }: Props) {
 		)
 	}
 
-	return <CardWithImageTool item={item} sticky={sticky} />
+	return (
+		<CardWithImageTool
+			item={item}
+			tool={item.post_metas.fineTool}
+			sticky={sticky}
+		/>
+	)
 }

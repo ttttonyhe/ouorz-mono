@@ -1,10 +1,10 @@
 === WP REST Cache ===
 Contributors: acato, rockfire, yoeridekker
-Tags: cache, wp-rest-api, api, rest, rest cache, rest api cache
+Tags: cache, wp-rest-api, api, rest, rest cache
 Requires at least: 4.7
-Tested up to: 6.0
+Tested up to: 7.0
 Requires PHP: 7.0
-Stable tag: 2022.2.2
+Stable tag: 2026.3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -26,6 +26,14 @@ This plugin offers:
 * Specifying after what time the cache should be timed out.
 * Registering custom endpoints for caching.
 * Automatic cache regeneration.
+
+**WP REST Cache Pro**
+For more advanced features, check out our [WP REST Cache Pro](https://plugins.acato.nl/) plugin:
+
+* Configure custom endpoints for caching through the wp-admin interface.
+* Configure relationships within endpoints.
+* No coding required.
+
 
 == Installation ==
 
@@ -69,11 +77,11 @@ Yes, the plugin will automatically cache the endpoint of custom taxonomies. Unle
 
 = I have created a custom WP REST endpoint, will the plugin cache this endpoint? =
 
-No, the plugin will not cache your custom endpoint unless you tell it to cache it using the hook `wp_rest_cache/allowed_endpoints` (See 'Can I register my own endpoint for caching?'). Please keep in mind that once you do so the plugin will not automatically flush the cache of that endpoint if something is edited (it has no way of knowing when to flush the cache). It will however try to determine the relations and for the determined relations it will flush the cache automatically once the relation is edited.
+No, the plugin will not cache your custom endpoint unless you tell it to cache it using our [WP REST Cache Pro](https://plugins.acato.nl/) plugin or the hook `wp_rest_cache/allowed_endpoints` (See 'Can I register my own endpoint for caching?'). Please keep in mind that once you do so the plugin will not automatically flush the cache of that endpoint if something is edited (it has no way of knowing when to flush the cache). It will however try to determine the relations and for the determined relations it will flush the cache automatically once the relation is edited.
 
 = Can I register my own endpoint for caching? =
 
-Yes you can! Use the hook `wp_rest_cache/allowed_endpoints` like this:
+Yes you can! You can use our [WP REST Cache Pro](https://plugins.acato.nl/) plugin to easily register your own endpoints for caching through the wp-admin interface. Or you can do it programmatically by using the hook `wp_rest_cache/allowed_endpoints` like this:
 
 `/**
  * Register the /wp-json/acf/v3/posts endpoint so it will be cached.
@@ -112,7 +120,7 @@ Yes you can! Add the GET-parameter `skip_cache=1` to your call and no caching wi
 Yes you can! Use the hook `wp_rest_cache/determine_object_type` like this:
 
 `function wprc_determine_object_type( $object_type, $cache_key, $data, $uri ) {
-    if ( $object_type !== 'unknown' || strpos( $uri, $this->namespace . '/' . $this->rest_base ) === false ) {
+    if ( $object_type !== 'unknown' || strpos( $uri, $your_namespace . '/' . $your_rest_base ) === false ) {
         return $object_type;
     }
     // Do your magic here
@@ -130,10 +138,10 @@ Yes they can!  Go to Settings > WP REST Cache, on the Settings tab you can check
 
 Yes you can! Use the hook `wp_rest_cache/display_clear_cache_button` like this:
 
-`function wprc_hide_clear_cache_button( $show ) {
-    return true;
+`function wprc_display_clear_cache_button( $show ) {
+    return false;
 }
-add_filter('wp_rest_cache/display_clear_cache_button', 'wprc_hide_clear_cache_button', 10, 1);`
+add_filter('wp_rest_cache/display_clear_cache_button', 'wprc_display_clear_cache_button', 10, 1);`
 
 = Can I differentiate between caches based upon request headers? =
 
@@ -161,6 +169,14 @@ add_filter('wp_rest_cache/settings_capability', 'wprc_change_settings_capability
 
 Yes you can! Use the `wp wp-rest-cache flush` command to flush caches. Type `wp wp-rest-cache flush --help` to see all options.
 
+= Is Redis Object Cache supported? =
+
+We are using the WordPress transient API, so as long as you are using a Redis Object Cache plugin which enables Redis caching through the transients API it is supported.
+
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/1307d9dc-155a-4a70-b80c-978a2832290f)
+
 == Screenshots ==
 
 1. Settings for the WP REST Cache plugin.
@@ -171,198 +187,51 @@ Yes you can! Use the `wp wp-rest-cache flush` command to flush caches. Type `wp 
 
 == Changelog ==
 
-= 2022.2.2 =
-Release Date: October 10th, 2022
+= 2026.3.1 =
+Release Date: July 25th, 2026
 
-Fix: WP CLI command wasn't working correctly anymore.
+Improvement: Make the mu-plugin use the same version as the main plugin.
 
-= 2022.2.1 =
-Release Date: August 25th, 2022
+= 2026.3.0 =
+Release Date: July 24th, 2026
 
-Hotfix: Settings page wasn't displayed correctly.
+Fix: several small fixes and improvements.
+Improvement: Add support for using regex inside wp_rest_cache/allowed_endpoints and wp_rest_cache/disallowed_endpoints filters.
 
-= 2022.2.0 =
-Release Date: August 25th, 2022
+= 2026.2.0 =
+Release Date: May 19th, 2026
 
-Feature: Added filter to allow filtering of cache output.
-Improvement: Fix conflict with Wordfence.
-Improvement: Added notice upon any plugin (de/)activation that cache might need to be cleared.
-Improvement: Added phpstan checks and fixed all errors.
+Fix: specified key was too long error.
+Improvement: Extra filters and actions.
 
-= 2022.1.2 =
-Release Date: August 12th, 2022
+= 2026.1.3 =
+Release Date: March 3rd, 2026
 
-Bugfix: prevent error on clean install.
+Fix: Prevent performance issue with hierarchical categories.
 
-= 2022.1.1 =
-Release Date: July 15th, 2022
+= 2026.1.2 =
+Release Date: February 25th, 2026
 
-Bugfix: prevent notice.
+Fix: Prevent PHP warnings.
+Improvement: Add filter to disallow skip_cache parameter.
+Improvement: Added error log if set_transient fails.
+Improvement: Add support for flushing term cache when objects terms are modified. (Contribution by: Moshe Gross)
 
-= 2022.1.0 =
-Release Date: July 13th, 2022
+= 2026.1.1 =
+Release Date: January 20th, 2026
 
-Bugfix: Fixed regeneration of flushed caches.
-Bugfix: Fix possible fatal error on variable not being an array.
-Bugfix: Fix deprecation notice for PHP 8.
+Fix: A XSS vulnerability in the plugin was discovered and fixed. It was reported by Nguyen Ba Khanh.
+Fix: Improved transition_post_status_logic. (Contribution by: Moshe Gross)
 
-= 2021.4.1 =
-Release Date: September 15th, 2021
+= 2026.1.0 =
+Release Date: January 14th, 2026
 
-Bugfix: Fix notice for missing variable.
+Improvement: Only flush caches on meta update if filter returns true.
 
-= 2021.4.0 =
-Release Date: September 15th, 2021
+= 2025.2.0 =
+Release Date: December 15th, 2025
 
-Feature: Added filter for disabling CORS headers.
-Feature: Added filter to disallow caching of (sub)endpoints.
-Bugfix: Filesystem methods weren't always loaded correctly when the plugin was loaded through a mu-plugin.
+Improvement: Also flush caches when only the (post) meta is updated.
 
-= 2021.3.0 =
-Release Date: April 15th, 2021
-
-Feature: Added support for when the plugin itself is installed as a mu-plugin.
-
-= 2021.2.1 =
-Release Date: February 27th, 2021
-
-Bugfix: Error in delete_object_type_caches function.
-
-= 2021.2.0 =
-Release Date: February 24th, 2021
-
-Feature: Added WP CLI command to flush caches from the command line.
-Bugfix: Force saved cache to be valid JSON (to prevent errors with invalid JSON responses).
-
-= 2021.1.0 =
-Release Date: January 28th, 2021
-
-Feature: Added a filter to allow caching of requests with a nonce.
-
-= 2020.3.2 =
-Release Date: November 10th, 2020
-
-Bugfix: Allow CORS headers to be overwritten. (Contribution by @luisherranz)
-
-= 2020.3.1 =
-Release Date: October 19th, 2020
-
-Bugfix: Not all caches were flushed correctly after last update.
-
-= 2020.3.0 =
-Release Date: October 12th, 2020
-
-Improvement: Cleanup of legacy code.
-Feature: Added the option to filter the cache timeout per cache.
-
-= 2020.2.2 =
-Release Date: September 7th, 2020
-
-Bugfix: Conflict when caching two calls with same url but different request method.
-Bugfix: Bulk actions were broken.
-
-= 2020.2.1 =
-Release Date: July 14th, 2020
-
-Bugfix: WordPress bug caused screen options to not work correctly anymore.
-
-= 2020.2.0 =
-Release Date: July 2nd, 2020
-
-Improvement: Speed up cache clearing.
-Feature: Added filter for programmatically skip caching.
-Feature: Added filter to disable cache hit recording.
-Feature: Added option to delete all caches (vs flush all caches).
-Bugfix: Do not cache API calls with a nonce.
-Bugfix: Fix for not caching when there are double slashes in the request path.
-Bugfix: Fix persisting the search when searching through caches.
-
-= 2020.1.1 =
-Release Date: March 12th, 2020
-
-Bugfix: Allow usage of rest_route parameter.
-Bugfix: WordPress database error: specified key was too long.
-
-= 2020.1.0 =
-Release Date: January 16th, 2020
-
-Feature: Added a filter to ignore specific query string parameters.
-Feature: Make allowed request methods filterable.
-Bugfix: Make options not autoload.
-
-= 2019.4.5 =
-Release Date: November 22nd, 2019
-
-Bugfix: Do not update database table on each load.
-Bugfix: WordPress database error: specified key was too long.
-
-= 2019.4.4 =
-Release Date: November 14th, 2019
-
-Hotfix: Fixing WordPress database error.
-
-= 2019.4.3 =
-Release Date: November 12th, 2019
-
-Feature: Added filter for Settings page capability.
-Bugfix: Problem with non-existing tables after multisite duplication.
-
-= 2019.4.2 =
-Release Date: October 15th, 2019
-
-Bugfix: Prevent fatal error after WordPress security update.
-
-= 2019.4.1 =
-Release Date: September 5th, 2019
-
-Feature: Flush caches with progressbar and through ajax call to prevent timeout.
-Bugfix: Expiration date was displayed incorrectly.
-Bugfix: Do not cache empty result set.
-Bugfix: Do not use filter_input with INPUT_SERVER, it will break when  fastcgi is used (see https://stackoverflow.com/questions/25232975/php-filter-inputinput-server-request-method-returns-null/36205923).
-
-= 2019.4.0 =
-Release Date: July 12th, 2019
-
-Feature: Added option to differentiate between caches based upon certain request headers.
-Feature: Added option to hide the 'Clear cache' button in the wp-admin bar.
-Bugfix: Fix for when WordPress is installed in a subdirectory.
-Bugfix: Remove Item Caching, it was causing more problems and complexity than it was improving performance.
-
-= 2019.3.0 =
-Release Date: June 18th, 2019
-
-Improvement: Meet WordPress Coding Standards.
-Feature: Added expired caches regeneration cron.
-Bugfix: Added fallback check for Memcache(d). Memcache(d) treats a transient timeout > 30 days as a timestamp.
-
-= 2019.2.1 =
-Release Date: April 15th, 2019
-
-Feature: Added option to skip cache using a parameter.
-
-= 2019.2.0 =
-Release Date: April 2nd, 2019
-
-Feature: Added function to programatically flush cache records by endpoint path.
-Bugfix: Fix correct filtering of allowed endpoints.
-Bugfix: Fix fatal error with object in stead of array in cache.
-
-= 2019.1.6 =
-Release Date: March 25th, 2019
-
-Feature: Added filters for response header manipulation.
-
-= 2019.1.4 =
-Release Date: March 21st, 2019
-
-Bugfix: bug in saving relations for comments endpoint prevented the cache for comments to be flushed automatically.
-
-= 2019.1.3 =
-Release Date: February 13th, 2019
-
-Feature: Added support for correctly flushing caches of scheduled posts.
-
-= 2019.1.2 =
-Release Date: January 31st, 2019
-
-First public version.
+= Earlier versions =
+For the changelog of earlier versions, please refer to [the changelog on Github](https://github.com/acato-plugins/wp-rest-cache/blob/master/changelog.md).

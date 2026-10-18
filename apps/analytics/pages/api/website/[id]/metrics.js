@@ -1,3 +1,4 @@
+import { getDateRange } from "lib/request"
 import {
 	getPageviewMetrics,
 	getSessionMetrics,
@@ -30,9 +31,8 @@ function getColumn(type) {
 }
 
 export default async (req, res) => {
+	if (!(await useCors(req, res))) return
 	if (req.method === "GET") {
-		await useCors(req, res)
-
 		if (!(await allowQuery(req))) {
 			return unauthorized(res)
 		}
@@ -51,11 +51,14 @@ export default async (req, res) => {
 		} = req.query
 
 		const websiteId = +id
-		const startDate = new Date(+start_at)
-		const endDate = new Date(+end_at)
+		const range = getDateRange({ start_at, end_at })
+		if (!range) return badRequest(res)
+		const { startDate, endDate } = range
 
 		if (sessionColumns.includes(type)) {
 			let data = await getSessionMetrics(websiteId, startDate, endDate, type, {
+				url,
+				referrer,
 				os,
 				browser,
 				device,
@@ -63,7 +66,7 @@ export default async (req, res) => {
 			})
 
 			if (type === "language") {
-				let combined = {}
+				let combined = Object.create(null)
 
 				for (let { x, y } of data) {
 					x = String(x).toLowerCase().split("-")[0]
@@ -84,7 +87,7 @@ export default async (req, res) => {
 		if (pageviewColumns.includes(type) || type === "event") {
 			let domain
 			if (type === "referrer") {
-				const website = getWebsiteById(websiteId)
+				const website = await getWebsiteById(websiteId)
 
 				if (!website) {
 					return badRequest(res)
@@ -116,6 +119,7 @@ export default async (req, res) => {
 
 			return ok(res, data)
 		}
+		return badRequest(res)
 	}
 
 	return methodNotAllowed(res)

@@ -42,14 +42,23 @@ class Admin {
 	private $version;
 
 	/**
+	 * The settings panels for the WP REST Cache settings page.
+	 *
+	 * @access private
+	 * @var array<string,array<string,mixed>> $settings_panels The settings panels for the WP REST Cache settings page.
+	 */
+	private $settings_panels;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @param string $plugin_name The name of this plugin.
 	 * @param string $version The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
-		$this->plugin_name = $plugin_name;
-		$this->version     = $version;
+		$this->plugin_name     = $plugin_name;
+		$this->version         = $version;
+		$this->settings_panels = [];
 	}
 
 	/**
@@ -59,8 +68,11 @@ class Admin {
 	 */
 	public function enqueue_styles() {
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp-rest-cache-admin.css', [], $this->version, 'all' );
-		if ( 'wp-rest-cache' === filter_input( INPUT_GET, 'page', FILTER_SANITIZE_FULL_SPECIAL_CHARS )
-			&& 'clear-cache' === filter_input( INPUT_GET, 'sub', FILTER_SANITIZE_FULL_SPECIAL_CHARS ) ) {
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- read-only page/sub markers.
+		$page = isset( $_GET['page'] ) ? filter_var( $_GET['page'], FILTER_SANITIZE_FULL_SPECIAL_CHARS ) : null;
+		$sub  = isset( $_GET['sub'] ) ? filter_var( $_GET['sub'], FILTER_SANITIZE_FULL_SPECIAL_CHARS ) : null;
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
+		if ( 'wp-rest-cache' === $page && 'clear-cache' === $sub ) {
 			wp_enqueue_style( 'jquery-ui-progressbar', plugin_dir_url( __FILE__ ) . 'css/jquery-ui.css', [], $this->version, 'all' );
 		}
 	}
@@ -71,8 +83,11 @@ class Admin {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
-		if ( 'wp-rest-cache' === filter_input( INPUT_GET, 'page', FILTER_SANITIZE_FULL_SPECIAL_CHARS )
-			&& 'clear-cache' === filter_input( INPUT_GET, 'sub', FILTER_SANITIZE_FULL_SPECIAL_CHARS ) ) {
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- read-only page/sub markers.
+		$page = isset( $_GET['page'] ) ? filter_var( $_GET['page'], FILTER_SANITIZE_FULL_SPECIAL_CHARS ) : null;
+		$sub  = isset( $_GET['sub'] ) ? filter_var( $_GET['sub'], FILTER_SANITIZE_FULL_SPECIAL_CHARS ) : null;
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
+		if ( 'wp-rest-cache' === $page && 'clear-cache' === $sub ) {
 			wp_enqueue_script( 'jquery-ui-progressbar' );
 		}
 	}
@@ -161,13 +176,144 @@ class Admin {
 	 * @return void
 	 */
 	public function register_settings() {
-		register_setting( 'wp-rest-cache-settings', 'wp_rest_cache_timeout' );
-		register_setting( 'wp-rest-cache-settings', 'wp_rest_cache_timeout_interval' );
-		register_setting( 'wp-rest-cache-settings', 'wp_rest_cache_regenerate' );
-		register_setting( 'wp-rest-cache-settings', 'wp_rest_cache_regenerate_interval' );
-		register_setting( 'wp-rest-cache-settings', 'wp_rest_cache_regenerate_number' );
-		register_setting( 'wp-rest-cache-settings', 'wp_rest_cache_memcache_used' );
-		register_setting( 'wp-rest-cache-settings', 'wp_rest_cache_global_cacheable_request_headers' );
+		register_setting(
+			'wp-rest-cache-settings',
+			'wp_rest_cache_timeout',
+			[
+				'type'              => 'integer',
+				'sanitize_callback' => [ $this, 'sanitize_timeout' ],
+			]
+		);
+		register_setting(
+			'wp-rest-cache-settings',
+			'wp_rest_cache_timeout_interval',
+			[
+				'type'              => 'integer',
+				'sanitize_callback' => [ $this, 'sanitize_timeout_interval' ],
+			]
+		);
+		register_setting(
+			'wp-rest-cache-settings',
+			'wp_rest_cache_regenerate',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => [ $this, 'sanitize_checkbox' ],
+			]
+		);
+		register_setting(
+			'wp-rest-cache-settings',
+			'wp_rest_cache_regenerate_interval',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => [ $this, 'sanitize_regenerate_interval' ],
+			]
+		);
+		register_setting(
+			'wp-rest-cache-settings',
+			'wp_rest_cache_regenerate_number',
+			[
+				'type'              => 'integer',
+				'sanitize_callback' => [ $this, 'sanitize_regenerate_number' ],
+			]
+		);
+		register_setting(
+			'wp-rest-cache-settings',
+			'wp_rest_cache_memcache_used',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => [ $this, 'sanitize_checkbox' ],
+			]
+		);
+		register_setting(
+			'wp-rest-cache-settings',
+			'wp_rest_cache_global_cacheable_request_headers',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => [ $this, 'sanitize_cacheable_request_headers' ],
+			]
+		);
+	}
+
+	/**
+	 * Sanitize the timeout setting.
+	 *
+	 * @param mixed $value The value to sanitize.
+	 *
+	 * @return int The sanitized value.
+	 */
+	public function sanitize_timeout( $value ): int {
+		$value = absint( $value );
+		return max( 1, $value );
+	}
+
+	/**
+	 * Sanitize the timeout interval setting.
+	 *
+	 * @param mixed $value The value to sanitize.
+	 *
+	 * @return int The sanitized value.
+	 */
+	public function sanitize_timeout_interval( $value ): int {
+		$allowed = [
+			MINUTE_IN_SECONDS,
+			HOUR_IN_SECONDS,
+			DAY_IN_SECONDS,
+			WEEK_IN_SECONDS,
+			MONTH_IN_SECONDS,
+			YEAR_IN_SECONDS,
+		];
+		$value   = absint( $value );
+		return in_array( $value, $allowed, true ) ? $value : YEAR_IN_SECONDS;
+	}
+
+	/**
+	 * Sanitize a checkbox setting.
+	 *
+	 * @param mixed $value The value to sanitize.
+	 *
+	 * @return string The sanitized value ('1' or '').
+	 */
+	public function sanitize_checkbox( $value ): string {
+		return '1' === $value ? '1' : '';
+	}
+
+	/**
+	 * Sanitize the regenerate interval setting.
+	 *
+	 * @param mixed $value The value to sanitize.
+	 *
+	 * @return string The sanitized value.
+	 */
+	public function sanitize_regenerate_interval( $value ): string {
+		$schedules = wp_get_schedules();
+		$value     = sanitize_text_field( $value );
+		return isset( $schedules[ $value ] ) ? $value : 'twicedaily';
+	}
+
+	/**
+	 * Sanitize the regenerate number setting.
+	 *
+	 * @param mixed $value The value to sanitize.
+	 *
+	 * @return int The sanitized value.
+	 */
+	public function sanitize_regenerate_number( $value ): int {
+		$value = absint( $value );
+		return max( 1, $value );
+	}
+
+	/**
+	 * Sanitize the global cacheable request headers setting.
+	 *
+	 * @param mixed $value The value to sanitize.
+	 *
+	 * @return string The sanitized value.
+	 */
+	public function sanitize_cacheable_request_headers( $value ): string {
+		$value   = sanitize_text_field( $value );
+		$headers = array_map( 'trim', explode( ',', $value ) );
+		$headers = array_filter( $headers );
+		return implode( ',', $headers );
 	}
 
 	/**
@@ -176,12 +322,42 @@ class Admin {
 	 * @return void
 	 */
 	public function settings_page() {
-		$sub = filter_input( INPUT_GET, 'sub', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+		/** This filter is documented in the function create_menu(). */
+		if ( ! current_user_can( apply_filters( 'wp_rest_cache/settings_capability', 'administrator' ) ) ) {
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'wp-rest-cache' ) );
+		}
+		$this->settings_panels = apply_filters( 'wp_rest_cache/settings_panels', $this->settings_panels );
+
+		// Sort panels by position.
+		uasort(
+			$this->settings_panels,
+			function ( $a, $b ) {
+				$pos_a = $a['position'] ?? 100;
+				$pos_b = $b['position'] ?? 100;
+				return $pos_a <=> $pos_b;
+			}
+		);
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only sub marker.
+		$sub = isset( $_GET['sub'] ) ? filter_var( $_GET['sub'], FILTER_SANITIZE_FULL_SPECIAL_CHARS ) : null;
 		if ( empty( $sub ) ) {
 			$sub = 'settings';
 		}
+
+		// prevent path traversal attacks in the sub parameter.
+		$potential_sub_file = __DIR__ . '/partials/sub-' . $sub . '.php';
+		if ( dirname( $potential_sub_file ) !== __DIR__ . '/partials' ) {
+			$sub = 'settings';
+		}
+
 		include_once __DIR__ . '/partials/header.php';
-		include_once __DIR__ . '/partials/sub-' . $sub . '.php';
+		if ( isset( $this->settings_panels[ $sub ]['template'] ) ) {
+			include_once $this->settings_panels[ $sub ]['template'];
+		} elseif ( file_exists( __DIR__ . '/partials/sub-' . $sub . '.php' ) ) {
+			include_once __DIR__ . '/partials/sub-' . $sub . '.php';
+		} else {
+			include_once __DIR__ . '/partials/sub-settings.php';
+		}
 	}
 
 	/**
@@ -232,18 +408,24 @@ class Admin {
 	 * @return void
 	 */
 	public function handle_actions() {
-		if ( isset( $_GET['wp_rest_cache_dismiss'] )
-			&& check_admin_referer( 'wp-rest-cache-dismiss-notice-' . filter_input( INPUT_GET, 'wp_rest_cache_dismiss' ) )
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- nonce verified below via check_admin_referer.
+		$dismiss = isset( $_GET['wp_rest_cache_dismiss'] ) ? sanitize_text_field( wp_unslash( $_GET['wp_rest_cache_dismiss'] ) ) : null;
+		if ( null !== $dismiss
+			&& check_admin_referer( 'wp-rest-cache-dismiss-notice-' . $dismiss )
 		) {
 			$user_id           = get_current_user_id();
 			$dismissed_notices = get_user_meta( $user_id, 'wp_rest_cache_dismissed_notices', true );
 			if ( ! is_array( $dismissed_notices ) ) {
 				$dismissed_notices = [];
 			}
-			if ( ! in_array( filter_input( INPUT_GET, 'wp_rest_cache_dismiss' ), $dismissed_notices, true ) ) {
-				$dismissed_notices[] = filter_input( INPUT_GET, 'wp_rest_cache_dismiss' );
+			if ( ! in_array( $dismiss, $dismissed_notices, true ) ) {
+				$dismissed_notices[] = $dismiss;
 				update_user_meta( $user_id, 'wp_rest_cache_dismissed_notices', $dismissed_notices );
 			}
+		}
+		if ( isset( $_REQUEST['action'] ) && -1 !== $_REQUEST['action'] ) {
+			$wp_rest_cache_list = new \WP_Rest_Cache_Plugin\Admin\Includes\API_Caches_Table( 'endpoint' );
+			$wp_rest_cache_list->process_action();
 		}
 	}
 
@@ -258,24 +440,36 @@ class Admin {
 	 * @return void
 	 */
 	protected function add_notice( $type, $message, $dismissible = true, $button = [] ) {
-		$notices            = get_option( 'wp_rest_cache_admin_notices', [] );
-		$notices[ $type ][] = [
-			'message'     => $message,
-			'dismissible' => $dismissible,
-			'button'      => $button,
-		];
-		update_option( 'wp_rest_cache_admin_notices', $notices, false );
+		$notices = get_option( 'wp_rest_cache_admin_notices', [] );
+
+		if ( ! array_key_exists( $type, $notices ) ) {
+			$notices[ $type ] = [];
+		}
+
+		if ( ! in_array( $message, array_column( $notices[ $type ], 'message' ), true ) ) {
+			$notices[ $type ][] = [
+				'message'     => $message,
+				'dismissible' => $dismissible,
+				'button'      => $button,
+			];
+			update_option( 'wp_rest_cache_admin_notices', $notices, false );
+		}
 	}
 
 	/**
-	 * Check if the MU plugin was created, if not display a warning.
+	 * Check whether the MU plugin is installed and in sync with the source template.
+	 *
+	 * Also handles version bumps: if the main plugin's version changes, the previously
+	 * installed mu-plugin will no longer match the desired stamped content and will be
+	 * re-copied here. On non-direct filesystems (where automatic install is skipped), a
+	 * warning notice asks the site owner to copy the file manually.
 	 *
 	 * @return void
 	 */
 	public function check_muplugin_existence() {
-		if ( ! file_exists( WPMU_PLUGIN_DIR . '/wp-rest-cache.php' ) ) {
+		if ( \WP_Rest_Cache_Plugin\Includes\Activator::mu_plugin_needs_install() ) {
 			\WP_Rest_Cache_Plugin\Includes\Activator::create_mu_plugin();
-			if ( ! file_exists( WPMU_PLUGIN_DIR . '/wp-rest-cache.php' ) ) {
+			if ( \WP_Rest_Cache_Plugin\Includes\Activator::mu_plugin_needs_install() ) {
 
 				$from = '<code>' . substr(
 					plugin_dir_path( __DIR__ ) . 'sources/wp-rest-cache.php',
@@ -323,8 +517,11 @@ class Admin {
 	 * @return void
 	 */
 	public function display_notices() {
+		if ( ! in_array( get_current_screen()->base, [ 'plugins', 'dashboard', 'settings_page_wp-rest-cache' ], true ) ) {
+			return;
+		}
 		$notices = get_option( 'wp_rest_cache_admin_notices', [] );
-		if ( count( $notices ) ) {
+		if ( is_array( $notices ) && count( $notices ) ) {
 			$user_id           = get_current_user_id();
 			$dismissed_notices = get_user_meta( $user_id, 'wp_rest_cache_dismissed_notices', true );
 			foreach ( $notices as $type => $messages ) {
@@ -333,19 +530,19 @@ class Admin {
 						?>
 						<div
 							class="notice notice-<?php echo esc_attr( $type ); ?> <?php echo ( true === $message['dismissible'] ) ? 'is-dismissible' : ''; ?>">
-							<p><strong>WP REST Cache:</strong> <?php echo esc_html( $message['message'] ); ?>
-								<?php if ( 'permanent' === $message['dismissible'] ) : ?>
-									<?php
-									$url = wp_nonce_url(
-										'?wp_rest_cache_dismiss=' . esc_attr( md5( $message['message'] ) ),
-										'wp-rest-cache-dismiss-notice-' . esc_attr( md5( $message['message'] ) )
-									);
-									?>
-									<a class="button"
-										href="<?php echo esc_attr( $url ); ?>"><?php echo esc_html_e( 'Hide this message', 'wp-rest-cache' ); ?></a>
-								<?php endif; ?></p>
+							<p><strong>WP REST Cache:</strong> <?php echo wp_kses_post( $message['message'] ); ?></p>
 							<?php if ( isset( $message['button']['url'], $message['button']['label'] ) ) : ?>
-								<p><a class="button" href="<?php echo esc_attr( $message['button']['url'] ); ?>"><?php echo esc_html( $message['button']['label'] ); ?></a></p>
+								<p><a class="<?php echo esc_attr( $message['button']['class'] ?? 'button' ); ?>" href="<?php echo esc_attr( $message['button']['url'] ); ?>"><?php echo esc_html( $message['button']['label'] ); ?></a></p>
+							<?php endif; ?>
+							<?php if ( 'permanent' === $message['dismissible'] ) : ?>
+								<?php
+								$url = get_admin_url() . wp_nonce_url(
+									'?wp_rest_cache_dismiss=' . esc_attr( md5( $message['message'] ) ),
+									'wp-rest-cache-dismiss-notice-' . esc_attr( md5( $message['message'] ) )
+								);
+								?>
+								<p><a class="button"
+										href="<?php echo esc_attr( $url ); ?>"><?php echo esc_html_e( 'Hide this message', 'wp-rest-cache' ); ?></a></p>
 							<?php endif; ?>
 						</div>
 						<?php
@@ -360,13 +557,12 @@ class Admin {
 	/**
 	 * Unschedule or schedule the cron based on the regenerate setting.
 	 *
-	 * @param mixed  $old_value The old option value.
-	 * @param mixed  $value The new option value.
-	 * @param string $option Option name.
+	 * @param mixed $old_value The old option value.
+	 * @param mixed $value The new option value.
 	 *
 	 * @return void
 	 */
-	public function regenerate_updated( $old_value, $value, $option ) {
+	public function regenerate_updated( $old_value, $value ) {
 		if ( '1' === $value ) {
 			$wp_rest_cache_regenerate_interval = Caching::get_instance()->get_regenerate_interval();
 			wp_schedule_event( time(), $wp_rest_cache_regenerate_interval, 'wp_rest_cache_regenerate_cron' );
@@ -378,13 +574,12 @@ class Admin {
 	/**
 	 * Update regenerate interval based on new setting.
 	 *
-	 * @param mixed  $old_value The old option value.
-	 * @param mixed  $value The new option value.
-	 * @param string $option Option name.
+	 * @param mixed $old_value The old option value.
+	 * @param mixed $value The new option value.
 	 *
 	 * @return void
 	 */
-	public function regenerate_interval_updated( $old_value, $value, $option ) {
+	public function regenerate_interval_updated( $old_value, $value ) {
 		if ( Caching::get_instance()->should_regenerate() ) {
 			wp_clear_scheduled_hook( 'wp_rest_cache_regenerate_cron' );
 			wp_schedule_event( time(), $value, 'wp_rest_cache_regenerate_cron' );
@@ -398,15 +593,20 @@ class Admin {
 	 */
 	public function flush_caches() {
 		check_ajax_referer( 'wp_rest_cache_clear_cache_ajax', 'wp_rest_cache_nonce' );
-		$delete_caches = filter_input( INPUT_POST, 'delete_caches', FILTER_VALIDATE_BOOLEAN );
+		/** This filter is documented in the function create_menu(). */
+		if ( ! current_user_can( apply_filters( 'wp_rest_cache/settings_capability', 'administrator' ) ) ) {
+			wp_die( esc_html__( 'You do not have permission to perform this action.', 'wp-rest-cache' ) );
+		}
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- nonce verified above via check_ajax_referer.
+		$delete_caches = isset( $_POST['delete_caches'] ) ? filter_var( $_POST['delete_caches'], FILTER_VALIDATE_BOOLEAN ) : false;
+		$cache_filter  = isset( $_POST['cache_filter'] ) ? filter_var( $_POST['cache_filter'], FILTER_SANITIZE_FULL_SPECIAL_CHARS ) : '';
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
 		$caching = Caching::get_instance();
-		$caching->delete_all_caches( $delete_caches );
+		$caching->delete_all_caches( $delete_caches, ! empty( $cache_filter ) ? $cache_filter : false );
 
-		$result = [ 'percentage' => 100 ]; // deprecated, since we delete all caches at once, we should remove the progress bar.
-
-		echo wp_json_encode( $result );
-		exit;
+		// `percentage` is deprecated: we delete all caches at once now, so the progress bar should be removed.
+		wp_send_json( [ 'percentage' => 100 ] );
 	}
 
 	/**
@@ -449,12 +649,9 @@ class Admin {
 	/**
 	 * Upon plugin deactivation show a message about flushing the REST cache.
 	 *
-	 * @param string  $plugin The plugin that has just been activated.
-	 * @param boolean $network_wide Whether the plugin has been activated network wide.
-	 *
 	 * @return void
 	 */
-	public function deactivated_plugin( $plugin, $network_wide ) {
+	public function deactivated_plugin() {
 		$this->add_notice(
 			'warning',
 			__( 'A plugin has been deactivated. This might effect the WP REST API output, so please consider if clearing the REST Cache is necessary.', 'wp-rest-cache' ),
@@ -475,7 +672,51 @@ class Admin {
 	 */
 	public function add_cli_commands() {
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
-			\WP_CLI::add_command( 'wp-rest-cache', \WP_Rest_Cache_Plugin\Includes\CLI\Flush_Command::class );
+			\WP_CLI::add_command( 'wp-rest-cache', new \WP_Rest_Cache_Plugin\Includes\CLI\Flush_Command() );
 		}
+	}
+
+	/**
+	 * Filter the settings panels for the WP REST Cache settings page.
+	 *
+	 * @param array<string,array<string,mixed>> $panels The settings panels for the WP REST Cache settings page.
+	 *
+	 * @return array<string,array<string,mixed>>
+	 */
+	public function filter_settings_panels( $panels ) {
+		$settings_panels = [
+			'settings'     => [
+				'label'    => __( 'Settings', 'wp-rest-cache' ),
+				'position' => 10,
+			],
+			'endpoint-api' => [
+				'label'    => __( 'Endpoint API Caches', 'wp-rest-cache' ),
+				'position' => 20,
+			],
+			'clear-cache'  => [
+				'label'    => __( 'Clear Caches', 'wp-rest-cache' ),
+				'position' => 30,
+			],
+		];
+
+		return array_merge( $panels, $settings_panels );
+	}
+
+	/**
+	 * Display a message about the Pro version of the plugin.
+	 *
+	 * @return void
+	 */
+	public function display_pro_message() {
+		$this->add_notice(
+			'success',
+			__( 'Did you know that with the new Pro version of the WP REST Cache plugin you can easily configure custom endpoints to be cached?', 'wp-rest-cache' ),
+			'permanent',
+			[
+				'label' => __( 'Upgrade to Pro', 'wp-rest-cache' ),
+				'url'   => 'https://plugins.acato.nl/',
+				'class' => 'button button-primary',
+			]
+		);
 	}
 }

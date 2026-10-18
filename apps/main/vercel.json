@@ -3,6 +3,6 @@
 	"github": {
 		"silent": true
 	},
-	"installCommand": "CYPRESS_INSTALL_BINARY=0 bun install --frozen-lockfile",
-	"buildCommand": "cd ../.. && bun run build:main"
+	"installCommand": "CYPRESS_INSTALL_BINARY=0 bunx bun@1.4.2 install --frozen-lockfile",
+	"buildCommand": "cd ../.. && bunx bun@1.4.2 run build:main"
 }

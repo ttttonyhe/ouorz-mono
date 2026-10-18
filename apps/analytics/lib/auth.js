@@ -1,55 +1,82 @@
-import { parseSecureToken, parseToken } from "./crypto"
+import { hash, parseSecureToken, parseToken } from "./crypto"
 import { SHARE_TOKEN_HEADER } from "./constants"
-import { getWebsiteById } from "./queries"
+import { getAccountById, getWebsiteById } from "./queries"
+
+export function publicAccount({
+	user_id,
+	username,
+	is_admin,
+	created_at,
+	updated_at,
+}) {
+	return { user_id, username, is_admin, created_at, updated_at }
+}
+
+function getBearerToken(req) {
+	const authorization = req.headers.authorization
+	const match =
+		typeof authorization === "string" && authorization.match(/^Bearer (\S+)$/i)
+	return match ? match[1] : null
+}
+
+async function getTokenAccount(token) {
+	if (!Number.isSafeInteger(token?.user_id) || token.user_id <= 0) return null
+
+	const account = await getAccountById(token.user_id)
+	if (!account || token.password_version !== hash(account.password)) return null
+	return account
+}
 
 export async function getAuthToken(req) {
-	try {
-		const token = req.headers.authorization
-
-		return parseSecureToken(token.split(" ")[1])
-	} catch {
-		return null
-	}
+	const account = await getTokenAccount(
+		await parseSecureToken(getBearerToken(req))
+	)
+	return account ? publicAccount(account) : null
 }
 
-export async function isValidToken(token, validation) {
-	try {
-		const result = await parseToken(token)
-
-		if (typeof validation === "object") {
-			return !Object.keys(validation).find(
-				(key) => result[key] !== validation[key]
-			)
-		} else if (typeof validation === "function") {
-			return validation(result)
-		}
-	} catch (e) {
+export async function allowStatsServiceQuery(req) {
+	if (req.method !== "GET") return false
+	if (Object.values(req.query).some((value) => typeof value !== "string"))
 		return false
-	}
+	const websiteId = Number(req.query.id)
+	if (!Number.isSafeInteger(websiteId) || websiteId <= 0) return false
 
-	return false
+	const token = await parseToken(getBearerToken(req), "stats-service")
+	if (token?.website_id !== websiteId) return false
+	const [account, website] = await Promise.all([
+		getTokenAccount(token),
+		getWebsiteById(websiteId),
+	])
+	return (
+		!!account &&
+		!!website &&
+		token.account_version === (account.updated_at?.toISOString() ?? null) &&
+		token.is_admin === account.is_admin &&
+		(account.is_admin || website.user_id === account.user_id)
+	)
 }
 
-export async function allowQuery(req, skipToken) {
-	const { id } = req.query
-	const token = req.headers[SHARE_TOKEN_HEADER]
-	const websiteId = +id
+export async function allowQuery(req, skipToken = false) {
+	const websiteId = Number(req.query.id)
+	if (!Number.isSafeInteger(websiteId) || websiteId <= 0) return false
+	if (Object.values(req.query).some((value) => typeof value !== "string"))
+		return false
 
 	const website = await getWebsiteById(websiteId)
+	if (!website) return false
 
-	if (website) {
-		if (token && token !== "undefined" && !skipToken) {
-			return isValidToken(token, { website_id: websiteId })
-		}
-
-		const authToken = await getAuthToken(req)
-
-		if (authToken) {
-			const { user_id, is_admin } = authToken
-
-			return is_admin || website.user_id === user_id
+	const token = req.headers[SHARE_TOKEN_HEADER]
+	if (token && !skipToken) {
+		const share = await parseToken(token, "share")
+		if (
+			website.share_id &&
+			share?.website_id === websiteId &&
+			share.share_id === website.share_id
+		) {
+			return true
 		}
 	}
 
-	return false
+	const account = await getAuthToken(req)
+	return !!account && (account.is_admin || website.user_id === account.user_id)
 }

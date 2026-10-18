@@ -56,10 +56,12 @@ class Autoloader {
 					$file_name = 'class-' . $file_name . '.php';
 			}
 
-			include_once plugin_dir_path( __DIR__ ) . $subdir . $file_name;
+			$file = plugin_dir_path( __DIR__ ) . $subdir . $file_name;
+			if ( file_exists( $file ) ) {
+				include_once $file;
+			}
 		} elseif ( 'WP_Rest_Cache_Endpoint_Api' === $class_name ) {
 			include_once plugin_dir_path( __DIR__ ) . DIRECTORY_SEPARATOR . 'deprecated' . DIRECTORY_SEPARATOR . 'class-wp-rest-cache-endpoint-api.php';
 		}
 	}
-
 }

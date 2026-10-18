@@ -190,7 +190,7 @@ This project is based on [Umami](https://umami.is)
 
 ### Geolocation Data Access
 
-Follow the instructions [here →](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data) to sign up for Maxmind GeoLite2, and retrieve a license key
+The build downloads GeoLite2 Country data from [node-geolite2-redist](https://github.com/GitSquared/node-geolite2-redist). A MaxMind license key is not required.
 
 <br/>
 
@@ -206,11 +206,12 @@ Create a `.env` file with your configuration, see below for a list of environmen
 
 - DATABASE_URL
 - HASH_SALT
-- MAXMIND_LICENSE_KEY
+
+Use a PostgreSQL or MySQL connection URL for `DATABASE_URL`. See the [analytics README](apps/analytics/README.md) for pooled connections and deployment settings.
 
 ```
-bun run --filter '@ouorz/analytics' build-postgresql-client
-bun run dev:analytics
+bun run build-db
+bun run dev
 ```
 
 <br/>
@@ -244,6 +245,9 @@ Work in progress
 Build system: [Turborepo](https://turborepo.org) with Remote Caching
 
 Package manager: [Bun](https://bun.com/docs/install/workspaces) workspaces
+
+Use the Bun version in `package.json#packageManager` and a Node.js version
+accepted by `package.json#engines`. Install with `bun install --frozen-lockfile`.
 
 Linter: [Oxlint](https://oxc.rs/docs/guide/usage/linter.html) · Formatter: [Oxfmt](https://oxc.rs/docs/guide/usage/formatter.html)
 

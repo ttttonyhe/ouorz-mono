@@ -4,9 +4,8 @@ import { allowQuery } from "lib/auth"
 import { useCors } from "lib/middleware"
 
 export default async (req, res) => {
+	if (!(await useCors(req, res))) return
 	if (req.method === "GET") {
-		await useCors(req, res)
-
 		if (!(await allowQuery(req))) {
 			return unauthorized(res)
 		}

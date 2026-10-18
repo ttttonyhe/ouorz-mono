@@ -23,10 +23,11 @@ export default function Footer() {
 	const dispatch = useDispatch()
 	const { visible } = useSelector(selectKbar)
 	const { setTheme, theme, resolvedTheme } = useTheme()
-	const { pathname } = useRouter()
+	const { asPath } = useRouter()
 	const mounted = useMounted()
 	const backToTopRef = useRef<HTMLButtonElement>(null)
-	const previousPathnameRef = useRef(pathname)
+	const previousPathRef = useRef(asPath)
+	const themeIndex = Math.max(0, themes.indexOf(theme ?? "system"))
 
 	useEffect(() => {
 		smoothScroll.polyfill()
@@ -55,31 +56,33 @@ export default function Footer() {
 	}, [mounted, resolvedTheme])
 
 	useEffect(() => {
-		if (previousPathnameRef.current === pathname) return
+		if (previousPathRef.current === asPath) return
 
-		previousPathnameRef.current = pathname
+		previousPathRef.current = asPath
 		if (visible) dispatch(deactivateKbar())
-	}, [dispatch, pathname, visible])
+	}, [dispatch, asPath, visible])
 
 	if (!mounted) return null
 
 	return (
-		<footer className="mt-20 border-t border-b border-gray-200 bg-white py-4 text-center dark:border-gray-700 dark:bg-gray-800">
+		<footer
+			lang="en"
+			className="mt-20 border-t border-b border-gray-200 bg-white py-4 text-center dark:border-gray-700 dark:bg-gray-800">
 			<div className="fixed bottom-8 left-8 text-gray-500 dark:text-gray-300">
 				<button
 					aria-label="change theme"
 					onClick={() => {
-						setTheme(targetThemes[themes.indexOf(theme)])
+						setTheme(targetThemes[themeIndex])
 					}}
 					className="effect-pressing flex w-full cursor-pointer items-center justify-center rounded-md border border-gray-300 bg-white p-3! text-xl tracking-wider shadow-xs hover:shadow-inner focus:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-					<span className="h-7 w-7">{icons[themes.indexOf(theme)]}</span>
+					<span className="h-7 w-7">{icons[themeIndex]}</span>
 				</button>
 			</div>
 			<div className="fixed right-8 bottom-8 text-gray-500 dark:text-gray-300">
 				<OffsetTransition componentRef={backToTopRef}>
 					<button
 						ref={backToTopRef}
-						aria-label="change theme"
+						aria-label="Back to top"
 						onClick={() => {
 							window.scrollTo({ top: 0, behavior: "smooth" })
 						}}
@@ -108,12 +111,14 @@ export default function Footer() {
 				<span className="inline-flex items-center gap-1">
 					<a
 						href="https://cs.uwatering.com/#https://lipeng.ac/?nav=prev"
+						aria-label="Previous site in the Waterloo Computer Science webring"
 						rel="noreferrer"
 						target="_blank">
 						←
 					</a>
 					<a
 						href="https://cs.uwatering.com/#https://lipeng.ac/"
+						aria-label="Waterloo Computer Science webring"
 						target="_blank"
 						rel="noreferrer"
 						className="pt-0.5">
@@ -121,6 +126,7 @@ export default function Footer() {
 					</a>
 					<a
 						href="https://cs.uwatering.com/#https://lipeng.ac/?nav=next"
+						aria-label="Next site in the Waterloo Computer Science webring"
 						rel="noreferrer"
 						target="_blank">
 						→

@@ -1,3 +1,4 @@
+import { getDateRange } from "lib/request"
 import moment from "moment-timezone"
 import { getPageviewStats } from "lib/queries"
 import { ok, badRequest, methodNotAllowed, unauthorized } from "lib/response"
@@ -7,9 +8,8 @@ import { useCors } from "lib/middleware"
 const unitTypes = ["year", "month", "hour", "day"]
 
 export default async (req, res) => {
+	if (!(await useCors(req, res))) return
 	if (req.method === "GET") {
-		await useCors(req, res)
-
 		if (!(await allowQuery(req))) {
 			return unauthorized(res)
 		}
@@ -29,8 +29,9 @@ export default async (req, res) => {
 		} = req.query
 
 		const websiteId = +id
-		const startDate = new Date(+start_at)
-		const endDate = new Date(+end_at)
+		const range = getDateRange({ start_at, end_at })
+		if (!range) return badRequest(res)
+		const { startDate, endDate } = range
 
 		if (!moment.tz.zone(tz) || !unitTypes.includes(unit)) {
 			return badRequest(res)
@@ -54,6 +55,7 @@ export default async (req, res) => {
 				"distinct pageview.session_id",
 				{
 					url,
+					referrer,
 					os,
 					browser,
 					device,

@@ -1,7 +1,12 @@
 require("dotenv").config()
 const pkg = require("./package.json")
+const path = require("node:path")
+const { getDatabaseConfig } = require("./lib/database.cjs")
+
+getDatabaseConfig()
 
 module.exports = {
+	outputFileTracingRoot: path.resolve(__dirname, "../.."),
 	env: {
 		VERSION: pkg.version,
 	},

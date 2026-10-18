@@ -47,7 +47,7 @@ class Deactivator {
 				}
 			}
 			if ( ! $active ) {
-				unlink( WPMU_PLUGIN_DIR . '/wp-rest-cache.php' );
+				wp_delete_file( WPMU_PLUGIN_DIR . '/wp-rest-cache.php' );
 			}
 		}
 	}

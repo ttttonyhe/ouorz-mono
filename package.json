@@ -27,13 +27,12 @@
 		"format:check": "oxfmt --check",
 		"format:sol": "prettier --write \"packages/twilight-protocol/contracts/**/*.sol\"",
 		"check": "oxlint && oxfmt --check",
-		"test": "turbo run test --parallel",
+		"test": "turbo run test",
 		"test:main": "turbo run test --filter=@ouorz/main",
-		"build": "turbo run build --parallel",
+		"build": "turbo run build",
 		"build:main": "turbo run @ouorz/main#build",
 		"build:preview": "turbo run @ouorz/preview#build",
 		"build:analytics": "turbo run @ouorz/analytics#build",
-		"build:analytics:edge": "turbo run @ouorz/analytics#build-edge",
 		"build:twilight": "turbo run build --filter=./packages/twilight-*",
 		"build:twilight:ui": "turbo run @twilight-toolkit/ui#build",
 		"build:twilight:ui:storybook": "turbo run @twilight-toolkit/ui#build:storybook",
@@ -50,28 +49,63 @@
 		"upgrade:dev:twilight:ui": "turbo run upgrade --filter=@twilight-toolkit/ui && bun install",
 		"clean": "turbo run clean --parallel && rm -rf node_modules"
 	},
+	"dependencies": {
+		"re2js": "2.8.8"
+	},
 	"devDependencies": {
-		"@commitlint/cli": "^21.2.2",
-		"@commitlint/config-conventional": "^21.2.2",
+		"@commitlint/cli": "^21.2.3",
+		"@commitlint/config-conventional": "^21.2.3",
+		"@ethereumjs/util": "^10.1.3",
 		"@oxlint/plugins": "1.80.0",
-		"lefthook": "^2.1.10",
+		"ethereum-cryptography": "^3.2.0",
+		"lefthook": "^2.2.2",
+		"npm-check-updates": "^23.1.1",
 		"oxfmt": "0.65.0",
 		"oxlint": "1.80.0",
 		"oxlint-tsgolint": "7.0.2001",
-		"prettier": "^3.9.6",
+		"prettier": "^3.9.10",
 		"prettier-plugin-solidity": "^2.4.1",
-		"solhint": "^6.2.4",
+		"solhint": "^6.2.5",
 		"solhint-plugin-prettier": "^0.1.0",
-		"turbo": "^2.10.12"
+		"turbo": "^2.11.9"
 	},
 	"overrides": {
-		"better-auth": "1.4.9"
+		"@better-auth/api-key": {
+			"better-call": "1.4.2"
+		},
+		"@better-auth/passkey": "1.7.10",
+		"@neondatabase/neon-js": "0.8.0-beta",
+		"@openzeppelin/hardhat-upgrades": "4.1.0",
+		"@openzeppelin/upgrades-core": "1.46.0",
+		"@xmldom/xmldom": "0.9.12",
+		"better-auth": "1.7.10",
+		"braces": "3.0.3",
+		"d3-color": "3.1.0",
+		"esbuild": "0.28.2",
+		"gray-matter": "4.0.3",
+		"js-yaml": "4.3.2",
+		"katex": "0.18.11",
+		"postcss": "8.5.30",
+		"postcss-selector-parser": "7.1.6",
+		"showdown": "2.1.0",
+		"tinypool": "2.2.0",
+		"uuid": "11.1.1",
+		"webpack-dev-middleware": "7.4.5"
 	},
 	"engines": {
-		"bun": ">=1.4.0",
-		"node": ">=22.18.0"
+		"bun": ">=1.4.2",
+		"node": "^22.22.2 || ^24.15.0 || >=26.0.0"
 	},
-	"packageManager": "bun@1.4.0",
+	"packageManager": "bun@1.4.2",
+	"patchedDependencies": {
+		"gray-matter@4.0.3": "patches/gray-matter@4.0.3.patch",
+		"showdown@2.1.0": "patches/showdown@2.1.0.patch",
+		"braces@3.0.3": "patches/braces@3.0.3.patch",
+		"@openzeppelin/upgrades-core@1.46.0": "patches/@openzeppelin%2Fupgrades-core@1.46.0.patch",
+		"@openzeppelin/hardhat-upgrades@4.1.0": "patches/@openzeppelin%2Fhardhat-upgrades@4.1.0.patch",
+		"next@16.4.2": "patches/next@16.4.2.patch",
+		"nexment@0.1.1": "patches/nexment@0.1.1.patch"
+	},
 	"trustedDependencies": [
 		"@prisma/client",
 		"@prisma/engines",

@@ -1,6 +1,6 @@
 import { Icon } from "@twilight-toolkit/ui"
 import Image from "next/image"
-import { useId, useRef, useState } from "react"
+import { useEffect, useId, useRef, useState } from "react"
 
 import { supportsViewTransitions } from "~/utilities/environment"
 
@@ -19,17 +19,25 @@ export default function ProfilePicture({ className }: Props) {
 	const captionId = useId()
 	const [fullSizeLoaded, setFullSizeLoaded] = useState(false)
 
+	useEffect(() => () => latestMorphRef.current?.skipTransition(), [])
+
 	// The flag scopes the view transition name to this morph (see global.css)
-	const morph = (update: () => void) => {
+	const morph = (update: (dialog: HTMLDialogElement) => void) => {
+		const dialog = dialogRef.current
+		if (!dialog) return
+
+		const updateDialog = () => {
+			if (dialog.isConnected) update(dialog)
+		}
+
 		if (!supportsViewTransitions()) {
-			update()
+			updateDialog()
 			return
 		}
 
-		const dialog = dialogRef.current
 		dialog.dataset.morphing = ""
 
-		const transition = document.startViewTransition(update)
+		const transition = document.startViewTransition(updateDialog)
 		latestMorphRef.current = transition
 
 		// A morph started mid-flight skips this one and keeps the flag
@@ -42,8 +50,8 @@ export default function ProfilePicture({ className }: Props) {
 		void transition.finished.then(settle, settle)
 	}
 
-	const show = () => morph(() => dialogRef.current.showModal())
-	const hide = () => morph(() => dialogRef.current.close())
+	const show = () => morph((dialog) => dialog.showModal())
+	const hide = () => morph((dialog) => dialog.close())
 
 	return (
 		<>

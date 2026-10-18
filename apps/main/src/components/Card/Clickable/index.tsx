@@ -2,7 +2,7 @@ import { Icon } from "@twilight-toolkit/ui"
 
 interface Props {
 	stopLoading: boolean
-	setStopLoading: any
+	setStopLoading: (value: boolean) => void
 }
 
 export default function CardClickable({ stopLoading, setStopLoading }: Props) {

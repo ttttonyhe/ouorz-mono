@@ -5,14 +5,14 @@ import { getUserWebsites, getRealtimeData } from "lib/queries"
 import { createToken } from "lib/crypto"
 
 export default async (req, res) => {
-	await useAuth(req, res)
+	if (!(await useAuth(req, res))) return
 
 	if (req.method === "GET") {
 		const { user_id } = req.auth
 
 		const websites = await getUserWebsites(user_id)
 		const ids = websites.map(({ website_id }) => website_id)
-		const token = await createToken({ websites: ids })
+		const token = await createToken({ user_id }, "realtime")
 		const data = await getRealtimeData(ids, subMinutes(new Date(), 30))
 
 		return ok(res, {

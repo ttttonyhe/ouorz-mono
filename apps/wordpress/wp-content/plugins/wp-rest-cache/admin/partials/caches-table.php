@@ -13,7 +13,8 @@ if ( ! isset( $wp_rest_cache_list ) ) {
 	return;
 }
 
-$wp_rest_cache_sub = filter_input( INPUT_GET, 'sub', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only navigation marker.
+$wp_rest_cache_sub = isset( $_GET['sub'] ) ? filter_var( $_GET['sub'], FILTER_SANITIZE_FULL_SPECIAL_CHARS ) : null;
 ?>
 <div id="poststuff">
 	<div id="post-body" class="metabox-holder">

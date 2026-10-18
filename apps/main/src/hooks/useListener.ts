@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-type MouseEventHandler = (event: MouseEvent) => any
+type MouseEventHandler = (event: MouseEvent) => void
 
 /**
  * Hook to add a listener for mouseLeave event
@@ -10,7 +10,9 @@ export const useMouseLeaveListener = (
 	element?: HTMLElement | Document
 ) => {
 	const type = "mouseleave"
-	const handler: MouseEventHandler = (event) => {
+	const handler = (event: Event) => {
+		if (!(event instanceof MouseEvent)) return
+
 		if (
 			event.clientY <= 0 ||
 			event.clientX <= 0 ||
@@ -28,7 +30,7 @@ export const useMouseLeaveListener = (
  */
 const useListener = (
 	type: string,
-	listener: (event: Event) => any,
+	listener: (event: Event) => void,
 	element?: HTMLElement | Document
 ) => {
 	const [listening, setListening] = useState(true)
@@ -50,7 +52,7 @@ const useListener = (
 		}
 	}, [listening, element, listener, type])
 
-	return [listening, setListening]
+	return [listening, setListening] as const
 }
 
 export default useListener

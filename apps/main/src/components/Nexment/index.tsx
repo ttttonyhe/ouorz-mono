@@ -1,4 +1,4 @@
-import Nexment from "nexment"
+import Nexment, { type NexmentConfig } from "nexment"
 import { useRouter } from "next/router"
 
 import { readParam } from "~/utilities/queryParams"
@@ -7,7 +7,7 @@ const NexmentComponent = () => {
 	const { query } = useRouter()
 	const pageKey = readParam(query.pid ?? query.pgid) ?? ""
 
-	const config = {
+	const config: NexmentConfig = {
 		pageKey,
 		features: {
 			linkInput: true,
@@ -56,12 +56,8 @@ const NexmentComponent = () => {
 		],
 	}
 
-	if (
-		process.env.NEXT_PUBLIC_LC_ID &&
-		process.env.NEXT_PUBLIC_LC_KEY &&
-		pageKey
-	) {
-		return <Nexment config={config} />
+	if (pageKey) {
+		return <Nexment key={pageKey} config={config} />
 	}
 
 	return null

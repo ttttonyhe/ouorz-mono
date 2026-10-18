@@ -17,8 +17,11 @@ export const labelTypes = propTypes.tuple(
 	"sticky-icon",
 	"green-icon"
 )
-export const iconsNames = propTypes.tuple(...Object.keys(icons))
-
 export type ButtonTypes = (typeof buttonTypes)[number]
-export type IconNames = (typeof iconsNames)[number]
+export type IconNames = keyof typeof icons
 export type LabelTypes = (typeof labelTypes)[number]
+
+export const isIconName = (name: string): name is IconNames =>
+	Object.hasOwn(icons, name)
+
+export const iconsNames = Object.keys(icons).filter((name) => isIconName(name))

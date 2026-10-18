@@ -1,13 +1,13 @@
-import { Icon } from "@twilight-toolkit/ui"
+import { Icon, type IconProps } from "@twilight-toolkit/ui"
 
 import { GlowingBackground } from "~/components/Visual"
 import openLink from "~/utilities/externalLink"
 
 interface MetricCardProps {
 	description: string
-	value: string
+	value: string | undefined
 	link: string
-	icon: string
+	icon: IconProps["name"]
 	colorHex: string
 	denominator?: string
 }

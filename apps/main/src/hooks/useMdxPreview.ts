@@ -1,26 +1,26 @@
-import type { MDXRemoteSerializeResult } from "next-mdx-remote"
 import useSWR from "swr"
+import { z } from "zod"
 
-import getAPI from "~/utilities/api"
+import api from "~/utilities/api"
+
+const previewSchema = z.object({ mdxHtml: z.string().nullable() })
 
 const fetchFresh = (url: string) =>
-	fetch(url, { cache: "no-store" }).then((response) => {
-		if (!response.ok) throw new Error(`Request failed: ${response.status}`)
-		return response.json()
-	})
+	fetch(url, { cache: "no-store", signal: AbortSignal.timeout(15000) }).then(
+		async (response) => {
+			if (!response.ok) throw new Error(`Request failed: ${response.status}`)
+			return previewSchema.parse(await response.json())
+		}
+	)
 
 /** Posts written before the MDX migration are stored as HTML and render as-is. */
 const isHtmlContent = (raw: string) => /<\w+[\s\S]*>/u.test(raw)
 
 interface MdxPreview {
-	mdxSource: MDXRemoteSerializeResult | null
+	mdxHtml: string | null
 	isLoading: boolean
 }
 
-/**
- * Serializes a post's raw content to MDX on the server so the reader can render
- * it. HTML posts skip the request entirely.
- */
 const useMdxPreview = (
 	id: string | number | undefined,
 	rawContent: string | undefined,
@@ -31,13 +31,13 @@ const useMdxPreview = (
 
 	const { data, isLoading } = useSWR(
 		shouldSerialize
-			? `${getAPI("internal", "post", { id: Number(id) })}&render=mdx`
+			? `${api.internal.post({ id: Number(id) })}&render=html`
 			: null,
 		fetchFresh
 	)
 
 	return {
-		mdxSource: shouldSerialize ? (data?.mdxSource ?? null) : null,
+		mdxHtml: shouldSerialize ? (data?.mdxHtml ?? null) : null,
 		isLoading: shouldSerialize && isLoading,
 	}
 }

@@ -1,6 +1,7 @@
 import moment from "moment-timezone"
 import prisma from "lib/db"
 import { subMinutes } from "date-fns"
+import { getDatabaseConfig } from "./database.cjs"
 import {
 	MYSQL,
 	POSTGRESQL,
@@ -10,15 +11,7 @@ import {
 } from "lib/constants"
 
 export function getDatabase() {
-	const type =
-		process.env.DATABASE_TYPE ||
-		(process.env.DATABASE_URL && process.env.DATABASE_URL.split(":")[0])
-
-	if (["postgres", "prisma"].includes(type)) {
-		return "postgresql"
-	}
-
-	return type
+	return getDatabaseConfig().type
 }
 
 export function getDateQuery(field, unit, timezone) {
@@ -66,7 +59,7 @@ export function getFilterQuery(table, filters = {}, params = []) {
 			case "url":
 				if (table === "pageview" || table === "event") {
 					arr.push(`and ${table}.${key}=$${params.length + 1}`)
-					params.push(decodeURIComponent(value))
+					params.push(value)
 				}
 				break
 
@@ -76,21 +69,21 @@ export function getFilterQuery(table, filters = {}, params = []) {
 			case "country":
 				if (table === "session") {
 					arr.push(`and ${table}.${key}=$${params.length + 1}`)
-					params.push(decodeURIComponent(value))
+					params.push(value)
 				}
 				break
 
 			case "event_type":
 				if (table === "event") {
 					arr.push(`and ${table}.${key}=$${params.length + 1}`)
-					params.push(decodeURIComponent(value))
+					params.push(value)
 				}
 				break
 
 			case "referrer":
 				if (table === "pageview") {
 					arr.push(`and ${table}.referrer like $${params.length + 1}`)
-					params.push(`%${decodeURIComponent(value)}%`)
+					params.push(`%${value}%`)
 				}
 				break
 
@@ -358,14 +351,20 @@ export async function getAccountByUsername(username) {
 }
 
 export async function updateAccount(user_id, data) {
-	return runQuery(
-		prisma.account.update({
+	return prisma.$transaction(async (transaction) => {
+		// Advance atomically so restoring a role cannot revive older service credentials.
+		if (getDatabase() === MYSQL) {
+			await transaction.$executeRaw`update account set updated_at = greatest(current_timestamp, coalesce(updated_at, current_timestamp) + interval 1 second) where user_id = ${user_id}`
+		} else {
+			await transaction.$executeRaw`update account set updated_at = greatest(current_timestamp, coalesce(updated_at, current_timestamp) + interval '1 millisecond') where user_id = ${user_id}`
+		}
+		return transaction.account.update({
 			where: {
 				user_id,
 			},
 			data,
 		})
-	)
+	})
 }
 
 export async function deleteAccount(user_id) {

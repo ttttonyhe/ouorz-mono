@@ -2,29 +2,26 @@
 	"name": "@ouorz/twilight-protocol",
 	"version": "0.0.1",
 	"private": true,
+	"type": "module",
 	"scripts": {
-		"compile": "hardhat compile",
+		"compile": "hardhat build",
 		"deploy:blog": "hardhat run ./scripts/deployBlogProxy.ts",
 		"upgrade:blog": "hardhat run ./scripts/upgradeBlogImpl.ts",
-		"verify:blog": "hardhat run ./scripts/verifyBlogImpl.ts",
+		"verify:blog": "hardhat verify",
 		"lint": "solhint -c ../../.solhint.json --ignore-path ../../.solhintignore -f table 'contracts/**/*.sol'",
-		"clean": "rm -rf node_modules && rm -rf .turbo && rm -rf artifacts-zk && rm -rf cache-zk"
+		"clean": "rm -rf node_modules .turbo dist artifacts cache artifacts-zk cache-zk",
+		"build": "hardhat build && node scripts/exportAbi.mjs"
 	},
 	"devDependencies": {
-		"@matterlabs/hardhat-zksync-deploy": "^1.8.0",
-		"@matterlabs/hardhat-zksync-solc": "^1.5.1",
-		"@matterlabs/hardhat-zksync-upgradable": "^1.10.0",
-		"@matterlabs/hardhat-zksync-verify": "^1.9.1",
-		"@nomicfoundation/hardhat-ethers": "^3.1.3",
-		"@nomicfoundation/hardhat-verify": "^2.1.3",
+		"@nomicfoundation/hardhat-ethers": "^4.2.1",
+		"@nomicfoundation/hardhat-verify": "^3.1.3",
 		"@openzeppelin/contracts": "^5.6.1",
 		"@openzeppelin/contracts-upgradeable": "^5.6.1",
-		"@openzeppelin/hardhat-upgrades": "^3.9.1",
+		"@openzeppelin/hardhat-upgrades": "^4.1.0",
 		"dotenv": "^17.4.2",
 		"ethers": "^6.17.0",
-		"hardhat": "^2.29.1",
-		"ts-node": "^10.9.2",
+		"hardhat": "^3.20.0",
 		"typescript": "^6.0.3",
-		"zksync-ethers": "^6.21.2"
+		"zod": "^4.6.7"
 	}
 }

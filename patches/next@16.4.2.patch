@@ -1,0 +1,42 @@
+diff --git a/dist/esm/server/lib/router-utils/setup-dev-bundler.js b/dist/esm/server/lib/router-utils/setup-dev-bundler.js
+index ed14ae52bd2c4b3e3eabc5dd2223f75013f1ea63..a4c3242298e6e788acce943ca72f5abbd6ae5292 100644
+--- a/dist/esm/server/lib/router-utils/setup-dev-bundler.js
++++ b/dist/esm/server/lib/router-utils/setup-dev-bundler.js
+@@ -1004,8 +1004,14 @@ async function startWatcher(opts) {
+         if (pathname !== null && (pathname.includes(devMiddlewareManifestPath) || pathname.includes(devTurbopackMiddlewareManifestPath))) {
+             var _serverFields_middleware;
+             res.statusCode = 200;
+-            res.setHeader('Content-Type', JSON_CONTENT_TYPE_HEADER);
+-            res.end(JSON.stringify(((_serverFields_middleware = serverFields.middleware) == null ? void 0 : _serverFields_middleware.matchers) || []));
++            const matchers = JSON.stringify(((_serverFields_middleware = serverFields.middleware) == null ? void 0 : _serverFields_middleware.matchers) || []);
++            if (pathname.includes(devTurbopackMiddlewareManifestPath)) {
++                res.setHeader('Content-Type', 'text/javascript; charset=utf-8');
++                res.end(`self.__MIDDLEWARE_MATCHERS = ${matchers}; self.__MIDDLEWARE_MATCHERS_CB && self.__MIDDLEWARE_MATCHERS_CB()`);
++            } else {
++                res.setHeader('Content-Type', JSON_CONTENT_TYPE_HEADER);
++                res.end(matchers);
++            }
+             return {
+                 finished: true
+             };
+diff --git a/dist/server/lib/router-utils/setup-dev-bundler.js b/dist/server/lib/router-utils/setup-dev-bundler.js
+index 85c0d78813501002f1a00944660ed291508adeb7..0d25a754c0553d345c83ff0f7d688c93247f9a10 100644
+--- a/dist/server/lib/router-utils/setup-dev-bundler.js
++++ b/dist/server/lib/router-utils/setup-dev-bundler.js
+@@ -1072,8 +1072,14 @@ async function startWatcher(opts) {
+         if (pathname !== null && (pathname.includes(devMiddlewareManifestPath) || pathname.includes(devTurbopackMiddlewareManifestPath))) {
+             var _serverFields_middleware;
+             res.statusCode = 200;
+-            res.setHeader('Content-Type', _constants1.JSON_CONTENT_TYPE_HEADER);
+-            res.end(JSON.stringify(((_serverFields_middleware = serverFields.middleware) == null ? void 0 : _serverFields_middleware.matchers) || []));
++            const matchers = JSON.stringify(((_serverFields_middleware = serverFields.middleware) == null ? void 0 : _serverFields_middleware.matchers) || []);
++            if (pathname.includes(devTurbopackMiddlewareManifestPath)) {
++                res.setHeader('Content-Type', 'text/javascript; charset=utf-8');
++                res.end(`self.__MIDDLEWARE_MATCHERS = ${matchers}; self.__MIDDLEWARE_MATCHERS_CB && self.__MIDDLEWARE_MATCHERS_CB()`);
++            } else {
++                res.setHeader('Content-Type', _constants1.JSON_CONTENT_TYPE_HEADER);
++                res.end(matchers);
++            }
+             return {
+                 finished: true
+             };

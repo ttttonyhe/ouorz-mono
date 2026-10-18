@@ -1,8 +1,11 @@
 import { Icon } from "@twilight-toolkit/ui"
 import React from "react"
+import { z } from "zod"
 
 import { LISTMONK_LIST_UUID } from "~/constants/ids"
-import getAPI from "~/utilities/api"
+import api from "~/utilities/api"
+
+const subscriptionResponseSchema = z.object({ data: z.unknown() })
 
 const SubscriptionBox = ({
 	type,
@@ -14,31 +17,38 @@ const SubscriptionBox = ({
 	const [email, setEmail] = React.useState<string>("")
 	const [subscribed, setSubscribed] = React.useState<boolean>(false)
 	const [processing, setProcessing] = React.useState<boolean>(false)
+	const submitting = React.useRef(false)
 
 	const doSubscribe = async () => {
-		if (processing) return
+		if (submitting.current || subscribed) return
 
+		submitting.current = true
 		setProcessing(true)
 
-		const data = await fetch(getAPI("external", "subscribeToListmonk"), {
-			method: "post",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				email: email,
-				name: email.split("@")[0],
+		try {
+			const response = await fetch(api.external.subscribeToListmonk(), {
+				method: "post",
+				signal: AbortSignal.timeout(15000),
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					email,
+					name: email.split("@")[0],
+					list_uuids: [LISTMONK_LIST_UUID],
+				}),
+			})
+			const result = subscriptionResponseSchema.safeParse(await response.json())
 
-				list_uuids: [LISTMONK_LIST_UUID],
-			}),
-		})
-			.then((res) => res.json())
-			.finally(() => setProcessing(false))
-
-		if (data.data) {
+			if (!response.ok || !result.success || !result.data.data) {
+				throw new Error("Subscription failed")
+			}
 			setSubscribed(true)
-		} else {
+		} catch {
 			alert("An error has occurred, please try again.")
+		} finally {
+			submitting.current = false
+			setProcessing(false)
 		}
 	}
 
@@ -69,6 +79,7 @@ const SubscriptionBox = ({
 							className="flex w-full">
 							<input
 								type="email"
+								aria-label="Email address"
 								value={email}
 								className={`${
 									processing ? "animate-pulse border-gray-400 duration-75" : ""
@@ -76,11 +87,6 @@ const SubscriptionBox = ({
 								placeholder="your.email@address.com"
 								onChange={(e) => {
 									setEmail(e.target.value)
-								}}
-								onKeyDown={(e) => {
-									if (e.key === "Enter") {
-										void doSubscribe()
-									}
 								}}
 								required
 							/>
@@ -120,12 +126,12 @@ const SubscriptionBox = ({
 				</div>
 				<div className="flex items-center">
 					<a href="https://lipeng.ac/feed" target="_blank" rel="noreferrer">
-						<button className="effect-pressing -mt-4.5 flex w-full cursor-pointer items-center justify-center gap-x-1 rounded-md border border-gray-300 bg-white px-2.5 py-1 text-xl tracking-wider text-gray-500 shadow-xs hover:shadow-inner focus:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+						<span className="effect-pressing -mt-4.5 flex w-full cursor-pointer items-center justify-center gap-x-1 rounded-md border border-gray-300 bg-white px-2.5 py-1 text-xl tracking-wider text-gray-500 shadow-xs hover:shadow-inner focus:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
 							<span className="h-6 w-6">
 								<Icon name="rss" />
 							</span>
 							RSS
-						</button>
+						</span>
 					</a>
 				</div>
 			</div>
@@ -138,16 +144,12 @@ const SubscriptionBox = ({
 					className="col-start-1 col-end-3 grid w-full grid-cols-3 rounded-md bg-white tracking-wide text-gray-600 dark:border-gray-800 dark:bg-gray-800 dark:text-gray-400">
 					<input
 						type="email"
+						aria-label="Email address"
 						value={email}
 						className="col-start-1 col-end-3 w-full rounded-tl-md rounded-bl-md border border-r-0 border-gray-200 px-4 py-2 font-light shadow-xs focus:border-gray-300 focus:outline-hidden dark:border-gray-500 dark:bg-gray-600"
 						placeholder="Email address"
 						onChange={(e) => {
 							setEmail(e.target.value)
-						}}
-						onKeyDown={(e) => {
-							if (e.key === "Enter") {
-								void doSubscribe()
-							}
 						}}
 						required
 					/>
@@ -158,10 +160,7 @@ const SubscriptionBox = ({
 					) : (
 						<button
 							type="submit"
-							className="col-start-3 col-end-4 flex cursor-pointer items-center rounded-tr-md rounded-br-md border border-blue-200 bg-blue-50 text-center text-blue-500 shadow-xs hover:border-blue-300 hover:bg-blue-100 dark:border-blue-400 dark:bg-blue-500 dark:text-white dark:hover:border-blue-400 dark:hover:bg-blue-600"
-							onClick={() => {
-								if (email) void doSubscribe()
-							}}>
+							className="col-start-3 col-end-4 flex cursor-pointer items-center rounded-tr-md rounded-br-md border border-blue-200 bg-blue-50 text-center text-blue-500 shadow-xs hover:border-blue-300 hover:bg-blue-100 dark:border-blue-400 dark:bg-blue-500 dark:text-white dark:hover:border-blue-400 dark:hover:bg-blue-600">
 							<span className="mx-auto">
 								{processing ? "Processing..." : "Subscribe"}
 							</span>

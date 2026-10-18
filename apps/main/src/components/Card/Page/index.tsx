@@ -1,20 +1,21 @@
-import { Icon } from "@twilight-toolkit/ui"
+import { Icon, type IconProps, isIconName } from "@twilight-toolkit/ui"
 import Image from "next/image"
+import Link from "next/link"
 import { useRouter } from "next/router"
 
 import { GlowingBackground } from "~/components/Visual"
-import openLink from "~/utilities/externalLink"
 import { navigateWithTransition } from "~/utilities/viewTransition"
 
 interface Props {
 	title: string
 	des: string
 	icon?: string
-	iconSmall?: string
+	iconSmall?: IconProps["name"]
 	className?: string
 	href?: string
 	wrappable?: boolean
 	viewTransitionName?: string
+	heading?: "h2" | "h3"
 }
 
 export default function PageCard({
@@ -26,28 +27,15 @@ export default function PageCard({
 	href,
 	wrappable,
 	viewTransitionName,
+	heading: Heading = "h2",
 }: Props) {
 	const router = useRouter()
-	const handleClick = () => {
-		if (href) {
-			const isExternalHref =
-				href.startsWith("http://") || href.startsWith("https://")
-
-			if (!isExternalHref) {
-				if (viewTransitionName) {
-					navigateWithTransition(router, href)
-				} else {
-					void router.push(href)
-				}
-			} else {
-				openLink(href)
-			}
-		}
-	}
-	return (
-		<div
-			className="glowing-div flex cursor-pointer items-center rounded-md border bg-white px-4 pt-3 pb-4 shadow-xs transition-shadow hover:shadow-md dark:border-0 dark:bg-gray-700"
-			onClick={handleClick}>
+	const cardClassName =
+		"glowing-div flex cursor-pointer items-center rounded-md border bg-white px-4 pt-3 pb-4 shadow-xs transition-shadow hover:shadow-md dark:border-0 dark:bg-gray-700"
+	const isExternalHref =
+		href?.startsWith("https://") || href?.startsWith("http://")
+	const content = (
+		<>
 			<GlowingBackground />
 			<div className="glowing-div-content flex items-center overflow-hidden">
 				{icon && (
@@ -60,7 +48,7 @@ export default function PageCard({
 								src={icon}
 								width={35}
 								height={35}
-								alt={`remote image ${icon}`}
+								alt=""
 								loading="lazy"
 								className="h-[35px] w-[35px] object-contain"
 							/>
@@ -70,12 +58,12 @@ export default function PageCard({
 								{icon}
 							</span>
 						) : (
-							<Icon name={icon} />
+							isIconName(icon) && <Icon name={icon} />
 						)}
 					</div>
 				)}
 				<div className="w-full">
-					<h1
+					<Heading
 						className={`flex items-center text-2xl font-medium tracking-wide ${
 							iconSmall || wrappable ? "" : "-mb-1"
 						}`}>
@@ -91,7 +79,7 @@ export default function PageCard({
 							style={viewTransitionName ? { viewTransitionName } : undefined}>
 							{title}
 						</span>
-					</h1>
+					</Heading>
 					<p
 						className={`text-4 tracking-wide text-gray-600 dark:text-gray-400 ${
 							wrappable
@@ -102,6 +90,24 @@ export default function PageCard({
 					</p>
 				</div>
 			</div>
-		</div>
+		</>
+	)
+
+	if (!href) return <div className={cardClassName}>{content}</div>
+
+	return (
+		<Link
+			href={href}
+			className={cardClassName}
+			target={isExternalHref ? "_blank" : undefined}
+			rel={isExternalHref ? "noreferrer" : undefined}
+			onNavigate={(event) => {
+				if (viewTransitionName) {
+					event.preventDefault()
+					navigateWithTransition(router, href)
+				}
+			}}>
+			{content}
+		</Link>
 	)
 }

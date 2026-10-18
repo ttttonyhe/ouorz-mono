@@ -1,24 +1,9 @@
 require("dotenv").config()
 const fs = require("fs")
 const path = require("path")
+const { getDatabaseConfig } = require("../lib/database.cjs")
 
-function getDatabase() {
-	const type =
-		process.env.DATABASE_TYPE ||
-		(process.env.DATABASE_URL && process.env.DATABASE_URL.split(":")[0])
-
-	if (["postgres", "prisma"].includes(type)) {
-		return "postgresql"
-	}
-
-	return type
-}
-
-const databaseType = getDatabase()
-
-if (!databaseType || !["mysql", "postgresql"].includes(databaseType)) {
-	throw new Error("Missing or invalid database")
-}
+const databaseType = getDatabaseConfig().type
 
 console.log(`Database type detected: ${databaseType}`)
 

@@ -5,6 +5,7 @@ import matter from "gray-matter"
 import { marked } from "marked"
 
 import { postFrontmatterSchema } from "~/content/schema"
+import { getContentLanguage, type ContentLanguage } from "~/content/text"
 
 export type { LocalPostFrontmatter } from "~/content/schema"
 
@@ -22,6 +23,8 @@ export interface LocalPost {
 	title: { rendered: string }
 	post_title: string
 	date: string
+	language: ContentLanguage
+	noindex: boolean
 	content: { rendered: string; raw: string }
 	post_excerpt: { four: string }
 	post_img: { url: string }
@@ -41,14 +44,28 @@ export interface LocalPost {
 
 const CONTENT_DIR = path.join(process.cwd(), "content", "posts")
 
-const countWords = (text: string) =>
-	text.trim().split(/\s+/u).filter(Boolean).length
+const wordSegmenters = {
+	en: new Intl.Segmenter("en", { granularity: "word" }),
+	"zh-CN": new Intl.Segmenter("zh-CN", { granularity: "word" }),
+} satisfies Record<ContentLanguage, Intl.Segmenter>
+
+const countWords = (text: string, language: ContentLanguage) => {
+	let count = 0
+	for (const segment of wordSegmenters[language].segment(text)) {
+		if (segment.isWordLike) count += 1
+	}
+	return count
+}
 
 const toLocalPost = (fileName: string): LocalPost => {
 	const source = fs.readFileSync(path.join(CONTENT_DIR, fileName), "utf-8")
 	const { data, content } = matter(source)
 	const frontmatter = postFrontmatterSchema.parse(data)
-	const wordCount = countWords(content)
+	const language = getContentLanguage(
+		`${frontmatter.title} ${content}`,
+		frontmatter.language
+	)
+	const wordCount = countWords(content, language)
 
 	const postMetas: LocalPost["post_metas"] = {
 		status: "publish",
@@ -71,6 +88,8 @@ const toLocalPost = (fileName: string): LocalPost => {
 		title: { rendered: frontmatter.title },
 		post_title: frontmatter.title,
 		date: frontmatter.date.toISOString(),
+		noindex: frontmatter.noindex || Boolean(frontmatter.link),
+		language,
 		content: {
 			rendered: marked.parse(content, { async: false }),
 			raw: content,
@@ -176,6 +195,7 @@ export const getCategoryById = (id: number) => {
 		id,
 		name: posts[0].post_categories[0].name,
 		count: posts.length,
+		noindex: posts.every((post) => post.noindex),
 	}
 }
 

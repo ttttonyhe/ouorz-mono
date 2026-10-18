@@ -62,12 +62,10 @@ class Flush_Command extends \WP_CLI_Command {
 
 		if ( ! $object_type || 'all' === $object_type ) {
 			$nr_of_flushed = $caching->delete_all_caches( $delete );
+		} elseif ( ! $related ) {
+			$nr_of_flushed = $caching->delete_object_type_caches( $object_type, $delete );
 		} else {
-			if ( ! $related ) {
-				$nr_of_flushed = $caching->delete_object_type_caches( $object_type, $delete );
-			} else {
-				$nr_of_flushed = $caching->delete_related_caches( $related, $object_type, false, $delete );
-			}
+			$nr_of_flushed = $caching->delete_related_caches( $related, $object_type, false, $delete );
 		}
 
 		\WP_CLI::success(

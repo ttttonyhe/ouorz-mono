@@ -1,5 +1,0 @@
-{
-    "require": {
-        "suin/php-rss-writer": "^1.6"
-    }
-}

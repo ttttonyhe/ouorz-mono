@@ -1,10 +1,9 @@
 import { styled } from "styled-components"
 
 interface GlowingBackgroundProps {
-	$rounded?: "sm" | "md" | "xl"
+	$rounded: "sm" | "md" | "xl"
 }
 
-// styled component props resolvers
 const borderRadius = (props: GlowingBackgroundProps) => {
 	switch (props.$rounded) {
 		case "sm":

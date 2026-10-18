@@ -1,14 +1,19 @@
 import format from "comma-number"
 import useSWR from "swr"
+import { z } from "zod"
 
-import fetcher from "~/lib/fetcher"
+import createFetcher from "~/lib/fetcher"
 
 import MetricCard from "./Card"
 
-export default function SspaiMetric() {
-	const { data } = useSWR("api/substats", fetcher)
+const fetchFollowers = createFetcher(
+	z.object({ sspaiFollowers: z.number().int().nonnegative() })
+)
 
-	const followers = format(data?.sspaiFollowers)
+export default function SspaiMetric() {
+	const { data } = useSWR("/api/substats", fetchFollowers)
+
+	const followers = data && format(data.sspaiFollowers)
 	const link = "https://sspai.com/u/tonyhe"
 
 	return (

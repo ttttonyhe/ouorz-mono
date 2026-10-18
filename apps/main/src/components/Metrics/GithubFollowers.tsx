@@ -1,14 +1,17 @@
 import format from "comma-number"
 import useSWR from "swr"
 
-import fetcher from "~/lib/fetcher"
+import { githubMetricsSchema } from "~/constants/propTypes"
+import createFetcher from "~/lib/fetcher"
 
 import MetricCard from "./Card"
 
-export default function GithubFollowerMetric() {
-	const { data } = useSWR("api/github", fetcher)
+const fetchGithub = createFetcher(githubMetricsSchema)
 
-	const followers = format(data?.followers)
+export default function GithubFollowerMetric() {
+	const { data } = useSWR("/api/github", fetchGithub)
+
+	const followers = data && format(data.followers)
 	const link = "https://github.com/ttttonyhe"
 
 	return (

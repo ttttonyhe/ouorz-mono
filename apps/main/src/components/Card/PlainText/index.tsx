@@ -4,7 +4,7 @@ import TimeAgo from "react-timeago"
 
 import type { WPPost } from "~/constants/propTypes"
 import { useDebouncedFunction } from "~/hooks"
-import getAPI from "~/utilities/api"
+import api from "~/utilities/api"
 
 interface Props {
 	item: WPPost
@@ -22,10 +22,13 @@ export default function CardPlainText({ item }: Props) {
 	 *
 	 * @param {number} id postid
 	 */
-	const upvote = async (id: number) => {
+	const upvote = async (id: string) => {
 		setUpvoting(true)
-		await fetch(getAPI("internal", "like", { id }))
-			.then(() => {
+		await fetch(api.internal.like({ id: Number(id) }), {
+			method: "POST",
+		})
+			.then((response) => {
+				if (!response.ok) throw new Error(`Upvote failed: ${response.status}`)
 				return setTimeout(() => {
 					setUpvoting(false)
 					setUpvotes((prev) => prev + 1)
@@ -41,7 +44,7 @@ export default function CardPlainText({ item }: Props) {
 	return (
 		<div className="mb-6 w-full rounded-md border bg-white shadow-xs dark:border-gray-800 dark:bg-gray-800">
 			<div className="px-5 py-5 lg:px-10 lg:py-9">
-				<h1
+				<h2
 					className="text-2 leading-2 font-normal tracking-wider text-gray-600 lg:text-3xl lg:leading-10 dark:text-white"
 					dangerouslySetInnerHTML={{ __html: item.post_title }}
 				/>

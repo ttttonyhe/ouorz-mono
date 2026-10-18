@@ -1,45 +1,33 @@
-// Plugin load order is significant: zksync-verify must override the Etherscan
-// verify tasks before zksync-upgradable pulls in the OpenZeppelin upgrades plugin.
-import "@nomicfoundation/hardhat-ethers"
-import "@matterlabs/hardhat-zksync-deploy"
-import "@matterlabs/hardhat-zksync-solc"
-import "@matterlabs/hardhat-zksync-verify"
-import "@matterlabs/hardhat-zksync-upgradable"
-import * as dotenv from "dotenv"
-import type { HardhatUserConfig } from "hardhat/types"
+import hardhatEthers from "@nomicfoundation/hardhat-ethers"
+import hardhatVerify from "@nomicfoundation/hardhat-verify"
+import hardhatUpgrades from "@openzeppelin/hardhat-upgrades"
+import "dotenv/config"
+import { configVariable, defineConfig } from "hardhat/config"
 
-dotenv.config()
-
-const config: HardhatUserConfig = {
+export default defineConfig({
+	plugins: [hardhatEthers, hardhatVerify, hardhatUpgrades],
 	solidity: {
 		version: "0.8.30",
 		settings: {
-			// solc 0.8.30 defaults to Prague; the zkVM toolchain tops out at Cancun.
 			evmVersion: "cancun",
+			optimizer: { enabled: true, runs: 200 },
 		},
 	},
-	zksolc: {
-		version: "1.5.17",
-		compilerSource: "binary",
-		settings: {
-			// zksolc defaults to Yul; pin it so a future default change cannot alter bytecode.
-			codegen: "yul",
-			optimizer: {
-				enabled: true,
-				mode: "3",
-			},
-		},
-	},
-	defaultNetwork: "zkSyncTestnet",
 	networks: {
-		zkSyncTestnet: {
-			url: "https://testnet.era.zksync.dev",
-			verifyURL:
-				"https://zksync2-testnet-explorer.zksync.dev/contract_verification",
-			ethNetwork: "goerli",
-			zksync: true,
+		default: { type: "edr-simulated", chainId: 31337 },
+		localhost: {
+			type: "http",
+			url: "http://127.0.0.1:8545",
+			chainId: 31337,
+		},
+		zkSyncSepolia: {
+			type: "http",
+			url: "https://sepolia.era.zksync.dev",
+			chainId: 300,
+			accounts: [configVariable("DEPLOYER_PRIVATE_KEY")],
 		},
 	},
-}
-
-export default config
+	verify: {
+		etherscan: { apiKey: configVariable("ETHERSCAN_API_KEY") },
+	},
+})

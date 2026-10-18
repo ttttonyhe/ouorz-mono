@@ -7,7 +7,7 @@ export default async (req, res) => {
 	const websiteId = +id
 
 	if (req.method === "POST") {
-		if (!(await allowQuery(req))) {
+		if (!(await allowQuery(req, true))) {
 			return unauthorized(res)
 		}
 

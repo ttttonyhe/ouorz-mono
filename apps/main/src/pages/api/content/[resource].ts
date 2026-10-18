@@ -1,36 +1,57 @@
 import type { NextApiRequest, NextApiResponse } from "next"
+import { z } from "zod"
 
-import { serializeMDX } from "~/content/mdx"
+import { renderMDX } from "~/content/mdx"
 import { getPageById } from "~/content/pages"
 import {
 	getCategoryById,
 	getPostById,
 	getPostIds,
 	getPosts,
-	getPostStats,
 } from "~/content/posts"
 import { getSponsors } from "~/content/static-data"
-import { getPathViews } from "~/content/views"
-import {
-	paramEquals,
-	readNumberParam,
-	readParam,
-} from "~/utilities/queryParams"
+import { getPathViews, getPostViews } from "~/content/views"
+import { apiHandler } from "~/lib/apiHandler"
+import { paramEquals, readParam } from "~/utilities/queryParams"
+
+const positiveInteger = z
+	.string()
+	.regex(/^[1-9]\d*$/u)
+	.transform(Number)
+	.pipe(z.number().int().positive())
+const postsQuerySchema = z.object({
+	sticky: z.enum(["0", "1"]).optional(),
+	categories: positiveInteger.optional(),
+	categories_exclude: z
+		.string()
+		.max(1000)
+		.regex(/^\d+(?:,\d+)*$/u)
+		.optional(),
+	per_page: positiveInteger.pipe(z.number().max(100)).optional(),
+	page: positiveInteger.optional(),
+	search: z.string().max(200).optional(),
+})
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	const key = readParam(req.query.resource)
+	if (!key) return res.status(404).json({ message: "Not found" })
 
 	switch (key) {
 		case "posts": {
 			res.setHeader("Cache-Control", "no-store, max-age=0")
 
-			const stickyParam = readParam(req.query.sticky)
+			const parsed = postsQuerySchema.safeParse(req.query)
+			if (!parsed.success)
+				return res.status(400).json({ error: "Invalid query parameters" })
+			const stickyParam = parsed.data.sticky
 			const sticky = stickyParam === undefined ? undefined : stickyParam === "1"
-			const cate = readNumberParam(req.query.categories)
-			const cateExclude = readParam(req.query.categories_exclude)
-			const perPage = readNumberParam(req.query.per_page)
-			const page = readNumberParam(req.query.page) ?? 1
-			const search = readParam(req.query.search)
+			const {
+				categories: cate,
+				categories_exclude: cateExclude,
+				per_page: perPage,
+				page,
+				search,
+			} = parsed.data
 
 			const posts = getPosts({
 				sticky,
@@ -41,9 +62,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 				search,
 			})
 
-			const views = await Promise.all(
-				posts.map((post) => getPathViews(`/post/${post.id}`))
-			)
+			const views = await getPostViews(posts)
 			const postsWithViews = posts.map((post, index) =>
 				Object.assign({}, post, {
 					post_metas: Object.assign({}, post.post_metas, {
@@ -57,33 +76,34 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 		case "post": {
 			res.setHeader("Cache-Control", "no-store, max-age=0")
 
-			const id = Number(req.query.id)
-			const withMdx = paramEquals(req.query.render, "mdx")
+			const parsed = positiveInteger.safeParse(req.query.id)
+			if (!parsed.success) return res.status(400).json({ error: "Invalid ID" })
+			const id = parsed.data
+			const withHtml = paramEquals(req.query.render, "html")
 			const post = getPostById(id)
 			if (!post) return res.status(404).json({})
 
-			let mdxSource = null
-			if (withMdx && !/<\w+[\s\S]*>/u.test(post.content.raw)) {
-				try {
-					mdxSource = await serializeMDX(post.content.raw)
-				} catch {
-					mdxSource = null
-				}
-			}
+			const mdxHtml =
+				withHtml && !/<\w+[\s\S]*>/u.test(post.content.raw)
+					? await renderMDX(post.content.raw)
+					: null
 
 			return res.status(200).json({
 				...post,
 				post_metas: {
 					...post.post_metas,
-					views: await getPathViews(`/post/${post.id}`),
+					views:
+						(await getPathViews(`/post/${post.id}`)) ?? post.post_metas.views,
 				},
-				mdxSource,
+				mdxHtml,
 			})
 		}
 		case "allPostIDs":
 			return res.status(200).json(getPostIds())
 		case "category": {
-			const id = Number(req.query.id)
+			const parsed = positiveInteger.safeParse(req.query.id)
+			if (!parsed.success) return res.status(400).json({ error: "Invalid ID" })
+			const id = parsed.data
 			const category = getCategoryById(id)
 			if (!category) return res.status(404).json({})
 			return res.status(200).json(category)
@@ -93,17 +113,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 		case "postStats": {
 			res.setHeader("Cache-Control", "no-store, max-age=0")
 
-			const stats = getPostStats()
 			const posts = getPosts()
-			const views = (
-				await Promise.all(posts.map((post) => getPathViews(`/post/${post.id}`)))
-			).reduce((sum, value) => sum + value, 0)
-			return res.status(200).json({ ...stats, views })
+			const views = (await getPostViews(posts)).reduce(
+				(sum, value) => sum + value,
+				0
+			)
+			return res.status(200).json({ count: posts.length, views })
 		}
 		case "page": {
 			res.setHeader("Cache-Control", "no-store, max-age=0")
 
-			const id = Number(req.query.id)
+			const parsed = positiveInteger.safeParse(req.query.id)
+			if (!parsed.success) return res.status(400).json({ error: "Invalid ID" })
+			const id = parsed.data
 			const page = getPageById(id)
 			if (!page) return res.status(404).json({})
 
@@ -111,7 +133,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 				...page,
 				post_metas: {
 					...page.post_metas,
-					views: await getPathViews(`/page/${page.id}`),
+					views:
+						(await getPathViews(`/page/${page.id}`)) ?? page.post_metas.views,
 				},
 			})
 		}
@@ -120,4 +143,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	}
 }
 
-export default handler
+export default apiHandler(["GET", "HEAD"], handler)

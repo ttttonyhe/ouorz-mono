@@ -5,11 +5,14 @@ import matter from "gray-matter"
 import { marked } from "marked"
 
 import { pageFrontmatterSchema } from "~/content/schema"
+import { getContentLanguage, type ContentLanguage } from "~/content/text"
 
 export interface LocalPage {
 	id: string
 	title: { rendered: string }
 	date: string
+	language: ContentLanguage
+	noindex: boolean
 	content: { rendered: string }
 	post_metas: { views: number }
 }
@@ -25,6 +28,11 @@ const toLocalPage = (fileName: string): LocalPage => {
 		id: String(frontmatter.id),
 		title: { rendered: frontmatter.title },
 		date: frontmatter.date.toISOString(),
+		noindex: frontmatter.noindex,
+		language: getContentLanguage(
+			`${frontmatter.title} ${content}`,
+			frontmatter.language
+		),
 		content: { rendered: marked.parse(content, { async: false }) },
 		post_metas: { views: frontmatter.views ?? 0 },
 	}
@@ -37,6 +45,7 @@ export const getAllPages = (): LocalPage[] => {
 		.readdirSync(CONTENT_DIR)
 		.filter((fileName) => fileName.endsWith(".mdx") || fileName.endsWith(".md"))
 		.map((fileName) => toLocalPage(fileName))
+		.filter((page) => page.content.rendered.trim().length > 0)
 		.toSorted((a, b) => +new Date(b.date) - +new Date(a.date))
 }
 

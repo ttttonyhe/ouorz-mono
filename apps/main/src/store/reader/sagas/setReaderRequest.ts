@@ -1,9 +1,14 @@
 import { put } from "redux-saga/effects"
 
-import { setReader, setReaderAnimation, showReader } from "../actions"
+import {
+	setReader,
+	setReaderAnimation,
+	showReader,
+	type setReaderRequest,
+} from "../actions"
 
 export default function* setReaderRequstSaga(
-	action: ReturnType<typeof setReader>
+	action: ReturnType<typeof setReaderRequest>
 ) {
 	try {
 		if (action.payload.postData) {

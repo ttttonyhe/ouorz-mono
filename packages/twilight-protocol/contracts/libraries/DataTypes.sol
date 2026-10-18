@@ -14,16 +14,4 @@ library DataTypes {
 		string name;
 		string description;
 	}
-
-	/// @notice A blog entry minted as an NFT.
-	/// @param tokenId Token identifier of the entry.
-	/// @param categoryId Category the entry was filed under.
-	/// @param createdAt Block timestamp at which the entry was minted.
-	/// @param tokenUri Location of the entry's content and metadata.
-	struct EntryMetadata {
-		uint256 tokenId;
-		uint256 categoryId;
-		uint256 createdAt;
-		string tokenUri;
-	}
 }

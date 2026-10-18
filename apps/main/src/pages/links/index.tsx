@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useRouter } from "next/router"
 
 import { pageLayout } from "~/components/Page"
-import { getPostStats, getPosts } from "~/content/posts"
+import { getPosts, type LocalPost } from "~/content/posts"
 import type { NextPageWithLayout } from "~/pages/_app"
 import { trimStr } from "~/utilities/string"
 import {
@@ -13,18 +13,20 @@ import {
 	navigateWithTransition,
 } from "~/utilities/viewTransition"
 
-const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
+interface Props {
+	friends: LocalPost[]
+}
+
+const Links: NextPageWithLayout<Props> = ({ friends }) => {
 	const router = useRouter()
 
 	return (
 		<div>
 			<Head>
-				<title>Links - Tony He</title>
 				<link
 					rel="icon"
 					href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧑‍🤝‍🧑</text></svg>"
 				/>
-				<meta name="description" content="TonyHe's friends' sites" />
 			</Head>
 			<section className="mt-0 pt-24 lg:mt-20 lg:pt-0">
 				<div className="mb-4 flex items-center">
@@ -35,14 +37,14 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 							</span>
 						</div>
 						<div>
-							<h2 className="flex items-center gap-x-1.5 text-[28px] font-medium tracking-wide whitespace-nowrap text-black dark:text-white">
+							<h1 className="flex items-center gap-x-1.5 text-[28px] font-medium tracking-wide whitespace-nowrap text-black dark:text-white">
 								<span
 									style={{
 										viewTransitionName: getViewTransitionName("Links"),
 									}}>
 									Links
 								</span>
-							</h2>
+							</h1>
 							<p className="-mt-1 text-sm text-neutral-500 dark:text-gray-400">
 								A collection of fun stuff and links from the internet.
 							</p>
@@ -69,12 +71,12 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 				<hr className="dark:border-gray-600" />
 			</div>
 			<section className="mb-10">
-				<span className="inline-flex items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+				<h2 className="inline-flex items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5 text-blue-500">
 						<Icon name="pencilTool" />
 					</span>
 					<span className="uppercase">Tools</span>
-				</span>
+				</h2>
 				<div className="my-2 mb-4 flex w-full items-center rounded-br-xl rounded-bl-xl border border-gray-300 bg-white px-4 py-3 shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<p className="items-center text-xl tracking-wide text-neutral-500 dark:text-gray-300">
 						With a high bar for build quality, aesthetic, and usability. Here
@@ -88,7 +90,7 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 							target="_blank"
 							rel="noreferrer"
 							className="w-full flex-1 items-center px-6 py-4">
-							<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
+							<h3 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 								<Image
 									alt="ButterGrow"
 									src="https://static.ouorz.com/buttergrow_logo.webp"
@@ -98,7 +100,7 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 									loading="lazy"
 								/>
 								<span className="ml-2">ButterGrow</span>
-							</h1>
+							</h3>
 							<p
 								className="overflow-hidden text-4 tracking-wide text-ellipsis whitespace-nowrap text-gray-500 dark:text-gray-400"
 								dangerouslySetInnerHTML={{
@@ -116,7 +118,7 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 							target="_blank"
 							rel="noreferrer"
 							className="w-full flex-1 items-center px-6 py-4">
-							<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
+							<h3 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 								<Image
 									alt="Autogrind"
 									src="https://static.ouorz.com/autogrind-logo.png"
@@ -126,7 +128,7 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 									loading="lazy"
 								/>
 								<span className="ml-2">Autogrind</span>
-							</h1>
+							</h3>
 							<p
 								className="overflow-hidden text-4 tracking-wide text-ellipsis whitespace-nowrap text-gray-500 dark:text-gray-400"
 								dangerouslySetInnerHTML={{
@@ -141,12 +143,12 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 				<hr className="dark:border-gray-600" />
 			</div>
 			<section className="mb-10">
-				<span className="inline-flex items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+				<h2 className="inline-flex items-center rounded-tl-xl rounded-tr-xl border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<span className="mr-1.5 flex h-5 w-5 text-orange-500">
 						<Icon name="people" />
 					</span>
 					<span className="uppercase">Webring</span>
-				</span>
+				</h2>
 				<div className="my-2 mb-4 flex w-full items-center rounded-br-xl rounded-bl-xl border border-gray-300 bg-white px-4 py-3 shadow-xs dark:border-gray-600 dark:bg-gray-700">
 					<p className="items-center text-xl tracking-wide text-neutral-500 dark:text-gray-300">
 						To join this webring, email me at ABC_tony.hlp@hotmail.com (with the
@@ -165,7 +167,7 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 										target="_blank"
 										rel="noreferrer"
 										className="w-full flex-1 items-center px-6 py-4">
-										<h1 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
+										<h3 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 											<Image
 												alt={item.post_title}
 												src={item.post_img.url}
@@ -175,7 +177,7 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 												loading="lazy"
 											/>
 											<span className="ml-2">{item.post_title}</span>
-										</h1>
+										</h3>
 										<p
 											className="overflow-hidden text-4 tracking-wide text-ellipsis whitespace-nowrap text-gray-500 dark:text-gray-400"
 											dangerouslySetInnerHTML={{
@@ -201,40 +203,8 @@ const Links: NextPageWithLayout = ({ friends }: { friends: any }) => {
 
 Links.layout = pageLayout
 
-export const getStaticProps: GetStaticProps = () => {
-	try {
-		const dataCount = getPostStats()
-		const count: number = dataCount?.count ?? 0
-
-		if (count === 0) {
-			return {
-				revalidate: 60,
-				props: {
-					friends: [],
-				},
-			}
-		}
-
-		const data = getPosts({
-			cate: 2,
-			perPage: count,
-		})
-
-		return {
-			revalidate: 24 * 60 * 60,
-			props: {
-				friends: Array.isArray(data) ? data : [],
-			},
-		}
-	} catch (error) {
-		console.error("Failed to fetch friends data:", error)
-		return {
-			revalidate: 60,
-			props: {
-				friends: [],
-			},
-		}
-	}
-}
+export const getStaticProps: GetStaticProps<Props> = () => ({
+	props: { friends: getPosts({ cate: 2 }) },
+})
 
 export default Links

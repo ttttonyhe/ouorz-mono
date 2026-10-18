@@ -1,110 +1,160 @@
-import type { NextRequest } from "next/server"
+import { z } from "zod"
 
-export type EthNFT = {
-	contract: {
-		address: string
-	}
-	id: {
-		tokenMetadata: {
-			tokenType: string
-		}
-	}
-	balance: string
-	title: string
-	description: string
-	media: { raw: string }[]
-	tokenUri: {
-		raw: string
-	}
-}
+import {
+	apiHandler,
+	ApiError,
+	fetchJSON,
+	PUBLIC_CACHE,
+	requireEnv,
+} from "~/lib/apiHandler"
 
-export type SolNFT = {
-	name: string
-	description: string
-	imageUrl: string
-	tokenAddress: string
-}
-
+const MAX_PAGES = 100
 const ETH_WALLET = "0x2650f08Da54F7019f9a3306bad0dfc8474644eAD"
 const SOL_WALLET = "G9T9yXeWLyspA9xLSLwZYvAPbSNV9E2NU7jWLpQDW6Re"
 
-const nft = async (_req: NextRequest) => {
-	// Fetch ETH NFTs
-	const ethData: {
-		ownedNfts: EthNFT[]
-	} = await fetch(
-		`${process.env.ALCHEMY_API_PATH}/getNFTs?owner=${ETH_WALLET}`,
-		{
-			method: "GET",
-			headers: { "content-type": "application/json" },
-		}
-	)
-		.then((res) => {
-			if (res.status !== 200) return []
-			return res.json()
-		})
-		.catch((err) => {
-			console.error(err)
-			return []
-		})
+const tokenIdSchema = z
+	.string()
+	.regex(/^(?:0x[\da-fA-F]{1,64}|\d{1,78})$/u)
+	.transform(BigInt)
+	.refine((value) => value < 2n ** 256n)
+	.transform((value) => value.toString())
 
-	// Only return NFTs with media content
-	ethData.ownedNfts = ethData.ownedNfts
-		? ethData.ownedNfts.filter((ownedNft) => ownedNft.media[0].raw !== "")
-		: []
+const ethNFTSchema = z.object({
+	contract: z.object({ address: z.string().regex(/^0x[\da-fA-F]{40}$/u) }),
+	id: z.object({
+		tokenId: tokenIdSchema,
+		tokenMetadata: z
+			.object({ tokenType: z.string().default("") })
+			.default({ tokenType: "" }),
+	}),
+	balance: z.string(),
+	title: z
+		.string()
+		.nullish()
+		.transform((value) => value ?? ""),
+	description: z
+		.string()
+		.nullish()
+		.transform((value) => value ?? ""),
+	media: z.array(z.object({ raw: z.string() })).default([]),
+})
+const ethPageSchema = z.object({
+	ownedNfts: z.array(ethNFTSchema).max(100),
+	pageKey: z.string().min(1).max(2048).optional(),
+})
 
-	// Fetch SOL NFTs
-	const solData: {
-		result: {
-			assets?: SolNFT[]
-		}
-	} = await fetch(process.env.QUICK_NODE_API_PATH, {
-		method: "POST",
-		headers: { "content-type": "application/json" },
-		body: JSON.stringify({
-			id: 67,
-			jsonrpc: "2.0",
-			method: "qn_fetchNFTs",
-			params: {
-				wallet: SOL_WALLET,
-				omitFields: ["provenance", "traits"],
-				page: 1,
-				perPage: 40,
-			},
-		}),
-	})
-		.then((res) => {
-			if (res.status !== 200) return []
-			return res.json()
-		})
-		.catch((err) => {
-			console.error(err)
-			return []
-		})
+const solNFTSchema = z.object({
+	name: z
+		.string()
+		.nullish()
+		.transform((value) => value ?? ""),
+	description: z
+		.string()
+		.nullish()
+		.transform((value) => value ?? ""),
+	imageUrl: z
+		.string()
+		.nullish()
+		.transform((value) => value ?? ""),
+	tokenAddress: z.string().regex(/^[1-9A-HJ-NP-Za-km-z]{32,44}$/u),
+})
+const solPageSchema = z.object({
+	result: z.object({
+		assets: z.array(solNFTSchema).max(40),
+		totalPages: z.number().int().min(0).max(MAX_PAGES),
+		pageNumber: z.number().int().positive(),
+	}),
+})
 
-	if (!solData.result) {
-		solData.result = {
-			assets: [],
+export type EthNFT = z.infer<typeof ethNFTSchema>
+export type SolNFT = z.infer<typeof solNFTSchema>
+
+const getEthereumNFTs = async (
+	url: URL,
+	signal: AbortSignal
+): Promise<EthNFT[]> => {
+	const assets = new Map<string, EthNFT>()
+	const cursors = new Set<string>()
+
+	for (let page = 1; page <= MAX_PAGES; page++) {
+		// oxlint-disable-next-line no-await-in-loop -- Each page supplies the cursor for the next request.
+		const data = await fetchJSON(ethPageSchema, url, { signal })
+		for (const item of data.ownedNfts) {
+			if (item.media[0]?.raw) {
+				assets.set(
+					`${item.contract.address.toLowerCase()}/${item.id.tokenId}`,
+					item
+				)
+			}
 		}
+		if (!data.pageKey) return [...assets.values()]
+		if (cursors.has(data.pageKey))
+			throw new ApiError(502, "Invalid NFT pagination")
+		cursors.add(data.pageKey)
+		url.searchParams.set("pageKey", data.pageKey)
 	}
+	throw new ApiError(502, "NFT pagination limit exceeded")
+}
 
-	return new Response(
-		JSON.stringify({
-			eth: ethData.ownedNfts,
-			sol: solData.result.assets,
-		}),
-		{
-			status: 200,
-			headers: {
-				"content-type": "application/json",
-				"cache-control": "public, s-maxage=1200, stale-while-revalidate=600",
-			},
+const getSolanaNFTs = async (
+	url: string,
+	signal: AbortSignal
+): Promise<SolNFT[]> => {
+	const assets = new Map<string, SolNFT>()
+
+	for (let page = 1; page <= MAX_PAGES; page++) {
+		// oxlint-disable-next-line no-await-in-loop -- Validate each provider page before requesting the next.
+		const { result } = await fetchJSON(solPageSchema, url, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			signal,
+			body: JSON.stringify({
+				id: page,
+				jsonrpc: "2.0",
+				method: "qn_fetchNFTs",
+				params: {
+					wallet: SOL_WALLET,
+					omitFields: ["provenance", "traits"],
+					page,
+					perPage: 40,
+				},
+			}),
+		})
+		if (result.pageNumber !== page)
+			throw new ApiError(502, "Invalid NFT pagination")
+		for (const item of result.assets) {
+			if (item.imageUrl) assets.set(item.tokenAddress, item)
 		}
+		if (page >= result.totalPages) return [...assets.values()]
+	}
+	throw new ApiError(502, "NFT pagination limit exceeded")
+}
+
+export default apiHandler(["GET", "HEAD"], async (_req, res) => {
+	const ethURL = new URL(
+		`${requireEnv("ALCHEMY_API_PATH").replace(/\/$/u, "")}/getNFTs`
 	)
-}
+	ethURL.search = new URLSearchParams({
+		owner: ETH_WALLET,
+		withMetadata: "true",
+		pageSize: "100",
+		tokenUriTimeoutInMs: "5000",
+	}).toString()
+	const solURL = requireEnv("QUICK_NODE_API_PATH")
+	const controller = new AbortController()
+	const signal = AbortSignal.any([
+		controller.signal,
+		AbortSignal.timeout(10_000),
+	])
 
-export const config = {
-	runtime: "edge",
-}
-
-export default nft
+	try {
+		const [eth, sol] = await Promise.all([
+			getEthereumNFTs(ethURL, signal),
+			getSolanaNFTs(solURL, signal),
+		])
+		res.setHeader("Cache-Control", PUBLIC_CACHE)
+		return res.status(200).json({ eth, sol })
+	} finally {
+		controller.abort()
+	}
+})

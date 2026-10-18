@@ -20,7 +20,7 @@ jobs:
       - name: Install Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: 1.4.0
+          bun-version-file: package.json
 
       - name: Install Node.js
         uses: actions/setup-node@v6

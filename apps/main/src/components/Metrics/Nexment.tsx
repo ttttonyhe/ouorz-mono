@@ -1,16 +1,21 @@
 import format from "comma-number"
 import useSWR from "swr"
+import { z } from "zod"
 
-import fetcher from "~/lib/fetcher"
+import createFetcher from "~/lib/fetcher"
 
 import MetricCard from "./Card"
 
-export default function NexmentMetric() {
-	const { data } = useSWR("api/nexment", fetcher)
+const fetchComments = createFetcher(
+	z.object({ count: z.number().int().nonnegative() })
+)
 
-	const count = format(data?.count)
+export default function NexmentMetric() {
+	const { data } = useSWR("/api/nexment", fetchComments)
+
+	const count = data && format(data.count)
 	const link =
-		"https://console.leancloud.cn/apps/NM8cdTVi8wqCmbeLPmiKCu79-gzGzoHsz/storage/data/nexment_comments"
+		"https://supabase.com/dashboard/project/ainpzfmspbpvpfcatnwq/editor"
 
 	return (
 		<MetricCard

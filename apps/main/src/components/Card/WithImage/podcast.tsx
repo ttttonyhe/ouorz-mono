@@ -11,10 +11,11 @@ import { trimStr } from "~/utilities/string"
 
 interface Props {
 	item: WPPost
+	podcast: NonNullable<WPPost["post_metas"]["podcast"]>
 	sticky: boolean
 }
 
-const CardWithImagePodcast = ({ item, sticky }: Props) => {
+const CardWithImagePodcast = ({ item, podcast, sticky }: Props) => {
 	return (
 		<div className="mb-6 w-full rounded-md border bg-white shadow-xs dark:border-gray-700 dark:bg-gray-800">
 			<div className="pt-5 pr-5 pl-5 lg:grid lg:grid-flow-col lg:grid-cols-3 lg:gap-9 lg:pt-10 lg:pr-10 lg:pl-10">
@@ -40,12 +41,12 @@ const CardWithImagePodcast = ({ item, sticky }: Props) => {
 							{sticky && <Label type="sticky-icon" />}
 							<Link href={`/cate/${item.post_categories[0].term_id}`}>
 								<Label type="primary" icon="microphone">
-									Episode {item.post_metas.podcast.episode}
+									Episode {podcast.episode}
 								</Label>
 							</Link>
 						</div>
 					</div>
-					<a href={item.post_metas.podcast.episodeUrl}>
+					<a href={podcast.episodeUrl}>
 						<h1 className="mb-4 overflow-hidden text-2 font-medium tracking-wider text-ellipsis whitespace-nowrap text-gray-700 lg:text-list-title dark:text-white">
 							{item.post_title}
 						</h1>
@@ -62,7 +63,7 @@ const CardWithImagePodcast = ({ item, sticky }: Props) => {
 				<AudioPlayer
 					className="podcast-player focus:outline-hidden"
 					autoPlayAfterSrcChange={false}
-					src={item.post_metas.podcast.audioUrl}
+					src={podcast.audioUrl}
 					preload="metadata"
 				/>
 			</div>
