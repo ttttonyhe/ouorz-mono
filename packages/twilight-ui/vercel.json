@@ -3,7 +3,7 @@
 	"github": {
 		"silent": true
 	},
-	"installCommand": "CYPRESS_INSTALL_BINARY=0 bunx bun@1.4.2 install --frozen-lockfile",
+	"installCommand": "CYPRESS_INSTALL_BINARY=0 npx --yes --allow-scripts=bun bun@1.4.2 install --frozen-lockfile",
 	"ignoreCommand": "npx --yes turbo@2.11.9 query affected --tasks build:storybook --packages @twilight-toolkit/ui --base=\"${VERCEL_GIT_PREVIOUS_SHA:-HEAD^}\" --head=HEAD --exit-code || exit 1",
-	"buildCommand": "cd ../.. && bunx bun@1.4.2 run build:twilight:ui:storybook"
+	"buildCommand": "cd ../.. && npx --yes --allow-scripts=bun bun@1.4.2 run build:twilight:ui:storybook"
 }
