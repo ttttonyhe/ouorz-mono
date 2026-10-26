@@ -30,18 +30,8 @@ const Home: NextPageWithLayout = () => {
 						</h1>
 						<div className="flex flex-col gap-y-1.5 px-1 text-4 leading-relaxed font-light tracking-wider wrap-break-word text-gray-500 lg:text-2 dark:text-gray-300">
 							<p>
-								Student, software engineer, founder, and researcher at the{" "}
-								<a
-									href="https://uwaterloo.ca"
-									target="_blank"
-									className="inline-flex items-center gap-x-1 transition-colors hover:text-blue-500 dark:hover:text-blue-500"
-									rel="noreferrer">
-									University of Waterloo
-									<span className="flex h-5 w-5">
-										<Icon name="externalLink" />
-									</span>
-								</a>
-								.
+								Any improvements made anywhere besides the bottleneck are an
+								illusion. <i>— Theory of Constraints</i>
 							</p>
 						</div>
 					</div>
@@ -457,8 +447,8 @@ const Home: NextPageWithLayout = () => {
 								href: "https://github.com/zju-abclab/NEXUS",
 							},
 							{
-								label: "🏆 Top-cited",
-								href: "https://www.mlsec.org/topnotch/sec_2020s.html",
+								label: "🏆 Top-100 Security Papers",
+								href: "https://www.mlsec.org/topnotch/sec_ntop100.html",
 							},
 						]}
 					/>
@@ -729,35 +719,54 @@ const Home: NextPageWithLayout = () => {
 						serviceRole="Program Committee Member"
 						serviceType="Conference"
 						serviceTypeColor="border-l-red-400! border-l-4"
-						serviceTitle="USENIX Security Symposium 2026 (AEC), 2027 (PC)"
-						serviceOrganization="🏆 Noteworthy Reviewer, 2026"
+						serviceTitle={
+							<>
+								<p>The Web Conference (WWW) 2027</p>
+								<p>USENIX Security Symposium (SEC) 2027</p>
+							</>
+						}
 					/>
 					<ServiceCard
-						serviceRole="Program Committee Member"
-						serviceType="Conference"
-						serviceTypeColor="border-l-green-600! border-l-4"
-						serviceTitle="Privacy Enhancing Technologies Symposium (PoPETs/PETS) 2026"
-						serviceOrganization="Artifact Evaluation (AE)"
-					/>
-					<ServiceCard
-						serviceRole="Program Committee Member"
+						serviceRole="Artifact Evaluation Committee Member"
 						serviceType="Conference"
 						serviceTypeColor="border-l-red-400! border-l-4"
-						serviceTitle="ACM Conference on Computer and Communications Security (CCS) 2025, 2026"
-						serviceOrganization="Artifact Evaluation (AE)"
+						serviceTitle={
+							<>
+								<p>USENIX Security Symposium (SEC) 2026</p>
+								<p>
+									ACM Conference on Computer and Communications Security (CCS)
+									2025, 2026
+								</p>
+								<p>
+									Privacy Enhancing Technologies Symposium (PoPETs/PETS) 2026
+								</p>
+							</>
+						}
+						serviceOrganization="🏆 USENIX SEC Noteworthy Reviewer, 2026"
 					/>
 					<ServiceCard
-						serviceRole="Invited Reviewer"
+						serviceRole="Reviewer"
 						serviceType="Journal"
 						serviceTypeColor="border-l-red-400! border-l-4"
-						serviceTitle="IEEE Transactions on Dependable and Secure Computing (TDSC)"
+						serviceTitle={
+							<>
+								<p>
+									IEEE Transactions on Knowledge and Data Engineering (TKDE),
+									2026
+								</p>
+								<p>
+									IEEE Transactions on Dependable and Secure Computing (TDSC),
+									2026
+								</p>
+							</>
+						}
 					/>
-					<ServiceCard
+					{/* <ServiceCard
 						serviceRole="Student Member"
 						serviceType="Membership"
 						serviceTitle="Association for Computing Machinery (ACM)"
 						serviceOrganization="lipenghe@acm.org"
-					/>
+					/> */}
 				</div>
 			</section>
 			<section className="mt-14">

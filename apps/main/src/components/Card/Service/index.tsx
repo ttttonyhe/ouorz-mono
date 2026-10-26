@@ -1,7 +1,7 @@
 interface ServiceCardProps {
 	serviceRole: string
 	serviceType: string
-	serviceTitle: string
+	serviceTitle: React.ReactNode
 	serviceOrganization?: string
 	serviceTypeColor?: string
 }
@@ -28,11 +28,11 @@ const ServiceCard = (props: ServiceCardProps) => {
 			</div>
 			<div className="flex items-center justify-between gap-x-2.5 overflow-hidden overflow-x-auto px-4.5 pt-1 pb-2.5 whitespace-nowrap">
 				<div className="text-sm tracking-wide text-gray-600 dark:text-gray-300">
-					<p>{serviceTitle}</p>
+					{serviceTitle}
 				</div>
 			</div>
 			{serviceOrganization && (
-				<div className="-mt-[8px] flex items-center justify-between border-t border-gray-200 px-4.5 py-1.5 dark:border-gray-700">
+				<div className="mt-[-8px] flex items-center justify-between border-t border-gray-200 px-4.5 py-1.5 dark:border-gray-700">
 					<p className="text-sm text-gray-500 dark:text-gray-400">
 						{serviceOrganization}
 					</p>
