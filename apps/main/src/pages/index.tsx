@@ -61,7 +61,8 @@ const Home: NextPageWithLayout = () => {
 				</h2>
 				<div className="mt-3.75 flex flex-col px-1 text-justify text-3 leading-relaxed font-light tracking-wide wrap-break-word text-gray-500 underline-offset-[6px] lg:text-left lg:text-[17px] dark:text-gray-300">
 					<p>
-						I&#39;m a computer science PhD student at UWaterloo; part of{" "}
+						I&#39;m a computer science PhD student at the University of
+						Waterloo; part of{" "}
 						<a
 							href="https://ssg-research.github.io"
 							target="_blank"
