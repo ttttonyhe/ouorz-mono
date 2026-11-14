@@ -183,7 +183,7 @@ const Home: NextPageWithLayout = () => {
 						</a>
 						, and{" "}
 						<a
-							href="https://inretrograde.io"
+							href="https://www.linkedin.com/company/retrograde-labs"
 							target="_blank"
 							rel="noreferrer"
 							className="text-blue-500 hover:underline">
@@ -192,11 +192,18 @@ const Home: NextPageWithLayout = () => {
 						<sup>[1]</sup>.
 					</p>
 					<p className="mt-8">
-						<sup>[1]</sup>&nbsp;Retrograde Labs is a research-driven startup
-						building the trust layer for AI. Our research aims not only to
-						uncover failure modes and address fundamental bottlenecks, but to
-						translate those insights into systems that work in production and
-						withstand the{" "}
+						<sup>[1]</sup>&nbsp;
+						<a
+							href="https://inretrograde.io"
+							target="_blank"
+							rel="noreferrer"
+							className="text-blue-500 hover:underline">
+							Retrograde Labs
+						</a>{" "}
+						is a research-driven startup building the trust layer for AI. Our
+						research aims not only to uncover failure modes and address
+						fundamental bottlenecks, but to translate those insights into
+						systems that work in production and withstand the{" "}
 						<a
 							href="https://www.ycombinator.com/companies?industry=Security"
 							target="_blank"
