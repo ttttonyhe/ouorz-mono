@@ -1,8 +1,12 @@
 {
 	"compilerOptions": {
 		"strict": true,
+		"skipLibCheck": true,
+		"noEmit": true,
 		"target": "es2022",
-		"lib": ["es2022", "dom"],
+		"lib": ["es2022", "dom", "dom.iterable"],
+		"module": "esnext",
+		"moduleResolution": "bundler",
 		"types": ["cypress"]
 	},
 	"include": ["**/*.ts"]
