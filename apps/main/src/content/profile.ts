@@ -100,8 +100,6 @@ export const SITE_URL = "https://lipeng.ac"
 export const PERSON_ID = `${SITE_URL}/#person`
 export const WEBSITE_ID = `${SITE_URL}/#website`
 export const SITE_NAME = "Tony (Lipeng) He"
-export const PROFILE_TITLE =
-	"Tony (Lipeng) He (贺莉朋) | Trustworthy AI & CS PhD, UWaterloo"
 export const PROFILE_DESCRIPTION =
 	"Tony (Lipeng) He (贺莉朋) is a CS PhD student at the University of Waterloo (CrySP, SSG) researching Trustworthy AI and LLM security, building at Retrograde Labs."
 export const PROFILE_UPDATED_AT = "2026-11-21"

@@ -4,13 +4,12 @@ import type { LocalPost } from "~/content/posts"
 import {
 	PERSON_ID,
 	PROFILE_DESCRIPTION,
-	PROFILE_TITLE,
 	SITE_NAME,
 	SITE_URL,
 } from "~/content/profile"
 import { isArticleContent } from "~/content/text"
 
-export { PERSON_ID, PROFILE_DESCRIPTION, PROFILE_TITLE, SITE_NAME, SITE_URL }
+export { PERSON_ID, PROFILE_DESCRIPTION, SITE_NAME, SITE_URL }
 
 export interface SeoPageProps {
 	post?: LocalPost
@@ -264,7 +263,7 @@ export function getPageMetadata(
 		const isHome = entry.path === "/"
 		const metadata: PageMetadata = {
 			path: entry.path,
-			title: isHome ? PROFILE_TITLE : `${entry.label} | ${SITE_NAME}`,
+			title: isHome ? SITE_NAME : `${entry.label} | ${SITE_NAME}`,
 			headline: isHome ? SITE_NAME : entry.label,
 			description: entry.description,
 			language,
