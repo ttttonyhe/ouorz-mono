@@ -1,6 +1,5 @@
 import { Icon } from "@twilight-toolkit/ui"
-import TimeAgo from "react-timeago"
-
+import TimeAgo from "~/components/TimeAgo"
 import type { WPPost } from "~/constants/propTypes"
 import useAnalytics from "~/hooks/analytics"
 import useMounted from "~/hooks/useMounted"
@@ -51,6 +50,7 @@ export default function CardFooter({ item }: { item: WPPost }) {
 						<span>{item.post_metas.views} Views</span>
 						<span>·</span>
 						<button
+							type="button"
 							className="effect-pressing flex items-center gap-x-1 hover:text-gray-600 dark:hover:text-gray-300"
 							onClick={() => {
 								void doShare()

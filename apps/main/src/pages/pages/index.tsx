@@ -1,9 +1,9 @@
 import { Icon } from "@twilight-toolkit/ui"
 import Head from "next/head"
 import Link from "next/link"
-
 import PageCard from "~/components/Card/Page"
 import { pageLayout } from "~/components/Page"
+import { PROJECTS } from "~/content/profile"
 import type { NextPageWithLayout } from "~/pages/_app"
 import { getViewTransitionName } from "~/utilities/viewTransition"
 
@@ -106,31 +106,17 @@ const Pages: NextPageWithLayout = () => {
 				</div>
 				<hr className="dark:border-gray-600" />
 				<div className="glowing-area grid grid-cols-2 gap-4">
-					<PageCard
-						title="Lune"
-						des="Context7 for research"
-						icon="https://luneresearch.com/lune-logo.svg"
-						href="https://luneresearch.com"
-					/>
-					<PageCard
-						title="Retroguard"
-						des="Verifiably secure AI guardrails"
-						icon="https://retroguard.ai/logo.svg"
-						className="text-purple-500"
-						href="https://retroguard.ai"
-					/>
-					<PageCard
-						title="Snapod"
-						des="PaaS for podcasters"
-						icon="🎙️"
-						href="https://www.snapodcast.com"
-					/>
-					<PageCard
-						title="Autogrind"
-						des="24x7 auto-work mode skill"
-						icon="✊"
-						href="https://github.com/ttttonyhe/autogrind"
-					/>
+					{PROJECTS.map((project) => (
+						<PageCard
+							key={project.href}
+							title={project.title}
+							des={project.description}
+							icon={project.icon}
+							iconDark={project.iconDark}
+							className={project.className}
+							href={project.href}
+						/>
+					))}
 				</div>
 			</div>
 		</div>

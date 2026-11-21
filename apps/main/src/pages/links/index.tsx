@@ -2,8 +2,8 @@ import { Icon } from "@twilight-toolkit/ui"
 import type { GetStaticProps } from "next"
 import Head from "next/head"
 import Image from "next/image"
+import Link from "next/link"
 import { useRouter } from "next/router"
-
 import { pageLayout } from "~/components/Page"
 import { getPosts, type LocalPost } from "~/content/posts"
 import type { NextPageWithLayout } from "~/pages/_app"
@@ -53,15 +53,18 @@ const Links: NextPageWithLayout<Props> = ({ friends }) => {
 					<div className="mt-2 flex h-full items-center justify-end whitespace-nowrap">
 						<div className="flex-1 pr-2 pl-5">
 							<p className="text-xl text-gray-500 dark:text-gray-400">
-								<button
-									type="button"
-									onClick={() => navigateWithTransition(router, "/pages")}
+								<Link
+									href="/pages"
+									onNavigate={(event) => {
+										event.preventDefault()
+										navigateWithTransition(router, "/pages")
+									}}
 									className="flex cursor-pointer items-center">
 									<span className="mr-2 h-6 w-6">
 										<Icon name="left" />
 									</span>
 									Pages
-								</button>
+								</Link>
 							</p>
 						</div>
 					</div>
@@ -88,7 +91,7 @@ const Links: NextPageWithLayout<Props> = ({ friends }) => {
 						<a
 							href="https://buttergrow.com"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="w-full flex-1 items-center px-6 py-4">
 							<h3 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 								<Image
@@ -116,7 +119,7 @@ const Links: NextPageWithLayout<Props> = ({ friends }) => {
 						<a
 							href="https://github.com/ttttonyhe/autogrind"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="w-full flex-1 items-center px-6 py-4">
 							<h3 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 								<Image
@@ -165,7 +168,7 @@ const Links: NextPageWithLayout<Props> = ({ friends }) => {
 									<a
 										href={item.post_metas.link}
 										target="_blank"
-										rel="noreferrer"
+										rel="noopener noreferrer"
 										className="w-full flex-1 items-center px-6 py-4">
 										<h3 className="mb-0.5 flex items-center text-2xl font-medium tracking-wide">
 											<Image

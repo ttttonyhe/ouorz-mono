@@ -33,7 +33,6 @@ for server credentials.
 | Ethereum NFTs          | `ALCHEMY_API_PATH`, including the NFT API credential                                                    |
 | Solana NFTs            | `QUICK_NODE_API_PATH`, with `qn_fetchNFTs` enabled                                                      |
 | GitHub statistics      | `GITHUB_TOKEN`                                                                                          |
-| Twitter statistics     | `TWITTER_BEARER_TOKEN`                                                                                  |
 | Article summaries      | `OPENAI_API_KEY`                                                                                        |
 | Server-triggered email | `RESEND_API_KEY`, `RESEND_REQUEST_TOKEN`, optional `RESEND_FROM_ADDRESS`                                |
 | Content revalidation   | `REVALIDATION_REQUEST_TOKEN`                                                                            |
@@ -46,13 +45,3 @@ notifications. Likes return HTTP 501 until a durable store is configured.
 
 Provider failures return non-success responses. Secret-bearing provider URLs
 are excluded from Sentry HTTP spans and breadcrumbs.
-
-### Recovering historical posts
-
-If WordPress is unavailable and you need to recover old posts from public archives, run:
-
-```bash
-bun run content:recover:wayback
-```
-
-This script pulls snapshots from the Wayback Machine and writes starter MDX files under `content/posts` for manual cleanup.

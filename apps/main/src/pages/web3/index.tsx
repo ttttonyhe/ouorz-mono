@@ -1,9 +1,9 @@
 import { Icon } from "@twilight-toolkit/ui"
 import type { GetStaticProps } from "next"
+import dynamic from "next/dynamic"
 import Head from "next/head"
+import Link from "next/link"
 import { useRouter } from "next/router"
-import React from "react"
-
 import PageCard from "~/components/Card/Page"
 import { pageLayout } from "~/components/Page"
 import { GlowingBackground } from "~/components/Visual"
@@ -15,7 +15,7 @@ import {
 	navigateWithTransition,
 } from "~/utilities/viewTransition"
 
-const NFTs = React.lazy(() => import("~/components/Grids/NFTs"))
+const NFTs = dynamic(() => import("~/components/Grids/NFTs"), { ssr: false })
 
 interface Props {
 	sponsors: SponsorsData["donors"]
@@ -61,15 +61,18 @@ const Web3: NextPageWithLayout<Props> = ({ sponsors }) => {
 						<div className="mt-2 flex h-full items-center justify-end whitespace-nowrap">
 							<div className="flex-1 px-5">
 								<p className="text-xl text-gray-500 dark:text-gray-400">
-									<button
-										type="button"
-										onClick={() => navigateWithTransition(router, "/pages")}
+									<Link
+										href="/pages"
+										onNavigate={(event) => {
+											event.preventDefault()
+											navigateWithTransition(router, "/pages")
+										}}
 										className="flex cursor-pointer items-center">
 										<span className="mr-2 h-6 w-6">
 											<Icon name="left" />
 										</span>
 										Pages
-									</button>
+									</Link>
 								</p>
 							</div>
 						</div>
@@ -318,21 +321,10 @@ Web3.layout = pageLayout
 
 export const getStaticProps: GetStaticProps<Props> = () => {
 	try {
-		const data = getSponsors()
-
-		if (!data || !Array.isArray(data.donors)) {
-			return {
-				revalidate: 60,
-				props: {
-					sponsors: [],
-				},
-			}
-		}
-
 		return {
 			revalidate: 5 * 24 * 60 * 60,
 			props: {
-				sponsors: data.donors,
+				sponsors: getSponsors().donors,
 			},
 		}
 	} catch (error) {

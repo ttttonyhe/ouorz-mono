@@ -1,12 +1,8 @@
 import { Button } from "@twilight-toolkit/ui"
-import { useRouter } from "next/router"
-
 import { pageLayout } from "~/components/Page"
 import type { NextPageWithLayout } from "~/pages/_app"
 
 const PageNotFound: NextPageWithLayout = () => {
-	const router = useRouter()
-
 	return (
 		<div>
 			<div className="mt-0 flex h-[65vh] items-center justify-center pt-24 lg:mt-20 lg:pt-0">
@@ -18,12 +14,7 @@ const PageNotFound: NextPageWithLayout = () => {
 						404 Not Found
 					</p>
 					<div className="mt-4 inline-block justify-center">
-						<Button
-							type="primary"
-							onClick={() => {
-								void router.push("/")
-							}}
-							className="mx-auto">
+						<Button type="primary" href="/" className="mx-auto">
 							Back to Home
 						</Button>
 					</div>

@@ -1,41 +1,34 @@
 import { useEffect, useState } from "react"
 import { useHotkeys } from "react-hotkeys-hook"
-
-import {
-	useBodyPointerEvents,
-	useBodyScroll,
-	useDispatch,
-	useSelector,
-} from "~/hooks"
+import { useBodyPointerEvents, useBodyScroll } from "~/hooks"
 import useAnalytics from "~/hooks/analytics"
-import { activateKbar, deactivateKbar, updateKbar } from "~/store/kbar/actions"
-import { searchLocation } from "~/store/kbar/sagas/updateKbarToSearch"
-import { selectKbar } from "~/store/kbar/selectors"
+import {
+	activateKbar,
+	deactivateKbar,
+	SEARCH_LOCATION,
+	updateKbarView,
+	useAppState,
+} from "~/store"
 
 import type { KbarProps } from "."
-import {
-	KbarContextProvider,
-	type KbarInputValueChangeHandler,
-} from "./context"
+import { KbarContext, type KbarInputValueChangeHandler } from "./context"
 import KbarPanel from "./panel"
 
-/**
- * Holds the query typed into the palette. It is mounted only while the kbar is
- * open, so closing the kbar discards the query without an extra state reset.
- */
+// Mounted only while open so closing resets the query automatically.
 const KbarSession = () => {
-	const dispatch = useDispatch()
-	const { animation, location } = useSelector(selectKbar)
+	const animation = useAppState((s) => s.kbar.animation)
+	const location = useAppState((s) => s.kbar.location)
 	const [kbarInputValue, setInputValue] = useState("")
 	const [kbarInputValueChangeHandler, setKbarInputValueChangeHandler] =
 		useState<KbarInputValueChangeHandler | undefined>()
 
 	useEffect(() => {
 		if (
-			location.at(-1) !== searchLocation.at(-1) ||
+			location.at(-1) !== SEARCH_LOCATION.at(-1) ||
 			!kbarInputValueChangeHandler
-		)
+		) {
 			return
+		}
 
 		const timeout = window.setTimeout(() => {
 			kbarInputValueChangeHandler(kbarInputValue)
@@ -51,28 +44,22 @@ const KbarSession = () => {
 		() => {
 			setInputValue("")
 			setKbarInputValueChangeHandler(undefined)
-			// non-home location, esc to go back to last location
 			const previousLocation = location.at(-2)
 			if (previousLocation !== undefined) {
-				dispatch(
-					updateKbar({
-						key: previousLocation,
-						location: location.slice(0, location.length - 1),
-					})
-				)
+				updateKbarView({
+					key: previousLocation,
+					location: location.slice(0, location.length - 1),
+				})
 			} else {
-				// home location, esc to hide kbar
-				dispatch(deactivateKbar())
+				deactivateKbar()
 			}
 		},
-		{
-			enableOnFormTags: ["INPUT"],
-		},
-		[dispatch, location]
+		{ enableOnFormTags: ["INPUT"] },
+		[location]
 	)
 
 	return (
-		<KbarContextProvider
+		<KbarContext
 			value={{
 				inputValue: kbarInputValue,
 				setInputValue,
@@ -84,33 +71,34 @@ const KbarSession = () => {
 				className={`pointer-events-auto absolute z-40 h-screen w-full bg-gray-50/90 dark:bg-black/70 ${
 					animation === "out" ? "animate-kbar-bg-out" : "animate-kbar-bg"
 				}`}
-				onClick={() => dispatch(deactivateKbar())}
+				onClick={() => deactivateKbar()}
 			/>
 			<KbarPanel />
-		</KbarContextProvider>
+		</KbarContext>
 	)
 }
 
 const Kbar = (props: KbarProps) => {
-	const dispatch = useDispatch()
-	const { visible } = useSelector(selectKbar)
+	const visible = useAppState((s) => s.kbar.visible)
 	const [, setBodyPointerEvents] = useBodyPointerEvents()
 	const [, setBodyScroll] = useBodyScroll()
 	const { trackEvent } = useAnalytics()
 
-	// Register keybinding that triggers/hides the kbar
 	useHotkeys(
 		"ctrl+k, meta+k",
 		(e) => {
 			e.preventDefault()
-			// A modal dialog makes the page inert, and the palette belongs to the page.
 			if (document.querySelector("dialog:modal")) return
 
-			dispatch(visible ? deactivateKbar() : activateKbar(props.list))
-			if (!visible) trackEvent("activateKbar", "hotkey")
+			if (visible) {
+				deactivateKbar()
+			} else {
+				activateKbar(props.list)
+				trackEvent("activateKbar", "hotkey")
+			}
 		},
 		{ enableOnFormTags: ["INPUT", "TEXTAREA"] },
-		[dispatch, props.list, trackEvent, visible]
+		[props.list, trackEvent, visible]
 	)
 
 	useEffect(() => {
@@ -118,7 +106,7 @@ const Kbar = (props: KbarProps) => {
 		setBodyScroll(!visible)
 	}, [visible, setBodyPointerEvents, setBodyScroll])
 
-	return visible && <KbarSession />
+	return visible ? <KbarSession /> : null
 }
 
 export default Kbar

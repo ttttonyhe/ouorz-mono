@@ -16,7 +16,9 @@
 	"objectWrap": "preserve",
 	"proseWrap": "preserve",
 	"embeddedLanguageFormatting": "auto",
-	"sortImports": true,
+	"sortImports": {
+		"internalPattern": ["^~/", "^@/"]
+	},
 	"sortPackageJson": true,
 	"ignorePatterns": [
 		"bun.lock",

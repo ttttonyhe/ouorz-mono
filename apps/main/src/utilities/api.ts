@@ -28,7 +28,6 @@ const api = {
 		post: ({ id }: IdParameter) => `${LOCAL_CONTENT_API_ROOT}/post?id=${id}`,
 		category: ({ id }: IdParameter) =>
 			`${LOCAL_CONTENT_API_ROOT}/category?id=${id}`,
-		like: ({ id }: IdParameter) => `/api/like/${id}`,
 		allPostIDs: () => `${LOCAL_CONTENT_API_ROOT}/allPostIDs`,
 		page: ({ id }: IdParameter) => `${LOCAL_CONTENT_API_ROOT}/page?id=${id}`,
 		sponsors: () => `${LOCAL_CONTENT_API_ROOT}/sponsors`,

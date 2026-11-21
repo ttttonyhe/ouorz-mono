@@ -1,8 +1,7 @@
-import format from "comma-number"
 import useSWR from "swr"
 import { z } from "zod"
-
 import createFetcher from "~/lib/fetcher"
+import { formatNumber } from "~/utilities/format"
 
 import MetricCard from "./Card"
 
@@ -13,16 +12,12 @@ const fetchComments = createFetcher(
 export default function NexmentMetric() {
 	const { data } = useSWR("/api/nexment", fetchComments)
 
-	const count = data && format(data.count)
-	const link =
-		"https://supabase.com/dashboard/project/ainpzfmspbpvpfcatnwq/editor"
-
 	return (
 		<MetricCard
 			icon="chat"
-			value={count}
+			value={data && formatNumber(data.count)}
 			description="Total Comments"
-			link={link}
+			link="https://supabase.com/dashboard/project/ainpzfmspbpvpfcatnwq/editor"
 			colorHex="#10B981"
 		/>
 	)

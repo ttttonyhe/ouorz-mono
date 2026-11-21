@@ -1,7 +1,7 @@
 "use client"
 
 import cn from "clsx"
-import { FC } from "react"
+import type { FC } from "react"
 
 import responsive from "@/styles/responsive.module.css"
 

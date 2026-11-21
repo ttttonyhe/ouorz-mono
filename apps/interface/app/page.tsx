@@ -8,6 +8,7 @@ const Page = () => {
 	return (
 		<main>
 			<h1>Hello {blog.account}</h1>
+			{blog.errorMessage && <p role="alert">{blog.errorMessage}</p>}
 			<ul>
 				<li>Blog uri: {blog.blogUri}</li>
 				<li>Author address: {blog.authorAddress}</li>

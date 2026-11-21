@@ -1,11 +1,8 @@
-import React from "react"
+import type React from "react"
 
 import Label from "../Label/label"
 
 interface Props {
-	/**
-	 * The content inside the group
-	 */
 	children?: React.ReactNode
 }
 
@@ -23,13 +20,11 @@ const LabelGroup = ({
 	children = defaultChildren,
 	className,
 	...rest
-}: LabelGroupProps) => {
-	return (
-		<div {...rest} className={`label-group ${className ?? ""}`}>
-			{children}
-		</div>
-	)
-}
+}: LabelGroupProps) => (
+	<div {...rest} className={`label-group ${className ?? ""}`}>
+		{children}
+	</div>
+)
 
 LabelGroup.displayName = "LabelGroup"
 

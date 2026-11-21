@@ -1,5 +1,5 @@
 import type React from "react"
-import { useEffect, useSyncExternalStore } from "react"
+import { useEffect, useEffectEvent } from "react"
 
 interface Props {
 	handler: (position: number) => void
@@ -8,38 +8,34 @@ interface Props {
 	children: React.ReactNode
 }
 
-const subscribeToScroll = (onScroll: () => void) => {
-	window.addEventListener("scroll", onScroll, { passive: true })
-	return () => {
-		window.removeEventListener("scroll", onScroll)
-	}
-}
-
-const getScrollY = () => window.scrollY
-const getServerScrollY = () => 0
-
-const ScrollWrapper = (props: Props) => {
-	const {
-		handler: applyEffect,
-		startPosition = 0,
-		endPosition,
-		children,
-	} = props
-
-	const scrollY = useSyncExternalStore(
-		subscribeToScroll,
-		getScrollY,
-		getServerScrollY
-	)
-	const position = scrollY < startPosition ? 0 : Math.min(scrollY, endPosition)
+const ScrollWrapper = ({
+	handler,
+	startPosition = 0,
+	endPosition,
+	children,
+}: Props) => {
+	const onApply = useEffectEvent(handler)
 
 	useEffect(() => {
-		applyEffect(position)
-	}, [applyEffect, position])
+		let rafId: number | null = null
 
-	if (position < startPosition) {
-		return null
-	}
+		const apply = () => {
+			rafId = null
+			const y = window.scrollY
+			onApply(y < startPosition ? 0 : Math.min(y, endPosition))
+		}
+
+		const onScroll = () => {
+			if (rafId === null) rafId = window.requestAnimationFrame(apply)
+		}
+
+		apply()
+		window.addEventListener("scroll", onScroll, { passive: true })
+		return () => {
+			window.removeEventListener("scroll", onScroll)
+			if (rafId !== null) window.cancelAnimationFrame(rafId)
+		}
+	}, [startPosition, endPosition])
 
 	return children
 }

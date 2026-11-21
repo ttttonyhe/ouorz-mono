@@ -1,10 +1,18 @@
 {
 	"compilerOptions": {
-		"target": "esnext",
+		"target": "es2022",
 		"module": "esnext",
-		"allowJs": true,
+		"allowJs": false,
 		"skipLibCheck": true,
 		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"verbatimModuleSyntax": true,
+		"erasableSyntaxOnly": true,
 		"forceConsistentCasingInFileNames": true,
 		"noEmit": true,
 		"esModuleInterop": true,
@@ -13,7 +21,7 @@
 		"isolatedModules": true,
 		"incremental": true
 	},
-	"include": ["./scripts", "./deploy"],
+	"include": ["./scripts"],
 	"files": ["./hardhat.config.ts"],
 	"exclude": ["node_modules"]
 }

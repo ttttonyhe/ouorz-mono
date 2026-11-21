@@ -1,7 +1,6 @@
 import { Icon } from "@twilight-toolkit/ui"
-import React from "react"
+import { useRef, useState } from "react"
 import { z } from "zod"
-
 import { LISTMONK_LIST_UUID } from "~/constants/ids"
 import api from "~/utilities/api"
 
@@ -11,30 +10,32 @@ const SubscriptionBox = ({
 	type,
 	className,
 }: {
-	type: string
+	type: "sm" | "lg"
 	className?: string
 }) => {
-	const [email, setEmail] = React.useState<string>("")
-	const [subscribed, setSubscribed] = React.useState<boolean>(false)
-	const [processing, setProcessing] = React.useState<boolean>(false)
-	const submitting = React.useRef(false)
+	const [email, setEmail] = useState("")
+	const [subscribed, setSubscribed] = useState(false)
+	const [processing, setProcessing] = useState(false)
+	const [error, setError] = useState("")
+	const submitting = useRef(false)
 
 	const doSubscribe = async () => {
 		if (submitting.current || subscribed) return
 
 		submitting.current = true
 		setProcessing(true)
+		setError("")
 
 		try {
 			const response = await fetch(api.external.subscribeToListmonk(), {
 				method: "post",
-				signal: AbortSignal.timeout(15000),
+				signal: AbortSignal.timeout(15_000),
 				headers: {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
 					email,
-					name: email.split("@")[0],
+					name: email.split("@")[0] ?? "",
 					list_uuids: [LISTMONK_LIST_UUID],
 				}),
 			})
@@ -45,7 +46,7 @@ const SubscriptionBox = ({
 			}
 			setSubscribed(true)
 		} catch {
-			alert("An error has occurred, please try again.")
+			setError("An error has occurred, please try again.")
 		} finally {
 			submitting.current = false
 			setProcessing(false)
@@ -65,7 +66,7 @@ const SubscriptionBox = ({
 						New Article Everytime I Publish :)
 					</p>
 				</div>
-				<div className="flex w-full justify-end">
+				<div className="flex w-full flex-col justify-end">
 					{subscribed ? (
 						<div className="w-full rounded-md bg-green-500 py-1.5 text-center text-4 text-white">
 							Success!
@@ -83,14 +84,14 @@ const SubscriptionBox = ({
 								value={email}
 								className={`${
 									processing ? "animate-pulse border-gray-400 duration-75" : ""
-								} flex h-8 w-full rounded-md border bg-white px-4 text-4 tracking-wide text-gray-500 shadow-xs focus:outline-hidden dark:border-gray-700 dark:bg-gray-700 dark:text-gray-400`}
+								} flex h-8 w-full rounded-md border bg-white py-0 pr-20 pl-4 text-4 tracking-wide text-gray-500 shadow-xs focus:outline-hidden dark:border-gray-700 dark:bg-gray-700 dark:text-gray-400`}
 								placeholder="your.email@address.com"
 								onChange={(e) => {
 									setEmail(e.target.value)
 								}}
 								required
 							/>
-							{email && email.length <= 23 && (
+							{email && (
 								<button
 									type="submit"
 									className="effect-pressing absolute top-[6.5px] right-1.5 hidden animate-appear rounded-full bg-slate-500 px-[8px] py-[2px] text-xs text-white shadow-xs hover:bg-neutral-600 hover:shadow-inner lg:block dark:bg-neutral-800 dark:text-gray-300">
@@ -104,6 +105,11 @@ const SubscriptionBox = ({
 							</button>
 						</form>
 					)}
+					{error && (
+						<p role="alert" className="mt-1.5 text-xs text-red-500">
+							{error}
+						</p>
+					)}
 				</div>
 			</div>
 		)
@@ -111,21 +117,24 @@ const SubscriptionBox = ({
 
 	return (
 		<div
-			className={`my-2 hidden w-full items-center rounded-xl border bg-white p-10 shadow-xs lg:block lg:px-20 lg:py-11 dark:border-gray-800 dark:bg-gray-800 ${className || ""}`}>
+			className={`my-2 hidden w-full items-center rounded-xl border bg-white p-10 shadow-xs lg:block lg:px-20 lg:py-11 dark:border-gray-800 dark:bg-gray-800 ${className ?? ""}`}>
 			<div className="flex justify-between">
 				<div>
-					<h1 className="flex items-center text-3xl font-medium tracking-wide text-gray-700 dark:text-white">
+					<h2 className="flex items-center text-3xl font-medium tracking-wide text-gray-700 dark:text-white">
 						<span className="mr-2 h-9 w-9">
 							<Icon name="subscribe" />
 						</span>
 						Subscribe
-					</h1>
+					</h2>
 					<p className="mt-1 mb-5 pl-1 text-xl tracking-wide text-gray-500 dark:text-gray-400">
 						New Article Everytime I Publish :)
 					</p>
 				</div>
 				<div className="flex items-center">
-					<a href="https://lipeng.ac/feed" target="_blank" rel="noreferrer">
+					<a
+						href="https://lipeng.ac/feed"
+						target="_blank"
+						rel="noopener noreferrer">
 						<span className="effect-pressing -mt-4.5 flex w-full cursor-pointer items-center justify-center gap-x-1 rounded-md border border-gray-300 bg-white px-2.5 py-1 text-xl tracking-wider text-gray-500 shadow-xs hover:shadow-inner focus:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
 							<span className="h-6 w-6">
 								<Icon name="rss" />
@@ -170,7 +179,7 @@ const SubscriptionBox = ({
 				<a
 					href="https://discord.gg/JE8bcYezfY"
 					target="_blank"
-					rel="noreferrer"
+					rel="noopener noreferrer"
 					className="col-start-3 col-end-4 flex items-center justify-center rounded-md border border-indigo-200 bg-indigo-50 text-center text-indigo-700 shadow-xs hover:border-indigo-300 hover:bg-indigo-100 dark:border-indigo-400 dark:bg-indigo-500 dark:text-indigo-50 dark:hover:border-indigo-400 dark:hover:bg-indigo-600">
 					<i className="mr-1.5 h-5 w-5">
 						<Icon name="chatRounded" />
@@ -178,6 +187,11 @@ const SubscriptionBox = ({
 					Discord Server
 				</a>
 			</div>
+			{error && (
+				<p role="alert" className="mt-2 text-sm text-red-500">
+					{error}
+				</p>
+			)}
 		</div>
 	)
 }

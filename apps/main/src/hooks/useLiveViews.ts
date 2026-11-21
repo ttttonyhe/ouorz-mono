@@ -1,6 +1,5 @@
 import useSWR from "swr"
 import { z } from "zod"
-
 import createFetcher from "~/lib/fetcher"
 import api from "~/utilities/api"
 
@@ -16,10 +15,6 @@ interface LiveViews {
 	isLoading: boolean
 }
 
-/**
- * Polls the current view count for a post or page, falling back to the count
- * that was rendered with the content until the first response arrives.
- */
 const useLiveViews = (
 	resource: "post" | "page",
 	id: string | number | undefined,

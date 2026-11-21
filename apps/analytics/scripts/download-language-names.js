@@ -1,37 +1,33 @@
-const fs = require("fs-extra")
-const path = require("path")
-const https = require("https")
-const chalk = require("chalk")
+const fs = require("node:fs")
+const path = require("node:path")
 
 const src = path.resolve(__dirname, "../lang")
 const dest = path.resolve(__dirname, "../public/language")
-const files = fs.readdirSync(src)
+const files = fs.readdirSync(src).filter((file) => file.endsWith(".json"))
 
 const getUrl = (locale) =>
 	`https://raw.githubusercontent.com/umpirsky/language-list/master/data/${locale}/language.json`
 
-const asyncForEach = async (array, callback) => {
-	for (let index = 0; index < array.length; index++) {
-		await callback(array[index], index, array)
+async function download() {
+	fs.mkdirSync(dest, { recursive: true })
+
+	for (const file of files) {
+		const locale = file.replace("-", "_").replace(".json", "")
+		const filename = path.join(dest, file)
+		if (fs.existsSync(filename)) continue
+
+		const response = await fetch(getUrl(locale), {
+			signal: AbortSignal.timeout(30_000),
+		})
+		if (!response.ok) {
+			throw new Error(`Failed to download ${locale}: HTTP ${response.status}`)
+		}
+		fs.writeFileSync(filename, await response.text())
+		console.log("Downloaded ->", filename)
 	}
 }
 
-const download = async (files) => {
-	await fs.ensureDir(dest)
-
-	await asyncForEach(files, async (file) => {
-		const locale = file.replace("-", "_").replace(".json", "")
-
-		const filename = path.join(dest, file)
-		if (!fs.existsSync(filename)) {
-			await new Promise((resolve) => {
-				https.get(getUrl(locale), (res) => {
-					console.log("Downloaded", chalk.greenBright("->"), filename)
-					resolve(res.pipe(fs.createWriteStream(filename)))
-				})
-			})
-		}
-	})
-}
-
-download(files)
+download().catch((error) => {
+	console.error(error.message)
+	process.exitCode = 1
+})

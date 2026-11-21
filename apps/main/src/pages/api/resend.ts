@@ -1,17 +1,18 @@
-import { timingSafeEqual } from "node:crypto"
-
 import type { NextApiRequest, NextApiResponse } from "next"
 import { z } from "zod"
-
-import { apiHandler, fetchJSON, requireEnv } from "~/lib/apiHandler"
+import {
+	apiHandler,
+	fetchJSON,
+	requireEnv,
+	timingSafeTokenEqual,
+} from "~/lib/apiHandler"
 import {
 	mailerBodySchema,
 	type MailerRequestBody,
 	parseBody,
 } from "~/lib/requestBody"
 
-const FROM_ADDRESS =
-	process.env.RESEND_FROM_ADDRESS || "Nexment <no-reply@nexment.ouorz.com>"
+const DEFAULT_FROM_ADDRESS = "Nexment <no-reply@nexment.ouorz.com>"
 
 const escapeHtml = (value: string) =>
 	value
@@ -59,22 +60,18 @@ function buildEmailHtml(body: MailerRequestBody): string {
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-	const expected = Buffer.from(`Bearer ${requireEnv("RESEND_REQUEST_TOKEN")}`)
-	const received = Buffer.from(req.headers.authorization ?? "")
-	if (
-		received.length !== expected.length ||
-		!timingSafeEqual(received, expected)
-	) {
+	const expected = `Bearer ${requireEnv("RESEND_REQUEST_TOKEN")}`
+	if (!timingSafeTokenEqual(req.headers.authorization ?? "", expected)) {
 		return res.status(401).json({ error: "Unauthorized" })
 	}
 
 	const body = parseBody(mailerBodySchema, req)
-
 	if (!body) {
-		res.status(400).json({ error: "Invalid request body" })
-		return
+		return res.status(400).json({ error: "Invalid request body" })
 	}
 
+	const fromAddress =
+		process.env.RESEND_FROM_ADDRESS?.trim() || DEFAULT_FROM_ADDRESS
 	const data = await fetchJSON(
 		z.object({ id: z.string().min(1) }),
 		"https://api.resend.com/emails",
@@ -85,7 +82,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 				Authorization: `Bearer ${requireEnv("RESEND_API_KEY")}`,
 			},
 			body: JSON.stringify({
-				from: FROM_ADDRESS,
+				from: fromAddress,
 				to: [body.toEmail],
 				subject: `You received a new reply from ${body.fromName}!`,
 				html: buildEmailHtml(body),
@@ -93,7 +90,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 		}
 	)
 
-	res.status(200).json(data)
+	return res.status(200).json(data)
 }
 
 export const config = { api: { bodyParser: { sizeLimit: "32kb" } } }

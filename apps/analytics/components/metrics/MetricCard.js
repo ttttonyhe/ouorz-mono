@@ -1,5 +1,5 @@
 import React from "react"
-import { useSpring, animated } from "react-spring"
+import { useSpring, animated } from "@react-spring/web"
 import { formatNumber } from "../../lib/format"
 import styles from "./MetricCard.module.css"
 
@@ -17,7 +17,7 @@ const MetricCard = ({
 	return (
 		<div className={styles.card}>
 			<animated.div className={styles.value}>
-				{props.x.interpolate((x) => format(x))}
+				{props.x.to((x) => format(x))}
 			</animated.div>
 			<div className={styles.label}>
 				{label}
@@ -33,9 +33,7 @@ const MetricCard = ({
 								: styles.positive
 						}`}
 					>
-						{changeProps.x.interpolate(
-							(x) => `${change >= 0 ? "+" : ""}${format(x)}`
-						)}
+						{changeProps.x.to((x) => `${change >= 0 ? "+" : ""}${format(x)}`)}
 					</animated.span>
 				)}
 			</div>

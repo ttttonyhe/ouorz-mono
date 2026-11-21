@@ -1,5 +1,32 @@
 @import "tailwindcss";
-@config "../../tailwind.config.mjs";
+@import "@twilight-toolkit/ui/styles/theme.css";
+@import "@twilight-toolkit/ui/styles/components.css";
+@source "../../../../packages/twilight-ui/src";
+@plugin "@tailwindcss/typography";
+
+@utility prose-dark {
+	font-size: 16.2px;
+	color: #fff;
+
+	& a {
+		color: var(--color-blue-500);
+		text-decoration: none;
+		font-weight: normal;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	& blockquote {
+		font-weight: 400;
+		justify-items: center;
+	}
+
+	& h4 {
+		font-size: 1.3em;
+	}
+}
 
 @layer base {
 	*,
@@ -12,6 +39,40 @@
 }
 
 @layer utilities {
+	.prose {
+		@media (width >= 64rem) {
+			&.lg\:prose-xl {
+				font-size: 16.2px;
+			}
+
+			&.lg\:prose-xl:not(:where(.dark, .dark *)) {
+				color: rgba(33, 37, 41, 0.95);
+			}
+
+			&.lg\:prose-xl a {
+				text-decoration: none;
+				font-weight: normal;
+			}
+
+			&.lg\:prose-xl:not(:where(.dark, .dark *)) a {
+				color: #1e87f0;
+			}
+
+			&.lg\:prose-xl a:hover {
+				text-decoration: underline;
+			}
+
+			&.lg\:prose-xl blockquote {
+				font-weight: 400;
+				justify-items: center;
+			}
+
+			&.lg\:prose-xl h4 {
+				font-size: 1.3em;
+			}
+		}
+	}
+
 	.prose ol {
 		padding-left: 35px;
 		display: block;
@@ -45,8 +106,7 @@
 		background-color: rgba(195, 218, 254, 0.43);
 		border-radius: 9999px;
 		color: rgba(85, 134, 210, 0.8);
-		@apply dark:text-blue-400;
-		@apply dark:bg-blue-900;
+		@apply dark:bg-blue-900 dark:text-blue-400;
 		font-size: 11.4px;
 		font-weight: 700;
 		content: counter(item);
@@ -72,7 +132,7 @@
 		font-style: normal;
 		padding: 15px 20px 15px 80px;
 		color: #777;
-		@apply !justify-items-start rounded-r-md bg-gray-50 dark:border-gray-500 dark:bg-gray-700;
+		@apply justify-items-start! rounded-r-md bg-gray-50 dark:border-gray-500 dark:bg-gray-700;
 	}
 
 	.prose blockquote p {
@@ -83,93 +143,15 @@
 
 	.dark .prose blockquote p {
 		margin: 0px;
-		@apply !text-gray-300;
+		@apply text-gray-300!;
 	}
 
 	.prose img {
 		@apply m-0 rounded-md dark:bg-slate-50;
 	}
 
-	.prose h1,
-	h2,
-	h3,
-	h4,
-	h5 {
-		@apply tracking-wide;
-		@apply dark:!text-white;
-	}
-	.prose .warp-post-embed {
-		position: relative;
-		overflow: hidden;
-		padding: 5px 30px 10px 30px;
-		background-image: url(https://static.ouorz.com/link.png);
-		background-repeat: no-repeat;
-		background-position: right;
-		opacity: 0.7;
-		box-sizing: border-box;
-		color: rgba(0, 0, 0, 0.6);
-		margin: 15px 0;
-		@apply rounded-md border shadow-sm dark:border-gray-500 dark:bg-gray-700 dark:bg-none;
-	}
-
-	.prose .warp-post-embed:hover {
-		opacity: 1;
-	}
-
-	.prose .warp-post-embed .embed-content {
-		margin-right: 20%;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
-
-	.prose .warp-post-embed a {
-		text-decoration: none;
-	}
-
-	.prose .warp-post-embed .embed-content p {
-		display: block;
-		font-size: 13px;
-		font-style: normal;
-		color: #888;
-		@apply dark:text-gray-400;
-		line-height: 1.5;
-		margin-bottom: 10px;
-		margin-top: 0px;
-	}
-
-	.prose .warp-post-embed .embed-content b {
-		background: #eee;
-		color: #999;
-		@apply dark:text-gray-200;
-		@apply dark:bg-gray-600;
-		font-weight: 500 !important;
-		padding: 1px 8px 3px 9px;
-		border-radius: 50px;
-	}
-
-	.prose .warp-post-embed .embed-content h2 {
-		color: rgba(0, 0, 0, 0.8);
-		@apply dark:text-gray-100;
-		display: block;
-		margin-bottom: 8px;
-		margin-top: 4%;
-		font-size: 20px;
-		line-height: 1.4;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-		overflow: hidden;
-	}
-
-	.warp-post-embed .embed-bg {
-		float: right;
-		margin-left: 12px;
-		width: 100px;
-		height: 100px;
-		border-radius: 10px;
-		vertical-align: middle;
-		box-sizing: border-box;
-		background-size: contain;
-		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+	.prose :is(h1, h2, h3, h4, h5) {
+		@apply tracking-wide dark:text-white!;
 	}
 
 	.prose ul li {
@@ -177,10 +159,7 @@
 	}
 
 	.prose ul li::before {
-		@apply bg-gray-800;
-		@apply dark:bg-white;
-		@apply w-3;
-		@apply h-3;
+		@apply h-3 w-3 bg-gray-800 dark:bg-white;
 		margin-top: -0.125rem;
 	}
 
@@ -197,14 +176,11 @@
 
 	.toc-active {
 		background-color: #f7f8f9;
-		@apply rounded-md;
-		@apply dark:bg-gray-700;
-		@apply text-gray-700 dark:text-gray-300;
+		@apply rounded-md text-gray-700 dark:bg-gray-700 dark:text-gray-300;
 	}
 
 	.tour div:nth-child(2) {
-		@apply border-l;
-		@apply border-gray-200;
+		@apply border-l border-gray-200;
 	}
 
 	.prose h5 {
@@ -222,8 +198,7 @@
 
 	.prose table {
 		border: 1px solid #e5e7eb;
-		@apply dark:text-white;
-		@apply dark:border-gray-500;
+		@apply dark:border-gray-500 dark:text-white;
 	}
 
 	.prose tbody tr {
@@ -232,10 +207,7 @@
 
 	.prose tbody tr td {
 		border-right: 1px solid #e5e7eb;
-		@apply whitespace-nowrap;
-		@apply overflow-hidden;
-		@apply text-ellipsis;
-		@apply dark:border-r-gray-500;
+		@apply overflow-hidden text-ellipsis whitespace-nowrap dark:border-r-gray-500;
 	}
 
 	.prose tbody tr td:last-child {
@@ -284,13 +256,12 @@
 		overflow: hidden;
 	}
 
-	/* Keyed on the root because `useBodyScroll` pins an inline overflow on body */
+	/* Keyed on the root because `useBodyScroll` pins an inline overflow on body. */
 	html:has(dialog:modal) {
 		overflow: hidden;
 	}
 
-	/* Derived from the dialog itself, so every way of closing it brings the
-	   thumbnail back before focus returns to it */
+	/* Derived from the dialog so closing it restores the thumbnail before focus returns. */
 	.profile-picture:has(+ dialog:modal) {
 		visibility: hidden;
 	}
@@ -312,10 +283,6 @@
 		display: flex;
 	}
 
-	.podcast-player {
-		box-shadow: none !important;
-	}
-
 	.nexment-comment-area .nexment-comment-area-top {
 		@apply text-4;
 	}
@@ -330,57 +297,8 @@
 
 	.toc-sub {
 		border-left: 1px solid rgba(229, 231, 235, 1);
-		@apply rounded-tl-none;
-		@apply rounded-bl-none;
+		@apply rounded-tl-none rounded-bl-none;
 	}
-
-	.rhap_container {
-		@apply dark:!bg-gray-800;
-	}
-
-	.rhap_time {
-		@apply dark:!text-gray-400;
-	}
-
-	.rhap_progress-bar-show-download {
-		@apply dark:bg-gray-700;
-	}
-
-	.rhap_progress-filled {
-		@apply dark:bg-gray-500;
-	}
-
-	.rhap_download-progress {
-		@apply dark:bg-gray-400;
-	}
-
-	.rhap_progress-indicator {
-		@apply dark:bg-gray-600;
-	}
-
-	.rhap_main-controls-button {
-		@apply dark:text-gray-500;
-	}
-
-	.rhap_volume-bar {
-		@apply dark:bg-gray-700;
-	}
-
-	.rhap_volume-button {
-		@apply dark:text-gray-500;
-	}
-
-	.rhap_volume-indicator {
-		@apply dark:bg-gray-600;
-	}
-
-	.rhap_repeat-button {
-		@apply dark:text-gray-500;
-	}
-
-	/* .reader::-webkit-scrollbar {
-	width: 0 !important;
-} */
 
 	.prose pre {
 		@apply dark:bg-gray-700;
@@ -395,13 +313,11 @@
 	}
 
 	.nexment-comment-area .nexment-comment-area-top input {
-		@apply dark:bg-gray-700;
-		@apply dark:!border-gray-500;
+		@apply dark:border-gray-500! dark:bg-gray-700;
 	}
 
 	.nexment-comment-area .nexment-comment-area-middle textarea {
-		@apply dark:bg-gray-700;
-		@apply dark:!border-gray-500;
+		@apply dark:border-gray-500! dark:bg-gray-700;
 	}
 
 	.nexment-comment-area .nexment-comment-area-bottom div:nth-child(2) button {
@@ -416,33 +332,31 @@
 	}
 
 	.nexment-comment-area {
-		@apply dark:bg-gray-600;
-		@apply dark:!border-gray-600;
+		@apply dark:border-gray-600! dark:bg-gray-600;
 	}
 
 	.nexment-header h1 {
-		@apply dark:!text-white;
+		@apply dark:text-white!;
 	}
 
 	.nexment-header {
-		@apply items-center;
-		@apply dark:!border-gray-700;
+		@apply items-center dark:border-gray-700!;
 	}
 
 	.nexment-comments-div .nexment-comments-title h5 {
-		@apply dark:!text-white;
+		@apply dark:text-white!;
 	}
 
 	.nexment-comments-div .nexment-comments-title .nexment-comments-content p {
-		@apply dark:!text-gray-100;
+		@apply dark:text-gray-100!;
 	}
 
 	.nexment-comments-list-item {
-		@apply dark:!border-gray-700;
+		@apply dark:border-gray-700!;
 	}
 
 	.nexment-comments-reply-list {
-		@apply dark:!border-gray-700;
+		@apply dark:border-gray-700!;
 	}
 
 	.dark .nexment-inner-reply-list {
@@ -450,13 +364,11 @@
 	}
 
 	.nexment-comments-reply-list .nexment-comments-div:hover {
-		@apply dark:!border-gray-700;
+		@apply dark:border-gray-700!;
 	}
 
 	.react-tiny-popover-container {
-		@apply dark:bg-gray-700;
-		@apply dark:text-white;
-		@apply dark:border-gray-500;
+		@apply dark:border-gray-500 dark:bg-gray-700 dark:text-white;
 	}
 
 	.nexment-comment-area
@@ -479,8 +391,7 @@
 	}
 
 	.nexment-comment-area .nexment-comment-area-middle .nexment-md-preview {
-		@apply dark:text-white;
-		@apply dark:border-gray-500;
+		@apply dark:border-gray-500 dark:text-white;
 	}
 
 	.nexment-comment-area .nexment-comment-area-top input:nth-child(1) {
@@ -488,8 +399,7 @@
 	}
 
 	.nexment-popover p {
-		@apply dark:text-white;
-		@apply mt-4;
+		@apply mt-4 dark:text-white;
 	}
 
 	.nexment-popover,
@@ -511,7 +421,7 @@
 		.nexment-emoji-section
 		.nexment-emoji-section-header
 		b {
-		@apply dark:!text-white;
+		@apply dark:text-white!;
 	}
 
 	.nexment-comments-div .nexment-comments-title h5 {
@@ -523,7 +433,7 @@
 	}
 
 	.nexment-comments-div .nexment-comments-replyto svg {
-		@apply !translate-y-[-1px];
+		@apply translate-y-[-1px]!;
 	}
 
 	.nexment-comments-list-item-div .rodal .rodal-dialog {
@@ -584,11 +494,6 @@
 
 	abbr[title] {
 		text-decoration: none;
-	}
-
-	.podcast-image-placeholder {
-		width: 160px !important;
-		height: 160px !important;
 	}
 
 	.mask-y {
@@ -705,6 +610,26 @@
 		--y-px: calc(var(--y) * 1px);
 	}
 
+	.glowing-div-bg {
+		pointer-events: none;
+		user-select: none;
+		position: absolute;
+		z-index: 1;
+		opacity: 1;
+		inset: 1px;
+		contain: strict;
+		transition: opacity 400ms ease 0s;
+	}
+
+	.dark .glowing-div-bg {
+		background: radial-gradient(
+			200px circle at var(--x-px) var(--y-px),
+			rgba(255, 255, 255, 0.1),
+			transparent
+		);
+		background-color: rgb(38, 38, 38);
+	}
+
 	.glowing-div:before,
 	.glowing-div::after {
 		content: "";
@@ -765,7 +690,7 @@
 		@apply mt-0 -mb-1;
 	}
 
-	/* Workaround for React onMouseLeave not triggering when user's cursor is moving fast*/
+	/* Workaround for React onMouseLeave not triggering when the cursor moves fast. */
 	.tabs-wrapper .tabs-highlighter {
 		display: none;
 	}
@@ -847,7 +772,7 @@
 	}
 
 	.nexment-comments-div .nexment-comments-title .nexment-comments-content {
-		@apply dark:!border-gray-600 dark:bg-gray-700;
+		@apply dark:border-gray-600! dark:bg-gray-700;
 	}
 
 	.nexment-reply-container
@@ -858,7 +783,7 @@
 	}
 
 	.nexment-comments-div .nexment-comments-title .margin-top-reply {
-		@apply dark:!bg-transparent;
+		@apply dark:bg-transparent!;
 	}
 
 	.nexment-reply-container .nexment-comments-div:hover {
@@ -891,7 +816,7 @@
 		.nexment-replying {
 		padding: 3px 4px 0px 4px !important;
 		transform: none !important;
-		@apply dark:!border-gray-500;
+		@apply dark:border-gray-500!;
 	}
 
 	.nexment-comment-area
@@ -905,39 +830,39 @@
 	.nexment-comment-area-container
 		.nexment-comment-area
 		.nexment-comment-area-top-name-avatar {
-		@apply flex-shrink-0 dark:!border-gray-500 dark:bg-gray-700 dark:hover:!bg-gray-600;
+		@apply shrink-0 dark:border-gray-500! dark:bg-gray-700 dark:hover:bg-gray-600!;
 	}
 
 	.nexment-popover .nexment-popover-title {
-		@apply dark:!border-gray-500;
+		@apply dark:border-gray-500!;
 	}
 
 	.nexment-popover .nexment-popover-title b {
-		@apply dark:!text-white;
+		@apply dark:text-white!;
 	}
 
 	.nexment-popover .nexment-popover-content p {
-		@apply dark:!text-white;
+		@apply dark:text-white!;
 	}
 
 	.nexment-popover .nexment-popover-content input {
-		@apply dark:!border-gray-500;
+		@apply dark:border-gray-500!;
 	}
 
 	.nexment-popover .nexment-popover-content .nexment-popover-input {
-		@apply !text-xs;
+		@apply text-xs!;
 	}
 
 	.nexment-popover .nexment-popover-content .nexment-popover-input input {
-		@apply dark:!text-white;
+		@apply dark:text-white!;
 	}
 
 	.nexment-comment-area-container {
-		@apply dark:!text-white;
+		@apply dark:text-white!;
 	}
 
 	.nexment-comment-area-toolbar button {
-		@apply dark:!text-gray-300 dark:hover:!bg-gray-500;
+		@apply dark:text-gray-300! dark:hover:bg-gray-500!;
 	}
 
 	.nexment-emoji-container
@@ -945,37 +870,37 @@
 		.nexment-emoji-section-box
 		.nexment-emoji-section-container
 		span {
-		@apply dark:!bg-gray-700 dark:!text-white;
+		@apply dark:bg-gray-700! dark:text-white!;
 	}
 
 	.nexment-comment-area-container .nexment-comment-area-replying-to {
-		@apply dark:!border dark:!border-gray-500;
+		@apply dark:border! dark:border-gray-500!;
 	}
 
 	.nexment-comment-area-container .nexment-comment-area-replying-to-header {
-		@apply dark:!border-gray-500 dark:!text-white;
+		@apply dark:border-gray-500! dark:text-white!;
 	}
 
 	.nexment-comment-area-container
 		.nexment-comment-area-replying-to-header
 		svg
 		path:nth-child(2) {
-		@apply dark:!fill-white;
+		@apply dark:fill-white!;
 	}
 
 	.nexment-comment-area-container .nexment-comment-area-replying-to-cta {
-		@apply !px-3 dark:!border-gray-500 dark:hover:!bg-gray-700;
+		@apply px-3! dark:border-gray-500! dark:hover:bg-gray-700!;
 	}
 
 	.nexment-comment-area-container .nexment-comment-area-replying-to-content p {
-		@apply dark:!text-gray-300;
+		@apply dark:text-gray-300!;
 	}
 
 	.nexment-comment-area-container
 		.nexment-comment-area-replying-to-cta
 		svg
 		path:nth-child(2) {
-		@apply dark:!fill-white;
+		@apply dark:fill-white!;
 	}
 
 	.nexment-header-logo a img {
@@ -983,21 +908,19 @@
 	}
 
 	.nexment-comments-div .nexment-comments-title h5 a {
-		@apply dark:!text-gray-200;
+		@apply dark:text-gray-200!;
 	}
 
 	.header {
 		transform: translateY(15%);
 	}
 
-	/* View Transitions API styles */
 	@supports (view-transition-name: none) {
 		::view-transition-old(root),
 		::view-transition-new(root) {
 			animation-duration: 0.3s;
 		}
 
-		/* Page title transitions */
 		::view-transition-old(page-title-dashboard),
 		::view-transition-new(page-title-dashboard),
 		::view-transition-old(page-title-web-3-0),
@@ -1012,15 +935,13 @@
 			animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 		}
 
-		/* Named only while its own morph runs, so page transitions leave the
-		   thumbnail in the page layer */
+		/* Named only while morphing so page transitions leave the thumbnail in place. */
 		.profile-picture:has(+ dialog[data-morphing]:not(:modal)) > img,
 		.profile-picture + dialog[data-morphing]:modal .profile-picture-frame {
 			view-transition-name: profile-picture;
 		}
 
-		/* Both snapshots are square, so the group owns the rounding and keeps
-		   the corners at a constant radius while the photo scales. */
+		/* The group owns rounding so corners stay constant while the photo scales. */
 		::view-transition-group(profile-picture) {
 			overflow: clip;
 			border-radius: var(--radius-xl);
@@ -1034,7 +955,6 @@
 			}
 		}
 
-		/* Smooth cross-fade for the rest of the page */
 		::view-transition-old(root) {
 			animation-name: fade-out;
 		}

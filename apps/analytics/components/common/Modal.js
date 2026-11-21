@@ -1,7 +1,6 @@
 import React from "react"
-import PropTypes from "prop-types"
 import ReactDOM from "react-dom"
-import { useSpring, animated } from "react-spring"
+import { useSpring, animated } from "@react-spring/web"
 import styles from "./Modal.module.css"
 
 function Modal({ title, children }) {
@@ -16,11 +15,6 @@ function Modal({ title, children }) {
 		</animated.div>,
 		document.getElementById("__modals")
 	)
-}
-
-Modal.propTypes = {
-	title: PropTypes.node,
-	children: PropTypes.node,
 }
 
 export default Modal

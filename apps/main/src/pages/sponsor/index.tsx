@@ -2,7 +2,6 @@ import { Icon } from "@twilight-toolkit/ui"
 import type { GetStaticProps } from "next"
 import Head from "next/head"
 import Link from "next/link"
-
 import PageCard from "~/components/Card/Page"
 import { pageLayout } from "~/components/Page"
 import { GlowingBackground } from "~/components/Visual"
@@ -168,21 +167,10 @@ Sponsor.layout = pageLayout
 
 export const getStaticProps: GetStaticProps<Props> = () => {
 	try {
-		const data = getSponsors()
-
-		if (!data || !Array.isArray(data.donors)) {
-			return {
-				revalidate: 60,
-				props: {
-					sponsors: [],
-				},
-			}
-		}
-
 		return {
 			revalidate: 5 * 24 * 60 * 60,
 			props: {
-				sponsors: data.donors,
+				sponsors: getSponsors().donors,
 			},
 		}
 	} catch (error) {

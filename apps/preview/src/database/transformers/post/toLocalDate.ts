@@ -1,4 +1,4 @@
-import { RawPostData } from "@/database"
+import type { RawPostData } from "@/database"
 
 const toLocalDate = (data: RawPostData) => {
 	const date = new Date(data.date)

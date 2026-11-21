@@ -7,22 +7,21 @@ import {
 
 export type KbarInputValueChangeHandler = (newValue: string) => void
 
-export type KbarContext = {
+export interface KbarContextValue {
 	inputValue: string
 	setInputValue: (value: string) => void
-	inputValueChangeHandler?: KbarInputValueChangeHandler
+	inputValueChangeHandler: KbarInputValueChangeHandler | undefined
 	setInputValueChangeHandler: Dispatch<
 		SetStateAction<KbarInputValueChangeHandler | undefined>
 	>
 }
 
-const kbarContext = createContext<KbarContext | null>(null)
-const KbarContextProvider = kbarContext.Provider
+const KbarContext = createContext<KbarContextValue | null>(null)
 
 const useKbarContext = () => {
-	const context = useContext(kbarContext)
-	if (!context) throw new Error("KbarPanel requires KbarContextProvider")
+	const context = useContext(KbarContext)
+	if (!context) throw new Error("KbarPanel requires KbarContext")
 	return context
 }
 
-export { useKbarContext, KbarContextProvider }
+export { KbarContext, useKbarContext }

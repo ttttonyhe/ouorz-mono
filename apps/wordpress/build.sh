@@ -1,3 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-docker build --tag=ouorz-wordpress .
+IMAGE_TAG="ouorz-wordpress"
+
+docker build --tag="${IMAGE_TAG}" .

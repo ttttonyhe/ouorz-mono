@@ -1,5 +1,4 @@
 import { z } from "zod"
-
 import { GITHUB_API } from "~/constants/apiURLs"
 import { apiHandler, fetchJSON, PUBLIC_CACHE } from "~/lib/apiHandler"
 
@@ -17,20 +16,24 @@ const repositoriesSchema = z
 	.max(100)
 
 export default apiHandler(["GET", "HEAD"], async (_req, res) => {
-	const headers = new Headers({ Accept: "application/vnd.github+json" })
+	const headers = new Headers({
+		Accept: "application/vnd.github+json",
+		"User-Agent": "lipeng-ac",
+	})
 	if (process.env.GITHUB_TOKEN) {
 		const token = process.env.GITHUB_TOKEN.replace(/^(?:Bearer|token)\s+/iu, "")
 		headers.set("Authorization", `Bearer ${token}`)
 	}
 
-	const user = await fetchJSON(userSchema, GITHUB_API.USER, { headers })
+	const signal = AbortSignal.timeout(15_000)
+	const user = await fetchJSON(userSchema, GITHUB_API.USER, { headers, signal })
 	let stars = 0
 	for (let page = 1; page <= Math.ceil(user.public_repos / 100); page++) {
 		// oxlint-disable-next-line no-await-in-loop -- Avoid bursts against GitHub's shared rate limit.
 		const repositories = await fetchJSON(
 			repositoriesSchema,
 			`${GITHUB_API.REPOS}?per_page=100&page=${page}`,
-			{ headers }
+			{ headers, signal }
 		)
 		stars += repositories.reduce(
 			(sum, repo) => sum + (repo.fork ? 0 : repo.stargazers_count),

@@ -4,7 +4,7 @@ import type React from "react"
 import ScrollWrapper from "./scroll"
 
 interface Props {
-	componentRef: React.RefObject<HTMLDivElement | null>
+	componentRef: React.RefObject<HTMLElement | null>
 	children: React.ReactNode
 }
 
@@ -13,7 +13,7 @@ const BoxShadowTransition = (props: Props) => {
 	const { resolvedTheme } = useTheme()
 
 	const handler = (position: number) => {
-		if (!ref?.current) return
+		if (!ref.current) return
 		if (resolvedTheme === "dark") {
 			ref.current.style.background = `rgba(38, 38, 38, ${
 				position * (0.8 / 40) || 0

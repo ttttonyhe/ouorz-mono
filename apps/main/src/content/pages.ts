@@ -3,7 +3,6 @@ import path from "node:path"
 
 import matter from "gray-matter"
 import { marked } from "marked"
-
 import { pageFrontmatterSchema } from "~/content/schema"
 import { getContentLanguage, type ContentLanguage } from "~/content/text"
 
@@ -38,7 +37,10 @@ const toLocalPage = (fileName: string): LocalPage => {
 	}
 }
 
-export const getAllPages = (): LocalPage[] => {
+let cachedPages: LocalPage[] | null = null
+let cachedPagesById: Map<number, LocalPage> | null = null
+
+const loadPages = (): LocalPage[] => {
 	if (!fs.existsSync(CONTENT_DIR)) return []
 
 	return fs
@@ -49,7 +51,21 @@ export const getAllPages = (): LocalPage[] => {
 		.toSorted((a, b) => +new Date(b.date) - +new Date(a.date))
 }
 
-export const getPageById = (id: number) =>
-	getAllPages().find((page) => Number(page.id) === id)
+export const getAllPages = (): LocalPage[] => {
+	if (process.env.NODE_ENV !== "production") return loadPages()
+	if (!cachedPages) {
+		cachedPages = loadPages()
+		cachedPagesById = new Map(
+			cachedPages.map((page) => [Number(page.id), page])
+		)
+	}
+	return cachedPages
+}
+
+export const getPageById = (id: number): LocalPage | undefined => {
+	const pages = getAllPages()
+	if (cachedPagesById) return cachedPagesById.get(id)
+	return pages.find((page) => Number(page.id) === id)
+}
 
 export const getPageIds = () => getAllPages().map((page) => Number(page.id))

@@ -1,5 +1,5 @@
 import React from "react"
-import { useTransition, animated } from "react-spring"
+import { useTransition, animated } from "@react-spring/web"
 import useTheme from "hooks/useTheme"
 import Sun from "assets/sun.svg"
 import Moon from "assets/moon.svg"

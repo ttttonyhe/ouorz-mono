@@ -1,10 +1,8 @@
 import { Label } from "@twilight-toolkit/ui"
 import Link from "next/link"
-
 import CardFooter from "~/components/Card/Footer"
 import type { WPPost } from "~/constants/propTypes"
-import { useDispatch } from "~/hooks"
-import { setReaderRequest } from "~/store/reader/actions"
+import { openReader } from "~/store"
 import { trimStr } from "~/utilities/string"
 
 interface Props {
@@ -13,7 +11,8 @@ interface Props {
 }
 
 export default function CardWithOutImage({ item, sticky }: Props) {
-	const dispatch = useDispatch()
+	const primaryCategory = item.post_categories[0]
+
 	return (
 		<div className="mb-6 w-full rounded-md border bg-white shadow-xs dark:border-gray-700 dark:bg-gray-800">
 			<div className="p-5 lg:p-10">
@@ -21,21 +20,23 @@ export default function CardWithOutImage({ item, sticky }: Props) {
 					<div className="grid grid-cols-4 items-center">
 						<div className="col-start-1 col-end-3 flex space-x-2">
 							{sticky && <Label type="sticky-icon" />}
-							<Link href={`/cate/${item.post_categories[0].term_id}`}>
-								<Label type="primary" icon="cate">
-									{item.post_categories[0].name}
-								</Label>
-							</Link>
+							{primaryCategory && (
+								<Link href={`/cate/${primaryCategory.term_id}`}>
+									<Label type="primary" icon="cate">
+										{primaryCategory.name}
+									</Label>
+								</Link>
+							)}
 						</div>
-						<div
-							data-oa="click-previewPost"
-							className="col-start-4 col-end-5 hidden justify-end lg:flex"
-							onClick={() => {
-								dispatch(setReaderRequest(item))
-							}}>
-							<Label type="secondary" icon="preview">
-								Preview
-							</Label>
+						<div className="col-start-4 col-end-5 hidden justify-end lg:flex">
+							<button
+								type="button"
+								data-oa="click-previewPost"
+								onClick={() => openReader(item)}>
+								<Label type="secondary" icon="preview">
+									Preview
+								</Label>
+							</button>
 						</div>
 					</div>
 					<div className="mt-4">

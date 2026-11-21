@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import Icon from "components/common/Icon"
 import Logo from "assets/logo.svg"
 import styles from "./EmptyPlaceholder.module.css"
@@ -12,11 +11,6 @@ function EmptyPlaceholder({ msg, children }) {
 			{children}
 		</div>
 	)
-}
-
-EmptyPlaceholder.propTypes = {
-	msg: PropTypes.node,
-	children: PropTypes.node,
 }
 
 export default EmptyPlaceholder

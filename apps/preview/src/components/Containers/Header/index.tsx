@@ -8,7 +8,9 @@ const Header = () => {
 		<header className="relative z-header flex h-header w-full border-b dark:border-neutral-800 dark:bg-neutral-900">
 			<div>
 				<h1>Tony He</h1>
-				<button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+				<button
+					type="button"
+					onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
 					Change theme
 				</button>
 			</div>

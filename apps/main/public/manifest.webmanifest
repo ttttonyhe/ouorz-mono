@@ -1,0 +1,22 @@
+{
+	"name": "Tony (Lipeng) He",
+	"short_name": "Tony He",
+	"description": "Personal academic profile of Tony (Lipeng) He (贺莉朋), CS PhD student at the University of Waterloo researching Trustworthy AI and LLM security.",
+	"start_url": "/",
+	"display": "browser",
+	"background_color": "#f6f7f8",
+	"theme_color": "#f6f7f8",
+	"lang": "en",
+	"icons": [
+		{
+			"src": "/apple-touch-icon.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/icon.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}

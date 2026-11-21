@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { useRouter } from "next/router"
 import classNames from "classnames"
 import styles from "./NavMenu.module.css"
@@ -32,16 +31,4 @@ function NavMenu({ options = [], className, onSelect = () => {} }) {
 	)
 }
 
-NavMenu.propTypes = {
-	options: PropTypes.arrayOf(
-		PropTypes.shape({
-			label: PropTypes.node,
-			value: PropTypes.any,
-			className: PropTypes.string,
-			render: PropTypes.func,
-		})
-	),
-	className: PropTypes.string,
-	onSelect: PropTypes.func,
-}
 export default NavMenu

@@ -11,38 +11,32 @@ export default function Legend({ chart }) {
 	const forceUpdate = useForceUpdate()
 
 	function handleClick(index) {
-		const meta = chart.getDatasetMeta(index)
-
-		meta.hidden =
-			meta.hidden === null ? !chart.data.datasets[index].hidden : null
-
+		chart.setDatasetVisibility(index, !chart.isDatasetVisible(index))
 		chart.update()
-
 		forceUpdate()
 	}
 
-	if (!chart?.legend?.legendItems.find(({ text }) => text)) {
+	const items = chart?.legend?.legendItems
+	if (!items?.some(({ text }) => text)) {
 		return null
 	}
 
 	return (
 		<div className={styles.legend}>
-			{chart.legend.legendItems.map(
-				({ text, fillStyle, datasetIndex, hidden }) => {
-					const color = colord(fillStyle)
+			{items.map(({ text, fillStyle, datasetIndex, hidden }) => {
+				const color = colord(fillStyle)
 
-					return (
-						<div
-							key={text}
-							className={classNames(styles.label, { [styles.hidden]: hidden })}
-							onClick={() => handleClick(datasetIndex)}
-						>
-							<Dot color={color.alpha(color.alpha() + 0.2).toHex()} />
-							<span className={locale}>{text}</span>
-						</div>
-					)
-				}
-			)}
+				return (
+					<div
+						key={text}
+						className={classNames(styles.label, { [styles.hidden]: hidden })}
+						onClick={() => handleClick(datasetIndex)}
+					>
+						<Dot color={color.alpha(color.alpha() + 0.2).toHex()} />
+						<span className={locale}>{text}</span>
+					</div>
+				)
+			})}
 		</div>
 	)
 }

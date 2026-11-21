@@ -1,9 +1,83 @@
 @import "tailwindcss";
-@config "../../tailwind.config.ts";
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+	--spacing-header: 3.125rem;
+	--spacing-footer: 3rem;
+	--spacing-main: calc(100vh - 3.125rem);
+	--spacing-sidebar: 17.5rem;
+	--spacing-sidebar-lg: 12.5rem;
+	--spacing-sidebar-offset: 12.5rem;
+	--spacing-article: 100%;
+	--spacing-article-md: calc(100% - 12.5rem);
+	--spacing-article-xl: calc(100% - 17.5rem);
+	--spacing-article-content: 40rem;
+
+	--color-white-tinted: #f6f7f8;
+
+	--animate-panel-slide-in: slide-in-from-left 0.3s
+		cubic-bezier(0.15, 1, 0.3, 1) forwards;
+	--animate-panel-slide-out: slide-out-from-right 0.3s
+		cubic-bezier(0.15, 1, 0.3, 1) forwards;
+	--animate-article-appear: fade-in 0.3s cubic-bezier(0.15, 1, 0.3, 1) forwards;
+
+	@keyframes slide-in-from-left {
+		0% {
+			transform: translateX(-100%);
+		}
+		100% {
+			transform: translateX(0);
+		}
+	}
+
+	@keyframes slide-out-from-right {
+		0% {
+			transform: translateX(0%);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
+	}
+
+	@keyframes fade-in {
+		0% {
+			opacity: 0.5;
+			transform: translateY(0.2rem);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+}
+
+@utility z-overlay {
+	z-index: 28;
+}
+
+@utility z-header {
+	z-index: 24;
+}
+
+@utility z-sidebar {
+	z-index: 16;
+}
+
+@utility z-panel {
+	z-index: 12;
+}
+
+@utility z-article {
+	z-index: 20;
+}
+
+@utility z-footer {
+	z-index: 24;
+}
 
 @layer base {
-	/* Tailwind v4 dropped the default border colour from preflight, so a bare
-	   `border-*` would otherwise resolve to `currentColor`. */
+	/* Tailwind v4 dropped the default border colour from preflight. */
 	*,
 	::after,
 	::before,
@@ -12,8 +86,7 @@
 		@apply border-gray-200 dark:border-neutral-800;
 	}
 
-	/* next-themes puts `.dark` on the `<html>` element, which is `:root` itself,
-	   so this has to match the element rather than a descendant of it. */
+	/* next-themes puts `.dark` on `<html>`, which is `:root` itself. */
 	:root.dark {
 		@apply text-white;
 	}

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react"
-import PropTypes from "prop-types"
 import ReactDOM from "react-dom"
-import { useSpring, animated } from "react-spring"
+import { useSpring, animated } from "@react-spring/web"
 import Icon from "components/common/Icon"
 import Close from "assets/times.svg"
 import styles from "./Toast.module.css"
@@ -24,12 +23,6 @@ function Toast({ message, timeout = 3000, onClose }) {
 		</animated.div>,
 		document.getElementById("__modals")
 	)
-}
-
-Toast.propTypes = {
-	message: PropTypes.node,
-	timeout: PropTypes.number,
-	onClose: PropTypes.func,
 }
 
 export default Toast

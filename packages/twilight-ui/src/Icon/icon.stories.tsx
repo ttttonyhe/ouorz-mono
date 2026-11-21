@@ -1,5 +1,4 @@
-import { StoryFn, StoryObj, Meta } from "@storybook/react-webpack5"
-import React from "react"
+import type { Meta, StoryFn, StoryObj } from "@storybook/react-webpack5"
 
 import Icon from "."
 import icons from "./icons"

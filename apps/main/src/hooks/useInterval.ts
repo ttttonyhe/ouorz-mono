@@ -1,18 +1,12 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useEffectEvent } from "react"
 
-type IntervalCallback = () => void
-
-const useInterval = (callback: IntervalCallback, delay?: number | null) => {
-	const savedCallback = useRef<IntervalCallback>(() => {})
-
-	useEffect(() => {
-		savedCallback.current = callback
-	})
+const useInterval = (callback: () => void, delay?: number | null) => {
+	const onTick = useEffectEvent(callback)
 
 	useEffect(() => {
 		if (delay === null) return
 
-		const interval = setInterval(() => savedCallback.current(), delay ?? 0)
+		const interval = setInterval(() => onTick(), delay ?? 0)
 		return () => clearInterval(interval)
 	}, [delay])
 }

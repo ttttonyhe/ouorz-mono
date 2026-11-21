@@ -469,6 +469,6 @@ index e7e2552..c5ee366 100644
    "dependencies": {
 -    "commander": "^9.0.0"
 +    "commander": "^9.0.0",
-+    "re2js": "2.8.8"
++    "re2js": "2.10.0"
    }
  }

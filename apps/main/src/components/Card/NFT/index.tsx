@@ -1,6 +1,4 @@
 import { Icon } from "@twilight-toolkit/ui"
-import ContentLoader from "react-content-loader"
-
 import { GlowingBackground } from "~/components/Visual"
 import openLink from "~/utilities/externalLink"
 
@@ -57,15 +55,16 @@ const NFTCard = (props: PropsType) => {
 							</span>
 						</span>
 						{props.tokenType && (
-							<label className="z-20 flex items-center rounded-full bg-white px-2 py-0.5 text-xs shadow-xs dark:bg-gray-700/50">
+							<span className="z-20 flex items-center rounded-full bg-white px-2 py-0.5 text-xs shadow-xs dark:bg-gray-700/50">
 								{props.tokenType}
-							</label>
+							</span>
 						)}
 					</div>
 					<img
 						className="z-10 h-full w-full rounded-tl-md rounded-tr-md"
 						src={imageSrc}
 						alt={props.title}
+						loading="lazy"
 					/>
 				</div>
 				<div className="px-3.5 pb-5">
@@ -74,7 +73,7 @@ const NFTCard = (props: PropsType) => {
 							className="inline-block w-28 overflow-hidden rounded-full border border-gray-300 bg-gray-100 px-2 py-0.5 text-sm text-ellipsis text-gray-600 shadow-xs dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"
 							href={tokenLink}
 							target="_blank"
-							rel="noreferrer">
+							rel="noopener noreferrer">
 							{props.contract || props.token}
 						</a>
 					</div>
@@ -92,39 +91,17 @@ const NFTCard = (props: PropsType) => {
 	)
 }
 
-const NFTCardLoading = (props: { uniqueKey: string }) => {
-	return (
-		<div className="glowing-div z-40 flex w-50 items-center rounded-md border bg-white p-px shadow-xs transition-shadow hover:shadow-md dark:border dark:border-gray-700 dark:bg-gray-800">
-			<ContentLoader
-				className="block dark:hidden"
-				uniqueKey={`${props.uniqueKey}-light`}
-				speed={2}
-				width={100}
-				style={{ width: "100%" }}
-				height={305}
-				backgroundColor="#f3f3f3"
-				foregroundColor="#ecebeb">
-				<rect x="0" y="0" rx="5" ry="5" width="100%" height="190" />
-				<rect x="15" y="210" rx="5" ry="5" width="50%" height="25" />
-				<rect x="15" y="245" rx="5" ry="5" width="80%" height="15" />
-				<rect x="15" y="270" rx="5" ry="5" width="70%" height="15" />
-			</ContentLoader>
-			<ContentLoader
-				className="hidden dark:block"
-				uniqueKey={`${props.uniqueKey}-dark`}
-				speed={2}
-				width={100}
-				style={{ width: "100%" }}
-				height={305}
-				backgroundColor="#525252"
-				foregroundColor="#737373">
-				<rect x="0" y="0" rx="5" ry="5" width="100%" height="190" />
-				<rect x="15" y="210" rx="5" ry="5" width="50%" height="25" />
-				<rect x="15" y="245" rx="5" ry="5" width="80%" height="15" />
-				<rect x="15" y="270" rx="5" ry="5" width="70%" height="15" />
-			</ContentLoader>
+const NFTCardLoading = () => (
+	<div
+		aria-hidden="true"
+		className="glowing-div z-40 flex h-[305px] w-50 flex-col rounded-md border bg-white p-px shadow-xs dark:border-gray-700 dark:bg-gray-800">
+		<div className="h-[190px] w-full animate-pulse rounded-md bg-gray-100 dark:bg-neutral-600" />
+		<div className="flex flex-col gap-y-2.5 p-3.5">
+			<div className="h-[25px] w-1/2 animate-pulse rounded-md bg-gray-100 dark:bg-neutral-600" />
+			<div className="h-[15px] w-4/5 animate-pulse rounded-md bg-gray-100 dark:bg-neutral-600" />
+			<div className="h-[15px] w-7/10 animate-pulse rounded-md bg-gray-100 dark:bg-neutral-600" />
 		</div>
-	)
-}
+	</div>
+)
 
 export { NFTCard, NFTCardLoading }

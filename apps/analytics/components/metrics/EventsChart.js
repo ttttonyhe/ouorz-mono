@@ -54,7 +54,6 @@ export default function EventsChart({ websiteId, className, token }) {
 			return {
 				label: key,
 				data: map[key],
-				lineTension: 0,
 				backgroundColor: color.alpha(0.6).toRgbString(),
 				borderColor: color.alpha(0.7).toRgbString(),
 				borderWidth: 1,

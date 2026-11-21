@@ -1,20 +1,44 @@
 import { Icon } from "@twilight-toolkit/ui"
 import Link from "next/link"
 import { useState } from "react"
-
 import PagesAndLinks from "~/components/Banners/PagesAndLinks"
 import EmploymentCard from "~/components/Card/Employment"
 import PaperCard from "~/components/Card/Paper"
 import ServiceCard from "~/components/Card/Service"
-// import List from "~/components/List"
 import { pageLayout } from "~/components/Page"
 import ProfilePicture from "~/components/ProfilePicture"
 import SubscriptionBox from "~/components/SubscriptionBox"
 import Top from "~/components/Top"
+import {
+	OTHER_PUBLICATIONS,
+	PREPRINTS,
+	PRIMARY_PUBLICATIONS,
+	TEACHING_GROUPS,
+	type PublicationItem,
+} from "~/content/profile"
 import type { NextPageWithLayout } from "~/pages/_app"
 
+const renderPaper = (paper: PublicationItem) =>
+	paper.accepted && paper.venue ? (
+		<PaperCard
+			key={paper.title}
+			title={paper.title}
+			authors={paper.authors}
+			accepted={true}
+			venue={paper.venue}
+			links={paper.links}
+		/>
+	) : (
+		<PaperCard
+			key={paper.title}
+			title={paper.title}
+			authors={paper.authors}
+			accepted={false}
+			links={paper.links}
+		/>
+	)
+
 const Home: NextPageWithLayout = () => {
-	// const [showPosts, setShowPosts] = useState(false)
 	const [maskClass, setMaskClass] = useState("mask-x-r")
 
 	return (
@@ -23,9 +47,6 @@ const Home: NextPageWithLayout = () => {
 				<div className="flex items-center justify-between gap-x-10 gap-y-8">
 					<div className="flex flex-col gap-y-2.5">
 						<h1 className="flex items-center text-3xl font-medium tracking-wide wrap-break-word whitespace-nowrap text-black lg:text-[1.8rem] dark:text-white">
-							{/* <span className="mr-2 inline-block animate-wave-hand cursor-pointer hover:animate-wave-hand-again">
-								👋
-							</span> */}
 							Tony (Lipeng) He
 						</h1>
 						<div className="flex flex-col gap-y-1.5 px-1 text-4 leading-relaxed font-light tracking-wider wrap-break-word text-gray-500 lg:text-2 dark:text-gray-300">
@@ -66,7 +87,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://ssg-research.github.io"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							Secure Systems Group (SSG)
 						</a>
@@ -74,7 +95,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://crysp.uwaterloo.ca"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							Cryptography, Security, and Privacy (CrySP) Lab
 						</a>
@@ -82,7 +103,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://uwaterloo.ca/cybersecurity-privacy-institute"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							Cybersecurity and Privacy Institute (CPI)
 						</a>
@@ -93,7 +114,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://asokan.org/asokan/"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							N. Asokan
 						</a>{" "}
@@ -101,7 +122,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://cs.uwaterloo.ca/~y328yu/"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							Yaoliang Yu
 						</a>
@@ -109,7 +130,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://jianliu.phd"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							Jian Liu
 						</a>{" "}
@@ -117,7 +138,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://www.zju.edu.cn/english"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							Zhejiang University
 						</a>{" "}
@@ -125,7 +146,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://zju-abc.com"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							ABC Lab
 						</a>
@@ -133,7 +154,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://cs.uwaterloo.ca/about/visit-us"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							William G. Davis Computer Research Centre
 						</a>
@@ -145,7 +166,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://www.goodreads.com/quotes/2690-i-went-to-the-woods-because-i-wished-to-live"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="inline-block bg-linear-to-r from-blue-500 via-green-500 to-indigo-500 bg-clip-text text-transparent hover:from-blue-600 hover:via-green-600 hover:to-indigo-600">
 							live deliberately
 						</a>
@@ -154,14 +175,14 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://lists.lipeng.ac/subscription/form"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							wri
 						</a>
 						<a
 							href="https://www.instagram.com/endings_be_damned"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							ter
 						</a>
@@ -169,7 +190,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://kukfm.com"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							podcaster
 						</a>
@@ -177,7 +198,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://www.cssdesignawards.com/sites/tony-he/43449"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							designer
 						</a>
@@ -185,7 +206,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://www.linkedin.com/company/retrograde-labs"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							entrepreneur
 						</a>
@@ -196,7 +217,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://inretrograde.io"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							Retrograde Labs
 						</a>{" "}
@@ -207,7 +228,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://www.ycombinator.com/companies?industry=Security"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							test of the market
 						</a>{" "}
@@ -245,7 +266,7 @@ const Home: NextPageWithLayout = () => {
 						<a
 							href="https://genai.owasp.org/llm-top-10"
 							target="_blank"
-							rel="noreferrer"
+							rel="noopener noreferrer"
 							className="text-blue-500 hover:underline">
 							issues
 						</a>{" "}
@@ -261,13 +282,6 @@ const Home: NextPageWithLayout = () => {
 						machine learning, and systems security to characterize and mitigate
 						emerging threats.
 					</p>
-					{/* <p className="mt-3.5">
-						Currently, I am interested in agents that retrieve information, call
-						tools, write code, or act on private context. These systems need
-						stronger guarantees around provenance, permissions, policy, and
-						auditability before people can safely delegate important work to
-						them.
-					</p> */}
 				</div>
 			</section>
 			<section className="mt-16">
@@ -295,291 +309,20 @@ const Home: NextPageWithLayout = () => {
 						<span className="mr-1.5 flex h-5 w-5">
 							<Icon name="newspaper" />
 						</span>
-						<span className="hidden uppercase lg:block">
-							Selected Publications
+						<span className="uppercase">
+							<span className="hidden lg:inline">Selected </span>Publications
 						</span>
-						<span className="block uppercase lg:hidden">Publications</span>
 					</h2>
 					<span className="flex items-center gap-x-1 text-right text-gray-500 underline-offset-4 dark:text-gray-400">
 						* indicates equal contribution
 					</span>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
-					<PaperCard
-						title="SoK: Colluding Adversaries in Machine Learning Pipelines"
-						authors="Vasisht Duddu, Lipeng He, Asim Waheed, and N. Asokan"
-						accepted={true}
-						venue={{
-							name: "USENIX Security 2026",
-							href: "https://www.usenix.org/conference/usenixsecurity26",
-							color: "border-l-red-500! border-l-4",
-						}}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2606.10091",
-								default: true,
-							},
-						]}
-					/>
-					<PaperCard
-						title="Understanding and Preserving Safety in Fine-Tuned LLMs"
-						authors="Jiawen Zhang, Yangfan Hu, Kejia Chen, Lipeng He, Jiachen Ma, Jian Lou, Dan Li, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
-						accepted={true}
-						venue={{
-							name: "CCS 2026",
-							href: "https://www.sigsac.org/ccs/CCS2026/index.html",
-							color: "border-l-red-500! border-l-4",
-						}}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2601.10141",
-								default: true,
-							},
-						]}
-					/>
-					<PaperCard
-						title="Locket: Robust Feature-Locking Technique for Language Models"
-						authors="Lipeng He, Vasisht Duddu, and N. Asokan"
-						accepted={true}
-						venue={{
-							name: "ACL 2026",
-							href: "https://2026.aclweb.org",
-							color: "border-l-red-500! border-l-4",
-						}}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2510.12117",
-								default: true,
-							},
-							{
-								label: "Poster",
-								href: "https://static.ouorz.com/locket-cpi-poster.pdf",
-							},
-							{
-								label: "Workshop",
-								href: "https://openreview.net/forum?id=1JBK4x8ik9",
-							},
-							{
-								label: "Code",
-								href: "https://github.com/ssg-research/locket",
-							},
-						]}
-					/>
-					<PaperCard
-						title="Safety at One Shot: Patching Fine-Tuned LLMs with A Single Instance"
-						authors="Jiawen Zhang, Lipeng He, Kejia Chen, Jian Lou, Jian Liu, Xiaohu Yang, and Ruoxi Jia"
-						accepted={true}
-						venue={{
-							name: "ICLR 2026",
-							href: "https://iclr.cc",
-							color: "border-l-red-500! border-l-4",
-						}}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2601.01887",
-								default: true,
-							},
-							{
-								label: "Code",
-								href: "https://github.com/Kevin-Zh-CS/safety-at-one-shot",
-							},
-						]}
-					/>
-					<PaperCard
-						title="Activation Approximations Can Incur Safety Vulnerabilities Even in Aligned LLMs: Comprehensive Analysis and Defense"
-						authors="Jiawen Zhang*, Kejia Chen*, Lipeng He*, Jian Lou, Dan Li, Zunlei Feng, Mingli Song, Jian Liu, Kui Ren, and Xiaohu Yang"
-						accepted={true}
-						venue={{
-							name: "USENIX Security 2025",
-							href: "https://www.usenix.org/conference/usenixsecurity25",
-							color: "border-l-red-500! border-l-4",
-						}}
-						links={[
-							{
-								label: "Paper",
-								href: "https://www.usenix.org/system/files/usenixsecurity25-zhang-jiawen.pdf",
-								default: true,
-							},
-							{
-								label: "Code",
-								href: "https://github.com/Kevin-Zh-CS/QuadA",
-							},
-							{
-								label: "Website",
-								href: "https://kevin-zh-cs.github.io/QuadA",
-							},
-						]}
-					/>
-					<PaperCard
-						title="LookAhead: Preventing DeFi Attacks via Unveiling Adversarial Contracts"
-						authors="Shoupeng Ren, Lipeng He, Tianyu Tu, Di Wu, Jian Liu, Kui Ren, and Chun Chen"
-						venue={{
-							name: "FSE 2025",
-							href: "https://conf.researchr.org/home/fse-2025",
-							color: "border-l-red-500! border-l-4",
-						}}
-						accepted={true}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2401.07261",
-								default: true,
-							},
-							{
-								label: "Code",
-								href: "https://github.com/zju-abclab/LookAhead",
-							},
-						]}
-					/>
-					<PaperCard
-						title="Secure Transformer Inference Made Non-interactive"
-						authors="Jiawen Zhang, Xinpeng Yang, Lipeng He, Kejia Chen, Wen-jie Lu, Yinghao Wang, Xiaoyang Hou, Jian Liu, Kui Ren and Xiaohu Yang"
-						venue={{
-							name: "NDSS 2025",
-							href: "https://www.ndss-symposium.org/ndss2025/",
-							color: "border-l-red-500! border-l-4",
-						}}
-						accepted={true}
-						links={[
-							{
-								label: "Paper",
-								href: "https://eprint.iacr.org/2024/136",
-								default: true,
-							},
-							{
-								label: "Code",
-								href: "https://github.com/zju-abclab/NEXUS",
-							},
-							{
-								label: "🏆 Top-100 Security Papers",
-								href: "https://www.mlsec.org/topnotch/sec_ntop100.html",
-							},
-						]}
-					/>
-					<PaperCard
-						title="On the Atomicity and Efficiency of Blockchain Payment Channels"
-						authors="Di Wu, Shoupeng Ren, Yuman Bai, Lipeng He, Jian Liu, Wu Wen, Kui Ren, et al."
-						venue={{
-							name: "USENIX Security 2025",
-							href: "https://www.usenix.org/conference/usenixsecurity25",
-							color: "border-l-red-500! border-l-4",
-						}}
-						accepted={true}
-						links={[
-							{
-								label: "Paper",
-								href: "https://eprint.iacr.org/2025/180",
-								default: true,
-							},
-							{
-								label: "Code",
-								href: "https://github.com/zju-abclab/ultraviolet",
-							},
-						]}
-					/>
+					{PRIMARY_PUBLICATIONS.map((paper) => renderPaper(paper))}
 				</div>
 				<hr className="mt-5 dark:border-gray-700" />
 				<div className="mt-5 flex flex-col gap-y-4">
-					<PaperCard
-						title="Revealing and Benchmarking the Safety Risks in Blockchain Agents"
-						authors="Jiawen Zhang, Kejia Chen, Lipeng He, Yechao Zhang, Jian Liu and Xiaohu Yang"
-						accepted={true}
-						venue={{
-							name: "BCRA 2026",
-							href: "https://bcra-conf.seedsbit.com/",
-							color: "border-l-gray-500! border-l-4",
-						}}
-						links={[]}
-					/>
-					<PaperCard
-						title="StructEval: Benchmarking LLMs' Capabilities to Generate Structural Outputs"
-						authors="Jialin Yang, Dongfu Jiang, Lipeng He, Sherman Siu, Yuxuan Zhang, Disen Liao, Benjamin Schneider, Ping Nie, Wenhu Chen, et al."
-						accepted={true}
-						venue={{
-							name: "Transactions on Machine Learning Research",
-							href: "https://jmlr.org/tmlr",
-							color: "border-l-gray-500! border-l-4",
-						}}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2505.20139",
-								default: true,
-							},
-							{
-								label: "Code",
-								href: "https://github.com/TIGER-AI-Lab/StructEval",
-							},
-							{
-								label: "Website",
-								href: "https://tiger-ai-lab.github.io/StructEval",
-								default: true,
-							},
-							{
-								label: "🏆 J2C",
-								href: "https://neurips.cc/public/JournalToConference",
-							},
-						]}
-					/>
-					<PaperCard
-						title="FedVLP: Visual-aware Latent Prompt Generation for Multimodal Federated Learning"
-						authors="Hao Pan, Xiaoli Zhao, Yuchen Jiang, Lipeng He, Bingquan Wang, and Yincan Shu"
-						accepted={true}
-						venue={{
-							name: "Computer Vision and Image Understanding",
-							href: "https://www.sciencedirect.com/journal/computer-vision-and-image-understanding",
-							color: "border-l-yellow-400! border-l-4",
-						}}
-						links={[
-							{
-								label: "Paper",
-								href: "https://www.sciencedirect.com/science/article/abs/pii/S1077314225001651",
-								default: true,
-							},
-						]}
-					/>
-					<PaperCard
-						title="A Survey of Multimodal Federated Learning: Background, Applications, and Perspectives"
-						authors="Hao Pan, Xiaoli Zhao, Lipeng He, Yicong Shi, and Xiaogang Lin"
-						venue={{
-							name: "Multimedia Systems",
-							href: "https://link.springer.com/journal/530",
-							color: "border-l-green-600! border-l-4",
-						}}
-						accepted={true}
-						links={[
-							{
-								label: "Paper",
-								href: "https://link.springer.com/article/10.1007/s00530-024-01422-9",
-								default: true,
-							},
-							{
-								label: "Code",
-								href: "https://github.com/haopr/MMFL",
-							},
-						]}
-					/>
-					<PaperCard
-						title="A Comparative Examination of Network and Contract-Based Blockchain Storage Solutions for Decentralized Applications"
-						authors="Lipeng He"
-						venue={{
-							name: "DECA 2023",
-							href: "https://www.atlantis-press.com/proceedings/deca-23",
-							color: "border-l-gray-500! border-l-4",
-						}}
-						accepted={true}
-						links={[
-							{
-								label: "Paper",
-								href: "https://www.atlantis-press.com/proceedings/deca-23/125994999",
-								default: true,
-							},
-						]}
-					/>
+					{OTHER_PUBLICATIONS.map((paper) => renderPaper(paper))}
 				</div>
 			</section>
 			<section className="mt-14">
@@ -595,6 +338,7 @@ const Home: NextPageWithLayout = () => {
 					<Link
 						href="https://scholar.google.com/citations?user=6yFlE_sAAAAJ"
 						target="_blank"
+						rel="noopener noreferrer"
 						className="flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
 						Citations
 						<span className="h-5 w-5 underline">
@@ -603,60 +347,7 @@ const Home: NextPageWithLayout = () => {
 					</Link>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
-					<PaperCard
-						title="SecStep: Guarding Agents Against Prompt Injection via Action Backtracking"
-						authors="Jiawen Zhang, Yechao Zhang, Lipeng He, Kejia Chen, Jiachen Ma, Yangfan Hu, Jian Lou, Jian Liu, Xiaohu Yang, and Tianwei Zhang"
-						accepted={false}
-						links={[]}
-					/>
-					<PaperCard
-						title="Beyond Similarity: Trustworthy Memory Search for Personal AI Agents"
-						authors="Jiawen Zhang, Kejia Chen, Jiachen Ma, Yangfan Hu, Lipeng He, Yechao Zhang, Jian Liu, Xiaohu Yang, Tianwei Zhang, and Ruoxi Jia"
-						accepted={false}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2606.06054",
-								default: true,
-							},
-						]}
-					/>
-					<PaperCard
-						title="Defending against Adaptive Prompt Injection Attacks via Reasoning-enabled Task Alignment"
-						authors="Lipeng He, Yihan Wang, Jiawen Zhang, and N. Asokan"
-						accepted={false}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2606.15441",
-								default: true,
-							},
-						]}
-					/>
-					<PaperCard
-						title="Backdooring Bias in Large Language Models"
-						authors="Anudeep Das, Prach Chantasantitam, Gurjot Singh, Lipeng He, Mariia Ponomarenko, and Florian Kerschbaum"
-						accepted={false}
-						links={[
-							{
-								label: "Paper",
-								href: "https://arxiv.org/abs/2602.13427",
-								default: true,
-							},
-						]}
-					/>
-					<PaperCard
-						title="From Detection to Diagnosis: Lightweight Federated Prompt Learning for Interpretable Industrial Anomaly Analysis"
-						authors="Hao Pan, Xiaoli Zhao, Lipeng He, and Xiwu Shang"
-						accepted={false}
-						links={[]}
-					/>
-					<PaperCard
-						title="Token-by-Token Manipulation: Inference-Time Jailbreaking on Production LLMs via Autoregressive Harmful Guidance"
-						authors="Jiawen Zhang, Lipeng He, Kejia Chen, Jian Liu, Zunlei Feng, Mingli Song, Jian Lou, Dan Li, and Xiaohu Yang"
-						accepted={false}
-						links={[]}
-					/>
+					{PREPRINTS.map((paper) => renderPaper(paper))}
 				</div>
 			</section>
 			<section className="mt-14">
@@ -769,12 +460,6 @@ const Home: NextPageWithLayout = () => {
 							</>
 						}
 					/>
-					{/* <ServiceCard
-						serviceRole="Student Member"
-						serviceType="Membership"
-						serviceTitle="Association for Computing Machinery (ACM)"
-						serviceOrganization="lipenghe@acm.org"
-					/> */}
 				</div>
 			</section>
 			<section className="mt-14">
@@ -859,38 +544,32 @@ const Home: NextPageWithLayout = () => {
 					</h2>
 				</div>
 				<div className="mt-5 flex flex-col gap-y-4">
-					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
-						organization="University of Waterloo"
-						organizationFullName="CS 858 Trustworthy Machine Learning: a Systems Security Approach"
-						jobTitle="Course Staff (Expert)"
-						jobType="Part-time"
-						dateString="Sep 2026 - Present"
-					/>
-					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
-						organization="University of Waterloo"
-						organizationFullName="CS 436 Networks and Distributed Computer Systems"
-						jobTitle="Teaching Assistant (TA)"
-						jobType="Part-time"
-						dateString="Jan 2026 - Apr 2026"
-					/>
-					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
-						organization="University of Waterloo"
-						organizationFullName="CS 135 Designing Functional Programs"
-						jobTitle="Instructional Apprentice (IA)"
-						jobType="Part-time"
-						dateString="Sept 2025 - Dec 2025"
-					/>
-					<EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/uwaterloo_logo.webp"
-						organization="University of Waterloo"
-						organizationFullName="CS 135 Designing Functional Programs"
-						jobTitle="Instructional Support Assistant (ISA)"
-						jobType="Co-op"
-						dateString="Aug 2024 - Dec 2024"
-					/>
+					{TEACHING_GROUPS.map((group) => (
+						<ServiceCard
+							key={group.institution}
+							serviceLogoSrc={group.logoSrc}
+							serviceLogoAlt={group.logoAlt}
+							serviceRole={group.institution}
+							serviceType={group.badge}
+							serviceTitle={
+								<ul className="divide-y divide-gray-100 dark:divide-gray-700/70">
+									{group.courses.map((item) => (
+										<li
+											key={`${item.course}-${item.date}`}
+											className="py-2 first:pt-0.5 last:pb-0.5">
+											<p className="text-sm text-gray-700 dark:text-gray-200">
+												{item.course}
+											</p>
+											<div className="mt-0.5 flex items-center justify-between gap-x-4 text-xs text-gray-500 dark:text-gray-400">
+												<span>{item.role}</span>
+												<time className="font-medium">{item.date}</time>
+											</div>
+										</li>
+									))}
+								</ul>
+							}
+						/>
+					))}
 				</div>
 			</section>
 			<section className="mt-14">
@@ -937,6 +616,7 @@ const Home: NextPageWithLayout = () => {
 					<Link
 						href="https://www.linkedin.com/in/~lhe/"
 						target="_blank"
+						rel="noopener noreferrer"
 						className="flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
 						LinkedIn
 						<span className="h-5 w-5 underline">
@@ -953,14 +633,6 @@ const Home: NextPageWithLayout = () => {
 						jobType="Leadership"
 						dateString="May 2026 - Present"
 					/>
-					{/* <EmploymentCard
-						orgLogoSrc="https://static.ouorz.com/ezra_logo.jpg"
-						organization="Bluelet AI"
-						organizationFullName="Agentic AI and data platform solutions for talent acquisition and matching"
-						jobTitle="Co-Founder & CTO"
-						jobType="Leadership"
-						dateString="May 2025 - June 2025"
-					/> */}
 					<EmploymentCard
 						orgLogoSrc="https://static.ouorz.com/biorender_logo.png"
 						organization="BioRender"
@@ -976,7 +648,7 @@ const Home: NextPageWithLayout = () => {
 						organizationFullName="E-Commerce Platform, Supply Chain"
 						jobTitle="Back End Software Engineer"
 						jobType="SWE, Co-op"
-						dateString="May -  Aug 2022"
+						dateString="May - Aug 2022"
 						organizationLocation="North York, ON"
 					/>
 					<EmploymentCard
@@ -985,7 +657,7 @@ const Home: NextPageWithLayout = () => {
 						organizationFullName="Cryptocurrency Exchange, Part of Robinhood, TSX: WNDR"
 						jobTitle="Front End Software Engineer"
 						jobType="SWE, Co-op"
-						dateString="Sep -  Dec 2021"
+						dateString="Sep - Dec 2021"
 						organizationLocation="Toronto, ON"
 					/>
 				</div>
@@ -1061,32 +733,17 @@ const Home: NextPageWithLayout = () => {
 					<Link
 						href="https://kukfm.com"
 						target="_blank"
+						rel="noopener noreferrer"
 						className="flex items-center gap-x-1 text-gray-500 underline-offset-4 transition-colors hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500">
 						Podcast
 						<span className="h-5 w-5 underline">
 							<Icon name="externalLink" />
 						</span>
 					</Link>
-					{/* <button
-						data-cy="showIndexPosts"
-						onClick={() => setShowPosts(!showPosts)}
-						aria-label="Toggle between posts and subscription box"
-						className="effect-pressing inline-flex items-center rounded-full border border-gray-300 bg-white px-4 py-[4px] font-medium tracking-wider shadow-xs hover:shadow-inner dark:border-gray-600 dark:bg-transparent dark:text-gray-500 dark:hover:bg-gray-800">
-						<span
-							className={`flex h-5 w-5 duration-200 ${showPosts ? "rotate-180" : "rotate-0"}`}>
-							<Icon name="arrowUp" />
-						</span>
-					</button> */}
 				</div>
-				{/* {showPosts ? (
-					<div className="mt-5 animate-appear">
-						<List type="index" />
-					</div>
-				) : ( */}
 				<div className="mt-5">
 					<SubscriptionBox type="sm" />
 				</div>
-				{/* )} */}
 			</section>
 		</>
 	)

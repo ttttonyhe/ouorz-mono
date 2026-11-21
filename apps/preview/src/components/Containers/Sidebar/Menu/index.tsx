@@ -1,8 +1,7 @@
 "use client"
 
 import cn from "clsx"
-import { FC, useContext } from "react"
-import { useUpdateEffect } from "react-use"
+import { type FC, useContext, useEffect, useEffectEvent, useRef } from "react"
 
 import Footer from "../../Footer"
 import Header from "../../Header"
@@ -22,9 +21,15 @@ const Menu: FC<MenuProps> = ({
 	navigationCallback,
 }) => {
 	const { activePathname } = useContext(MenuContext)
-
-	useUpdateEffect(() => {
+	const previousPathname = useRef(activePathname)
+	const onNavigate = useEffectEvent(() => {
 		navigationCallback?.()
+	})
+
+	useEffect(() => {
+		if (previousPathname.current === activePathname) return
+		previousPathname.current = activePathname
+		onNavigate()
 	}, [activePathname])
 
 	return (

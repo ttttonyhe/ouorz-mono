@@ -1,4 +1,3 @@
-import "highlight.js/styles/atom-one-dark.css"
 import { useEffect, useRef } from "react"
 
 interface PostContentProps {

@@ -1,4 +1,4 @@
-import { MDXComponents } from "mdx/types"
+import type { MDXComponents } from "mdx/types"
 
 import CustomALink from "./ALink"
 import Callout from "./Callout"

@@ -1,6 +1,9 @@
 import Nexment, { type NexmentConfig } from "nexment"
 import { useRouter } from "next/router"
-
+import {
+	NEXMENT_SUPABASE_ANON_KEY,
+	NEXMENT_SUPABASE_URL,
+} from "~/constants/ids"
 import { readParam } from "~/utilities/queryParams"
 
 const NexmentComponent = () => {
@@ -16,8 +19,8 @@ const NexmentComponent = () => {
 			descriptionTag: true,
 		},
 		supabase: {
-			url: "https://ainpzfmspbpvpfcatnwq.supabase.co",
-			anonKey: "sb_publishable_LT9i2hIpENWPlyXyj-jmSw_ra4mPiSP",
+			url: NEXMENT_SUPABASE_URL,
+			anonKey: NEXMENT_SUPABASE_ANON_KEY,
 		},
 		admin: {
 			name: "Tony He",
@@ -35,24 +38,11 @@ const NexmentComponent = () => {
 				keyword: "单号",
 				link: "dh5u.com",
 			},
-			{
-				keyword: "快递",
-			},
-			{
-				keyword: "空包",
-			},
-			{
-				keyword: "快递",
-			},
-			{
-				keyword: "快发",
-			},
-			{
-				keyword: "快单",
-			},
-			{
-				keyword: "一毛钱",
-			},
+			{ keyword: "快递" },
+			{ keyword: "空包" },
+			{ keyword: "快发" },
+			{ keyword: "快单" },
+			{ keyword: "一毛钱" },
 		],
 	}
 

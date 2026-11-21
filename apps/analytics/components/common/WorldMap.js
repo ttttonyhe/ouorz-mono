@@ -1,25 +1,27 @@
-import React, { useState, useMemo } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { useRouter } from "next/router"
-import PropTypes from "prop-types"
-import ReactTooltip from "react-tooltip"
-import {
-	ComposableMap,
-	Geographies,
-	Geography,
-	ZoomableGroup,
-} from "react-simple-maps"
+import { Tooltip } from "react-tooltip"
+import { geoMercator, geoPath } from "d3-geo"
 import classNames from "classnames"
 import { colord } from "colord"
 import useTheme from "hooks/useTheme"
-import { ISO_COUNTRIES, THEME_COLORS, MAP_FILE } from "lib/constants"
-import styles from "./WorldMap.module.css"
 import useCountryNames from "hooks/useCountryNames"
 import useLocale from "hooks/useLocale"
+import { ISO_COUNTRIES, THEME_COLORS, MAP_FILE } from "lib/constants"
+import styles from "./WorldMap.module.css"
+
+const MAP_WIDTH = 800
+const MAP_HEIGHT = 500
 
 function WorldMap({ data, className }) {
 	const { basePath } = useRouter()
-	const [tooltip, setTooltip] = useState()
+	const [tooltip, setTooltip] = useState(null)
+	const [hoveredCode, setHoveredCode] = useState(null)
+	const [features, setFeatures] = useState([])
 	const [theme] = useTheme(true)
+	const { locale } = useLocale()
+	const countryNames = useCountryNames(locale)
+
 	const colors = useMemo(
 		() => ({
 			baseColor: THEME_COLORS[theme].primary,
@@ -29,11 +31,32 @@ function WorldMap({ data, className }) {
 		}),
 		[theme]
 	)
-	const { locale } = useLocale()
-	const countryNames = useCountryNames(locale)
+
+	const pathGenerator = useMemo(() => {
+		const projection = geoMercator()
+			.scale(110)
+			.center([0, 40])
+			.translate([MAP_WIDTH / 2, MAP_HEIGHT / 2])
+		return geoPath(projection)
+	}, [])
+
+	useEffect(() => {
+		let cancelled = false
+		fetch(`${basePath}${MAP_FILE}`)
+			.then((res) => (res.ok ? res.json() : null))
+			.then((geo) => {
+				if (!cancelled && Array.isArray(geo?.features)) {
+					setFeatures(geo.features)
+				}
+			})
+			.catch(() => {})
+		return () => {
+			cancelled = true
+		}
+	}, [basePath])
 
 	function getFillColor(code) {
-		if (code === "AQ") return
+		if (hoveredCode === code) return colors.hoverColor
 		const country = data?.find(({ x }) => x === code)
 
 		if (!country) {
@@ -45,64 +68,51 @@ function WorldMap({ data, className }) {
 			.toHex()
 	}
 
-	function getOpacity(code) {
-		return code === "AQ" ? 0 : 1
-	}
-
 	function handleHover(code) {
-		if (code === "AQ") return
+		setHoveredCode(code)
 		const country = data?.find(({ x }) => x === code)
-		setTooltip(`${countryNames[code]}: ${country?.y || 0} visitors`)
+		setTooltip(`${countryNames[code] || code}: ${country?.y || 0} visitors`)
 	}
 
 	return (
 		<div
 			className={classNames(styles.container, className)}
-			data-tip=""
-			data-for="world-map-tooltip"
+			data-tooltip-id="world-map-tooltip"
+			data-tooltip-content={tooltip || undefined}
 		>
-			<ComposableMap projection="geoMercator">
-				<ZoomableGroup zoom={0.8} minZoom={0.7} center={[0, 40]}>
-					<Geographies geography={`${basePath}${MAP_FILE}`}>
-						{({ geographies }) => {
-							return geographies.map((geo) => {
-								const code = ISO_COUNTRIES[geo.id]
+			<svg
+				viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`}
+				role="img"
+				aria-label="World map of visitors by country"
+				style={{ width: "100%", height: "auto" }}
+			>
+				<g>
+					{features.map((feature, index) => {
+						const code = ISO_COUNTRIES[feature.id]
+						const d = pathGenerator(feature)
+						if (!d || code === "AQ") return null
 
-								return (
-									<Geography
-										key={geo.rsmKey}
-										geography={geo}
-										fill={getFillColor(code)}
-										stroke={colors.strokeColor}
-										opacity={getOpacity(code)}
-										style={{
-											default: { outline: "none" },
-											hover: { outline: "none", fill: colors.hoverColor },
-											pressed: { outline: "none" },
-										}}
-										onMouseOver={() => handleHover(code)}
-										onMouseOut={() => setTooltip(null)}
-									/>
-								)
-							})
-						}}
-					</Geographies>
-				</ZoomableGroup>
-			</ComposableMap>
-			<ReactTooltip id="world-map-tooltip">{tooltip}</ReactTooltip>
+						return (
+							<path
+								key={feature.id || index}
+								d={d}
+								fill={getFillColor(code)}
+								stroke={colors.strokeColor}
+								strokeWidth={0.5}
+								style={{ outline: "none" }}
+								onMouseEnter={() => handleHover(code)}
+								onMouseLeave={() => {
+									setHoveredCode(null)
+									setTooltip(null)
+								}}
+							/>
+						)
+					})}
+				</g>
+			</svg>
+			<Tooltip id="world-map-tooltip" float />
 		</div>
 	)
-}
-
-WorldMap.propTypes = {
-	data: PropTypes.arrayOf(
-		PropTypes.shape({
-			x: PropTypes.string,
-			y: PropTypes.number,
-			z: PropTypes.number,
-		})
-	),
-	className: PropTypes.string,
 }
 
 export default WorldMap

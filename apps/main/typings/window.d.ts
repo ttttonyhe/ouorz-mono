@@ -11,6 +11,6 @@ export interface OuorzAnalytics {
 
 declare global {
 	interface Window {
-		ouorzAnalytics: OuorzAnalytics
+		ouorzAnalytics?: OuorzAnalytics
 	}
 }

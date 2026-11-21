@@ -3,9 +3,12 @@ import path from "node:path"
 
 import matter from "gray-matter"
 import { marked } from "marked"
-
 import { postFrontmatterSchema } from "~/content/schema"
-import { getContentLanguage, type ContentLanguage } from "~/content/text"
+import {
+	getContentLanguage,
+	isArticleContent,
+	type ContentLanguage,
+} from "~/content/text"
 
 export type { LocalPostFrontmatter } from "~/content/schema"
 
@@ -88,7 +91,8 @@ const toLocalPost = (fileName: string): LocalPost => {
 		title: { rendered: frontmatter.title },
 		post_title: frontmatter.title,
 		date: frontmatter.date.toISOString(),
-		noindex: frontmatter.noindex || Boolean(frontmatter.link),
+		noindex:
+			frontmatter.noindex || !isArticleContent(content, frontmatter.link),
 		language,
 		content: {
 			rendered: marked.parse(content, { async: false }),
@@ -129,7 +133,10 @@ const withPreNext = (posts: LocalPost[]): LocalPost[] =>
 		}
 	})
 
-const getAllPostsUncached = (): LocalPost[] => {
+let cachedPosts: LocalPost[] | null = null
+let cachedPostsById: Map<number, LocalPost> | null = null
+
+const loadPosts = (): LocalPost[] => {
 	if (!fs.existsSync(CONTENT_DIR)) return []
 
 	const posts = fs
@@ -141,9 +148,18 @@ const getAllPostsUncached = (): LocalPost[] => {
 	return withPreNext(posts)
 }
 
-export const getAllPosts = (): LocalPost[] => getAllPostsUncached()
+export const getAllPosts = (): LocalPost[] => {
+	if (process.env.NODE_ENV !== "production") return loadPosts()
+	if (!cachedPosts) {
+		cachedPosts = loadPosts()
+		cachedPostsById = new Map(
+			cachedPosts.map((post) => [Number(post.id), post])
+		)
+	}
+	return cachedPosts
+}
 
-interface GetPostsOptions {
+export interface GetPostsOptions {
 	sticky?: boolean
 	cate?: number
 	cateExclude?: string
@@ -160,7 +176,7 @@ export const getPosts = (options: GetPostsOptions = {}) => {
 
 	let posts = getAllPosts().filter((post) => {
 		const cid = post.post_categories[0]?.term_id
-		if (excluded.has(cid)) return false
+		if (cid !== undefined && excluded.has(cid)) return false
 		if (sticky !== undefined && post.sticky !== sticky) return false
 		if (cate && cid !== cate) return false
 		if (search) {
@@ -181,8 +197,11 @@ export const getPosts = (options: GetPostsOptions = {}) => {
 	return posts
 }
 
-export const getPostById = (id: number) =>
-	getAllPosts().find((post) => Number(post.id) === id)
+export const getPostById = (id: number): LocalPost | undefined => {
+	const posts = getAllPosts()
+	if (cachedPostsById) return cachedPostsById.get(id)
+	return posts.find((post) => Number(post.id) === id)
+}
 
 export const getPostIds = () => getAllPosts().map((post) => Number(post.id))
 
@@ -190,10 +209,11 @@ export const getCategoryById = (id: number) => {
 	const posts = getAllPosts().filter(
 		(post) => post.post_categories[0]?.term_id === id
 	)
-	if (posts.length === 0) return null
+	const primaryCategory = posts[0]?.post_categories[0]
+	if (!primaryCategory) return null
 	return {
 		id,
-		name: posts[0].post_categories[0].name,
+		name: primaryCategory.name,
 		count: posts.length,
 		noindex: posts.every((post) => post.noindex),
 	}

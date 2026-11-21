@@ -1,8 +1,7 @@
-import cn from "clsx"
-import { FC } from "react"
-
 import { MDXPostRenderer } from "@/components/MDX"
 import { getPostBySlug, getPostSlugs } from "@/database/getContent"
+import cn from "clsx"
+import type { FC } from "react"
 
 import article from "@/styles/article.module.css"
 

@@ -1,24 +1,21 @@
 import type { GetStaticPaths, GetStaticProps } from "next"
 import Head from "next/head"
 import { useEffect } from "react"
-import TimeAgo from "react-timeago"
-
 import CommentBox from "~/components/CommentBox"
 import { contentLayout } from "~/components/Content"
 import PostContent from "~/components/PostContent"
 import SubscriptionBox from "~/components/SubscriptionBox"
+import TimeAgo from "~/components/TimeAgo"
 import { getPageById, getPageIds, type LocalPage } from "~/content/pages"
-import { useDispatch } from "~/hooks"
 import useLiveViews from "~/hooks/useLiveViews"
 import type { NextPageWithLayout } from "~/pages/_app"
-import { setHeaderTitle } from "~/store/general/actions"
+import { setHeaderTitle } from "~/store"
 
 interface Props {
 	page: LocalPage
 }
 
 const BlogPage: NextPageWithLayout<Props> = ({ page }) => {
-	const dispatch = useDispatch()
 	const { views: pageViews, isLoading: isViewsLoading } = useLiveViews(
 		"page",
 		page.id,
@@ -26,11 +23,11 @@ const BlogPage: NextPageWithLayout<Props> = ({ page }) => {
 	)
 
 	useEffect(() => {
-		dispatch(setHeaderTitle(page.title.rendered))
+		setHeaderTitle(page.title.rendered)
 		return () => {
-			dispatch(setHeaderTitle(""))
+			setHeaderTitle("")
 		}
-	}, [dispatch, page])
+	}, [page.title.rendered])
 
 	return (
 		<div>

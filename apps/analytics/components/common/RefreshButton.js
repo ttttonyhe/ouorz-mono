@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react"
-import PropTypes from "prop-types"
 import { FormattedMessage } from "react-intl"
 import useStore from "store/queries"
 import { setDateRange } from "store/websites"
@@ -41,10 +40,6 @@ function RefreshButton({ websiteId }) {
 			onClick={handleClick}
 		/>
 	)
-}
-
-RefreshButton.propTypes = {
-	websiteId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 }
 
 export default RefreshButton

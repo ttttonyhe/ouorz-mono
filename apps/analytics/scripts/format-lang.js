@@ -1,6 +1,5 @@
-const fs = require("fs-extra")
-const path = require("path")
-const { deleteSync } = require("del")
+const fs = require("node:fs")
+const path = require("node:path")
 const prettier = require("prettier")
 
 const src = path.resolve(__dirname, "../lang")
@@ -8,9 +7,13 @@ const dest = path.resolve(__dirname, "../build")
 const files = fs.readdirSync(src).filter((file) => file.endsWith(".json"))
 
 async function run() {
-	await fs.ensureDir(dest)
-	const removed = deleteSync([path.join(dest, "*.json")])
-	for (const file of removed) console.log("Removed", file)
+	fs.mkdirSync(dest, { recursive: true })
+	for (const existing of fs.readdirSync(dest)) {
+		if (!existing.endsWith(".json")) continue
+		const fullPath = path.join(dest, existing)
+		fs.rmSync(fullPath, { force: true })
+		console.log("Removed", fullPath)
+	}
 
 	for (const file of files) {
 		const lang = require(`../lang/${file}`)
@@ -26,7 +29,6 @@ async function run() {
 		})
 
 		fs.writeFileSync(path.resolve(dest, file), json)
-
 		console.log(path.resolve(src, file), "->", path.resolve(dest, file))
 	}
 }

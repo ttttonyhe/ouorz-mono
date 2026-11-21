@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import classNames from "classnames"
 import NextLink from "next/link"
 import Icon from "./Icon"
@@ -30,14 +29,6 @@ function Link({
 
         </NextLink>)
     );
-}
-
-Link.propTypes = {
-	className: PropTypes.string,
-	icon: PropTypes.node,
-	children: PropTypes.node,
-	size: PropTypes.oneOf(["large", "small", "xsmall"]),
-	iconRight: PropTypes.bool,
 }
 
 export default Link

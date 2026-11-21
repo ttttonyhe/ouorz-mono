@@ -1,5 +1,4 @@
-import { StoryFn, Meta, StoryObj } from "@storybook/react-webpack5"
-import React from "react"
+import type { Meta, StoryFn, StoryObj } from "@storybook/react-webpack5"
 
 import Label from "../Label/label"
 import LabelGroup from "./label-group"

@@ -1,17 +1,27 @@
+import { createHash, timingSafeEqual } from "node:crypto"
+
+import * as Sentry from "@sentry/nextjs"
 import type { NextApiHandler } from "next"
 import { z } from "zod"
 
 export const PUBLIC_CACHE = "public, s-maxage=1200, stale-while-revalidate=600"
 
 export class ApiError extends Error {
-	constructor(
-		readonly status: number,
-		message: string
-	) {
+	readonly status: number
+
+	constructor(status: number, message: string) {
 		super(message)
 		this.name = "ApiError"
+		this.status = status
 	}
 }
+
+const sha256 = (value: string) => createHash("sha256").update(value).digest()
+
+export const timingSafeTokenEqual = (
+	received: string,
+	expected: string
+): boolean => timingSafeEqual(sha256(received), sha256(expected))
 
 export const apiHandler =
 	(methods: readonly string[], handler: NextApiHandler): NextApiHandler =>
@@ -26,10 +36,11 @@ export const apiHandler =
 			return await handler(req, res)
 		} catch (error) {
 			res.setHeader("Cache-Control", "no-store")
-			const status = error instanceof ApiError ? error.status : 500
-			const message =
-				error instanceof ApiError ? error.message : "Internal server error"
-			return res.status(status).json({ error: message })
+			if (error instanceof ApiError) {
+				return res.status(error.status).json({ error: error.message })
+			}
+			Sentry.captureException(error)
+			return res.status(500).json({ error: "Internal server error" })
 		}
 	}
 
@@ -55,7 +66,10 @@ export const fetchJSON = async <Schema extends z.ZodType>(
 			throw new Error("Upstream request failed")
 		}
 		return schema.parse(await response.json())
-	} catch {
+	} catch (error) {
+		if (error instanceof z.ZodError) {
+			Sentry.captureException(error)
+		}
 		throw new ApiError(502, "Upstream service unavailable")
 	}
 }

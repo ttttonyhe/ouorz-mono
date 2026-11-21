@@ -30,21 +30,32 @@ export type Category = z.output<typeof categoryResult>
 
 export class BlogContract {
 	private closed = false
+	private readonly ethereum: EthereumProvider
+	private readonly provider: BrowserProvider
+	private readonly contract: Contract
+	readonly account: string
+	private readonly chainId: bigint
 
 	private constructor(
-		private readonly ethereum: EthereumProvider,
-		private readonly provider: BrowserProvider,
-		private readonly contract: Contract,
-		readonly account: string,
-		private readonly chainId: bigint
-	) {}
+		ethereum: EthereumProvider,
+		provider: BrowserProvider,
+		contract: Contract,
+		account: string,
+		chainId: bigint
+	) {
+		this.ethereum = ethereum
+		this.provider = provider
+		this.contract = contract
+		this.account = account
+		this.chainId = chainId
+	}
 
 	static async connect(
 		ethereum: EthereumProvider
 	): Promise<BlogContract | undefined> {
 		const accounts = await readWalletAccounts(ethereum)
-		if (accounts.length === 0) return undefined
 		const account = accounts[0]
+		if (!account) return undefined
 		const address = process.env.NEXT_PUBLIC_BLOG_ADDRESS
 		const configuredChain = process.env.NEXT_PUBLIC_BLOG_CHAIN_ID
 		if (!address || !configuredChain || !/^[1-9]\d*$/u.test(configuredChain)) {

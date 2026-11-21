@@ -1,7 +1,6 @@
 import { Icon } from "@twilight-toolkit/ui"
 import Image from "next/image"
 import { useEffect, useId, useRef, useState } from "react"
-
 import { supportsViewTransitions } from "~/utilities/environment"
 
 const SRC = "https://static.ouorz.com/avatar_real_small.jpg"

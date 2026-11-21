@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react"
-import PropTypes from "prop-types"
 import classNames from "classnames"
 import Menu from "./Menu"
 import useDocumentClick from "hooks/useDocumentClick"
@@ -58,19 +57,6 @@ function DropDown({
 			)}
 		</div>
 	)
-}
-
-DropDown.propTypes = {
-	value: PropTypes.any,
-	className: PropTypes.string,
-	menuClassName: PropTypes.string,
-	options: PropTypes.arrayOf(
-		PropTypes.shape({
-			value: PropTypes.any.isRequired,
-			label: PropTypes.node,
-		})
-	),
-	onChange: PropTypes.func,
 }
 
 export default DropDown

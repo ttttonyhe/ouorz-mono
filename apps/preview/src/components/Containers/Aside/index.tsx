@@ -2,7 +2,7 @@
 
 import cn from "clsx"
 import { usePathname } from "next/navigation"
-import { FC } from "react"
+import type { FC } from "react"
 
 import responsive from "@/styles/responsive.module.css"
 

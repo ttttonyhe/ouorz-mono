@@ -1,28 +1,23 @@
 import { PrismaClient } from "@prisma/client"
-import { getDatabaseConfig } from "./database.cjs"
+import { createPrismaAdapter } from "./prisma-adapter.cjs"
 
 BigInt.prototype.toJSON = function () {
-	const int = Number.parseInt(this.toString())
-	return int ?? this.toString()
+	const numeric = Number(this)
+	return Number.isSafeInteger(numeric) ? numeric : this.toString()
 }
 
-const options = {
-	datasourceUrl: getDatabaseConfig().url,
-	log: [
-		{
-			emit: "event",
-			level: "query",
-		},
-	],
-}
+const createClient = () =>
+	new PrismaClient({
+		adapter: createPrismaAdapter(),
+	})
 
 let prisma
 
 if (process.env.NODE_ENV === "production") {
-	prisma = new PrismaClient(options)
+	prisma = createClient()
 } else {
 	if (!global.prisma) {
-		global.prisma = new PrismaClient(options)
+		global.prisma = createClient()
 	}
 
 	prisma = global.prisma

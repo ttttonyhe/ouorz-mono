@@ -1,16 +1,17 @@
 "use client"
 
 import cn from "clsx"
-import { PropsWithChildren, useEffect, useState, type FC } from "react"
+import { type FC, type PropsWithChildren, useEffect, useState } from "react"
 
 const PostLayout: FC<PropsWithChildren> = ({ children }) => {
-	// Enable overflow-y-auto after Aside slide-in animation has completed (300ms)
+	// Enable scrolling after the aside slide-in animation finishes (300ms).
 	const [ready, setReady] = useState(false)
 
 	useEffect(() => {
-		setTimeout(() => {
+		const timer = setTimeout(() => {
 			setReady(true)
 		}, 300)
+		return () => clearTimeout(timer)
 	}, [])
 
 	return (

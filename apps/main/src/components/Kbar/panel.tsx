@@ -2,12 +2,8 @@ import { Icon } from "@twilight-toolkit/ui"
 import { useTheme } from "next-themes"
 import { useRouter } from "next/router"
 import type React from "react"
-import { useCallback, useEffect, useMemo, useRef } from "react"
-import ContentLoader from "react-content-loader"
-
-import { useDispatch, useSelector } from "~/hooks"
-import { deactivateKbar, updateKbar } from "~/store/kbar/actions"
-import { selectKbar } from "~/store/kbar/selectors"
+import { useEffect, useRef } from "react"
+import { deactivateKbar, updateKbarView, useAppState } from "~/store"
 
 import HotkeyHelper from "../Helpers/hotKey"
 import Tabs, { type TabItemProps } from "../Tabs"
@@ -23,31 +19,24 @@ const ListComponentLoading = ({
 	}
 
 	return (
-		<ContentLoader
-			uniqueKey="kbar-loading-list-item"
-			speed={2}
-			width={100}
-			style={{ width: "100%" }}
-			height={44}
-			backgroundColor="#f3f3f3"
-			foregroundColor="#ecebeb">
-			<rect x="0" y="0" rx="5" ry="5" width="100%" height="44" />
-		</ContentLoader>
+		<div
+			data-cy="kbar-list-loading"
+			className="h-[44px] w-full animate-pulse rounded-md bg-gray-100"
+		/>
 	)
 }
 
-// Kbar list helper component
 const ListComponent = ({
 	tabsListItems,
 	verticalListWrapper,
 	setWrapperHeight,
 }: {
-	tabsListItems: TabItemProps[] | null
+	tabsListItems: TabItemProps[]
 	verticalListWrapper: React.RefObject<HTMLDivElement | null>
 	setWrapperHeight: (height: number) => void
 }) => {
 	const { resolvedTheme } = useTheme()
-	const { loading } = useSelector(selectKbar)
+	const loading = useAppState((s) => s.kbar.loading)
 
 	// The loading and empty states have fixed heights the list itself cannot measure.
 	useEffect(() => {
@@ -55,8 +44,6 @@ const ListComponent = ({
 
 		if (loading) {
 			wrapperHeight = resolvedTheme === "dark" ? 360 : 66.39
-		} else if (!tabsListItems) {
-			wrapperHeight = 360
 		} else if (tabsListItems.length === 0) {
 			wrapperHeight = 66.39
 		}
@@ -66,7 +53,7 @@ const ListComponent = ({
 		}
 	}, [loading, resolvedTheme, setWrapperHeight, tabsListItems])
 
-	if (loading || tabsListItems === null || tabsListItems === undefined) {
+	if (loading) {
 		return <ListComponentLoading resolvedTheme={resolvedTheme} />
 	}
 
@@ -94,7 +81,6 @@ const ListComponent = ({
 
 const KbarPanel = () => {
 	const router = useRouter()
-	const dispatch = useDispatch()
 	const { resolvedTheme } = useTheme()
 	const {
 		inputValue,
@@ -102,178 +88,156 @@ const KbarPanel = () => {
 		inputValueChangeHandler,
 		setInputValueChangeHandler,
 	} = useKbarContext()
-	const { list, placeholder, animation, location, loading } =
-		useSelector(selectKbar)
+	const { list, placeholder, animation, location, loading } = useAppState(
+		(s) => s.kbar
+	)
 	const verticalListWrapper = useRef<HTMLDivElement>(null)
 
-	const setWrapperHeight = useCallback((height: number) => {
+	const setWrapperHeight = (height: number) => {
 		if (verticalListWrapper.current) {
 			verticalListWrapper.current.style.height = `${height}px`
 		}
-	}, [])
+	}
 
-	const initialListItems = useMemo(() => {
-		if (!list) return null
+	const initialListItems: TabItemProps[] = list.map((item) => {
+		let actionFunc = item.action
+		const externalLink = item.link?.external
+		const internalLink = item.link?.internal
+		const sublist = item.sublist
 
-		return list.map((item) => {
-			let actionFunc = item.action
-			const externalLink = item.link?.external
-			const internalLink = item.link?.internal
-			const sublist = item.sublist
-
-			if (externalLink) {
-				actionFunc = () => {
-					window.open(externalLink, "_blank", "noopener,noreferrer")?.focus()
-				}
-			} else if (internalLink) {
-				actionFunc = () => {
-					void router.push(internalLink)
-				}
+		if (externalLink) {
+			actionFunc = () => {
+				window.open(externalLink, "_blank", "noopener,noreferrer")
 			}
-
-			if (sublist) {
-				actionFunc = () => {
-					dispatch(
-						updateKbar({
-							key: sublist.key,
-							location: [...location, sublist.key],
-							items: sublist.list,
-							placeholder: sublist.placeholder,
-						})
-					)
-				}
+		} else if (internalLink) {
+			actionFunc = () => {
+				void router.push(internalLink)
 			}
-
-			const action = actionFunc
-			const onClick = action
-				? () => {
-						if (item.singleton !== false && !item.sublist) {
-							dispatch(deactivateKbar())
-						}
-
-						if (item.link?.internal) {
-							setTimeout(() => {
-								action()
-							}, 250)
-						} else {
-							action()
-						}
-
-						setInputValue("")
-
-						if (item.onInputChange) {
-							setInputValueChangeHandler(() => item.onInputChange)
-						} else {
-							setInputValueChangeHandler(undefined)
-						}
-					}
-				: undefined
-
-			return {
-				label: item.label,
-				icon: item.icon,
-				color: item.color,
-				bgColor: item.bgColor,
-				bgDark: item.bgDark,
-				link: item.link,
-				onClick,
-				hoverable: item.hoverable,
-				shortcut: item.shortcut,
-				description: item.description,
-				className: "w-full justify-start! p-4!",
-				component:
-					item.hoverable === false ? (
-						<p className="kbar-list-heading text-sm text-gray-400">
-							{item.label}
-						</p>
-					) : (
-						<div className="flex w-full items-center justify-between">
-							<div
-								className={`flex w-4/5 items-center gap-x-3 ${
-									item.color || ""
-								}`}>
-								{item.icon && (
-									<span className="flex h-5 w-5 items-center">
-										<Icon name={item.icon} />
-									</span>
-								)}
-								<span>{item.label}</span>
-							</div>
-							<div className="flex items-center gap-x-2.5">
-								{item.description && (
-									<div className="text-sm text-gray-400">
-										{item.description}
-									</div>
-								)}
-								{item.shortcut?.length && (
-									<ul className="flex list-none gap-x-2 text-gray-500">
-										<li className="rounded-md border bg-gray-100 px-2 py-0.5 text-xs capitalize dark:border-gray-600 dark:bg-transparent">
-											Shift
-										</li>
-										{item.shortcut.map((shortcut) => (
-											<li
-												key={shortcut}
-												className="rounded-md border bg-gray-100 px-2 py-0.5 text-xs capitalize dark:border-gray-600 dark:bg-transparent">
-												{shortcut}
-											</li>
-										))}
-									</ul>
-								)}
-							</div>
-						</div>
-					),
-			}
-		})
-	}, [
-		dispatch,
-		list,
-		location,
-		router,
-		setInputValue,
-		setInputValueChangeHandler,
-	])
-
-	const tabsListItems = useMemo(() => {
-		if (
-			!initialListItems ||
-			initialListItems.length === 0 ||
-			!!inputValueChangeHandler
-		) {
-			return initialListItems
 		}
 
-		return initialListItems.filter((item) => {
-			return (
-				!inputValue ||
-				(item.hoverable !== false &&
-					item.label.toLowerCase().includes(inputValue.toLowerCase()))
-			)
-		})
-	}, [inputValue, inputValueChangeHandler, initialListItems])
+		if (sublist) {
+			actionFunc = () => {
+				const nextView: Parameters<typeof updateKbarView>[0] = {
+					key: sublist.key,
+					location: [...location, sublist.key],
+					items: sublist.list,
+				}
+				if (sublist.placeholder) {
+					nextView.placeholder = sublist.placeholder
+				}
+				updateKbarView(nextView)
+			}
+		}
+
+		const action = actionFunc
+		const onClick = action
+			? () => {
+					if (item.singleton !== false && !item.sublist) {
+						deactivateKbar()
+					}
+
+					if (item.link?.internal) {
+						setTimeout(() => {
+							action()
+						}, 250)
+					} else {
+						action()
+					}
+
+					setInputValue("")
+
+					if (item.onInputChange) {
+						setInputValueChangeHandler(() => item.onInputChange)
+					} else {
+						setInputValueChangeHandler(undefined)
+					}
+				}
+			: undefined
+
+		const tabItem: TabItemProps = {
+			label: item.label,
+			className: "w-full justify-start! p-4!",
+			component:
+				item.hoverable === false ? (
+					<p className="kbar-list-heading text-sm text-gray-400">
+						{item.label}
+					</p>
+				) : (
+					<div className="flex w-full items-center justify-between">
+						<div
+							className={`flex w-4/5 items-center gap-x-3 ${item.color ?? ""}`}>
+							{item.icon && (
+								<span className="flex h-5 w-5 items-center">
+									<Icon name={item.icon} />
+								</span>
+							)}
+							<span>{item.label}</span>
+						</div>
+						<div className="flex items-center gap-x-2.5">
+							{item.description && (
+								<div className="text-sm text-gray-400">{item.description}</div>
+							)}
+							{Boolean(item.shortcut?.length) && (
+								<ul className="flex list-none gap-x-2 text-gray-500">
+									<li className="rounded-md border bg-gray-100 px-2 py-0.5 text-xs capitalize dark:border-gray-600 dark:bg-transparent">
+										Shift
+									</li>
+									{item.shortcut?.map((shortcut) => (
+										<li
+											key={shortcut}
+											className="rounded-md border bg-gray-100 px-2 py-0.5 text-xs capitalize dark:border-gray-600 dark:bg-transparent">
+											{shortcut}
+										</li>
+									))}
+								</ul>
+							)}
+						</div>
+					</div>
+				),
+		}
+
+		if (item.icon) tabItem.icon = item.icon
+		if (item.color) tabItem.color = item.color
+		if (item.bgColor) tabItem.bgColor = item.bgColor
+		if (item.bgDark) tabItem.bgDark = item.bgDark
+		if (item.link) tabItem.link = item.link
+		if (onClick) tabItem.onClick = onClick
+		if (item.hoverable !== undefined) tabItem.hoverable = item.hoverable
+		if (item.shortcut) tabItem.shortcut = item.shortcut
+		if (item.description) tabItem.description = item.description
+
+		return tabItem
+	})
+
+	const tabsListItems =
+		initialListItems.length === 0 || Boolean(inputValueChangeHandler)
+			? initialListItems
+			: initialListItems.filter(
+					(item) =>
+						!inputValue ||
+						(item.hoverable !== false &&
+							item.label.toLowerCase().includes(inputValue.toLowerCase()))
+				)
 
 	return (
 		<div
 			data-cy="kbar-panel"
 			onClick={(event) => {
-				if (event.target === event.currentTarget) dispatch(deactivateKbar())
+				if (event.target === event.currentTarget) deactivateKbar()
 			}}
 			className="pointer-events-auto absolute -ml-10 flex h-screen w-screen justify-center">
-			{
-				// register shortcuts of list items
-				initialListItems?.map((item) => {
-					if (item.shortcut?.length && item.onClick) {
-						return (
-							<HotkeyHelper
-								key={item.label}
-								onTrigger={item.onClick}
-								shortcut={item.shortcut}
-							/>
-						)
-					}
-
-					return null
-				})
-			}
+			{initialListItems.map((item) => {
+				if (item.shortcut?.length && item.onClick) {
+					return (
+						<HotkeyHelper
+							key={item.label}
+							onTrigger={item.onClick}
+							shortcut={item.shortcut}
+						/>
+					)
+				}
+				return null
+			})}
 			<div
 				className={`z-50 mt-[8%] ml-15 h-fit max-h-[420px] w-[620px] overflow-hidden rounded-xl border bg-white/70 shadow-2xl backdrop-blur-lg dark:border-gray-700 dark:bg-black/70 ${
 					animation === "transition"
@@ -307,19 +271,14 @@ const KbarPanel = () => {
 											0,
 											location.indexOf(key) + 1
 										)
-
 										if (
-											JSON.stringify(newLocation) === JSON.stringify(location)
+											newLocation.length === location.length &&
+											newLocation.every((entry, idx) => entry === location[idx])
 										) {
 											return
 										}
 
-										dispatch(
-											updateKbar({
-												key,
-												location: newLocation,
-											})
-										)
+										updateKbarView({ key, location: newLocation })
 										setInputValue("")
 										setInputValueChangeHandler(undefined)
 									}}
@@ -337,7 +296,7 @@ const KbarPanel = () => {
 					data-cy="kbar-list"
 					ref={verticalListWrapper}
 					className={`overflow-hidden px-2.5 py-2.5 ${
-						!loading && "overflow-y-auto"
+						loading ? "" : "overflow-y-auto"
 					} kbar-mask kbar-list max-h-[360px]`}>
 					<ListComponent
 						tabsListItems={tabsListItems}

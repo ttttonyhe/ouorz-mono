@@ -1,4 +1,4 @@
-import isbot from "isbot"
+import { isbot } from "isbot"
 import ipaddr from "ipaddr.js"
 import { savePageView, saveEvent } from "lib/queries"
 import { useCors, useSession } from "lib/middleware"

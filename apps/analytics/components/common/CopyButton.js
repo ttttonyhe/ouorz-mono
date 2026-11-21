@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import PropTypes from "prop-types"
 import Button from "./Button"
 import { FormattedMessage } from "react-intl"
 
@@ -27,14 +26,6 @@ function CopyButton({ element, ...props }) {
 			{text}
 		</Button>
 	)
-}
-
-CopyButton.propTypes = {
-	element: PropTypes.shape({
-		current: PropTypes.shape({
-			select: PropTypes.func.isRequired,
-		}),
-	}),
 }
 
 export default CopyButton

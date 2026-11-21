@@ -5,13 +5,16 @@
 		"allowJs": false,
 		"skipLibCheck": true,
 		"strict": true,
-		"noEmit": true,
-		"noImplicitAny": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
 		"noImplicitReturns": true,
-		"noImplicitThis": true,
-		"strictNullChecks": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"verbatimModuleSyntax": true,
+		"erasableSyntaxOnly": true,
+		"noEmit": true,
 		"forceConsistentCasingInFileNames": true,
-		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
 		"module": "esnext",
 		"moduleResolution": "bundler",
@@ -25,8 +28,7 @@
 			}
 		],
 		"paths": {
-			"@/*": ["./src/*"],
-			"react": ["./node_modules/@types/react"]
+			"@/*": ["./src/*"]
 		}
 	},
 	"include": [

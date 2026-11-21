@@ -1,11 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next"
-
 import {
 	getGoodreadsBooks,
 	isGoodreadsShelf,
 	type Book,
 } from "~/content/goodreads"
-import { apiHandler } from "~/lib/apiHandler"
+import { apiHandler, PUBLIC_CACHE } from "~/lib/apiHandler"
 import { readParam } from "~/utilities/queryParams"
 
 type GoodreadsResponse = { books: Book[] } | { error: string }
@@ -23,10 +22,7 @@ const goodreads = async (
 	}
 
 	const books = await getGoodreadsBooks(shelf)
-	res.setHeader(
-		"Cache-Control",
-		"public, s-maxage=1200, stale-while-revalidate=600"
-	)
+	res.setHeader("Cache-Control", PUBLIC_CACHE)
 	return res.status(200).json({ books })
 }
 

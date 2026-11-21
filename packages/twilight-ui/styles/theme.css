@@ -1,0 +1,307 @@
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+	--spacing-1: 3px;
+	--spacing-2: 6px;
+	--spacing-3: 9px;
+	--spacing-4: 12px;
+	--spacing-4_5: 1rem;
+	--spacing-6: 18px;
+	--spacing-7: 21px;
+	--spacing-9: 27px;
+	--spacing-10: 30px;
+	--spacing-20: 60px;
+	--spacing-reader-offset: -47.5px;
+	--spacing-search-offset: calc((100% - 680px) / 2);
+	--spacing-aside: calc(100% - 6rem);
+	--spacing-content: 680px;
+	--spacing-page: 720px;
+	--spacing-toc: 200px;
+	--spacing-img: 240px;
+	--spacing-main: calc(100vh - 6.65rem);
+	--spacing-pre: 0.32rem;
+	--spacing--82: -220px;
+
+	--color-gbg: #f6f7f8;
+	--color-menu: #ebeced;
+
+	--color-green-50: oklch(97.9% 0.021 166.113);
+	--color-green-100: oklch(95% 0.052 163.051);
+	--color-green-200: oklch(90.5% 0.093 164.15);
+	--color-green-300: oklch(84.5% 0.143 164.978);
+	--color-green-400: oklch(76.5% 0.177 163.223);
+	--color-green-500: oklch(69.6% 0.17 162.48);
+	--color-green-600: oklch(59.6% 0.145 163.225);
+	--color-green-700: oklch(50.8% 0.118 165.612);
+	--color-green-800: oklch(43.2% 0.095 166.913);
+	--color-green-900: oklch(37.8% 0.077 168.94);
+	--color-green-950: oklch(26.2% 0.051 172.552);
+
+	--color-yellow-50: oklch(98.7% 0.022 95.277);
+	--color-yellow-100: oklch(96.2% 0.059 95.617);
+	--color-yellow-200: oklch(92.4% 0.12 95.746);
+	--color-yellow-300: oklch(87.9% 0.169 91.605);
+	--color-yellow-400: oklch(82.8% 0.189 84.429);
+	--color-yellow-500: oklch(76.9% 0.188 70.08);
+	--color-yellow-600: oklch(66.6% 0.179 58.318);
+	--color-yellow-700: oklch(55.5% 0.163 48.998);
+	--color-yellow-800: oklch(47.3% 0.137 46.201);
+	--color-yellow-900: oklch(41.4% 0.112 45.904);
+	--color-yellow-950: oklch(27.9% 0.077 45.635);
+
+	--color-purple-50: oklch(96.9% 0.016 293.756);
+	--color-purple-100: oklch(94.3% 0.029 294.588);
+	--color-purple-200: oklch(89.4% 0.057 293.283);
+	--color-purple-300: oklch(81.1% 0.111 293.571);
+	--color-purple-400: oklch(70.2% 0.183 293.541);
+	--color-purple-500: oklch(60.6% 0.25 292.717);
+	--color-purple-600: oklch(54.1% 0.281 293.009);
+	--color-purple-700: oklch(49.1% 0.27 292.581);
+	--color-purple-800: oklch(43.2% 0.232 292.759);
+	--color-purple-900: oklch(38% 0.189 293.745);
+	--color-purple-950: oklch(28.3% 0.141 291.089);
+
+	--color-gray-50: oklch(98.5% 0 none);
+	--color-gray-100: oklch(97% 0 none);
+	--color-gray-200: oklch(92.2% 0 none);
+	--color-gray-300: oklch(87% 0 none);
+	--color-gray-400: oklch(70.8% 0 none);
+	--color-gray-500: oklch(55.6% 0 none);
+	--color-gray-600: oklch(43.9% 0 none);
+	--color-gray-700: oklch(37.1% 0 none);
+	--color-gray-800: oklch(26.9% 0 none);
+	--color-gray-900: oklch(20.5% 0 none);
+	--color-gray-950: oklch(14.5% 0 none);
+
+	--shadow-header: 0 4px 8px rgba(0, 0, 0, 0.04);
+
+	--text-1: 32px;
+	--text-1_5: 23px;
+	--text-2: 18px;
+	--text-3: 15px;
+	--text-4: 14px;
+	--text-5: 12px;
+	--text-list-title: 26px;
+	--text-label: 18px;
+	--text-post-title: 30px;
+	--text-xl: 15px;
+	--text-2xl: 18px;
+	--text-3xl: 22.5px;
+	--text-stats: 28px;
+
+	--leading-14: 1.4;
+
+	--animate-pointer-in: pointerIn ease-in-out 0.25s forwards;
+	--animate-pointer-out: pointerOut ease-in-out 0.25s forwards;
+	--animate-pointer: pointerIn ease-in-out 0.25s forwards;
+	--animate-appear: opacityProgressIn ease-in-out 0.25s forwards;
+	--animate-disappear: opacityProgressOut ease-in-out 0.25s forwards;
+	--animate-shrink-disappear: shrinkDisappear ease-in-out 0.5s forwards;
+	--animate-expand-image-card-info: expandImageCardInfo ease-in-out 0.25s
+		forwards;
+	--animate-reader: moveUp ease-in-out 0.5s;
+	--animate-reader-out: moveDown ease-in-out 0.5s;
+	--animate-reader-bg: opacityProgressIn ease-in-out 0.5s;
+	--animate-reader-bg-out: opacityProgressOut ease-in-out 0.5s;
+	--animate-search-bg-out: opacityProgressOut ease-in-out 0.15s forwards;
+	--animate-search: 200ms ease 0s 1 normal none running search;
+	--animate-search-out: 150ms ease 0s 1 normal forwards running searchOut;
+	--animate-kbar: 200ms ease 0.25s 1 normal forwards running kbar;
+	--animate-kbar-out: 200ms ease 0s 1 normal forwards running kbarOut;
+	--animate-kbar-bg: 200ms ease 0s 1 normal none running opacityProgressIn;
+	--animate-kbar-bg-out: 200ms ease 0s 1 normal forwards running
+		opacityProgressOut;
+	--animate-kbar-transition: 200ms ease 0s 1 normal none running kbarTransition;
+	--animate-kbar-highlighter: 100ms ease 0s 1 normal none running
+		opacityProgressIn;
+	--animate-kbar-loading-bar: gradientSwipe ease-in-out 2s infinite;
+	--animate-wave-hand: wavingHand ease-in-out 1.5s 3;
+	--animate-wave-hand-again: wavingHand ease-in-out 1.5s infinite;
+	--animate-complete-pulse: completePulse ease-in-out 2.5s infinite;
+
+	@keyframes expandImageCardInfo {
+		0% {
+			width: 363px;
+		}
+		100% {
+			width: 100%;
+		}
+	}
+
+	@keyframes shrinkDisappear {
+		0% {
+			transform: scale(1);
+			opacity: 1;
+		}
+		100% {
+			transform: scale(0.9);
+			opacity: 0;
+		}
+	}
+
+	@keyframes pointerIn {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(-45deg);
+		}
+	}
+
+	@keyframes pointerOut {
+		0% {
+			transform: rotate(-45deg);
+		}
+		100% {
+			transform: rotate(0deg);
+		}
+	}
+
+	@keyframes moveUp {
+		0% {
+			transform: translateY(100vh);
+		}
+		80% {
+			transform: translateY(-5px);
+		}
+		100% {
+			transform: translateY(0vh);
+		}
+	}
+
+	@keyframes moveDown {
+		0% {
+			transform: translateY(0vh);
+		}
+		100% {
+			transform: translateY(100vh);
+		}
+	}
+
+	@keyframes opacityProgressIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes opacityProgressOut {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+
+	@keyframes search {
+		0% {
+			opacity: 0;
+			transform: scale(0.9, 0.9);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1, 1);
+		}
+	}
+
+	@keyframes searchOut {
+		0% {
+			opacity: 1;
+			transform: scale(1, 1);
+		}
+		100% {
+			opacity: 0;
+			transform: scale(0.9, 0.9);
+		}
+	}
+
+	@keyframes kbar {
+		0% {
+			opacity: 0;
+			transform: scale(0.95, 0.95);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1, 1);
+		}
+	}
+
+	@keyframes kbarOut {
+		0% {
+			opacity: 1;
+			transform: scale(1, 1);
+		}
+		100% {
+			opacity: 0;
+			transform: scale(0.95, 0.95);
+		}
+	}
+
+	@keyframes kbarTransition {
+		0% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(0.98);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
+
+	@keyframes gradientSwipe {
+		0% {
+			margin-left: -75%;
+		}
+		50% {
+			margin-left: 75%;
+		}
+		100% {
+			margin-left: -75%;
+		}
+	}
+
+	@keyframes wavingHand {
+		0% {
+			transform: none;
+			transform-origin: 70% 70%;
+		}
+		25% {
+			transform: rotate3d(1, 1, 1, -15deg);
+			transform-origin: 70% 70%;
+		}
+		50% {
+			transform: rotate3d(1, 1, 1, 15deg);
+			transform-origin: 70% 70%;
+		}
+		75% {
+			transform: rotate3d(1, 1, 1, -15deg);
+			transform-origin: 70% 70%;
+		}
+		100% {
+			transform: none;
+			transform-origin: 70% 70%;
+		}
+	}
+
+	@keyframes completePulse {
+		0% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+}
+
+@utility transition-width {
+	transition-property: width;
+	transition-timing-function: var(--default-transition-timing-function);
+	transition-duration: var(--default-transition-duration);
+}

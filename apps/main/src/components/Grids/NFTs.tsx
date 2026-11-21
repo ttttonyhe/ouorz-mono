@@ -1,6 +1,5 @@
 import useSWR from "swr"
 import { z } from "zod"
-
 import CardEmpty from "~/components/Card/Empty"
 import { NFTCard, NFTCardLoading } from "~/components/Card/NFT"
 import createFetcher from "~/lib/fetcher"
@@ -45,9 +44,9 @@ const NFTs = () => {
 	if (!data) {
 		return (
 			<div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
-				<NFTCardLoading uniqueKey="nft-card-skeleton-1" />
-				<NFTCardLoading uniqueKey="nft-card-skeleton-2" />
-				<NFTCardLoading uniqueKey="nft-card-skeleton-3" />
+				<NFTCardLoading />
+				<NFTCardLoading />
+				<NFTCardLoading />
 			</div>
 		)
 	}

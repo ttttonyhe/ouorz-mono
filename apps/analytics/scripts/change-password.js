@@ -1,10 +1,10 @@
-require("dotenv").config()
+require("dotenv").config({ quiet: true })
 const bcrypt = require("bcryptjs")
 const prompts = require("prompts")
 const { PrismaClient } = require("@prisma/client")
-const { getDatabaseConfig } = require("../lib/database.cjs")
+const { createPrismaAdapter } = require("../lib/prisma-adapter.cjs")
 
-const prisma = new PrismaClient({ datasourceUrl: getDatabaseConfig().url })
+const prisma = new PrismaClient({ adapter: createPrismaAdapter() })
 
 async function main() {
 	const [usernameArg, passwordArg, ...extra] = process.argv.slice(2)

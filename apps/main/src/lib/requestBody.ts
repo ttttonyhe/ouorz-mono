@@ -1,6 +1,12 @@
 import type { NextApiRequest } from "next"
 import { z } from "zod"
 
+export const positiveIntegerSchema = z
+	.string()
+	.regex(/^[1-9]\d*$/u)
+	.transform(Number)
+	.pipe(z.number().int().positive())
+
 export const searchBodySchema = z.object({
 	query: z.string().max(200).default(""),
 })

@@ -1,5 +1,4 @@
 import { Icon, type IconProps } from "@twilight-toolkit/ui"
-
 import { GlowingBackground } from "~/components/Visual"
 import openLink from "~/utilities/externalLink"
 
@@ -38,16 +37,16 @@ export default function MetricCard(props: MetricCardProps) {
 					}}>
 					<Icon name={icon} />
 				</figure>
-				<h1
+				<p
 					className={`-mb-0.5 flex items-center text-[1.875rem] font-bold tracking-wide ${
-						!valueLoaded && "animate-pulse"
+						valueLoaded ? "" : "animate-pulse"
 					}`}>
 					<span>
 						{valueLoaded ? value : "- - -"}
-						{denominatorLoaded && `/${denominator}`}
+						{denominatorLoaded ? `/${denominator}` : null}
 					</span>
-				</h1>
-				<p className="text-opacity-70 flex items-center overflow-hidden font-medium tracking-wide text-ellipsis whitespace-nowrap text-gray-700 dark:text-gray-400">
+				</p>
+				<p className="flex items-center overflow-hidden font-medium tracking-wide text-ellipsis whitespace-nowrap text-gray-700/70 dark:text-gray-400">
 					<span>{description}</span>
 					<span className="mt-0.5 ml-0 h-4.5 w-4.5 opacity-0 transition-all group-hover:ml-2 group-hover:opacity-100">
 						<Icon name="right" />

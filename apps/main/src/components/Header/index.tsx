@@ -3,16 +3,14 @@ import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { type RefObject, useRef } from "react"
-
 import { getContentLanguage } from "~/content/text"
-import { useDispatch, useSelector } from "~/hooks"
 import useAnalytics from "~/hooks/analytics"
-import { selectGeneral } from "~/store/general/selectors"
 import {
 	activateKbar,
-	updateKbarSearchQuery,
-	updateKbarToSearch,
-} from "~/store/kbar/actions"
+	navigateKbarToSearch,
+	searchKbarPosts,
+	useAppState,
+} from "~/store"
 
 import Kbar, { type KbarListItem } from "../Kbar"
 import { HeaderTransition, OffsetTransition } from "../Motion"
@@ -47,28 +45,27 @@ const HeaderSearchBarComponent = ({
 }
 
 const HeaderTitleComponent = () => {
-	const { headerTitle } = useSelector(selectGeneral)
+	const headerTitle = useAppState((s) => s.headerTitle)
 
 	if (!headerTitle) return null
 
 	return (
 		<div className="mx-auto hidden items-center justify-center space-x-3 overflow-hidden lg:flex">
-			<h3
+			<p
 				lang={getContentLanguage(headerTitle)}
-				className="overflow-hidden font-medium text-ellipsis whitespace-nowrap">
+				className="overflow-hidden font-medium tracking-wide text-ellipsis whitespace-nowrap dark:text-white">
 				{headerTitle}
-			</h3>
+			</p>
 		</div>
 	)
 }
 
 interface HeaderComponentProps {
-	headerRef: RefObject<HTMLDivElement | null>
+	headerRef: RefObject<HTMLElement | null>
 }
 
 const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 	const router = useRouter()
-	const dispatch = useDispatch()
 	const { trackEvent } = useAnalytics()
 
 	const { setTheme, resolvedTheme } = useTheme()
@@ -83,36 +80,29 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			component: (
 				<div className="group mx-auto flex cursor-pointer items-center justify-center space-x-3 px-5">
 					<div className="flex h-[18px] w-[18px] shrink-0 items-center rounded-full border border-gray-300 dark:border-gray-500">
-						{/* <a
-							href="https://opensea.io/assets/ethereum/0x13bd2ac3779cbbcb2ac874c33f1145dd71ce41ee/3690"
-							target="_blank"
-							rel="noreferrer"
-							className="flex"
-						> */}
 						{/* The server cannot know the theme, so the `dark` class picks the icon */}
 						<Image
 							className="rounded-full dark:hidden"
 							src="/icon.png"
-							alt="Tony's NFT avatar"
+							alt=""
 							height={18}
 							width={18}
-							loading="lazy"
+							loading="eager"
 						/>
 						<Image
 							className="hidden rounded-full dark:block"
 							src="/icon-dark.png"
-							alt="Tony's NFT avatar"
+							alt=""
 							height={18}
 							width={18}
-							loading="lazy"
+							loading="eager"
 						/>
-						{/* </a> */}
 					</div>
 					<div className="text-3 font-medium text-black">
-						<Link href="/" passHref>
-							<h3 className="text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300">
+						<Link href="/">
+							<span className="block tracking-wide text-gray-700 dark:text-white dark:group-hover:text-gray-300">
 								Tony He
-							</h3>
+							</span>
 						</Link>
 					</div>
 				</div>
@@ -239,11 +229,11 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 			description: "Command",
 			singleton: false,
 			action: () => {
-				dispatch(updateKbarToSearch())
+				navigateKbarToSearch()
 				trackEvent("searchBlogPosts", "kbar")
 			},
 			onInputChange: (query: string) => {
-				dispatch(updateKbarSearchQuery(query))
+				void searchKbarPosts(query)
 			},
 		},
 		{
@@ -253,7 +243,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 		},
 		{
 			label: "Subscribe to Newsletter",
-			id: "newletter",
+			id: "newsletter",
 			description: "Link",
 			icon: "subscribe",
 			color: "text-blue-500",
@@ -467,8 +457,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 	]
 
 	const scrollHandler = (position: number) => {
-		if (!headerRef?.current) return
-
+		if (!headerRef.current) return
 		headerRef.current.style.transform = `translateY(${15 - position || 0}%)`
 	}
 
@@ -491,7 +480,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 								<HeaderTitleComponent />
 							) : (
 								<HeaderSearchBarComponent
-									onActivate={() => dispatch(activateKbar(kbarItems))}
+									onActivate={() => activateKbar(kbarItems)}
 								/>
 							)}
 						</div>
@@ -507,7 +496,7 @@ const HeaderComponent = ({ headerRef }: HeaderComponentProps) => {
 }
 
 const Header = () => {
-	const headerRef = useRef<HTMLDivElement>(null)
+	const headerRef = useRef<HTMLElement>(null)
 
 	return (
 		<HeaderTransition componentRef={headerRef}>

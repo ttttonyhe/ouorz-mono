@@ -2,26 +2,29 @@ import { Icon, type IconProps, isIconName } from "@twilight-toolkit/ui"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
-
 import { GlowingBackground } from "~/components/Visual"
 import { navigateWithTransition } from "~/utilities/viewTransition"
 
 interface Props {
 	title: string
 	des: string
-	icon?: string
-	iconSmall?: IconProps["name"]
-	className?: string
-	href?: string
-	wrappable?: boolean
-	viewTransitionName?: string
+	icon?: string | undefined
+	iconDark?: string | undefined
+	iconSmall?: IconProps["name"] | undefined
+	className?: string | undefined
+	href?: string | undefined
+	wrappable?: boolean | undefined
+	viewTransitionName?: string | undefined
 	heading?: "h2" | "h3"
 }
+
+const isSvgUrl = (src: string) => (src.split("?", 1)[0] ?? "").endsWith(".svg")
 
 export default function PageCard({
 	title,
 	des,
 	icon,
+	iconDark,
 	iconSmall,
 	className,
 	href,
@@ -30,8 +33,9 @@ export default function PageCard({
 	heading: Heading = "h2",
 }: Props) {
 	const router = useRouter()
-	const cardClassName =
-		"glowing-div flex cursor-pointer items-center rounded-md border bg-white px-4 pt-3 pb-4 shadow-xs transition-shadow hover:shadow-md dark:border-0 dark:bg-gray-700"
+	const cardClassName = `glowing-div flex items-center rounded-md border bg-white px-4 pt-3 pb-4 shadow-xs transition-shadow hover:shadow-md dark:border-0 dark:bg-gray-700 ${
+		href ? "cursor-pointer" : ""
+	}`
 	const isExternalHref =
 		href?.startsWith("https://") || href?.startsWith("http://")
 	const content = (
@@ -44,16 +48,39 @@ export default function PageCard({
 							className ? className : ""
 						}`}>
 						{icon.includes("://") ? (
-							<Image
-								src={icon}
-								width={35}
-								height={35}
-								alt=""
-								loading="lazy"
-								className="h-[35px] w-[35px] object-contain"
-							/>
-						) : // oxlint-disable-next-line eslint/no-control-regex -- the range detects non-ASCII glyph icons
-						/[^\u0000-\u007F]/u.test(icon) ? (
+							iconDark ? (
+								<>
+									<Image
+										src={icon}
+										width={35}
+										height={35}
+										alt=""
+										loading="lazy"
+										unoptimized={isSvgUrl(icon)}
+										className="h-[35px] w-[35px] object-contain dark:hidden"
+									/>
+									<Image
+										src={iconDark}
+										width={35}
+										height={35}
+										alt=""
+										loading="lazy"
+										unoptimized={isSvgUrl(iconDark)}
+										className="hidden h-[35px] w-[35px] object-contain dark:block"
+									/>
+								</>
+							) : (
+								<Image
+									src={icon}
+									width={35}
+									height={35}
+									alt=""
+									loading="lazy"
+									unoptimized={isSvgUrl(icon)}
+									className="h-[35px] w-[35px] object-contain"
+								/>
+							)
+						) : /\P{ASCII}/u.test(icon) ? (
 							<span className="flex h-[35px] w-[35px] items-center justify-center text-[32px] leading-none">
 								{icon}
 							</span>
@@ -100,7 +127,7 @@ export default function PageCard({
 			href={href}
 			className={cardClassName}
 			target={isExternalHref ? "_blank" : undefined}
-			rel={isExternalHref ? "noreferrer" : undefined}
+			rel={isExternalHref ? "noopener noreferrer" : undefined}
 			onNavigate={(event) => {
 				if (viewTransitionName) {
 					event.preventDefault()

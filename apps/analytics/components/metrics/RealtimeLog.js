@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react"
 import { FormattedMessage, useIntl } from "react-intl"
-import { FixedSizeList } from "react-window"
+import { List } from "react-window"
 import firstBy from "thenby"
 import Icon from "components/common/Icon"
 import Tag from "components/common/Tag"
@@ -29,6 +29,36 @@ const TYPE_ICONS = {
 	[TYPE_EVENT]: <Bolt />,
 }
 
+function LogRow({
+	index,
+	style,
+	ariaAttributes,
+	logs,
+	showWebsite,
+	getColor,
+	getTime,
+	getIcon,
+	getDetail,
+	getWebsite,
+}) {
+	const row = logs[index]
+	return (
+		<div className={styles.row} style={style} {...ariaAttributes}>
+			<div>
+				<Dot color={getColor(row)} />
+			</div>
+			<div className={styles.time}>{getTime(row)}</div>
+			<div className={styles.detail}>
+				<Icon className={styles.icon} icon={getIcon(row)} />
+				{getDetail(row)}
+			</div>
+			{showWebsite && (
+				<div className={styles.website}>{getWebsite(row)?.domain}</div>
+			)}
+		</div>
+	)
+}
+
 export default function RealtimeLog({ data, websites, websiteId }) {
 	const intl = useIntl()
 	const { locale } = useLocale()
@@ -37,13 +67,13 @@ export default function RealtimeLog({ data, websites, websiteId }) {
 
 	const logs = useMemo(() => {
 		const { pageviews, sessions, events } = data
-		const logs = [...pageviews, ...sessions, ...events].sort(
+		const combined = [...pageviews, ...sessions, ...events].sort(
 			firstBy("created_at", -1)
 		)
 		if (filter) {
-			return logs.filter((row) => getType(row) === filter)
+			return combined.filter((row) => getType(row) === filter)
 		}
-		return logs
+		return combined
 	}, [data, filter])
 
 	const uuids = useMemo(() => {
@@ -157,25 +187,6 @@ export default function RealtimeLog({ data, websites, websiteId }) {
 		return stringToColor(uuids[session_id] || `${session_id}${getWebsite(row)}`)
 	}
 
-	const Row = ({ index, style }) => {
-		const row = logs[index]
-		return (
-			<div className={styles.row} style={style}>
-				<div>
-					<Dot color={getColor(row)} />
-				</div>
-				<div className={styles.time}>{getTime(row)}</div>
-				<div className={styles.detail}>
-					<Icon className={styles.icon} icon={getIcon(row)} />
-					{getDetail(row)}
-				</div>
-				{!websiteId && websites.length > 1 && (
-					<div className={styles.website}>{getWebsite(row)?.domain}</div>
-				)}
-			</div>
-		)
-	}
-
 	return (
 		<div className={styles.table}>
 			<FilterButtons buttons={buttons} selected={filter} onClick={setFilter} />
@@ -188,9 +199,21 @@ export default function RealtimeLog({ data, websites, websiteId }) {
 			<div className={styles.body}>
 				{logs?.length === 0 && <NoData />}
 				{logs?.length > 0 && (
-					<FixedSizeList height={400} itemCount={logs.length} itemSize={40}>
-						{Row}
-					</FixedSizeList>
+					<List
+						style={{ height: 400 }}
+						rowCount={logs.length}
+						rowHeight={40}
+						rowComponent={LogRow}
+						rowProps={{
+							logs,
+							showWebsite: !websiteId && websites.length > 1,
+							getColor,
+							getTime,
+							getIcon,
+							getDetail,
+							getWebsite,
+						}}
+					/>
 				)}
 			</div>
 		</div>

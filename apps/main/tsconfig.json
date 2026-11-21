@@ -2,9 +2,18 @@
 	"compilerOptions": {
 		"target": "esnext",
 		"lib": ["dom", "dom.iterable", "esnext"],
-		"allowJs": true,
+		"allowJs": false,
 		"skipLibCheck": true,
 		"strict": true,
+		"verbatimModuleSyntax": true,
+		"erasableSyntaxOnly": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": true,
+		"exactOptionalPropertyTypes": true,
 		"forceConsistentCasingInFileNames": true,
 		"noEmit": true,
 		"esModuleInterop": true,
@@ -16,19 +25,11 @@
 		"jsx": "react-jsx",
 		"paths": {
 			"~/*": ["./src/*"],
-			"react": ["./node_modules/@types/react"],
 			"@twilight-toolkit/ui": ["../../packages/twilight-ui/src/index"],
 			"@twilight-toolkit/utils": ["../../packages/twilight-utils/src/index"]
 		},
 		"incremental": true
 	},
-	"include": [
-		"next-env.d.ts",
-		"**/*.ts",
-		"**/*.mts",
-		"**/*.tsx",
-		"next.config.js",
-		"tailwind.config.mjs"
-	],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.mts", "**/*.tsx"],
 	"exclude": ["node_modules", "cypress"]
 }

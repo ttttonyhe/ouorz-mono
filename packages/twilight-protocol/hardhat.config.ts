@@ -1,8 +1,10 @@
 import hardhatEthers from "@nomicfoundation/hardhat-ethers"
 import hardhatVerify from "@nomicfoundation/hardhat-verify"
 import hardhatUpgrades from "@openzeppelin/hardhat-upgrades"
-import "dotenv/config"
+import { config as loadEnv } from "dotenv"
 import { configVariable, defineConfig } from "hardhat/config"
+
+loadEnv({ quiet: true })
 
 export default defineConfig({
 	plugins: [hardhatEthers, hardhatVerify, hardhatUpgrades],

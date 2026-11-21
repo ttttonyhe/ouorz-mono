@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 import { z } from "zod"
-
 import { renderMDX } from "~/content/mdx"
 import { getPageById } from "~/content/pages"
 import {
@@ -8,27 +7,24 @@ import {
 	getPostById,
 	getPostIds,
 	getPosts,
+	type GetPostsOptions,
 } from "~/content/posts"
 import { getSponsors } from "~/content/static-data"
 import { getPathViews, getPostViews } from "~/content/views"
-import { apiHandler } from "~/lib/apiHandler"
+import { apiHandler, PUBLIC_CACHE } from "~/lib/apiHandler"
+import { positiveIntegerSchema } from "~/lib/requestBody"
 import { paramEquals, readParam } from "~/utilities/queryParams"
 
-const positiveInteger = z
-	.string()
-	.regex(/^[1-9]\d*$/u)
-	.transform(Number)
-	.pipe(z.number().int().positive())
 const postsQuerySchema = z.object({
 	sticky: z.enum(["0", "1"]).optional(),
-	categories: positiveInteger.optional(),
+	categories: positiveIntegerSchema.optional(),
 	categories_exclude: z
 		.string()
 		.max(1000)
 		.regex(/^\d+(?:,\d+)*$/u)
 		.optional(),
-	per_page: positiveInteger.pipe(z.number().max(100)).optional(),
-	page: positiveInteger.optional(),
+	per_page: positiveIntegerSchema.pipe(z.number().max(100)).optional(),
+	page: positiveIntegerSchema.optional(),
 	search: z.string().max(200).optional(),
 })
 
@@ -38,45 +34,47 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
 	switch (key) {
 		case "posts": {
-			res.setHeader("Cache-Control", "no-store, max-age=0")
-
 			const parsed = postsQuerySchema.safeParse(req.query)
 			if (!parsed.success)
 				return res.status(400).json({ error: "Invalid query parameters" })
-			const stickyParam = parsed.data.sticky
-			const sticky = stickyParam === undefined ? undefined : stickyParam === "1"
-			const {
-				categories: cate,
-				categories_exclude: cateExclude,
-				per_page: perPage,
-				page,
-				search,
-			} = parsed.data
 
-			const posts = getPosts({
-				sticky,
-				cate,
-				cateExclude,
-				perPage,
-				page,
-				search,
-			})
+			const options: GetPostsOptions = {}
+			if (parsed.data.sticky !== undefined) {
+				options.sticky = parsed.data.sticky === "1"
+			}
+			if (parsed.data.categories !== undefined) {
+				options.cate = parsed.data.categories
+			}
+			if (parsed.data.categories_exclude !== undefined) {
+				options.cateExclude = parsed.data.categories_exclude
+			}
+			if (parsed.data.per_page !== undefined) {
+				options.perPage = parsed.data.per_page
+			}
+			if (parsed.data.page !== undefined) {
+				options.page = parsed.data.page
+			}
+			if (parsed.data.search !== undefined) {
+				options.search = parsed.data.search
+			}
 
+			const posts = getPosts(options)
 			const views = await getPostViews(posts)
-			const postsWithViews = posts.map((post, index) =>
-				Object.assign({}, post, {
-					post_metas: Object.assign({}, post.post_metas, {
-						views: views[index],
-					}),
+			const postsWithViews = []
+			for (const [index, post] of posts.entries()) {
+				postsWithViews.push({
+					...post,
+					post_metas: {
+						...post.post_metas,
+						views: views[index] ?? post.post_metas.views,
+					},
 				})
-			)
+			}
 
 			return res.status(200).json(postsWithViews)
 		}
 		case "post": {
-			res.setHeader("Cache-Control", "no-store, max-age=0")
-
-			const parsed = positiveInteger.safeParse(req.query.id)
+			const parsed = positiveIntegerSchema.safeParse(req.query.id)
 			if (!parsed.success) return res.status(400).json({ error: "Invalid ID" })
 			const id = parsed.data
 			const withHtml = paramEquals(req.query.render, "html")
@@ -99,20 +97,20 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 			})
 		}
 		case "allPostIDs":
+			res.setHeader("Cache-Control", PUBLIC_CACHE)
 			return res.status(200).json(getPostIds())
 		case "category": {
-			const parsed = positiveInteger.safeParse(req.query.id)
+			const parsed = positiveIntegerSchema.safeParse(req.query.id)
 			if (!parsed.success) return res.status(400).json({ error: "Invalid ID" })
-			const id = parsed.data
-			const category = getCategoryById(id)
+			const category = getCategoryById(parsed.data)
 			if (!category) return res.status(404).json({})
+			res.setHeader("Cache-Control", PUBLIC_CACHE)
 			return res.status(200).json(category)
 		}
 		case "sponsors":
+			res.setHeader("Cache-Control", PUBLIC_CACHE)
 			return res.status(200).json(getSponsors())
 		case "postStats": {
-			res.setHeader("Cache-Control", "no-store, max-age=0")
-
 			const posts = getPosts()
 			const views = (await getPostViews(posts)).reduce(
 				(sum, value) => sum + value,
@@ -121,12 +119,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 			return res.status(200).json({ count: posts.length, views })
 		}
 		case "page": {
-			res.setHeader("Cache-Control", "no-store, max-age=0")
-
-			const parsed = positiveInteger.safeParse(req.query.id)
+			const parsed = positiveIntegerSchema.safeParse(req.query.id)
 			if (!parsed.success) return res.status(400).json({ error: "Invalid ID" })
-			const id = parsed.data
-			const page = getPageById(id)
+			const page = getPageById(parsed.data)
 			if (!page) return res.status(404).json({})
 
 			return res.status(200).json({

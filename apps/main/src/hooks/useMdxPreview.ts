@@ -1,6 +1,5 @@
 import useSWR from "swr"
 import { z } from "zod"
-
 import api from "~/utilities/api"
 
 const previewSchema = z.object({ mdxHtml: z.string().nullable() })

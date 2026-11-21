@@ -1,4 +1,3 @@
-import CardPlainText from "~/components/Card/PlainText"
 import CardWithImage from "~/components/Card/WithImage"
 import CardWithOutImage from "~/components/Card/WithOutImage"
 import Reader from "~/components/Reader"
@@ -22,13 +21,10 @@ const StaticList = ({
 					if (item.code === null || item.code === undefined) {
 						if (item.post_img.url) {
 							return <CardWithImage item={item} sticky={sticky} key={item.id} />
-						} else if (item.post_categories[0].term_id === 58) {
-							return <CardPlainText item={item} sticky={sticky} key={item.id} />
-						} else {
-							return (
-								<CardWithOutImage item={item} sticky={sticky} key={item.id} />
-							)
 						}
+						return (
+							<CardWithOutImage item={item} sticky={sticky} key={item.id} />
+						)
 					}
 					return null
 				})}

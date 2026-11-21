@@ -1,65 +1,46 @@
 import type { NextRouter } from "next/router"
 import { useEffect } from "react"
-
 import { supportsViewTransitions } from "~/utilities/environment"
 
-/**
- * Generates a CSS-safe view-transition-name from a title string.
- * The name must be a valid CSS ident (no spaces, special chars, etc.)
- */
-export const getViewTransitionName = (title: string): string => {
-	return `page-title-${title
+export const getViewTransitionName = (title: string): string =>
+	`page-title-${title
 		.toLowerCase()
 		.replaceAll(/[^a-z0-9]/gu, "-")
 		.replaceAll(/-+/gu, "-")
 		.replaceAll(/^-|-$/gu, "")}`
-}
 
-/**
- * Navigates to a URL with view transition support.
- * Waits for Next.js route change to complete before finishing the transition.
- * Falls back to regular navigation if View Transitions API is not supported.
- */
+const waitForRouteSettlement = (router: NextRouter): Promise<void> =>
+	new Promise<void>((resolve) => {
+		const finish = () => {
+			router.events.off("routeChangeComplete", finish)
+			router.events.off("routeChangeError", finish)
+			resolve()
+		}
+		router.events.on("routeChangeComplete", finish)
+		router.events.on("routeChangeError", finish)
+	})
+
 export const navigateWithTransition = (
 	router: NextRouter,
 	href: string
 ): void => {
 	if (supportsViewTransitions()) {
 		document.startViewTransition(() => {
-			return new Promise<void>((resolve) => {
-				const handleComplete = () => {
-					router.events.off("routeChangeComplete", handleComplete)
-					resolve()
-				}
-				router.events.on("routeChangeComplete", handleComplete)
-				void router.push(href)
-			})
+			const settled = waitForRouteSettlement(router)
+			void router.push(href)
+			return settled
 		})
 	} else {
 		void router.push(href)
 	}
 }
 
-/**
- * Hook to enable view transitions for browser back/forward navigation.
- * Should be used in _app.tsx or a layout component.
- */
 export const useViewTransitionRouter = (router: NextRouter): void => {
 	useEffect(() => {
 		if (!supportsViewTransitions()) return
 
 		const handleBeforePopState = (): boolean => {
-			// Start view transition and let Next.js handle navigation normally
-			document.startViewTransition(() => {
-				return new Promise<void>((resolve) => {
-					const handleComplete = () => {
-						router.events.off("routeChangeComplete", handleComplete)
-						resolve()
-					}
-					router.events.on("routeChangeComplete", handleComplete)
-				})
-			})
-			// Return true to let Next.js handle the navigation
+			document.startViewTransition(() => waitForRouteSettlement(router))
 			return true
 		}
 

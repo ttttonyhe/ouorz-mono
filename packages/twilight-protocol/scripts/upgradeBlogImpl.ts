@@ -17,7 +17,7 @@ try {
 	})
 	const transaction = blog.deployTransaction
 	if (!(transaction instanceof TransactionResponse)) {
-		throw new Error("The upgrade did not return a transaction.")
+		throw new TypeError("The upgrade did not return a transaction.")
 	}
 
 	let receipt: TransactionReceipt | null

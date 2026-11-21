@@ -1,8 +1,8 @@
 import { Icon } from "@twilight-toolkit/ui"
 import type { GetStaticProps } from "next"
 import Head from "next/head"
+import Link from "next/link"
 import { useRouter } from "next/router"
-
 import { PodcastCard, type PodcastCardProps } from "~/components/Card/Podcast"
 import { pageLayout } from "~/components/Page"
 import { getPosts } from "~/content/posts"
@@ -53,15 +53,18 @@ const Podcasts: NextPageWithLayout<Props> = ({ podcasts }) => {
 					<div className="mt-2 flex h-full items-center justify-end whitespace-nowrap">
 						<div className="flex-1 pr-3 pl-5">
 							<p className="text-xl text-gray-500 dark:text-gray-400">
-								<button
-									type="button"
-									onClick={() => navigateWithTransition(router, "/pages")}
+								<Link
+									href="/pages"
+									onNavigate={(event) => {
+										event.preventDefault()
+										navigateWithTransition(router, "/pages")
+									}}
 									className="flex cursor-pointer items-center">
 									<span className="mr-2 h-6 w-6">
 										<Icon name="left" />
 									</span>
 									Pages
-								</button>
+								</Link>
 							</p>
 						</div>
 					</div>

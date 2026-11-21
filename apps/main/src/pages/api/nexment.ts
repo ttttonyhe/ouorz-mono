@@ -1,18 +1,19 @@
+import {
+	NEXMENT_SUPABASE_ANON_KEY,
+	NEXMENT_SUPABASE_URL,
+} from "~/constants/ids"
 import { apiHandler, ApiError, PUBLIC_CACHE } from "~/lib/apiHandler"
-
-const SUPABASE_URL = "https://ainpzfmspbpvpfcatnwq.supabase.co"
-const SUPABASE_KEY = "sb_publishable_LT9i2hIpENWPlyXyj-jmSw_ra4mPiSP"
 
 export default apiHandler(["GET", "HEAD"], async (_req, res) => {
 	let response: Response
 	try {
 		response = await fetch(
-			`${SUPABASE_URL}/rest/v1/nexment_comments?select=id`,
+			`${NEXMENT_SUPABASE_URL}/rest/v1/nexment_comments?select=id`,
 			{
 				method: "HEAD",
 				redirect: "error",
 				signal: AbortSignal.timeout(10_000),
-				headers: { apikey: SUPABASE_KEY, Prefer: "count=exact" },
+				headers: { apikey: NEXMENT_SUPABASE_ANON_KEY, Prefer: "count=exact" },
 			}
 		)
 	} catch {

@@ -1,14 +1,10 @@
 import { Icon } from "@twilight-toolkit/ui"
-import { debounce } from "lodash"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { useEffect, useMemo, useState } from "react"
-
+import { useEffect, useState } from "react"
 import scrollToItemWithinDiv from "~/utilities/scrollTo"
 
-/** A table-of-contents entry: its position, its indent level, and its text. */
 type TocHeader = [index: number, indent: number, content: string]
-
 type PreNextTuple = [number, string, number]
 
 interface AsideProps {
@@ -21,7 +17,6 @@ interface AsideProps {
 const EXCLUDED_CATEGORY_IDS = new Set([58, 5, 2, 3, 335, 74])
 const HEADING_TAG = /^h\d$/iu
 
-/** The post headings, in document order, excluding embedded content. */
 const getHeadingElements = (): HTMLElement[] => {
 	const proseRoot = document.querySelector(".prose")
 	if (!proseRoot) return []
@@ -46,15 +41,12 @@ const collectHeaders = (): TocHeader[] => {
 
 	return elements.map((element, index) => [
 		index,
-		(levels[index] - minLevel) * 10,
+		((levels[index] ?? minLevel) - minLevel) * 10,
 		element.innerText,
 	])
 }
 
-/**
- * Headings are looked up when they are needed rather than stored, because the
- * rendered post replaces its nodes once syntax highlighting finishes.
- */
+// Re-query headings at scroll time because syntax highlighting replaces DOM nodes.
 const scrollToHeading = (index: number) => {
 	const element = getHeadingElements()[index]
 	if (!element) return
@@ -134,7 +126,7 @@ const Tour = ({ preNext }: AsideProps) => {
 				hasPrev && hasNext ? "grid-cols-2" : "grid-cols-1"
 			} tour`}>
 			{hasPrev && (
-				<Link href={`/post/${preNext.prev[0]}`} passHref>
+				<Link href={`/post/${preNext.prev[0]}`}>
 					<div
 						className={`flex cursor-pointer items-center justify-center px-6 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 ${
 							hasNext ? "rounded-tl-xl rounded-bl-xl" : "rounded-xl"
@@ -147,7 +139,7 @@ const Tour = ({ preNext }: AsideProps) => {
 				</Link>
 			)}
 			{hasNext && (
-				<Link href={`/post/${preNext.next[0]}`} passHref>
+				<Link href={`/post/${preNext.next[0]}`}>
 					<div
 						className={`flex cursor-pointer items-center justify-center px-6 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 ${
 							hasPrev ? "rounded-tr-xl rounded-br-xl" : "rounded-xl"
@@ -164,19 +156,13 @@ const Tour = ({ preNext }: AsideProps) => {
 }
 
 function AsideContent({ preNext }: AsideProps) {
-	const [headers, setHeaders] = useState<TocHeader[]>([])
-
-	const scrollToItemWithinDivDebounced = useMemo(
-		() => debounce(scrollToItemWithinDiv, 200),
-		[]
-	)
+	const [headers] = useState<TocHeader[]>(collectHeaders)
 
 	useEffect(() => {
-		const collected = collectHeaders()
-		// oxlint-disable-next-line react/set-state-in-effect -- the table of contents can only be measured from the rendered post
-		setHeaders(collected)
+		if (headers.length === 0) return
 
 		let activeIndex = -1
+		let scrollTimer: ReturnType<typeof setTimeout> | null = null
 
 		const scrollHandler = () => {
 			const listDiv = document.querySelector("#toc")
@@ -190,19 +176,21 @@ function AsideContent({ preNext }: AsideProps) {
 				?.classList.remove("toc-active")
 			const activeHeader = document.querySelector(`#header${nextIndex}`)
 			activeHeader?.classList.add("toc-active")
-			if (listDiv && activeHeader)
-				scrollToItemWithinDivDebounced(listDiv, activeHeader)
+			if (listDiv && activeHeader) {
+				if (scrollTimer !== null) clearTimeout(scrollTimer)
+				scrollTimer = setTimeout(() => {
+					scrollToItemWithinDiv(listDiv, activeHeader)
+				}, 200)
+			}
 			activeIndex = nextIndex
 		}
 
-		if (collected.length > 0) {
-			window.addEventListener("scroll", scrollHandler, { passive: true })
-		}
+		window.addEventListener("scroll", scrollHandler, { passive: true })
 		return () => {
 			window.removeEventListener("scroll", scrollHandler)
-			scrollToItemWithinDivDebounced.cancel()
+			if (scrollTimer !== null) clearTimeout(scrollTimer)
 		}
-	}, [scrollToItemWithinDivDebounced])
+	}, [headers.length])
 
 	if (headers.length === 0) return null
 
@@ -210,12 +198,12 @@ function AsideContent({ preNext }: AsideProps) {
 		<aside className="aside group fixed top-24 -ml-56 hidden w-toc xl:block">
 			<div>
 				<div className="rounded-xl border bg-white shadow-xs dark:border-gray-800 dark:bg-gray-800">
-					<h1 className="flex items-center border-b border-gray-200 px-6 py-3 text-2xl font-medium tracking-wide text-gray-700 dark:border-gray-700 dark:text-white">
+					<h2 className="flex items-center border-b border-gray-200 px-6 py-3 text-2xl font-medium tracking-wide text-gray-700 dark:border-gray-700 dark:text-white">
 						<span className="-mt-[1.5px] mr-2 h-[19px] w-[19px]">
 							<Icon name="toc" />
 						</span>
 						On This Page
-					</h1>
+					</h2>
 					<ul
 						className="mask-y max-h-[70vh] overflow-hidden overflow-y-auto overscroll-contain px-3 py-3 text-xl text-gray-500 transition-colors duration-300 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300"
 						id="toc">

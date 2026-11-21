@@ -36,7 +36,7 @@ const EmploymentCard = (props: EmploymentCardProps) => {
 							className="rounded-full border bg-white dark:border-gray-700"
 						/>
 					)}
-					<p>{organization}</p>
+					<h3>{organization}</h3>
 				</div>
 				<span className="rounded-full border bg-gray-100 px-2.5 py-0.5 text-xs text-gray-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400">
 					{jobType}
@@ -47,7 +47,7 @@ const EmploymentCard = (props: EmploymentCardProps) => {
 					<p>{jobTitle}</p>
 				</div>
 				<div className="flex flex-col items-start gap-x-2.5 gap-y-2 text-xs font-medium text-gray-500 lg:items-center">
-					{dateString}
+					<time>{dateString}</time>
 				</div>
 			</div>
 			{organizationFullName && (

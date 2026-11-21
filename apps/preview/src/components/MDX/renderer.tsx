@@ -1,10 +1,11 @@
+import components from "@/components/MDX/components"
 import { evaluate } from "@mdx-js/mdx"
 import { Suspense, type FC } from "react"
 import * as runtime from "react/jsx-runtime"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeMathjax from "rehype-mathjax"
+import rehypeSlug from "rehype-slug"
 import remarkMath from "remark-math"
-
-import components from "@/components/MDX/components"
 
 interface MDXPostRendererProps {
 	content: string
@@ -15,7 +16,7 @@ const RenderedContent = async ({ content }: MDXPostRendererProps) => {
 		...runtime,
 		development: false,
 		remarkPlugins: [remarkMath],
-		rehypePlugins: [rehypeMathjax],
+		rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypeMathjax],
 	})
 	return <Content components={components} />
 }

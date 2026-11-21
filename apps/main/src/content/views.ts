@@ -1,5 +1,4 @@
 import { z } from "zod"
-
 import { ANALYTICS_API } from "~/constants/apiURLs"
 import type { LocalPost } from "~/content/posts"
 import { fetchJSON } from "~/lib/apiHandler"

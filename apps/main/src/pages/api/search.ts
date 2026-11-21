@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next"
-
 import { getAllPosts, type LocalPost } from "~/content/posts"
 import { apiHandler } from "~/lib/apiHandler"
 import { parseBody, searchBodySchema } from "~/lib/requestBody"
@@ -7,13 +6,13 @@ import { parseBody, searchBodySchema } from "~/lib/requestBody"
 const RESULT_LIMIT = 10
 const EXCLUDED_CATEGORY_IDS = new Set([2, 5, 74, 334, 335])
 
-type SearchHit = {
+interface SearchHit {
 	post_id: number
 	post_title: string
 	post_excerpt: string
 }
 
-type SearchResponse = {
+interface SearchResponse {
 	hits: SearchHit[]
 	nbHits: number
 	query: string
@@ -37,8 +36,8 @@ const scorePost = (
 	if (!normalizedQuery) return 1
 
 	const title = normalizeText(post.post_title)
-	const excerpt = normalizeText(post.post_excerpt.four ?? "")
-	const content = normalizeText(stripHtml(post.content.raw ?? ""))
+	const excerpt = normalizeText(post.post_excerpt.four)
+	const content = normalizeText(stripHtml(post.content.raw))
 
 	let score = 0
 	if (title === normalizedQuery) score += 500
@@ -47,11 +46,11 @@ const scorePost = (
 	if (excerpt.includes(normalizedQuery)) score += 90
 	if (content.includes(normalizedQuery)) score += 45
 
-	queryTokens.forEach((token) => {
+	for (const token of queryTokens) {
 		if (title.includes(token)) score += 30
 		if (excerpt.includes(token)) score += 15
 		if (content.includes(token)) score += 8
-	})
+	}
 
 	return score
 }
@@ -69,7 +68,7 @@ const search = (
 	const rankedHits = getAllPosts()
 		.filter((post) => {
 			const categoryId = post.post_categories[0]?.term_id
-			return !EXCLUDED_CATEGORY_IDS.has(categoryId)
+			return categoryId === undefined || !EXCLUDED_CATEGORY_IDS.has(categoryId)
 		})
 		.map((post) => ({
 			post,
@@ -86,8 +85,6 @@ const search = (
 		post_title: post.post_title,
 		post_excerpt: post.post_excerpt.four,
 	}))
-
-	res.setHeader("Cache-Control", "no-store, max-age=0")
 
 	return res.status(200).json({
 		hits,

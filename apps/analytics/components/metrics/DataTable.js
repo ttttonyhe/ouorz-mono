@@ -1,11 +1,19 @@
 import React, { useState } from "react"
-import { FixedSizeList } from "react-window"
-import { useSpring, animated, config } from "react-spring"
+import { List } from "react-window"
+import { useSpring, animated, config } from "@react-spring/web"
 import classNames from "classnames"
 import { FormattedMessage } from "react-intl"
 import NoData from "components/common/NoData"
 import { formatNumber, formatLongNumber } from "lib/format"
 import styles from "./DataTable.module.css"
+
+function VirtualRow({ index, style, ariaAttributes, rows, renderRow }) {
+	return (
+		<div style={style} {...ariaAttributes}>
+			{renderRow(rows[index])}
+		</div>
+	)
+}
 
 export default function DataTable({
 	data,
@@ -44,10 +52,6 @@ export default function DataTable({
 		)
 	}
 
-	const Row = ({ index, style }) => {
-		return <div style={style}>{getRow(data[index])}</div>
-	}
-
 	return (
 		<div className={classNames(styles.table, className)}>
 			<div className={styles.header}>
@@ -59,9 +63,13 @@ export default function DataTable({
 			<div className={styles.body} style={{ height }}>
 				{data?.length === 0 && <NoData />}
 				{virtualize && data.length > 0 ? (
-					<FixedSizeList height={height} itemCount={data.length} itemSize={30}>
-						{Row}
-					</FixedSizeList>
+					<List
+						style={{ height }}
+						rowCount={data.length}
+						rowHeight={30}
+						rowComponent={VirtualRow}
+						rowProps={{ rows: data, renderRow: getRow }}
+					/>
 				) : (
 					data.map((row) => getRow(row))
 				)}
@@ -90,16 +98,16 @@ const AnimatedRow = ({
 			<div className={styles.label}>{label}</div>
 			<div className={styles.value} onClick={onClick}>
 				<animated.div className={styles.value}>
-					{props.y?.interpolate(format)}
+					{props.y.to(format)}
 				</animated.div>
 			</div>
 			<div className={styles.percent}>
 				<animated.div
 					className={styles.bar}
-					style={{ width: props.width.interpolate((n) => `${n}%`) }}
+					style={{ width: props.width.to((n) => `${n}%`) }}
 				/>
 				<animated.span className={styles.percentValue}>
-					{props.width.interpolate((n) => `${n.toFixed(0)}%`)}
+					{props.width.to((n) => `${n.toFixed(0)}%`)}
 				</animated.span>
 			</div>
 		</div>

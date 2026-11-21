@@ -2,7 +2,6 @@ import { captureUnderscoreErrorException } from "@sentry/nextjs"
 import { Button } from "@twilight-toolkit/ui"
 import type { ErrorProps } from "next/error"
 import NextError from "next/error"
-
 import { pageLayout } from "~/components/Page"
 import type { NextPageWithLayout } from "~/pages/_app"
 
@@ -20,12 +19,7 @@ const ErrorPage: NextPageWithLayout<ErrorProps> = ({ statusCode }) => {
 							: "An error has occurred on the client"}
 					</p>
 					<div className="mt-4 inline-block justify-center">
-						<Button
-							type="primary"
-							className="mx-auto"
-							onClick={() => {
-								location.href = "/"
-							}}>
+						<Button type="primary" href="/" className="mx-auto">
 							Back to Home
 						</Button>
 					</div>

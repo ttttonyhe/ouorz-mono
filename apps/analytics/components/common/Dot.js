@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import classNames from "classnames"
 import styles from "./Dot.module.css"
 
@@ -15,12 +14,6 @@ function Dot({ color, size, className }) {
 			/>
 		</div>
 	)
-}
-
-Dot.propTypes = {
-	color: PropTypes.string,
-	size: PropTypes.oneOf(["small", "large"]),
-	className: PropTypes.string,
 }
 
 export default Dot

@@ -1,4 +1,4 @@
-require("dotenv").config()
+require("dotenv").config({ quiet: true })
 const fs = require("fs")
 const path = require("path")
 const { getDatabaseConfig } = require("../lib/database.cjs")

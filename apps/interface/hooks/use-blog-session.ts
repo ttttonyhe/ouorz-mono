@@ -8,6 +8,7 @@ interface BlogState {
 	blogUri: string
 	authorAddress: string
 	categories: Category[]
+	errorMessage: string | null
 }
 
 const emptyState: BlogState = {
@@ -15,6 +16,7 @@ const emptyState: BlogState = {
 	blogUri: "",
 	authorAddress: "",
 	categories: [],
+	errorMessage: null,
 }
 
 export const useBlogSession = () => {
@@ -92,6 +94,7 @@ export const useBlogSession = () => {
 	const connect = async () => {
 		if (connecting.current || operation.current) return
 		connecting.current = true
+		setState((previous) => ({ ...previous, errorMessage: null }))
 		try {
 			const ethereum = getEthereum()
 			if (!ethereum) throw new Error("Install an Ethereum wallet to connect.")
@@ -99,7 +102,10 @@ export const useBlogSession = () => {
 			await reconnect.current?.()
 			if (connectionError.current) throw connectionError.current
 		} catch (error) {
-			if (mounted.current) window.alert(walletError.parse(error).message)
+			if (mounted.current) {
+				const message = walletError.parse(error).message
+				setState((previous) => ({ ...previous, errorMessage: message }))
+			}
 		} finally {
 			connecting.current = false
 		}
@@ -111,20 +117,23 @@ export const useBlogSession = () => {
 		if (operation.current || connecting.current) return
 		const current = session.current
 		if (!current) {
-			window.alert(
+			const message =
 				connectionError.current?.message ?? "Connect your wallet first."
-			)
+			setState((previous) => ({ ...previous, errorMessage: message }))
 			return
 		}
 		const token = {}
 		operation.current = token
+		setState((previous) => ({ ...previous, errorMessage: null }))
 		try {
 			const update = await action(current)
 			if (session.current === current)
-				setState((previous) => ({ ...previous, ...update }))
+				setState((previous) => ({ ...previous, ...update, errorMessage: null }))
 		} catch (error) {
-			if (session.current === current)
-				window.alert(walletError.parse(error).message)
+			if (session.current === current) {
+				const message = walletError.parse(error).message
+				setState((previous) => ({ ...previous, errorMessage: message }))
+			}
 		} finally {
 			if (operation.current === token) operation.current = null
 		}

@@ -1,6 +1,7 @@
 @import "tailwindcss";
-
-@config '../tailwind.config.mjs';
+@import "./theme.css";
+@source "../src";
+@plugin "@tailwindcss/typography";
 
 @layer base {
 	*,

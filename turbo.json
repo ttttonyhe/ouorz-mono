@@ -30,7 +30,14 @@
 		},
 		"@ouorz/main#build": {
 			"dependsOn": ["^build"],
-			"outputs": [".next/**"],
+			"outputs": [
+				".next/**",
+				"public/feed.xml",
+				"public/sitemap.xml",
+				"public/llms.txt",
+				"public/index.md",
+				"public/pages.md"
+			],
 			"env": [
 				"REVALIDATION_REQUEST_TOKEN",
 				"SENTRY_ORG",
@@ -38,21 +45,11 @@
 				"SENTRY_AUTH_TOKEN",
 				"SENTRY_IGNORE_API_RESOLUTION_ERROR",
 				"NEXT_PUBLIC_SENTRY_DSN",
-				"NEXT_PUBLIC_LC_KEY",
-				"NEXT_PUBLIC_LC_ID",
-				"JMS_API_PATH",
 				"GITHUB_TOKEN",
 				"ALCHEMY_API_PATH",
 				"QUICK_NODE_API_PATH",
-				"NEXT_PUBLIC_HOST_URL",
-				"ANALYTICS_START_TIME",
 				"ANALYTICS_TOKEN",
-				"SPOTIFY_REFRESH_TOKEN",
-				"TWITTER_BEARER_TOKEN",
-				"OPENAI_API_KEY",
-				"ALGOLIA_APP_ID",
-				"ALGOLIA_API_KEY",
-				"ALGOLIA_INDEX_NAME"
+				"OPENAI_API_KEY"
 			]
 		},
 		"@ouorz/preview#build": {

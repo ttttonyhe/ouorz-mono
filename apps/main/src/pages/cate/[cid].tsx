@@ -2,7 +2,6 @@ import { Icon } from "@twilight-toolkit/ui"
 import type { GetStaticPaths, GetStaticProps } from "next"
 import Head from "next/head"
 import Link from "next/link"
-
 import List from "~/components/List"
 import { pageLayout } from "~/components/Page"
 import SubscriptionBox from "~/components/SubscriptionBox"
@@ -89,7 +88,11 @@ export const getStaticProps: GetStaticProps<CateProps> = (context) => {
 
 export const getStaticPaths: GetStaticPaths = () => ({
 	paths: [
-		...new Set(getAllPosts().map((post) => post.post_categories[0].term_id)),
+		...new Set(
+			getAllPosts()
+				.map((post) => post.post_categories[0]?.term_id)
+				.filter((id): id is number => id !== undefined)
+		),
 	].map((id) => ({ params: { cid: String(id) } })),
 	fallback: false,
 })

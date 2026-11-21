@@ -1,13 +1,12 @@
-require("dotenv").config()
+require("dotenv").config({ quiet: true })
 const bcrypt = require("bcryptjs")
 const { PrismaClient } = require("@prisma/client")
-const { getDatabaseConfig } = require("../lib/database.cjs")
-const prisma = new PrismaClient({ datasourceUrl: getDatabaseConfig().url })
+const { createPrismaAdapter } = require("../lib/prisma-adapter.cjs")
+
+const prisma = new PrismaClient({ adapter: createPrismaAdapter() })
 const SALT_ROUNDS = 10
 
-const hashPassword = (password) => {
-	return bcrypt.hashSync(password, SALT_ROUNDS)
-}
+const hashPassword = (password) => bcrypt.hashSync(password, SALT_ROUNDS)
 
 async function main() {
 	const password = process.env.ADMIN_PASSWORD

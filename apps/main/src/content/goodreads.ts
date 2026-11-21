@@ -1,7 +1,7 @@
 import Parser from "rss-parser"
 import { z } from "zod"
-
 import { GOODREADS_API } from "~/constants/apiURLs"
+import { ApiError } from "~/lib/apiHandler"
 
 const shelfNames = {
 	currentlyReading: "currently-reading",
@@ -18,7 +18,9 @@ export const isGoodreadsShelf = (value: string): value is GoodreadsShelf =>
 
 const bookSchema = z.object({
 	title: z.string().trim().min(1),
-	link: z.url({ protocol: /^https$/u }).transform((link) => link.split("?")[0]),
+	link: z
+		.url({ protocol: /^https$/u })
+		.transform((link) => link.split("?")[0] ?? link),
 	imageURL: z
 		.url({ protocol: /^https$/u })
 		.transform((url) => url.replace(/\._[^.]+_\.(\w+)$/u, "._SX166_.$1")),
@@ -62,14 +64,21 @@ export const getGoodreadsBooks = async (
 	const url = new URL(GOODREADS_API.RSS)
 	url.searchParams.set("shelf", shelfNames[shelf])
 
-	// rss-parser's own timeout rejects without aborting the network request.
-	const response = await fetch(url, {
-		cache: "no-store",
-		signal: AbortSignal.timeout(10_000),
-	})
-	if (!response.ok)
-		throw new Error(`Goodreads ${shelf} feed returned ${response.status}`)
+	try {
+		// rss-parser's own timeout rejects without aborting the network request.
+		const response = await fetch(url, {
+			cache: "no-store",
+			redirect: "error",
+			signal: AbortSignal.timeout(10_000),
+		})
+		if (!response.ok) {
+			await response.body?.cancel()
+			throw new Error(`Goodreads ${shelf} feed returned ${response.status}`)
+		}
 
-	const feed = await parser.parseString(await response.text())
-	return z.array(bookSchema).parse(feed.items)
+		const feed = await parser.parseString(await response.text())
+		return z.array(bookSchema).parse(feed.items)
+	} catch {
+		throw new ApiError(502, "Goodreads service unavailable")
+	}
 }

@@ -12,15 +12,16 @@
 	"dependencies": {
 		"@ouorz/twilight-protocol": "workspace:*",
 		"ethers": "^6.17.0",
-		"next": "^16.4.2",
+		"next": "16.4.6",
 		"react": "^19.3.1",
 		"react-dom": "^19.3.1",
 		"zod": "^4.6.7"
 	},
 	"devDependencies": {
-		"@types/node": "^26.6.5",
+		"@types/node": "^26.6.6",
 		"@types/react": "^19.3.0",
 		"@types/react-dom": "^19.3.0",
+		"babel-plugin-react-compiler": "^1.0.0",
 		"typescript": "^7.0.2"
 	}
 }

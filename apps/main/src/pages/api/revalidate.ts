@@ -1,6 +1,4 @@
-import { timingSafeEqual } from "node:crypto"
-
-import { apiHandler, requireEnv } from "~/lib/apiHandler"
+import { apiHandler, requireEnv, timingSafeTokenEqual } from "~/lib/apiHandler"
 import { parseBody, revalidateBodySchema } from "~/lib/requestBody"
 
 export default apiHandler(["POST"], async (req, res) => {
@@ -13,11 +11,8 @@ export default apiHandler(["POST"], async (req, res) => {
 		})
 	}
 
-	const expected = Buffer.from(requireEnv("REVALIDATION_REQUEST_TOKEN"))
-	const received = Buffer.from(body.token)
 	if (
-		received.length !== expected.length ||
-		!timingSafeEqual(received, expected)
+		!timingSafeTokenEqual(body.token, requireEnv("REVALIDATION_REQUEST_TOKEN"))
 	) {
 		return res
 			.status(401)

@@ -4,18 +4,16 @@ import dynamic from "next/dynamic"
 import Head from "next/head"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import TimeAgo from "react-timeago"
-
 import CommentBox from "~/components/CommentBox"
 import { contentLayout } from "~/components/Content"
 import PostContent from "~/components/PostContent"
 import SubscriptionBox from "~/components/SubscriptionBox"
+import TimeAgo from "~/components/TimeAgo"
 import { renderMDX } from "~/content/mdx"
 import { getPostById, getPostIds, type LocalPost } from "~/content/posts"
-import { useDispatch } from "~/hooks"
 import useLiveViews from "~/hooks/useLiveViews"
 import type { NextPageWithLayout } from "~/pages/_app"
-import { setHeaderTitle } from "~/store/general/actions"
+import { setHeaderTitle } from "~/store"
 
 const Aside = dynamic(() => import("~/components/Aside"), { ssr: false })
 
@@ -25,7 +23,6 @@ interface Props {
 }
 
 const BlogPost: NextPageWithLayout<Props> = ({ post, mdxHtml }) => {
-	const dispatch = useDispatch()
 	// Measure the table of contents after post content and highlighting settle.
 	const [renderedPostId, setRenderedPostId] = useState<string | null>(null)
 
@@ -45,11 +42,13 @@ const BlogPost: NextPageWithLayout<Props> = ({ post, mdxHtml }) => {
 	)
 
 	useEffect(() => {
-		dispatch(setHeaderTitle(post.title.rendered))
+		setHeaderTitle(post.title.rendered)
 		return () => {
-			dispatch(setHeaderTitle(""))
+			setHeaderTitle("")
 		}
-	}, [dispatch, post])
+	}, [post.title.rendered])
+
+	const primaryCategory = post.post_categories[0]
 
 	return (
 		<div>
@@ -63,13 +62,15 @@ const BlogPost: NextPageWithLayout<Props> = ({ post, mdxHtml }) => {
 				data-cy="postContent"
 				className="bg-white p-5 pt-24 lg:rounded-xl lg:border lg:p-20 lg:pt-20 lg:shadow-xs dark:border-gray-800 dark:bg-gray-800">
 				<div className="mb-20">
-					<div className="mb-3 flex">
-						<Link href={`/cate/${post.post_categories[0].term_id}`}>
-							<Label type="primary" icon="cate">
-								{post.post_categories[0].name}
-							</Label>
-						</Link>
-					</div>
+					{primaryCategory && (
+						<div className="mb-3 flex">
+							<Link href={`/cate/${primaryCategory.term_id}`}>
+								<Label type="primary" icon="cate">
+									{primaryCategory.name}
+								</Label>
+							</Link>
+						</div>
+					)}
 					<h1 className="text-1.5 leading-snug font-medium tracking-wider lg:text-post-title">
 						{post.title.rendered}
 					</h1>

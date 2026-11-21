@@ -9,11 +9,12 @@ describe("Index", function () {
 				.filter(
 					(src) => src && new URL(src).origin === document.location.origin
 				)
-			return cy.wrap(scripts, { log: false }).each((src) => {
+			for (const src of scripts) {
 				cy.request(src)
 					.its("headers.content-type")
 					.should("match", /^(?:application|text)\/javascript(?:;|$)/u)
-			})
+			}
+			return scripts
 		})
 		cy.get('[data-cy="indexNewsletter"]').should("exist")
 	})

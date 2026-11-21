@@ -1,4 +1,3 @@
-import "../styles/vendor.css"
 import "../styles/base.css"
 import { withThemeByClassName } from "@storybook/addon-themes"
 import type { Preview } from "@storybook/react-webpack5"

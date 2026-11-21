@@ -1,7 +1,7 @@
 import React from "react"
+import { Tooltip } from "react-tooltip"
 import Dot from "components/common/Dot"
 import styles from "./ChartTooltip.module.css"
-import ReactTooltip from "react-tooltip"
 
 export default function ChartTooltip({ chartId, tooltip }) {
 	if (!tooltip) {
@@ -11,7 +11,7 @@ export default function ChartTooltip({ chartId, tooltip }) {
 	const { title, value, label, labelColor } = tooltip
 
 	return (
-		<ReactTooltip id={`${chartId}-tooltip`}>
+		<Tooltip id={`${chartId}-tooltip`} isOpen float>
 			<div className={styles.tooltip}>
 				<div className={styles.content}>
 					<div className={styles.title}>{title}</div>
@@ -21,6 +21,6 @@ export default function ChartTooltip({ chartId, tooltip }) {
 					</div>
 				</div>
 			</div>
-		</ReactTooltip>
+		</Tooltip>
 	)
 }

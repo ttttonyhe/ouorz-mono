@@ -28,6 +28,8 @@
 	},
 	"options": {
 		"typeAware": true,
+		"typeCheck": true,
+		"denyWarnings": true,
 		// ESLint is gone, so its directives no longer suppress anything, and a
 		// directive that stops matching a real finding is reported instead of rotting.
 		"respectEslintDisableDirectives": false,
@@ -57,6 +59,27 @@
 		"typescript/prefer-readonly-parameter-types": "off",
 		"typescript/strict-boolean-expressions": "off",
 		"typescript/strict-void-return": "off",
+		// Strictness upgrades across TypeScript, security, imports, and React.
+		"typescript/consistent-indexed-object-style": "error",
+		"typescript/consistent-type-exports": "error",
+		"typescript/consistent-type-imports": "error",
+		"typescript/no-non-null-assertion": "error",
+		"typescript/no-unnecessary-condition": "error",
+		"typescript/no-unnecessary-type-assertion": "error",
+		"typescript/prefer-readonly": "error",
+		"typescript/switch-exhaustiveness-check": "error",
+		"eslint/default-case-last": "error",
+		"eslint/eqeqeq": "error",
+		"eslint/no-alert": "error",
+		"eslint/no-eval": "error",
+		"eslint/no-implied-eval": "error",
+		"eslint/no-new-func": "error",
+		"eslint/no-param-reassign": "error",
+		"eslint/no-script-url": "error",
+		"eslint/no-var": "error",
+		"import/no-cycle": "error",
+		"import/no-duplicates": "error",
+		"react/button-has-type": "error",
 		// Arbitrary size caps, against page components that read top to bottom.
 		"eslint/max-lines": "off",
 		"eslint/max-lines-per-function": "off",
@@ -72,7 +95,6 @@
 		"nextjs/no-img-element": "off",
 		// Cards and list rows are whole-surface click targets that already wrap a
 		// focusable link, so a second keyboard target would duplicate the tab stop.
-		// Carried over from the previous ESLint and Biome setup as accessibility debt.
 		"jsx-a11y/click-events-have-key-events": "off",
 		"jsx-a11y/no-static-element-interactions": "off",
 		"jsx-a11y/no-noninteractive-element-interactions": "off",
@@ -104,16 +126,6 @@
 			// branches on the predicates it exports rather than probing `typeof`.
 			"files": ["apps/main/src/utilities/environment.ts"],
 			"rules": { "anti-slop/no-runtime-typeof": "off" },
-		},
-		{
-			// Hardhat runs these through ts-node in CommonJS, where there is no top-level await.
-			"files": ["packages/twilight-protocol/scripts/*.ts"],
-			"rules": { "unicorn/prefer-top-level-await": "off" },
-		},
-		{
-			// Hardhat registers its tasks through import side effects.
-			"files": ["packages/twilight-protocol/hardhat.config.ts"],
-			"rules": { "import/no-unassigned-import": "off" },
 		},
 		{
 			// Storybook previews are loaded for their side effects.

@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import PropTypes from "prop-types"
 import { FormattedMessage } from "react-intl"
 import { endOfYear, isSameDay } from "date-fns"
 import Modal from "./Modal"
@@ -159,14 +158,6 @@ const CustomRange = ({ startDate, endDate, onClick }) => {
 				` — ${dateFormat(endDate, "d LLL y", locale)}`}
 		</>
 	)
-}
-
-DateFilter.propTypes = {
-	value: PropTypes.string,
-	startDate: PropTypes.instanceOf(Date),
-	endDate: PropTypes.instanceOf(Date),
-	onChange: PropTypes.func,
-	className: PropTypes.string,
 }
 
 export default DateFilter

@@ -1,5 +1,5 @@
 import React from "react"
-import { useSpring, animated } from "react-spring"
+import { useSpring, animated } from "@react-spring/web"
 import classNames from "classnames"
 import { ErrorMessage } from "formik"
 import styles from "./FormLayout.module.css"

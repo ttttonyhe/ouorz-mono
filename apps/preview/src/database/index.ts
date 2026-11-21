@@ -1,6 +1,5 @@
-import { z } from "zod"
-
-import { postSchema } from "@/database/schema"
+import type { postSchema } from "@/database/schema"
+import type { z } from "zod"
 
 export type RawPostData = Pick<z.infer<typeof postSchema>, "data">["data"]
 

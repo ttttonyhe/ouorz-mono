@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { FC, PropsWithChildren } from "react"
+import type { FC, PropsWithChildren } from "react"
 
 interface CustomLinkProps {
 	href?: string
