@@ -9,8 +9,6 @@
 		"noImplicitOverride": true,
 		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
 		"verbatimModuleSyntax": true,
 		"erasableSyntaxOnly": true,
 		"noEmit": true,
