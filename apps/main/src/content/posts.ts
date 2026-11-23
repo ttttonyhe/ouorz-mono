@@ -108,30 +108,39 @@ const toLocalPost = (fileName: string): LocalPost => {
 	}
 }
 
-const withPreNext = (posts: LocalPost[]): LocalPost[] =>
-	posts.map((post, index) => {
-		const prev = posts[index - 1]
-		const next = posts[index + 1]
-		return {
-			...post,
-			post_prenext: {
-				prev: prev
-					? [
-							Number(prev.id),
-							prev.post_title,
-							prev.post_categories[0]?.term_id ?? 0,
-						]
-					: [],
-				next: next
-					? [
-							Number(next.id),
-							next.post_title,
-							next.post_categories[0]?.term_id ?? 0,
-						]
-					: [],
-			},
-		}
-	})
+export const isStandalonePost = (post: LocalPost): boolean =>
+	isArticleContent(post.content.raw, post.post_metas.link)
+
+const withPreNext = (posts: LocalPost[]): LocalPost[] => {
+	const standalone = posts.filter((post) => isStandalonePost(post))
+	const preNextById = new Map<string, PostPreNext>()
+
+	for (const [index, post] of standalone.entries()) {
+		const prev = standalone[index - 1]
+		const next = standalone[index + 1]
+		preNextById.set(post.id, {
+			prev: prev
+				? [
+						Number(prev.id),
+						prev.post_title,
+						prev.post_categories[0]?.term_id ?? 0,
+					]
+				: [],
+			next: next
+				? [
+						Number(next.id),
+						next.post_title,
+						next.post_categories[0]?.term_id ?? 0,
+					]
+				: [],
+		})
+	}
+
+	return posts.map((post) => ({
+		...post,
+		post_prenext: preNextById.get(post.id) ?? { prev: [], next: [] },
+	}))
+}
 
 let cachedPosts: LocalPost[] | null = null
 let cachedPostsById: Map<number, LocalPost> | null = null
@@ -166,15 +175,25 @@ export interface GetPostsOptions {
 	perPage?: number
 	search?: string
 	page?: number
+	standaloneOnly?: boolean
 }
 
 export const getPosts = (options: GetPostsOptions = {}) => {
-	const { sticky, cate, cateExclude, perPage, search, page = 1 } = options
+	const {
+		sticky,
+		cate,
+		cateExclude,
+		perPage,
+		search,
+		page = 1,
+		standaloneOnly = false,
+	} = options
 	const excluded = new Set(
 		(cateExclude ?? "").split(",").filter(Boolean).map(Number)
 	)
 
 	let posts = getAllPosts().filter((post) => {
+		if (standaloneOnly && !isStandalonePost(post)) return false
 		const cid = post.post_categories[0]?.term_id
 		if (cid !== undefined && excluded.has(cid)) return false
 		if (sticky !== undefined && post.sticky !== sticky) return false
@@ -197,17 +216,25 @@ export const getPosts = (options: GetPostsOptions = {}) => {
 	return posts
 }
 
-export const getPostById = (id: number): LocalPost | undefined => {
+const getPostById = (id: number): LocalPost | undefined => {
 	const posts = getAllPosts()
 	if (cachedPostsById) return cachedPostsById.get(id)
 	return posts.find((post) => Number(post.id) === id)
 }
 
-export const getPostIds = () => getAllPosts().map((post) => Number(post.id))
+export const getStandalonePostById = (id: number): LocalPost | undefined => {
+	const post = getPostById(id)
+	return post && isStandalonePost(post) ? post : undefined
+}
+
+export const getStandalonePostIds = () =>
+	getAllPosts()
+		.filter((post) => isStandalonePost(post))
+		.map((post) => Number(post.id))
 
 export const getCategoryById = (id: number) => {
 	const posts = getAllPosts().filter(
-		(post) => post.post_categories[0]?.term_id === id
+		(post) => isStandalonePost(post) && post.post_categories[0]?.term_id === id
 	)
 	const primaryCategory = posts[0]?.post_categories[0]
 	if (!primaryCategory) return null
@@ -216,13 +243,5 @@ export const getCategoryById = (id: number) => {
 		name: primaryCategory.name,
 		count: posts.length,
 		noindex: posts.every((post) => post.noindex),
-	}
-}
-
-export const getPostStats = () => {
-	const posts = getAllPosts()
-	return {
-		count: posts.length,
-		views: posts.reduce((sum, post) => sum + post.post_metas.views, 0),
 	}
 }

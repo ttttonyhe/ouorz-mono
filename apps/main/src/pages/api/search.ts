@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next"
-import { getAllPosts, type LocalPost } from "~/content/posts"
+import { getAllPosts, isStandalonePost, type LocalPost } from "~/content/posts"
 import { apiHandler } from "~/lib/apiHandler"
 import { parseBody, searchBodySchema } from "~/lib/requestBody"
 
@@ -67,6 +67,7 @@ const search = (
 
 	const rankedHits = getAllPosts()
 		.filter((post) => {
+			if (!isStandalonePost(post)) return false
 			const categoryId = post.post_categories[0]?.term_id
 			return categoryId === undefined || !EXCLUDED_CATEGORY_IDS.has(categoryId)
 		})

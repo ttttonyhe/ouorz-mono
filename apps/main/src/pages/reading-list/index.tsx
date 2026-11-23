@@ -1,8 +1,9 @@
-import { Icon } from "@twilight-toolkit/ui"
+import { Icon, type IconProps } from "@twilight-toolkit/ui"
 import type { GetServerSideProps } from "next"
 import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
+import { Fragment } from "react"
 import { BookCard } from "~/components/Card/Book"
 import { pageLayout } from "~/components/Page"
 import { getGoodreadsBooks, type Book } from "~/content/goodreads"
@@ -19,6 +20,14 @@ interface ReadingListProps {
 	toRead: Book[]
 }
 
+interface ShelfSection {
+	id: string
+	label: string
+	icon: IconProps["name"]
+	iconClassName: string
+	books: Book[]
+}
+
 const ReadingList: NextPageWithLayout<ReadingListProps> = ({
 	mustRead,
 	currentlyReading,
@@ -26,6 +35,36 @@ const ReadingList: NextPageWithLayout<ReadingListProps> = ({
 	toRead,
 }: ReadingListProps) => {
 	const router = useRouter()
+	const visibleShelves: ShelfSection[] = [
+		{
+			id: "curated",
+			label: "Curated",
+			icon: "bookShelf" as const,
+			iconClassName: "mr-1.5 flex h-[22px] w-[22px] text-purple-500",
+			books: mustRead,
+		},
+		{
+			id: "currently-reading",
+			label: "Currently Reading",
+			icon: "eye" as const,
+			iconClassName: "mr-1.5 flex h-[22px] w-[22px] text-green-500",
+			books: currentlyReading,
+		},
+		{
+			id: "read",
+			label: "Read",
+			icon: "checkDouble" as const,
+			iconClassName: "mr-1.5 flex h-[22px] w-[22px] text-yellow-500",
+			books: read,
+		},
+		{
+			id: "to-read",
+			label: "To Read",
+			icon: "bookmark" as const,
+			iconClassName: "mr-1.5 flex h-5 w-5 text-blue-500",
+			books: toRead,
+		},
+	].filter((shelf) => shelf.books.length > 0)
 
 	return (
 		<div>
@@ -81,75 +120,41 @@ const ReadingList: NextPageWithLayout<ReadingListProps> = ({
 			<div className="my-5">
 				<hr className="dark:border-gray-600" />
 			</div>
-			<section className="mb-10">
-				<h2 className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
-					<span className="mr-1.5 flex h-[22px] w-[22px] text-purple-500">
-						<Icon name="bookShelf" />
-					</span>
-					<span className="uppercase">Curated</span>
-				</h2>
-				<div className="mt-4">
-					<div className="grid grid-cols-2 gap-4">
-						{mustRead.map((book) => (
-							<BookCard key={book.link} {...book} />
-						))}
-					</div>
-				</div>
-			</section>
-			<div className="mb-10">
-				<hr className="dark:border-gray-600" />
-			</div>
-			<section className="mb-10">
-				<h2 className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
-					<span className="mr-1.5 flex h-[22px] w-[22px] text-green-500">
-						<Icon name="eye" />
-					</span>
-					<span className="uppercase">Currently Reading</span>
-				</h2>
-				<div className="mt-4">
-					<div className="grid grid-cols-2 gap-4">
-						{currentlyReading.map((book) => (
-							<BookCard key={book.link} {...book} />
-						))}
-					</div>
-				</div>
-			</section>
-			<div className="mb-10">
-				<hr className="dark:border-gray-600" />
-			</div>
-			<section className="mb-10">
-				<h2 className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
-					<span className="mr-1.5 flex h-[22px] w-[22px] text-yellow-500">
-						<Icon name="checkDouble" />
-					</span>
-					<span className="uppercase">Read</span>
-				</h2>
-				<div className="mt-4">
-					<div className="grid grid-cols-2 gap-4">
-						{read.map((book) => (
-							<BookCard key={book.link} {...book} />
-						))}
-					</div>
-				</div>
-			</section>
-			<div className="mb-10">
-				<hr className="dark:border-gray-600" />
-			</div>
-			<section className="mb-28">
-				<h2 className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
-					<span className="mr-1.5 flex h-5 w-5 text-blue-500">
-						<Icon name="bookmark" />
-					</span>
-					<span className="uppercase">To Read</span>
-				</h2>
-				<div className="mt-4">
-					<div className="grid grid-cols-2 gap-4">
-						{toRead.map((book) => (
-							<BookCard key={book.link} {...book} />
-						))}
-					</div>
-				</div>
-			</section>
+			{visibleShelves.length === 0 ? (
+				<section className="mb-28 rounded-md border border-gray-200 bg-white px-6 py-8 text-center dark:border-gray-700 dark:bg-gray-800">
+					<p className="text-gray-500 dark:text-gray-400">
+						Reading list is temporarily unavailable. Please try again shortly.
+					</p>
+				</section>
+			) : (
+				visibleShelves.map((shelf, index) => {
+					const isLast = index === visibleShelves.length - 1
+					return (
+						<Fragment key={shelf.id}>
+							<section className={isLast ? "mb-28" : "mb-10"}>
+								<h2 className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 pt-[4px] pb-1 font-medium tracking-wider shadow-xs dark:border-gray-600 dark:bg-gray-700">
+									<span className={shelf.iconClassName}>
+										<Icon name={shelf.icon} />
+									</span>
+									<span className="uppercase">{shelf.label}</span>
+								</h2>
+								<div className="mt-4">
+									<div className="grid grid-cols-2 gap-4">
+										{shelf.books.map((book) => (
+											<BookCard key={book.link} {...book} />
+										))}
+									</div>
+								</div>
+							</section>
+							{!isLast && (
+								<div className="mb-10">
+									<hr className="dark:border-gray-600" />
+								</div>
+							)}
+						</Fragment>
+					)
+				})
+			)}
 		</div>
 	)
 }
@@ -179,13 +184,22 @@ export const getServerSideProps: GetServerSideProps<ReadingListProps> = async ({
 		readResult,
 		toReadResult,
 	].every((result) => result.status === "fulfilled")
+	const totalBooks =
+		mustRead.length + currentlyReading.length + read.length + toRead.length
 
-	res.setHeader(
-		"Cache-Control",
-		allSucceeded
-			? "public, s-maxage=86400, stale-while-revalidate=604800"
-			: "public, s-maxage=300, stale-while-revalidate=3600"
-	)
+	if (totalBooks === 0) {
+		// Return 503 instead of an empty 200 page so crawlers do not treat outages as soft 404s.
+		res.statusCode = 503
+		res.setHeader("Retry-After", "300")
+		res.setHeader("Cache-Control", "no-store")
+	} else {
+		res.setHeader(
+			"Cache-Control",
+			allSucceeded
+				? "public, s-maxage=86400, stale-while-revalidate=604800"
+				: "public, s-maxage=300, stale-while-revalidate=3600"
+		)
+	}
 
 	return {
 		props: { mustRead, currentlyReading, read, toRead },

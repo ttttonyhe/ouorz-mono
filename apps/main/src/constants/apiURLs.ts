@@ -8,7 +8,7 @@ export const GITHUB_API = {
 }
 
 export const GOODREADS_API = {
-	RSS: "https://www.goodreads.com/review/list_rss/146097881?key=YdulPNTVXpB1iC4Hx05BcR-W8j9wAT4Nip56cjwulPilbx02",
+	WIDGET: "https://www.goodreads.com/review/custom_widget/146097881.Tony",
 }
 
 export const SUBSTATS_API = {

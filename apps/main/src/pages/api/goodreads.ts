@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 import {
-	getGoodreadsBooks,
+	getGoodreadsBooksWithStatus,
 	isGoodreadsShelf,
 	type Book,
 } from "~/content/goodreads"
@@ -21,8 +21,11 @@ const goodreads = async (
 		return res.status(400).json({ error: "Unknown Goodreads shelf" })
 	}
 
-	const books = await getGoodreadsBooks(shelf)
-	res.setHeader("Cache-Control", PUBLIC_CACHE)
+	const { books, complete } = await getGoodreadsBooksWithStatus(shelf)
+	res.setHeader(
+		"Cache-Control",
+		complete ? PUBLIC_CACHE : "public, s-maxage=300, stale-while-revalidate=600"
+	)
 	return res.status(200).json({ books })
 }
 

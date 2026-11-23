@@ -9,6 +9,7 @@ import {
 	getAllPosts,
 	getCategoryById,
 	getPosts,
+	isStandalonePost,
 	type LocalPost,
 } from "~/content/posts"
 import type { NextPageWithLayout } from "~/pages/_app"
@@ -81,7 +82,7 @@ export const getStaticProps: GetStaticProps<CateProps> = (context) => {
 	return {
 		props: {
 			info,
-			posts: getPosts({ cate: id, perPage: 10 }),
+			posts: getPosts({ cate: id, perPage: 10, standaloneOnly: true }),
 		},
 	}
 }
@@ -90,6 +91,7 @@ export const getStaticPaths: GetStaticPaths = () => ({
 	paths: [
 		...new Set(
 			getAllPosts()
+				.filter((post) => isStandalonePost(post))
 				.map((post) => post.post_categories[0]?.term_id)
 				.filter((id): id is number => id !== undefined)
 		),

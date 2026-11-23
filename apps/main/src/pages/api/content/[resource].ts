@@ -4,9 +4,9 @@ import { renderMDX } from "~/content/mdx"
 import { getPageById } from "~/content/pages"
 import {
 	getCategoryById,
-	getPostById,
-	getPostIds,
 	getPosts,
+	getStandalonePostById,
+	getStandalonePostIds,
 	type GetPostsOptions,
 } from "~/content/posts"
 import { getSponsors } from "~/content/static-data"
@@ -58,7 +58,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 				options.search = parsed.data.search
 			}
 
-			const posts = getPosts(options)
+			const posts = getPosts({ ...options, standaloneOnly: true })
 			const views = await getPostViews(posts)
 			const postsWithViews = []
 			for (const [index, post] of posts.entries()) {
@@ -78,7 +78,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 			if (!parsed.success) return res.status(400).json({ error: "Invalid ID" })
 			const id = parsed.data
 			const withHtml = paramEquals(req.query.render, "html")
-			const post = getPostById(id)
+			const post = getStandalonePostById(id)
 			if (!post) return res.status(404).json({})
 
 			const mdxHtml =
@@ -98,7 +98,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 		}
 		case "allPostIDs":
 			res.setHeader("Cache-Control", PUBLIC_CACHE)
-			return res.status(200).json(getPostIds())
+			return res.status(200).json(getStandalonePostIds())
 		case "category": {
 			const parsed = positiveIntegerSchema.safeParse(req.query.id)
 			if (!parsed.success) return res.status(400).json({ error: "Invalid ID" })
@@ -111,7 +111,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 			res.setHeader("Cache-Control", PUBLIC_CACHE)
 			return res.status(200).json(getSponsors())
 		case "postStats": {
-			const posts = getPosts()
+			const posts = getPosts({ standaloneOnly: true })
 			const views = (await getPostViews(posts)).reduce(
 				(sum, value) => sum + value,
 				0

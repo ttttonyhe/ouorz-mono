@@ -3,7 +3,7 @@ import { createHash } from "node:crypto"
 import type { NextApiRequest } from "next"
 import { unstable_cache } from "next/cache"
 import { z } from "zod"
-import { getPostById } from "~/content/posts"
+import { getStandalonePostById } from "~/content/posts"
 import { apiHandler, ApiError, fetchJSON, requireEnv } from "~/lib/apiHandler"
 import { parseBody, summarizeBodySchema } from "~/lib/requestBody"
 import { readParam } from "~/utilities/queryParams"
@@ -108,8 +108,8 @@ const generateSummary = async (content: string): Promise<string> => {
 // Pages Router uses the Data Cache; the "use cache" directive requires App Router.
 const getSummary = unstable_cache(
 	(postId: number, _contentHash: string) => {
-		const post = getPostById(postId)
-		if (!post || !post.content.raw.trim()) {
+		const post = getStandalonePostById(postId)
+		if (!post) {
 			throw new ApiError(404, "Post not found")
 		}
 		return generateSummary(post.content.raw)
@@ -130,8 +130,8 @@ export default apiHandler(["POST"], async (req, res) => {
 	if (!body) return res.status(400).json({ error: "Invalid request body" })
 
 	const postId = Number(body.identifier.slice("posts/".length))
-	const post = getPostById(postId)
-	if (!post || !post.content.raw.trim()) {
+	const post = getStandalonePostById(postId)
+	if (!post) {
 		return res.status(404).json({ error: "Post not found" })
 	}
 

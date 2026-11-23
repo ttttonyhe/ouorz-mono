@@ -10,7 +10,11 @@ import PostContent from "~/components/PostContent"
 import SubscriptionBox from "~/components/SubscriptionBox"
 import TimeAgo from "~/components/TimeAgo"
 import { renderMDX } from "~/content/mdx"
-import { getPostById, getPostIds, type LocalPost } from "~/content/posts"
+import {
+	getStandalonePostById,
+	getStandalonePostIds,
+	type LocalPost,
+} from "~/content/posts"
 import useLiveViews from "~/hooks/useLiveViews"
 import type { NextPageWithLayout } from "~/pages/_app"
 import { setHeaderTitle } from "~/store"
@@ -123,7 +127,7 @@ const BlogPost: NextPageWithLayout<Props> = ({ post, mdxHtml }) => {
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
 	const pid = Number(context.params?.pid)
-	const post = getPostById(pid)
+	const post = getStandalonePostById(pid)
 
 	if (!post) {
 		return { notFound: true }
@@ -142,7 +146,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 }
 
 export const getStaticPaths: GetStaticPaths = () => {
-	const paths = getPostIds().map((id) => ({
+	const paths = getStandalonePostIds().map((id) => ({
 		params: { pid: id.toString() },
 	}))
 

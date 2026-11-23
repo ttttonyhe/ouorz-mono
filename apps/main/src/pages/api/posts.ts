@@ -12,7 +12,7 @@ const posts = async (
 	_req: NextApiRequest,
 	res: NextApiResponse<PostStatsResponse>
 ) => {
-	const allPosts = getPosts()
+	const allPosts = getPosts({ standaloneOnly: true })
 	const views = (await getPostViews(allPosts)).reduce(
 		(sum, value) => sum + value,
 		0

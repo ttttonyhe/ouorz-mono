@@ -68,6 +68,10 @@ const nextConfig: NextConfig = {
 				protocol: "https",
 				hostname: "i.gr-assets.com",
 			},
+			{
+				protocol: "https",
+				hostname: "s.gr-assets.com",
+			},
 		],
 		path: "/assets/_next/image",
 	},
@@ -75,6 +79,20 @@ const nextConfig: NextConfig = {
 		removeConsole: {
 			exclude: ["log", "error"],
 		},
+	},
+	redirects() {
+		return [
+			{
+				source: "/cate/2",
+				destination: "/links",
+				permanent: true,
+			},
+			{
+				source: "/cate/335",
+				destination: "/podcasts",
+				permanent: true,
+			},
+		]
 	},
 	rewrites() {
 		return [
