@@ -446,6 +446,8 @@ cd ../.. && bun run build:<project-name>
 
 [![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ttttonyhe/ouorz-mono)
 
+[![Deploy to ZopDay](https://zop.dev/deploytozopday-inkhard.svg)](https://zop.dev/zopday/app/deploy?repo=https://github.com/ttttonyhe/ouorz-mono&utm_source=github&utm_medium=oss_readme&utm_campaign=zd_oss&utm_content=ttttonyhe_ouorz-mono)
+
 <br/>
 
 Enabling diff-based deployment is highly recommended:
