@@ -102,7 +102,7 @@ export const WEBSITE_ID = `${SITE_URL}/#website`
 export const SITE_NAME = "Tony (Lipeng) He"
 export const PROFILE_DESCRIPTION =
 	"Tony (Lipeng) He (贺莉朋) is a CS PhD student at the University of Waterloo (CrySP, SSG) researching Trustworthy AI and LLM security, building at Retrograde Labs."
-export const PROFILE_UPDATED_AT = "2026-11-21"
+export const PROFILE_UPDATED_AT = "2026-11-21T17:30:47Z"
 
 export const PROFILE_LINKS: readonly ProfileLink[] = [
 	{

@@ -61,7 +61,7 @@ export const renderProfileMarkdown = () => {
 > ${PROFILE_DESCRIPTION}
 
 - Canonical URL: ${SITE_URL}/
-- Last updated: ${PROFILE_UPDATED_AT}
+- Last updated: ${PROFILE_UPDATED_AT.slice(0, 10)}
 - Email: ${PERSON_IDENTITY.email}
 - Office: ${PERSON_IDENTITY.office}
 - CV: ${PERSON_IDENTITY.cvUrl}

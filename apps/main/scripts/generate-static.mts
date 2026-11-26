@@ -207,7 +207,9 @@ const generateSitemap = (posts: FeedPost[], pages: LocalPageFrontmatter[]) => {
 		(route) => route.sitemap
 	).map(({ path: route, sources }) => {
 		const entry: SitemapEntry = { path: route }
-		const lastmod = sources ? getGitLastMod(sources) : PROFILE_UPDATED_AT
+		const lastmod = sources
+			? getGitLastMod(sources)
+			: PROFILE_UPDATED_AT.slice(0, 10)
 		if (lastmod) entry.lastmod = lastmod
 		return entry
 	})
